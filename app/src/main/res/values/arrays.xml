@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<resources>
+    <string-array name="menu_values">
+        <item>添加</item>
+        <item>修改</item>
+        <item>更新</item>
+        <item>删除</item>
+    </string-array>
+
+    <string-array name="router_choice_entry">
+        <item>路线一: 南京->上海->杭州</item>
+        <item>路线二: 南京->武汉->长沙</item>
+        <item>路线三: 南京->济南->天津</item>
+        <item>路线四: 南京->合肥->重庆</item>
+        <item>路线五: 南京->徐州->北京</item>
+        <item>路线六: 南京->郑州->成都</item>
+    </string-array>
+
+    <integer-array name="tags_selects_values">
+        <item>0</item>
+        <item>1</item>
+        <item>3</item>
+    </integer-array>
+
+    <string-array name="nation_value">
+        <item>汉族</item>
+        <item>壮族</item>
+        <item>回族</item>
+        <item>满族</item>
+        <item>维吾尔族</item>
+        <item>苗族</item>
+        <item>彝族</item>
+        <item>土家族</item>
+        <item>藏族</item>
+        <item>蒙古族</item>
+        <item>侗族</item>
+        <item>布依族</item>
+        <item>瑶族</item>
+        <item>白族</item>
+        <item>朝鲜族</item>
+        <item>哈尼族</item>
+        <item>黎族</item>
+        <item>哈萨克族</item>
+        <item>傣族</item>
+        <item>畲族</item>
+        <item>傈僳族</item>
+        <item>东乡族</item>
+        <item>仡佬族</item>
+        <item>拉祜族</item>
+        <item>佤族</item>
+        <item>水族</item>
+        <item>纳西族</item>
+        <item>羌族</item>
+        <item>土族</item>
+        <item>仫佬族</item>
+        <item>锡伯族</item>
+        <item>柯尔克孜族</item>
+        <item>景颇族</item>
+        <item>达斡尔族</item>
+        <item>撒拉族</item>
+        <item>布朗族</item>
+        <item>毛南族</item>
+        <item>塔吉克族</item>
+        <item>普米族</item>
+        <item>阿昌族</item>
+        <item>怒族</item>
+        <item>鄂温克族</item>
+        <item>京族</item>
+        <item>基诺族</item>
+        <item>德昂族</item>
+        <item>保安族</item>
+        <item>俄罗斯族</item>
+        <item>裕固族</item>
+        <item>乌孜别克族</item>
+        <item>门巴族</item>
+        <item>鄂伦春族</item>
+        <item>独龙族</item>
+        <item>赫哲族</item>
+        <item>高山族</item>
+        <item>珞巴族</item>
+        <item>塔塔尔族</item>
+    </string-array>
+
+    <string-array name="query_suggestions">
+        <item>A very very long suggestion that would span multiple lines.</item>
+        <item>Android</item>
+        <item>iOS</item>
+        <item>SCALA</item>
+        <item>Ruby</item>
+        <item>JavaScript</item>
+        <item>C#</item>
+        <item>Python</item>
+        <item>C</item>
+        <item>C++</item>
+        <item>PHP</item>
+        <item>Go</item>
+        <item>Perl</item>
+        <item>Bash</item>
+        <item>Lua</item>
+        <item>R</item>
+        <item>TCL</item>
+        <item>Haskell</item>
+        <item>Objective C</item>
+        <item>Swift</item>
+        <item>Kotlin</item>
+        <item>jQuery</item>
+        <item>Development</item>
+        <item>Web</item>
+        <item>Ajax</item>
+        <item>Test</item>
+        <item>Testing</item>
+        <item>CookBook</item>
+        <item>Beagle</item>
+        <item>VMware</item>
+        <item>Less.js</item>
+        <item>IDE</item>
+        <item>Arduino</item>
+        <item>Xamarin</item>
+        <item>UI</item>
+        <item>Microsoft</item>
+        <item>Application</item>
+        <item>Development</item>
+        <item>JUnit</item>
+        <item>SQL</item>
+        <item>Beagle</item>
+    </string-array>
+
+
+</resources>

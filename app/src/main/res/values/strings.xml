@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">XUIDemo</string>
+
+
+    <!--MaterialDialog-->
+    <string name="tip_bluetooth_permission">是否允许打开蓝牙？</string>
+    <string name="lab_yes">是</string>
+    <string name="lab_no">否</string>
+    <string name="tip_infos">提示</string>
+    <string name="content_simple_confirm_dialog">请注意，这是一个简单的提示性对话框！</string>
+    <string name="lab_submit">确定</string>
+    <string name="tip_warning">警告</string>
+    <string name="content_warning">当前为开发环境，是否切换到真实环境？</string>
+    <string name="lab_change">切换</string>
+    <string name="lab_continue">继续</string>
+    <string name="hint_please_input_password">请输入密码</string>
+    <string name="tip_options">选项</string>
+    <string name="tip_capture_setting">采集设置</string>
+    <string name="lab_choice">选择</string>
+    <string name="tip_update">版本更新</string>
+    <string name="content_downloading">正在下载中，请稍后...</string>
+    <string name="tip_download_finished">下载完毕!</string>
+    <string name="lab_cancel">取消</string>
+    <string name="content_wait_for_receive_data">数据接收中，请稍后...</string>
+    <string name="lab_edit">编辑</string>
+    <string name="lab_add">添加</string>
+    <string name="lab_delete">删除</string>
+    <string name="lab_update">更新</string>
+    <string name="tip_please_select_transfer_type">选择一种切换方式</string>
+    <string name="tip_signature">签名</string>
+    <string name="lab_clear">清除</string>
+    <string name="tip_loading_message">正在加载数据...</string>
+    <string name="tip_start">开始</string>
+    <string name="tip_stop">停止</string>
+</resources>

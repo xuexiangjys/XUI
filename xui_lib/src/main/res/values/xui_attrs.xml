@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--ActionBar  TitleBar-->
+    <declare-styleable name="TitleBar">
+        <!--标题栏的高度，默认52dp-->
+        <attr name="tb_barHeight" format="dimension" />
+        <!--是否是沉浸式标题栏，默认是false-->
+        <attr name="tb_immersive" format="boolean" />
+        <!--左右图标和文字的padding-->
+        <attr name="tb_actionPadding" format="dimension" />
+        <attr name="tb_sideTextPadding" format="dimension" />
+        <!--文字的颜色-->
+        <attr name="tb_sideTextColor" format="color" />
+        <attr name="tb_titleTextColor" format="color" />
+        <attr name="tb_subTitleTextColor" format="color" />
+        <attr name="tb_actionTextColor" format="color" />
+        <!--文字的大小-->
+        <attr name="tb_sideTextSize" format="dimension" />
+        <attr name="tb_titleTextSize" format="dimension" />
+        <attr name="tb_subTitleTextSize" format="dimension" />
+        <attr name="tb_actionTextSize" format="dimension" />
+        <!--文字的内容以及图标内容-->
+        <attr name="tb_leftImageResource" format="reference" />
+        <attr name="tb_leftText" format="string" />
+        <attr name="tb_titleText" format="string" />
+        <attr name="tb_subTitleText" format="string" />
+        <attr name="tb_dividerColor" format="color" />
+    </declare-styleable>
+
+    <!--=====================================================================-->
+
+    <!--LoadingView-->
+    <declare-styleable name="LoadingView">
+        <!--loading加载画笔的粗细-->
+        <attr name="lv_width" format="dimension" />
+        <!--loading加载画笔的颜色-->
+        <attr name="lv_color" format="color" />
+        <!--loading加载旋转的速度-->
+        <attr name="lv_speed" format="integer" />
+        <!--是否有loading中心的图标， 默认是true-->
+        <attr name="lv_has_icon" format="boolean" />
+        <!--loading中心的图标-->
+        <attr name="lv_icon" format="reference" />
+        <!--loading中心图标缩放的比例, 默认是0.5-->
+        <attr name="lv_icon_scale" format="float" />
+        <!--圆弧的角度-->
+        <attr name="lv_arc_degree" format="integer" />
+        <!--是否自动旋转，无需人工控制，默认是true-->
+        <attr name="lv_auto" format="boolean" />
+        <!--是否单弧旋转，默认false-->
+        <attr name="lv_arc_single" format="boolean" />
+    </declare-styleable>
+
+    <!--LoadingViewLayout-->
+    <declare-styleable name="LoadingViewLayout">
+        <!--loading中心的图标-->
+        <attr name="lvl_icon" format="reference" />
+        <!--loading提示信息-->
+        <attr name="lvl_message" format="string" />
+    </declare-styleable>
+
+    <!--=====================================================================-->
+
+    <!--MaterialProgressBar-->
+    <declare-styleable name="MaterialProgressBar">
+        <!-- 进度条的样式：环形或水平，默认是环形-->
+        <attr name="mpb_progressStyle" format="enum">
+            <enum name="circular" value="0" />
+            <enum name="horizontal" value="1" />
+        </attr>
+        <!--无论进度 determinate（确定）或 indeterminate（不确定）的drawables都可以设置在进度条上，默认是false-->
+        <attr name="mpb_setBothDrawables" format="boolean" />
+        <!--是否使用进度条内部的padding，默认为true-->
+        <attr name="mpb_useIntrinsicPadding" format="boolean" />
+        <!--进度条是否必须有背景，水平进度条默认是true，环形进度条默认是false-->
+        <attr name="mpb_showProgressBackground" format="boolean" />
+        <!--进度确定的环形进度条样式：normal和dynamic，默认是normal-->
+        <attr name="mpb_determinateCircularProgressStyle" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="dynamic" value="1" />
+        </attr>
+
+        <!-- ********************进度确定的进度条色调************** -->
+        <!--进度条的主色调-->
+        <attr name="mpb_progressTint" format="color|reference" />
+        <!--进度条色调的叠加模式, 默认无。详见：http://www.jianshu.com/p/d11892bbe055-->
+        <attr name="mpb_progressTintMode" format="enum">
+            <!--在目标图像上层绘制源图像-->
+            <enum name="src_over" value="3" />
+            <!--在两者相交的地方绘制源图像，并且绘制的效果会受到目标图像对应地方透明度的影响-->
+            <enum name="src_in" value="5" />
+            <!--源图像和目标图像相交处绘制源图像，不相交的地方绘制目标图像，并且相交处的效果会受到源图像和目标图像alpha的影响-->
+            <enum name="src_atop" value="9" />
+            <!--正片叠底，即查看每个通道中的颜色信息，并将基色与混合色复合。结果色总是较暗的颜色，任何颜色与黑色复合产生黑色，任何颜色与白色复合保持不变，当用黑色或白色以外的颜色绘画时，绘画工具绘制的连续描边产生逐渐变暗的颜色。-->
+            <enum name="multiply" value="14" />
+            <!--滤色，滤色模式与我们所用的显示屏原理相同，所以也有版本把它翻译成屏幕；简单的说就是保留两个图层中较白的部分，较暗的部分被遮盖；当一层使用了滤色（屏幕）模式时，图层中纯黑的部分变成完全透明，纯白部分完全不透明，其他的颜色根据颜色级别产生半透明的效果。-->
+            <enum name="screen" value="15" />
+            <!--滤色，滤色模式与我们所用的显示屏原理相同，所以也有版本把它翻译成屏幕；简单的说就是保留两个图层中较白的部分，较暗的部分被遮盖；当一层使用了滤色（屏幕）模式时，图层中纯黑的部分变成完全透明，纯白部分完全不透明，其他的颜色根据颜色级别产生半透明的效果。-->
+            <enum name="add" value="16" />
+        </attr>
+        <!--进度条的次色调-->
+        <attr name="mpb_secondaryProgressTint" format="color|reference" />
+        <!--进度条次色调的叠加模式-->
+        <attr name="mpb_secondaryProgressTintMode" format="enum">
+            <enum name="src_over" value="3" />
+            <enum name="src_in" value="5" />
+            <enum name="src_atop" value="9" />
+            <enum name="multiply" value="14" />
+            <enum name="screen" value="15" />
+            <enum name="add" value="16" />
+        </attr>
+        <!--进度条背景的色调-->
+        <attr name="mpb_progressBackgroundTint" format="color|reference" />
+        <!--进度条背景色调的叠加模式-->
+        <attr name="mpb_progressBackgroundTintMode" format="enum">
+            <enum name="src_over" value="3" />
+            <enum name="src_in" value="5" />
+            <enum name="src_atop" value="9" />
+            <enum name="multiply" value="14" />
+            <enum name="screen" value="15" />
+            <enum name="add" value="16" />
+        </attr>
+
+        <!--不确定进度的进度条色调-->
+        <attr name="mpb_indeterminateTint" format="color|reference" />
+        <!--不确定进度的进度条色调的叠加模式-->
+        <attr name="mpb_indeterminateTintMode" format="enum">
+            <enum name="src_over" value="3" />
+            <enum name="src_in" value="5" />
+            <enum name="src_atop" value="9" />
+            <enum name="multiply" value="14" />
+            <enum name="screen" value="15" />
+            <enum name="add" value="16" />
+        </attr>
+    </declare-styleable>
+
+    <!--=====================================================================-->
+
+    <!--XUIKeyboardScrollView-->
+    <declare-styleable name="XUIKeyboardScrollView">
+        <!--键盘弹出后,是否自动滚动，默认false-->
+        <attr name="ksv_auto_scroll" format="boolean" />
+        <!--键盘弹出后，滚动的高度-->
+        <attr name="ksv_scroll_height" format="dimension" />
+        <!--键盘弹出后，滚动的延迟-->
+        <attr name="ksv_scroll_delay" format="integer" />
+        <!--滚动是否隐藏键盘, 默认false-->
+        <attr name="ksv_scroll_hide" format="boolean" />
+    </declare-styleable>
+
+    <!--XUIWrapContentListView-->
+    <declare-styleable name="XUIWrapContentListView">
+        <!--设置listView的最大高度-->
+        <attr name="wclv_max_height" format="dimension" />
+    </declare-styleable>
+
+    <!--XUIWrapContentScrollView-->
+    <declare-styleable name="XUIWrapContentScrollView">
+        <!--设置ScrollView的最大高度-->
+        <attr name="wcsv_max_height" format="dimension" />
+    </declare-styleable>
+
+
+</resources>

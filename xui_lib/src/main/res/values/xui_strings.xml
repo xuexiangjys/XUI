@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">xui_lib</string>
+
+    <!--方正兰亭黑字体路径-->
+    <string name="default_app_font_path"></string>
+
+    <string name="xui_tip_expand">展开</string>
+    <string name="xui_tip_shrink">收缩</string>
+
+    <string name="xui_tip_input_error">输入不符合要求!</string>
+
+    <!--StateLayout-->
+    <string name="xui_tip_error_message">出错了，请稍后重试</string>
+    <string name="xui_tip_loading_message">数据加载中…</string>
+    <string name="xui_tip_empty_message">暂无数据</string>
+    <string name="xui_tip_no_network">请检查您的网络连接</string>
+    <string name="xui_tip_retry">重试</string>
+
+    <!--StatefulLayout-->
+    <string name="stfErrorMessage">@string/xui_tip_error_message</string>
+    <string name="stfOfflineMessage">@string/xui_tip_no_network</string>
+    <string name="stfEmptyMessage">@string/xui_tip_empty_message</string>
+    <string name="stfLoadingMessage">@string/xui_tip_loading_message</string>
+    <string name="stfRetryButtonText">@string/xui_tip_retry</string>
+    <string name="stfLocationOffMessage">请打开定位</string>
+    <string name="stf_retry">轻触屏幕重试</string>
+
+    <!--MaterialSearchView-->
+    <string name="search_hint">Search</string>
+
+</resources>

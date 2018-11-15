@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<resources>
+    <!--全局样式-->
+    <dimen name="xui_config_content_spacing_horizontal_tablet_big">20dp</dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
+    <dimen name="xui_config_content_spacing_horizontal_tablet_small">16dp</dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
+    <dimen name="xui_config_content_spacing_horizontal_phone">12dp</dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
+
+    <dimen name="xui_config_content_spacing_vertical_tablet_big">12dp</dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
+    <dimen name="xui_config_content_spacing_vertical_tablet_small">10dp</dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
+    <dimen name="xui_config_content_spacing_vertical_phone">7.5dp</dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
+
+    <dimen name="xui_config_simple_list_item_height_tablet_big">61dp</dimen>
+    <dimen name="xui_config_simple_list_item_height_tablet_small">49dp</dimen>
+    <dimen name="xui_config_simple_list_item_height_phone">41dp</dimen>
+
+    <dimen name="xui_config_simple_list_icon_size_tablet_big">26dp</dimen>
+    <dimen name="xui_config_simple_list_icon_size_tablet_small">24dp</dimen>
+    <dimen name="xui_config_simple_list_icon_size_phone">22dp</dimen>
+
+    <dimen name="xui_config_app_logo_bottom">250dp</dimen>
+    <dimen name="xui_config_company_logo_bottom">80dp</dimen>
+
+    <!-- ActionBar-->
+    <dimen name="xui_actionbar_height_tablet_big">70dp</dimen>
+    <dimen name="xui_actionbar_height_tablet_small">60dp</dimen>
+    <dimen name="xui_actionbar_height_phone">52dp</dimen>
+
+    <dimen name="xui_actionbar_title_text_size_tablet_big">24sp</dimen>
+    <dimen name="xui_actionbar_title_text_size_tablet_small">21sp</dimen>
+    <dimen name="xui_actionbar_title_text_size_phone">18sp</dimen>
+
+    <dimen name="xui_actionbar_action_text_size_tablet_big">22sp</dimen>
+    <dimen name="xui_actionbar_action_text_size_tablet_small">18sp</dimen>
+    <dimen name="xui_actionbar_action_text_size_phone">15sp</dimen>
+
+    <dimen name="xui_actionbar_sub_text_size_tablet_big">16sp</dimen>
+    <dimen name="xui_actionbar_sub_text_size_tablet_small">14sp</dimen>
+    <dimen name="xui_actionbar_sub_text_size_phone">12sp</dimen>
+
+    <dimen name="xui_actionbar_action_padding_tablet_big">7dp</dimen>
+    <dimen name="xui_actionbar_action_padding_tablet_small">6dp</dimen>
+    <dimen name="xui_actionbar_action_padding_phone">5dp</dimen>
+
+    <dimen name="xui_actionbar_sidetext_padding_tablet_big">18dp</dimen>
+    <dimen name="xui_actionbar_sidetext_padding_tablet_small">16dp</dimen>
+    <dimen name="xui_actionbar_sidetext_padding_phone">14dp</dimen>
+
+    <!-- ShadowButton-->
+    <dimen name="default_shadow_button_radius">2dp</dimen>
+
+    <!--RoundButton-->
+    <dimen name="default_rb_border_width">1dp</dimen>
+    <dimen name="default_rb_radius">5dp</dimen>
+
+    <!--SwitchButton-->
+    <dimen name="swb_md_thumb_ripple_size">42dp</dimen>
+    <dimen name="swb_md_thumb_solid_inset">11dp</dimen>
+    <dimen name="swb_md_thumb_shadow_inset">11dp</dimen>
+    <dimen name="swb_md_thumb_shadow_inset_top">11dp</dimen>
+    <dimen name="swb_md_thumb_shadow_inset_bottom">10dp</dimen>
+    <dimen name="swb_md_thumb_solid_size">20dp</dimen>
+    <dimen name="swb_md_thumb_shadow_size">21dp</dimen>
+    <dimen name="swb_md_thumb_shadow_offset">2dp</dimen>
+
+    <!-- 自适应Textview-->
+    <dimen name="default_aftv_min_textsize">10sp</dimen>
+    <dimen name="default_aftv_max_textsize">14sp</dimen>
+
+    <!-- Button-->
+    <dimen name="default_btn_view_radius_tablet_big">7dp</dimen>
+    <dimen name="default_btn_view_width_tablet_big">148dp</dimen>
+    <dimen name="default_btn_view_height_tablet_big">52dp</dimen>
+    <dimen name="default_btn_view_text_size_tablet_big">21sp</dimen>
+    <dimen name="default_btn_view_border_width_tablet_big">1dp</dimen>
+
+    <dimen name="default_btn_view_radius_tablet_small">5dp</dimen>
+    <dimen name="default_btn_view_width_tablet_small">112dp</dimen>
+    <dimen name="default_btn_view_height_tablet_small">38dp</dimen>
+    <dimen name="default_btn_view_text_size_tablet_small">16sp</dimen>
+    <dimen name="default_btn_view_border_width_tablet_small">1dp</dimen>
+
+    <dimen name="default_btn_view_radius_phone">5dp</dimen>
+    <dimen name="default_btn_view_width_phone">104dp</dimen>
+    <dimen name="default_btn_view_height_phone">32dp</dimen>
+    <dimen name="default_btn_view_text_size_phone">13sp</dimen>
+    <dimen name="default_btn_view_border_width_phone">0.5dp</dimen>
+
+    <dimen name="xui_config_icon_drawable_padding_tablet_big">12dp</dimen>
+    <dimen name="xui_config_icon_drawable_padding_tablet_small">9dp</dimen>
+    <dimen name="xui_config_icon_drawable_padding_phone">7dp</dimen>
+
+    <!-- ClearEditText-->
+    <dimen name="default_clear_icon_size">24dp</dimen>
+
+    <!-- MaterialEditText-->
+    <dimen name="default_edittext_components_spacing">8dp</dimen>
+    <dimen name="default_bottom_ellipsis_height">4dp</dimen>
+    <dimen name="default_floating_label_text_size">12sp</dimen>
+    <dimen name="default_bottom_text_size">12sp</dimen>
+    <!-- TabControlView-->
+    <dimen name="default_tcv_text_size">14sp</dimen>
+    <dimen name="default_tcv_stroke_width">1dp</dimen>
+
+    <!--StatefulLayout-->
+    <dimen name="default_stf_progressbar_size_tablet_big">75dp</dimen>
+    <dimen name="default_stf_progressbar_size_tablet_small">65dp</dimen>
+    <dimen name="default_stf_progressbar_size_phone" >60dp</dimen>
+
+    <dimen name="default_stf_tip_img_size_tablet_big">105dp</dimen>
+    <dimen name="default_stf_tip_img_size_tablet_small">90dp</dimen>
+    <dimen name="default_stf_tip_img_size_phone">80dp</dimen>
+
+    <!--MaterialSpinner-->
+    <dimen name="default_ms_padding_left_size_tablet_big">13dp</dimen>
+    <dimen name="default_ms_padding_top_size_tablet_big">11dp</dimen>
+    <dimen name="default_ms_item_height_size_tablet_big">45dp</dimen>
+    <dimen name="default_ms_dropdown_offset_tablet_big">3dp</dimen>
+    <dimen name="default_ms_arrow_size_tablet_big">12dp</dimen>
+
+    <dimen name="default_ms_padding_left_size_tablet_small">10dp</dimen>
+    <dimen name="default_ms_padding_top_size_tablet_small">8dp</dimen>
+    <dimen name="default_ms_item_height_size_tablet_small">35dp</dimen>
+    <dimen name="default_ms_dropdown_offset_tablet_small">2dp</dimen>
+    <dimen name="default_ms_arrow_size_tablet_small">10dp</dimen>
+
+    <dimen name="default_ms_padding_left_size_phone">8dp</dimen>
+    <dimen name="default_ms_padding_top_size_phone">6.5dp</dimen>
+    <dimen name="default_ms_item_height_size_phone">30dp</dimen>
+    <dimen name="default_ms_dropdown_offset_phone">1dp</dimen>
+    <dimen name="default_ms_arrow_size_phone">8dp</dimen>
+
+    <!--MaterialSearchView-->
+    <dimen name="search_icon_padding">12dp</dimen>
+    <dimen name="search_view_text_padding">65dp</dimen>
+
+    <!--*********************************************
+    *                  MaterialDialog               *
+    **********************************************-->
+    <!-- Margin around the dialog, excluding the button bar -->
+    <!-- Total title margin bottom is 16, but we split this between content and title -->
+    <dimen name="md_title_frame_margin_bottom">12dp</dimen>
+    <dimen name="md_title_frame_margin_bottom_less">6dp</dimen>
+    <!-- The desired padding when no title is visible,
+         This plus md_content_padding_top should equals md_dialog_frame_margin -->
+    <dimen name="md_notitle_vertical_padding">16dp</dimen>
+
+    <dimen name="md_notitle_vertical_padding_more">20dp</dimen>
+    <dimen name="md_simplelistitem_padding_top">8dp</dimen>
+
+    <dimen name="md_button_min_width">72dp</dimen>
+    <!-- Above and below buttons, 36+6+6=48 for the height of the button frame -->
+    <dimen name="md_button_inset_vertical">6dp</dimen>
+    <dimen name="md_button_inset_horizontal">4dp</dimen>
+    <dimen name="md_button_textpadding_horizontal">1dp</dimen>
+
+    <dimen name="default_md_button_padding_horizontal_phone">8dp</dimen>
+    <dimen name="default_md_button_padding_horizontal_tablet_small">12dp</dimen>
+    <dimen name="default_md_button_padding_horizontal_tablet_big">16dp</dimen>
+
+    <dimen name="md_button_padding_vertical">4dp</dimen>
+    <dimen name="md_button_padding_horizontal_internalexternal">32dp</dimen>
+    <!-- 16dp - 4dp (inset from background drawable) -->
+    <dimen name="md_button_padding_frame_side">12dp</dimen>
+    <dimen name="md_neutral_button_margin">12dp</dimen>
+
+    <!-- actual content padding bottom is 16dp, but we split between button bar and content -->
+    <dimen name="md_content_padding_top">8dp</dimen>
+    <dimen name="md_content_padding_bottom">8dp</dimen>
+    <dimen name="md_button_frame_vertical_padding">8dp</dimen>
+
+
+
+    <dimen name="default_md_button_height_phone">48dp</dimen>
+    <dimen name="default_md_button_height_tablet_small">55dp</dimen>
+    <dimen name="default_md_button_height_tablet_big">70dp</dimen>
+
+    <!--文字大小-->
+    <dimen name="default_md_title_textsize_tablet_big">28sp</dimen>
+    <dimen name="default_md_dialog_frame_margin_tablet_big">32dp</dimen>
+    <dimen name="default_md_button_textsize_tablet_big">22sp</dimen>
+    <dimen name="default_md_content_textsize_tablet_big">22sp</dimen>
+    <dimen name="default_md_explain_textsize_tablet_big">18sp</dimen>
+    <dimen name="default_md_listitem_textsize_tablet_big">22sp</dimen>
+    <dimen name="default_md_icon_margin_tablet_big">9dp</dimen>
+    <dimen name="default_md_icon_max_size_tablet_big">40dp</dimen>
+
+    <dimen name="default_md_title_textsize_tablet_small">21sp</dimen>
+    <dimen name="default_md_dialog_frame_margin_tablet_small">24dp</dimen>
+    <dimen name="default_md_button_textsize_tablet_small">16sp</dimen>
+    <dimen name="default_md_content_textsize_tablet_small">16sp</dimen>
+    <dimen name="default_md_explain_textsize_tablet_small">14sp</dimen>
+    <dimen name="default_md_listitem_textsize_tablet_small">16sp</dimen>
+    <dimen name="default_md_icon_margin_tablet_small">7dp</dimen>
+    <dimen name="default_md_icon_max_size_tablet_small">30dp</dimen>
+
+    <dimen name="default_md_title_textsize_phone">19sp</dimen>
+    <dimen name="default_md_dialog_frame_margin_phone">25dp</dimen>
+    <dimen name="default_md_button_textsize_phone">15sp</dimen>
+    <dimen name="default_md_content_textsize_phone">15sp</dimen>
+    <dimen name="default_md_explain_textsize_phone">13sp</dimen>
+    <dimen name="default_md_listitem_textsize_phone">15sp</dimen>
+    <dimen name="default_md_icon_margin_phone">6dp</dimen>
+    <dimen name="default_md_icon_max_size_phone">28dp</dimen>
+
+
+    <dimen name="default_md_dialog_frame_margin">24dp</dimen>
+    <dimen name="default_md_icon_max_size">40dp</dimen>
+
+    <dimen name="md_listitem_height">48dp</dimen>
+    <dimen name="md_listitem_control_margin">6dp</dimen>
+    <dimen name="md_icon_margin">16dp</dimen>
+
+    <dimen name="md_listitem_margin_left">24dp</dimen>
+    <dimen name="md_action_corner_radius">2dp</dimen>
+    <dimen name="md_divider_height">1dp</dimen>
+
+    <dimen name="md_bg_corner_radius">7dp</dimen>
+    <dimen name="circular_progress_border">4dp</dimen>
+    <dimen name="md_listitem_vertical_margin">12dp</dimen>
+    <dimen name="md_listitem_vertical_margin_choice">8dp</dimen>
+
+    <dimen name="default_md_dialog_max_width_tablet_big">590dp</dimen>
+    <dimen name="default_md_dialog_max_width_tablet_small">440dp</dimen>
+    <dimen name="default_md_dialog_max_width_phone">305dp</dimen>
+
+    <dimen name="default_md_dialog_vertical_margin_tablet_big">100dp</dimen>
+    <dimen name="default_md_dialog_vertical_margin_tablet_small">75dp</dimen>
+    <dimen name="default_md_dialog_vertical_margin_phone">52dp</dimen>
+
+    <dimen name="default_md_dialog_horizontal_margin_tablet_big">54dp</dimen>
+    <dimen name="default_md_dialog_horizontal_margin_tablet_small">40dp</dimen>
+    <dimen name="default_md_dialog_horizontal_margin_phone">28dp</dimen>
+
+    <dimen name="default_md_preference_content_inset_tablet_big">42dp</dimen>
+    <dimen name="default_md_preference_content_inset_tablet_small">28dp</dimen>
+    <dimen name="default_md_preference_content_inset_phone">16dp</dimen>
+
+    <dimen name="default_md_simpleitem_height_tablet_big">76dp</dimen>
+    <dimen name="default_md_simplelist_icon_tablet_big">52dp</dimen>
+    <dimen name="default_md_simplelist_icon_margin_tablet_big">25dp</dimen>
+    <dimen name="default_md_simplelist_icon_padding_tablet_big">8dp</dimen>
+
+    <dimen name="default_md_simpleitem_height_tablet_small">62dp</dimen>
+    <dimen name="default_md_simplelist_icon_tablet_small">40dp</dimen>
+    <dimen name="default_md_simplelist_icon_margin_tablet_small">20dp</dimen>
+    <dimen name="default_md_simplelist_icon_padding_tablet_small">6dp</dimen>
+
+    <dimen name="default_md_simpleitem_height_phone">50dp</dimen>
+    <dimen name="default_md_simplelist_icon_phone">30dp</dimen>
+    <dimen name="default_md_simplelist_icon_margin_phone">18dp</dimen>
+    <dimen name="default_md_simplelist_icon_padding_phone">5dp</dimen>
+
+    <dimen name="xui_list_divider_height_table">1dp</dimen>
+    <dimen name="xui_list_divider_height_phone">0.5dp</dimen>
+
+    <dimen name="xui_config_separator_height_tablet_big">3dp</dimen>
+    <dimen name="xui_config_separator_height_tablet_small">2dp</dimen>
+    <dimen name="xui_config_separator_height_phone">1dp</dimen>
+    <!--*********************************************
+    *                  Text Size                    *
+    **********************************************-->
+    <!--标题文字大小-->
+    <dimen name="xui_config_size_title_text_tablet_big">24sp</dimen>
+    <!--正文内容文字大小-->
+    <dimen name="xui_config_size_content_text_tablet_big">22sp</dimen>
+    <!--辅助说明文字大小-->
+    <dimen name="xui_config_size_explain_text_tablet_big">16sp</dimen>
+
+    <!--标题文字大小-->
+    <dimen name="xui_config_size_title_text_tablet_small">21sp</dimen>
+    <!--正文内容文字大小-->
+    <dimen name="xui_config_size_content_text_tablet_small">18sp</dimen>
+    <!--辅助说明文字大小-->
+    <dimen name="xui_config_size_explain_text_tablet_small">14sp</dimen>
+
+    <!--标题文字大小-->
+    <dimen name="xui_config_size_title_text_phone">18sp</dimen>
+    <!--正文内容文字大小-->
+    <dimen name="xui_config_size_content_text_phone">15dp</dimen>
+    <!--辅助说明文字大小-->
+    <dimen name="xui_config_size_explain_text_phone">12dp</dimen>
+
+    <!--*********************************************
+    *                  EditText                     *
+    **********************************************-->
+    <dimen name="xui_config_size_edittext_input_text_tablet_big">20sp</dimen>
+    <dimen name="xui_config_size_edittext_helper_text_tablet_big">12sp</dimen>
+    <dimen name="xui_config_size_edittext_components_spacing_tablet_big">10dp</dimen>
+    <dimen name="xui_config_size_edittext_left_padding_tablet_big">17dp</dimen>
+    <dimen name="xui_config_size_edittext_radius_tablet_big">5dp</dimen>
+    <dimen name="xui_config_size_edittext_height_tablet_big">40dp</dimen>
+
+    <dimen name="xui_config_size_edittext_input_text_tablet_small">15sp</dimen>
+    <dimen name="xui_config_size_edittext_helper_text_tablet_small">9sp</dimen>
+    <dimen name="xui_config_size_edittext_components_spacing_tablet_small">8dp</dimen>
+    <dimen name="xui_config_size_edittext_left_padding_tablet_small">13dp</dimen>
+    <dimen name="xui_config_size_edittext_radius_tablet_small">4dp</dimen>
+    <dimen name="xui_config_size_edittext_height_tablet_small">30dp</dimen>
+
+    <dimen name="xui_config_size_edittext_input_text_phone">13sp</dimen>
+    <dimen name="xui_config_size_edittext_helper_text_phone">8sp</dimen>
+    <dimen name="xui_config_size_edittext_components_spacing_phone">7dp</dimen>
+    <dimen name="xui_config_size_edittext_left_padding_phone">10dp</dimen>
+    <dimen name="xui_config_size_edittext_radius_phone">4dp</dimen>
+    <dimen name="xui_config_size_edittext_height_phone">30dp</dimen>
+
+    <!--**********************************************
+    *                  xui popup                    *
+    ***********************************************-->
+    <dimen name="xui_popup_width_tablet_big">232dp</dimen>
+    <dimen name="xui_popup_width_tablet_small">174dp</dimen>
+    <dimen name="xui_popup_width_phone">133dp</dimen>
+
+    <dimen name="xui_tip_popup_padding_top_tablet_big">12dp</dimen>
+    <dimen name="xui_tip_popup_padding_top_tablet_small">9dp</dimen>
+    <dimen name="xui_tip_popup_padding_top_phone">8dp</dimen>
+
+    <dimen name="xui_tip_popup_padding_left_tablet_big">18dp</dimen>
+    <dimen name="xui_tip_popup_padding_left_tablet_small">15dp</dimen>
+    <dimen name="xui_tip_popup_padding_left_phone">12dp</dimen>
+
+
+    <!--**********************************************
+    *                 Spinner                        *
+    ***********************************************-->
+    <dimen name="xui_config_size_spinner_text_tablet_big">20sp</dimen>
+    <dimen name="xui_config_size_spinner_text_tablet_small">15sp</dimen>
+    <dimen name="xui_config_size_spinner_text_phone">13sp</dimen>
+
+    <dimen name="default_spinner_icon_padding_size">20dp</dimen>
+
+    <!--**********************************************
+    *                 Dialog                         *
+    ***********************************************-->
+    <dimen name="xui_dialog_radius_size_tablet_big">10dp</dimen>
+    <dimen name="xui_dialog_loading_padding_size_tablet_big">40dp</dimen>
+    <dimen name="xui_dialog_loading_min_size_tablet_big">250dp</dimen>
+    <dimen name="xui_loading_view_size_tablet_big">135dp</dimen>
+    <dimen name="xui_loading_view_width_tablet_big">6dp</dimen>
+    <dimen name="xui_loading_margin_size_tablet_big">14dp</dimen>
+
+    <dimen name="xui_dialog_radius_size_tablet_small">8dp</dimen>
+    <dimen name="xui_dialog_loading_padding_size_tablet_small">30dp</dimen>
+    <dimen name="xui_dialog_loading_min_size_tablet_small">150dp</dimen>
+    <dimen name="xui_loading_view_size_tablet_small">100dp</dimen>
+    <dimen name="xui_loading_view_width_tablet_small">5dp</dimen>
+    <dimen name="xui_loading_margin_size_tablet_small">10dp</dimen>
+
+    <dimen name="xui_dialog_radius_size_phone">7dp</dimen>
+    <dimen name="xui_dialog_loading_padding_size_phone">26dp</dimen>
+    <dimen name="xui_dialog_loading_min_size_phone">100dp</dimen>
+    <dimen name="xui_loading_view_size_phone">78dp</dimen>
+    <dimen name="xui_loading_view_width_phone">4dp</dimen>
+    <dimen name="xui_loading_margin_size_phone">6dp</dimen>
+
+
+
+
+</resources>

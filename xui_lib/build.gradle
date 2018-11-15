@@ -1,0 +1,24 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion build_versions.target_sdk
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compileOnly deps.support.app_compat
+    compileOnly deps.support.recyclerview
+
+    api 'uk.co.chrisjenx:calligraphy:2.3.0'
+
+
+}

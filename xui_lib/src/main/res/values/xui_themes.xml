@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 关于Theme的继承关系：
+  由于 Theme 需要在不同 API Level 下有不同的配置，并且继承自不同的系统 Theme，所以多层继承。
+
+  继承关系和每个层的分工如下：
+  AppBaseTheme（Theme 的最顶层，各个 API Level 自行决定继承自系统的哪个 Theme）
+    |-values
+    |-values-v21
+    |-values-...
+    |
+  AppRootTheme（基础 Theme，定义所有公用的 style。）
+    |-values
+    |
+  XUITheme（可配置的 Theme，各个 API Level 自行配置各自的 style 差异。）
+    |-values
+    |-values-v21
+    |-values-...
+    |
+  XUI（NLUI提供的theme控制，供外界使用）
+
+  So，
+  如果要对某 API Level 配置继承自某个系统的 Theme，在 values-v* 目录下修改 xui_themes.xml 的 AppBaseTheme。
+  如果要对某 API Level 配置定制化的 Theme，在 values-v* 目录下修改 xui_themes.xml 的 XUITheme。
+  如果在项目中要对特定项目配置业务相关的 Theme，在 values 目录下修改 themes.xml 的 AppTheme。
+   -->
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+    <style name="AppRootTheme" parent="AppBaseTheme">
+        <!--**********************************************
+        *                   xui color                   *
+        ***********************************************-->
+        <!-- CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色 -->
+        <item name="colorAccent">@color/xui_config_color_main_theme</item>
+        <!--应用的主要色调，actionBar默认使用该颜色，Toolbar导航栏的底色-->
+        <item name="colorPrimary">@color/xui_config_color_main_theme</item>
+        <!--应用的主要暗色调，statusBarColor默认使用该颜色-->
+        <item name="colorPrimaryDark">@color/xui_config_color_main_theme</item>
+        <!--应用的主要文字颜色，actionBar的标题文字默认使用该颜色-->
+        <item name="android:textColorPrimary">@color/xui_config_color_title_content_text</item>
+
+        <!--无Title-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!--actionbar的样式-->
+        <item name="xui_actionbar_color">@color/xui_config_color_titlebar</item>
+
+        <!-- 在主题中设置TextView的style -->
+        <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
+        <item name="textFieldStyle">@style/TextField</item>
+
+        <!-- 设置MaterialDialog的TextView的style -->
+        <item name="md_regular_font">@string/default_app_font_path</item>
+        <item name="md_medium_font">@string/default_app_font_path</item>
+        <!-- 条目的style -->
+        <item name="android:gridViewStyle">@style/GridView</item>
+        <item name="selectableItemBackground">@drawable/xui_config_selectable_item_selector</item>
+        <item name="android:listSelector">@drawable/xui_config_selectable_item_selector</item>
+        <item name="android:listDivider">@drawable/xui_config_list_divider</item>
+
+        <item name="android:imageButtonStyle">@style/ImageButton</item>
+        <item name="android:buttonStyle">@style/Button</item>
+
+        <item name="android:editTextColor">@color/xui_config_color_edittext_input_text</item>
+        <item name="android:editTextStyle">@style/EditText</item>
+
+        <!--**********************************************
+        *                   xui_round_btn                *
+        ***********************************************-->
+        <item name="xui_round_btn_bg_color">@color/xui_transparent</item>
+        <item name="xui_round_btn_border_color">@color/xui_default_round_btn_blue_border</item>
+        <item name="xui_round_btn_text_color">@color/xui_default_round_btn_blue_text</item>
+
+        <!--*********************************************
+        *           MaterialDialog(共同样式）            *
+        **********************************************-->
+        <item name="md_content_color">@color/xui_config_color_middle_blue_gray</item>
+        <item name="md_explain_color">@color/xui_config_color_light_blue_gray</item>
+        <item name="md_icon_limit_icon_to_default_size">false</item>
+
+        <!--**********************************************
+        *                   xui popup                    *
+        ***********************************************-->
+        <item name="xui_popup_bg">@drawable/xui_popup_bg</item>
+        <item name="xui_popup_arrow_down">@drawable/xui_popup_arrow_down</item>
+        <item name="xui_popup_arrow_up">@drawable/xui_popup_arrow_up</item>
+        <item name="xui_popup_arrow_up_margin_top">17dp</item>
+        <item name="xui_popup_arrow_down_margin_bottom">17dp</item>
+    </style>
+
+    <style name="XUITheme" parent="AppRootTheme" />
+
+    <!--窗体背景，这个背景能在第一时间显示, 避免启动时白屏，黑屏问题-->
+    <style name="XUITheme.Launch">
+        <item name="xui_config_color_splash_bg">@color/white</item>
+        <item name="xui_config_app_logo_bottom">@dimen/xui_config_app_logo_bottom</item>
+        <item name="xui_config_company_logo_bottom">@dimen/xui_config_company_logo_bottom</item>
+        <item name="android:windowBackground">@drawable/xui_config_preview_window</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <!--*********************************************
+    *                  NLUI主题                    *
+    **********************************************-->
+    <!--平板主题-->
+    <style name="XUITheme.Tablet">
+        <item name="xui_config_color_background">@color/xui_config_color_background_tablet</item>
+        <item name="android:windowBackground">?attr/xui_config_color_background</item>
+
+        <item name="xui_config_color_separator_light">@color/xui_config_color_separator_light_tablet</item>
+        <item name="xui_config_color_separator_dark">@color/xui_config_color_separator_dark_tablet</item>
+
+        <item name="xui_config_divider_height">@dimen/xui_list_divider_height_table</item>
+        <item name="android:listViewStyle">@style/ListView.Tablet</item>
+
+    </style>
+
+    <!--大平板主题-->
+    <style name="XUITheme.Tablet.Big">
+        <!--全局样式-->
+        <item name="xui_config_content_spacing_horizontal">@dimen/xui_config_content_spacing_horizontal_tablet_big</item>
+        <item name="xui_config_content_spacing_vertical">@dimen/xui_config_content_spacing_vertical_tablet_big</item>
+        <item name="xui_config_simple_list_item_height">@dimen/xui_config_simple_list_item_height_tablet_big</item>
+        <item name="xui_config_simple_list_icon_size">@dimen/xui_config_simple_list_icon_size_tablet_big</item>
+        <item name="xui_config_separator_height">@dimen/xui_config_separator_height_tablet_big</item>
+        <!--文字字号样式-->
+        <item name="xui_config_size_title_text">@dimen/xui_config_size_title_text_tablet_big</item>
+        <item name="xui_config_size_content_text">@dimen/xui_config_size_content_text_tablet_big</item>
+        <item name="xui_config_size_explain_text">@dimen/xui_config_size_explain_text_tablet_big</item>
+        <item name="xui_config_size_spinner_text">@dimen/xui_config_size_spinner_text_tablet_big</item>
+        <!--按钮样式-->
+        <item name="xui_btn_view_radius">@dimen/default_btn_view_radius_tablet_big</item>
+        <item name="xui_btn_view_width">@dimen/default_btn_view_width_tablet_big</item>
+        <item name="xui_btn_view_height">@dimen/default_btn_view_height_tablet_big</item>
+        <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_tablet_big</item>
+        <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_tablet_big</item>
+        <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_tablet_big</item>
+        <!--输入框样式-->
+        <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_tablet_big</item>
+        <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_tablet_big</item>
+        <item name="xui_config_size_edittext_components_spacing">@dimen/xui_config_size_edittext_components_spacing_tablet_big</item>
+        <item name="xui_config_size_edittext_left_padding">@dimen/xui_config_size_edittext_left_padding_tablet_big</item>
+        <item name="xui_config_size_edittext_radius">@dimen/xui_config_size_edittext_radius_tablet_big</item>
+        <item name="xui_config_size_edittext_height">@dimen/xui_config_size_edittext_height_tablet_big</item>
+        <!--actionbar-->
+        <item name="xui_actionbar_height">@dimen/xui_actionbar_height_tablet_big</item>
+        <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_tablet_big</item>
+        <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_tablet_big</item>
+        <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_tablet_big</item>
+        <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_tablet_big</item>
+        <item name="xui_actionbar_sidetext_padding">@dimen/xui_actionbar_sidetext_padding_tablet_big</item>
+        <!--*********************************************
+        *                  MaterialDialog               *
+        **********************************************-->
+        <item name="md_dialog_max_width">@dimen/default_md_dialog_max_width_tablet_big</item>
+        <item name="md_dialog_vertical_margin">@dimen/default_md_dialog_vertical_margin_tablet_big</item>
+        <item name="md_dialog_horizontal_margin">@dimen/default_md_dialog_horizontal_margin_tablet_big</item>
+        <item name="md_button_height">@dimen/default_md_button_height_tablet_big</item>
+        <item name="md_button_padding_horizontal">@dimen/default_md_button_padding_horizontal_tablet_big</item>
+        <item name="md_title_textsize">@dimen/default_md_title_textsize_tablet_big</item>
+        <item name="md_dialog_frame_margin">@dimen/default_md_dialog_frame_margin_tablet_big</item>
+        <item name="md_button_textsize">@dimen/default_md_button_textsize_tablet_big</item>
+        <item name="md_content_textsize">@dimen/default_md_content_textsize_tablet_big</item>
+        <item name="md_explain_textsize">@dimen/default_md_explain_textsize_tablet_big</item>
+        <item name="md_listitem_textsize">@dimen/default_md_listitem_textsize_tablet_big</item>
+        <item name="md_icon_max_size">@dimen/default_md_icon_max_size_tablet_big</item>
+        <item name="md_icon_margin">@dimen/default_md_icon_margin_tablet_big</item>
+
+        <item name="md_simpleitem_height">@dimen/default_md_simpleitem_height_tablet_big</item>
+        <item name="md_simplelist_icon">@dimen/default_md_simplelist_icon_tablet_big</item>
+        <item name="md_simplelist_icon_margin">@dimen/default_md_simplelist_icon_margin_tablet_big</item>
+        <item name="md_simplelist_icon_padding">@dimen/default_md_simplelist_icon_padding_tablet_big</item>
+
+        <item name="md_preference_content_inset">@dimen/default_md_preference_content_inset_tablet_big</item>
+        <!--popup-->
+        <item name="xui_popup_width">@dimen/xui_popup_width_tablet_big</item>
+        <item name="xui_tip_popup_padding_top">@dimen/xui_tip_popup_padding_top_tablet_big</item>
+        <item name="xui_tip_popup_padding_left">@dimen/xui_tip_popup_padding_left_tablet_big</item>
+        <!--spinner-->
+        <item name="ms_padding_left_size">@dimen/default_ms_padding_left_size_tablet_big</item>
+        <item name="ms_padding_top_size">@dimen/default_ms_padding_top_size_tablet_big</item>
+        <item name="ms_item_height_size">@dimen/default_ms_item_height_size_tablet_big</item>
+        <item name="ms_dropdown_offset">@dimen/default_ms_dropdown_offset_tablet_big</item>
+        <item name="ms_arrow_size">@dimen/default_ms_arrow_size_tablet_big</item>
+        <!--statefullayout-->
+        <item name="stf_progressbar_size">@dimen/default_stf_progressbar_size_tablet_big</item>
+        <item name="stf_tip_img_size">@dimen/default_stf_tip_img_size_tablet_big</item>
+        <!--*********************************************
+        *                  Dialog                       *
+        **********************************************-->
+        <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_big</item>
+        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_big</item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_big</item>
+        <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_big</item>
+        <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_big</item>
+        <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_big</item>
+
+    </style>
+
+    <!--小平板主题-->
+    <style name="XUITheme.Tablet.Small">
+        <!--全局样式-->
+        <item name="xui_config_content_spacing_horizontal">@dimen/xui_config_content_spacing_horizontal_tablet_small</item>
+        <item name="xui_config_content_spacing_vertical">@dimen/xui_config_content_spacing_vertical_tablet_small</item>
+        <item name="xui_config_simple_list_item_height">@dimen/xui_config_simple_list_item_height_tablet_small</item>
+        <item name="xui_config_simple_list_icon_size">@dimen/xui_config_simple_list_icon_size_tablet_small</item>
+        <item name="xui_config_separator_height">@dimen/xui_config_separator_height_tablet_small</item>
+        <!--文字字号样式-->
+        <item name="xui_config_size_title_text">@dimen/xui_config_size_title_text_tablet_small</item>
+        <item name="xui_config_size_content_text">@dimen/xui_config_size_content_text_tablet_small</item>
+        <item name="xui_config_size_explain_text">@dimen/xui_config_size_explain_text_tablet_small</item>
+        <item name="xui_config_size_spinner_text">@dimen/xui_config_size_spinner_text_tablet_small</item>
+        <!--按钮样式-->
+        <item name="xui_btn_view_radius">@dimen/default_btn_view_radius_tablet_small</item>
+        <item name="xui_btn_view_width">@dimen/default_btn_view_width_tablet_small</item>
+        <item name="xui_btn_view_height">@dimen/default_btn_view_height_tablet_small</item>
+        <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_tablet_small</item>
+        <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_tablet_small</item>
+        <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_tablet_small</item>
+        <!--输入框样式-->
+        <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_tablet_small</item>
+        <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_tablet_small</item>
+        <item name="xui_config_size_edittext_components_spacing">@dimen/xui_config_size_edittext_components_spacing_tablet_small</item>
+        <item name="xui_config_size_edittext_left_padding">@dimen/xui_config_size_edittext_left_padding_tablet_small</item>
+        <item name="xui_config_size_edittext_radius">@dimen/xui_config_size_edittext_radius_tablet_small</item>
+        <item name="xui_config_size_edittext_height">@dimen/xui_config_size_edittext_height_tablet_small</item>
+        <!--actionbar-->
+        <item name="xui_actionbar_height">@dimen/xui_actionbar_height_tablet_small</item>
+        <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_tablet_small</item>
+        <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_tablet_small</item>
+        <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_tablet_small</item>
+        <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_tablet_small</item>
+        <item name="xui_actionbar_sidetext_padding">@dimen/xui_actionbar_sidetext_padding_tablet_small</item>
+        <!--*********************************************
+        *                  MaterialDialog               *
+        **********************************************-->
+        <item name="md_dialog_max_width">@dimen/default_md_dialog_max_width_tablet_small</item>
+        <item name="md_dialog_vertical_margin">@dimen/default_md_dialog_vertical_margin_tablet_small</item>
+        <item name="md_dialog_horizontal_margin">@dimen/default_md_dialog_horizontal_margin_tablet_small</item>
+        <item name="md_button_height">@dimen/default_md_button_height_tablet_small</item>
+        <item name="md_button_padding_horizontal">@dimen/default_md_button_padding_horizontal_tablet_small</item>
+        <item name="md_title_textsize">@dimen/default_md_title_textsize_tablet_small</item>
+        <item name="md_dialog_frame_margin">@dimen/default_md_dialog_frame_margin_tablet_small</item>
+        <item name="md_button_textsize">@dimen/default_md_button_textsize_tablet_small</item>
+        <item name="md_content_textsize">@dimen/default_md_content_textsize_tablet_small</item>
+        <item name="md_explain_textsize">@dimen/default_md_explain_textsize_tablet_small</item>
+        <item name="md_listitem_textsize">@dimen/default_md_listitem_textsize_tablet_small</item>
+        <item name="md_icon_max_size">@dimen/default_md_icon_max_size_tablet_small</item>
+        <item name="md_icon_margin">@dimen/default_md_icon_margin_tablet_small</item>
+
+        <item name="md_simpleitem_height">@dimen/default_md_simpleitem_height_tablet_small</item>
+        <item name="md_simplelist_icon">@dimen/default_md_simplelist_icon_tablet_small</item>
+        <item name="md_simplelist_icon_margin">@dimen/default_md_simplelist_icon_margin_tablet_small</item>
+        <item name="md_simplelist_icon_padding">@dimen/default_md_simplelist_icon_padding_tablet_small</item>
+
+        <item name="md_preference_content_inset">@dimen/default_md_preference_content_inset_tablet_small</item>
+        <!--popup-->
+        <item name="xui_popup_width">@dimen/xui_popup_width_tablet_small</item>
+        <item name="xui_tip_popup_padding_top">@dimen/xui_tip_popup_padding_top_tablet_small</item>
+        <item name="xui_tip_popup_padding_left">@dimen/xui_tip_popup_padding_left_tablet_small</item>
+        <!--spinner-->
+        <item name="ms_padding_left_size">@dimen/default_ms_padding_left_size_tablet_small</item>
+        <item name="ms_padding_top_size">@dimen/default_ms_padding_top_size_tablet_small</item>
+        <item name="ms_item_height_size">@dimen/default_ms_item_height_size_tablet_small</item>
+        <item name="ms_dropdown_offset">@dimen/default_ms_dropdown_offset_tablet_small</item>
+        <item name="ms_arrow_size">@dimen/default_ms_arrow_size_tablet_small</item>
+        <!--statefullayout-->
+        <item name="stf_progressbar_size">@dimen/default_stf_progressbar_size_tablet_small</item>
+        <item name="stf_tip_img_size">@dimen/default_stf_tip_img_size_tablet_small</item>
+        <!--*********************************************
+        *                  Dialog                       *
+        **********************************************-->
+        <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_small</item>
+        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_small</item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_small</item>
+        <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_small</item>
+        <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_small</item>
+        <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_small</item>
+
+    </style>
+
+    <!--手机主题-->
+    <style name="XUITheme.Phone">
+        <!--全局样式-->
+        <item name="xui_config_content_spacing_horizontal">@dimen/xui_config_content_spacing_horizontal_phone</item>
+        <item name="xui_config_content_spacing_vertical">@dimen/xui_config_content_spacing_vertical_phone</item>
+        <item name="xui_config_simple_list_item_height">@dimen/xui_config_simple_list_item_height_phone</item>
+        <item name="xui_config_simple_list_icon_size">@dimen/xui_config_simple_list_icon_size_phone</item>
+        <item name="xui_config_separator_height">@dimen/xui_config_separator_height_phone</item>
+
+        <item name="xui_config_color_background">@color/xui_config_color_background_phone</item>
+        <item name="android:windowBackground">?attr/xui_config_color_background</item>
+
+        <item name="xui_config_color_separator_light">@color/xui_config_color_separator_light_phone</item>
+        <item name="xui_config_color_separator_dark">@color/xui_config_color_separator_dark_phone</item>
+        <item name="xui_config_divider_height">@dimen/xui_list_divider_height_phone</item>
+        <item name="android:listViewStyle">@style/ListView.Phone</item>
+
+        <!--文字字号样式-->
+        <item name="xui_config_size_title_text">@dimen/xui_config_size_title_text_phone</item>
+        <item name="xui_config_size_content_text">@dimen/xui_config_size_content_text_phone</item>
+        <item name="xui_config_size_explain_text">@dimen/xui_config_size_explain_text_phone</item>
+        <item name="xui_config_size_spinner_text">@dimen/xui_config_size_spinner_text_phone</item>
+        <!--按钮样式-->
+        <item name="xui_btn_view_radius">@dimen/default_btn_view_radius_phone</item>
+        <item name="xui_btn_view_width">@dimen/default_btn_view_width_phone</item>
+        <item name="xui_btn_view_height">@dimen/default_btn_view_height_phone</item>
+        <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_phone</item>
+        <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_phone</item>
+        <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_phone</item>
+        <!--输入框样式-->
+        <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_phone</item>
+        <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_phone</item>
+        <item name="xui_config_size_edittext_components_spacing">@dimen/xui_config_size_edittext_components_spacing_phone</item>
+        <item name="xui_config_size_edittext_left_padding">@dimen/xui_config_size_edittext_left_padding_phone</item>
+        <item name="xui_config_size_edittext_radius">@dimen/xui_config_size_edittext_radius_phone</item>
+        <item name="xui_config_size_edittext_height">@dimen/xui_config_size_edittext_height_phone</item>
+        <!--actionbar-->
+        <item name="xui_actionbar_height">@dimen/xui_actionbar_height_phone</item>
+        <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_phone</item>
+        <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_phone</item>
+        <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_phone</item>
+        <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_phone</item>
+        <item name="xui_actionbar_sidetext_padding">@dimen/xui_actionbar_sidetext_padding_phone</item>
+        <!--*********************************************
+        *                  MaterialDialog               *
+        **********************************************-->
+        <item name="md_dialog_max_width">@dimen/default_md_dialog_max_width_phone</item>
+        <item name="md_dialog_vertical_margin">@dimen/default_md_dialog_vertical_margin_phone</item>
+        <item name="md_dialog_horizontal_margin">@dimen/default_md_dialog_horizontal_margin_phone</item>
+        <item name="md_button_height">@dimen/default_md_button_height_phone</item>
+        <item name="md_button_padding_horizontal">@dimen/default_md_button_padding_horizontal_phone</item>
+        <item name="md_title_textsize">@dimen/default_md_title_textsize_phone</item>
+        <item name="md_dialog_frame_margin">@dimen/default_md_dialog_frame_margin_phone</item>
+        <item name="md_button_textsize">@dimen/default_md_button_textsize_phone</item>
+        <item name="md_content_textsize">@dimen/default_md_content_textsize_phone</item>
+        <item name="md_explain_textsize">@dimen/default_md_explain_textsize_phone</item>
+        <item name="md_listitem_textsize">@dimen/default_md_listitem_textsize_phone</item>
+        <item name="md_icon_max_size">@dimen/default_md_icon_max_size_phone</item>
+        <item name="md_icon_margin">@dimen/default_md_icon_margin_phone</item>
+
+        <item name="md_simpleitem_height">@dimen/default_md_simpleitem_height_phone</item>
+        <item name="md_simplelist_icon">@dimen/default_md_simplelist_icon_phone</item>
+        <item name="md_simplelist_icon_margin">@dimen/default_md_simplelist_icon_margin_phone</item>
+        <item name="md_simplelist_icon_padding">@dimen/default_md_simplelist_icon_padding_phone</item>
+
+        <item name="md_preference_content_inset">@dimen/default_md_preference_content_inset_phone</item>
+        <!--popup-->
+        <item name="xui_popup_width">@dimen/xui_popup_width_phone</item>
+        <item name="xui_tip_popup_padding_top">@dimen/xui_tip_popup_padding_top_phone</item>
+        <item name="xui_tip_popup_padding_left">@dimen/xui_tip_popup_padding_left_phone</item>
+        <!--spinner-->
+        <item name="ms_padding_left_size">@dimen/default_ms_padding_left_size_phone</item>
+        <item name="ms_padding_top_size">@dimen/default_ms_padding_top_size_phone</item>
+        <item name="ms_item_height_size">@dimen/default_ms_item_height_size_phone</item>
+        <item name="ms_dropdown_offset">@dimen/default_ms_dropdown_offset_phone</item>
+        <item name="ms_arrow_size">@dimen/default_ms_arrow_size_phone</item>
+        <!--statefullayout-->
+        <item name="stf_progressbar_size">@dimen/default_stf_progressbar_size_phone</item>
+        <item name="stf_tip_img_size">@dimen/default_stf_tip_img_size_phone</item>
+        <!--*********************************************
+        *                  Dialog                       *
+        **********************************************-->
+        <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_phone</item>
+        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_phone</item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_phone</item>
+        <item name="xui_loading_view_size">@dimen/xui_loading_view_size_phone</item>
+        <item name="xui_loading_view_width">@dimen/xui_loading_view_width_phone</item>
+        <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_phone</item>
+
+    </style>
+
+    <!--**********************************************
+    *                 字体设置                      *
+    **********************************************-->
+    <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
+        <item name="fontPath">@string/default_app_font_path</item>
+    </style>
+
+    <style name="TextAppearance.FontPath" parent="TextAppearanceBase">
+        <item name="fontPath">@string/default_app_font_path</item>
+    </style>
+
+    <!-- Custom Class Styles -->
+    <style name="TextField" parent="android:Widget.Holo.Light.TextView">
+        <item name="fontPath">@string/default_app_font_path</item>
+    </style>
+
+    <!--基础输入框样式-->
+    <style name="EditText" parent="EditTextBase">
+        <item name="android:layout_height">?attr/xui_config_size_edittext_height</item>
+        <item name="android:textSize">?attr/xui_config_size_edittext_input_text</item>
+        <item name="android:paddingLeft">?attr/xui_config_size_edittext_left_padding</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:textColor">@color/xui_config_color_edittext_textcolor</item>
+        <item name="android:textColorHint">@color/xui_config_color_edittext_hint_text</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!--*********************************************
+     *                  按钮样式                    *
+     **********************************************-->
+    <style name="ImageButton" parent="ImageButtonBase">
+        <item name="android:background">@color/xui_config_color_transparent</item>
+    </style>
+
+    <style name="Button" parent="ButtonBase"/>
+
+    <!--**********************************************
+    *                  BaseStyle                    *
+    **********************************************-->
+    <style name="ActionBarBase" parent="android:Widget.Holo.Light.ActionBar" />
+    <style name="ActionBarTitleTextBase" parent="android:TextAppearance.Holo.Widget.ActionBar.Title" />
+    <style name="ListViewBase" parent="android:Widget.Holo.Light.ListView">
+        <item name="android:background">@color/xui_config_color_transparent</item>
+        <item name="android:listSelector">@drawable/xui_config_selectable_item_selector</item>
+    </style>
+    <style name="GridViewBase" parent="android:Widget.Holo.Light.GridView" />
+    <style name="ImageButtonBase" parent="android:Widget.Holo.Light.ImageButton" />
+    <style name="ButtonBase" parent="android:Widget.Holo.Light.Button"/>
+    <style name="EditTextBase" parent="android:Widget.Holo.Light.EditText" />
+    <style name="AutoCompleteTextViewBase" parent="android:Widget.Holo.Light.AutoCompleteTextView" />
+    <style name="DropDownListViewBase" parent="android:Widget.Holo.Light.ListView.DropDown" />
+    <style name="TextAppearanceBase" parent="android:TextAppearance.Holo"/>
+
+</resources>

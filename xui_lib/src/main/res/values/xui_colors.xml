@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--*********************************************
+    *              Widget Color                     *
+    **********************************************-->
+    <!-- SuperTextView -->
+    <color name="white">#FFFFFF</color>
+    <color name="common_pressed">#20000000</color>  <!--白色背景按下去的颜色-->
+    <color name="line">#E8E8E8</color>
+
+    <!-- ShadowButton -->
+    <color name="default_shadow_button_color_pressed">#9C000000</color>
+    <color name="default_shadow_button_ripple_color">#FFEEEEEE</color>
+    <!-- GuideCaseView -->
+    <color name="default_guide_case_view_background_color">#801B2939</color>
+
+    <!-- RoundButton -->
+    <color name="btn_roundbutton_blue_border_normal">@color/xui_btn_blue_normal_color</color>
+    <color name="btn_roundbutton_blue_border_pressed">#801B88EE</color>
+    <color name="btn_roundbutton_blue_border_disabled">@color/xui_btn_disable_color</color>
+
+    <color name="btn_roundbutton_blue_text_normal">@color/xui_btn_blue_normal_color</color>
+    <color name="btn_roundbutton_blue_text_pressed">#801B88EE</color>
+    <color name="btn_roundbutton_blue_text_disabled">@color/xui_btn_disable_color</color>
+
+    <color name="radius_button_color_blue">#31BDF3</color>
+    <color name="radius_button_color_blue_pressed">#7F31BDF3</color>
+
+    <!--SwitchButton-->
+    <color name="swb_md_ripple_normal">#1E000000</color>
+    <color name="swb_md_ripple_checked">#3F299EE3</color>
+    <color name="swb_md_solid_shadow">#33000000</color>
+    <color name="swb_md_solid_normal">#ECECEC</color>
+    <color name="swb_md_solid_checked">#299EE3</color>
+    <color name="swb_md_solid_disable">#FFFFFF</color>
+    <color name="swb_md_solid_checked_disable">#aaaaaa</color>
+
+    <!-- MaterialDialog -->
+    <color name="md_btn_selected">@color/xui_config_color_background_pressed</color>
+    <color name="md_btn_selected_dark">#40CBCBCB</color>
+
+    <color name="md_divider_black">#10000000</color>
+    <color name="md_divider_white">#10FFFFFF</color>
+
+    <color name="md_material_blue_600">#2196F3</color>
+    <color name="md_material_blue_800">#1565C0</color>
+
+    <color name="md_edittext_error">@color/xui_config_color_red</color>
+
+    <!-- TabControlView -->
+    <color name="default_tcv_selected_color">@color/xui_config_color_main_theme</color>
+    <color name="default_tcv_unselected_color">#FFFFFF</color>
+
+    <!--SearchView-->
+    <color name="search_layover_bg">#50000000</color>
+
+    <!--*********************************************
+    *              Config Color                     *
+    **********************************************-->
+    <color name="xui_config_color_main_theme">@color/xui_config_color_light_blue</color>
+    <color name="xui_config_color_titlebar">@color/xui_config_color_main_theme</color>
+
+    <color name="xui_btn_blue_normal_color">#3E99D2</color>
+    <color name="xui_btn_blue_select_color">#2488C6</color>
+    <color name="xui_btn_green_normal_color">#2BCFB8</color>
+    <color name="xui_btn_green_select_color">#05BCA2</color>
+    <color name="xui_btn_gray_normal_color">#9DA7B0</color>
+    <color name="xui_btn_gray_select_color">#87919A</color>
+    <color name="xui_btn_disable_color">#D6DDE1</color>
+
+    <color name="xui_config_color_transparent">#00000000</color>
+    <color name="xui_config_color_white">#FFFFFF</color>
+    <color name="xui_config_color_75_white">#C0FFFFFF</color>
+    <color name="xui_config_color_50_white">#80FFFFFF</color>
+    <color name="xui_config_color_25_white">#40FFFFFF</color>
+    <color name="xui_config_color_15_white">#26FFFFFF</color>
+    <color name="xui_config_color_10_white">#19FFFFFF</color>
+
+    <color name="xui_config_color_pure_black">#000000</color>
+    <color name="xui_config_color_75_pure_black">#C0000000</color>
+    <color name="xui_config_color_60_pure_black">#99000000</color>
+    <color name="xui_config_color_50_pure_black">#80000000</color>
+    <color name="xui_config_color_25_pure_black">#40000000</color>
+    <color name="xui_config_color_15_pure_black">#26000000</color>
+    <color name="xui_config_color_10_pure_black">#19000000</color>
+
+    <color name="xui_config_color_blue">#1B88EE</color>
+    <color name="xui_config_color_50_blue">#801B88EE</color>
+    <color name="xui_config_color_red">#F15C58</color>
+    <color name="xui_config_color_black">#333333</color>
+    <color name="xui_config_color_link">@color/xui_config_color_light_blue</color>
+    <color name="xui_config_color_pressed">#F2F6F9</color>
+
+    <color name="xui_config_color_dark_blue_gray">#223B53</color>
+    <color name="xui_config_color_middle_blue_gray">#6A798E</color>
+    <color name="xui_config_color_light_blue_gray">#9FABBC</color>
+    <color name="xui_config_color_light_blue">#299EE3</color>
+
+    <!--text color-->
+    <color name="xui_config_color_title_content_text">@color/xui_config_color_dark_blue_gray</color>
+    <color name="xui_config_color_sub_title_common_explain_text">@color/xui_config_color_middle_blue_gray</color>
+    <color name="xui_config_color_assist_explain_text">@color/xui_config_color_light_blue_gray</color>
+    <color name="xui_config_color_major_prompt_message_text">@color/xui_config_color_light_blue</color>
+
+    <!--ListView\GridView color-->
+    <!--背景颜色-->
+    <color name="xui_config_color_background_tablet">#EAEDEF</color>
+    <color name="xui_config_color_background_phone">#EEF3F7</color>
+    <!-- 小的分割块使用浅色的分割线-->
+    <color name="xui_config_color_separator_light_tablet">#F0F2F4</color>
+    <color name="xui_config_color_separator_light_phone">#F0F2F4</color>
+    <!-- 大的分割块使用深色的分割线[像listview、gridview之类]-->
+    <color name="xui_config_color_separator_dark_tablet">#D9DDE1</color>
+    <color name="xui_config_color_separator_dark_phone">#E3E6EA</color>
+    <!--条目点击后的背景颜色-->
+    <color name="xui_config_color_background_pressed">@color/xui_config_color_pressed</color>
+
+    <!--EditText-->
+    <!--错误文字的颜色-->
+    <color name="xui_config_color_edittext_error_text">@color/xui_config_color_red</color>
+    <!--输入文字的颜色-->
+    <color name="xui_config_color_edittext_input_text">@color/xui_config_color_black</color>
+    <!--提示文字的颜色-->
+    <color name="xui_config_color_edittext_hint_text">#C5CDD9</color>
+    <!--边框颜色-->
+    <color name="xui_config_color_edittext_stroke">#BEC2C7</color>
+    <!--不可输入的填充颜色-->
+    <color name="xui_config_color_edittext_disable">#EDF2F7</color>
+
+
+
+</resources>

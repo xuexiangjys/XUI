@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.xuexiang.xaop' //引用xaop插件
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        applicationId "com.xuexiang.xuidemo"
+        minSdkVersion 19
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    if (isNeedPackage.toBoolean()) {
+        signingConfigs {
+            release {
+                storeFile file(app_release.storeFile)
+                storePassword app_release.storePassword
+                keyAlias app_release.keyAlias
+                keyPassword app_release.keyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (isNeedPackage.toBoolean()) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    if (isNeedPackage.toBoolean()) {
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                if (variant.buildType.name.equals('release')) {
+                    outputFileName = "xuidemo_${defaultConfig.versionName}.apk"
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    testImplementation deps.junit
+    androidTestImplementation deps.runner
+    androidTestImplementation deps.espresso.core
+
+    implementation project(':xui_lib')
+
+    //工具类
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.5'
+    //切片
+    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.1'
+    //添加依赖
+    //XPage
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.4'
+    annotationProcessor project(':widget_compiler')
+    //ButterKnife的sdk
+    implementation deps.butterknife.runtime
+    annotationProcessor deps.butterknife.compiler
+    //如果开启了内存泄漏监测leak,就需要加上这个依赖
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
+
+}

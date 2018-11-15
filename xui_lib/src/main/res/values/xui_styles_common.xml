@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- *******************************************组件样式***********************************************************-->
+    <!--*********************************************
+     *                  DialogTheme                  *
+     **********************************************-->
+    <!-- BaseDialog -->
+    <style name="XUIDialog" parent="@android:style/Theme.Dialog">
+        <!-- Dialog的windowFrame框为无 -->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 是否漂现在activity上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- loading加载框样式 -->
+    <style name="Dialog.Loading.Big_Tablet" parent="XUIDialog">
+        <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_big</item>
+        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_big</item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_big</item>
+        <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_big</item>
+        <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_big</item>
+        <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_big</item>
+    </style>
+
+    <!-- loading加载框样式 -->
+    <style name="Dialog.Loading.Small_Tablet" parent="XUIDialog">
+        <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_small</item>
+        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_small</item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_small</item>
+        <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_small</item>
+        <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_small</item>
+        <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_small</item>
+    </style>
+
+    <!-- loading加载框样式 -->
+    <style name="Dialog.Loading.Phone" parent="XUIDialog">
+        <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_phone</item>
+        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_phone</item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_phone</item>
+        <item name="xui_loading_view_size">@dimen/xui_loading_view_size_phone</item>
+        <item name="xui_loading_view_width">@dimen/xui_loading_view_width_phone</item>
+        <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_phone</item>
+    </style>
+
+    <!--自定义弹窗样式-->
+    <style name="XUIDialog.Custom">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <!-- 去除黑色边框的关键设置项 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 屏幕背景是否变暗 -->
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <!--*********************************************
+    *                 TextStyle                     *
+    **********************************************-->
+    <style name="TextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="fontPath">@string/default_app_font_path</item>
+    </style>
+
+    <!-- 标题 style -->
+    <style name="TextStyle.Title">
+        <item name="android:textSize">?attr/xui_config_size_title_text</item>
+        <item name="android:textColor">@color/xui_config_color_dark_blue_gray</item>
+    </style>
+
+    <!-- 内容 style -->
+    <style name="TextStyle.Content">
+        <item name="android:textSize">?attr/xui_config_size_content_text</item>
+        <item name="android:textColor">@color/xui_config_color_middle_blue_gray</item>
+    </style>
+
+    <!-- 辅助说明 style -->
+    <style name="TextStyle.Explain">
+        <item name="android:textSize">?attr/xui_config_size_explain_text</item>
+        <item name="android:textColor">@color/xui_config_color_light_blue_gray</item>
+    </style>
+
+    <!--*********************************************
+   *                  条目样式                     *
+   **********************************************-->
+    <!-- ListView Start -->
+    <style name="ListView.Tablet" parent="ListViewBase">
+        <item name="android:dividerHeight">@dimen/xui_list_divider_height_table</item>
+        <item name="android:divider">@color/xui_config_color_separator_dark_tablet</item>
+    </style>
+
+    <style name="ListView.Phone" parent="ListViewBase">
+        <item name="android:dividerHeight">@dimen/xui_list_divider_height_phone</item>
+        <item name="android:divider">@color/xui_config_color_separator_dark_phone</item>
+    </style>
+    <!-- ListView End -->
+
+    <!-- GridView -->
+    <style name="GridView" parent="GridViewBase">
+        <item name="android:background">@color/xui_config_color_transparent</item>
+        <item name="android:listSelector">@drawable/xui_config_selectable_item_selector</item>
+    </style>
+
+
+</resources>

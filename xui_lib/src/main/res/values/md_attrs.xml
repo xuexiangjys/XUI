@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- These top three attributes are not accessible to library users -->
+    <attr name="md_divider" format="color" />
+
+    <attr name="md_title_textsize" format="dimension"/>
+    <attr name="md_dialog_frame_margin" format="dimension"/>
+    <attr name="md_button_textsize" format="dimension"/>
+    <attr name="md_content_textsize" format="dimension"/>
+    <attr name="md_explain_textsize" format="dimension"/>
+    <attr name="md_listitem_textsize" format="dimension"/>
+    <attr name="md_dialog_max_width" format="dimension"/>
+
+    <attr name="md_button_height" format="dimension"/>
+    <attr name="md_button_padding_horizontal" format="dimension"/>
+
+    <attr name="md_dialog_vertical_margin" format="dimension"/>
+    <attr name="md_dialog_horizontal_margin" format="dimension"/>
+
+    <attr name="md_simpleitem_height" format="dimension" />
+    <attr name="md_simplelist_icon" format="dimension" />
+    <attr name="md_simplelist_icon_margin" format="dimension" />
+    <attr name="md_simplelist_icon_padding" format="dimension" />
+
+    <attr name="md_preference_content_inset" format="dimension" />
+
+    <!-- Accessible global theming attributes -->
+    <attr name="md_dark_theme" format="boolean" />
+    <attr name="md_background_color" format="color" />
+
+    <attr name="md_icon" format="reference" />
+    <attr name="md_icon_max_size" format="dimension" />
+    <attr name="md_icon_margin" format="dimension"/>
+    <attr name="md_icon_limit_icon_to_default_size" format="boolean" />
+
+    <attr name="md_title_color" format="color" />
+    <attr name="md_content_color" format="color" />
+    <attr name="md_explain_color" format="color" />
+    <attr name="md_link_color" format="color" />
+
+    <attr name="md_positive_color" format="color" />
+    <attr name="md_neutral_color" format="color" />
+    <attr name="md_negative_color" format="color" />
+    <attr name="md_widget_color" format="color" />
+
+    <attr name="md_item_color" format="color" />
+    <attr name="md_divider_color" format="color" />
+    <attr name="md_list_selector" format="reference" />
+
+    <attr name="md_btn_stacked_selector" format="reference" />
+    <attr name="md_btn_positive_selector" format="reference" />
+    <attr name="md_btn_neutral_selector" format="reference" />
+    <attr name="md_btn_negative_selector" format="reference" />
+
+    <attr name="md_btn_ripple_color" format="color" />
+
+    <attr name="md_title_gravity" format="enum">
+        <enum name="start" value="0" />
+        <enum name="center" value="1" />
+        <enum name="end" value="2" />
+    </attr>
+
+    <attr name="md_content_gravity" format="enum">
+        <enum name="start" value="0" />
+        <enum name="center" value="1" />
+        <enum name="end" value="2" />
+    </attr>
+
+    <attr name="md_btnstacked_gravity" format="enum">
+        <enum name="start" value="0" />
+        <enum name="center" value="1" />
+        <enum name="end" value="2" />
+    </attr>
+
+    <attr name="md_items_gravity" format="enum">
+        <enum name="start" value="0" />
+        <enum name="center" value="1" />
+        <enum name="end" value="2" />
+    </attr>
+
+    <attr name="md_buttons_gravity" format="enum">
+        <enum name="start" value="0" />
+        <enum name="center" value="1" />
+        <enum name="end" value="2" />
+    </attr>
+
+    <declare-styleable name="MDRootLayout">
+        <attr name="md_reduce_padding_no_title_no_buttons" format="boolean" />
+    </declare-styleable>
+
+    <attr name="md_medium_font" format="string" />
+    <attr name="md_regular_font" format="string" />
+
+    <declare-styleable name="MDPreference">
+        <!--是否使用旧的布局， 默认false-->
+        <attr name="md_useStockLayout" format="boolean" />
+    </declare-styleable>
+
+</resources>
