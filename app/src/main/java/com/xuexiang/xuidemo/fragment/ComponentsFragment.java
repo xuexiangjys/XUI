@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.model.PageInfo;
@@ -25,7 +26,7 @@ import butterknife.BindView;
  * @since 2018/11/14 下午2:22
  */
 @Page(name = "组件")
-public class ComponentsFragment extends BaseFragment {
+public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdapter.OnItemClickListener{
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -56,20 +57,13 @@ public class ComponentsFragment extends BaseFragment {
 
     private void initRecyclerView() {
         mWidgetItemAdapter = new WidgetItemAdapter(getContext(), AppPageConfig.getInstance().getWidgets());
-        mWidgetItemAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View itemView, int pos) {
-                PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
-                if (widgetInfo != null) {
-                    openPage(widgetInfo.getName());
-                }
-            }
-        });
+        mWidgetItemAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mWidgetItemAdapter);
         int spanCount = 3;
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
         mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), spanCount));
     }
+
 
     /**
      * 菜单、返回键响应
@@ -80,5 +74,14 @@ public class ComponentsFragment extends BaseFragment {
             ClickUtils.exitBy2Click();
         }
         return true;
+    }
+
+    @Override
+    @SingleClick
+    public void onItemClick(View itemView, int pos) {
+        PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
+        if (widgetInfo != null) {
+            openPage(widgetInfo.getName());
+        }
     }
 }
