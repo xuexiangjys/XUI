@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xuexiang.xpage.base.XPageFragment;
+import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.actionbar.TitleUtils;
 
@@ -34,5 +35,9 @@ public abstract class BaseFragment extends XPageFragment {
 
     }
 
-
+    @Override
+    public void onDestroyView() {
+        KeyboardUtils.fixSoftInputLeaks(getContext());
+        super.onDestroyView();
+    }
 }

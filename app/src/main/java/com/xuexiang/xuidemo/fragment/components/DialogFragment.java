@@ -19,7 +19,9 @@ package com.xuexiang.xuidemo.fragment.components;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.base.XPageContainerListFragment;
+import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.dialog.DialogStrategyFragment;
 import com.xuexiang.xuidemo.fragment.components.dialog.MaterialDialogFragment;
 
@@ -28,7 +30,7 @@ import com.xuexiang.xuidemo.fragment.components.dialog.MaterialDialogFragment;
  * @since 2018/11/14 下午11:00
  */
 @Page(name = "对话框", extra = R.drawable.ic_widget_dialog)
-public class DialogFragment extends XPageContainerListFragment {
+public class DialogFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
@@ -37,9 +39,4 @@ public class DialogFragment extends XPageContainerListFragment {
         };
     }
 
-    @Override
-    public void onDestroyView() {
-        getListView().setOnItemClickListener(null);
-        super.onDestroyView();
-    }
 }

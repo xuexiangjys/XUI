@@ -3,8 +3,8 @@ package com.xuexiang.xuidemo.activity;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 import com.xuexiang.xpage.base.XPageActivity;
+import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
