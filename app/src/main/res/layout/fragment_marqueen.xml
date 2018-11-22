@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    
+    <com.xuexiang.xui.widget.textview.marqueen.MarqueeView
+        android:id="@+id/marqueeView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#88dddddd" />
+
+    <com.xuexiang.xui.widget.textview.marqueen.MarqueeView
+        android:id="@+id/marqueeView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#88dddddd"
+        app:mq_animDuration="2000"
+        app:mq_animIn="@anim/marquee_right_in"
+        app:mq_animOut="@anim/marquee_left_out"
+        app:mq_interval="2500" />
+
+    <com.xuexiang.xui.widget.textview.marqueen.MarqueeView
+        android:id="@+id/marqueeView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#88dddddd" />
+
+    <com.xuexiang.xui.widget.textview.marqueen.MarqueeView
+        android:id="@+id/marqueeView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#88dddddd" />
+
+    <com.xuexiang.xui.widget.textview.marqueen.MarqueeView
+        android:id="@+id/marqueeView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#88dddddd" />
+
+
+    <com.xuexiang.xui.widget.textview.MarqueeTextView
+        android:id="@+id/tv_marquee"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#88dddddd"
+        app:mtv_isAutoFit="true"
+        app:mtv_isAutoDisplay="true"/>
+
+
+</LinearLayout>

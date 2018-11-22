@@ -354,7 +354,7 @@ public class MarqueeTextView extends AppCompatTextView {
     protected void onAttachedToWindow() {
         mStopMarquee = false;
         if (isShowDisplayEntityValid()) {
-            mHandler.sendEmptyMessageDelayed(REDRAW_TEXT, 2000);
+//            mHandler.sendEmptyMessageDelayed(REDRAW_TEXT, 2000); //防止第一次进入的时候有加速的效果
         } else {
             mIsRolling = false;
         }

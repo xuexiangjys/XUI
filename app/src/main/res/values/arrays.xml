@@ -39,6 +39,17 @@
         <item>3</item>
     </integer-array>
 
+    <!--标签-->
+    <string-array name="tags_values">
+        <item>Android</item>
+        <item>Javascript</item>
+        <item>React Native</item>
+        <item>Kotlin</item>
+        <item>C++</item>
+        <item>C#</item>
+        <item>Object-C</item>
+    </string-array>
+
     <string-array name="nation_value">
         <item>汉族</item>
         <item>壮族</item>
