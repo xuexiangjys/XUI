@@ -3,4 +3,10 @@
     <color name="colorPrimary">#299EE3</color>
     <color name="colorPrimaryDark">#299EE3</color>
     <color name="colorAccent">#299EE3</color>
+
+
+    <color name="green_btn_color_normal">#2BCFB8</color>
+    <color name="green_btn_color_disable">#CCCCCC</color>
+    <color name="green_btn_color_pressed">#05bca2</color>
+
 </resources>

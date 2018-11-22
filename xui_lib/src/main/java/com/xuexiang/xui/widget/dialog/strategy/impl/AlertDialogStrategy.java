@@ -21,10 +21,21 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
+import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.strategy.IDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.InputCallback;
 import com.xuexiang.xui.widget.dialog.strategy.InputInfo;
+
+import static android.util.TypedValue.COMPLEX_UNIT_PX;
 
 /**
  * AlertDialog 策略
@@ -150,7 +161,35 @@ public class AlertDialogStrategy implements IDialogStrategy {
      * @return
      */
     @Override
-    public Dialog showInputDialog(Context context, int icon, String title, String content, InputInfo inputInfo, InputCallback inputCallback, String submitText, DialogInterface.OnClickListener submitListener, String cancelText, DialogInterface.OnClickListener cancelListener) {
-        return null;
+    public Dialog showInputDialog(Context context, int icon, String title, String content, @NonNull InputInfo inputInfo, final InputCallback inputCallback, String submitText, final DialogInterface.OnClickListener submitListener, String cancelText, DialogInterface.OnClickListener cancelListener) {
+        FrameLayout linearLayout = new FrameLayout(context);
+        final EditText etInput = new EditText(context);
+        etInput.setInputType(inputInfo.getInputType());
+        etInput.setHint(inputInfo.getHint());
+        etInput.setText(inputInfo.getPreFill());
+        linearLayout.addView(etInput);
+
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) etInput.getLayoutParams();
+        layoutParams.setMargins(DensityUtils.dp2px(context, 15), 0, DensityUtils.dp2px(context, 15), 0);
+        etInput.setLayoutParams(layoutParams);
+
+        return new AlertDialog.Builder(context)
+                .setIcon(icon)
+                .setTitle(title)
+                .setMessage(content)
+                .setView(linearLayout)
+                .setPositiveButton(submitText, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (submitListener != null) {
+                            submitListener.onClick(dialog, which);
+                        }
+                        if (inputCallback != null) {
+                            inputCallback.onInput(dialog, etInput.getText().toString());
+                        }
+                    }
+                })
+                .setNegativeButton(cancelText, cancelListener)
+                .show();
     }
 }

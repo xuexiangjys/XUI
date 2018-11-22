@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/xui_config_simple_list_item_height"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="?attr/xui_config_simple_list_icon_size"
+            android:layout_height="?attr/xui_config_simple_list_icon_size"
+            android:layout_marginRight="?attr/xui_config_content_spacing_horizontal" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:textColor="@color/xui_config_color_title_content_text"
+            android:textSize="?attr/xui_config_size_content_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

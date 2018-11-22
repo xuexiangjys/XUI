@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--SuperTextView-->
+    <item name="sLeftViewId" type="id" />
+    <item name="sCenterViewId" type="id" />
+    <item name="sRightViewId" type="id" />
+    <item name="sLeftImgId" type="id" />
+    <item name="sRightImgId" type="id" />
+    <item name="sRightCheckBoxId" type="id" />
+    <item name="sRightSwitchId" type="id" />
+
+    <!--CommomTextView-->
+    <item name="cLeftTextId" type="id" />
+    <item name="cRightTextId" type="id" />
+    <item name="cCenterTextId" type="id" />
+
+    <item name="cCenterBaseLineId" type="id" />
+
+    <item name="cLeftTopTextId" type="id" />
+    <item name="cLeftBottomTextId" type="id" />
+
+    <item name="cCenterTopTextId" type="id" />
+    <item name="cCenterBottomTextId" type="id" />
+
+    <item name="cRightTopTextId" type="id" />
+    <item name="cRightBottomTextId" type="id" />
+
+    <item name="cLeftImageViewId" type="id" />
+    <item name="cRightImageViewId" type="id" />
+
+    <!--ExpandableTextView-->
+    <item name="expandable_text" type="id" />
+    <item name="expand_collapse" type="id" />
+
+    <!--MultipleStatusView-->
+    <item name="empty_view" type="id"/>
+    <item name="error_view" type="id"/>
+    <item name="loading_view" type="id"/>
+    <item name="content_view" type="id"/>
+    <item name="no_network_view" type="id"/>
+
+</resources>

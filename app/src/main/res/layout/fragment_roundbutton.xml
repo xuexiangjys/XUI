@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="默认圆角大小" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:enabled="false"
+                android:text="默认不可点击的效果" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="指定圆角大小"
+                app:rb_radius="3dp" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="圆角等于高度的一半"
+                app:rb_isRadiusAdjustBounds="true" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="自定义样式"
+                android:textColor="@color/xui_default_round_btn_white_text"
+                app:rb_backgroundColor="@color/xui_round_btn_green_bg"
+                app:rb_borderColor="@color/xui_round_btn_green_bg" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="自定义不可点击样式"
+                android:textColor="@color/xui_default_round_btn_white_text"
+                app:rb_backgroundColor="@color/xui_round_btn_green_bg"
+                app:rb_borderColor="@color/xui_round_btn_green_bg"
+                android:enabled="false"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

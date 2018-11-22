@@ -1,0 +1,151 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_margin="16dp"
+                    android:background="@mipmap/ic_launcher"
+                    app:sb_radius="6dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                    android:layout_width="64dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="16dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="ShadowButton"
+                    android:textSize="10sp"
+                    app:sb_alpha_pressed="40"
+                    app:sb_color_pressed="#0303ff"
+                    app:sb_color_unpressed="#8aacee" />
+                <!-- app:sb_radius="2dp" is default -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/icon_avatar1"
+                    app:sb_shape_type="round" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.button.shadowbutton.ShadowImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/icon_avatar2"
+                    app:sb_shape_type="round" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.button.shadowbutton.RippleShadowShadowButton
+                    android:layout_width="64dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="16dp"
+                    android:gravity="center"
+                    android:text="Ripple"
+                    android:textSize="10sp"
+                    app:sb_color_unpressed="#8aacee"
+                    app:sb_ripple_color="#ffffff"
+                    app:sb_ripple_duration="500"
+                    app:sb_shape_type="rectangle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.button.shadowbutton.RippleShadowShadowButton
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_margin="16dp"
+                    android:gravity="center"
+                    android:text="Circle RippleShadowShadowButton"
+                    android:textSize="9sp"
+                    app:sb_color_unpressed="#f44336"
+                    app:sb_ripple_color="#eeeeee"
+                    app:sb_ripple_duration="500"
+                    app:sb_shape_type="round" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/t5" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

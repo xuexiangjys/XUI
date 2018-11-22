@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="?attr/xui_config_content_spacing_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextStyle.Content"
+            android:text="@string/style_default" />
+
+        <com.xuexiang.xui.widget.button.switchbutton.SwitchButton
+            android:id="@+id/sb_default"
+            style="@style/SwitchButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/TextStyle.Content"
+            android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
+            android:text="@string/style_md_ios" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.button.switchbutton.SwitchButton
+                android:id="@+id/sb_md"
+                style="@style/SwitchButtonStyleMD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.xuexiang.xui.widget.button.switchbutton.SwitchButton
+                android:id="@+id/sb_ios"
+                style="@style/SwitchButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:swb_animationDuration="300"
+                app:swb_backDrawable="@drawable/ios_back_drawable"
+                app:swb_thumbDrawable="@drawable/ios_thumb_selector"
+                app:swb_thumbMarginBottom="-8dp"
+                app:swb_thumbMarginLeft="-5dp"
+                app:swb_thumbMarginRight="-5dp"
+                app:swb_thumbMarginTop="-2.5dp"
+                app:swb_thumbRangeRatio="1.4" />
+        </LinearLayout>
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_switch"
+            style="@style/RoundButton.Auto"
+            android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
+            android:text="切换" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

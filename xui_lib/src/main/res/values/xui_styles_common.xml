@@ -1,6 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--*********************************************
+   *                CommonButtonStyle              *
+   **********************************************-->
+    <style name="Button.Style" parent="@style/Button">
+        <item name="android:layout_width">?attr/xui_btn_view_width</item>
+        <item name="android:layout_height">?attr/xui_btn_view_height</item>
+        <item name="android:textSize">?attr/xui_btn_view_text_size</item>
+        <item name="android:textColor">@color/xui_config_color_white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Button.Blue" parent="Button.Style">
+        <item name="android:background">@drawable/xui_config_bg_blue_btn</item>
+    </style>
+
+    <style name="Button.RadiusButton" parent="@style/Button">
+        <item name="android:layout_height">?attr/xui_btn_view_height</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:background">@drawable/rb_bg_selector</item>
+        <item name="android:textColor">?attr/xui_round_btn_text_color</item>
+        <item name="android:textSize">?attr/xui_btn_view_text_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!--*********************************************
+    *                 ButtonViewStyle               *
+    **********************************************-->
+    <!-- Button style -->
+    <style name="ButtonStyle">
+        <item name="android:layout_width">?attr/xui_btn_view_width</item>
+        <item name="android:layout_height">?attr/xui_btn_view_height</item>
+        <item name="android:textSize">?attr/xui_btn_view_text_size</item>
+        <item name="android:textColor">@color/xui_config_color_white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonView" parent="ButtonStyle">
+        <item name="textRadius">?attr/xui_btn_view_radius</item>
+    </style>
+
+    <!-- Green Button Style -->
+    <style name="ButtonView.Green">
+        <item name="textSolidColor">@color/xui_btn_green_normal_color</item>
+        <item name="textSelectedSolidColor">@color/xui_btn_green_select_color</item>
+        <item name="android:text">确 定</item>
+    </style>
+
+    <!-- Blue Button Style -->
+    <style name="ButtonView.Blue">
+        <item name="textSolidColor">@color/xui_btn_blue_normal_color</item>
+        <item name="textSelectedSolidColor">@color/xui_btn_blue_select_color</item>
+        <item name="android:text">重 置</item>
+    </style>
+
+    <!-- Gray Button Style -->
+    <style name="ButtonView.Gray">
+        <item name="textSolidColor">@color/xui_btn_gray_normal_color</item>
+        <item name="textSelectedSolidColor">@color/xui_btn_gray_select_color</item>
+        <item name="android:text">取 消</item>
+    </style>
+
+    <!--*********************************************
+    *                SuperButtonStyle               *
+    **********************************************-->
+    <!-- Button style -->
+    <style name="SuperButton" parent="ButtonStyle">
+        <item name="sCornersRadius">?attr/xui_btn_view_radius</item>
+        <item name="sSelectorDisableColor">@color/xui_btn_disable_color</item>
+        <item name="sUseSelector">true</item>
+    </style>
+
+    <!-- IconButton style -->
+    <style name="SuperButton.Icon">
+        <item name="sGravity">left</item>
+        <item name="android:drawablePadding">?attr/xui_config_icon_drawable_padding</item>
+    </style>
+
+    <!-- Green Button Style -->
+    <style name="SuperButton.Green">
+        <item name="sSelectorNormalColor">@color/xui_btn_green_normal_color</item>
+        <item name="sSelectorPressedColor">@color/xui_btn_green_select_color</item>
+        <item name="android:text">确 定</item>
+    </style>
+
+    <!-- Green Icon Button Style -->
+    <style name="SuperButton.Green.Icon">
+        <item name="sGravity">left</item>
+        <item name="android:drawablePadding">?attr/xui_config_icon_drawable_padding</item>
+    </style>
+
+    <!-- Blue Button Style -->
+    <style name="SuperButton.Blue">
+        <item name="sSelectorNormalColor">@color/xui_btn_blue_normal_color</item>
+        <item name="sSelectorPressedColor">@color/xui_btn_blue_select_color</item>
+        <item name="android:text">重 置</item>
+    </style>
+
+    <!-- Blue Icon Button Style -->
+    <style name="SuperButton.Blue.Icon">
+        <item name="sGravity">left</item>
+        <item name="android:drawablePadding">?attr/xui_config_icon_drawable_padding</item>
+    </style>
+
+    <!-- Gray Button Style -->
+    <style name="SuperButton.Gray">
+        <item name="sSelectorNormalColor">@color/xui_btn_gray_normal_color</item>
+        <item name="sSelectorPressedColor">@color/xui_btn_gray_select_color</item>
+        <item name="android:text">取 消</item>
+    </style>
+
+    <!-- Gray Icon Button Style -->
+    <style name="SuperButton.Gray.Icon">
+        <item name="sGravity">left</item>
+        <item name="android:drawablePadding">?attr/xui_config_icon_drawable_padding</item>
+    </style>
+
+    <!--*********************************************
+    *                RoundButtonStyle               *
+    **********************************************-->
+    <style name="RoundButton" parent="@style/Button">
+        <item name="android:layout_width">?attr/xui_btn_view_width</item>
+        <item name="android:layout_height">?attr/xui_btn_view_height</item>
+        <item name="android:textSize">?attr/xui_btn_view_text_size</item>
+        <item name="android:gravity">center</item>
+
+        <item name="android:ellipsize">end</item>
+        <item name="rb_isRadiusAdjustBounds">false</item>
+        <item name="rb_radius">?attr/xui_btn_view_radius</item>
+        <item name="rb_borderWidth">?attr/xui_btn_view_border_width</item>
+
+        <item name="rb_backgroundColor">?attr/xui_round_btn_bg_color</item>
+        <item name="rb_borderColor">?attr/xui_round_btn_border_color</item>
+        <item name="android:textColor">?attr/xui_round_btn_text_color</item>
+    </style>
+
+    <style name="RoundButton.Auto">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="RoundButton.Green">
+        <item name="rb_backgroundColor">@color/xui_default_round_btn_green_bg</item>
+        <item name="rb_borderWidth">0dp</item>
+        <item name="android:text">确 定</item>
+        <item name="android:textColor">@color/xui_default_round_btn_white_text</item>
+    </style>
+
+    <style name="RoundButton.Blue">
+        <item name="rb_backgroundColor">@color/xui_default_round_btn_blue_bg</item>
+        <item name="rb_borderWidth">0dp</item>
+        <item name="android:text">重 置</item>
+        <item name="android:textColor">@color/xui_default_round_btn_white_text</item>
+    </style>
+
+    <style name="RoundButton.Gray">
+        <item name="rb_backgroundColor">@color/xui_default_round_btn_gray_bg</item>
+        <item name="rb_borderWidth">0dp</item>
+        <item name="android:text">取 消</item>
+        <item name="android:textColor">@color/xui_default_round_btn_white_text</item>
+    </style>
+
+    <!--SwitchButton-->
+    <style name="SwitchButtonMD">
+        <item name="swb_thumbDrawable">@drawable/swb_md_thumb</item>
+        <item name="swb_backColor">@color/swb_md_back_color</item>
+        <item name="swb_thumbRangeRatio">1.5</item>
+        <item name="swb_thumbMarginLeft">-16dp</item>
+        <item name="swb_thumbMarginTop">-14dp</item>
+        <item name="swb_thumbMarginRight">-16dp</item>
+        <item name="swb_thumbMarginBottom">-14dp</item>
+        <item name="swb_thumbWidth">@dimen/swb_md_thumb_ripple_size</item>
+        <item name="swb_thumbHeight">@dimen/swb_md_thumb_ripple_size</item>
+    </style>
+    
     <!-- *******************************************组件样式***********************************************************-->
     <!--*********************************************
      *                  DialogTheme                  *

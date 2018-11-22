@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SwitchButtonStyle">
+        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingTop">?attr/xui_config_content_spacing_vertical</item>
+        <item name="android:paddingBottom">?attr/xui_config_content_spacing_vertical</item>
+    </style>
+
+    <style name="SwitchButtonStyleMD" parent="SwitchButtonMD">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
 </resources>

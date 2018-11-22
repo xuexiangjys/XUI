@@ -60,7 +60,25 @@
         <attr name="lvl_message" format="string" />
     </declare-styleable>
 
-    <!--=====================================================================-->
+
+    <!--FlowTagLayout-->
+    <declare-styleable name="FlowTagLayout">
+        <!--选择模式，默认不可选-->
+        <attr name="ftl_check_mode" format="enum">
+            <!--不可选择-->
+            <enum name="none" value="0" />
+            <!--单选-->
+            <enum name="single" value="1" />
+            <!--多选-->
+            <enum name="multi" value="2" />
+            <!--只是展示-->
+            <enum name="display" value="3" />
+        </attr>
+        <attr name="ftl_entries" format="reference" />
+        <attr name="ftl_selecteds" format="reference" />
+    </declare-styleable>
+
+    <!--=============================ProgressBar========================================-->
 
     <!--MaterialProgressBar-->
     <declare-styleable name="MaterialProgressBar">
@@ -134,6 +152,163 @@
             <enum name="add" value="16" />
         </attr>
     </declare-styleable>
+
+    <!--=============================Button========================================-->
+
+    <!-- 自定义按钮控件 ButtonView -->
+    <declare-styleable name="ButtonView">
+        <!-- 按钮的填充颜色，默认Color.TRANSPARENT -->
+        <attr name="textSolidColor" format="color" />
+        <!-- 按钮的选中颜色，默认Color.TRANSPARENT -->
+        <attr name="textSelectedSolidColor" format="color" />
+        <!-- 按钮的边框颜色，默认Color.TRANSPARENT -->
+        <attr name="textStrokeColor" format="color" />
+        <!-- 按钮的边框的宽度，默认0-->
+        <attr name="textStrokeWidth" format="dimension" />
+        <!-- 按钮的边角角度，默认0 -->
+        <attr name="textRadius" format="dimension" />
+        <attr name="textLeftTopRadius" format="dimension" />
+        <attr name="textLeftBottomRadius" format="dimension" />
+        <attr name="textRightTopRadius" format="dimension" />
+        <attr name="textRightBottomRadius" format="dimension" />
+        <!-- 按钮的图标 -->
+        <attr name="textDrawable" format="reference" />
+        <!-- 按钮的文字的颜色，默认Color.TRANSPARENT-->
+        <attr name="textNormalTextColor" format="color" />
+        <!-- 按钮的文字点击时的颜色，默认Color.TRANSPARENT-->
+        <attr name="textSelectedTextColor" format="color" />
+    </declare-styleable>
+
+    <!-- 倒计时按钮-->
+    <declare-styleable name="CountDownButton">
+        <!--倒计时过程中按钮文本的格式，默认"%ds"，直接显示剩余秒数-->
+        <attr name="cdbt_countDownFormat" format="string" />
+        <!--倒计时总时长(单位为毫秒)，默认 60000 毫秒-->
+        <attr name="cdbt_countDown" format="integer" />
+        <!--倒计时间隔(单位为毫秒)，默认 1000 毫秒-->
+        <attr name="cdbt_countDownInterval" format="integer" />
+        <!--倒计时是否可用，默认为 true-->
+        <attr name="cdbt_enableCountDown" format="boolean" />
+    </declare-styleable>
+
+    <!-- ShadowButton -->
+    <declare-styleable name="ShadowButton">
+        <!--触摸时的颜色， 默认#9C000000-->
+        <attr name="sb_color_pressed" format="color" />
+        <!--未触摸/触摸层的颜色， 默认Color.TRANSPARENT-->
+        <attr name="sb_color_unpressed" format="color" />
+        <!--波纹的颜色，默认#FFEEEEEE-->
+        <attr name="sb_ripple_color" format="color" />
+        <!--波纹的透明度， 默认47-->
+        <attr name="sb_ripple_alpha" format="integer" />
+        <!--触摸时的透明度， 默认48-->
+        <attr name="sb_alpha_pressed" format="integer" />
+        <!--波纹持续的时间， 默认1000ms-->
+        <attr name="sb_ripple_duration" format="integer" />
+        <!--按钮角的弧度， 默认2dp-->
+        <attr name="sb_radius" format="dimension" />
+        <!--按钮的形状， 默认rectangle-->
+        <attr name="sb_shape_type" format="enum">
+            <enum name="round" value="0" />
+            <enum name="rectangle" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 圆形按钮 -->
+    <declare-styleable name="RoundButton">
+        <!-- 背景颜色-->
+        <attr name="rb_backgroundColor" format="reference" />
+        <!-- 边框颜色 -->
+        <attr name="rb_borderColor" format="reference" />
+        <!-- 边框宽度，默认1dp -->
+        <attr name="rb_borderWidth" format="dimension" />
+        <attr name="rb_isRadiusAdjustBounds" format="boolean" />
+        <!-- 圆角弧度，默认5dp -->
+        <attr name="rb_radius" format="dimension" />
+        <attr name="rb_radiusTopLeft" format="dimension" />
+        <attr name="rb_radiusTopRight" format="dimension" />
+        <attr name="rb_radiusBottomLeft" format="dimension" />
+        <attr name="rb_radiusBottomRight" format="dimension" />
+    </declare-styleable>
+
+    <!--开关按钮-->
+    <declare-styleable name="SwitchButton">
+        <!--滑动块的图片资源-->
+        <attr name="swb_thumbDrawable" format="reference" />
+        <!--滑动块的颜色-->
+        <attr name="swb_thumbColor" format="color|reference" />
+        <!--滑动块的Margin, 默认2dp-->
+        <attr name="swb_thumbMargin" format="dimension|reference" />
+        <attr name="swb_thumbMarginTop" format="dimension|reference" />
+        <attr name="swb_thumbMarginBottom" format="dimension|reference" />
+        <attr name="swb_thumbMarginLeft" format="dimension|reference" />
+        <attr name="swb_thumbMarginRight" format="dimension|reference" />
+        <!--滑动块的宽度, 默认20dp-->
+        <attr name="swb_thumbWidth" format="dimension|reference" />
+        <!--滑动块的高度-->
+        <attr name="swb_thumbHeight" format="dimension|reference" />
+        <!--滑动块的边角-->
+        <attr name="swb_thumbRadius" format="dimension|reference" />
+        <!--开关背景的边角-->
+        <attr name="swb_backRadius" format="dimension|reference" />
+        <!--开关的背景图片资源-->
+        <attr name="swb_backDrawable" format="reference" />
+        <!--开关的背景颜色-->
+        <attr name="swb_backColor" format="color|reference" />
+        <!--当开关进行切换的时候，背景是否渐变过渡-->
+        <attr name="swb_fadeBack" format="boolean" />
+        <!--开关和滑动块所占宽度的比例，默认是1.8f，必须大于1-->
+        <attr name="swb_thumbRangeRatio" format="float" />
+        <!--切换时，动画持续的时间 默认250ms-->
+        <attr name="swb_animationDuration" format="integer" />
+        <!--提示文字的颜色-->
+        <attr name="swb_tintColor" format="color|reference" />
+        <!--开关开时的文字-->
+        <attr name="swb_textOn" format="string" />
+        <!--开关关时的文字-->
+        <attr name="swb_textOff" format="string" />
+        <attr name="swb_textThumbInset" format="dimension" />
+        <!--文字多余的空间-->
+        <attr name="swb_textExtra" format="dimension" />
+        <attr name="swb_textAdjust" format="dimension" />
+    </declare-styleable>
+
+    <!--===============================TextView======================================-->
+
+
+    <!-- MarqueeView -->
+    <declare-styleable name="MarqueeView">
+        <!--翻页的间隔-->
+        <attr name="mq_interval" format="integer" />
+        <!--动画的间隔-->
+        <attr name="mq_animDuration" format="integer" />
+        <!--动画的样式资源-->
+        <attr name="mq_animIn" format="reference" />
+        <attr name="mq_animOut" format="reference" />
+    </declare-styleable>
+
+    <!-- MarqueeTextView -->
+    <declare-styleable name="MarqueeTextView">
+        <!--尺寸是否自适应， 默认false-->
+        <attr name="mtv_isAutoFit" format="boolean" />
+        <!--控件是否自动显示与隐藏（根据显示数量）， 默认false-->
+        <attr name="mtv_isAutoDisplay" format="boolean" />
+    </declare-styleable>
+
+    <!--ExpandableTextView-->
+    <declare-styleable name="ExpandableTextView">
+        <!--最大收缩展示的行数，默认8行-->
+        <attr name="etv_maxCollapsedLines" format="integer" />
+        <!--动画持续的间隔，默认300ms-->
+        <attr name="etv_animDuration" format="integer" />
+        <!--动画开始时的透明度，默认0.7f-->
+        <attr name="etv_animAlphaStart" format="float" />
+        <!--伸展箭头的资源-->
+        <attr name="etv_expandDrawable" format="reference" />
+        <!--收缩箭头的资源-->
+        <attr name="etv_collapseDrawable" format="reference" />
+    </declare-styleable>
+
 
     <!--=====================================================================-->
 

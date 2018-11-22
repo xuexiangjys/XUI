@@ -17,7 +17,7 @@
 
 package com.xuexiang.xui.widget.dialog.strategy;
 
-import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 
 /**
@@ -28,5 +28,5 @@ import android.support.annotation.NonNull;
  */
 public interface InputCallback {
 
-    void onInput(@NonNull Dialog dialog, CharSequence input);
+    void onInput(@NonNull DialogInterface dialog, CharSequence input);
 }

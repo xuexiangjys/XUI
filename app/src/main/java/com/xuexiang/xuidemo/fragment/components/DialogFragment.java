@@ -36,4 +36,10 @@ public class DialogFragment extends XPageContainerListFragment {
                 MaterialDialogFragment.class
         };
     }
+
+    @Override
+    public void onDestroyView() {
+        getListView().setOnItemClickListener(null);
+        super.onDestroyView();
+    }
 }

@@ -112,7 +112,7 @@ public class DialogStrategyFragment extends XPageSimpleListFragment {
                                 getString(R.string.hint_please_input_password)),
                         new InputCallback() {
                             @Override
-                            public void onInput(@NonNull Dialog dialog, CharSequence input) {
+                            public void onInput(@NonNull DialogInterface dialog, CharSequence input) {
                                 ToastUtils.toast(input.toString());
                             }
                         },

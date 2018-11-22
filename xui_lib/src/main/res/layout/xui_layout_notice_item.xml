@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.nl.view.widget.textview.AutoMoveTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:singleLine="true"
+    android:padding="15dp"
+    android:textSize="15sp" />
