@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:banner="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="48dp"
+                    android:background="#468ED0" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="LoopBanner"
+                    android:textColor="#468ED0"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="图片轮播简单使用"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_simple_usage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                banner:bb_scale="0.5625" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="图片轮播复杂使用"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_the_most_comlex_usage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                banner:bb_barColor="#88000000"
+                banner:bb_barPaddingBottom="5dp"
+                banner:bb_barPaddingLeft="10dp"
+                banner:bb_barPaddingRight="10dp"
+                banner:bb_barPaddingTop="5dp"
+                banner:bb_delay="2"
+                banner:bb_indicatorCornerRadius="3dp"
+                banner:bb_indicatorGap="8dp"
+                banner:bb_indicatorGravity="RIGHT"
+                banner:bb_indicatorHeight="6dp"
+                banner:bb_indicatorSelectColor="#ffffff"
+                banner:bb_indicatorStyle="CORNER_RECTANGLE"
+                banner:bb_indicatorUnselectColor="#88ffffff"
+                banner:bb_indicatorWidth="6dp"
+                banner:bb_isAutoScrollEnable="true"
+                banner:bb_isBarShowWhenLast="true"
+                banner:bb_isIndicatorShow="true"
+                banner:bb_isLoopEnable="true"
+                banner:bb_isTitleShow="true"
+                banner:bb_period="10"
+                banner:bb_scale="0.5625"
+                banner:bb_textColor="#ffffff"
+                banner:bb_textSize="13.5sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="索引点使用资源图片"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_res"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                banner:bb_indicatorGap="7dp"
+                banner:bb_indicatorHeight="7dp"
+                banner:bb_indicatorSelectRes="@drawable/ic_banner_dot_select"
+                banner:bb_indicatorStyle="DRAWABLE_RESOURCE"
+                banner:bb_indicatorUnselectRes="@drawable/ic_banner_dot_unselect"
+                banner:bb_indicatorWidth="7dp"
+                banner:bb_scale="0.5625" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="矩形索引点"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_rectangle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                banner:bb_delay="7"
+                banner:bb_indicatorCornerRadius="0dp"
+                banner:bb_period="7"
+                banner:bb_scale="0.5625" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="扁长条索引点"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_corner_rectangle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                banner:bb_indicatorCornerRadius="2dp"
+                banner:bb_indicatorHeight="4dp"
+                banner:bb_indicatorWidth="10dp"
+                banner:bb_scale="0.5625" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="索引在右文字在左"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_indicator_right_with_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                banner:bb_delay="3"
+                banner:bb_indicatorCornerRadius="2dp"
+                banner:bb_indicatorGravity="RIGHT"
+                banner:bb_indicatorHeight="4dp"
+                banner:bb_indicatorWidth="10dp"
+                banner:bb_period="5"
+                banner:bb_scale="0.5625" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="索引在左文字在右"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_indicator_left_with_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                banner:bb_delay="3"
+                banner:bb_indicatorGravity="LEFT"
+                banner:bb_period="5"
+                banner:bb_scale="0.5625" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="索引动画"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_anim"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                banner:bb_barColor="#88000000"
+                banner:bb_indicatorGravity="RIGHT"
+                banner:bb_scale="0.5625" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner
+                android:id="@+id/sib_anim2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                banner:bb_barColor="#88000000"
+                banner:bb_indicatorCornerRadius="2dp"
+                banner:bb_indicatorGravity="RIGHT"
+                banner:bb_indicatorHeight="4dp"
+                banner:bb_indicatorWidth="10dp"
+                banner:bb_scale="0.5625" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="48dp"
+                    android:background="#468ED0" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="NormalBanner"
+                    android:textColor="#468ED0"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_user_guide"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="简单的引导页使用"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="48dp"
+                    android:background="#468ED0" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Transformer"
+                    android:textColor="#468ED0"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_select_transformer"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="点击选择一种切换方式"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_select_transformer2"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="点击选择一种切换方式"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="48dp"
+                    android:background="#468ED0" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="其他使用方式"
+                    android:textColor="#468ED0"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="简单的文字轮播"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.banner.widget.banner.SimpleTextBanner
+                android:id="@+id/stb"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                banner:bb_isIndicatorShow="false" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -10,8 +10,10 @@ import com.xuexiang.xuidemo.fragment.components.button.ShadowButtonFragment;
 import com.xuexiang.xuidemo.fragment.components.button.SwitchButtonFragment;
 
 /**
- * @author XUE
- * @date 2017/9/13 16:03
+ * 按钮
+ *
+ * @author xuexiang
+ * @since 2018/11/25 下午11:21
  */
 @Page(name = "按钮", extra = R.drawable.ic_widget_button)
 public class ButtonFragment extends ComponentContainerFragment {

@@ -29,6 +29,7 @@ public class DemoDataProvider {
             "综艺饭:胖轩偷看夏天洗澡掀波澜",
             "碟中谍4:阿汤哥高塔命悬一线,超越不可能",
     };
+
     public static String[] urls = new String[]{//640*360 360/640=0.5625
             "http://photocdn.sohu.com/tvmobilemvms/20150907/144160323071011277.jpg",//伪装者:胡歌演绎"痞子特工"
             "http://photocdn.sohu.com/tvmobilemvms/20150907/144158380433341332.jpg",//无心法师:生死离别!月牙遭虐杀
