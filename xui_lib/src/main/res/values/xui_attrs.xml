@@ -103,6 +103,32 @@
 
     <!--=====================================================================-->
 
+    <!-- StatefulLayout -->
+    <declare-styleable name="StatefulLayout">
+        <!--是否启用切换动画，默认是true-->
+        <attr name="stf_animationEnabled" format="boolean" />
+        <!--进入的动画-->
+        <attr name="stf_inAnimation" format="reference" />
+        <!--退出的动画-->
+        <attr name="stf_outAnimation" format="reference" />
+    </declare-styleable>
+
+    <!--MultipleStatusView-->
+    <declare-styleable name="MultipleStatusView">
+        <!--加载页面-->
+        <attr name="msv_loadingView" format="reference" />
+        <!--错误页面-->
+        <attr name="msv_errorView" format="reference" />
+        <!--空页面-->
+        <attr name="msv_emptyView" format="reference" />
+        <!--没有网络的页面-->
+        <attr name="msv_noNetworkView" format="reference" />
+        <!--主内容页面-->
+        <attr name="msv_contentView" format="reference" />
+    </declare-styleable>
+
+    <!--=====================================================================-->
+
     <!--LoadingView-->
     <declare-styleable name="LoadingView">
         <!--loading加载画笔的粗细-->

@@ -32,6 +32,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.UIConfig;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.Utils;
@@ -149,7 +150,7 @@ public class ARCLoadingView extends View {
                 if (icon != null) {
                     mIconBitmap = Utils.getBitmapFromDrawable(icon);
                 } else {
-                    Drawable appIcon = XUI.getInstance().getAppIcon();
+                    Drawable appIcon = UIConfig.getInstance().getAppIcon();
                     if (appIcon != null) {
                         mIconBitmap = Utils.getBitmapFromDrawable(appIcon);
                     }

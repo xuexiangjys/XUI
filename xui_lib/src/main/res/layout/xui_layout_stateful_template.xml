@@ -1,0 +1,43 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/stContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/stProgress"
+            android:layout_width="?attr/stf_progressbar_size"
+            android:layout_height="?attr/stf_progressbar_size"
+            android:layout_marginTop="?attr/xui_config_content_spacing_vertical" />
+
+        <ImageView
+            android:id="@+id/stImage"
+            android:layout_width="?attr/stf_tip_img_size"
+            android:layout_height="?attr/stf_tip_img_size"
+            android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+            android:tint="@color/xui_config_color_main_theme"
+            app:srcCompat="@drawable/stf_ic_error"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/stMessage"
+            style="@style/TextStyle.Content"
+            android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+            android:text="@string/stfErrorMessage" />
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/stButton"
+            style="@style/RoundButton.Blue"
+            android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
+            android:text="@string/stfRetryButtonText" />
+
+    </LinearLayout>
+
+</merge>

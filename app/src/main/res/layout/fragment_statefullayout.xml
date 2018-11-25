@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:alignContent="flex_start"
+        app:alignItems="flex_start"
+        app:flexWrap="wrap">
+
+        <Button
+            android:id="@+id/btn_content"
+            style="@style/Button.RadiusButton"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:text="content" />
+
+        <Button
+            android:id="@+id/btn_loading"
+            style="@style/Button.RadiusButton"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:text="loading" />
+
+        <Button
+            android:id="@+id/btn_empty"
+            style="@style/Button.RadiusButton"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:text="empty" />
+
+        <Button
+            android:id="@+id/btn_error"
+            style="@style/Button.RadiusButton"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:text="error" />
+
+        <Button
+            android:id="@+id/btn_offline"
+            style="@style/Button.RadiusButton"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:text="offline" />
+
+        <Button
+            android:id="@+id/btn_locationOff"
+            style="@style/Button.RadiusButton"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:text="locationOff" />
+
+        <Button
+            android:id="@+id/btn_custom"
+            style="@style/Button.RadiusButton"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:text="custom" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <com.xuexiang.xui.widget.statelayout.StatefulLayout
+        android:id="@+id/ll_stateful"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="#e2e2e2"
+        app:stf_animationEnabled="true"
+        app:stf_inAnimation="@android:anim/slide_in_left"
+        app:stf_outAnimation="@android:anim/slide_out_right">
+
+        <include layout="@layout/layout_content_view" />
+
+    </com.xuexiang.xui.widget.statelayout.StatefulLayout>
+
+</LinearLayout>

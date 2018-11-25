@@ -54,9 +54,13 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.support.app_compat
     implementation deps.support.recyclerview
+    implementation deps.support.design
     testImplementation deps.junit
     androidTestImplementation deps.runner
     androidTestImplementation deps.espresso.core
+
+    //悬浮按钮
+    implementation 'com.github.clans:fab:1.6.4'
 
     //xui
     implementation project(':xui_lib')

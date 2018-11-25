@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loading_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:layout_width="?attr/stf_progressbar_size"
+        android:layout_height="?attr/stf_progressbar_size" />
+
+    <TextView
+        android:id="@+id/loading_view_tv"
+        style="@style/TextStyle.Content"
+        android:padding="5dp"
+        android:text="@string/xui_tip_loading_message" />
+
+
+
+</LinearLayout>

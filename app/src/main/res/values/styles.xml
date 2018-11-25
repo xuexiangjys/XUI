@@ -22,4 +22,18 @@
         <item name="android:paddingBottom">4dp</item>
     </style>
 
+    <!-- FabMenu -->
+    <style name="FabMenu">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="FabMenu.Buttons">
+        <item name="fab_size">mini</item>
+        <item name="fab_colorNormal">#3E99D2</item>
+        <item name="fab_colorPressed">#2488C6</item>
+        <item name="fab_colorRipple">#AF2488C6</item>
+    </style>
+
+
 </resources>

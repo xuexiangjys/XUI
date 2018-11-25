@@ -4,11 +4,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 
 import com.xuexiang.xui.logs.UILog;
-import com.xuexiang.xui.utils.Utils;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.TypefaceUtils;
@@ -29,13 +27,8 @@ public class XUI {
 
     private static int sScreenType;
 
-    /**
-     * 应用的图标
-     */
-    private Drawable mAppIcon;
-
     private XUI() {
-        mAppIcon = Utils.getAppIcon(getContext());
+
     }
 
     /**
@@ -171,15 +164,5 @@ public class XUI {
         return getScreenType() == UIConsts.ScreenType.SMALL_TABLET || getScreenType() == UIConsts.ScreenType.BIG_TABLET;
     }
 
-    //==================应用=====================//
-
-    public XUI setAppIcon(Drawable appIcon) {
-        mAppIcon = appIcon;
-        return this;
-    }
-
-    public Drawable getAppIcon() {
-        return mAppIcon;
-    }
 
 }

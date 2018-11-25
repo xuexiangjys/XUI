@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/error_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="?attr/stf_tip_img_size"
+        android:layout_height="?attr/stf_tip_img_size"
+        android:tint="@color/xui_config_color_main_theme"
+        android:src="@drawable/stf_ic_error" />
+
+    <TextView
+        android:id="@+id/error_view_tv"
+        style="@style/TextStyle.Content"
+        android:padding="5dp"
+        android:text="@string/xui_tip_error_message" />
+
+    <TextView
+        style="@style/TextStyle.Explain"
+        android:padding="5dp"
+        android:text="@string/stf_retry"/>
+
+</LinearLayout>
