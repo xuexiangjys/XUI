@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_friend_circle_pop"
+    android:divider="@drawable/bg_divider_vertical"
+    android:orientation="horizontal"
+    android:showDividers="middle">
+
+    <TextView
+        android:id="@+id/tv_zan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingBottom="7dp"
+        android:paddingTop="7dp"
+        android:text="点赞"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="评论"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+</LinearLayout>

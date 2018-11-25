@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_circle_comment_left"
+                    style="@style/Button.RadiusButton"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="left" />
+
+                <Button
+                    android:id="@+id/btn_circle_comment_right"
+                    style="@style/Button.RadiusButton"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="right" />
+
+                <Button
+                    android:id="@+id/btn_circle_comment_top"
+                    style="@style/Button.RadiusButton"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="top" />
+
+                <Button
+                    android:id="@+id/btn_circle_comment_bottom"
+                    style="@style/Button.RadiusButton"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="bottom" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="100dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_circle_comment"
+                    style="@style/Button.RadiusButton"
+                    android:text="朋友圈评论" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

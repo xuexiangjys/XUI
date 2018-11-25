@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_left"
+            style="@style/RoundButton.Auto"
+            android:layout_margin="10dp"
+            android:text="Left" />
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_top"
+            style="@style/RoundButton.Auto"
+            android:layout_margin="10dp"
+            android:text="Top" />
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_bottom"
+            style="@style/RoundButton.Auto"
+            android:layout_margin="10dp"
+            android:text="Bottom" />
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_right"
+            style="@style/RoundButton.Auto"
+            android:layout_margin="10dp"
+            android:text="Right" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="8dp"
+        android:text="Hello World!" />
+
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:id="@+id/bottomLeft"
+        style="@style/RoundButton.Auto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="32dp"
+        android:text="左下角" />
+
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:id="@+id/bottomRight"
+        style="@style/RoundButton.Auto"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="32dp"
+        android:text="右下角" />
+
+</RelativeLayout>

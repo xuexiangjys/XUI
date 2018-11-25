@@ -2,6 +2,7 @@ package com.xuexiang.xui;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -23,6 +24,10 @@ public class XUI {
     private static volatile XUI sInstance = null;
 
     private static Application sContext;
+
+    private static boolean sIsTabletChecked;
+
+    private static int sScreenType;
 
     /**
      * 应用的图标
@@ -124,7 +129,49 @@ public class XUI {
         return null;
     }
 
-    //=======================================//
+    //=======================屏幕尺寸===========================//
+
+    /**
+     * 检验设备屏幕的尺寸
+     * @param context
+     * @return
+     */
+    private static int checkScreenSize(Context context) {
+        int screenSize = context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+        if (screenSize >= Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            //证明是平板
+            if (screenSize >= Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+                return UIConsts.ScreenType.BIG_TABLET;
+            } else {
+                return UIConsts.ScreenType.SMALL_TABLET;
+            }
+        } else {
+            return UIConsts.ScreenType.PHONE;
+        }
+    }
+
+    /**
+     * 判断是否平板设备
+     * @return true:平板,false:手机
+     */
+    public static int getScreenType() {
+        if (sIsTabletChecked) {
+            return sScreenType;
+        }
+        sScreenType = checkScreenSize(XUI.getContext());
+        sIsTabletChecked = true;
+        return sScreenType;
+    }
+
+    /**
+     * 是否是平板
+     * @return
+     */
+    public static boolean isTablet() {
+        return getScreenType() == UIConsts.ScreenType.SMALL_TABLET || getScreenType() == UIConsts.ScreenType.BIG_TABLET;
+    }
+
+    //==================应用=====================//
 
     public XUI setAppIcon(Drawable appIcon) {
         mAppIcon = appIcon;

@@ -18,7 +18,7 @@
     |-values-v21
     |-values-...
     |
-  XUI（NLUI提供的theme控制，供外界使用）
+  XUI（XUI提供的theme控制，供外界使用）
 
   So，
   如果要对某 API Level 配置继承自某个系统的 Theme，在 values-v* 目录下修改 xui_themes.xml 的 AppBaseTheme。

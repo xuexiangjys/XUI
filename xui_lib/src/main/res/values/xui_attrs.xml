@@ -28,6 +28,79 @@
         <attr name="tb_dividerColor" format="color" />
     </declare-styleable>
 
+
+    <!--============================Banner=========================================-->
+
+    <!-- BaseBanner -->
+    <declare-styleable name="BaseBanner">
+        <!-- Banner高宽比,范围0-1,默认0.5(for LoopViewPager)-->
+        <attr name="bb_scale" format="float" />
+
+        <!--for LoopViewPager start-->
+        <!-- 是否支持循环,默认true-->
+        <attr name="bb_isLoopEnable" format="boolean" />
+        <!-- 滚动延时,默认5秒-->
+        <attr name="bb_delay" format="integer" />
+        <!-- 滚动间隔,默认5秒-->
+        <attr name="bb_period" format="integer" />
+        <!-- 是否支持自动滚动,默认true-->
+        <attr name="bb_isAutoScrollEnable" format="boolean" />
+        <!--for LoopViewPager end-->
+
+        <!-- 设置底部背景条颜色,默认透明 -->
+        <attr name="bb_barColor" format="color" />
+        <!-- 设置当滚动到最后一个item时是否显示底部背景条 -->
+        <attr name="bb_isBarShowWhenLast" format="boolean" />
+        <!-- 设置底部背景条padding,单位dp -->
+        <attr name="bb_barPaddingLeft" format="dimension" />
+        <attr name="bb_barPaddingTop" format="dimension" />
+        <attr name="bb_barPaddingRight" format="dimension" />
+        <attr name="bb_barPaddingBottom" format="dimension" />
+        <!-- 设置标题文字颜色,默认"#ffffff" -->
+        <attr name="bb_textColor" format="color" />
+        <!-- 设置标题文字大小,单位sp,默认14sp -->
+        <attr name="bb_textSize" format="dimension" />
+        <!-- 设置是否显示标题,默认true  -->
+        <attr name="bb_isTitleShow" format="boolean" />
+        <!-- 设置是否显示指示器,默认true  -->
+        <attr name="bb_isIndicatorShow" format="boolean" />
+        <!-- 设置指示器位置.默认Gravity.CENTER时文字不显示-->
+        <attr name="bb_indicatorGravity" format="enum">
+            <enum name="CENTER" value="17" />
+            <enum name="LEFT" value="3" />
+            <enum name="RIGHT" value="5" />
+        </attr>
+    </declare-styleable>
+
+    <!-- BaseIndicatorBanner -->
+    <declare-styleable name="BaseIndicatorBanner">
+        <!-- 设置指示器样式 -->
+        <attr name="bb_indicatorStyle" format="enum">
+            <!--图片资源-->
+            <enum name="DRAWABLE_RESOURCE" value="0" />
+            <!--矩形-->
+            <enum name="CORNER_RECTANGLE" value="1" />
+        </attr>
+        <!-- 设置指示器宽度,单位dp,默认6dp -->
+        <attr name="bb_indicatorWidth" format="dimension" />
+        <!-- 设置指示器高度,单位dp,默认6dp -->
+        <attr name="bb_indicatorHeight" format="dimension" />
+        <!-- 设置指示器间距,单位dp,默认6dp -->
+        <attr name="bb_indicatorGap" format="dimension" />
+
+        <!-- 设置指示器选中颜色,默认"#ffffff" -->
+        <attr name="bb_indicatorSelectColor" format="color" />
+        <!-- 设置指示器未选中颜色,默认"#88ffffff"  -->
+        <attr name="bb_indicatorUnselectColor" format="color" />
+        <!-- 设置指示器圆角弧度,单位dp,默认3dp -->
+        <attr name="bb_indicatorCornerRadius" format="dimension" />
+
+        <!-- 设置指示器选中drawable资源 -->
+        <attr name="bb_indicatorSelectRes" format="reference" />
+        <!-- 设置指示器未选中drawable资源 -->
+        <attr name="bb_indicatorUnselectRes" format="reference" />
+    </declare-styleable>
+
     <!--=====================================================================-->
 
     <!--LoadingView-->
