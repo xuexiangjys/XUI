@@ -154,4 +154,13 @@
     </string-array>
 
 
+    <string-array name="sort_mode_entry">
+        <item>根据品牌名称排序</item>
+        <item>根据价格升序排序</item>
+        <item>根据价格降序排序</item>
+        <item>根据销售量升序排序</item>
+        <item>根据销售量降序排序</item>
+        <item>综合排序</item>
+    </string-array>
+
 </resources>

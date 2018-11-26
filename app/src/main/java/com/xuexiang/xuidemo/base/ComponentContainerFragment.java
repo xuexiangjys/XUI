@@ -28,7 +28,7 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
 
     @Override
     public void onDestroyView() {
-        KeyboardUtils.fixSoftInputLeaks(getContext());
+//        KeyboardUtils.fixSoftInputLeaks(getContext());
         super.onDestroyView();
     }
 }

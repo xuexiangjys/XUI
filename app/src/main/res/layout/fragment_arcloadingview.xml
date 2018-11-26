@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_switch"
+            style="@style/Button.Blue"
+            android:text="开始" />
+
+        <Button
+            android:id="@+id/btn_loading_dialog"
+            style="@style/Button.Blue"
+            android:layout_marginLeft="20dp"
+            android:text="loading弹窗" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_loading_layout"
+            style="@style/Button.Blue"
+            android:text="loading布局" />
+
+        <Button
+            android:id="@+id/btn_test_dialog"
+            style="@style/Button.Blue"
+            android:layout_marginLeft="20dp"
+            android:text="测试弹窗" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.xuexiang.xui.widget.progress.loading.ARCLoadingView
+            android:id="@+id/auto_arc_loading"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="20dp" />
+
+        <com.xuexiang.xui.widget.progress.loading.ARCLoadingView
+            android:id="@+id/arc_loading"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="20dp"
+            app:lv_auto="false"
+            app:lv_has_icon="false" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.xuexiang.xui.widget.progress.loading.ARCLoadingView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="20dp"
+            app:lv_icon="@mipmap/ic_launcher"
+            app:lv_icon_scale="0.4"/>
+
+        <com.xuexiang.xui.widget.progress.loading.LoadingViewLayout
+            android:id="@+id/loading_view_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lvl_icon="@mipmap/ic_launcher" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

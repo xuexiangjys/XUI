@@ -37,7 +37,7 @@ public abstract class BaseFragment extends XPageFragment {
 
     @Override
     public void onDestroyView() {
-        KeyboardUtils.fixSoftInputLeaks(getContext());
+//        KeyboardUtils.fixSoftInputLeaks(getContext());
         super.onDestroyView();
     }
 }

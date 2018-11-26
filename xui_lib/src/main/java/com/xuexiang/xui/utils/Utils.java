@@ -24,6 +24,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
@@ -41,8 +42,10 @@ import android.widget.RelativeLayout.LayoutParams;
 import java.io.File;
 
 /**
- * @author XUE
- * @date 2017/9/21 13:12
+ * 工具类（不建议外部调用)
+ *
+ * @author xuexiang
+ * @since 2018/11/26 下午5:07
  */
 public class Utils {
 
@@ -320,6 +323,13 @@ public class Utils {
      */
     public static boolean isSupportColorAttrs() {
         return  Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+    }
+
+    public static boolean isLight(int color) {
+        return Math.sqrt(
+                Color.red(color) * Color.red(color) * .241 +
+                        Color.green(color) * Color.green(color) * .691 +
+                        Color.blue(color) * Color.blue(color) * .068) > 130;
     }
 
 }

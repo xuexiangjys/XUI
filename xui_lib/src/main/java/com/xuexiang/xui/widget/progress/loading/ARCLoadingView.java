@@ -202,6 +202,7 @@ public class ARCLoadingView extends View {
 
     /**
      * 画圆弧
+     *
      * @param canvas
      */
     private void drawArc(Canvas canvas) {
@@ -221,6 +222,7 @@ public class ARCLoadingView extends View {
 
     /**
      * 获取中心图标所在的区域
+     *
      * @return
      */
     public RectF getIconBitmapRectF(Bitmap bitmap) {
@@ -241,6 +243,7 @@ public class ARCLoadingView extends View {
 
     /**
      * 获取渐变色
+     *
      * @param canvas
      * @return
      */
@@ -255,6 +258,7 @@ public class ARCLoadingView extends View {
 
     /**
      * 设置loading的图标
+     *
      * @param icon
      * @return
      */
@@ -267,6 +271,7 @@ public class ARCLoadingView extends View {
 
     /**
      * 设置loading的图标
+     *
      * @param iconBitmap
      * @return
      */
@@ -287,6 +292,21 @@ public class ARCLoadingView extends View {
     public ARCLoadingView setSpeedOfDegree(int speedOfDegree) {
         mSpeedOfDegree = speedOfDegree;
         return this;
+    }
+
+    /**
+     * 设置图标的缩小比例
+     *
+     * @param iconScale
+     * @return
+     */
+    public ARCLoadingView setIconScale(float iconScale) {
+        mIconScale = iconScale;
+        return this;
+    }
+
+    public float getIconScale() {
+        return mIconScale;
     }
 
     /**

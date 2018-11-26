@@ -1,5 +1,6 @@
 package com.xuexiang.xui;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -164,5 +165,19 @@ public class XUI {
         return getScreenType() == UIConsts.ScreenType.SMALL_TABLET || getScreenType() == UIConsts.ScreenType.BIG_TABLET;
     }
 
+    /**
+     * 初始化主题
+     * @param activity
+     */
+    public static void initTheme(Activity activity) {
+        int screenType = getScreenType();
+        if (screenType == UIConsts.ScreenType.PHONE) {
+            activity.setTheme(R.style.XUITheme_Phone);
+        } else if (screenType == UIConsts.ScreenType.SMALL_TABLET){
+            activity.setTheme(R.style.XUITheme_Tablet_Small);
+        } else {
+            activity.setTheme(R.style.XUITheme_Tablet_Big);
+        }
+    }
 
 }

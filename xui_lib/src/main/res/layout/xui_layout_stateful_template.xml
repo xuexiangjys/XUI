@@ -11,11 +11,12 @@
         android:visibility="gone"
         tools:visibility="visible">
 
-        <ProgressBar
+        <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
             android:id="@+id/stProgress"
             android:layout_width="?attr/stf_progressbar_size"
             android:layout_height="?attr/stf_progressbar_size"
-            android:layout_marginTop="?attr/xui_config_content_spacing_vertical" />
+            android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+            android:indeterminate="true" />
 
         <ImageView
             android:id="@+id/stImage"

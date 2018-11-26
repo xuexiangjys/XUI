@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="?attr/xui_config_content_spacing_horizontal"
+            android:paddingLeft="?attr/xui_config_content_spacing_horizontal"
+            android:paddingRight="?attr/xui_config_content_spacing_horizontal"
+            android:paddingTop="?attr/xui_config_content_spacing_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/normal_progress"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/normal_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|bottom"
+                    android:indeterminate="false" />
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/normal_secondary_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:indeterminate="false" />
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/normal_background_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:indeterminate="false"
+                    app:mpb_showProgressBackground="true" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/normal_tinted_progress"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/tinted_normal_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|bottom"
+                    android:indeterminate="false"
+                    app:mpb_progressTint="@color/tint" />
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/tinted_normal_secondary_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:indeterminate="false"
+                    app:mpb_progressTint="@color/tint"
+                    app:mpb_secondaryProgressTint="@color/tint_background" />
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/tinted_normal_background_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:indeterminate="false"
+                    app:mpb_progressBackgroundTint="@color/tint_background"
+                    app:mpb_progressTint="@color/tint"
+                    app:mpb_secondaryProgressTint="@color/tint_background"
+                    app:mpb_showProgressBackground="true" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/dynamic_progress"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/dynamic_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|bottom"
+                    android:indeterminate="false"
+                    app:mpb_determinateCircularProgressStyle="dynamic" />
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/dynamic_secondary_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:indeterminate="false"
+                    app:mpb_determinateCircularProgressStyle="dynamic" />
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/dynamic_background_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:indeterminate="false"
+                    app:mpb_determinateCircularProgressStyle="dynamic"
+                    app:mpb_showProgressBackground="true" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/dynamic_tinted_progress"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/tinted_dynamic_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|bottom"
+                    android:indeterminate="false"
+                    app:mpb_determinateCircularProgressStyle="dynamic"
+                    app:mpb_progressTint="@color/tint" />
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/tinted_dynamic_secondary_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:indeterminate="false"
+                    app:mpb_determinateCircularProgressStyle="dynamic"
+                    app:mpb_progressTint="@color/tint"
+                    app:mpb_secondaryProgressTint="@color/tint_background" />
+
+                <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+                    android:id="@+id/tinted_dynamic_background_progress"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:indeterminate="false"
+                    app:mpb_determinateCircularProgressStyle="dynamic"
+                    app:mpb_progressBackgroundTint="@color/tint_background"
+                    app:mpb_progressTint="@color/tint"
+                    app:mpb_secondaryProgressTint="@color/tint_background"
+                    app:mpb_showProgressBackground="true" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

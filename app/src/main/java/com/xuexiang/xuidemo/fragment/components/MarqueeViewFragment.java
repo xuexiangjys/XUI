@@ -29,7 +29,7 @@ import io.reactivex.functions.Consumer;
  * @author XUE
  * @date 2017/9/13 10:10
  */
-@Page(name = "文字滚动控件", extra = R.drawable.ic_widget_marquee)
+@Page(name = "文字滚动", extra = R.drawable.ic_widget_marquee)
 public class MarqueeViewFragment extends BaseFragment {
 
     @BindView(R.id.marqueeView1)

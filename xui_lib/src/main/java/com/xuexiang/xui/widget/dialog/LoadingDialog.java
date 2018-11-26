@@ -119,6 +119,19 @@ public class LoadingDialog extends BaseDialog implements IMessageLoader {
     }
 
     /**
+     * 设置图标的缩小比例
+     *
+     * @param iconScale
+     * @return
+     */
+    public LoadingDialog setIconScale(float iconScale) {
+        if (mLoadingView != null) {
+            mLoadingView.setIconScale(iconScale);
+        }
+        return this;
+    }
+
+    /**
      * 设置loading旋转的速度
      *
      * @param speed

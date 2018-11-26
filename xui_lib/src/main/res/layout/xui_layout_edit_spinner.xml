@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
+
+    <EditText
+        android:id="@+id/edit_sipnner_edit"
+        style="@style/EditSpinner"
+        android:layout_width="match_parent"/>
+
+    <ImageView
+        android:id="@+id/edit_spinner_arrow"
+        android:layout_gravity="right|center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_arrow_down_black"
+        android:tint="@color/xui_config_color_black" />
+
+</FrameLayout>

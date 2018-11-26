@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ClearEditText:" />
+
+            <com.xuexiang.xui.widget.edittext.ClearEditText
+                android:id="@+id/clearEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp" />
+
+            <com.xuexiang.xui.widget.edittext.ClearEditText
+                android:id="@+id/clearEditText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cet_clearIcon="@drawable/icon_clear"
+                app:cet_clearIconSize="@dimen/default_clear_icon_size"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="PasswordEditText:" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="16dp"
+                android:gravity="start"
+                android:textAlignment="viewStart">
+
+                <com.xuexiang.xui.widget.edittext.PasswordEditText
+                    android:id="@+id/input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:hint="输入密码"
+                    android:inputType="textPassword"
+                    android:textAlignment="viewStart"
+                    app:pet_enableIconAlpha="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <com.xuexiang.xui.widget.edittext.PasswordEditText
+                android:id="@+id/input_password2"
+                fontPath="fonts/Roboto-Thin.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:hint="重复密码"
+                android:inputType="textPassword"
+                android:textAlignment="viewStart"
+                app:pet_enableIconAlpha="true"
+                app:pet_hoverShowsPw="true" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

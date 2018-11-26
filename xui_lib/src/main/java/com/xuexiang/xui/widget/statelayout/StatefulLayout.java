@@ -13,11 +13,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConfig;
+import com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar;
 
 /**
  * Android layout to show most common state templates like loading, empty, error etc. To do that all you need to is
@@ -47,7 +47,7 @@ public class StatefulLayout extends LinearLayout {
 
     private View content;
     private LinearLayout stContainer;
-    private ProgressBar stProgress;
+    private MaterialProgressBar stProgress;
     private ImageView stImage;
     private TextView stMessage;
     private Button stButton;
@@ -129,7 +129,7 @@ public class StatefulLayout extends LinearLayout {
         content = getChildAt(0); // assume first child as content
         LayoutInflater.from(getContext()).inflate(R.layout.xui_layout_stateful_template, this, true);
         stContainer = (LinearLayout) findViewById(R.id.stContainer);
-        stProgress = (ProgressBar) findViewById(R.id.stProgress);
+        stProgress = (MaterialProgressBar) findViewById(R.id.stProgress);
         stImage = (ImageView) findViewById(R.id.stImage);
         stMessage = (TextView) findViewById(R.id.stMessage);
         stButton = (Button) findViewById(R.id.stButton);

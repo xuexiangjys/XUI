@@ -22,6 +22,6 @@
     <corners
         android:radius="?attr/xui_dialog_radius_size"/>
 
-    <solid android:color="@color/white"/>
+    <solid android:color="@color/xui_config_color_white"/>
 
 </shape>

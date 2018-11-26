@@ -63,7 +63,7 @@ public class XUIPopupFragment extends BaseFragment {
             case R.id.btn_list_popup:
                 initListPopupIfNeed();
                 mListPopup.setAnimStyle(XUIPopup.ANIM_GROW_FROM_CENTER);
-                mListPopup.setPreferredDirection(XUIPopup.DIRECTION_BOTTOM);
+                mListPopup.setPreferredDirection(XUIPopup.DIRECTION_TOP);
                 mListPopup.show(v);
                 mBtnListPopup.setText("隐藏列表浮层");
                 break;
@@ -108,7 +108,7 @@ public class XUIPopupFragment extends BaseFragment {
 
             XUISimpleAdapter adapter = XUISimpleAdapter.create(getContext(), listItems);
             mListPopup = new XUIListPopup(getContext(), adapter);
-            mListPopup.create(DensityUtils.dp2px(250), DensityUtils.dp2px(200), new AdapterView.OnItemClickListener() {
+            mListPopup.create(DensityUtils.dp2px(200), DensityUtils.dp2px(150), new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     ToastUtils.toast("Item " + (i + 1));

@@ -4,9 +4,7 @@
     *              Widget Color                     *
     **********************************************-->
     <!-- SuperTextView -->
-    <color name="white">#FFFFFF</color>
-    <color name="common_pressed">#20000000</color>  <!--白色背景按下去的颜色-->
-    <color name="line">#E8E8E8</color>
+    <color name="xui_common_pressed">#20000000</color>  <!--白色背景按下去的颜色-->
 
     <!-- ShadowButton -->
     <color name="default_shadow_button_color_pressed">#9C000000</color>

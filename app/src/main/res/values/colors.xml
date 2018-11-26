@@ -9,4 +9,10 @@
     <color name="green_btn_color_disable">#CCCCCC</color>
     <color name="green_btn_color_pressed">#05bca2</color>
 
+
+    <color name="tint">#f44336</color>
+    <color name="tint_background">#42f44336</color>
+
+    <color name="cyan_500">#00bcd4</color>
+
 </resources>

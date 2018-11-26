@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.xuexiang.xpage.base.XPageActivity;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -25,6 +26,7 @@ public class MainActivity extends XPageActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        XUI.initTheme(this);
 
         openPage(ComponentsFragment.class);
     }

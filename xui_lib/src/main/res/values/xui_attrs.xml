@@ -372,9 +372,71 @@
         <attr name="swb_textAdjust" format="dimension" />
     </declare-styleable>
 
+    <!--===============================Spinner======================================-->
+    <!--MaterialSpinner-->
+    <declare-styleable name="MaterialSpinner">
+        <!--下拉框选择的内容-->
+        <attr name="ms_entries" format="reference" />
+        <!--下拉框箭头的颜色， 默认和字体的颜色一样-->
+        <attr name="ms_arrow_tint" format="color" />
+        <!--下拉框是否有箭头， 默认是true-->
+        <attr name="ms_hide_arrow" format="boolean" />
+        <!--下拉框背景的颜色-->
+        <attr name="ms_background_color" format="color" />
+        <!--下拉框背景点击的效果-->
+        <attr name="ms_background_selector" format="integer" />
+        <!--下拉框字体的颜色-->
+        <attr name="ms_text_color" format="color" />
+
+        <!--下拉框 下拉条目最大的高度-->
+        <attr name="ms_dropdown_max_height" format="dimension" />
+        <!--下拉框 下拉条目的样式，默认wrap_content-->
+        <attr name="ms_dropdown_height" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <!--下拉框 下拉条目的背景-->
+        <attr name="ms_dropdown_bg" format="reference" />
+        <!--是否在dialog中, 默认false-->
+        <attr name="ms_in_dialog" format="boolean" />
+    </declare-styleable>
+
+    <!--EditSpinner-->
+    <declare-styleable name="EditSpinner">
+        <!--输入提示-->
+        <attr name="es_hint" format="string" />
+        <!--输入框的高度-->
+        <attr name="es_height" format="dimension" />
+        <!--输入框的字体大小-->
+        <attr name="es_textSize" format="dimension" />
+        <!--输入框的字体颜色-->
+        <attr name="es_textColor" format="color" />
+        <!--箭头图标的margin-->
+        <attr name="es_arrowMargin" format="dimension" />
+        <!--箭头图标的资源-->
+        <attr name="es_arrowImage" format="reference" />
+        <!--输入框的背景-->
+        <attr name="es_background" format="reference" />
+        <attr name="es_maxLine" format="integer" />
+        <!--默认可选性内容-->
+        <attr name="es_entries" format="reference" />
+        <!--下拉框 下拉条目的背景-->
+        <attr name="es_dropdown_bg" format="reference" />
+        <!--输入下拉框是否可编辑, 默认true-->
+        <attr name="es_enable" format="boolean" />
+        <!--输入下拉框可输入的最大字符长度-->
+        <attr name="es_maxLength" format="integer" />
+        <!--输入下拉框可输入的最大字符宽度-->
+        <attr name="es_maxEms" format="integer" />
+        <!--输入下拉框在输入时是否显示筛选到的信息，默认true-->
+        <attr name="es_isShowFilterData" format="boolean" />
+        <!--输入下拉框显示筛选信息时，是否显示key为醒目的颜色，默认false-->
+        <attr name="es_isFilterKey" format="boolean" />
+
+    </declare-styleable>
+
     <!--===============================TextView======================================-->
-
-
     <!-- MarqueeView -->
     <declare-styleable name="MarqueeView">
         <!--翻页的间隔-->
@@ -408,6 +470,122 @@
         <attr name="etv_collapseDrawable" format="reference" />
     </declare-styleable>
 
+    <!--=============================EditText========================================-->
+    <!-- MaterialEditText -->
+    <declare-styleable name="MaterialEditText">
+        <!-- 线和文字的基础颜色，默认是black -->
+        <attr name="met_baseColor" format="color" />
+        <!-- 高亮样式的颜色 -->
+        <attr name="met_primaryColor" format="color" />
+        <!-- 悬浮提示文字的样式（默认是none）-->
+        <attr name="met_floatingLabel">
+            <enum name="none" value="0" />
+            <enum name="normal" value="1" />
+            <enum name="highlight" value="2" />
+        </attr>
+        <!-- 出现错误时文字的颜色 -->
+        <attr name="met_errorColor" format="color" />
+        <!-- 最少文字的限制（0代表无限）-->
+        <attr name="met_minCharacters" format="integer" />
+        <!-- 最多文字的限制（0代表无限） -->
+        <attr name="met_maxCharacters" format="integer" />
+        <!-- 底部文字是否显示单行，显示不全的省略号 -->
+        <attr name="met_singleLineEllipsis" format="boolean" />
+        <!-- 底部文字最小的行数 -->
+        <attr name="met_minBottomTextLines" format="integer" />
+        <!-- 在底部的辅助文字 -->
+        <attr name="met_helperText" format="string" />
+        <!-- 辅助文字的颜色 -->
+        <attr name="met_helperTextColor" format="color" />
+        <!-- 强调文字的字体 -->
+        <attr name="met_accentTypeface" format="string" />
+        <!-- 输入框字体 -->
+        <attr name="met_typeface" format="string" />
+        <!-- 自定义悬浮提示文字 -->
+        <attr name="met_floatingLabelText" format="string" />
+        <!-- 输入框文字与悬浮提示文字的间距 -->
+        <attr name="met_floatingLabelPadding" format="dimension" />
+        <!-- 隐藏底线 -->
+        <attr name="met_hideUnderline" format="boolean" />
+        <!-- 输入框底线的颜色 -->
+        <attr name="met_underlineColor" format="color" />
+        <!-- 是否自动校验 -->
+        <attr name="met_autoValidate" format="boolean" />
+        <!-- 左侧图标资源 -->
+        <attr name="met_iconLeft" format="reference" />
+        <!-- 右侧图标资源 -->
+        <attr name="met_iconRight" format="reference" />
+        <!-- 图标与输入区域的距离（默认8dp） -->
+        <attr name="met_iconPadding" format="dimension" />
+        <!-- 是否使用清除按钮 -->
+        <attr name="met_clearButton" format="boolean" />
+        <!-- 悬浮提示文字的大小（默认12sp） -->
+        <attr name="met_floatingLabelTextSize" format="dimension" />
+        <!-- 悬浮提示文字的颜色 -->
+        <attr name="met_floatingLabelTextColor" format="color" />
+        <!-- 底部提示文字的大小（默认12sp）-->
+        <attr name="met_bottomTextSize" format="dimension" />
+        <!-- 悬浮提示一直显示（而不是通过动画显示／消失，默认false） -->
+        <attr name="met_floatingLabelAlwaysShown" format="boolean" />
+        <!-- 是否一直显示辅助性文字（错误提示），无论是否在焦点。（默认false） -->
+        <attr name="met_helperTextAlwaysShown" format="boolean" />
+        <!-- 是否使用动画显示悬浮提示（默认true） -->
+        <attr name="met_floatingLabelAnimating" format="boolean" />
+        <!-- 输入文字的颜色 -->
+        <attr name="met_textColor" format="color" />
+        <!-- 提示文字的颜色 -->
+        <attr name="met_textColorHint" format="color" />
+        <!-- 是否失去焦点后自动校验（默认false）-->
+        <attr name="met_validateOnFocusLost" format="boolean" />
+        <!-- 是否在文字显示的时候开始计算文字的数量（默认true）-->
+        <attr name="met_checkCharactersCountAtBeginning" format="boolean" />
+
+    </declare-styleable>
+
+    <!-- PasswordEditText -->
+    <declare-styleable name="PasswordEditText">
+        <!--显示密码的图标资源-->
+        <attr name="pet_iconShow" format="integer" />
+        <!--隐藏密码的图标资源-->
+        <attr name="pet_iconHide" format="integer" />
+        <!--是否触摸显示密码-->
+        <attr name="pet_hoverShowsPw" format="boolean" />
+        <!--是否使用系统默认字体-->
+        <attr name="pet_nonMonospaceFont" format="boolean" />
+        <!--图标是否设置透明度-->
+        <attr name="pet_enableIconAlpha" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ClearEditText">
+        <!--清除按钮的图片资源-->
+        <attr name="cet_clearIcon" format="reference" />
+        <!--清除按钮的图片尺寸-->
+        <attr name="cet_clearIconSize" format="dimension" />
+    </declare-styleable>
+
+    <!--ValidatorEditText-->
+    <declare-styleable name="ValidatorEditText">
+        <!--校验的正则表达式-->
+        <attr name="vet_regexp" format="string" />
+        <!--校验不通过的提示信息-->
+        <attr name="vet_errorMessage" format="string" />
+        <!--是否自动校验, 默认是true-->
+        <attr name="vet_autoValidate" format="boolean" />
+        <!--是否显示出错图标，默认true-->
+        <attr name="vet_show_errorIcon" format="boolean" />
+        <!--出错提示的图片资源-->
+        <attr name="vet_errorIcon" format="reference" />
+        <!--出错提示的图片尺寸-->
+        <attr name="vet_errorIconSize" format="dimension" />
+        <!--出错提示显示的位置-->
+        <attr name="vet_tipPosition" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="top" value="2" />
+            <enum name="bottom" value="3" />
+        </attr>
+
+    </declare-styleable>
 
     <!--=====================================================================-->
 

@@ -4,6 +4,10 @@
     <string name="style_default">默认样式</string>
     <string name="style_md_ios">Material Design &#038; iOS Style</string>
 
+    <string name="lab_please_select">请选择</string>
+    <string name="tip_number_only_error_message">数字必须大于0小于100!</string>
+    <string name="regexp_number_only">^[1-9]?\\d$</string>
+
     <!--ShadowButton-->
     <string name="t5">RippleShadowShadowButton\n
                 app:sb_ripple_color=\"#eeeeee\"\n
@@ -57,4 +61,24 @@
     <string name="tip_loading_message">正在加载数据...</string>
     <string name="tip_start">开始</string>
     <string name="tip_stop">停止</string>
+
+    <!--MaterialProgressBar-->
+    <string name="framework_implementation">Framework Implementation</string>
+    <string name="library_implementation">Library Implementation</string>
+    <string name="library_implementation_tinted">Library Implementation (Tinted)</string>
+    <string name="determinate_horizontal_progress">Determinate Horizontal ProgressBar</string>
+    <string name="indeterminate_horizontal_progress">Indeterminate Horizontal ProgressBar</string>
+    <string name="determinate_circular_progress">Determinate Circular ProgressBar</string>
+    <string name="indeterminate_circular_progress">Indeterminate Circular ProgressBar</string>
+    <string name="toolbar_progress">ProgressBar on Toolbar</string>
+    <string name="horizontal_progress_toolbar">Horizontal</string>
+    <string name="indeterminate_horizontal_progress_toolbar">Indeterminate Horizontal</string>
+    <string name="not_available"><i>(Not Available)</i></string>
+
+    <string name="determinate_circular_title">Determinate Circular Sample</string>
+    <string name="normal_progress">Normal Style</string>
+    <string name="normal_tinted_progress">Normal Style (Tinted)</string>
+    <string name="dynamic_progress">Dynamic Style</string>
+    <string name="dynamic_tinted_progress">Dynamic Style (Tinted)</string>
+
 </resources>

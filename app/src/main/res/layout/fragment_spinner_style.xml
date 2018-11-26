@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.XUIKeyboardScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/xui_include_titlebar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:text="系统Spinner[默认样式]：" />
+
+            <Spinner
+                android:id="@+id/spinner_system_fit_offset"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/ms_item_height_size"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                android:entries="@array/sort_mode_entry"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:text="系统Spinner[统一样式]：" />
+
+            <Spinner
+                android:id="@+id/spinner_system"
+                style="@style/SpinnerStyle"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:text="MaterialSpinner[默认样式]：" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                app:ms_entries="@array/sort_mode_entry" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:text="MaterialSpinner[统一样式]：" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                android:id="@+id/spinner"
+                style="@style/Material.SpinnerStyle"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                style="@style/Material.SpinnerStyle"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                android:enabled="false"
+                app:ms_entries="@array/sort_mode_entry" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:text="EditSpinner[统一样式]：" />
+
+            <com.xuexiang.xui.widget.spinner.editspinner.EditSpinner
+                android:id="@+id/editSpinner"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                app:es_enable="false"
+                app:es_entries="@array/sort_mode_entry"
+                app:es_hint="@string/lab_please_select"
+                app:es_maxLength="20" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                android:id="@+id/btn_dialog"
+                style="@style/SuperButton.Blue"
+                android:layout_margin="20dp"
+                android:text="弹窗" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                android:id="@+id/btn_enable"
+                style="@style/SuperButton.Blue"
+                android:layout_margin="20dp"
+                android:text="可编辑切换" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.xuexiang.xui.widget.XUIKeyboardScrollView>

@@ -109,4 +109,39 @@
         <item name="android:windowEnterAnimation">@anim/pop_grow_from_topright_to_bottomleft</item>
         <item name="android:windowExitAnimation">@anim/pop_shrink_from_bottomleft_to_topright</item>
     </style>
+
+    <!--EditSpinner-->
+    <style name="EditSpinner" parent="EditText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">?attr/ms_item_height_size</item>
+        <item name="android:textSize">?attr/xui_config_size_spinner_text</item>
+        <item name="android:textColor">@color/xui_config_color_edittext_textcolor</item>
+        <item name="android:background">@drawable/xui_config_bg_edittext</item>
+    </style>
+
+
+    <!--*********************************************
+    *                Spinner                        *
+    **********************************************-->
+    <style name="Material.SpinnerStyle" parent="@style/Widget.AppCompat.Spinner">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">?attr/ms_item_height_size</item>
+        <item name="android:textSize">?attr/xui_config_size_spinner_text</item>
+        <item name="android:textColor">@color/xui_config_color_edittext_textcolor</item>
+        <item name="ms_dropdown_height">wrap_content</item>
+        <item name="ms_text_color">@color/ms_dropdown_item_textcolor</item>
+        <item name="ms_background_selector">@drawable/xui_config_bg_edittext</item>
+        <item name="ms_dropdown_bg">@drawable/ms_drop_down_bg_radius</item>
+    </style>
+
+    <!--系统默认Spinner样式-->
+    <style name="SpinnerStyle" parent="@style/Widget.AppCompat.Spinner">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">?attr/ms_item_height_size</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:background">@drawable/xui_config_bg_spinner</item>
+        <item name="android:popupBackground">@drawable/ms_drop_down_bg_radius</item>
+        <item name="android:paddingRight">@dimen/default_spinner_icon_padding_size</item>
+    </style>
+    
 </resources>

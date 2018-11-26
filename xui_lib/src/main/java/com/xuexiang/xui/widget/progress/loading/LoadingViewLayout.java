@@ -32,6 +32,7 @@ import android.widget.TextView;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.widget.dialog.LoadingDialog;
 
 /**
  * 自定义加载布局
@@ -140,6 +141,20 @@ public class LoadingViewLayout extends LinearLayout implements IMessageLoader {
         }
         return this;
     }
+
+    /**
+     * 设置图标的缩小比例
+     *
+     * @param iconScale
+     * @return
+     */
+    public LoadingViewLayout setIconScale(float iconScale) {
+        if (mLoadingView != null) {
+            mLoadingView.setIconScale(iconScale);
+        }
+        return this;
+    }
+
 
     /**
      * 设置loading的图标
