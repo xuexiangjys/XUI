@@ -5,23 +5,32 @@
     <application
         android:name=".MyApp"
         android:allowBackup="true"
+        android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
-            android:windowSoftInputMode="adjustPan|stateHidden">
-
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/XUITheme.Launch.Demo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity android:name=".activity.UserGuideActivity" />
+
+
     </application>
 
 </manifest>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:top="@dimen/default_ms_dropdown_offset_phone">
+    <shape android:shape="rectangle">
+      <solid android:color="@android:color/white"/>
+      <corners
+          android:radius="@dimen/xui_config_size_edittext_radius_phone" />
+    </shape>
+  </item>
+</layer-list>

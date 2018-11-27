@@ -45,13 +45,6 @@
 
     <color name="md_edittext_error">@color/xui_config_color_red</color>
 
-    <!-- TabControlView -->
-    <color name="default_tcv_selected_color">@color/xui_config_color_main_theme</color>
-    <color name="default_tcv_unselected_color">#FFFFFF</color>
-
-    <!--SearchView-->
-    <color name="search_layover_bg">#50000000</color>
-
     <!--*********************************************
     *              Config Color                     *
     **********************************************-->

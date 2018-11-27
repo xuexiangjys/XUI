@@ -17,8 +17,11 @@
 
 package com.xuexiang.xui.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -34,6 +37,17 @@ import com.xuexiang.xui.widget.progress.loading.LoadingViewLayout;
  * @since 2018/11/26 下午2:54
  */
 public class WidgetUtils {
+
+    /**
+     * 让Activity全屏显示
+     *
+     * @param activity
+     */
+    public static void requestFullScreen(Activity activity) {
+        activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
 
     /**
      * Spinner统一风格

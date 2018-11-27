@@ -8,6 +8,7 @@ import android.view.View;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
@@ -25,7 +26,7 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2018/11/14 下午2:22
  */
-@Page(name = "组件")
+@Page(name = "组件", anim = CoreAnim.fade)
 public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdapter.OnItemClickListener{
 
     @BindView(R.id.recyclerView)

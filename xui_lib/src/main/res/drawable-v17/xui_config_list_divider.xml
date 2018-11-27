@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/xui_config_color_separator_dark_phone" />
+
+    <size
+        android:width="@dimen/xui_list_divider_height_phone"
+        android:height="@dimen/xui_list_divider_height_phone"/>
+
+    <padding android:left="@dimen/xui_config_content_spacing_horizontal_phone"
+        android:right="@dimen/xui_config_content_spacing_horizontal_phone"/>
+</shape>
