@@ -19,7 +19,7 @@ public class SimpleNoticeMF extends MarqueeFactory<TextView, String> {
 
     @Override
     public TextView generateMarqueeItemView(String data) {
-        TextView view = (TextView) inflater.inflate(R.layout.xui_layout_notice_item, null);
+        TextView view = (TextView) inflater.inflate(R.layout.marqueen_layout_notice_item, null);
         view.setText(data);
         return view;
     }

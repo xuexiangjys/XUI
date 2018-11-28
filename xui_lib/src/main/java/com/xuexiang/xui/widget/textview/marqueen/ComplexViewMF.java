@@ -22,7 +22,7 @@ public class ComplexViewMF extends MarqueeFactory<RelativeLayout, ComplexItemEnt
 
     @Override
     public RelativeLayout generateMarqueeItemView(ComplexItemEntity data) {
-        RelativeLayout view = (RelativeLayout) inflater.inflate(R.layout.xui_layout_complex_view, null);
+        RelativeLayout view = (RelativeLayout) inflater.inflate(R.layout.marqueen_layout_complex_view, null);
         ((TextView) view.findViewById(R.id.title)).setText(data.getTitle());
         ((TextView) view.findViewById(R.id.subTitle)).setText(data.getSubTitle());
         ((TextView) view.findViewById(R.id.time)).setText(data.getTime());
