@@ -2,6 +2,7 @@ package com.xuexiang.xuidemo.activity;
 
 import android.app.Activity;
 
+import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.widget.activity.BaseGuideActivity;
 import com.xuexiang.xuidemo.DemoDataProvider;
 

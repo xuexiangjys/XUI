@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/TextStyle.Content"
+        android:layout_margin="10dp"
+        android:text="ExpandableTextView：" />
+
+    <com.xuexiang.xui.widget.textview.ExpandableTextView
+        android:id="@+id/expand_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:etv_maxCollapsedLines="5">
+
+        <TextView
+            android:id="@id/expandable_text"
+            style="@style/TextStyle.Content"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:singleLine ="false"/>
+
+        <ImageButton
+            android:id="@id/expand_collapse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="?attr/xui_config_content_spacing_vertical"
+            android:layout_gravity="right|bottom"
+            android:background="@android:color/transparent"/>
+
+    </com.xuexiang.xui.widget.textview.ExpandableTextView>
+
+
+</LinearLayout>

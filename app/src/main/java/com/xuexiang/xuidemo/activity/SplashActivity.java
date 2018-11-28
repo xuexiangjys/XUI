@@ -2,11 +2,11 @@ package com.xuexiang.xuidemo.activity;
 
 import android.view.KeyEvent;
 
+import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.widget.activity.BaseSplashActivity;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xutil.app.ActivityUtils;
-import com.xuexiang.xutil.system.KeyboardUtils;
 
 /**
  * 渐近式启动页
@@ -50,4 +50,5 @@ public class SplashActivity extends BaseSplashActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         return KeyboardUtils.onDisableBackKeyDown(keyCode) && super.onKeyDown(keyCode, event);
     }
+
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/super_tv"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent"
+        app:sCenterBottomTextString="中下"
+        app:sCenterTextString="中"
+        app:sCenterTopTextString="中上"
+        app:sDividerLineType="both"
+        app:sLeftBottomTextString="左下"
+        app:sLeftTextString="左中文字"
+        app:sLeftTopTextString="左上"
+        app:sRightBottomTextString="右下"
+        app:sRightTextString="右中"
+        app:sRightTopTextString="右上" />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/super_cb_tv"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:sCenterViewGravity="left_center"
+        app:sDividerLineType="both"
+        app:sLeftBottomTextString="招商银行（8888）"
+        app:sLeftIconRes="@drawable/icon_bank_cmb"
+        app:sLeftTopTextString="银行卡支付"
+        app:sLeftViewGravity="left_center"
+        app:sRightCheckBoxRes="@drawable/bg_circular_check"
+        app:sRightViewType="checkbox" />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/super_switch_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:sDividerLineType="both"
+        app:sLeftTextString="声音"
+        app:sRightViewType="switchBtn"
+        app:sSwitchIsChecked="true"
+        app:sThumbResource="@drawable/thumb"
+        app:sTrackResource="@drawable/track" />
+</LinearLayout>

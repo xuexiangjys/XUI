@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="5dp"
+                    android:text="圆角边框"
+                    app:sCornersRadius="5dp"
+                    app:sStrokeColor="@color/colorAccent"
+                    app:sStrokeWidth="0.2dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="圆角边框"
+                    app:sCornersRadius="5dp"
+                    app:sStrokeColor="@color/colorAccent"
+                    app:sStrokeWidth="0.2dp" />
+
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="5dp"
+                    android:text="圆角边框"
+                    android:textColor="@color/xui_config_color_white"
+                    app:sCornersRadius="5dp"
+                    app:sSolidColor="@color/colorAccent"
+                    app:sStrokeColor="@color/colorAccent"
+                    app:sStrokeWidth="0.2dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="圆角边框"
+                    android:textColor="@color/xui_config_color_white"
+                    app:sCornersRadius="5dp"
+                    app:sSolidColor="@color/colorAccent"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="1dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="上圆角"
+                    app:sCornersTopLeftRadius="20dp"
+                    app:sCornersTopRightRadius="20dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="0.1dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="下圆角"
+                    app:sCornersBottomLeftRadius="20dp"
+                    app:sCornersBottomRightRadius="20dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="0.1dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="斜对角圆角"
+                    app:sCornersBottomRightRadius="20dp"
+                    app:sCornersTopLeftRadius="20dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="0.1dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="斜对角圆角"
+                    app:sCornersBottomLeftRadius="20dp"
+                    app:sCornersTopRightRadius="20dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="0.1dp" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/super_btn1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="左上圆角"
+                    app:sCornersTopLeftRadius="20dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="0.1dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/super_btn2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@+id/super_btn1"
+                    android:text="右上圆角"
+                    app:sCornersTopRightRadius="20dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="0.1dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/super_btn3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/super_btn1"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="左下圆角"
+                    app:sCornersBottomLeftRadius="20dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="0.1dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:id="@+id/super_btn4"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/super_btn2"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@+id/super_btn3"
+                    android:text="右下圆角"
+                    app:sCornersBottomRightRadius="20dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeWidth="0.1dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="圆角"
+                    app:sCornersRadius="50dp"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeDashGap="5dp"
+                    app:sStrokeDashWidth="10dp"
+                    app:sStrokeWidth="0.5dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="圆角"
+                    android:textColor="@color/xui_config_color_white"
+                    app:sCornersRadius="50dp"
+                    app:sSolidColor="@color/colorAccent"
+                    app:sStrokeColor="@color/colorPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:text="椭圆"
+                    app:sShapeType="oval"
+                    app:sStrokeColor="@color/colorPrimary"
+                    app:sStrokeDashGap="5dp"
+                    app:sStrokeDashWidth="10dp"
+                    app:sStrokeWidth="0.5dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:text="椭圆"
+                    android:textColor="@color/xui_config_color_white"
+                    app:sShapeType="oval"
+                    app:sSolidColor="@color/colorAccent"
+                    app:sStrokeColor="@color/colorPrimary" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="圆形"
+                    app:sShapeType="oval"
+                    app:sSolidColor="@color/colorAccent" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="圆形"
+                    app:sShapeType="oval"
+                    app:sStrokeColor="@color/colorAccent"
+                    app:sStrokeDashGap="5dp"
+                    app:sStrokeDashWidth="10dp"
+                    app:sStrokeWidth="0.5dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="圆形"
+                    app:sShapeType="oval"
+                    app:sStrokeColor="@color/colorAccent"
+                    app:sStrokeWidth="0.5dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:text="圆形"
+                    app:sShapeType="oval"
+                    app:sStrokeColor="@color/colorAccent"
+                    app:sStrokeWidth="3dp" />
+            </LinearLayout>
+
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                app:sShapeType="line"
+                app:sStrokeColor="@color/colorPrimary"
+                app:sStrokeWidth="0.5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:sGradientEndColor="@color/colorPrimary"
+                    app:sGradientOrientation="TOP_BOTTOM"
+                    app:sGradientStartColor="@color/colorAccent" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:sGradientEndColor="@color/colorPrimary"
+                    app:sGradientOrientation="BOTTOM_TOP"
+                    app:sGradientStartColor="@color/colorAccent" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:sGradientEndColor="@color/colorPrimary"
+                    app:sGradientOrientation="RIGHT_LEFT"
+                    app:sGradientStartColor="@color/colorAccent" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:sGradientEndColor="@color/colorPrimary"
+                    app:sGradientOrientation="LEFT_RIGHT"
+                    app:sGradientStartColor="@color/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="触摸反馈"
+                    android:textColor="@color/xui_config_color_white"
+                    app:sCornersRadius="5dp"
+                    app:sSelectorNormalColor="@color/colorAccent"
+                    app:sSelectorPressedColor="@color/gray_btn"
+                    app:sUseSelector="true" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:enabled="false"
+                    android:text="不可点击颜色"
+                    android:textColor="@color/xui_config_color_white"
+                    app:sCornersRadius="5dp"
+                    app:sSelectorDisableColor="@color/gray_btn"
+                    app:sSelectorNormalColor="@color/colorAccent"
+                    app:sSelectorPressedColor="@color/colorPrimary"
+                    app:sUseSelector="true" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

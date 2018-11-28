@@ -22,6 +22,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -163,6 +164,31 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
     }
 
     /**
+     * 禁用物理返回键
+     * <p>
+     * 使用方法：
+     * <p>需重写 onKeyDown</p>
+     * @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+     *   return KeyboardUtils.onDisableBackKeyDown(keyCode) && super.onKeyDown(keyCode, event) ;
+     * }
+     * @param keyCode
+     * @return
+     *
+     */
+    public static boolean onDisableBackKeyDown(int keyCode) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                return false;
+            case KeyEvent.KEYCODE_HOME:
+                return false;
+            default:
+                break;
+        }
+        return true;
+    }
+
+
+    /**
      * 点击屏幕空白区域隐藏软键盘
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
      * <p>需重写 dispatchTouchEvent</p>
@@ -289,15 +315,17 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
             return;
         }
         InputMethodManager imm =
-                (InputMethodManager) XUI.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) {
             return;
         }
         String[] strArr = new String[]{"mCurRootView", "mServedView", "mNextServedView"};
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < strArr.length; i++) {
             try {
                 Field declaredField = imm.getClass().getDeclaredField(strArr[i]);
-                if (declaredField == null) continue;
+                if (declaredField == null) {
+                    continue;
+                }
                 if (!declaredField.isAccessible()) {
                     declaredField.setAccessible(true);
                 }
@@ -316,4 +344,5 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
             }
         }
     }
+
 }

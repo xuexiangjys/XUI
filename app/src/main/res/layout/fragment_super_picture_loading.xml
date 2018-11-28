@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingPrefix">
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:sLeftBottomTextString="188****8888"
+                app:sLeftIconRes="@drawable/icon_head_default"
+                app:sLeftTopTextString="张三"
+                app:sLeftViewGravity="left_center"
+                app:sRightTextString="已实名" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:sLeftBottomTextString="188****8888"
+                app:sLeftIconRes="@drawable/icon_head_default"
+                app:sLeftTopTextString="张三" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:sLeftTopTextString="迪丽热巴"
+                app:sLeftViewGravity="left_center"
+                app:sRightIconRes="@drawable/icon_arrow_right_red"
+                app:sRightTvDrawableRight="@drawable/icon_head_default" />
+
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:sCenterTextString="下边展示使用网络图片的情况" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:id="@+id/super_tv1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:sLeftBottomTextString="188****8888"
+                app:sLeftIconRes="@drawable/icon_head_default"
+                app:sLeftTopTextString="张三"
+                app:sLeftViewGravity="left_center"
+                app:sRightTextString="已实名" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:id="@+id/super_tv2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:sRightBottomTextString="188****8888"
+                app:sRightIconHeight="60dp"
+                app:sRightIconRes="@drawable/icon_head_default"
+                app:sRightIconWidth="60dp"
+                app:sRightTopTextString="张三"
+                app:sRightViewGravity="right_center" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:id="@+id/super_tv3"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:sLeftMaxEms="30"
+                app:sLeftTextString="自定义sRightTvDrawableRight的宽高"
+                app:sLeftViewGravity="left_center"
+                app:sRightIconRes="@drawable/icon_arrow_right_red"
+                app:sRightTvDrawableHeight="40dp"
+                app:sRightTvDrawableRight="@drawable/icon_head_default"
+                app:sRightTvDrawableWidth="40dp" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:sCenterTextString="支付宝"
+                app:sCenterTvDrawableHeight="20dp"
+                app:sCenterTvDrawableLeft="@drawable/icon_love"
+                app:sCenterTvDrawableRight="@drawable/icon_love"
+                app:sCenterTvDrawableWidth="20dp"
+                app:sLeftTextString="支付宝"
+                app:sLeftTvDrawableHeight="10dp"
+                app:sLeftTvDrawableLeft="@drawable/icon_love"
+                app:sLeftTvDrawableRight="@drawable/icon_love"
+                app:sLeftTvDrawableWidth="10dp"
+                app:sRightTextString="支付宝"
+                app:sRightTvDrawableHeight="30dp"
+                app:sRightTvDrawableLeft="@drawable/icon_love"
+                app:sRightTvDrawableRight="@drawable/icon_love"
+                app:sRightTvDrawableWidth="30dp"
+                app:sTextViewDrawablePadding="3dp" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

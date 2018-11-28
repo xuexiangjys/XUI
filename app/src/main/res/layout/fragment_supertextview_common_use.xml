@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                stv:sDividerLineType="both"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                stv:sLeftIconRes="@drawable/icon_head_default"
+                stv:sLeftTextString="帐号管理"
+                stv:sRightIconRes="@drawable/icon_arrow_right_red" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sLeftTextString="通知设置"
+                stv:sRightIconRes="@drawable/icon_arrow_right_red" />
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                stv:sLeftTextString="账号与安全"
+                stv:sRightTextString="已保护"
+                stv:sRightIconRes="@drawable/icon_arrow_right_red"
+                stv:sRightTvDrawableLeft="@drawable/icon_crown"
+                android:layout_height="50dp" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sDividerLineType="bottom"
+                stv:sLeftTextString="设置中心"
+                stv:sRightIconRes="@drawable/icon_arrow_right_red" />
+
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"
+                stv:sDividerLineType="both"
+                stv:sLeftTextString="意见反馈"
+                stv:sRightIconRes="@drawable/icon_arrow_right_red" />
+
+            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                stv:sDividerLineType="both"
+                stv:sLeftTextString="关于微博"
+                stv:sRightIconRes="@drawable/icon_arrow_right_red" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
