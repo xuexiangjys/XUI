@@ -8,6 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--GuideCaseView-->
+    <style name="MyTitleStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#00ff00</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
     <style name="SwitchButtonStyle">
         <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>

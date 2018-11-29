@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                android:id="@+id/btn_nofocus"
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="无焦点显示" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                android:id="@+id/btn_rounded_rect"
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="圆角矩形聚焦框" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                android:id="@+id/btn_large_circle"
+                style="@style/RoundButton.Auto"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="大圆聚焦" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                android:id="@+id/btn_rect_position"
+                style="@style/RoundButton.Auto"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="坐标聚焦" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                android:id="@+id/btn_background_color"
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="自定义背景颜色" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                android:id="@+id/btn_no_anim"
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="无聚焦动画" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                android:id="@+id/btn_custom_anim"
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="自定义进入和退出动画" />
+
+            <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                android:id="@+id/btn_custom_view"
+                style="@style/RoundButton.Auto"
+                android:layout_marginTop="20dp"
+                android:text="自定义布局" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

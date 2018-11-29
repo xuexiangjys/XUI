@@ -16,13 +16,15 @@ import com.xuexiang.xutil.app.ActivityUtils;
  */
 public class SplashActivity extends BaseSplashActivity {
 
-    public final static String KEY_IS_DISPLAY = "is_display";
+    public final static String KEY_IS_DISPLAY = "key_is_display";
+    public final static String KEY_ENABLE_ALPHA_ANIM = "key_enable_alpha_anim";
 
     private boolean isDisplay = false;
 
     @Override
     public void onCreateActivity() {
         isDisplay = getIntent().getBooleanExtra(KEY_IS_DISPLAY, isDisplay);
+        boolean enableAlphaAnim = getIntent().getBooleanExtra(KEY_ENABLE_ALPHA_ANIM, false);
         SettingSPUtils spUtil = SettingSPUtils.getInstance();
         if (spUtil.isFirstOpen()) {
             spUtil.setIsFirstOpen(false);
@@ -30,8 +32,12 @@ public class SplashActivity extends BaseSplashActivity {
             finish();
 
         }  else {
-            initSplashView(R.drawable.xui_config_bg_splash);
-            startSplash(false);
+            if (enableAlphaAnim) {
+                initSplashView(R.drawable.bg_splash);
+            } else {
+                initSplashView(R.drawable.xui_config_bg_splash);
+            }
+            startSplash(enableAlphaAnim);
         }
     }
 
