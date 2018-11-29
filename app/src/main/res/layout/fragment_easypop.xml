@@ -21,28 +21,28 @@
 
                 <Button
                     android:id="@+id/btn_circle_comment_left"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="left" />
 
                 <Button
                     android:id="@+id/btn_circle_comment_right"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="right" />
 
                 <Button
                     android:id="@+id/btn_circle_comment_top"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="top" />
 
                 <Button
                     android:id="@+id/btn_circle_comment_bottom"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="bottom" />
@@ -59,7 +59,7 @@
 
                 <Button
                     android:id="@+id/btn_circle_comment"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:text="朋友圈评论" />
 
             </LinearLayout>

@@ -16,7 +16,7 @@
         <item name="android:background">@drawable/xui_config_bg_blue_btn</item>
     </style>
 
-    <style name="Button.RadiusButton" parent="@style/Button">
+    <style name="Button.Radius" parent="@style/Button">
         <item name="android:layout_height">?attr/xui_btn_view_height</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>

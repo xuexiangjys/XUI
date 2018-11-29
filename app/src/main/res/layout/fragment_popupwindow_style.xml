@@ -20,21 +20,21 @@
 
                 <Button
                     android:id="@+id/btn_commonlist_popup"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="普通选择框" />
 
                 <Button
                     android:id="@+id/btn_expandable_popup"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="可伸缩弹窗" />
 
                 <Button
                     android:id="@+id/btn_menu_popup"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="弹出菜单" />

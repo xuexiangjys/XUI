@@ -70,7 +70,7 @@ public class PopWindow extends PopupWindow {
 		setFocusable(true);
 		setOutsideTouchable(true);
 		// 必须设置，否则获得焦点后页面上其他地方点击无响应
-		setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bg_center_popwindow));
+		setBackgroundDrawable(context.getResources().getDrawable(R.drawable.xui_bg_center_popwindow));
 		measurePopWindowSize();
 
 	}

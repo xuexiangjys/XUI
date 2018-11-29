@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--对外开放的资源-->
+    <!--string-->
+    <public name="default_app_font_path" type="string" />
+    <public name="xui_tip_input_error" type="string" />
+    <public name="xui_tip_error_message" type="string" />
+    <public name="xui_tip_empty_message" type="string" />
+    <public name="xui_tip_no_network" type="string" />
+    <public name="xui_tip_retry" type="string" />
+
+
+    <!--dimen-->
+    <public name="xui_list_divider_height_table" type="dimen" />
+    <public name="xui_list_divider_height_phone" type="dimen" />
+    <public name="xui_config_content_spacing_horizontal_tablet_big" type="dimen" />
+    <public name="xui_config_content_spacing_horizontal_tablet_small" type="dimen" />
+    <public name="xui_config_content_spacing_horizontal_phone" type="dimen" />
+    <public name="xui_config_content_spacing_vertical_tablet_big" type="dimen" />
+    <public name="xui_config_content_spacing_vertical_tablet_small" type="dimen" />
+    <public name="xui_config_content_spacing_vertical_phone" type="dimen" />
+    <public name="xui_config_size_title_text_tablet_big" type="dimen" />
+    <public name="xui_config_size_content_text_tablet_big" type="dimen" />
+    <public name="xui_config_size_explain_text_tablet_big" type="dimen" />
+    <public name="xui_config_size_title_text_tablet_small" type="dimen" />
+    <public name="xui_config_size_content_text_tablet_small" type="dimen" />
+    <public name="xui_config_size_explain_text_tablet_small" type="dimen" />
+    <public name="xui_config_size_title_text_phone" type="dimen" />
+    <public name="xui_config_size_content_text_phone" type="dimen" />
+    <public name="xui_config_size_explain_text_phone" type="dimen" />
+
+
+    <!--color-->
+    <public name="xui_config_color_main_theme" type="color" />
+    <public name="xui_config_color_titlebar" type="color" />
+    <public name="xui_btn_blue_normal_color" type="color" />
+    <public name="xui_btn_blue_select_color" type="color" />
+    <public name="xui_btn_green_normal_color" type="color" />
+    <public name="xui_btn_green_select_color" type="color" />
+    <public name="xui_btn_gray_normal_color" type="color" />
+    <public name="xui_btn_gray_select_color" type="color" />
+    <public name="xui_btn_disable_color" type="color" />
+
+    <public name="xui_config_color_transparent" type="color" />
+    <public name="xui_config_color_white" type="color" />
+    <public name="xui_config_color_75_white" type="color" />
+    <public name="xui_config_color_50_white" type="color" />
+    <public name="xui_config_color_25_white" type="color" />
+    <public name="xui_config_color_15_white" type="color" />
+    <public name="xui_config_color_10_white" type="color" />
+
+    <public name="xui_config_color_pure_black" type="color" />
+    <public name="xui_config_color_75_pure_black" type="color" />
+    <public name="xui_config_color_60_pure_black" type="color" />
+    <public name="xui_config_color_50_pure_black" type="color" />
+    <public name="xui_config_color_25_pure_black" type="color" />
+    <public name="xui_config_color_15_pure_black" type="color" />
+    <public name="xui_config_color_10_pure_black" type="color" />
+
+    <public name="xui_config_color_blue" type="color" />
+    <public name="xui_config_color_50_blue" type="color" />
+    <public name="xui_config_color_red" type="color" />
+    <public name="xui_config_color_black" type="color" />
+    <public name="xui_config_color_link" type="color" />
+    <public name="xui_config_color_pressed" type="color" />
+
+    <public name="xui_config_color_dark_blue_gray" type="color" />
+    <public name="xui_config_color_middle_blue_gray" type="color" />
+    <public name="xui_config_color_light_blue_gray" type="color" />
+    <public name="xui_config_color_light_blue" type="color" />
+
+    <public name="xui_config_color_title_content_text" type="color" />
+    <public name="xui_config_color_sub_title_common_explain_text" type="color" />
+    <public name="xui_config_color_assist_explain_text" type="color" />
+    <public name="xui_config_color_major_prompt_message_text" type="color" />
+
+    <public name="xui_config_color_background_tablet" type="color" />
+    <public name="xui_config_color_background_phone" type="color" />
+    <!-- 小的分割块使用浅色的分割线-->
+    <public name="xui_config_color_separator_light_tablet" type="color" />
+    <public name="xui_config_color_separator_light_phone" type="color" />
+    <!-- 大的分割块使用深色的分割线[像listview、gridview之类]-->
+    <public name="xui_config_color_separator_dark_tablet" type="color" />
+    <public name="xui_config_color_separator_dark_phone" type="color" />
+    <!--条目点击后的背景颜色-->
+    <public name="xui_config_color_background_pressed" type="color" />
+    <!--EditText-->
+    <public name="xui_config_color_edittext_error_text" type="color" />
+    <!--输入文字的颜色-->
+    <public name="xui_config_color_edittext_input_text" type="color" />
+    <!--提示文字的颜色-->
+    <public name="xui_config_color_edittext_hint_text" type="color" />
+    <!--边框颜色-->
+    <public name="xui_config_color_edittext_stroke" type="color" />
+    <!--不可输入的填充颜色-->
+    <public name="xui_config_color_edittext_disable" type="color" />
+    <public name="xui_transparent" type="color" />
+
+    <!--style-->
+    <public name="EditSpinner" type="style" />
+    <public name="TextStyle" type="style" />
+    <public name="TextStyle.Title" type="style" />
+    <public name="TextStyle.Content" type="style" />
+    <public name="TextStyle.Explain" type="style" />
+    <public name="Button.Style" type="style" />
+    <public name="Button.Blue" type="style" />
+    <public name="Button.Radius" type="style" />
+    <public name="ButtonStyle" type="style" />
+    <public name="ButtonView" type="style" />
+    <public name="ButtonView.Green" type="style" />
+    <public name="ButtonView.Blue" type="style" />
+    <public name="ButtonView.Gray" type="style" />
+    <public name="SuperButton" type="style" />
+    <public name="SuperButton.Icon" type="style" />
+    <public name="SuperButton.Green" type="style" />
+    <public name="SuperButton.Green.Icon" type="style" />
+    <public name="SuperButton.Blue" type="style" />
+    <public name="SuperButton.Blue.Icon" type="style" />
+    <public name="SuperButton.Gray" type="style" />
+    <public name="SuperButton.Gray.Icon" type="style" />
+    <public name="RoundButton" type="style" />
+    <public name="RoundButton.Auto" type="style" />
+    <public name="RoundButton.Green" type="style" />
+    <public name="RoundButton.Blue" type="style" />
+    <public name="RoundButton.Gray" type="style" />
+    <public name="EditText.Material" type="style" />
+    <public name="EditText.Normal" type="style" />
+    <public name="NormalLinearLayoutContainer" type="style" />
+    <public name="Material.SpinnerStyle" type="style" />
+    <public name="SpinnerStyle" type="style" />
+
+    <public name="AppBaseTheme" type="style" />
+    <public name="AppRootTheme" type="style" />
+    <public name="AppConfigTheme" type="style" />
+    <public name="XUITheme.Launch" type="style" />
+    <public name="XUITheme.Tablet" type="style" />
+    <public name="XUITheme.Tablet.Big" type="style" />
+    <public name="XUITheme.Tablet.Small" type="style" />
+    <public name="XUITheme.Phone" type="style" />
+    <public name="XUIDialog" type="style" />
+    <public name="XUIDialog.Custom" type="style" />
+
+
+    <!--layout-->
+    <public name="xui_include_titlebar" type="layout" />
+    <public name="msv_empty_view" type="layout" />
+    <public name="msv_error_view" type="layout" />
+    <public name="msv_loading_view" type="layout" />
+    <public name="msv_no_network_view" type="layout" />
+
+
+    <!--attr-->
+    <public name="xui_config_content_spacing_horizontal" type="attr" />
+    <public name="xui_config_content_spacing_vertical" type="attr" />
+    <public name="xui_config_simple_list_item_height" type="attr" />
+    <public name="xui_config_simple_list_icon_size" type="attr" />
+    <public name="xui_config_separator_height" type="attr" />
+    <public name="xui_config_divider_height" type="attr" />
+
+    <public name="xui_actionbar_color" type="attr" />
+    <public name="xui_actionbar_height" type="attr" />
+    <public name="xui_actionbar_title_text_size" type="attr" />
+    <public name="xui_actionbar_action_text_size" type="attr" />
+    <public name="xui_actionbar_sub_text_size" type="attr" />
+    <public name="xui_actionbar_action_padding" type="attr" />
+    <public name="xui_actionbar_sidetext_padding" type="attr" />
+
+    <public name="xui_btn_view_radius" type="attr" />
+    <public name="xui_btn_view_width" type="attr" />
+    <public name="xui_btn_view_height" type="attr" />
+    <public name="xui_btn_view_text_size" type="attr" />
+    <public name="xui_btn_view_border_width" type="attr" />
+
+    <public name="xui_config_size_title_text" type="attr" />
+    <public name="xui_config_size_content_text" type="attr" />
+    <public name="xui_config_size_explain_text" type="attr" />
+
+    <public name="xui_config_size_edittext_input_text" type="attr" />
+    <public name="xui_config_size_edittext_helper_text" type="attr" />
+    <public name="xui_config_size_edittext_components_spacing" type="attr" />
+    <public name="xui_config_size_edittext_left_padding" type="attr" />
+    <public name="xui_config_size_edittext_radius" type="attr" />
+    <public name="xui_config_size_edittext_height" type="attr" />
+
+    <public name="xui_popup_bg" type="attr" />
+    <public name="xui_popup_width" type="attr" />
+    <public name="xui_tip_popup_padding_top" type="attr" />
+    <public name="xui_tip_popup_padding_left" type="attr" />
+
+    <public name="stf_progressbar_size" type="attr" />
+    <public name="stf_tip_img_size" type="attr" />
+
+    <public name="xui_config_size_spinner_text" type="attr" />
+    <public name="xui_dialog_radius_size" type="attr" />
+    <public name="xui_dialog_loading_padding_size" type="attr" />
+    <public name="xui_dialog_loading_min_size" type="attr" />
+
+    <public name="xui_config_color_background" type="attr" />
+    <public name="xui_config_color_separator_light" type="attr" />
+    <public name="xui_config_color_separator_dark" type="attr" />
+
+
+    <!--drawable-->
+    <public name="rb_bg_selector" type="drawable" />
+    <public name="ms_drop_down_bg_radius" type="drawable" />
+    <public name="xui_config_bg_blue_btn" type="drawable" />
+    <public name="xui_config_bg_dialog_radius_white" type="drawable" />
+    <public name="xui_config_bg_edittext" type="drawable" />
+    <public name="xui_config_bg_spinner" type="drawable" />
+    <public name="xui_config_bg_splash" type="drawable" />
+    <public name="xui_config_border_separator_light" type="drawable" />
+    <public name="xui_config_list_item_selector" type="drawable" />
+    <public name="xui_config_list_divider" type="drawable" />
+    <public name="xui_config_popup_divider" type="drawable" />
+    <public name="xui_config_preview_window" type="drawable" />
+    <public name="xui_config_selectable_item_selector" type="drawable" />
+
+    <public name="xui_bg_center_popwindow" type="drawable" />
+    <public name="xui_popup_bg" type="drawable" />
+
+    <public name="ic_return_back" type="drawable" />
+    <public name="ic_default_tip_btn" type="drawable" />
+    <public name="ic_default_clear_btn" type="drawable" />
+    <public name="ic_arrow_down_black" type="drawable" />
+    <public name="ic_arrow_up_black" type="drawable" />
+
+
+</resources>

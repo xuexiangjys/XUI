@@ -21,7 +21,7 @@
 
                 <Button
                     android:id="@+id/btn_common_popup"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:text="显示普通浮层" />
 
             </LinearLayout>
@@ -34,7 +34,7 @@
 
                 <Button
                     android:id="@+id/btn_list_popup"
-                    style="@style/Button.RadiusButton"
+                    style="@style/Button.Radius"
                     android:text="显示列表浮层" />
 
             </LinearLayout>

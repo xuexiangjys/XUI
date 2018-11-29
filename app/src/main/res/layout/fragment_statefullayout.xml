@@ -13,43 +13,43 @@
 
         <Button
             android:id="@+id/btn_content"
-            style="@style/Button.RadiusButton"
+            style="@style/Button.Radius"
             android:layout_margin="?attr/xui_config_content_spacing_vertical"
             android:text="content" />
 
         <Button
             android:id="@+id/btn_loading"
-            style="@style/Button.RadiusButton"
+            style="@style/Button.Radius"
             android:layout_margin="?attr/xui_config_content_spacing_vertical"
             android:text="loading" />
 
         <Button
             android:id="@+id/btn_empty"
-            style="@style/Button.RadiusButton"
+            style="@style/Button.Radius"
             android:layout_margin="?attr/xui_config_content_spacing_vertical"
             android:text="empty" />
 
         <Button
             android:id="@+id/btn_error"
-            style="@style/Button.RadiusButton"
+            style="@style/Button.Radius"
             android:layout_margin="?attr/xui_config_content_spacing_vertical"
             android:text="error" />
 
         <Button
             android:id="@+id/btn_offline"
-            style="@style/Button.RadiusButton"
+            style="@style/Button.Radius"
             android:layout_margin="?attr/xui_config_content_spacing_vertical"
             android:text="offline" />
 
         <Button
             android:id="@+id/btn_locationOff"
-            style="@style/Button.RadiusButton"
+            style="@style/Button.Radius"
             android:layout_margin="?attr/xui_config_content_spacing_vertical"
             android:text="locationOff" />
 
         <Button
             android:id="@+id/btn_custom"
-            style="@style/Button.RadiusButton"
+            style="@style/Button.Radius"
             android:layout_margin="?attr/xui_config_content_spacing_vertical"
             android:text="custom" />
 
