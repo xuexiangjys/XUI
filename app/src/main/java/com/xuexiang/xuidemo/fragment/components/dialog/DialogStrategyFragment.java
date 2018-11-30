@@ -17,7 +17,6 @@
 
 package com.xuexiang.xuidemo.fragment.components.dialog;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.text.InputType;

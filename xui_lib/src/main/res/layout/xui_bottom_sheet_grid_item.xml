@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.dialog.bottomsheet.XUIBottomSheetItemView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                         android:layout_width="?attr/xui_bottom_sheet_grid_item_mini_width"
+                                                         android:layout_height="wrap_content"
+                                                         android:gravity="center_horizontal"
+                                                         android:orientation="vertical"
+                                                         android:paddingTop="?attr/xui_bottom_sheet_grid_item_paddingTop"
+                                                         android:paddingBottom="?attr/xui_bottom_sheet_grid_item_paddingBottom">
+    <RelativeLayout
+        android:layout_width="?attr/xui_bottom_sheet_grid_item_icon_size"
+        android:layout_height="?attr/xui_bottom_sheet_grid_item_icon_size"
+        android:layout_marginTop="?attr/xui_bottom_sheet_grid_item_icon_marginTop"
+        android:layout_marginBottom="?attr/xui_bottom_sheet_grid_item_icon_marginBottom" >
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/grid_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"/>
+        <ViewStub
+            android:id="@+id/grid_item_subscript"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout="@layout/xui_bottom_sheet_grid_item_subscript"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/grid_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:maxLines="2"
+        android:textAppearance="?attr/xui_bottom_sheet_grid_item_text_appearance"/>
+</com.xuexiang.xui.widget.dialog.bottomsheet.XUIBottomSheetItemView>

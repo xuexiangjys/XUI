@@ -152,5 +152,12 @@
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textAppearance">@style/TextAppearance.FontPath</item>
     </style>
+
+    <!-- 提示更新小圆点 -->
+    <style name="XUITipPoint">
+        <item name="android:layout_width">@dimen/xui_tips_point_size</item>
+        <item name="android:layout_height">@dimen/xui_tips_point_size</item>
+        <item name="android:background">@drawable/xui_tips_point</item>
+    </style>
     
 </resources>

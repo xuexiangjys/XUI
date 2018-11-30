@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/xui_bottom_sheet_title_height"
+        android:background="?attr/xui_bottom_sheet_title_bg"
+        android:ellipsize="middle"
+        android:gravity="center_vertical"
+        android:paddingLeft="?attr/xui_bottom_sheet_list_item_padding_horizontal"
+        android:paddingRight="?attr/xui_bottom_sheet_list_item_padding_horizontal"
+        android:singleLine="true"
+        android:textAppearance="?attr/xui_bottom_sheet_title_appearance"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/xui_config_color_white"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+</LinearLayout>

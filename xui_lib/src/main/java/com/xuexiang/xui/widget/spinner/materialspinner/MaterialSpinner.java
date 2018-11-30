@@ -532,7 +532,7 @@ public class MaterialSpinner extends AppCompatTextView {
         anchorView.getLocationOnScreen(anchorLoc);
         final int anchorHeight = anchorView.getHeight();
         // 获取屏幕的高宽
-        final int screenHeight = Utils.getScreenHeight();
+        final int screenHeight = Utils.getScreenHeight(getContext());
         // 计算listvi的高宽
         final int windowHeight = Utils.getListViewHeightBasedOnChildren(listView);
         // 判断需要向上弹出还是向下弹出显示

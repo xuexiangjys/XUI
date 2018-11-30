@@ -75,6 +75,16 @@
     <color name="xui_config_color_15_pure_black">#26000000</color>
     <color name="xui_config_color_10_pure_black">#19000000</color>
 
+    <color name="xui_config_color_gray_1">#353C46</color>
+    <color name="xui_config_color_gray_2">#49505A</color>
+    <color name="xui_config_color_gray_3">#5D646E</color>
+    <color name="xui_config_color_gray_4">#717882</color>
+    <color name="xui_config_color_gray_5">#858C96</color>
+    <color name="xui_config_color_gray_6">#99A0AA</color>
+    <color name="xui_config_color_gray_7">#ADB4BE</color>
+    <color name="xui_config_color_gray_8">#C4C8D0</color>
+    <color name="xui_config_color_gray_9">#D8DCE4</color>
+
     <color name="xui_config_color_blue">#1B88EE</color>
     <color name="xui_config_color_50_blue">#801B88EE</color>
     <color name="xui_config_color_red">#F15C58</color>

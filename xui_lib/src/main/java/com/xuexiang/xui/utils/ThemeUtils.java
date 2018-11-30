@@ -68,6 +68,12 @@ public class ThemeUtils {
         }
     }
 
+    public static float getAttrFloatValue(Context context, int attrRes){
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(attrRes, typedValue, true);
+        return typedValue.getFloat();
+    }
+
     public static float getFloatFromAttrRes(int attrRes, float defaultValue, Context context) {
         TypedArray a = context.obtainStyledAttributes(new int[]{attrRes});
         try {

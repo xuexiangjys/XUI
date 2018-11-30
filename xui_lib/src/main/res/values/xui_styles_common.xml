@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--**********************************************
+   *             xui drawable                      *
+   **********************************************-->
+    <attr name="xui_icon_check_mark" format="reference"/>
+    <attr name="xui_icon_checkbox" format="reference"/>
 
     <!--*********************************************
    *                CommonButtonStyle              *
@@ -234,7 +239,16 @@
         <!-- 去除黑色边框的关键设置项 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 屏幕背景是否变暗 -->
-        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:backgroundDimAmount">?attr/xui_dialog_background_dim_amount</item>
+    </style>
+
+    <style name="XUIBottomSheet" parent="android:Theme.Dialog">
+        <item name="android:backgroundDimAmount">?attr/xui_dialog_background_dim_amount</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@null
+        </item><!-- 为了避免在有 NavigationBar 的手机上 Dialog 从 NavigationBar 底部上来。去掉 Dialog 的动画，使用 View 的动画。-->
+        <item name="android:layout_width">match_parent</item>
     </style>
 
     <!--*********************************************

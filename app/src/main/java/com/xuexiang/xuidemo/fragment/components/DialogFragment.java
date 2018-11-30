@@ -22,6 +22,7 @@ import com.xuexiang.xpage.base.XPageContainerListFragment;
 import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.dialog.BottomSheetFragment;
 import com.xuexiang.xuidemo.fragment.components.dialog.DialogStrategyFragment;
 import com.xuexiang.xuidemo.fragment.components.dialog.MaterialDialogFragment;
 
@@ -35,7 +36,8 @@ public class DialogFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 DialogStrategyFragment.class,
-                MaterialDialogFragment.class
+                MaterialDialogFragment.class,
+                BottomSheetFragment.class
         };
     }
 

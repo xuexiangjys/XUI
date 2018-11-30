@@ -37,6 +37,9 @@
     <dimen name="xui_config_app_logo_bottom">250dp</dimen>
     <dimen name="xui_config_company_logo_bottom">80dp</dimen>
 
+    <dimen name="xui_alpha_pressed">0.5</dimen>
+    <dimen name="xui_alpha_disabled">0.5</dimen>
+
     <!-- ActionBar-->
     <dimen name="xui_actionbar_height_tablet_big">70dp</dimen>
     <dimen name="xui_actionbar_height_tablet_small">60dp</dimen>
@@ -370,7 +373,8 @@
     <dimen name="xui_loading_view_width_phone">4dp</dimen>
     <dimen name="xui_loading_margin_size_phone">6dp</dimen>
 
-
+    <!-- 提示标点 -->
+    <dimen name="xui_tips_point_size">8dp</dimen>
 
 
 </resources>

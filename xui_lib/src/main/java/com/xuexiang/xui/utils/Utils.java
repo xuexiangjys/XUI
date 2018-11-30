@@ -30,6 +30,7 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,15 +53,15 @@ public class Utils {
     /**
      * 得到设备屏幕的宽度
      */
-    public static int getScreenWidth() {
-        return ResUtils.getResources().getDisplayMetrics().widthPixels;
+    public static int getScreenWidth(Context context) {
+        return context.getResources().getDisplayMetrics().widthPixels;
     }
 
     /**
      * 得到设备屏幕的高度
      */
-    public static int getScreenHeight() {
-        return ResUtils.getResources().getDisplayMetrics().heightPixels;
+    public static int getScreenHeight(Context context) {
+        return context.getResources().getDisplayMetrics().heightPixels;
     }
 
     private static final String STATUS_BAR_HEIGHT_RES_NAME = "status_bar_height";
@@ -330,6 +331,10 @@ public class Utils {
                 Color.red(color) * Color.red(color) * .241 +
                         Color.green(color) * Color.green(color) * .691 +
                         Color.blue(color) * Color.blue(color) * .068) > 130;
+    }
+
+    public static boolean isNullOrEmpty(@Nullable CharSequence string) {
+        return string == null || string.length() == 0;
     }
 
 }
