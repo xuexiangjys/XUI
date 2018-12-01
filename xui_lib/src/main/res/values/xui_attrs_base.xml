@@ -129,7 +129,7 @@
     <attr name="ms_arrow_size" format="dimension"/>
 
     <!--**********************************************
-    *                 Dialog                         *
+    *                 Dialog /Loading                *
     ***********************************************-->
     <attr name="xui_dialog_radius_size" format="dimension"/>
     <attr name="xui_dialog_loading_padding_size" format="dimension"/>
@@ -139,6 +139,8 @@
     <attr name="xui_loading_view_size" format="dimension"/>
     <attr name="xui_loading_view_width" format="dimension"/>
     <attr name="xui_loading_margin_size" format="dimension"/>
+
+    <attr name="mini_loading_view_size" format="dimension"/>
 
     <!--**********************************************
     *              xui bottom sheet                 *

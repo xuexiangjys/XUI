@@ -84,4 +84,18 @@
     <string name="dynamic_progress">Dynamic Style</string>
     <string name="dynamic_tinted_progress">Dynamic Style (Tinted)</string>
 
+    <string name="circularImageView_item_xml_circle_title">剪裁为圆形+边框+点击效果</string>
+    <string name="circularImageView_item_xml_oval_title">剪裁为椭圆形+边框+点击效果</string>
+    <string name="circularImageView_item_xml_round_rect_title">剪裁为圆角矩形+边框+点击效果</string>
+
+    <string name="circularImageView_modify_tip">可以通过右上角的按钮动态修改下图的效果</string>
+    <string name="circularImageView_modify_1">改变边框颜色与宽度</string>
+    <string name="circularImageView_modify_2">改变选中态边框颜色与宽度</string>
+    <string name="circularImageView_modify_3">改变选中态 Mask 的颜色（带透明度）</string>
+    <string name="circularImageView_modify_4">手工切换选中态</string>
+    <string name="circularImageView_modify_5">改变圆角大小</string>
+    <string name="circularImageView_modify_6">变为圆形</string>
+    <string name="circularImageView_modify_7">变为椭圆形</string>
+    <string name="circularImageView_modify_8">禁止使用touchSelect态</string>
+    <string name="circularImageView_modify_9">重置为初始态</string>
 </resources>

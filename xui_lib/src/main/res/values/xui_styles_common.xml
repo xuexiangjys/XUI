@@ -251,6 +251,11 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
+    <style name="MiniLoadingStyle">
+        <item name="mlv_loading_view_size">?attr/mini_loading_view_size</item>
+        <item name="android:color">@color/xui_config_color_gray_5</item>
+    </style>
+
     <!--*********************************************
     *                 TextStyle                     *
     **********************************************-->

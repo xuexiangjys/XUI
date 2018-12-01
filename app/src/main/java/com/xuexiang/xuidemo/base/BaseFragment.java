@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xuexiang.xpage.base.XPageFragment;
-import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.actionbar.TitleUtils;
 

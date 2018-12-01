@@ -16,4 +16,9 @@
 
     <color name="cyan_500">#00bcd4</color>
 
+    <!-- Components 组件 -->
+    <color name="radiusImageView_border_color">#EF5362</color>
+    <color name="radiusImageView_selected_border_color">#FE6D4B</color>
+    <color name="radiusImageView_selected_mask_color">#7FEF5362</color>
+
 </resources>

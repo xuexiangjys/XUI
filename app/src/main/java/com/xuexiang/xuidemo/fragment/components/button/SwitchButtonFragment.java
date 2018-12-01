@@ -4,9 +4,9 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xui.widget.button.switchbutton.SwitchButton;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * @date 2018/1/16 上午11:01
  */
 @Page(name = "SwitchButton")
-public class SwitchButtonFragment extends XPageFragment implements CompoundButton.OnCheckedChangeListener {
+public class SwitchButtonFragment extends BaseFragment implements CompoundButton.OnCheckedChangeListener {
     @BindView(R.id.sb_default)
     SwitchButton mSBDefault;
     @BindView(R.id.sb_md)

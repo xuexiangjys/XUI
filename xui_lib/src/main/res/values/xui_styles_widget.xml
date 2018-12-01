@@ -159,5 +159,12 @@
         <item name="android:layout_height">@dimen/xui_tips_point_size</item>
         <item name="android:background">@drawable/xui_tips_point</item>
     </style>
+
+    <!-- XUIRadiusImageView -->
+    <style name="RadiusImageView">
+        <item name="riv_border_width">1dp</item>
+        <item name="riv_border_color">@color/xui_config_color_gray_4</item>
+        <item name="riv_is_touch_select_mode_enabled">true</item>
+    </style>
     
 </resources>

@@ -151,6 +151,12 @@
         <attr name="lv_arc_single" format="boolean" />
     </declare-styleable>
 
+    <attr name="MiniLoadingStyle" format="reference"/>
+    <declare-styleable name="MiniLoadingView">
+        <attr name="mlv_loading_view_size" format="dimension"/>
+        <attr name="android:color"/>
+    </declare-styleable>
+
     <!--LoadingViewLayout-->
     <declare-styleable name="LoadingViewLayout">
         <!--loading中心的图标-->
@@ -158,7 +164,6 @@
         <!--loading提示信息-->
         <attr name="lvl_message" format="string" />
     </declare-styleable>
-
 
     <!--FlowTagLayout-->
     <declare-styleable name="FlowTagLayout">
@@ -588,6 +593,19 @@
     </declare-styleable>
 
     <!--=====================================================================-->
+
+    <attr name="RadiusImageViewStyle" format="reference"/>
+    <declare-styleable name="RadiusImageView">
+        <attr name="riv_border_width"/>
+        <attr name="riv_border_color"/>
+        <attr name="riv_selected_mask_color" format="color"/>
+        <attr name="riv_selected_border_color" format="color"/>
+        <attr name="riv_selected_border_width" format="dimension"/>
+        <attr name="riv_corner_radius" format="dimension"/>
+        <attr name="riv_is_oval" format="boolean"/>
+        <attr name="riv_is_circle" format="boolean"/>
+        <attr name="riv_is_touch_select_mode_enabled" format="boolean"/>
+    </declare-styleable>
 
     <!--XUIKeyboardScrollView-->
     <declare-styleable name="XUIKeyboardScrollView">

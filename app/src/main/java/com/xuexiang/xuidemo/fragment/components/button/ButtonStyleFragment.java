@@ -1,13 +1,13 @@
 package com.xuexiang.xuidemo.fragment.components.button;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xui.utils.CountDownButtonHelper;
 import com.xuexiang.xui.widget.button.ButtonView;
 import com.xuexiang.xui.widget.button.CountDownButton;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.xuexiang.xui.widget.textview.supertextview.SuperButton;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * @date 2017/10/17 下午4:26
  */
 @Page(name = "统一的按钮样式")
-public class ButtonStyleFragment extends XPageFragment {
+public class ButtonStyleFragment extends BaseFragment {
 
     @BindView(R.id.bt_countdown1)
     SuperButton mBtCountDown1;

@@ -115,6 +115,8 @@
         *               xui 提供的控件样式                  *
         ***********************************************-->
         <item name="XUITipPointStyle">@style/XUITipPoint</item>
+        <item name="MiniLoadingStyle">@style/MiniLoadingStyle</item>
+        <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
 
         <!--**********************************************
        *                 xui bottom sheet              *
@@ -237,6 +239,7 @@
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_big</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_big</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_big</item>
+        <item name="mini_loading_view_size">@dimen/mini_loading_view_size_tablet_big</item>
 
         <!--**********************************************
         *                 xui bottom sheet              *
@@ -343,6 +346,7 @@
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_small</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_small</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_small</item>
+        <item name="mini_loading_view_size">@dimen/mini_loading_view_size_tablet_small</item>
 
         <!--**********************************************
      *                 xui bottom sheet              *
@@ -458,6 +462,7 @@
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_phone</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_phone</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_phone</item>
+        <item name="mini_loading_view_size">@dimen/mini_loading_view_size_phone</item>
 
         <!--**********************************************
         *                 xui bottom sheet              *
