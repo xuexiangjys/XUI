@@ -4,6 +4,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.ExpandableTextViewFragment;
+import com.xuexiang.xuidemo.fragment.components.textview.LabelViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.SuperTextViewFragment;
 
 /**
@@ -20,6 +21,7 @@ public class TextViewFragment extends ComponentContainerFragment {
         return new Class[]{
                 SuperTextViewFragment.class,
                 ExpandableTextViewFragment.class,
+                LabelViewFragment.class
         };
     }
 

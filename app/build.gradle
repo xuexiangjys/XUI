@@ -69,6 +69,7 @@ dependencies {
 
     //工具类
     implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.5'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.5'
     //切片
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.1'
     //添加依赖

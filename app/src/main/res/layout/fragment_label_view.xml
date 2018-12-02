@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="?attr/xui_config_content_spacing_horizontal"
+        android:orientation="vertical">
+
+        <com.xuexiang.xui.widget.textview.label.LabelButtonView
+            android:id="@+id/btn_label"
+            style="@style/Button.Blue"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="按钮"
+            app:label_backgroundColor="#C2185B"
+            app:label_distance="15dp"
+            app:label_height="18dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_text="HD"
+            app:label_textSize="10sp"/>
+
+        <com.xuexiang.xui.widget.textview.label.LabelImageView
+            android:id="@+id/iv_label"
+            android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_beautiful_scenery"
+            app:label_backgroundColor="#C2185B"
+            app:label_orientation="LEFT_TOP"
+            app:label_text="风景"
+            app:label_textStyle="ITALIC" />
+
+        <com.xuexiang.xui.widget.textview.label.LabelTextView
+            android:id="@+id/tv_label"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="#212121"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="文字"
+            android:textColor="#ffffff"
+            app:label_backgroundColor="#03A9F4"
+            app:label_distance="15dp"
+            app:label_orientation="LEFT_TOP"
+            app:label_text="POP"
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC" />
+
+    </LinearLayout>
+
+</LinearLayout>
