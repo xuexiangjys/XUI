@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">xui_lib</string>
 
-    <!--方正兰亭黑字体路径-->
+    <!--默认字体路径-->
     <string name="default_app_font_path"></string>
 
     <string name="xui_tip_expand">展开</string>
@@ -25,7 +25,7 @@
     <string name="stfLocationOffMessage">请打开定位</string>
     <string name="stf_retry">轻触屏幕重试</string>
 
-    <!--MaterialSearchView-->
-    <string name="search_hint">Search</string>
+    <string name="preview_play_failed">播放失败</string>
+    <string name="preview_count_string">%1$d/%2$d</string>
 
 </resources>

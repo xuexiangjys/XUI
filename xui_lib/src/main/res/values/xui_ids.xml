@@ -40,4 +40,7 @@
     <item name="content_view" type="id"/>
     <item name="no_network_view" type="id"/>
 
+    <!--Preview-->
+    <item name="item_image_key" type="id" />
+
 </resources>

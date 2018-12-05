@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView
+        android:id="@+id/photoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+
+    <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+        android:id="@+id/loading"
+        android:layout_width="?attr/stf_progressbar_size"
+        android:layout_height="?attr/stf_progressbar_size"
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        android:indeterminate="true" />
+
+    <ImageView
+        android:id="@+id/btnVideo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:alpha="0"
+        android:src="@drawable/xui_icon_video" />
+
+</RelativeLayout>

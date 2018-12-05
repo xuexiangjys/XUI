@@ -213,6 +213,12 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         return this;
     }
 
+    /**
+     * 设置状态栏高度
+     *
+     * @param height
+     * @return
+     */
     public TitleBar setHeight(int height) {
         mBarHeight = height;
         setMeasuredDimension(getMeasuredWidth(), mBarHeight);
@@ -224,6 +230,12 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         return this;
     }
 
+    /**
+     * 设置左侧图标
+     *
+     * @param resId
+     * @return
+     */
     public TitleBar setBackImageResource(int resId) {
         if (resId != 0) {
             mLeftImageResource = ResUtils.getDrawable(getContext(), resId);
@@ -236,21 +248,45 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         return this;
     }
 
+    /**
+     * 设置左侧点击事件
+     *
+     * @param l
+     * @return
+     */
     public TitleBar setLeftClickListener(OnClickListener l) {
         mLeftText.setOnClickListener(l);
         return this;
     }
 
+    /**
+     * 设置左侧文字
+     *
+     * @param title
+     * @return
+     */
     public TitleBar setLeftText(CharSequence title) {
         mLeftText.setText(title);
         return this;
     }
 
-    public TitleBar setLeftText(int resid) {
-        mLeftText.setText(resid);
+    /**
+     * 设置左侧文字
+     *
+     * @param resId
+     * @return
+     */
+    public TitleBar setLeftText(int resId) {
+        mLeftText.setText(resId);
         return this;
     }
 
+    /**
+     * 设置左侧文字大小
+     *
+     * @param size
+     * @return
+     */
     public TitleBar setLeftTextSize(float size) {
         mLeftText.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
         return this;
@@ -333,7 +369,15 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         return this;
     }
 
-    private TitleBar setTitle(CharSequence title, CharSequence subTitle, int orientation) {
+    /**
+     * 设置标题和副标题的文字
+     *
+     * @param title       标题
+     * @param subTitle    副标题
+     * @param orientation 对齐方式
+     * @return
+     */
+    public TitleBar setTitle(CharSequence title, CharSequence subTitle, int orientation) {
         mCenterLayout.setOrientation(orientation);
         mCenterText.setText(title);
 
@@ -344,6 +388,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     /**
      * 设置中心点击
+     *
      * @param l
      * @return
      */
@@ -354,6 +399,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     /**
      * 设置标题文字
+     *
      * @param resId
      * @return
      */
@@ -364,6 +410,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     /**
      * 设置标题文字颜色
+     *
      * @param resId
      * @return
      */
@@ -374,6 +421,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     /**
      * 设置标题文字大小
+     *
      * @param size
      * @return
      */
@@ -384,6 +432,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     /**
      * 设置标题背景
+     *
      * @param resId
      * @return
      */
@@ -751,5 +800,17 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     public TextView getLeftText() {
         return mLeftText;
+    }
+
+    public TextView getSubTitleText() {
+        return mSubTitleText;
+    }
+
+    public TextView getCenterText() {
+        return mCenterText;
+    }
+
+    public View getDividerView() {
+        return mDividerView;
     }
 }

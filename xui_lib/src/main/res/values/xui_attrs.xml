@@ -630,7 +630,7 @@
 
     </declare-styleable>
 
-    <!--=====================================================================-->
+    <!--===============================ImageView======================================-->
 
     <attr name="RadiusImageViewStyle" format="reference"/>
     <declare-styleable name="RadiusImageView">
@@ -644,6 +644,16 @@
         <attr name="riv_is_circle" format="boolean"/>
         <attr name="riv_is_touch_select_mode_enabled" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="BezierBannerView">
+        <attr name="bbv_selectedColor" format="color"/>
+        <attr name="bbv_unSelectedColor" format="color"/>
+        <attr name="bbv_selectedRadius" format="dimension"/>
+        <attr name="bbv_unSelectedRadius" format="dimension"/>
+        <attr name="bbv_spacing" format="dimension"/>
+    </declare-styleable>
+
+    <!--=====================================================================-->
 
     <!--XUIKeyboardScrollView-->
     <declare-styleable name="XUIKeyboardScrollView">

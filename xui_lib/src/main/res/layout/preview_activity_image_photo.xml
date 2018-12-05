@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <com.xuexiang.xui.widget.imageview.preview.view.PhotoViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/tv_index"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_vertical"
+        android:layout_margin="12dp"
+        android:gravity="center"
+        android:text="1/2"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <com.xuexiang.xui.widget.imageview.preview.view.BezierBannerView
+        android:id="@+id/bezierBannerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_vertical|center_horizontal"
+        android:paddingBottom="10dp"
+        android:visibility="gone"
+        app:bbv_selectedColor="@android:color/white"
+        app:bbv_selectedRadius="4dp"
+        app:bbv_spacing="6dp"
+        app:bbv_unSelectedColor="@android:color/darker_gray"
+        app:bbv_unSelectedRadius="4dp" />
+
+</FrameLayout>

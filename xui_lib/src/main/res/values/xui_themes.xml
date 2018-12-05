@@ -145,7 +145,7 @@
         <item name="android:windowFullscreen">true</item>
     </style>
     <!--*********************************************
-    *                  NLUI主题                    *
+    *                  XUI主题                    *
     **********************************************-->
     <!--平板主题-->
     <style name="XUITheme.Tablet">

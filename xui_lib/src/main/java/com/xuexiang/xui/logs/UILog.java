@@ -112,7 +112,6 @@ public final class UILog {
     }
 
     //=============打印方法===============//
-
     /**
      * 打印任何（所有）信息
      *
@@ -121,6 +120,18 @@ public final class UILog {
     public static void v(String msg) {
         if (enableLog(Log.VERBOSE)) {
             sILogger.log(Log.VERBOSE, sTag, msg, null);
+        }
+    }
+
+    /**
+     * 打印任何（所有）信息
+     *
+     * @param tag
+     * @param msg
+     */
+    public static void vTag(String tag, String msg) {
+        if (enableLog(Log.VERBOSE)) {
+            sILogger.log(Log.VERBOSE, tag, msg, null);
         }
     }
 
@@ -136,6 +147,18 @@ public final class UILog {
     }
 
     /**
+     * 打印调试信息
+     *
+     * @param tag
+     * @param msg
+     */
+    public static void dTag(String tag, String msg) {
+        if (enableLog(Log.DEBUG)) {
+            sILogger.log(Log.DEBUG, tag, msg, null);
+        }
+    }
+
+    /**
      * 打印提示性的信息
      *
      * @param msg
@@ -143,6 +166,18 @@ public final class UILog {
     public static void i(String msg) {
         if (enableLog(Log.INFO)) {
             sILogger.log(Log.INFO, sTag, msg, null);
+        }
+    }
+
+    /**
+     * 打印提示性的信息
+     *
+     * @param tag
+     * @param msg
+     */
+    public static void iTag(String tag, String msg) {
+        if (enableLog(Log.INFO)) {
+            sILogger.log(Log.INFO, tag, msg, null);
         }
     }
 
@@ -158,6 +193,18 @@ public final class UILog {
     }
 
     /**
+     * 打印warning警告信息
+     *
+     * @param tag
+     * @param msg
+     */
+    public static void wTag(String tag, String msg) {
+        if (enableLog(Log.WARN)) {
+            sILogger.log(Log.WARN, tag, msg, null);
+        }
+    }
+
+    /**
      * 打印出错信息
      *
      * @param msg
@@ -165,6 +212,18 @@ public final class UILog {
     public static void e(String msg) {
         if (enableLog(Log.ERROR)) {
             sILogger.log(Log.ERROR, sTag, msg, null);
+        }
+    }
+
+    /**
+     * 打印出错信息
+     *
+     * @param tag
+     * @param msg
+     */
+    public static void eTag(String tag, String msg) {
+        if (enableLog(Log.ERROR)) {
+            sILogger.log(Log.ERROR, tag, msg, null);
         }
     }
 
@@ -180,6 +239,44 @@ public final class UILog {
     }
 
     /**
+     * 打印出错堆栈信息
+     *
+     * @param tag
+     * @param t
+     */
+    public static void eTag(String tag, Throwable t) {
+        if (enableLog(Log.ERROR)) {
+            sILogger.log(Log.ERROR, tag, null, t);
+        }
+    }
+
+
+    /**
+     * 打印出错堆栈信息
+     *
+     * @param msg
+     * @param t
+     */
+    public static void e(String msg, Throwable t) {
+        if (enableLog(Log.ERROR)) {
+            sILogger.log(Log.ERROR, sTag, msg, t);
+        }
+    }
+
+    /**
+     * 打印出错堆栈信息
+     *
+     * @param tag
+     * @param msg
+     * @param t
+     */
+    public static void eTag(String tag, String msg, Throwable t) {
+        if (enableLog(Log.ERROR)) {
+            sILogger.log(Log.ERROR, tag, msg, t);
+        }
+    }
+
+    /**
      * 打印严重的错误信息
      *
      * @param msg
@@ -191,11 +288,24 @@ public final class UILog {
     }
 
     /**
-     * @param logPriority 日志等级
-     * @return 能否打印
+     * 打印严重的错误信息
+     *
+     * @param tag
+     * @param msg
+     */
+    public static void wtfTag(String tag, String msg) {
+        if (enableLog(Log.ASSERT)) {
+            sILogger.log(Log.ASSERT, tag, msg, null);
+        }
+    }
+
+    /**
+     * 能否打印
+     *
+     * @param logPriority
+     * @return
      */
     private static boolean enableLog(int logPriority) {
         return sILogger != null && sIsDebug && logPriority >= sLogPriority;
     }
-
 }
