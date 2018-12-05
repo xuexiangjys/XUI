@@ -5,6 +5,7 @@ import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.RadiusImageViewFragment;
+import com.xuexiang.xuidemo.fragment.components.imageview.photopicker.PhotoPickerFragment;
 
 /**
  * @author xuexiang
@@ -20,7 +21,8 @@ public class ImageViewFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
-                RadiusImageViewFragment.class
+                RadiusImageViewFragment.class,
+                PhotoPickerFragment.class
         };
     }
 }

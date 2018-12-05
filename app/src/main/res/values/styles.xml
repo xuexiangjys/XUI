@@ -113,4 +113,16 @@
     </style>
 
 
+    <style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="actionBarSize">48dp</item>
+    </style>
+
+    <style name="PhotoPickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="actionBarTheme">@style/actionBarTheme</item>
+        <item name="colorPrimary">#299EE3</item>
+        <item name="actionBarSize">48dp</item>
+        <item name="colorPrimaryDark">#299EE3</item>
+    </style>
+
 </resources>

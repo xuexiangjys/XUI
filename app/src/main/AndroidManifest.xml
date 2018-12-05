@@ -30,6 +30,13 @@
 
         <activity android:name=".activity.UserGuideActivity" />
 
+        <!--图片选择-->
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/PhotoPickerTheme" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
     </application>
 

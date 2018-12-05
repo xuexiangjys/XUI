@@ -98,4 +98,11 @@
     <string name="circularImageView_modify_7">变为椭圆形</string>
     <string name="circularImageView_modify_8">禁止使用touchSelect态</string>
     <string name="circularImageView_modify_9">重置为初始态</string>
+
+    <!--PhotoPicker-->
+    <string name="pick_photo">选择图片</string>
+    <string name="pick_photo_without_camera">选择图片（不带拍照按钮且点击不预览图片）</string>
+    <string name="pick_one_photo">选择单张图片</string>
+    <string name="pick_photo_gif">选择gif图片</string>
+    <string name="multiple_pick_photo">多次进入PhotoPicker选择图片</string>
 </resources>
