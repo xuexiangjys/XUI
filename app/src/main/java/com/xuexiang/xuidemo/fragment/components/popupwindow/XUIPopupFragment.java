@@ -25,7 +25,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * @author xuexiang
  * @date 2017/11/11 下午3:35
  */
-@Page(name = "XUIPopup")
+@Page(name = "XUIPopup\n通用弹窗")
 public class XUIPopupFragment extends BaseFragment {
     private XUIPopup mNormalPopup;
     private XUIListPopup mListPopup;

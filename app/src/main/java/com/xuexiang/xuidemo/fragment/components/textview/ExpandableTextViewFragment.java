@@ -14,7 +14,7 @@ import butterknife.BindView;
  * @author xuexiang
  * @date 2017/10/27 下午3:33
  */
-@Page(name = "可伸缩折叠的textview")
+@Page(name = "可伸缩折叠的TextView")
 public class ExpandableTextViewFragment extends BaseFragment {
     @BindView(R.id.expand_text_view)
     ExpandableTextView mExpandableTextView;

@@ -19,7 +19,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @date 2017/10/30 上午11:49
  */
-@Page(name = "EasyPopup")
+@Page(name = "EasyPopup\n可自定义的弹出窗")
 public class EasyPopFragment extends BaseFragment {
 
     private EasyPopup mCirclePop;

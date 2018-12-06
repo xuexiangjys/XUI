@@ -1,7 +1,6 @@
 package com.xuexiang.xuidemo.fragment.components.edittext;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 

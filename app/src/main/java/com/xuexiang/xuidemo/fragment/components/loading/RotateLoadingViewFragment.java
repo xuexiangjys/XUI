@@ -16,7 +16,7 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2018/11/26 下午1:37
  */
-@Page(name = "旋转加载控件")
+@Page(name = "RotateLoadingView\n旋转加载控件")
 public class RotateLoadingViewFragment extends BaseFragment {
     @BindView(R.id.auto_arc_loading)
     RotateLoadingView mAutoLoadingView;

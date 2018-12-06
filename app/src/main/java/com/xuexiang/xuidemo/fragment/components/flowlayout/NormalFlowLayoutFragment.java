@@ -8,7 +8,7 @@ import com.xuexiang.xuidemo.base.BaseFragment;
  * @author xuexiang
  * @date 2017/11/21 下午12:02
  */
-@Page(name = "FlowLayout 流布局")
+@Page(name = "FlowLayout\n流布局")
 public class NormalFlowLayoutFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {

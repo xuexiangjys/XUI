@@ -13,7 +13,7 @@ import com.xuexiang.xuidemo.fragment.components.textview.supertextview.SuperText
  * @author xuexiang
  * @since 2018/11/29 上午12:29
  */
-@Page(name = "SuperTextView")
+@Page(name = "可拓展的TextView")
 public class SuperTextViewFragment extends ComponentContainerFragment {
     @Override
     public Class[] getPagesClasses() {

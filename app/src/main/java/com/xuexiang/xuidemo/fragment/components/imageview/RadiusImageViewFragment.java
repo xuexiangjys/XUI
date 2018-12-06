@@ -19,7 +19,7 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2018/12/2 上午12:17
  */
-@Page(name = "RadiusImageView")
+@Page(name = "RadiusImageView\n圆角图片")
 public class RadiusImageViewFragment extends BaseFragment {
 
     @BindView(R.id.radiusImageView)

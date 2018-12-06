@@ -16,7 +16,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @since 2018/12/3 上午12:54
  */
-@Page(name = "标签 LabelView")
+@Page(name = "LabelView\n标签")
 public class LabelViewFragment extends BaseFragment {
 
 

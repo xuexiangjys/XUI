@@ -20,7 +20,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @since 2018/11/26 上午12:25
  */
-@Page(name = "MultipleStatusView 自定义布局")
+@Page(name = "MultipleStatusView\n自定义布局")
 public class MultipleStatusViewFragment extends BaseFragment {
     @BindView(R.id.multiple_status_view)
     MultipleStatusView mMultipleStatusView;

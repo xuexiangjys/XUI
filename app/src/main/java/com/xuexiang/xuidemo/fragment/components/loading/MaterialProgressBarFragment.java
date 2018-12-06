@@ -14,7 +14,7 @@ import butterknife.BindViews;
  * @author xuexiang
  * @date 2017/12/7 下午6:05
  */
-@Page(name = "MaterialProgressBar")
+@Page(name = "MaterialProgressBar\n进度条")
 public class MaterialProgressBarFragment extends BaseFragment {
     @BindViews({
             R.id.determinate_circular_large_progress,

@@ -39,7 +39,7 @@ import java.util.List;
  * @author XUE
  * @date 2017/9/10 23:04
  */
-@Page(name = "MaterialDialog对话框")
+@Page(name = "MaterialDialog\n对话框")
 public class MaterialDialogFragment extends XPageSimpleListFragment {
     private Thread thread;
 

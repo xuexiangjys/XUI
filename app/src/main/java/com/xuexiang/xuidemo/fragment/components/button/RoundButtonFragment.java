@@ -8,7 +8,7 @@ import com.xuexiang.xuidemo.base.BaseFragment;
  * @author XUE
  * @date 2017/9/14 14:21
  */
-@Page(name = "RoundButton")
+@Page(name = "RoundButton\n圆角按钮")
 public class RoundButtonFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {

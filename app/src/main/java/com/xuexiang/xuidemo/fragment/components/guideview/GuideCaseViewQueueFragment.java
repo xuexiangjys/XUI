@@ -17,7 +17,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @since 2018/11/30 上午12:30
  */
-@Page(name = "GuideCaseQueue")
+@Page(name = "GuideCaseQueue\n引导队列")
 public class GuideCaseViewQueueFragment extends BaseFragment {
 
     @BindView(R.id.step1)

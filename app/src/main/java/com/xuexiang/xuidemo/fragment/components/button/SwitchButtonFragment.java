@@ -17,7 +17,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @date 2018/1/16 上午11:01
  */
-@Page(name = "SwitchButton")
+@Page(name = "SwitchButton\n切换按钮")
 public class SwitchButtonFragment extends BaseFragment implements CompoundButton.OnCheckedChangeListener {
     @BindView(R.id.sb_default)
     SwitchButton mSBDefault;

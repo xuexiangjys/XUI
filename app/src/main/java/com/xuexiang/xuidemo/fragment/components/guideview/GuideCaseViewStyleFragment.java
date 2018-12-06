@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @since 2018/11/30 上午12:51
  */
-@Page(name = "GuideCaseView")
+@Page(name = "GuideCaseView\n引导样式")
 public class GuideCaseViewStyleFragment extends BaseFragment {
 
     @Override

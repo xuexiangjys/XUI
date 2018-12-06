@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @since 2018/11/26 上午12:25
  */
-@Page(name = "StatefulLayout 定制模版")
+@Page(name = "StatefulLayout\n定制模版")
 public class StatefulLayoutFragment extends BaseFragment {
     @BindView(R.id.ll_stateful)
     StatefulLayout mStatefulLayout;

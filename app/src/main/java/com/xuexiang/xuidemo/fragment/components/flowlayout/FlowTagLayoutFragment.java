@@ -19,7 +19,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @date 2017/11/21 上午10:09
  */
-@Page(name = "FlowTagLayout 流标签")
+@Page(name = "FlowTagLayout\n流标签")
 public class FlowTagLayoutFragment extends BaseFragment {
     @BindView(R.id.flowlayout_normal_select)
     FlowTagLayout mNormalFlowTagLayout;

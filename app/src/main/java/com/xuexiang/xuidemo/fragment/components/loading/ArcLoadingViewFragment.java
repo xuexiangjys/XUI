@@ -22,7 +22,7 @@ import io.reactivex.functions.Consumer;
  * @author xuexiang
  * @since 2018/11/26 下午1:37
  */
-@Page(name = "圆弧加载控件")
+@Page(name = "ARCLoadingView\n圆弧加载控件")
 public class ArcLoadingViewFragment extends BaseFragment {
 
     @BindView(R.id.auto_arc_loading)

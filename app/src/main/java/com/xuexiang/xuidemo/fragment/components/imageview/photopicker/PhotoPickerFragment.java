@@ -40,7 +40,7 @@ import static android.app.Activity.RESULT_OK;
  * @author xuexiang
  * @since 2018/12/5 下午11:51
  */
-@Page(name = "PhotoPicker 图片选择")
+@Page(name = "PhotoPicker\n图片选择")
 public class PhotoPickerFragment extends BaseFragment {
 
     @BindView(R.id.recycler_view)
