@@ -94,7 +94,9 @@ public class BannerFragment extends BaseFragment {
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.tv_user_guide:
-                openPage(UserGuideFragment.class);
+                Bundle param = new Bundle();
+                param.putInt(POSITION, 0);
+                openPage(UserGuideFragment.class, param);
                 break;
             case R.id.tv_select_transformer:
                 showSelectDialog(false);

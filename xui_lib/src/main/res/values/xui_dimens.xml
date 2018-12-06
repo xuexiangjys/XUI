@@ -34,11 +34,25 @@
     <dimen name="xui_config_simple_list_icon_size_tablet_small">24dp</dimen>
     <dimen name="xui_config_simple_list_icon_size_phone">22dp</dimen>
 
+    <!--   xui splash view -->
     <dimen name="xui_config_app_logo_bottom">250dp</dimen>
     <dimen name="xui_config_company_logo_bottom">80dp</dimen>
 
     <dimen name="xui_alpha_pressed">0.5</dimen>
     <dimen name="xui_alpha_disabled">0.5</dimen>
+
+    <dimen name="xui_guide_btn_padding_horizontal_table_big">60dp</dimen>
+    <dimen name="xui_guide_btn_padding_vertical_table_big">16dp</dimen>
+    <dimen name="xui_guide_btn_margin_bottom_table_big">50dp</dimen>
+
+    <dimen name="xui_guide_btn_padding_horizontal_table_small">45dp</dimen>
+    <dimen name="xui_guide_btn_padding_vertical_table_small">12dp</dimen>
+    <dimen name="xui_guide_btn_margin_bottom_table_small">38dp</dimen>
+
+    <dimen name="xui_guide_btn_padding_horizontal_phone">30dp</dimen>
+    <dimen name="xui_guide_btn_padding_vertical_phone">8dp</dimen>
+    <dimen name="xui_guide_btn_margin_bottom_phone">25dp</dimen>
+
 
     <!-- ActionBar-->
     <dimen name="xui_actionbar_height_tablet_big">70dp</dimen>
@@ -117,9 +131,6 @@
     <dimen name="default_bottom_ellipsis_height">4dp</dimen>
     <dimen name="default_floating_label_text_size">12sp</dimen>
     <dimen name="default_bottom_text_size">12sp</dimen>
-    <!-- TabControlView-->
-    <dimen name="default_tcv_text_size">14sp</dimen>
-    <dimen name="default_tcv_stroke_width">1dp</dimen>
 
     <!--StatefulLayout-->
     <dimen name="default_stf_progressbar_size_tablet_big">75dp</dimen>
@@ -148,10 +159,6 @@
     <dimen name="default_ms_item_height_size_phone">30dp</dimen>
     <dimen name="default_ms_dropdown_offset_phone">1dp</dimen>
     <dimen name="default_ms_arrow_size_phone">8dp</dimen>
-
-    <!--MaterialSearchView-->
-    <dimen name="search_icon_padding">12dp</dimen>
-    <dimen name="search_view_text_padding">65dp</dimen>
 
     <!--*********************************************
     *                  MaterialDialog               *
@@ -187,8 +194,6 @@
     <dimen name="md_content_padding_top">8dp</dimen>
     <dimen name="md_content_padding_bottom">8dp</dimen>
     <dimen name="md_button_frame_vertical_padding">8dp</dimen>
-
-
 
     <dimen name="default_md_button_height_phone">48dp</dimen>
     <dimen name="default_md_button_height_tablet_small">55dp</dimen>

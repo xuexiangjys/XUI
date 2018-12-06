@@ -17,9 +17,9 @@
 
 package com.xuexiang.xui.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v7.app.AppCompatDialog;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,13 +29,13 @@ import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.ResUtils;
 
 /**
- * 基类Dialog
- * 触摸Dialog屏幕以外的区域，dialog消失同时隐藏键盘
+ *  基类Dialog
+ *  触摸Dialog屏幕以外的区域，dialog消失同时隐藏键盘
  *
- * @author xx
- * @Date 2017-1-18 下午2:14:55
+ * @author xuexiang
+ * @since 2018/12/6 下午3:29
  */
-public class BaseDialog extends Dialog {
+public class BaseDialog extends AppCompatDialog {
     private View mContentView;
 
     public BaseDialog(Context context, int layoutId) {

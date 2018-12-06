@@ -356,12 +356,12 @@ public class MaterialDialogFragment extends XPageSimpleListFragment {
      * 显示自定义对话框
      */
     private void showCustomDialog() {
-//        new MaterialDialog.Builder(getContext())
-//                .customView(R.layout.dialog_custom, true)
-//                .title("自定义对话框")
-//                .positiveText(R.string.lab_submit)
-//                .negativeText(R.string.lab_cancel)
-//                .show();
+        new MaterialDialog.Builder(getContext())
+                .customView(R.layout.dialog_custom, true)
+                .title("自定义对话框")
+                .positiveText(R.string.lab_submit)
+                .negativeText(R.string.lab_cancel)
+                .show();
 
     }
 }

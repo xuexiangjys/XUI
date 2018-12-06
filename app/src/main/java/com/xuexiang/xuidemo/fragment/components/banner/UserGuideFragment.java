@@ -67,7 +67,7 @@ public class UserGuideFragment extends BaseFragment {
                 .setSource(DemoDataProvider.getUsertGuides())
                 .startScroll();
 
-        sgb.setOnJumpClickL(new SimpleGuideBanner.OnJumpClickL() {
+        sgb.setOnJumpClickListener(new SimpleGuideBanner.OnJumpClickListener() {
             @Override
             public void onJumpClick() {
                 popToBack();

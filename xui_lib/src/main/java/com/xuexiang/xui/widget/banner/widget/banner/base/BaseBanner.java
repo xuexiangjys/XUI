@@ -610,7 +610,6 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            Utils.clearImageView((View) object);
             container.removeView((View) object);
         }
 

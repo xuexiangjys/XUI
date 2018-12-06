@@ -180,6 +180,9 @@
         <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_tablet_big</item>
         <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_tablet_big</item>
         <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_tablet_big</item>
+        <item name="xui_guide_btn_padding_horizontal">@dimen/xui_guide_btn_padding_horizontal_table_big</item>
+        <item name="xui_guide_btn_padding_vertical">@dimen/xui_guide_btn_padding_vertical_table_big</item>
+        <item name="xui_guide_btn_margin_bottom">@dimen/xui_guide_btn_margin_bottom_table_big</item>
         <!--输入框样式-->
         <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_tablet_big</item>
         <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_tablet_big</item>
@@ -227,7 +230,7 @@
         <item name="ms_item_height_size">@dimen/default_ms_item_height_size_tablet_big</item>
         <item name="ms_dropdown_offset">@dimen/default_ms_dropdown_offset_tablet_big</item>
         <item name="ms_arrow_size">@dimen/default_ms_arrow_size_tablet_big</item>
-        <!--statefullayout-->
+        <!--StatefulLayout-->
         <item name="stf_progressbar_size">@dimen/default_stf_progressbar_size_tablet_big</item>
         <item name="stf_tip_img_size">@dimen/default_stf_tip_img_size_tablet_big</item>
         <!--*********************************************
@@ -287,6 +290,9 @@
         <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_tablet_small</item>
         <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_tablet_small</item>
         <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_tablet_small</item>
+        <item name="xui_guide_btn_padding_horizontal">@dimen/xui_guide_btn_padding_horizontal_table_small</item>
+        <item name="xui_guide_btn_padding_vertical">@dimen/xui_guide_btn_padding_vertical_table_small</item>
+        <item name="xui_guide_btn_margin_bottom">@dimen/xui_guide_btn_margin_bottom_table_small</item>
         <!--输入框样式-->
         <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_tablet_small</item>
         <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_tablet_small</item>
@@ -334,7 +340,7 @@
         <item name="ms_item_height_size">@dimen/default_ms_item_height_size_tablet_small</item>
         <item name="ms_dropdown_offset">@dimen/default_ms_dropdown_offset_tablet_small</item>
         <item name="ms_arrow_size">@dimen/default_ms_arrow_size_tablet_small</item>
-        <!--statefullayout-->
+        <!--StatefulLayout-->
         <item name="stf_progressbar_size">@dimen/default_stf_progressbar_size_tablet_small</item>
         <item name="stf_tip_img_size">@dimen/default_stf_tip_img_size_tablet_small</item>
         <!--*********************************************
@@ -403,6 +409,9 @@
         <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_phone</item>
         <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_phone</item>
         <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_phone</item>
+        <item name="xui_guide_btn_padding_horizontal">@dimen/xui_guide_btn_padding_horizontal_phone</item>
+        <item name="xui_guide_btn_padding_vertical">@dimen/xui_guide_btn_padding_vertical_phone</item>
+        <item name="xui_guide_btn_margin_bottom">@dimen/xui_guide_btn_margin_bottom_phone</item>
         <!--输入框样式-->
         <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_phone</item>
         <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_phone</item>
@@ -450,7 +459,7 @@
         <item name="ms_item_height_size">@dimen/default_ms_item_height_size_phone</item>
         <item name="ms_dropdown_offset">@dimen/default_ms_dropdown_offset_phone</item>
         <item name="ms_arrow_size">@dimen/default_ms_arrow_size_phone</item>
-        <!--statefullayout-->
+        <!--StatefulLayout-->
         <item name="stf_progressbar_size">@dimen/default_stf_progressbar_size_phone</item>
         <item name="stf_tip_img_size">@dimen/default_stf_tip_img_size_phone</item>
         <!--*********************************************

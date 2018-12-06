@@ -9,28 +9,45 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseIndicatorBanner;
+import com.xuexiang.xui.widget.banner.widget.banner.base.GlideImageLoader;
+import com.xuexiang.xui.widget.banner.widget.banner.base.ImageLoader;
 
 /**
  * 简单的引导页
  *
  * @author xuexiang
- * @date 2017/10/16 上午9:47
+ * @since 2018/12/6 下午4:32
  */
 public class SimpleGuideBanner extends BaseIndicatorBanner<Integer, SimpleGuideBanner> {
 
+    private ImageLoader mImageLoader;
+
     public SimpleGuideBanner(Context context) {
         super(context);
-        setBarShowWhenLast(false);
+        onCreateBanner();
     }
 
     public SimpleGuideBanner(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setBarShowWhenLast(false);
+        onCreateBanner();
     }
 
     public SimpleGuideBanner(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setBarShowWhenLast(false);
+        onCreateBanner();
+    }
+
+    protected void onCreateBanner() {
+        setBarShowWhenLast(true);
+        //不进行自动滚动
+        setAutoScrollEnable(false);
+    }
+
+    private ImageLoader getImageLoader() {
+        if (mImageLoader == null) {
+            mImageLoader = new GlideImageLoader();
+        }
+        return  mImageLoader;
     }
 
     @Override
@@ -42,28 +59,31 @@ public class SimpleGuideBanner extends BaseIndicatorBanner<Integer, SimpleGuideB
         final Integer resId = mDatas.get(position);
         tv_jump.setVisibility(position == mDatas.size() - 1 ? VISIBLE : GONE);
 
-        Glide.with(mContext)
-                .load(resId)
-                .into(iv);
+        getImageLoader().displayImage(mContext, resId, iv);
 
         tv_jump.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onJumpClickL != null)
-                    onJumpClickL.onJumpClick();
+                if (onJumpClickListener != null)
+                    onJumpClickListener.onJumpClick();
             }
         });
 
         return inflate;
     }
 
-    private OnJumpClickL onJumpClickL;
+    private OnJumpClickListener onJumpClickListener;
 
-    public interface OnJumpClickL {
+    public interface OnJumpClickListener {
         void onJumpClick();
     }
 
-    public void setOnJumpClickL(OnJumpClickL onJumpClickL) {
-        this.onJumpClickL = onJumpClickL;
+    public void setOnJumpClickListener(OnJumpClickListener onJumpClickListener) {
+        this.onJumpClickListener = onJumpClickListener;
+    }
+
+    public SimpleGuideBanner setImageLoader(ImageLoader imageLoader) {
+        mImageLoader = imageLoader;
+        return this;
     }
 }

@@ -28,4 +28,6 @@
     <string name="preview_play_failed">播放失败</string>
     <string name="preview_count_string">%1$d/%2$d</string>
 
+    <string name="xui_try_immediately">立即体验</string>
+
 </resources>

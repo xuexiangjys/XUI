@@ -71,7 +71,7 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
      * @param cls              点击后跳转的Activity类
      */
     public void initGuideView(List<Integer> guidesResIdList, Class<? extends ViewPager.PageTransformer> transformerClass, final Class<?> cls) {
-        SimpleGuideBanner sgb = (SimpleGuideBanner) findViewById(R.id.sgb);
+        SimpleGuideBanner sgb = findViewById(R.id.sgb);
 
         sgb.setIndicatorWidth(6).setIndicatorHeight(6).setIndicatorGap(12)
                 .setIndicatorCornerRadius(3.5f)
@@ -79,7 +79,7 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
                 .setTransformerClass(transformerClass).barPadding(0, 10, 0, 10)
                 .setSource(guidesResIdList).startScroll();
 
-        sgb.setOnJumpClickL(new SimpleGuideBanner.OnJumpClickL() {
+        sgb.setOnJumpClickListener(new SimpleGuideBanner.OnJumpClickListener() {
             @Override
             public void onJumpClick() {
                 startActivity(new Intent(BaseGuideActivity.this, cls));
@@ -94,8 +94,8 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
      * @param guidesResIdList  引导图片
      * @param transformerClass 引导图片切换的效果
      */
-    public void initGuideView(ArrayList<Integer> guidesResIdList, Class<? extends ViewPager.PageTransformer> transformerClass, SimpleGuideBanner.OnJumpClickL onJumpClickListener) {
-        SimpleGuideBanner sgb = (SimpleGuideBanner) findViewById(R.id.sgb);
+    public void initGuideView(ArrayList<Integer> guidesResIdList, Class<? extends ViewPager.PageTransformer> transformerClass, SimpleGuideBanner.OnJumpClickListener onJumpClickListener) {
+        SimpleGuideBanner sgb = findViewById(R.id.sgb);
 
         sgb.setIndicatorWidth(6).setIndicatorHeight(6).setIndicatorGap(12)
                 .setIndicatorCornerRadius(3.5f)
@@ -103,6 +103,6 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
                 .setTransformerClass(transformerClass).barPadding(0, 10, 0, 10)
                 .setSource(guidesResIdList).startScroll();
 
-        sgb.setOnJumpClickL(onJumpClickListener);
+        sgb.setOnJumpClickListener(onJumpClickListener);
     }
 }

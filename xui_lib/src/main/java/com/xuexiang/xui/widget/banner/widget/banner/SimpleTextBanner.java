@@ -12,7 +12,7 @@ import com.xuexiang.xui.widget.banner.widget.banner.base.BaseIndicatorBanner;
  * 简单的文字轮播
  *
  * @author xuexiang
- * @date 2017/10/16 上午9:47
+ * @since 2018/12/6 下午4:35
  */
 public class SimpleTextBanner extends BaseIndicatorBanner<String, SimpleTextBanner> {
     public SimpleTextBanner(Context context) {
@@ -37,5 +37,12 @@ public class SimpleTextBanner extends BaseIndicatorBanner<String, SimpleTextBann
         TextView tv = inflate.findViewById(R.id.tv);
         tv.setText(mDatas.get(position));
         return inflate;
+    }
+
+    //解决内存泄漏的问题
+    @Override
+    protected void onDetachedFromWindow() {
+        pauseScroll();
+        super.onDetachedFromWindow();
     }
 }

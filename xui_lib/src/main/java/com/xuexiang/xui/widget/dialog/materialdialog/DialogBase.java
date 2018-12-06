@@ -41,7 +41,7 @@ class DialogBase extends Dialog implements DialogInterface.OnShowListener {
     }
 
     @Override
-    public View findViewById(int id) {
+    public  <T extends View> T findViewById(int id) {
         return view.findViewById(id);
     }
 

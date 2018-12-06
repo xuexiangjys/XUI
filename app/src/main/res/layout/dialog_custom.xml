@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="?attr/xui_config_content_spacing_horizontal"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+        style="@style/Material.SpinnerStyle"
+        android:layout_width="200dp"
+        android:layout_marginLeft="20dp"
+        app:ms_entries="@array/sort_mode_entry"
+        app:ms_in_dialog="true"/>
+
+    <com.xuexiang.xui.widget.spinner.editspinner.EditSpinner
+        android:id="@+id/editSpinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        app:es_entries="@array/sort_mode_entry"
+        app:es_hint="@string/lab_please_select"/>
+
+    <com.xuexiang.xui.widget.button.switchbutton.SwitchButton
+        style="@style/SwitchButtonStyle"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.xuexiang.xui.widget.edittext.ValidatorEditText
+        style="@style/EditText.Normal"
+        android:layout_width="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:singleLine="true"
+        app:vet_tipPosition="top"
+        app:vet_regexp="@string/regexp_number_only"
+        app:vet_errorMessage="@string/tip_number_only_error_message"
+        app:vet_show_errorIcon="false"/>
+
+    <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:indeterminate="true"
+        app:mpb_progressStyle="horizontal"
+        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+
+</LinearLayout>
