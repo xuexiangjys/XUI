@@ -40,12 +40,13 @@ import java.util.List;
  * 自定义下拉框，使用AppCompatTextView + PopupWindow组合实现
  *
  * @author xuexiang
- * @date 2017/11/30 下午8:51
+ * @since 2018/12/7 下午4:24
  */
 public class MaterialSpinner extends AppCompatTextView {
 
     private OnNothingSelectedListener onNothingSelectedListener;
     private OnItemSelectedListener onItemSelectedListener;
+    private OnNoMoreChoiceListener onNoMoreChoiceListener;
     private MaterialSpinnerBaseAdapter adapter;
     private PopupWindow popupWindow;
     private ListView listView;
@@ -341,6 +342,7 @@ public class MaterialSpinner extends AppCompatTextView {
 
     /**
      * 设置选中的内容
+     *
      * @param item 选中的内容
      * @param <T>
      */
@@ -353,10 +355,8 @@ public class MaterialSpinner extends AppCompatTextView {
     /**
      * 获取选中内容在Spinner中的位置
      *
-     * @param item
-     *            选中的内容
-     * @param items
-     *            Spinner中选项的集合
+     * @param item  选中的内容
+     * @param items Spinner中选项的集合
      * @return
      */
     public <T> int getSpinnerPosition(T item, List<T> items) {
@@ -388,6 +388,17 @@ public class MaterialSpinner extends AppCompatTextView {
      */
     public void setOnNothingSelectedListener(@Nullable OnNothingSelectedListener onNothingSelectedListener) {
         this.onNothingSelectedListener = onNothingSelectedListener;
+    }
+
+    /**
+     * 设置无更多选择的监听
+     *
+     * @param onNoMoreChoiceListener
+     * @return
+     */
+    public MaterialSpinner setOnNoMoreChoiceListener(OnNoMoreChoiceListener onNoMoreChoiceListener) {
+        this.onNoMoreChoiceListener = onNoMoreChoiceListener;
+        return this;
     }
 
     /**
@@ -481,7 +492,7 @@ public class MaterialSpinner extends AppCompatTextView {
         if (selectedIndex >= adapter.getCount()) {
             selectedIndex = 0;
         }
-        if (adapter.getCount() > 0) {
+        if (adapter.getCount() >= 0) {
             setText(adapter.get(selectedIndex).toString());
         } else {
             setText("");
@@ -489,9 +500,23 @@ public class MaterialSpinner extends AppCompatTextView {
     }
 
     /**
+     * @return 是否有内容可以下拉选择
+     */
+    private boolean hasMoreChoice() {
+        return adapter != null && adapter.getCount() > 0;
+    }
+
+    /**
      * Show the dropdown menu
      */
     public void expand() {
+        if (!hasMoreChoice()) {
+            if (onNoMoreChoiceListener != null) {
+                onNoMoreChoiceListener.OnNoMoreChoice(this);
+            }
+            return;
+        }
+
         if (!hideArrow) {
             animateArrow(true);
         }
@@ -522,7 +547,7 @@ public class MaterialSpinner extends AppCompatTextView {
      * 计算出来的位置，y方向就在anchorView的上面和下面对齐显示，x方向就是与屏幕右边对齐显示
      * 如果anchorView的位置有变化，就可以适当自己额外加入偏移来修正
      *
-     * @param anchorView  呼出window的view
+     * @param anchorView 呼出window的view
      * @return window显示的左上角的xOff, yOff坐标
      */
     private int[] calculatePopWindowPos(final View anchorView) {
@@ -652,4 +677,17 @@ public class MaterialSpinner extends AppCompatTextView {
          */
         void onNothingSelected(MaterialSpinner spinner);
     }
+
+    /**
+     * 无更多选择的监听
+     */
+    public interface OnNoMoreChoiceListener {
+        /**
+         * 无更多选择
+         *
+         * @param spinner
+         */
+        void OnNoMoreChoice(MaterialSpinner spinner);
+    }
+
 }

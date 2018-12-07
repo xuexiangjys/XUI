@@ -28,7 +28,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.BaseRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;

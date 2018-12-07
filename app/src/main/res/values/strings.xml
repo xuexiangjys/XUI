@@ -133,4 +133,18 @@
     <string name="item_style_store_house_chinese">跟换显示符号为中文</string>
     <string name="item_style_store_house_icon">跟换显示符号为图标</string>
     <string name="item_style_store_house_brand">跟换显示符号为商标</string>
+
+    <string name="item_head_style_bezier_circle">贝塞尔圆圈</string>
+    <string name="item_head_style_delivery">气球快递</string>
+    <string name="item_head_style_drop_box">掉落盒子</string>
+    <string name="item_head_style_fly_refresh">纸飞机</string>
+    <string name="item_head_style_fun_game_battle_city">战争城市</string>
+    <string name="item_head_style_fun_game_hit_block">打砖块</string>
+    <string name="item_head_style_phoenix">金色校园</string>
+    <string name="item_head_style_store_house">StoreHouse</string>
+    <string name="item_head_style_taurus">飞机起飞</string>
+    <string name="item_head_style_water_drop">小水滴</string>
+    <string name="item_head_style_wave_swipe">全屏水滴</string>
+
+
 </resources>

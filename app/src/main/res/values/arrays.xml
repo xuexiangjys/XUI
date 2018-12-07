@@ -163,4 +163,8 @@
         <item>综合排序</item>
     </string-array>
 
+    <string-array name="sort_mode_one_entry">
+        <item>根据品牌名称排序</item>
+    </string-array>
+
 </resources>

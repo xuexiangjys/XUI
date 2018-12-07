@@ -18,6 +18,7 @@ package com.xuexiang.xuidemo.fragment.components.refresh;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.style.RefreshAllStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.style.RefreshClassicsStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.style.RefreshMaterialStyleFragment;
 
@@ -36,7 +37,8 @@ public class RefreshStyleFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[] {
                 RefreshClassicsStyleFragment.class,
-                RefreshMaterialStyleFragment.class
+                RefreshMaterialStyleFragment.class,
+                RefreshAllStyleFragment.class,
         };
     }
 }

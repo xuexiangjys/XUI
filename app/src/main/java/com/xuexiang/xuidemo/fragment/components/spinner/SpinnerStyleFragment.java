@@ -17,6 +17,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.SnackbarUtils;
 import com.xuexiang.xuidemo.widget.EditSpinnerDialog;
+import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,6 +39,9 @@ public class SpinnerStyleFragment extends BaseFragment {
 
     @BindView(R.id.spinner)
     MaterialSpinner mMaterialSpinner;
+
+    @BindView(R.id.spinner_one)
+    MaterialSpinner mMaterialSpinnerOne;
 
     @BindView(R.id.editSpinner)
     EditSpinner mEditSpinner;
@@ -86,6 +90,13 @@ public class SpinnerStyleFragment extends BaseFragment {
 //        mMaterialSpinner.setSelectedIndex(1);
 
         mMaterialSpinner.setSelectedItem("根据床号降序排序");
+
+        mMaterialSpinnerOne.setOnNoMoreChoiceListener(new MaterialSpinner.OnNoMoreChoiceListener() {
+            @Override
+            public void OnNoMoreChoice(MaterialSpinner spinner) {
+                ToastUtils.toast("没有更多的选项！");
+            }
+        });
 
     }
 

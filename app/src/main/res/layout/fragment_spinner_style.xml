@@ -112,6 +112,26 @@
 
             <TextView
                 style="@style/TextStyle.Explain"
+                android:text="MaterialSpinner[只有一个选项的时候]：" />
+
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                android:id="@+id/spinner_one"
+                style="@style/Material.SpinnerStyle"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                app:ms_entries="@array/sort_mode_one_entry"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Explain"
                 android:text="EditSpinner[统一样式]：" />
 
             <com.xuexiang.xui.widget.spinner.editspinner.EditSpinner
