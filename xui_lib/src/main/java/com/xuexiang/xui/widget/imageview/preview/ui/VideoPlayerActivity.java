@@ -20,7 +20,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -32,7 +32,7 @@ import com.xuexiang.xui.R;
  * @author xuexiang
  * @since 2018/12/5 上午11:49
  */
-public class VideoPlayerActivity extends AppCompatActivity {
+public class VideoPlayerActivity extends FragmentActivity {
 
     public static final String KEY_URL = "com.xuexiang.xui.widget.preview.KEY_URL";
 

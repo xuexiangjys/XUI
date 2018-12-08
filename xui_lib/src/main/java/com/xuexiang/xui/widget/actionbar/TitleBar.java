@@ -21,6 +21,7 @@ import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.widget.textview.AutoMoveTextView;
 
 import java.util.LinkedList;
 
@@ -166,7 +167,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mLeftText.setPadding(mSideTextPadding, 0, mSideTextPadding, 0);
         mLeftText.setTypeface(XUI.getDefaultTypeface());
 
-        mCenterText = new TextView(context);
+        mCenterText = new AutoMoveTextView(context);
         mSubTitleText = new TextView(context);
 
         if (!TextUtils.isEmpty(mSubTextString)) {
@@ -181,7 +182,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mCenterText.setText(mTitleTextString);
         mCenterText.setSingleLine();
         mCenterText.setGravity(Gravity.CENTER);
-        mCenterText.setEllipsize(TextUtils.TruncateAt.END);
+        mCenterText.setEllipsize(TextUtils.TruncateAt.MARQUEE);
         mCenterText.setTypeface(XUI.getDefaultTypeface());
 
         mSubTitleText.setTextSize(TypedValue.COMPLEX_UNIT_PX, mSubTitleTextSize);

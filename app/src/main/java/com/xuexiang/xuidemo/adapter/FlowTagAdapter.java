@@ -24,7 +24,7 @@ public class FlowTagAdapter extends BaseTagAdapter<String, TextView> {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.adapter_tag_item;
+        return R.layout.adapter_item_tag;
     }
 
     @Override

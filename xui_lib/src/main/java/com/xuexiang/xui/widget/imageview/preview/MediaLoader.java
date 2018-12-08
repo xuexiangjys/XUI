@@ -16,6 +16,7 @@
 
 package com.xuexiang.xui.widget.imageview.preview;
 
+import com.xuexiang.xui.widget.imageview.preview.loader.GlideMediaLoader;
 import com.xuexiang.xui.widget.imageview.preview.loader.IMediaLoader;
 
 /**
@@ -55,21 +56,20 @@ public class MediaLoader {
     }
 
 
-    /****
+    /**
      * 初始化加载图片类
-     * @param  loader 自定义
-     * **/
+     *
+     * @param loader
+     */
     public void initLoader(IMediaLoader loader) {
         mLoader = loader;
     }
 
     public IMediaLoader getLoader() {
         if (mLoader == null) {
-            throw new NullPointerException("MediaLoader mLoader not initLoader");
+            mLoader = new GlideMediaLoader();
         }
         return mLoader;
     }
-
-
 
 }

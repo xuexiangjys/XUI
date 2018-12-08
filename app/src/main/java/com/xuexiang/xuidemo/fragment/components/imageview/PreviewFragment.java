@@ -14,37 +14,27 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xui.widget.imageview.preview.enitity;
+package com.xuexiang.xuidemo.fragment.components.imageview;
 
-import android.graphics.Rect;
-import android.os.Parcelable;
-import android.support.annotation.Nullable;
-
-import java.io.Serializable;
+import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.imageview.preview.PreviewRecycleViewFragment;
 
 /**
- * 图片预览接口
- *
  * @author xuexiang
- * @since 2018/12/5 上午11:04
+ * @since 2018/12/8 下午5:26
  */
-public interface IPreviewInfo extends Parcelable {
+@Page(name = "图片预览")
+public class PreviewFragment extends ComponentContainerFragment {
     /**
-     * @return 图片地址
+     * 获取页面的类集合[使用@Page注解进行注册的页面]
+     *
+     * @return
      */
-    String getUrl();
-
-    /**
-     * @return 记录坐标
-     */
-    Rect getBounds();
-
-
-    /**
-     * @return 获取视频链接
-     */
-    @Nullable
-    String getVideoUrl();
-
-
+    @Override
+    protected Class[] getPagesClasses() {
+        return new Class[] {
+                PreviewRecycleViewFragment.class
+        };
+    }
 }

@@ -61,7 +61,7 @@ public class PreviewActivity extends FragmentActivity {
 
     private boolean mIsTransformOut = false;
     /*** 图片的地址***/
-    private List<IPreviewInfo> mImgUrls = getIntent().getParcelableArrayListExtra("imagePaths");
+    private List<IPreviewInfo> mImgUrls;
     /*** 当前图片的位置 ***/
     private int mCurrentIndex;
     /*** 图片的展示的Fragment***/

@@ -64,7 +64,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         View itemView = null;
         switch (viewType) {
             case TYPE_ADD:
-                itemView = inflater.inflate(R.layout.__picker_item_add, parent, false);
+                itemView = inflater.inflate(R.layout.adapter_picker_item_add, parent, false);
                 break;
             case TYPE_PHOTO:
                 itemView = inflater.inflate(R.layout.__picker_item_photo, parent, false);

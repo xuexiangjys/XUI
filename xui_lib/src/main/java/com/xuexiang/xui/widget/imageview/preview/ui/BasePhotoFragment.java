@@ -57,7 +57,7 @@ public class BasePhotoFragment extends Fragment {
     private boolean isTransPhoto = false;
     protected SmoothImageView mImageView;
     protected View mRootView;
-    protected MaterialProgressBar mLoadingView;
+    protected View mLoadingView;
     protected ISimpleTarget mISimpleTarget;
     protected ImageView mBtnVideo;
     public static OnVideoClickListener listener;

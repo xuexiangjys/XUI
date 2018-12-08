@@ -11,13 +11,13 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent" />
 
-    <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
+    <ProgressBar
         android:id="@+id/loading"
-        android:layout_width="?attr/stf_progressbar_size"
-        android:layout_height="?attr/stf_progressbar_size"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_centerInParent="true"
-        android:visibility="visible"
-        android:indeterminate="true" />
+        android:visibility="visible" />
 
     <ImageView
         android:id="@+id/btnVideo"
