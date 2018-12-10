@@ -17,10 +17,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:orientation="vertical">
 
-    <ImageView
+    <com.xuexiang.xui.widget.imageview.IconImageView
         android:id="@+id/iv"
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -30,15 +31,7 @@
         android:contentDescription="@null"
         android:focusable="false"
         android:scaleType="centerCrop"
-        android:src="@drawable/xui_ic_default_img" />
-
-    <ImageView
-        android:id="@+id/btnVideo"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ic_player"
-        android:visibility="gone" />
-
+        android:src="@drawable/xui_ic_default_img"
+        app:iiv_icon="@drawable/ic_player"/>
 
 </RelativeLayout>

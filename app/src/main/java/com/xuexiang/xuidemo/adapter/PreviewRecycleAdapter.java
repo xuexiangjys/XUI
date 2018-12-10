@@ -16,12 +16,10 @@
 
 package com.xuexiang.xuidemo.adapter;
 
-import android.view.View;
-import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
 import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
+import com.xuexiang.xui.widget.imageview.IconImageView;
 import com.xuexiang.xui.widget.imageview.preview.loader.GlideMediaLoader;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
@@ -48,13 +46,9 @@ public class PreviewRecycleAdapter extends SmartRecyclerAdapter<ImageViewInfo> {
     @Override
     protected void onBindViewHolder(SmartViewHolder holder, ImageViewInfo model, int position) {
         if (model != null) {
-            if (model.getVideoUrl() == null){
-                holder.findViewById(R.id.btnVideo).setVisibility(View.GONE);
-            }else {
-                holder.findViewById(R.id.btnVideo).setVisibility(View.VISIBLE);
-            }
+            IconImageView imageView = holder.findViewById(R.id.iv);
 
-            ImageView imageView = holder.findViewById(R.id.iv);
+            imageView.setIsShowIcon(model.getVideoUrl() != null);
 
             Glide.with(imageView.getContext())
                     .load(model.getUrl())

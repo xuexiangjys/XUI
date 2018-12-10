@@ -640,7 +640,7 @@ public class NineGridImageView<T> extends ViewGroup {
             return mImageViewList.get(position);
         } else {
             if (mAdapter != null) {
-                ImageView imageView = mAdapter.generateImageView(getContext(), getImgDataItem(position));
+                ImageView imageView = mAdapter.generateImageView(getContext());
                 mImageViewList.add(imageView);
                 imageView.setOnClickListener(new OnClickListener() {
                     @Override

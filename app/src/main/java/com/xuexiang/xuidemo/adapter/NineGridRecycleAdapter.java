@@ -88,8 +88,8 @@ public class NineGridRecycleAdapter extends BaseRecyclerAdapter<NineGridInfo, Ni
             }
 
             @Override
-            protected ImageView generateImageView(Context context, ImageViewInfo imageViewInfo) {
-                return super.generateImageView(context, imageViewInfo);
+            protected ImageView generateImageView(Context context) {
+                return super.generateImageView(context);
             }
         };
 

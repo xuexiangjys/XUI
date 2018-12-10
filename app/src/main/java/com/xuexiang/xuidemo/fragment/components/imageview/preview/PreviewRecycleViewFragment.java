@@ -27,6 +27,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
@@ -67,11 +68,16 @@ public class PreviewRecycleViewFragment extends BaseFragment {
         titleBar.addAction(new TitleBar.TextAction("切换") {
             @Override
             public void performAction(View view) {
-                mIsVideo = !mIsVideo;
-                mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
+                onChanged(view);
             }
         });
         return titleBar;
+    }
+
+    @SingleClick
+    private void onChanged(View view) {
+        mIsVideo = !mIsVideo;
+        mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
     }
 
     /**

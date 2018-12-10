@@ -66,10 +66,9 @@ public abstract class NineGridImageViewAdapter<T> {
      * 构建图片
      *
      * @param context
-     * @param t
      * @return
      */
-    protected ImageView generateImageView(Context context, T t) {
+    protected ImageView generateImageView(Context context) {
         GridImageView imageView = new GridImageView(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         return imageView;
