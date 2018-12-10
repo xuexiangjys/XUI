@@ -37,11 +37,11 @@ import java.util.List;
  */
 public class NineGridImageView<T> extends ViewGroup {
     public final static int STYLE_GRID = 0;     // 宫格布局
-    public final static int STYLE_FILL = 1;     // 全填充布局
+    public final static int STYLE_FILL = 1;     // 全填充布局(自适应填充满，推荐使用）
     ///////////////////////////////////////////////////////////////////////////
     // 跨行跨列的类型
     ///////////////////////////////////////////////////////////////////////////
-    public final static int NOSPAN = 0;         // 不跨行也不跨列
+    public final static int NOSPAN = 0;         // 不跨行也不跨列(推荐使用)
     public final static int TOPCOLSPAN = 2;     // 首行跨列
     public final static int BOTTOMCOLSPAN = 3;  // 末行跨列
     public final static int LEFTROWSPAN = 4;    // 首列跨行
@@ -587,7 +587,7 @@ public class NineGridImageView<T> extends ViewGroup {
         } else {
             this.setVisibility(VISIBLE);
         }
-        this.mSpanType = spanType;
+        mSpanType = spanType;
         int newShowCount = getNeedShowCount(lists.size());
 
         int[] gridParam = calculateGridParam(newShowCount, mShowStyle);

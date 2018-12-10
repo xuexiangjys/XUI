@@ -1,8 +1,6 @@
 package com.xuexiang.xuidemo;
 
-import android.annotation.SuppressLint;
 import android.support.v4.view.ViewPager;
-import android.util.SparseArray;
 
 import com.xuexiang.xui.adapter.simple.AdapterItem;
 import com.xuexiang.xui.widget.banner.transform.DepthTransformer;
@@ -12,15 +10,12 @@ import com.xuexiang.xui.widget.banner.transform.RotateDownTransformer;
 import com.xuexiang.xui.widget.banner.transform.RotateUpTransformer;
 import com.xuexiang.xui.widget.banner.transform.ZoomOutSlideTransformer;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
+import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridInfo;
-import com.xuexiang.xutil.common.RandomUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 /**
  * 演示数据
@@ -121,7 +116,8 @@ public class DemoDataProvider {
         List<NineGridInfo> list = new ArrayList<>();
         NineGridInfo info;
         for (int i = 0; i < length; i++) {
-            info = new NineGridInfo("我是一只喵，快乐的星猫～～～", getRandomMedias((int) (Math.random() * 10 + 0.5), type));
+            info = new NineGridInfo("我是一只喵，快乐的星猫～～～", getRandomMedias((int) (Math.random() * 10 + 0.5), type))
+                .setShowType(NineGridImageView.STYLE_FILL);
             list.add(info);
         }
         return list;

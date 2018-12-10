@@ -130,7 +130,7 @@ public class NineGridRecycleAdapter extends BaseRecyclerAdapter<NineGridInfo, Ni
         }
 
         public void bind(NineGridInfo gridInfo) {
-            mNglContent.setImagesData(gridInfo.getImgUrlList());
+            mNglContent.setImagesData(gridInfo.getImgUrlList(), gridInfo.getSpanType());
             mTvContent.setText(gridInfo.getContent());
         }
     }

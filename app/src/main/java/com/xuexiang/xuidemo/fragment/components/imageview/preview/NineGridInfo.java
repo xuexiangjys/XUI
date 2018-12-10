@@ -64,8 +64,9 @@ public class NineGridInfo {
         return mShowType;
     }
 
-    public void setShowType(int showType) {
+    public NineGridInfo setShowType(int showType) {
         mShowType = showType;
+        return this;
     }
 
     public List<ImageViewInfo> getImgUrlList() {
