@@ -24,7 +24,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.BaseRecyclerAdapter;
+import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -55,7 +55,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
     StatefulLayout mLlStateful;
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout mRefreshLayout;
-    private BaseRecyclerAdapter<Void> mAdapter;
+    private SmartRecyclerAdapter<Void> mAdapter;
 
     /**
      * 布局的资源id
@@ -75,7 +75,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mAdapter = new BaseRecyclerAdapter<Void>(simple_list_item_2) {
+        mRecyclerView.setAdapter(mAdapter = new SmartRecyclerAdapter<Void>(simple_list_item_2) {
             @Override
             protected void onBindViewHolder(SmartViewHolder holder, Void v, int position) {
                 holder.text(android.R.id.text1, getString(R.string.item_example_number_title, position));

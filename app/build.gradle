@@ -94,8 +94,8 @@ dependencies {
     implementation 'com.github.xuexiangjys:PhotoPicker:1.0.1'
 
     //下拉刷新
-    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.3'
-    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.3'
+    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
+    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.5'
     implementation deps.support.app_compat
     implementation deps.support.recyclerview
     implementation deps.support.design

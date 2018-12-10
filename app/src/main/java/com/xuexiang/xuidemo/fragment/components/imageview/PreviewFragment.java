@@ -18,6 +18,7 @@ package com.xuexiang.xuidemo.fragment.components.imageview;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridImageViewFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.PreviewRecycleViewFragment;
 
 /**
@@ -34,7 +35,8 @@ public class PreviewFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[] {
-                PreviewRecycleViewFragment.class
+                PreviewRecycleViewFragment.class,
+                NineGridImageViewFragment.class
         };
     }
 }

@@ -151,10 +151,10 @@
         <attr name="lv_arc_single" format="boolean" />
     </declare-styleable>
 
-    <attr name="MiniLoadingStyle" format="reference"/>
+    <attr name="MiniLoadingStyle" format="reference" />
     <declare-styleable name="MiniLoadingView">
-        <attr name="mlv_loading_view_size" format="dimension"/>
-        <attr name="android:color"/>
+        <attr name="mlv_loading_view_size" format="dimension" />
+        <attr name="android:color" />
     </declare-styleable>
 
     <!--LoadingViewLayout-->
@@ -480,36 +480,36 @@
         <!--距离对角的距离-->
         <attr name="label_distance" format="dimension" />
         <!--标签的宽度-->
-        <attr name="label_height" format="dimension"/>
+        <attr name="label_height" format="dimension" />
         <!--标签的背景颜色-->
-        <attr name="label_backgroundColor" format="color"/>
+        <attr name="label_backgroundColor" format="color" />
         <!--标签的边框宽度-->
-        <attr name="label_strokeWidth" format="dimension"/>
+        <attr name="label_strokeWidth" format="dimension" />
         <!--标签的边框颜色-->
-        <attr name="label_strokeColor" format="color"/>
+        <attr name="label_strokeColor" format="color" />
         <!--标签的文字-->
-        <attr name="label_text" format="string"/>
+        <attr name="label_text" format="string" />
         <!--标签的文字大小-->
         <attr name="label_textSize" format="dimension" />
         <!--标签的文字样式-->
-        <attr name="label_textStyle" format="enum" >
-            <enum name="NORMAL" value="0"/>
-            <enum name="BOLD" value="1"/>
-            <enum name="ITALIC" value="2"/>
-            <enum name="BOLD_ITALIC" value="3"/>
+        <attr name="label_textStyle" format="enum">
+            <enum name="NORMAL" value="0" />
+            <enum name="BOLD" value="1" />
+            <enum name="ITALIC" value="2" />
+            <enum name="BOLD_ITALIC" value="3" />
         </attr>
         <!--标签的字体样式-->
-        <attr name="label_textFont" format="string"/>
+        <attr name="label_textFont" format="string" />
         <!--标签的文字颜色-->
-        <attr name="label_textColor" format="color"/>
+        <attr name="label_textColor" format="color" />
         <!--标签是否可见-->
-        <attr name="label_visual" format="boolean"/>
+        <attr name="label_visual" format="boolean" />
         <!--标签的对齐方式-->
         <attr name="label_orientation" format="enum">
-            <enum name="LEFT_TOP" value="1"/>
-            <enum name="RIGHT_TOP" value="2"/>
-            <enum name="LEFT_BOTTOM" value="3"/>
-            <enum name="RIGHT_BOTTOM" value="4"/>
+            <enum name="LEFT_TOP" value="1" />
+            <enum name="RIGHT_TOP" value="2" />
+            <enum name="LEFT_BOTTOM" value="3" />
+            <enum name="RIGHT_BOTTOM" value="4" />
         </attr>
     </declare-styleable>
 
@@ -632,25 +632,35 @@
 
     <!--===============================ImageView======================================-->
 
-    <attr name="RadiusImageViewStyle" format="reference"/>
+    <attr name="RadiusImageViewStyle" format="reference" />
     <declare-styleable name="RadiusImageView">
-        <attr name="riv_border_width"/>
-        <attr name="riv_border_color"/>
-        <attr name="riv_selected_mask_color" format="color"/>
-        <attr name="riv_selected_border_color" format="color"/>
-        <attr name="riv_selected_border_width" format="dimension"/>
-        <attr name="riv_corner_radius" format="dimension"/>
-        <attr name="riv_is_oval" format="boolean"/>
-        <attr name="riv_is_circle" format="boolean"/>
-        <attr name="riv_is_touch_select_mode_enabled" format="boolean"/>
+        <attr name="riv_border_width" />
+        <attr name="riv_border_color" />
+        <attr name="riv_selected_mask_color" format="color" />
+        <attr name="riv_selected_border_color" format="color" />
+        <attr name="riv_selected_border_width" format="dimension" />
+        <attr name="riv_corner_radius" format="dimension" />
+        <attr name="riv_is_oval" format="boolean" />
+        <attr name="riv_is_circle" format="boolean" />
+        <attr name="riv_is_touch_select_mode_enabled" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="BezierBannerView">
-        <attr name="bbv_selectedColor" format="color"/>
-        <attr name="bbv_unSelectedColor" format="color"/>
-        <attr name="bbv_selectedRadius" format="dimension"/>
-        <attr name="bbv_unSelectedRadius" format="dimension"/>
-        <attr name="bbv_spacing" format="dimension"/>
+        <attr name="bbv_selectedColor" format="color" />
+        <attr name="bbv_unSelectedColor" format="color" />
+        <attr name="bbv_selectedRadius" format="dimension" />
+        <attr name="bbv_unSelectedRadius" format="dimension" />
+        <attr name="bbv_spacing" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="NineGridImageView">
+        <attr name="ngiv_singleImgSize" format="dimension" />
+        <attr name="ngiv_imgGap" format="dimension" />
+        <attr name="ngiv_maxSize" format="integer" />
+        <attr name="ngiv_showStyle" format="enum">
+            <enum name="grid" value="0" />
+            <enum name="fill" value="1" />
+        </attr>
     </declare-styleable>
 
     <!--=====================================================================-->

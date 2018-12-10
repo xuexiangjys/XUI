@@ -16,6 +16,8 @@
 
 package com.xuexiang.xui.widget.imageview.preview;
 
+import com.xuexiang.xui.widget.banner.widget.banner.base.GlideImageLoader;
+import com.xuexiang.xui.widget.banner.widget.banner.base.ImageLoader;
 import com.xuexiang.xui.widget.imageview.preview.loader.GlideMediaLoader;
 import com.xuexiang.xui.widget.imageview.preview.loader.IMediaLoader;
 
@@ -30,6 +32,8 @@ public class MediaLoader {
     private static volatile MediaLoader sInstance = null;
 
     private volatile IMediaLoader mLoader;
+
+    private volatile ImageLoader mImageLoader;
 
     private MediaLoader() {
 
@@ -70,6 +74,13 @@ public class MediaLoader {
             mLoader = new GlideMediaLoader();
         }
         return mLoader;
+    }
+
+    public ImageLoader getImageLoader() {
+        if (mImageLoader == null) {
+            mImageLoader = new GlideImageLoader();
+        }
+        return mImageLoader;
     }
 
 }

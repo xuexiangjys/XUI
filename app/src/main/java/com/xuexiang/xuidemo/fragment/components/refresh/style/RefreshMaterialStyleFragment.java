@@ -27,7 +27,7 @@ import android.view.View;
 
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.BaseRecyclerAdapter;
+import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.xuexiang.xpage.annotation.Page;
@@ -145,7 +145,7 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(new BaseRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2,this) {
+            recyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2,this) {
                 @Override
                 protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {
                     holder.text(android.R.id.text1, model.name());

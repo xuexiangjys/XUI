@@ -45,10 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
-            android:horizontalSpacing="2dp"
-            android:numColumns="2"
-            android:overScrollMode="never"
-            android:verticalSpacing="2dp" />
+            android:overScrollMode="never" />
 
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"

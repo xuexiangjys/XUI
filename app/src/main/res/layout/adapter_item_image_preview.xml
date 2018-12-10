@@ -30,10 +30,9 @@
         android:contentDescription="@null"
         android:focusable="false"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/xui_ic_default_img" />
 
     <ImageView
-
         android:id="@+id/btnVideo"
         android:layout_width="48dp"
         android:layout_height="48dp"

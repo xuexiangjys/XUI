@@ -24,19 +24,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.scwang.smartrefresh.header.BezierCircleHeader;
-import com.scwang.smartrefresh.header.DeliveryHeader;
-import com.scwang.smartrefresh.header.DropBoxHeader;
-import com.scwang.smartrefresh.header.FlyRefreshHeader;
-import com.scwang.smartrefresh.header.FunGameBattleCityHeader;
-import com.scwang.smartrefresh.header.FunGameHitBlockHeader;
-import com.scwang.smartrefresh.header.PhoenixHeader;
-import com.scwang.smartrefresh.header.StoreHouseHeader;
-import com.scwang.smartrefresh.header.TaurusHeader;
-import com.scwang.smartrefresh.header.WaterDropHeader;
-import com.scwang.smartrefresh.header.WaveSwipeHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.BaseRecyclerAdapter;
+import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
@@ -46,7 +35,6 @@ import com.xuexiang.xuidemo.base.BaseFragment;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import butterknife.BindView;
@@ -132,7 +120,7 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(new BaseRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
+        mRecyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
             @Override
             protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {
                 holder.text(android.R.id.text1, model.name());

@@ -13,11 +13,14 @@ import com.xuexiang.xui.widget.banner.transform.RotateUpTransformer;
 import com.xuexiang.xui.widget.banner.transform.ZoomOutSlideTransformer;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
+import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridInfo;
+import com.xuexiang.xutil.common.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * 演示数据
@@ -90,14 +93,50 @@ public class DemoDataProvider {
     public static List<List<ImageViewInfo>> sPics;
     public static List<List<ImageViewInfo>> sVideos;
 
+    public static List<ImageViewInfo> imgs;
+    public static List<ImageViewInfo> videos;
+
+    public static List<List<NineGridInfo>> sNineGridPics;
+    public static List<List<NineGridInfo>> sNineGridVideos;
+
+
     static {
-        List<ImageViewInfo> imgs = new ArrayList<>();
+        imgs = new ArrayList<>();
         List<String> list = getUrls();
         for (int i = 0; i < list.size(); i++) {
             imgs.add(new ImageViewInfo(list.get(i)));
         }
+
+        videos = getVideos();
+
         sPics = split(imgs, 10);
-        sVideos = split(getVideos(), 10);
+        sVideos = split(videos, 10);
+
+        sNineGridPics = split(getMediaDemos(40, 0), 10);
+        sNineGridVideos = split(getMediaDemos(20, 1), 10);
+
+    }
+
+    private static List<NineGridInfo> getMediaDemos(int length, int type) {
+        List<NineGridInfo> list = new ArrayList<>();
+        NineGridInfo info;
+        for (int i = 0; i < length; i++) {
+            info = new NineGridInfo("我是一只喵，快乐的星猫～～～", getRandomMedias((int) (Math.random() * 10 + 0.5), type));
+            list.add(info);
+        }
+        return list;
+    }
+
+    private static List<ImageViewInfo> getRandomMedias(int length, int type) {
+        List<ImageViewInfo> list = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            if (type == 0) {
+                list.add(imgs.get(i));
+            } else {
+                list.add(videos.get(i));
+            }
+        }
+        return list;
     }
 
 

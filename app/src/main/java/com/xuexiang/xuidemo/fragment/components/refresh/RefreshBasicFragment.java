@@ -20,11 +20,9 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.AbsListView;
 
-import com.scwang.smartrefresh.layout.adapter.BaseRecyclerAdapter;
+import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xuexiang.xpage.annotation.Page;
@@ -44,7 +42,7 @@ import static android.R.layout.simple_list_item_2;
 @Page(name = "下拉刷新基础用法")
 public class RefreshBasicFragment extends BaseFragment {
 
-    private BaseRecyclerAdapter<Void> mAdapter;
+    private SmartRecyclerAdapter<Void> mAdapter;
 
     /**
      * 布局的资源id
@@ -62,7 +60,7 @@ public class RefreshBasicFragment extends BaseFragment {
     @Override
     protected void initViews() {
         AbsListView listView = findViewById(R.id.listView);
-        listView.setAdapter(mAdapter = new BaseRecyclerAdapter<Void>(simple_list_item_2) {
+        listView.setAdapter(mAdapter = new SmartRecyclerAdapter<Void>(simple_list_item_2) {
             @Override
             protected void onBindViewHolder(SmartViewHolder holder, Void model, int position) {
                 holder.text(android.R.id.text1, getString(R.string.item_example_number_title, position));
