@@ -25,7 +25,11 @@ import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
  * @author xuexiang
  * @since 2018/11/14 下午1:46
  */
-public class ThemeUtils {
+public final class ThemeUtils {
+
+    private ThemeUtils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
 
     @ColorInt
     public static int getDisabledColor(Context context) {

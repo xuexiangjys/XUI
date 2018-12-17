@@ -78,13 +78,13 @@ public class SpinnerStyleFragment extends BaseFragment {
         mMaterialSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner spinner, int position, long id, Object item) {
-                SnackbarUtils.longMake(spinner, "Clicked " + item).show();
+                SnackbarUtils.Long(spinner, "Clicked " + item).show();
             }
         });
         mMaterialSpinner.setOnNothingSelectedListener(new MaterialSpinner.OnNothingSelectedListener() {
             @Override
             public void onNothingSelected(MaterialSpinner spinner) {
-                SnackbarUtils.longMake(spinner, "Nothing selected").show();
+                SnackbarUtils.Long(spinner, "Nothing selected").show();
             }
         });
 //        mMaterialSpinner.setSelectedIndex(1);

@@ -6,15 +6,22 @@ import android.util.TypedValue;
 
 /**
  * 屏幕密度工具类
- * @author XUE
- * @date 2017/9/8 10:26
+ *
+ * @author xuexiang
+ * @since 2018/12/18 上午12:15
  */
-public class DensityUtils {
+public final class DensityUtils {
+
+    private DensityUtils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
     /**
      * DisplayMetrics
+     *
      * @return
      */
-    public static DisplayMetrics getDisplayMetrics(){
+    public static DisplayMetrics getDisplayMetrics() {
         return ResUtils.getResources().getDisplayMetrics();
     }
 
@@ -76,6 +83,17 @@ public class DensityUtils {
     }
 
     /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 sp
+     *
+     * @param pxValue 尺寸像素
+     * @return SP值
+     */
+    public static int px2sp(Context context, float pxValue) {
+        float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    /**
      * 根据手机的分辨率从 sp 的单位 转成为 px
      *
      * @param spValue SP值
@@ -83,6 +101,17 @@ public class DensityUtils {
      */
     public static int sp2px(float spValue) {
         float fontScale = ResUtils.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 sp 的单位 转成为 px
+     *
+     * @param spValue SP值
+     * @return 像素值
+     */
+    public static int sp2px(Context context, float spValue) {
+        float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 

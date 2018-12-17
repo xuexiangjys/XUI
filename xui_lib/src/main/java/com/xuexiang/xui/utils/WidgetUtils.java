@@ -36,7 +36,11 @@ import com.xuexiang.xui.widget.progress.loading.LoadingViewLayout;
  * @author xuexiang
  * @since 2018/11/26 下午2:54
  */
-public class WidgetUtils {
+public final class WidgetUtils {
+
+    private WidgetUtils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
 
     /**
      * 让Activity全屏显示

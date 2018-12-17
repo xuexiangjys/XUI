@@ -21,10 +21,14 @@ import com.xuexiang.xui.XUI;
 /**
  * 获取res中的资源
  *
- * @author XUE
- * @date 2017/9/8 10:13
+ * @author xuexiang
+ * @since 2018/12/18 上午12:14
  */
-public class ResUtils {
+public final class ResUtils {
+
+    private ResUtils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
 
     /**
      * 获取resources对象

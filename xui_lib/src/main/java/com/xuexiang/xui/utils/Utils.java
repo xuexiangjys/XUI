@@ -48,7 +48,11 @@ import java.io.File;
  * @author xuexiang
  * @since 2018/11/26 下午5:07
  */
-public class Utils {
+public final class Utils {
+
+    private Utils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
 
     /**
      * 得到设备屏幕的宽度
