@@ -11,7 +11,7 @@ import java.util.List;
  * @author XUE
  * @date 2017/9/10 15:28
  */
-public class WidgetItemAdapter extends  BaseRecyclerAdapter<PageInfo> {
+public class WidgetItemAdapter extends BaseRecyclerAdapter<PageInfo> {
 
     public WidgetItemAdapter(Context ctx, List<PageInfo> list) {
         super(ctx, list);

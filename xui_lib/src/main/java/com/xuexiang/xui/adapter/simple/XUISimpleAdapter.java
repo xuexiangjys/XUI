@@ -38,9 +38,9 @@ public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
     @Override
     protected ViewHolder newViewHolder(View convertView) {
         ViewHolder holder = new ViewHolder();
-        holder.mLLContentView = (LinearLayout) convertView.findViewById(R.id.ll_content);
-        holder.mTvTitle = (TextView) convertView.findViewById(R.id.tv_title);
-        holder.mIvIcon = (ImageView) convertView.findViewById(R.id.iv_icon);
+        holder.mLLContentView = convertView.findViewById(R.id.ll_content);
+        holder.mTvTitle = convertView.findViewById(R.id.tv_title);
+        holder.mIvIcon = convertView.findViewById(R.id.iv_icon);
 
         if (mPaddingLeftPx != 0) {
             holder.mLLContentView.setPadding(mPaddingLeftPx, 0, 0, 0);

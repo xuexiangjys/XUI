@@ -18,8 +18,6 @@
 package com.xuexiang.xuidemo.fragment.components;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.base.XPageContainerListFragment;
-import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.dialog.BottomSheetFragment;
