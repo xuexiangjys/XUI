@@ -7,6 +7,7 @@ import android.widget.Spinner;
 import com.xuexiang.xpage.PageConfig;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.SnackbarUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.actionbar.TitleUtils;
@@ -15,7 +16,6 @@ import com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner;
 import com.xuexiang.xui.widget.textview.supertextview.SuperButton;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.SnackbarUtils;
 import com.xuexiang.xuidemo.widget.EditSpinnerDialog;
 import com.xuexiang.xutil.tip.ToastUtils;
 

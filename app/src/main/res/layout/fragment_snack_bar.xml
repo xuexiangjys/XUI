@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Content"
+                android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                android:text="显示时长" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_short"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:layout_weight="1.0"
+                    android:text="短" />
+
+                <Button
+                    android:id="@+id/btn_long"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:layout_weight="1.0"
+                    android:text="长" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_indefinite"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:layout_weight="1.0"
+                    android:text="无限长" />
+
+                <Button
+                    android:id="@+id/btn_length_custom"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:layout_weight="1.0"
+                    android:text="设置时长" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextStyle.Content"
+                android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                android:text="背景样式" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_info"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="信息" />
+
+                <Button
+                    android:id="@+id/btn_confirm"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="确认" />
+
+                <Button
+                    android:id="@+id/btn_warn"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="警告" />
+
+                <Button
+                    android:id="@+id/btn_danger"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="危险" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextStyle.Content"
+                android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                android:text="颜色设置" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_background_color"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="背景颜色" />
+
+                <Button
+                    android:id="@+id/btn_message_color"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="文字颜色" />
+
+                <Button
+                    android:id="@+id/btn_action_color"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="按钮文字颜色" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextStyle.Content"
+                android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                android:text="监听设置" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_action"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="按钮点击监听" />
+
+                <Button
+                    android:id="@+id/btn_callback"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="显示和消失的监听" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextStyle.Content"
+                android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                android:text="文字对齐方式" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_default"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="默认" />
+
+                <Button
+                    android:id="@+id/btn_center"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="居中" />
+
+                <Button
+                    android:id="@+id/btn_right"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="居右" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextStyle.Content"
+                android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                android:text="Snackbar 位置" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_gravity_bottom"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="默认" />
+
+                <Button
+                    android:id="@+id/btn_gravity_center"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="居中" />
+
+                <Button
+                    android:id="@+id/btn_gravity_top"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="顶部" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextStyle.Content"
+                android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                android:text="其他用法" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_message_left_right_drawable"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="设置文字两侧图片" />
+
+                <Button
+                    android:id="@+id/btn_add_view"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="添加View" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_margin"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="设置边距" />
+
+                <Button
+                    android:id="@+id/btn_radius_stroke"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_margin="?attr/xui_config_content_spacing_vertical"
+                    android:text="设置圆角半径和边框" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

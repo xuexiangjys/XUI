@@ -43,4 +43,9 @@
     <!--Preview-->
     <item name="item_image_key" type="id" />
 
+    <!--snackbar-->
+    <item name="snackbar_action" type="id" />
+    <item name="snackbar_text" type="id" />
+
+
 </resources>
