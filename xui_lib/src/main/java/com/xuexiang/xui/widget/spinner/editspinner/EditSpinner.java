@@ -76,7 +76,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     private void initView(Context context) {
         LayoutInflater.from(context).inflate(R.layout.xui_layout_edit_spinner, this);
-        mEditText = findViewById(R.id.edit_sipnner_edit);
+        mEditText = findViewById(R.id.edit_spinner_edit);
         mIvArrow = findViewById(R.id.edit_spinner_arrow);
         mIvArrow.setOnClickListener(this);
         mEditText.addTextChangedListener(this);

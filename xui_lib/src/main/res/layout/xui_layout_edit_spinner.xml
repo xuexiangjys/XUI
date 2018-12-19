@@ -5,16 +5,17 @@
     android:gravity="center_vertical">
 
     <EditText
-        android:id="@+id/edit_sipnner_edit"
+        android:id="@+id/edit_spinner_edit"
         style="@style/EditSpinner"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:paddingEnd="30dp"/>
 
     <ImageView
         android:id="@+id/edit_spinner_arrow"
-        android:layout_gravity="right|center_vertical"
+        android:layout_gravity="end|center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="2dp"
         android:src="@drawable/ic_arrow_down_black"
         android:tint="@color/xui_config_color_black" />
 
