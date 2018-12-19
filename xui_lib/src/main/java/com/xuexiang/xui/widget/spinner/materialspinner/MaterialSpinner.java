@@ -538,8 +538,7 @@ public class MaterialSpinner extends AppCompatTextView {
         if (isInDialog) {
             popupWindow.showAsDropDown(this);
         } else {
-            int windowPos[] = calculatePopWindowPos(this);
-            popupWindow.showAtLocation(this, Gravity.NO_GRAVITY, windowPos[0], windowPos[1]);
+            popupWindow.showAsDropDown(this, 0, calculatePopWindowYOffset(this));
         }
     }
 
@@ -558,18 +557,45 @@ public class MaterialSpinner extends AppCompatTextView {
         final int anchorHeight = anchorView.getHeight();
         // 获取屏幕的高宽
         final int screenHeight = Utils.getScreenHeight(getContext());
-        // 计算listvi的高宽
-        final int windowHeight = Utils.getListViewHeightBasedOnChildren(listView);
+        // 计算ListView的高宽
+        final int listViewHeight = Utils.getListViewHeightBasedOnChildren(listView);
         // 判断需要向上弹出还是向下弹出显示
-        final boolean isNeedShowUp = (screenHeight - anchorLoc[1] - anchorHeight < windowHeight);
+        final boolean isNeedShowUp = (screenHeight - anchorLoc[1] - anchorHeight < listViewHeight);
         if (isNeedShowUp) {
             windowPos[0] = anchorLoc[0];
-            windowPos[1] = anchorLoc[1] - windowHeight - dropDownOffset;
+            windowPos[1] = anchorLoc[1] - listViewHeight - dropDownOffset;
         } else {
             windowPos[0] = anchorLoc[0];
             windowPos[1] = anchorLoc[1] + anchorHeight;
         }
         return windowPos;
+    }
+
+    /**
+     * 计算出来的位置，y方向就在anchorView的上面和下面对齐显示，x方向就是与屏幕右边对齐显示
+     * 如果anchorView的位置有变化，就可以适当自己额外加入偏移来修正
+     *
+     * @param anchorView 呼出window的view
+     * @return window显示的左上角的xOff, yOff坐标
+     */
+    private int calculatePopWindowYOffset(final View anchorView) {
+        int windowYOffset;
+        final int anchorLoc[] = new int[2];
+        // 获取锚点View在屏幕上的左上角坐标位置
+        anchorView.getLocationOnScreen(anchorLoc);
+        final int anchorHeight = anchorView.getHeight();
+        // 获取屏幕的高宽
+        final int screenHeight = Utils.getScreenHeight(getContext());
+        // 计算ListView的高宽
+        final int listViewHeight = Utils.getListViewHeightBasedOnChildren(listView);
+        // 判断需要向上弹出还是向下弹出显示
+        final boolean isNeedShowUp = (screenHeight - anchorLoc[1] < listViewHeight + anchorHeight);
+        if (isNeedShowUp) {
+            windowYOffset = - (listViewHeight + dropDownOffset + anchorHeight);
+        } else {
+            windowYOffset = 0;
+        }
+        return windowYOffset;
     }
 
     /**

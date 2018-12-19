@@ -121,6 +121,12 @@
                 android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
                 app:ms_entries="@array/sort_mode_one_entry"/>
 
+            <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+                style="@style/Material.SpinnerStyle"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                app:ms_entries="@array/sort_mode_entry" />
+
         </LinearLayout>
 
         <LinearLayout

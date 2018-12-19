@@ -142,4 +142,5 @@ public class SpinnerStyleFragment extends BaseFragment {
                 .setOnEditListener(listener)
                 .show();
     }
+
 }
