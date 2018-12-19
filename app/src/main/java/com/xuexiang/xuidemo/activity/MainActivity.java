@@ -2,6 +2,7 @@ package com.xuexiang.xuidemo.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MotionEvent;
 
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xui.XUI;
@@ -30,4 +31,15 @@ public class MainActivity extends XPageActivity {
 
         openPage(ComponentsFragment.class);
     }
+
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+//            onUserInteraction();
+//        }
+//        if (getWindow().superDispatchTouchEvent(ev)) {
+//            return true;
+//        }
+//        return onTouchEvent(ev);
+//    }
 }

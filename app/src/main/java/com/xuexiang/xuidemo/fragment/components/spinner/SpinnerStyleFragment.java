@@ -6,6 +6,7 @@ import android.widget.Spinner;
 
 import com.xuexiang.xpage.PageConfig;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.SnackbarUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
@@ -71,6 +72,8 @@ public class SpinnerStyleFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+        KeyboardUtils.setSoftInputAdjustResize(getActivity()); //修改输入法模式
+
         WidgetUtils.setSpinnerDropDownVerticalOffset(mSpinnerFitOffset);
         WidgetUtils.initSpinnerStyle(mSpinnerSystem, ResUtils.getStringArray(R.array.sort_mode_entry));
 
@@ -125,7 +128,6 @@ public class SpinnerStyleFragment extends BaseFragment {
         });
     }
 
-
     /**
      * 显示spinner编辑弹窗
      *
@@ -143,4 +145,9 @@ public class SpinnerStyleFragment extends BaseFragment {
                 .show();
     }
 
+    @Override
+    public void onDestroyView() {
+        KeyboardUtils.setSoftInputAdjustPan(getActivity());
+        super.onDestroyView();
+    }
 }

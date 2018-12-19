@@ -22,12 +22,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -161,6 +163,38 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         mRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
 
         mScreenDensity = viewGroup.getResources().getDisplayMetrics().density;
+    }
+
+    /**
+     * 软键盘以覆盖当前界面的形式出现
+     *
+     * @param activity
+     */
+    public static void setSoftInputAdjustNothing(@NonNull Activity activity) {
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING
+                | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+    }
+
+    /**
+     *
+     * 软键盘以顶起当前界面的形式出现, 注意这种方式会使得当前布局的高度发生变化，触发当前布局onSizeChanged方法回调，这里前后高度差就是软键盘的高度了
+     *
+     * @param activity
+     */
+    public static void setSoftInputAdjustResize(@NonNull Activity activity){
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
+                | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+    }
+
+    /**
+     *
+     * 软键盘以上推当前界面的形式出现, 注意这种方式不会改变布局的高度
+     *
+     * @param activity
+     */
+    public static void setSoftInputAdjustPan(@NonNull Activity activity){
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+                | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     /**

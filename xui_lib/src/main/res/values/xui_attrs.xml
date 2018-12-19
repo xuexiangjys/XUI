@@ -696,7 +696,7 @@
         <attr name="ksv_scroll_height" format="dimension" />
         <!--键盘弹出后，滚动的延迟-->
         <attr name="ksv_scroll_delay" format="integer" />
-        <!--滚动是否隐藏键盘, 默认false-->
+        <!--滚动是否隐藏键盘, 默认true-->
         <attr name="ksv_scroll_hide" format="boolean" />
     </declare-styleable>
 

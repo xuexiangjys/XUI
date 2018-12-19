@@ -47,14 +47,14 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     private final static int DEFAULT_MAX_LINE = 1;
     private EditText mEditText;
     private ImageView mIvArrow;
-    private ListPopupWindow popupWindow;
+    private ListPopupWindow mPopupWindow;
     private BaseEditSpinnerAdapter mAdapter;
     private long popupWindowHideTime;
     private Animation mAnimation;
     private Animation mResetAnimation;
     private AdapterView.OnItemClickListener mOnItemClickListener;
     private int mMaxLine = DEFAULT_MAX_LINE;
-    private Drawable dropDownBg;
+    private Drawable mDropDownBg;
 
     private boolean mIsShowFilterData = true;
 
@@ -113,7 +113,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
             if (entriesID != 0) {
                 setItems(ResUtils.getStringArray(entriesID));
             }
-            dropDownBg = tArray.getDrawable(R.styleable.EditSpinner_es_dropdown_bg);
+            mDropDownBg = tArray.getDrawable(R.styleable.EditSpinner_es_dropdown_bg);
             boolean enable = tArray.getBoolean(R.styleable.EditSpinner_es_enable, true);
             setEnabled(enable);
 
@@ -137,14 +137,14 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     }
 
     private void setBaseAdapter(BaseAdapter adapter) {
-        if (popupWindow == null) {
+        if (mPopupWindow == null) {
             initPopupWindow();
         }
-        popupWindow.setAdapter(adapter);
+        mPopupWindow.setAdapter(adapter);
     }
 
     private void initPopupWindow() {
-        popupWindow = new ListPopupWindow(getContext()) {
+        mPopupWindow = new ListPopupWindow(getContext()) {
             @Override
             public void show() {
                 super.show();
@@ -157,25 +157,26 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
             }
 
         };
-        popupWindow.setOnItemClickListener(this);
-        popupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
-        popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
-        popupWindow.setPromptPosition(ListPopupWindow.POSITION_PROMPT_BELOW);
-        popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.setAnchorView(mEditText);
-        popupWindow.setListSelector(ResUtils.getDrawable(getContext(), R.drawable.xui_config_list_item_selector));
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+        mPopupWindow.setOnItemClickListener(this);
+        mPopupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
+        mPopupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        mPopupWindow.setPromptPosition(ListPopupWindow.POSITION_PROMPT_BELOW);
+        mPopupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        mPopupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        mPopupWindow.setAnchorView(mEditText);
+        mPopupWindow.setVerticalOffset(ThemeUtils.resolveDimension(getContext(), R.attr.ms_dropdown_offset));
+        mPopupWindow.setListSelector(ResUtils.getDrawable(getContext(), R.drawable.xui_config_list_item_selector));
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 popupWindowHideTime = System.currentTimeMillis();
                 mIvArrow.startAnimation(mResetAnimation);
             }
         });
-        if (dropDownBg != null) {
-            popupWindow.setBackgroundDrawable(dropDownBg);
+        if (mDropDownBg != null) {
+            mPopupWindow.setBackgroundDrawable(mDropDownBg);
         } else {
-            popupWindow.setBackgroundDrawable(ResUtils.getDrawable(getContext(), R.drawable.ms_drop_down_bg_radius));
+            mPopupWindow.setBackgroundDrawable(ResUtils.getDrawable(getContext(), R.drawable.ms_drop_down_bg_radius));
         }
     }
 
@@ -187,7 +188,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     private void togglePopupWindow() {
         if (System.currentTimeMillis() - popupWindowHideTime > 200) {
-            if (mAdapter == null || popupWindow == null) {
+            if (mAdapter == null || mPopupWindow == null) {
                 return;
             }
             showFilterData("");
@@ -197,8 +198,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     @Override
     public final void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         mEditText.setText(((BaseEditSpinnerAdapter) parent.getAdapter()).getItemString(position));
-        if (popupWindow != null) {
-            popupWindow.dismiss();
+        if (mPopupWindow != null) {
+            mPopupWindow.dismiss();
         }
         if (mOnItemClickListener != null) {
             mOnItemClickListener.onItemClick(parent, view, position, id);
@@ -224,23 +225,23 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
                 showFilterData(key);
             }
         } else {
-            if (popupWindow != null) {
-                popupWindow.dismiss();
+            if (mPopupWindow != null) {
+                mPopupWindow.dismiss();
             }
         }
     }
 
     private void showFilterData(String key) {
-        if (popupWindow == null || mAdapter == null || mAdapter.getEditSpinnerFilter() == null) {
-            if (popupWindow != null) {
-                popupWindow.dismiss();
+        if (mPopupWindow == null || mAdapter == null || mAdapter.getEditSpinnerFilter() == null) {
+            if (mPopupWindow != null) {
+                mPopupWindow.dismiss();
             }
             return;
         }
         if (mAdapter.getEditSpinnerFilter().onFilter(key)) {
-            popupWindow.dismiss();
+            mPopupWindow.dismiss();
         } else {
-            popupWindow.show();
+            mPopupWindow.show();
         }
 
     }

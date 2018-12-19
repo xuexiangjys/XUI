@@ -44,26 +44,26 @@ import java.util.List;
  */
 public class MaterialSpinner extends AppCompatTextView {
 
-    private OnNothingSelectedListener onNothingSelectedListener;
-    private OnItemSelectedListener onItemSelectedListener;
-    private OnNoMoreChoiceListener onNoMoreChoiceListener;
-    private MaterialSpinnerBaseAdapter adapter;
-    private PopupWindow popupWindow;
-    private ListView listView;
-    private Drawable arrowDrawable;
-    private boolean hideArrow;
-    private boolean nothingSelected;
-    private int popupWindowMaxHeight;
-    private int popupWindowHeight;
-    private int selectedIndex;
-    private int backgroundColor;
-    private int backgroundSelector;
-    private int arrowColor;
-    private int arrowColorDisabled;
-    private int textColor;
-    private int entriesID;
-    private Drawable dropDownBg;
-    private boolean isInDialog;
+    private OnNothingSelectedListener mOnNothingSelectedListener;
+    private OnItemSelectedListener mOnItemSelectedListener;
+    private OnNoMoreChoiceListener mOnNoMoreChoiceListener;
+    private MaterialSpinnerBaseAdapter mAdapter;
+    private PopupWindow mPopupWindow;
+    private ListView mListView;
+    private Drawable mArrowDrawable;
+    private boolean mHideArrow;
+    private boolean mNothingSelected;
+    private int mPopupWindowMaxHeight;
+    private int mPopupWindowHeight;
+    private int mSelectedIndex;
+    private int mBackgroundColor;
+    private int mBackgroundSelector;
+    private int mArrowColor;
+    private int mArrowColorDisabled;
+    private int mTextColor;
+    private int mEntriesID;
+    private Drawable mDropDownBg;
+    private boolean mIsInDialog;
 
     private int dropDownOffset;
 
@@ -88,17 +88,17 @@ public class MaterialSpinner extends AppCompatTextView {
         boolean rtl = ResUtils.isRtl();
 
         try {
-            backgroundColor = ta.getColor(R.styleable.MaterialSpinner_ms_background_color, Color.WHITE);
-            backgroundSelector = ta.getResourceId(R.styleable.MaterialSpinner_ms_background_selector, 0);
-            textColor = ta.getColor(R.styleable.MaterialSpinner_ms_text_color, defaultColor);
-            arrowColor = ta.getColor(R.styleable.MaterialSpinner_ms_arrow_tint, textColor);
-            hideArrow = ta.getBoolean(R.styleable.MaterialSpinner_ms_hide_arrow, false);
-            popupWindowMaxHeight = ta.getDimensionPixelSize(R.styleable.MaterialSpinner_ms_dropdown_max_height, 0);
-            popupWindowHeight = ta.getLayoutDimension(R.styleable.MaterialSpinner_ms_dropdown_height, WindowManager.LayoutParams.WRAP_CONTENT);
-            arrowColorDisabled = ResUtils.lighter(arrowColor, 0.8f);
-            entriesID = ta.getResourceId(R.styleable.MaterialSpinner_ms_entries, 0);
-            dropDownBg = ta.getDrawable(R.styleable.MaterialSpinner_ms_dropdown_bg);
-            isInDialog = ta.getBoolean(R.styleable.MaterialSpinner_ms_in_dialog, false);
+            mBackgroundColor = ta.getColor(R.styleable.MaterialSpinner_ms_background_color, Color.WHITE);
+            mBackgroundSelector = ta.getResourceId(R.styleable.MaterialSpinner_ms_background_selector, 0);
+            mTextColor = ta.getColor(R.styleable.MaterialSpinner_ms_text_color, defaultColor);
+            mArrowColor = ta.getColor(R.styleable.MaterialSpinner_ms_arrow_tint, mTextColor);
+            mHideArrow = ta.getBoolean(R.styleable.MaterialSpinner_ms_hide_arrow, false);
+            mPopupWindowMaxHeight = ta.getDimensionPixelSize(R.styleable.MaterialSpinner_ms_dropdown_max_height, 0);
+            mPopupWindowHeight = ta.getLayoutDimension(R.styleable.MaterialSpinner_ms_dropdown_height, WindowManager.LayoutParams.WRAP_CONTENT);
+            mArrowColorDisabled = ResUtils.lighter(mArrowColor, 0.8f);
+            mEntriesID = ta.getResourceId(R.styleable.MaterialSpinner_ms_entries, 0);
+            mDropDownBg = ta.getDrawable(R.styleable.MaterialSpinner_ms_dropdown_bg);
+            mIsInDialog = ta.getBoolean(R.styleable.MaterialSpinner_ms_in_dialog, false);
 
         } finally {
             ta.recycle();
@@ -123,81 +123,81 @@ public class MaterialSpinner extends AppCompatTextView {
             setTextDirection(View.TEXT_DIRECTION_RTL);
         }
 
-        if (!hideArrow) {
-            arrowDrawable = ResUtils.getDrawable(getContext(), R.drawable.ms_ic_arrow_up).mutate();
-            arrowDrawable.setColorFilter(arrowColor, PorterDuff.Mode.SRC_IN);
+        if (!mHideArrow) {
+            mArrowDrawable = ResUtils.getDrawable(getContext(), R.drawable.ms_ic_arrow_up).mutate();
+            mArrowDrawable.setColorFilter(mArrowColor, PorterDuff.Mode.SRC_IN);
             int arrowSize = ThemeUtils.resolveDimension(getContext(), R.attr.ms_arrow_size);
-            arrowDrawable.setBounds(0, 0, arrowSize, arrowSize);
+            mArrowDrawable.setBounds(0, 0, arrowSize, arrowSize);
             if (rtl) {
-                setCompoundDrawablesWithIntrinsicBounds(arrowDrawable, null, null, null);
+                setCompoundDrawablesWithIntrinsicBounds(mArrowDrawable, null, null, null);
             } else {
-                setCompoundDrawablesWithIntrinsicBounds(null, null, arrowDrawable, null);
+                setCompoundDrawablesWithIntrinsicBounds(null, null, mArrowDrawable, null);
             }
         }
 
-        listView = new ListView(context);
-        listView.setId(getId());
-        listView.setDivider(null);
-        listView.setItemsCanFocus(true);
+        mListView = new ListView(context);
+        mListView.setId(getId());
+        mListView.setDivider(null);
+        mListView.setItemsCanFocus(true);
         int padding = ThemeUtils.resolveDimension(getContext(), R.attr.ms_dropdown_offset);
-        listView.setPadding(padding, padding, padding, padding);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setPadding(padding, padding, padding, padding);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position >= selectedIndex && position < adapter.getCount()) {
+                if (position >= mSelectedIndex && position < mAdapter.getCount()) {
                     position++;
                 }
-                selectedIndex = position;
-                nothingSelected = false;
-                Object item = adapter.get(position);
-                adapter.notifyItemSelected(position);
+                mSelectedIndex = position;
+                mNothingSelected = false;
+                Object item = mAdapter.get(position);
+                mAdapter.notifyItemSelected(position);
                 setText(item.toString());
                 collapse();
-                if (onItemSelectedListener != null) {
+                if (mOnItemSelectedListener != null) {
                     //noinspection unchecked
-                    onItemSelectedListener.onItemSelected(MaterialSpinner.this, position, id, item);
+                    mOnItemSelectedListener.onItemSelected(MaterialSpinner.this, position, id, item);
                 }
             }
         });
-        if (entriesID != 0) {
-            setItems(ResUtils.getStringArray(entriesID));
+        if (mEntriesID != 0) {
+            setItems(ResUtils.getStringArray(mEntriesID));
         }
 
-        popupWindow = new PopupWindow(context);
-        popupWindow.setContentView(listView);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setFocusable(true);
-        popupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
-        popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        mPopupWindow = new PopupWindow(context);
+        mPopupWindow.setContentView(mListView);
+        mPopupWindow.setOutsideTouchable(true);
+        mPopupWindow.setFocusable(true);
+        mPopupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
+        mPopupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            popupWindow.setElevation(16);
+            mPopupWindow.setElevation(16);
         }
 
-        if (dropDownBg != null) {
-            popupWindow.setBackgroundDrawable(dropDownBg);
+        if (mDropDownBg != null) {
+            mPopupWindow.setBackgroundDrawable(mDropDownBg);
         } else {
-            popupWindow.setBackgroundDrawable(ResUtils.getDrawable(getContext(), R.drawable.ms_drop_down_bg));
+            mPopupWindow.setBackgroundDrawable(ResUtils.getDrawable(getContext(), R.drawable.ms_drop_down_bg));
         }
 
-        if (backgroundColor != Color.WHITE) { // default color is white
-            setBackgroundColor(backgroundColor);
-        } else if (backgroundSelector != 0) {
-            setBackgroundResource(backgroundSelector);
+        if (mBackgroundColor != Color.WHITE) { // default color is white
+            setBackgroundColor(mBackgroundColor);
+        } else if (mBackgroundSelector != 0) {
+            setBackgroundResource(mBackgroundSelector);
         }
-        if (textColor != defaultColor) {
-            setTextColor(textColor);
+        if (mTextColor != defaultColor) {
+            setTextColor(mTextColor);
         }
 
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
 
             @Override
             public void onDismiss() {
-                if (nothingSelected && onNothingSelectedListener != null) {
-                    onNothingSelectedListener.onNothingSelected(MaterialSpinner.this);
+                if (mNothingSelected && mOnNothingSelectedListener != null) {
+                    mOnNothingSelectedListener.onNothingSelected(MaterialSpinner.this);
                 }
-                if (!hideArrow) {
+                if (!mHideArrow) {
                     animateArrow(false);
                 }
             }
@@ -206,12 +206,12 @@ public class MaterialSpinner extends AppCompatTextView {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        popupWindow.setHeight(calculatePopupWindowHeight());
-        if (adapter != null) {
+        mPopupWindow.setHeight(calculatePopupWindowHeight());
+        if (mAdapter != null) {
             CharSequence currentText = getText();
             String longestItem = currentText.toString();
-            for (int i = 0; i < adapter.getCount(); i++) {
-                String itemText = adapter.getItemText(i);
+            for (int i = 0; i < mAdapter.getCount(); i++) {
+                String itemText = mAdapter.getItemText(i);
                 if (itemText.length() > longestItem.length()) {
                     longestItem = itemText;
                 }
@@ -222,14 +222,14 @@ public class MaterialSpinner extends AppCompatTextView {
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
-        popupWindow.setWidth(getMeasuredWidth());
+        mPopupWindow.setWidth(getMeasuredWidth());
     }
 
     @Override
     public boolean onTouchEvent(@NonNull MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
             if (isEnabled() && isClickable()) {
-                if (!popupWindow.isShowing()) {
+                if (!mPopupWindow.isShowing()) {
                     expand();
                 } else {
                     collapse();
@@ -241,7 +241,7 @@ public class MaterialSpinner extends AppCompatTextView {
 
     @Override
     public void setBackgroundColor(int color) {
-        backgroundColor = color;
+        mBackgroundColor = color;
         Drawable background = getBackground();
         if (background instanceof StateListDrawable) { // pre-L
             try {
@@ -259,12 +259,12 @@ public class MaterialSpinner extends AppCompatTextView {
         } else if (background != null) { // 21+ (RippleDrawable)
             background.setColorFilter(color, PorterDuff.Mode.SRC_IN);
         }
-        popupWindow.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        mPopupWindow.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 
     @Override
     public void setTextColor(int color) {
-        textColor = color;
+        mTextColor = color;
         super.setTextColor(color);
     }
 
@@ -272,9 +272,9 @@ public class MaterialSpinner extends AppCompatTextView {
     public Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
         bundle.putParcelable("state", super.onSaveInstanceState());
-        bundle.putInt("selected_index", selectedIndex);
-        if (popupWindow != null) {
-            bundle.putBoolean("is_popup_showing", popupWindow.isShowing());
+        bundle.putInt("selected_index", mSelectedIndex);
+        if (mPopupWindow != null) {
+            bundle.putBoolean("is_popup_showing", mPopupWindow.isShowing());
             collapse();
         } else {
             bundle.putBoolean("is_popup_showing", false);
@@ -286,13 +286,13 @@ public class MaterialSpinner extends AppCompatTextView {
     public void onRestoreInstanceState(Parcelable savedState) {
         if (savedState instanceof Bundle) {
             Bundle bundle = (Bundle) savedState;
-            selectedIndex = bundle.getInt("selected_index");
-            if (adapter != null) {
-                setText(adapter.get(selectedIndex).toString());
-                adapter.notifyItemSelected(selectedIndex);
+            mSelectedIndex = bundle.getInt("selected_index");
+            if (mAdapter != null) {
+                setText(mAdapter.get(mSelectedIndex).toString());
+                mAdapter.notifyItemSelected(mSelectedIndex);
             }
             if (bundle.getBoolean("is_popup_showing")) {
-                if (popupWindow != null) {
+                if (mPopupWindow != null) {
                     // Post the show request into the looper to avoid bad token exception
                     post(new Runnable() {
 
@@ -311,8 +311,8 @@ public class MaterialSpinner extends AppCompatTextView {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if (arrowDrawable != null) {
-            arrowDrawable.setColorFilter(enabled ? arrowColor : arrowColorDisabled, PorterDuff.Mode.SRC_IN);
+        if (mArrowDrawable != null) {
+            mArrowDrawable.setColorFilter(enabled ? mArrowColor : mArrowColorDisabled, PorterDuff.Mode.SRC_IN);
         }
     }
 
@@ -320,7 +320,7 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return the selected item position
      */
     public int getSelectedIndex() {
-        return selectedIndex;
+        return mSelectedIndex;
     }
 
     /**
@@ -328,16 +328,17 @@ public class MaterialSpinner extends AppCompatTextView {
      *
      * @param position the item's position
      */
-    public void setSelectedIndex(int position) {
-        if (adapter != null) {
-            if (position >= 0 && position <= adapter.getCount()) {
-                adapter.notifyItemSelected(position);
-                selectedIndex = position;
-                setText(adapter.get(position).toString());
+    public MaterialSpinner setSelectedIndex(int position) {
+        if (mAdapter != null) {
+            if (position >= 0 && position <= mAdapter.getCount()) {
+                mAdapter.notifyItemSelected(position);
+                mSelectedIndex = position;
+                setText(mAdapter.get(position).toString());
             } else {
                 throw new IllegalArgumentException("Position must be lower than adapter count!");
             }
         }
+        return this;
     }
 
     /**
@@ -346,10 +347,11 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param item 选中的内容
      * @param <T>
      */
-    public <T> void setSelectedItem(@NonNull T item) {
-        if (adapter != null && item != null) {
-            setSelectedIndex(getSpinnerPosition(item, adapter.getItems()));
+    public <T> MaterialSpinner setSelectedItem(@NonNull T item) {
+        if (mAdapter != null && item != null) {
+            setSelectedIndex(getSpinnerPosition(item, mAdapter.getItems()));
         }
+        return this;
     }
 
     /**
@@ -377,8 +379,9 @@ public class MaterialSpinner extends AppCompatTextView {
      *
      * @param onItemSelectedListener The callback that will run
      */
-    public void setOnItemSelectedListener(@Nullable OnItemSelectedListener onItemSelectedListener) {
-        this.onItemSelectedListener = onItemSelectedListener;
+    public MaterialSpinner setOnItemSelectedListener(@Nullable OnItemSelectedListener onItemSelectedListener) {
+        mOnItemSelectedListener = onItemSelectedListener;
+        return this;
     }
 
     /**
@@ -386,8 +389,9 @@ public class MaterialSpinner extends AppCompatTextView {
      *
      * @param onNothingSelectedListener the callback that will run
      */
-    public void setOnNothingSelectedListener(@Nullable OnNothingSelectedListener onNothingSelectedListener) {
-        this.onNothingSelectedListener = onNothingSelectedListener;
+    public MaterialSpinner setOnNothingSelectedListener(@Nullable OnNothingSelectedListener onNothingSelectedListener) {
+        mOnNothingSelectedListener = onNothingSelectedListener;
+        return this;
     }
 
     /**
@@ -397,7 +401,7 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return
      */
     public MaterialSpinner setOnNoMoreChoiceListener(OnNoMoreChoiceListener onNoMoreChoiceListener) {
-        this.onNoMoreChoiceListener = onNoMoreChoiceListener;
+        mOnNoMoreChoiceListener = onNoMoreChoiceListener;
         return this;
     }
 
@@ -407,8 +411,9 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param items A list of items
      * @param <T>   The item type
      */
-    public <T> void setItems(@NonNull T... items) {
+    public <T> MaterialSpinner setItems(@NonNull T... items) {
         setItems(Arrays.asList(items));
+        return this;
     }
 
     /**
@@ -417,10 +422,11 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param items A list of items
      * @param <T>   The item type
      */
-    public <T> void setItems(@NonNull List<T> items) {
-        adapter = new MaterialSpinnerAdapter<>(getContext(), items)
-                .setTextColor(textColor).setTextSize(getTextSize());
-        setAdapterInternal(adapter);
+    public <T> MaterialSpinner setItems(@NonNull List<T> items) {
+        mAdapter = new MaterialSpinnerAdapter<>(getContext(), items)
+                .setTextColor(mTextColor).setTextSize(getTextSize());
+        setAdapterInternal(mAdapter);
+        return this;
     }
 
     /**
@@ -430,11 +436,11 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return A list of items or {@code null} if no items are set.
      */
     public <T> List<T> getItems() {
-        if (adapter == null) {
+        if (mAdapter == null) {
             return null;
         }
         //noinspection unchecked
-        return adapter.getItems();
+        return mAdapter.getItems();
     }
 
     /**
@@ -444,7 +450,7 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return A list of items or {@code null} if no items are set.
      */
     public <T> T getSelectedItem() {
-        return adapter != null ? (T) adapter.get(selectedIndex) : null;
+        return mAdapter != null ? (T) mAdapter.get(mSelectedIndex) : null;
     }
 
     /**
@@ -452,10 +458,11 @@ public class MaterialSpinner extends AppCompatTextView {
      *
      * @param adapter The list adapter
      */
-    public void setAdapter(@NonNull ListAdapter adapter) {
-        this.adapter = new MaterialSpinnerAdapterWrapper(getContext(), adapter)
-                .setTextColor(textColor).setTextSize(getTextSize());
-        setAdapterInternal(this.adapter);
+    public MaterialSpinner setAdapter(@NonNull ListAdapter adapter) {
+        mAdapter = new MaterialSpinnerAdapterWrapper(getContext(), adapter)
+                .setTextColor(mTextColor).setTextSize(getTextSize());
+        setAdapterInternal(mAdapter);
+        return this;
     }
 
     /**
@@ -464,11 +471,12 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param adapter The adapter
      * @param <T>     The type
      */
-    public <T> void setAdapter(MaterialSpinnerAdapter<T> adapter) {
-        this.adapter = adapter;
-        this.adapter.setTextColor(textColor);
-        this.adapter.setTextSize(getTextSize());
+    public <T> MaterialSpinner setAdapter(MaterialSpinnerAdapter<T> adapter) {
+        mAdapter = adapter;
+        mAdapter.setTextColor(mTextColor);
+        mAdapter.setTextSize(getTextSize());
         setAdapterInternal(adapter);
+        return this;
     }
 
     /**
@@ -477,23 +485,23 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return
      */
     public MaterialSpinnerBaseAdapter getAdapter() {
-        return adapter;
+        return mAdapter;
     }
 
     public MaterialSpinner setDropDownBackgroundSelector(@DrawableRes int backgroundSelector) {
-        if (adapter != null) {
-            adapter.setBackgroundSelector(backgroundSelector);
+        if (mAdapter != null) {
+            mAdapter.setBackgroundSelector(backgroundSelector);
         }
         return this;
     }
 
     private void setAdapterInternal(@NonNull MaterialSpinnerBaseAdapter adapter) {
-        listView.setAdapter(adapter);
-        if (selectedIndex >= adapter.getCount()) {
-            selectedIndex = 0;
+        mListView.setAdapter(adapter);
+        if (mSelectedIndex >= adapter.getCount()) {
+            mSelectedIndex = 0;
         }
         if (adapter.getCount() >= 0) {
-            setText(adapter.get(selectedIndex).toString());
+            setText(adapter.get(mSelectedIndex).toString());
         } else {
             setText("");
         }
@@ -503,7 +511,7 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return 是否有内容可以下拉选择
      */
     private boolean hasMoreChoice() {
-        return adapter != null && adapter.getCount() > 0;
+        return mAdapter != null && mAdapter.getCount() > 0;
     }
 
     /**
@@ -511,16 +519,16 @@ public class MaterialSpinner extends AppCompatTextView {
      */
     public void expand() {
         if (!hasMoreChoice()) {
-            if (onNoMoreChoiceListener != null) {
-                onNoMoreChoiceListener.OnNoMoreChoice(this);
+            if (mOnNoMoreChoiceListener != null) {
+                mOnNoMoreChoiceListener.OnNoMoreChoice(this);
             }
             return;
         }
 
-        if (!hideArrow) {
+        if (!mHideArrow) {
             animateArrow(true);
         }
-        nothingSelected = true;
+        mNothingSelected = true;
         showPopupWindow();
     }
 
@@ -528,17 +536,17 @@ public class MaterialSpinner extends AppCompatTextView {
      * Closes the dropdown menu
      */
     public void collapse() {
-        if (!hideArrow) {
+        if (!mHideArrow) {
             animateArrow(false);
         }
-        popupWindow.dismiss();
+        mPopupWindow.dismiss();
     }
 
     private void showPopupWindow() {
-        if (isInDialog) {
-            popupWindow.showAsDropDown(this);
+        if (mIsInDialog) {
+            mPopupWindow.showAsDropDown(this);
         } else {
-            popupWindow.showAsDropDown(this, 0, calculatePopWindowYOffset(this));
+            mPopupWindow.showAsDropDown(this, 0, calculatePopWindowYOffset(this));
         }
     }
 
@@ -558,7 +566,7 @@ public class MaterialSpinner extends AppCompatTextView {
         // 获取屏幕的高宽
         final int screenHeight = Utils.getScreenHeight(getContext());
         // 计算ListView的高宽
-        final int listViewHeight = Utils.getListViewHeightBasedOnChildren(listView);
+        final int listViewHeight = Utils.getListViewHeightBasedOnChildren(mListView);
         // 判断需要向上弹出还是向下弹出显示
         final boolean isNeedShowUp = (screenHeight - anchorLoc[1] - anchorHeight < listViewHeight);
         if (isNeedShowUp) {
@@ -587,11 +595,11 @@ public class MaterialSpinner extends AppCompatTextView {
         // 获取屏幕的高宽
         final int screenHeight = Utils.getScreenHeight(getContext());
         // 计算ListView的高宽
-        final int listViewHeight = Utils.getListViewHeightBasedOnChildren(listView);
+        final int listViewHeight = Utils.getListViewHeightBasedOnChildren(mListView);
         // 判断需要向上弹出还是向下弹出显示
         final boolean isNeedShowUp = (screenHeight - anchorLoc[1] < listViewHeight + anchorHeight);
         if (isNeedShowUp) {
-            windowYOffset = - (listViewHeight + dropDownOffset + anchorHeight);
+            windowYOffset = -(listViewHeight + dropDownOffset + anchorHeight);
         } else {
             windowYOffset = 0;
         }
@@ -604,17 +612,17 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param color the color value
      */
     public void setArrowColor(@ColorInt int color) {
-        arrowColor = color;
-        arrowColorDisabled = ResUtils.lighter(arrowColor, 0.8f);
-        if (arrowDrawable != null) {
-            arrowDrawable.setColorFilter(arrowColor, PorterDuff.Mode.SRC_IN);
+        mArrowColor = color;
+        mArrowColorDisabled = ResUtils.lighter(mArrowColor, 0.8f);
+        if (mArrowDrawable != null) {
+            mArrowDrawable.setColorFilter(mArrowColor, PorterDuff.Mode.SRC_IN);
         }
     }
 
     private void animateArrow(boolean shouldRotateUp) {
         int start = shouldRotateUp ? 0 : 10000;
         int end = shouldRotateUp ? 10000 : 0;
-        ObjectAnimator animator = ObjectAnimator.ofInt(arrowDrawable, "level", start, end);
+        ObjectAnimator animator = ObjectAnimator.ofInt(mArrowDrawable, "level", start, end);
         animator.start();
     }
 
@@ -624,8 +632,8 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param height the height in pixels
      */
     public void setDropdownMaxHeight(int height) {
-        popupWindowMaxHeight = height;
-        popupWindow.setHeight(calculatePopupWindowHeight());
+        mPopupWindowMaxHeight = height;
+        mPopupWindow.setHeight(calculatePopupWindowHeight());
     }
 
     /**
@@ -634,21 +642,21 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param height the height in pixels
      */
     public void setDropdownHeight(int height) {
-        popupWindowHeight = height;
-        popupWindow.setHeight(calculatePopupWindowHeight());
+        mPopupWindowHeight = height;
+        mPopupWindow.setHeight(calculatePopupWindowHeight());
     }
 
     private int calculatePopupWindowHeight() {
-        if (adapter == null) {
+        if (mAdapter == null) {
             return WindowManager.LayoutParams.WRAP_CONTENT;
         }
-        float listViewHeight = adapter.getCount() * ThemeUtils.resolveDimension(getContext(), R.attr.ms_item_height_size);
-        if (popupWindowMaxHeight > 0 && listViewHeight > popupWindowMaxHeight) {
-            return popupWindowMaxHeight;
-        } else if (popupWindowHeight != WindowManager.LayoutParams.MATCH_PARENT
-                && popupWindowHeight != WindowManager.LayoutParams.WRAP_CONTENT
-                && popupWindowHeight <= listViewHeight) {
-            return popupWindowHeight;
+        float listViewHeight = mAdapter.getCount() * ThemeUtils.resolveDimension(getContext(), R.attr.ms_item_height_size);
+        if (mPopupWindowMaxHeight > 0 && listViewHeight > mPopupWindowMaxHeight) {
+            return mPopupWindowMaxHeight;
+        } else if (mPopupWindowHeight != WindowManager.LayoutParams.MATCH_PARENT
+                && mPopupWindowHeight != WindowManager.LayoutParams.WRAP_CONTENT
+                && mPopupWindowHeight <= listViewHeight) {
+            return mPopupWindowHeight;
         }
         return WindowManager.LayoutParams.WRAP_CONTENT;
     }
@@ -659,7 +667,7 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return The {@link PopupWindow} that is displayed when the view has been clicked.
      */
     public PopupWindow getPopupWindow() {
-        return popupWindow;
+        return mPopupWindow;
     }
 
     /**
@@ -668,7 +676,7 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return the ListView shown in the PopupWindow.
      */
     public ListView getListView() {
-        return listView;
+        return mListView;
     }
 
     /**

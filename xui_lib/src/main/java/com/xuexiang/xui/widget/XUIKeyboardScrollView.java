@@ -29,8 +29,9 @@ import com.xuexiang.xui.utils.KeyboardUtils;
 
 /**
  * 监听键盘弹出，自动滚动
+ *
  * @author xuexiang
- * @date 2017/12/8 上午11:26
+ * @since 2018/12/19 下午11:27
  */
 public class XUIKeyboardScrollView extends ScrollView implements KeyboardUtils.SoftKeyboardToggleListener {
 
@@ -53,7 +54,7 @@ public class XUIKeyboardScrollView extends ScrollView implements KeyboardUtils.S
     private int mScrollDelay;
 
     /**
-     * 滚动是否隐藏键盘，默认false
+     * 滚动是否隐藏键盘，默认true
      */
     private boolean mScrollHide;
 
@@ -74,6 +75,7 @@ public class XUIKeyboardScrollView extends ScrollView implements KeyboardUtils.S
 
     /**
      * 初始化属性
+     *
      * @param context
      * @param attrs
      */
@@ -83,7 +85,7 @@ public class XUIKeyboardScrollView extends ScrollView implements KeyboardUtils.S
             mAutoScroll = ta.getBoolean(R.styleable.XUIKeyboardScrollView_ksv_auto_scroll, false);
             mScrollHeight = ta.getDimensionPixelSize(R.styleable.XUIKeyboardScrollView_ksv_scroll_height, DensityUtils.dp2px(getContext(), DEFAULT_SCROLL_HEIGHT));
             mScrollDelay = ta.getInt(R.styleable.XUIKeyboardScrollView_ksv_scroll_delay, 100);
-            mScrollHide = ta.getBoolean(R.styleable.XUIKeyboardScrollView_ksv_scroll_hide, false);
+            mScrollHide = ta.getBoolean(R.styleable.XUIKeyboardScrollView_ksv_scroll_hide, true);
             ta.recycle();
         }
         if (mAutoScroll) {
@@ -119,12 +121,6 @@ public class XUIKeyboardScrollView extends ScrollView implements KeyboardUtils.S
     }
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        KeyboardUtils.dispatchTouchEvent(ev, getRootView().findFocus());
-        return super.dispatchTouchEvent(ev);
-    }
-
-    @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
         if (mScrollHide) {
@@ -134,6 +130,7 @@ public class XUIKeyboardScrollView extends ScrollView implements KeyboardUtils.S
 
     /**
      * 设置滚动是否隐藏键盘
+     *
      * @param isScrollHideKeyboard
      * @return
      */

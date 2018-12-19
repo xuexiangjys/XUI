@@ -20,6 +20,7 @@ package com.xuexiang.xui.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -47,7 +48,7 @@ public final class WidgetUtils {
      *
      * @param activity
      */
-    public static void requestFullScreen(Activity activity) {
+    public static void requestFullScreen(@NonNull Activity activity) {
         activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
         activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
