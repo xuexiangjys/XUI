@@ -29,15 +29,15 @@ public class XUIAlphaViewHelper implements IAlphaViewHelper {
     private boolean mChangeAlphaWhenDisable;
 
     private float mNormalAlpha = 1F;
-    private float mPressedAlpha = 0.5F;
-    private float mDisabledAlpha = 0.5F;
+    private float mPressedAlpha;
+    private float mDisabledAlpha;
 
     public XUIAlphaViewHelper(@NonNull View target) {
         mTarget = new WeakReference<>(target);
         mChangeAlphaWhenPress = ThemeUtils.resolveBoolean(target.getContext(), R.attr.xui_switch_alpha_pressed, true);
         mChangeAlphaWhenDisable = ThemeUtils.resolveBoolean(target.getContext(), R.attr.xui_switch_alpha_disabled, true);
-        mPressedAlpha = ThemeUtils.getAttrFloatValue(target.getContext(), R.attr.xui_alpha_pressed);
-        mDisabledAlpha = ThemeUtils.getAttrFloatValue(target.getContext(), R.attr.xui_alpha_disabled);
+        mPressedAlpha = ThemeUtils.getFloatFromAttrRes(target.getContext(), R.attr.xui_alpha_pressed, 0.5F);
+        mDisabledAlpha = ThemeUtils.getFloatFromAttrRes(target.getContext(), R.attr.xui_alpha_disabled, 0.5F);
     }
 
     public XUIAlphaViewHelper(@NonNull View target, float pressedAlpha, float disabledAlpha) {

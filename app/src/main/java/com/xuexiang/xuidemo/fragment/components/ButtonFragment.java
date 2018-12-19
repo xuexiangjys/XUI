@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.fragment.components;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.button.AlphaViewFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ButtonStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ButtonViewFragment;
 import com.xuexiang.xuidemo.fragment.components.button.RoundButtonFragment;
@@ -30,7 +31,8 @@ public class ButtonFragment extends ComponentContainerFragment {
                 ShadowButtonFragment.class,
                 RoundButtonFragment.class,
                 ButtonViewFragment.class,
-                SwitchButtonFragment.class
+                SwitchButtonFragment.class,
+                AlphaViewFragment.class
         };
     }
 }
