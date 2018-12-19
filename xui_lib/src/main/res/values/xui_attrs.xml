@@ -679,6 +679,15 @@
 
     <!--=====================================================================-->
 
+    <declare-styleable name="CookieBar">
+        <!--CookieBar-->
+        <attr name="cookieTitleColor" format="color"/>
+        <attr name="cookieMessageColor" format="color"/>
+        <attr name="cookieActionColor" format="color"/>
+        <attr name="cookieBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <!--=====================================================================-->
     <!--XUIKeyboardScrollView-->
     <declare-styleable name="XUIKeyboardScrollView">
         <!--键盘弹出后,是否自动滚动，默认false-->

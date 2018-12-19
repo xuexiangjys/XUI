@@ -147,4 +147,9 @@
     <string name="item_head_style_wave_swipe">全屏水滴</string>
 
 
+    <!--CookieBar-->
+    <string name="cookie_title">这是一个标题</string>
+    <string name="cookie_message">这里是提示信息！这里是提示信息！这里是提示信息！这里是提示信息！这里是提示信息！</string>
+    <string name="cookie_action">点击一下</string>
+
 </resources>
