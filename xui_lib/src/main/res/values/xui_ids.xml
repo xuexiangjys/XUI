@@ -43,9 +43,12 @@
     <!--Preview-->
     <item name="item_image_key" type="id" />
 
-    <!--snackbar-->
+    <!--Snackbar-->
     <item name="snackbar_action" type="id" />
     <item name="snackbar_text" type="id" />
+
+    <!--EasyIndicator-->
+    <item name="view_pager" type="id"/>
 
 
 </resources>

@@ -112,6 +112,11 @@
         <item name="xui_config_splash_company_logo">@drawable/ic_splash_company_logo_xuexiang</item>
     </style>
 
+    <style name="TextStyle.Content.Match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
 
     <style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">#FFFFFF</item>

@@ -45,12 +45,16 @@ public class MyApp extends Application {
         XUtil.debug(true);
 
         //自动注册页面
-        PageConfig.getInstance().setPageConfiguration(new PageConfiguration() {
-            @Override
-            public List<PageInfo> registerPages(Context context) {
-                return AppPageConfig.getInstance().getPages();
-            }
-        }).debug("PageLog").enableWatcher(true).init(this);
+        PageConfig.getInstance()
+                .setPageConfiguration(new PageConfiguration() {
+                    @Override
+                    public List<PageInfo> registerPages(Context context) {
+                        return AppPageConfig.getInstance().getPages();
+                    }
+                })
+                .debug("PageLog")
+                .enableWatcher(false)
+                .init(this);
 
         //初始化插件
         XAOP.init(this);

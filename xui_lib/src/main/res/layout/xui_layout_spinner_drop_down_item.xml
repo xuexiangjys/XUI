@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/spinner_item"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-	android:orientation="vertical" >
-
-    <TextView 
-        android:id="@+id/spinner_item"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginRight="@dimen/default_spinner_icon_padding_size"
-		android:layout_gravity="start|center_vertical"
-		android:textColor="@color/xui_config_color_black"
-		android:textSize="?attr/xui_config_size_spinner_text"
-		android:ellipsize="marquee"
-		android:gravity="center_vertical"
-		android:minHeight="?attr/ms_item_height_size"
-		android:paddingBottom="?attr/ms_padding_top_size"
-		android:paddingLeft="?attr/ms_padding_left_size"
-		android:paddingRight="?attr/ms_padding_left_size"
-		android:paddingStart="?attr/ms_padding_left_size"
-		android:paddingTop="?attr/ms_padding_top_size"
-		android:singleLine="true"/>
-
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:layout_gravity="start|center_vertical"
+    android:layout_marginEnd="@dimen/default_spinner_icon_padding_size"
+    android:ellipsize="marquee"
+    android:gravity="center_vertical"
+    android:minHeight="?attr/ms_item_height_size"
+    android:paddingStart="?attr/ms_padding_left_size"
+    android:paddingLeft="?attr/ms_padding_left_size"
+    android:paddingTop="?attr/ms_padding_top_size"
+    android:paddingRight="?attr/ms_padding_left_size"
+    android:paddingBottom="?attr/ms_padding_top_size"
+    android:singleLine="true"
+    android:textColor="@color/xui_config_color_black"
+    android:textSize="?attr/xui_config_size_spinner_text" />
