@@ -42,7 +42,7 @@ import static android.R.layout.simple_list_item_2;
 @Page(name = "下拉刷新基础用法")
 public class RefreshBasicFragment extends BaseFragment {
 
-    private SmartRecyclerAdapter<Void> mAdapter;
+    private SmartRecyclerAdapter<String> mAdapter;
 
     /**
      * 布局的资源id
@@ -60,9 +60,9 @@ public class RefreshBasicFragment extends BaseFragment {
     @Override
     protected void initViews() {
         AbsListView listView = findViewById(R.id.listView);
-        listView.setAdapter(mAdapter = new SmartRecyclerAdapter<Void>(simple_list_item_2) {
+        listView.setAdapter(mAdapter = new SmartRecyclerAdapter<String>(simple_list_item_2) {
             @Override
-            protected void onBindViewHolder(SmartViewHolder holder, Void model, int position) {
+            protected void onBindViewHolder(SmartViewHolder holder, String model, int position) {
                 holder.text(android.R.id.text1, getString(R.string.item_example_number_title, position));
                 holder.text(android.R.id.text2, getString(R.string.item_example_number_abstract, position));
                 holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
@@ -133,7 +133,7 @@ public class RefreshBasicFragment extends BaseFragment {
 //        }
     }
 
-    private Collection<Void> initData() {
-        return Arrays.asList(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    private Collection<String> initData() {
+        return Arrays.asList("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
     }
 }

@@ -55,7 +55,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
     StatefulLayout mLlStateful;
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout mRefreshLayout;
-    private SmartRecyclerAdapter<Void> mAdapter;
+    private SmartRecyclerAdapter<String> mAdapter;
 
     /**
      * 布局的资源id
@@ -75,9 +75,9 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mAdapter = new SmartRecyclerAdapter<Void>(simple_list_item_2) {
+        mRecyclerView.setAdapter(mAdapter = new SmartRecyclerAdapter<String>(simple_list_item_2) {
             @Override
-            protected void onBindViewHolder(SmartViewHolder holder, Void v, int position) {
+            protected void onBindViewHolder(SmartViewHolder holder, String v, int position) {
                 holder.text(android.R.id.text1, getString(R.string.item_example_number_title, position));
                 holder.text(android.R.id.text2, getString(R.string.item_example_number_abstract, position));
                 holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
@@ -158,8 +158,8 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
         mRefreshLayout.setEnableLoadMore(false);
     }
 
-    private Collection<Void> initData() {
-        return Arrays.asList(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    private Collection<String> initData() {
+        return Arrays.asList("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
     }
 
 
