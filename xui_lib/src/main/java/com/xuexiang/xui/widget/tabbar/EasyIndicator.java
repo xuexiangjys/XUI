@@ -228,13 +228,6 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
                 iw = screenWidth / tvs.length;
             }
             mIndicator.setLayoutParams(new LinearLayoutCompat.LayoutParams(iw, indicator_bottom_height));
-            // Executive animation
-            tvs[0].post(new Runnable() {
-                @Override
-                public void run() {
-                    buildIndicatorAnimatorTowards(tvs[0]).start();
-                }
-            });
             mIndicator.setBackgroundColor(indicator_line_color);
             addView(mIndicator);
         }

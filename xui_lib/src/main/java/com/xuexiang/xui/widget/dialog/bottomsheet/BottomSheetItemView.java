@@ -10,27 +10,27 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.alpha.XUIAlphaLinearLayout;
 
 /**
- * XUIBottomSheet 的ItemView
+ * BottomSheet 的ItemView
  *
  * @author xuexiang
  * @since 2018/11/30 下午1:58
  */
-public class XUIBottomSheetItemView extends XUIAlphaLinearLayout {
+public class BottomSheetItemView extends XUIAlphaLinearLayout {
 
     private AppCompatImageView mAppCompatImageView;
     private ViewStub mSubScript;
     private TextView mTextView;
 
 
-    public XUIBottomSheetItemView(Context context) {
+    public BottomSheetItemView(Context context) {
         super(context);
     }
 
-    public XUIBottomSheetItemView(Context context, AttributeSet attrs) {
+    public BottomSheetItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public XUIBottomSheetItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BottomSheetItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

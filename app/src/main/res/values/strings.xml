@@ -146,10 +146,20 @@
     <string name="item_head_style_water_drop">小水滴</string>
     <string name="item_head_style_wave_swipe">全屏水滴</string>
 
-
     <!--CookieBar-->
     <string name="cookie_title">这是一个标题</string>
     <string name="cookie_message">这里是提示信息！这里是提示信息！这里是提示信息！这里是提示信息！这里是提示信息！</string>
     <string name="cookie_action">点击一下</string>
+
+    <string name="tabSegment_mode_general">简单文字</string>
+    <string name="tabSegment_mode_bottom_indicator">文字 + 底部 indicator</string>
+    <string name="tabSegment_mode_top_indicator">文字 + 顶部 indicator</string>
+    <string name="tabSegment_mode_indicator_with_content">文字 + indicator 长度不要跟随内容长度</string>
+    <string name="tabSegment_mode_left_icon_and_auto_tint">文字 + icon(支持四个方向) + 自动着色选中态 icon</string>
+    <string name="tabSegment_mode_sign_count">显示红点</string>
+    <string name="tabSegment_mode_icon_change">选中态更换 icon</string>
+    <string name="tabSegment_mode_muti_color">不同 item，不同文字(icon)颜色</string>
+    <string name="tabSegment_mode_change_content_by_index">根据 index 更新 tab 文案</string>
+    <string name="tabSegment_mode_replace_tab_by_index">根据 index 完全替换 tab</string>
 
 </resources>

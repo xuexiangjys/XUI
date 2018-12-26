@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +17,19 @@
 
 <resources>
     <!--全局样式-->
-    <dimen name="xui_config_content_spacing_horizontal_tablet_big">20dp</dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
-    <dimen name="xui_config_content_spacing_horizontal_tablet_small">16dp</dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
-    <dimen name="xui_config_content_spacing_horizontal_phone">12dp</dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
+    <dimen name="xui_config_content_spacing_horizontal_tablet_big">20dp
+    </dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
+    <dimen name="xui_config_content_spacing_horizontal_tablet_small">16dp
+    </dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
+    <dimen name="xui_config_content_spacing_horizontal_phone">12dp
+    </dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
 
-    <dimen name="xui_config_content_spacing_vertical_tablet_big">12dp</dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
-    <dimen name="xui_config_content_spacing_vertical_tablet_small">10dp</dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
-    <dimen name="xui_config_content_spacing_vertical_phone">7.5dp</dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
+    <dimen name="xui_config_content_spacing_vertical_tablet_big">12dp
+    </dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
+    <dimen name="xui_config_content_spacing_vertical_tablet_small">10dp
+    </dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
+    <dimen name="xui_config_content_spacing_vertical_phone">7.5dp
+    </dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
 
     <dimen name="xui_config_simple_list_item_height_tablet_big">61dp</dimen>
     <dimen name="xui_config_simple_list_item_height_tablet_small">49dp</dimen>
@@ -135,7 +140,7 @@
     <!--StatefulLayout-->
     <dimen name="default_stf_progressbar_size_tablet_big">75dp</dimen>
     <dimen name="default_stf_progressbar_size_tablet_small">65dp</dimen>
-    <dimen name="default_stf_progressbar_size_phone" >60dp</dimen>
+    <dimen name="default_stf_progressbar_size_phone">60dp</dimen>
 
     <dimen name="default_stf_tip_img_size_tablet_big">105dp</dimen>
     <dimen name="default_stf_tip_img_size_tablet_small">90dp</dimen>
@@ -383,6 +388,14 @@
 
     <!-- 提示标点 -->
     <dimen name="xui_tips_point_size">8dp</dimen>
+
+    <!--**********************************************
+    *                TabSegment                  *
+    **********************************************-->
+    <dimen name="xui_tab_segment_indicator_height">2dp</dimen>
+    <dimen name="xui_tab_segment_text_size">16sp</dimen>
+    <dimen name="xui_tab_sign_count_view_minSize_with_text">16dp</dimen>
+    <dimen name="xui_tab_sign_count_view_minSize">8dp</dimen>
 
 
 </resources>

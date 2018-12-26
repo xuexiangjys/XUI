@@ -111,7 +111,7 @@ public class EasyIndicatorFragment extends BaseFragment {
         mEasyIndicator.setTabTitles(ContentPage.getPageNames());
         mEasyIndicator.setViewPager(mViewPager, mPagerAdapter);
         mViewPager.setOffscreenPageLimit(ContentPage.size());
-
+        mViewPager.setCurrentItem(2);
     }
 
 }

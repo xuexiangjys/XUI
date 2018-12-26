@@ -119,8 +119,8 @@
         <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
 
         <!--**********************************************
-       *                 xui bottom sheet              *
-       ***********************************************-->
+        *                 xui bottom sheet              *
+        ***********************************************-->
         <item name="xui_bottom_sheet_title_appearance">@style/TextStyle.Title</item>
         <item name="xui_bottom_sheet_title_bg">?attr/xui_list_item_bg_with_border_bottom_selector</item>
 
@@ -131,6 +131,17 @@
 
         <item name="xui_bottom_sheet_button_text_color">@color/xui_config_color_gray_2</item>
         <item name="xui_bottom_sheet_button_background">@drawable/xui_divider_top_bitmap</item>
+
+        <!--**********************************************
+        *                  xui tabSegment               *
+        ***********************************************-->
+        <item name="xui_tab_sign_count_view">@style/TabSegment_CountView</item>
+        <item name="xui_tab_sign_count_view_minSize">@dimen/xui_tab_sign_count_view_minSize</item>
+        <item name="xui_tab_sign_count_view_minSize_with_text">@dimen/xui_tab_sign_count_view_minSize_with_text</item>
+        <item name="xui_tab_sign_count_view_bg">@drawable/xui_sign_count_view_bg</item>
+        <item name="xui_tab_sign_count_view_padding_horizontal">4dp</item>
+
+        <item name="TabSegmentStyle">@style/TabSegment</item>
 
     </style>
 

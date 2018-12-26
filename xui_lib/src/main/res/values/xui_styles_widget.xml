@@ -160,11 +160,34 @@
         <item name="android:background">@drawable/xui_tips_point</item>
     </style>
 
-    <!-- XUIRadiusImageView -->
+    <!-- RadiusImageView -->
     <style name="RadiusImageView">
         <item name="riv_border_width">1dp</item>
         <item name="riv_border_color">@color/xui_config_color_gray_4</item>
         <item name="riv_is_touch_select_mode_enabled">true</item>
+    </style>
+
+    <!-- TabSegment -->
+    <style name="TabSegment">
+        <item name="ts_has_indicator">false</item>
+        <item name="ts_indicator_height">@dimen/xui_tab_segment_indicator_height</item>
+        <item name="android:textSize">@dimen/xui_tab_segment_text_size</item>
+        <item name="ts_indicator_top">false</item>
+        <item name="ts_icon_position">left</item>
+    </style>
+
+    <style name="TabSegment_CountView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">?attr/xui_tab_sign_count_view_minSize</item>
+        <item name="android:background">?attr/xui_tab_sign_count_view_bg</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/xui_config_color_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingLeft">?attr/xui_tab_sign_count_view_padding_horizontal</item>
+        <item name="android:paddingRight">?attr/xui_tab_sign_count_view_padding_horizontal</item>
+        <item name="android:minWidth">?attr/xui_tab_sign_count_view_minSize</item>
+        <item name="android:minHeight">?attr/xui_tab_sign_count_view_minSize</item>
     </style>
     
 </resources>

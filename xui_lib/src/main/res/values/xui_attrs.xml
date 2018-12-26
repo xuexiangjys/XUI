@@ -706,6 +706,26 @@
         <attr name="indicator_isBottom_line" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="TabSegment">
+        <attr name="ts_indicator_height" format="dimension"/>
+        <attr name="ts_has_indicator" format="boolean"/>
+        <attr name="android:textSize"/>
+        <attr name="ts_indicator_top" format="boolean"/>
+        <attr name="ts_mode" format="enum">
+            <enum name="scrollable" value="0"/>
+            <enum name="fixed" value="1"/>
+        </attr>
+        <attr name="ts_space" format="dimension"/>
+        <attr name="ts_icon_position" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="right" value="2"/>
+            <enum name="bottom" value="3"/>
+        </attr>
+        <attr name="ts_typeface_provider" format="string"/>
+    </declare-styleable>
+    <attr name="TabSegmentStyle" format="reference"/>
+
     <!--=====================================================================-->
     <!--XUIKeyboardScrollView-->
     <declare-styleable name="XUIKeyboardScrollView">

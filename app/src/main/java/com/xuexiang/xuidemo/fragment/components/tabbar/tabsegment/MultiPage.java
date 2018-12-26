@@ -14,36 +14,41 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.components.tabbar;
+package com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment;
 
 /**
- * 页面枚举
  * @author xuexiang
- * @since 2018/12/26 下午2:23
+ * @since 2018/12/26 下午11:49
  */
-public enum ContentPage {
+public enum MultiPage {
 
     新闻(0),
     教育(1),
     体育(2),
-    娱乐(3);
+    娱乐(3),
+    八卦(4),
+    母婴(5),
+    音乐(6),
+    健康(7),
+    旅游(8),
+    文化(9);
 
     private final int position;
 
-    ContentPage(int pos) {
+    MultiPage(int pos) {
         position = pos;
     }
 
-    public static ContentPage getPage(int position) {
-       return ContentPage.values()[position];
+    public static MultiPage getPage(int position) {
+        return MultiPage.values()[position];
     }
 
     public static int size() {
-       return ContentPage.values().length;
+        return MultiPage.values().length;
     }
 
     public static String[] getPageNames() {
-        ContentPage[] pages = ContentPage.values();
+        MultiPage[] pages = MultiPage.values();
         String[] pageNames = new String[pages.length];
         for (int i = 0; i < pages.length; i++) {
             pageNames[i] = pages[i].name();
@@ -54,4 +59,5 @@ public enum ContentPage {
     public int getPosition() {
         return position;
     }
+
 }

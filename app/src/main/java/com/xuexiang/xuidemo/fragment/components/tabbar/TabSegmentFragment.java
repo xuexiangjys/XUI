@@ -14,26 +14,25 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.components;
+package com.xuexiang.xuidemo.fragment.components.tabbar;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
-import com.xuexiang.xuidemo.fragment.components.tabbar.EasyIndicatorFragment;
-import com.xuexiang.xuidemo.fragment.components.tabbar.TabSegmentFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.TabSegmentFixModeFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.TabSegmentScrollableModeFragment;
 
 /**
  * @author xuexiang
- * @since 2018/12/26 下午2:01
+ * @since 2018/12/26 下午5:39
  */
-@Page(name = "选项卡", extra = R.drawable.ic_widget_tabbar)
-public class TabBarFragment extends ComponentContainerFragment {
+@Page(name = "TabSegment\n扩展性极强的选项卡")
+public class TabSegmentFragment extends ComponentContainerFragment {
 
     @Override
     protected Class[] getPagesClasses() {
         return new Class[] {
-                EasyIndicatorFragment.class,
-                TabSegmentFragment.class
+                TabSegmentFixModeFragment.class,
+                TabSegmentScrollableModeFragment.class
         };
     }
 }

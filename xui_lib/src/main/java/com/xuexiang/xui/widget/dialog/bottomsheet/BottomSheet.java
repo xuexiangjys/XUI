@@ -40,16 +40,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * XUIBottomSheet 在 {@link Dialog} 的基础上重新定制了 {@link #show()} 和 {@link #hide()} 时的动画效果, 使 {@link Dialog} 在界面底部升起和降下。
+ * BottomSheet 在 {@link Dialog} 的基础上重新定制了 {@link #show()} 和 {@link #hide()} 时的动画效果, 使 {@link Dialog} 在界面底部升起和降下。
  * <p>
  * 提供了以下两种面板样式:
  * <ul>
- * <li>列表样式, 使用 {@link XUIBottomSheet.BottomListSheetBuilder} 生成。</li>
- * <li>宫格类型, 使用 {@link XUIBottomSheet.BottomGridSheetBuilder} 生成。</li>
+ * <li>列表样式, 使用 {@link BottomSheet.BottomListSheetBuilder} 生成。</li>
+ * <li>宫格类型, 使用 {@link BottomSheet.BottomGridSheetBuilder} 生成。</li>
  * </ul>
  * </p>
  */
-public class XUIBottomSheet extends Dialog {
+public class BottomSheet extends Dialog {
     // 动画时长
     private final static int mAnimationDuration = 200;
     // 持有 ContentView，为了做动画
@@ -58,8 +58,8 @@ public class XUIBottomSheet extends Dialog {
 
     private OnBottomSheetShowListener mOnBottomSheetShowListener;
 
-    public XUIBottomSheet(Context context) {
-        super(context, R.style.XUIBottomSheet);
+    public BottomSheet(Context context) {
+        super(context, R.style.BottomSheet);
     }
 
     public void setOnBottomSheetShowListener(OnBottomSheetShowListener onBottomSheetShowListener) {
@@ -164,7 +164,7 @@ public class XUIBottomSheet extends Dialog {
                         // java.lang.IllegalArgumentException: View=com.android.internal.policy.PhoneWindow$DecorView{22dbf5b V.E...... R......D 0,0-1080,1083} not attached to window manager
                         // 在dismiss的时候可能已经detach了，简单try-catch一下
                         try {
-                            XUIBottomSheet.super.dismiss();
+                            BottomSheet.super.dismiss();
                         } catch (Exception e) {
                             UILog.w("dismiss error\n" + Log.getStackTraceString(e));
                         }
@@ -202,13 +202,13 @@ public class XUIBottomSheet extends Dialog {
     }
 
     /**
-     * 生成列表类型的 {@link XUIBottomSheet} 对话框。
+     * 生成列表类型的 {@link BottomSheet} 对话框。
      */
     public static class BottomListSheetBuilder {
 
         private Context mContext;
 
-        private XUIBottomSheet mDialog;
+        private BottomSheet mDialog;
         private List<BottomSheetListItemData> mItems;
         private BaseAdapter mAdapter;
         private List<View> mHeaderViews;
@@ -333,8 +333,8 @@ public class XUIBottomSheet extends Dialog {
             return this;
         }
 
-        public XUIBottomSheet build() {
-            mDialog = new XUIBottomSheet(mContext);
+        public BottomSheet build() {
+            mDialog = new BottomSheet(mContext);
             View contentView = buildViews();
             mDialog.setContentView(contentView,
                     new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -413,7 +413,7 @@ public class XUIBottomSheet extends Dialog {
         }
 
         public interface OnSheetItemClickListener {
-            void onClick(XUIBottomSheet dialog, View itemView, int position, String tag);
+            void onClick(BottomSheet dialog, View itemView, int position, String tag);
         }
 
         private static class BottomSheetListItemData {
@@ -549,7 +549,7 @@ public class XUIBottomSheet extends Dialog {
     }
 
     /**
-     * 生成宫格类型的 {@link XUIBottomSheet} 对话框。
+     * 生成宫格类型的 {@link BottomSheet} 对话框。
      */
     public static class BottomGridSheetBuilder {
 
@@ -562,7 +562,7 @@ public class XUIBottomSheet extends Dialog {
          */
         public static final int SECOND_LINE = 1;
         private Context mContext;
-        private XUIBottomSheet mDialog;
+        private BottomSheet mDialog;
         private SparseArray<View> mFirstLineViews;
         private SparseArray<View> mSecondLineViews;
         private int mMiniItemWidth = -1;
@@ -615,7 +615,7 @@ public class XUIBottomSheet extends Dialog {
         }
 
         public BottomGridSheetBuilder addItem(int imageRes, CharSequence text, Object tag, @Style int style, int subscriptRes) {
-            XUIBottomSheetItemView itemView = createItemView(AppCompatResources.getDrawable(mContext, imageRes), text, tag, subscriptRes);
+            BottomSheetItemView itemView = createItemView(AppCompatResources.getDrawable(mContext, imageRes), text, tag, subscriptRes);
             return addItem(itemView, style);
         }
 
@@ -631,9 +631,9 @@ public class XUIBottomSheet extends Dialog {
             return this;
         }
 
-        public XUIBottomSheetItemView createItemView(Drawable drawable, CharSequence text, Object tag, int subscriptRes) {
+        public BottomSheetItemView createItemView(Drawable drawable, CharSequence text, Object tag, int subscriptRes) {
             LayoutInflater inflater = LayoutInflater.from(mContext);
-            XUIBottomSheetItemView itemView = (XUIBottomSheetItemView) inflater.inflate(getItemViewLayoutId(), null, false);
+            BottomSheetItemView itemView = (BottomSheetItemView) inflater.inflate(getItemViewLayoutId(), null, false);
             TextView titleTV = itemView.findViewById(R.id.grid_item_title);
             if (mItemTextTypeFace != null) {
                 titleTV.setTypeface(mItemTextTypeFace);
@@ -645,7 +645,7 @@ public class XUIBottomSheet extends Dialog {
                 @Override
                 public void onClick(View v) {
                     if (mOnSheetItemClickListener != null) {
-                        mOnSheetItemClickListener.onClick(mDialog, (XUIBottomSheetItemView) v);
+                        mOnSheetItemClickListener.onClick(mDialog, (BottomSheetItemView) v);
                     }
                 }
             });
@@ -684,8 +684,8 @@ public class XUIBottomSheet extends Dialog {
             return this;
         }
 
-        public XUIBottomSheet build() {
-            mDialog = new XUIBottomSheet(mContext);
+        public BottomSheet build() {
+            mDialog = new BottomSheet(mContext);
             View contentView = buildViews();
             mDialog.setContentView(contentView,
                     new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -816,7 +816,7 @@ public class XUIBottomSheet extends Dialog {
         }
 
         public interface OnSheetItemClickListener {
-            void onClick(XUIBottomSheet dialog, XUIBottomSheetItemView itemView);
+            void onClick(BottomSheet dialog, BottomSheetItemView itemView);
         }
 
         @Retention(RetentionPolicy.SOURCE)

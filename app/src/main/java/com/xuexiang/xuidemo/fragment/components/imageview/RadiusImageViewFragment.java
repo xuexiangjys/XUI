@@ -7,7 +7,7 @@ import android.view.View;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
-import com.xuexiang.xui.widget.dialog.bottomsheet.XUIBottomSheet;
+import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -68,7 +68,7 @@ public class RadiusImageViewFragment extends BaseFragment {
     }
 
     private void showBottomSheetList() {
-        new XUIBottomSheet.BottomListSheetBuilder(getActivity())
+        new BottomSheet.BottomListSheetBuilder(getActivity())
                 .addItem(getResources().getString(R.string.circularImageView_modify_1))
                 .addItem(getResources().getString(R.string.circularImageView_modify_2))
                 .addItem(getResources().getString(R.string.circularImageView_modify_3))
@@ -78,9 +78,9 @@ public class RadiusImageViewFragment extends BaseFragment {
                 .addItem(getResources().getString(R.string.circularImageView_modify_7))
                 .addItem(getResources().getString(R.string.circularImageView_modify_8))
                 .addItem(getResources().getString(R.string.circularImageView_modify_9))
-                .setOnSheetItemClickListener(new XUIBottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
+                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
                     @Override
-                    public void onClick(XUIBottomSheet dialog, View itemView, int position, String tag) {
+                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
                         dialog.dismiss();
                         reset();
                         switch (position) {

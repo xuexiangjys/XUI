@@ -25,11 +25,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
@@ -69,6 +72,7 @@ public final class Utils {
     }
 
     private static final String STATUS_BAR_HEIGHT_RES_NAME = "status_bar_height";
+
     /**
      * 计算状态栏高度高度 getStatusBarHeight
      *
@@ -133,6 +137,7 @@ public final class Utils {
 
     /**
      * View设备背景
+     *
      * @param context
      * @param v
      * @param res
@@ -146,6 +151,7 @@ public final class Utils {
 
     /**
      * 释放图片资源
+     *
      * @param v
      */
     public static void recycleBackground(View v) {
@@ -165,6 +171,7 @@ public final class Utils {
 
     /**
      * 遍历View,清除所有ImageView的缓存
+     *
      * @param view
      */
     public static void clearImageView(View view) {
@@ -199,12 +206,9 @@ public final class Utils {
     /**
      * 放大缩小图片
      *
-     * @param bitmap
-     *            源Bitmap
-     * @param w
-     *            宽
-     * @param h
-     *            高
+     * @param bitmap 源Bitmap
+     * @param w      宽
+     * @param h      高
      * @return 目标Bitmap
      */
     public static Bitmap zoom(Bitmap bitmap, int w, int h) {
@@ -220,8 +224,7 @@ public final class Utils {
     /**
      * Indicates if this file represents a file on the underlying file system.
      *
-     * @param filePath
-     *            文件路径
+     * @param filePath 文件路径
      * @return 是否存在文件
      */
     public static boolean isFileExist(String filePath) {
@@ -236,8 +239,7 @@ public final class Utils {
     /**
      * 获取bitmap
      *
-     * @param filePath
-     *            文件路径
+     * @param filePath 文件路径
      * @return bitmap
      */
     public static Bitmap getBitmap(String filePath) {
@@ -249,6 +251,7 @@ public final class Utils {
 
     /**
      * 检查是否为空指针
+     *
      * @param object
      * @param hint
      */
@@ -260,6 +263,7 @@ public final class Utils {
 
     /**
      * 检查是否为空指针
+     *
      * @param t
      * @param message
      */
@@ -273,10 +277,8 @@ public final class Utils {
     /**
      * 旋转图片
      *
-     * @param angle
-     *            旋转角度
-     * @param bitmap
-     *            要旋转的图片
+     * @param angle  旋转角度
+     * @param bitmap 要旋转的图片
      * @return 旋转后的图片
      */
     public static Bitmap rotate(Bitmap bitmap, int angle) {
@@ -289,8 +291,7 @@ public final class Utils {
     /**
      * 将Drawable转化为Bitmap
      *
-     * @param drawable
-     *            Drawable
+     * @param drawable Drawable
      * @return Bitmap
      */
     public static Bitmap getBitmapFromDrawable(Drawable drawable) {
@@ -308,12 +309,13 @@ public final class Utils {
 
     /**
      * 获取应用的图标
+     *
      * @param context
      * @return
      */
-    public static Drawable getAppIcon(Context context){
+    public static Drawable getAppIcon(Context context) {
         try {
-            PackageManager pm  = context.getPackageManager();
+            PackageManager pm = context.getPackageManager();
             ApplicationInfo info = pm.getApplicationInfo(context.getPackageName(), 0);
             return info.loadIcon(pm);
         } catch (PackageManager.NameNotFoundException e) {
@@ -324,10 +326,11 @@ public final class Utils {
 
     /**
      * 支持?attrs属性  http://stackoverflow.com/questions/27986204  ：As mentioned here on API < 21 you can't use attrs to color in xml drawable.
+     *
      * @return
      */
     public static boolean isSupportColorAttrs() {
-        return  Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     }
 
     public static boolean isLight(int color) {
@@ -339,6 +342,60 @@ public final class Utils {
 
     public static boolean isNullOrEmpty(@Nullable CharSequence string) {
         return string == null || string.length() == 0;
+    }
+
+    /**
+     * 获取数值的位数，例如9返回1，99返回2，999返回3
+     *
+     * @param number 要计算位数的数值，必须>0
+     * @return 数值的位数，若传的参数小于等于0，则返回0
+     */
+    public static int getNumberDigits(int number) {
+        if (number <= 0) return 0;
+        return (int) (Math.log10(number) + 1);
+    }
+
+    /**
+     * 根据比例，在两个color值之间计算出一个color值
+     * <b>注意该方法是ARGB通道分开计算比例的</b>
+     *
+     * @param fromColor 开始的color值
+     * @param toColor   最终的color值
+     * @param fraction  比例，取值为[0,1]，为0时返回 fromColor， 为1时返回 toColor
+     * @return 计算出的color值
+     */
+    public static int computeColor(@ColorInt int fromColor, @ColorInt int toColor, float fraction) {
+        fraction = Math.max(Math.min(fraction, 1), 0);
+
+        int minColorA = Color.alpha(fromColor);
+        int maxColorA = Color.alpha(toColor);
+        int resultA = (int) ((maxColorA - minColorA) * fraction) + minColorA;
+
+        int minColorR = Color.red(fromColor);
+        int maxColorR = Color.red(toColor);
+        int resultR = (int) ((maxColorR - minColorR) * fraction) + minColorR;
+
+        int minColorG = Color.green(fromColor);
+        int maxColorG = Color.green(toColor);
+        int resultG = (int) ((maxColorG - minColorG) * fraction) + minColorG;
+
+        int minColorB = Color.blue(fromColor);
+        int maxColorB = Color.blue(toColor);
+        int resultB = (int) ((maxColorB - minColorB) * fraction) + minColorB;
+
+        return Color.argb(resultA, resultR, resultG, resultB);
+    }
+
+    /**
+     * 设置Drawable的颜色
+     * <b>这里不对Drawable进行mutate()，会影响到所有用到这个Drawable的地方，如果要避免，请先自行mutate()</b>
+     */
+    public static ColorFilter setDrawableTintColor(Drawable drawable, @ColorInt int tintColor) {
+        LightingColorFilter colorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), tintColor);
+        if (drawable != null) {
+            drawable.setColorFilter(colorFilter);
+        }
+        return colorFilter;
     }
 
 }
