@@ -54,7 +54,7 @@ public class MiniLoadingView extends View {
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.MiniLoadingView, defStyleAttr, 0);
         mSize = array.getDimensionPixelSize(R.styleable.MiniLoadingView_mlv_loading_view_size, DensityUtils.dp2px(context, 32));
-        mPaintColor = array.getInt(R.styleable.MiniLoadingView_android_color, Color.WHITE);
+        mPaintColor = array.getInt(R.styleable.MiniLoadingView_mlv_loading_view_color, Color.WHITE);
         array.recycle();
     }
 

@@ -163,6 +163,9 @@
     <string name="tabSegment_mode_replace_tab_by_index">根据 index 完全替换 tab</string>
 
 
+    <string name="connecting_text">连接中&#8230;</string>
+    <string name="connected_text">连接成功！</string>
+    <string name="connection_error_text">连接失败！</string>
 
     <!-- Utils 系列界面 -->
 

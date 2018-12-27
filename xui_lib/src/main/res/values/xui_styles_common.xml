@@ -259,7 +259,7 @@
 
     <style name="MiniLoadingStyle">
         <item name="mlv_loading_view_size">?attr/mini_loading_view_size</item>
-        <item name="android:color">@color/xui_config_color_gray_5</item>
+        <item name="mlv_loading_view_color">@color/xui_config_color_gray_5</item>
     </style>
 
     <!--*********************************************

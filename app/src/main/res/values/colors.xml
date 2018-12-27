@@ -21,4 +21,8 @@
     <color name="radiusImageView_selected_border_color">#FE6D4B</color>
     <color name="radiusImageView_selected_mask_color">#7FEF5362</color>
 
+    <color name="color_bg_loading">#dc858585</color>
+    <color name="color_bg_success">#dc82ce32</color>
+    <color name="color_bg_error">#dcd84315</color>
+
 </resources>

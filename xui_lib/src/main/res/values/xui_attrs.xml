@@ -154,7 +154,7 @@
     <attr name="MiniLoadingStyle" format="reference" />
     <declare-styleable name="MiniLoadingView">
         <attr name="mlv_loading_view_size" format="dimension" />
-        <attr name="android:color" />
+        <attr name="mlv_loading_view_color" />
     </declare-styleable>
 
     <!--LoadingViewLayout-->
@@ -677,7 +677,7 @@
         <attr name="iiv_is_show" format="boolean" />
     </declare-styleable>
 
-    <!--=====================================================================-->
+    <!--=============================Bar========================================-->
 
     <declare-styleable name="CookieBar">
         <!--CookieBar-->
@@ -685,6 +685,13 @@
         <attr name="cookieMessageColor" format="color"/>
         <attr name="cookieActionColor" format="color"/>
         <attr name="cookieBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="StatusView">
+        <attr name="sv_complete" format="reference" />
+        <attr name="sv_error" format="reference" />
+        <attr name="sv_loading" format="reference" />
+        <attr name="sv_dismissOnComplete" format="boolean"/>
     </declare-styleable>
 
     <!--============================TabBar=========================================-->
