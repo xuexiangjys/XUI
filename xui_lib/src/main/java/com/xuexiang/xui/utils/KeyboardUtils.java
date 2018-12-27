@@ -40,10 +40,12 @@ import java.util.HashMap;
 
 /**
  * 软键盘工具
+ *
  * @author xuexiang
  * @date 2017/12/8 下午3:35
  */
 public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
+
     private final static int MAGIC_NUMBER = 200;
 
     private SoftKeyboardToggleListener mCallback;
@@ -176,23 +178,21 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
     }
 
     /**
-     *
      * 软键盘以顶起当前界面的形式出现, 注意这种方式会使得当前布局的高度发生变化，触发当前布局onSizeChanged方法回调，这里前后高度差就是软键盘的高度了
      *
      * @param activity
      */
-    public static void setSoftInputAdjustResize(@NonNull Activity activity){
+    public static void setSoftInputAdjustResize(@NonNull Activity activity) {
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
                 | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     /**
-     *
      * 软键盘以上推当前界面的形式出现, 注意这种方式不会改变布局的高度
      *
      * @param activity
      */
-    public static void setSoftInputAdjustPan(@NonNull Activity activity){
+    public static void setSoftInputAdjustPan(@NonNull Activity activity) {
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
                 | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
@@ -202,12 +202,12 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * <p>
      * 使用方法：
      * <p>需重写 onKeyDown</p>
-     * @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
-     *   return KeyboardUtils.onDisableBackKeyDown(keyCode) && super.onKeyDown(keyCode, event) ;
-     * }
+     *
      * @param keyCode
      * @return
-     *
+     * @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+     * return KeyboardUtils.onDisableBackKeyDown(keyCode) && super.onKeyDown(keyCode, event) ;
+     * }
      */
     public static boolean onDisableBackKeyDown(int keyCode) {
         switch (keyCode) {
@@ -226,6 +226,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * 点击屏幕空白区域隐藏软键盘
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
      * <p>需重写 dispatchTouchEvent</p>
+     *
      * @param ev
      * @param activity 窗口
      * @return
@@ -243,6 +244,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * 点击屏幕空白区域隐藏软键盘
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
      * <p>需重写 dispatchTouchEvent</p>
+     *
      * @param ev
      * @param dialog 窗口
      * @return
@@ -260,6 +262,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * 点击屏幕空白区域隐藏软键盘
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
      * <p>需重写 dispatchTouchEvent</p>
+     *
      * @param ev
      * @param focusView 聚焦的view
      * @return
@@ -276,6 +279,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * 点击屏幕空白区域隐藏软键盘
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
      * <p>需重写 dispatchTouchEvent</p>
+     *
      * @param ev
      * @param window 窗口
      * @return

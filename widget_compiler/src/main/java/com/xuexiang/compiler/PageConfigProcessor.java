@@ -159,17 +159,26 @@ public class PageConfigProcessor extends AbstractProcessor {
                     .build();
 
             /*
-               private List<PageInfo> mWidgets = new ArrayList<>();
+               private List<PageInfo> mComponents = new ArrayList<>();
              */
-            FieldSpec widgetField = FieldSpec.builder(inputListTypeOfPage, "mWidgets")
+            FieldSpec componentField = FieldSpec.builder(inputListTypeOfPage, "mComponents")
                     .addModifiers(Modifier.PRIVATE)
                     .build();
+
+             /*
+               private List<PageInfo> mUtils = new ArrayList<>();
+             */
+            FieldSpec utilField = FieldSpec.builder(inputListTypeOfPage, "mUtils")
+                    .addModifiers(Modifier.PRIVATE)
+                    .build();
+
 
             //构造函数
             MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder()
                     .addModifiers(Modifier.PRIVATE)
                     .addStatement("mPages = new $T<>()", ClassName.get(ArrayList.class))
-                    .addStatement("mWidgets = new $T<>()", ClassName.get(ArrayList.class));
+                    .addStatement("mComponents = new $T<>()", ClassName.get(ArrayList.class))
+                    .addStatement("mUtils = new $T<>()", ClassName.get(ArrayList.class));
 
             TypeMirror tm;
             String name;
@@ -186,14 +195,25 @@ public class PageConfigProcessor extends AbstractProcessor {
                     extra = page.extra();
 
                     if (extra != -1) {
-                        constructorBuilder.addStatement("mWidgets.add(new $T($S, $S, $S, $T.$L, $L))",
-                                PageInfo.class,
-                                name,
-                                tm.toString(),
-                                PageInfo.getParams(page.params()),
-                                ClassName.get(CoreAnim.class),
-                                page.anim(),
-                                extra);
+                        if (tm.toString().contains("com.xuexiang.xuidemo.fragment.components")) {
+                            constructorBuilder.addStatement("mComponents.add(new $T($S, $S, $S, $T.$L, $L))",
+                                    PageInfo.class,
+                                    name,
+                                    tm.toString(),
+                                    PageInfo.getParams(page.params()),
+                                    ClassName.get(CoreAnim.class),
+                                    page.anim(),
+                                    extra);
+                        } else if (tm.toString().contains("com.xuexiang.xuidemo.fragment.utils")) {
+                            constructorBuilder.addStatement("mUtils.add(new $T($S, $S, $S, $T.$L, $L))",
+                                    PageInfo.class,
+                                    name,
+                                    tm.toString(),
+                                    PageInfo.getParams(page.params()),
+                                    ClassName.get(CoreAnim.class),
+                                    page.anim(),
+                                    extra);
+                        }
                     }
 
                     constructorBuilder.addStatement("mPages.add(new $T($S, $S, $S, $T.$L, $L))",
@@ -230,10 +250,16 @@ public class PageConfigProcessor extends AbstractProcessor {
                     .addStatement("return mPages")
                     .build();
 
-            MethodSpec getWidgetsMethod = MethodSpec.methodBuilder("getWidgets")
+            MethodSpec getComponentsMethod = MethodSpec.methodBuilder("getComponents")
                     .addModifiers(Modifier.PUBLIC)
                     .returns(inputListTypeOfPage)
-                    .addStatement("return mWidgets")
+                    .addStatement("return mComponents")
+                    .build();
+
+            MethodSpec getUtilsMethod = MethodSpec.methodBuilder("getUtils")
+                    .addModifiers(Modifier.PUBLIC)
+                    .returns(inputListTypeOfPage)
+                    .addStatement("return mUtils")
                     .build();
 
             CodeBlock javaDoc = CodeBlock.builder()
@@ -249,11 +275,13 @@ public class PageConfigProcessor extends AbstractProcessor {
                     .addModifiers(Modifier.PUBLIC)
                     .addField(instanceField)
                     .addField(pagesField)
-                    .addField(widgetField)
+                    .addField(componentField)
+                    .addField(utilField)
                     .addMethod(constructorMethod)
                     .addMethod(instanceMethod)
                     .addMethod(getPagesMethod)
-                    .addMethod(getWidgetsMethod);
+                    .addMethod(getComponentsMethod)
+                    .addMethod(getUtilsMethod);
             JavaFile.builder(PACKAGE_NAME, pageConfigBuilder.build()).build().writeTo(mFiler);
         }
     }

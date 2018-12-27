@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/contentWrap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+            <!-- 设置颜色的 alpha 值 -->
+            <TextView
+                style="@style/TextStyle.Content"
+                android:text="@string/color_utils_alpha_title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                android:layout_marginBottom="?attr/xui_config_content_spacing_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="@dimen/color_utils_square_length"
+                        android:layout_height="@dimen/color_utils_square_length"
+                        android:background="@color/xui_config_color_red" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/color_utils_square_desc_marginTop"
+                        android:text="@string/color_utils_square_origin" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/color_utils_square_margin"
+                    android:contentDescription="@null"
+                    android:src="@drawable/icon_arrow_right" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/square_alpha"
+                        android:layout_width="@dimen/color_utils_square_length"
+                        android:layout_height="@dimen/color_utils_square_length" />
+
+                    <TextView
+                        android:id="@+id/square_desc_alpha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/color_utils_square_desc_marginTop" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 根据比例，在两个 color 值之间计算出一个 color 值 -->
+            <TextView
+                style="@style/TextStyle.Content"
+                android:singleLine="false"
+                android:maxLines="2"
+                android:gravity="start"
+                android:text="@string/color_utils_ratio_title" />
+
+            <LinearLayout
+                android:id="@+id/ratioSeekBarWrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                android:layout_marginBottom="?attr/xui_config_content_spacing_horizontal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="@dimen/color_utils_square_length"
+                    android:layout_height="@dimen/color_utils_square_length"
+                    android:background="@color/xui_config_color_pure_blue" />
+
+                <SeekBar
+                    android:id="@+id/ratioSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp" />
+
+                <View
+                    android:layout_width="@dimen/color_utils_square_length"
+                    android:layout_height="@dimen/color_utils_square_length"
+                    android:background="@color/xui_config_color_pure_yellow" />
+
+            </LinearLayout>
+
+            <!-- 将 color 颜色值转换为字符串 -->
+            <TextView
+                style="@style/TextStyle.Content"
+                android:text="@string/color_utils_transform_title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="?attr/xui_config_content_spacing_horizontal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/transformTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/xui_config_color_main_theme" />
+            </LinearLayout>
+
+            <!-- 获取随机颜色 -->
+            <TextView
+                style="@style/TextStyle.Content"
+                android:text="@string/color_utils_random_title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/v_random"
+                    android:layout_width="@dimen/color_utils_square_length"
+                    android:layout_height="@dimen/color_utils_square_length" />
+
+                <TextView
+                    android:id="@+id/tv_is_dark"
+                    style="@style/TextStyle.Explain"
+                    android:layout_marginStart="20dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

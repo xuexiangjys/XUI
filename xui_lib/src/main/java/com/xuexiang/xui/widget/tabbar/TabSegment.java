@@ -50,6 +50,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ColorUtils;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
@@ -644,8 +645,8 @@ public class TabSegment extends HorizontalScrollView {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float animValue = (float) animation.getAnimatedValue();
-                int preColor = Utils.computeColor(getTabSelectedColor(prevModel), getTabNormalColor(prevModel), animValue);
-                int nowColor = Utils.computeColor(getTabNormalColor(nowModel), getTabSelectedColor(nowModel), animValue);
+                int preColor = ColorUtils.computeColor(getTabSelectedColor(prevModel), getTabNormalColor(prevModel), animValue);
+                int nowColor = ColorUtils.computeColor(getTabNormalColor(nowModel), getTabSelectedColor(nowModel), animValue);
                 prevView.setColorInTransition(prevModel, preColor);
                 nowView.setColorInTransition(nowModel, nowColor);
                 layoutIndicatorInTransition(prevModel, nowModel, animValue);
@@ -730,7 +731,7 @@ public class TabSegment extends HorizontalScrollView {
             mIndicatorPaint = new Paint();
             mIndicatorPaint.setStyle(Paint.Style.FILL);
         }
-        int indicatorColor = Utils.computeColor(
+        int indicatorColor = ColorUtils.computeColor(
                 getTabSelectedColor(preModel), getTabSelectedColor(targetModel), offsetPercent);
         mIndicatorPaint.setColor(indicatorColor);
         mContentLayout.invalidate();
@@ -767,8 +768,8 @@ public class TabSegment extends HorizontalScrollView {
         Tab targetModel = tabAdapter.getItem(targetIndex);
         TabItemView preView = listViews.get(index);
         TabItemView targetView = listViews.get(targetIndex);
-        int preColor = Utils.computeColor(getTabSelectedColor(preModel), getTabNormalColor(preModel), offsetPercent);
-        int targetColor = Utils.computeColor(getTabNormalColor(targetModel), getTabSelectedColor(targetModel), offsetPercent);
+        int preColor = ColorUtils.computeColor(getTabSelectedColor(preModel), getTabNormalColor(preModel), offsetPercent);
+        int targetColor = ColorUtils.computeColor(getTabNormalColor(targetModel), getTabSelectedColor(targetModel), offsetPercent);
         preView.setColorInTransition(preModel, preColor);
         targetView.setColorInTransition(targetModel, targetColor);
         layoutIndicatorInTransition(preModel, targetModel, offsetPercent);

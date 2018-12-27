@@ -88,6 +88,12 @@
 
     <color name="xui_config_color_blue">#1B88EE</color>
     <color name="xui_config_color_50_blue">#801B88EE</color>
+    <color name="xui_config_color_pure_blue">#0000FF</color>
+
+    <color name="xui_config_color_waring">#FEC005</color>
+    <color name="xui_config_color_pure_yellow">#FFFF00</color>
+    <color name="xui_config_color_light_yellow">#FFFFC0</color>
+
     <color name="xui_config_color_red">#F15C58</color>
     <color name="xui_config_color_black">#333333</color>
     <color name="xui_config_color_link">@color/xui_config_color_light_blue</color>

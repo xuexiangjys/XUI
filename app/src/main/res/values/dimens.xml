@@ -13,4 +13,12 @@
 
   <dimen name="list_divider_height_negative">-1px</dimen>
 
+
+  <!-- Utils 系列界面 -->
+
+  <!-- ColorUtils 颜色工具 -->
+  <dimen name="color_utils_square_length">46dp</dimen>
+  <dimen name="color_utils_square_margin">23dp</dimen>
+  <dimen name="color_utils_square_desc_marginTop">10dp</dimen>
+
 </resources>

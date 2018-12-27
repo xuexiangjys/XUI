@@ -356,37 +356,6 @@ public final class Utils {
     }
 
     /**
-     * 根据比例，在两个color值之间计算出一个color值
-     * <b>注意该方法是ARGB通道分开计算比例的</b>
-     *
-     * @param fromColor 开始的color值
-     * @param toColor   最终的color值
-     * @param fraction  比例，取值为[0,1]，为0时返回 fromColor， 为1时返回 toColor
-     * @return 计算出的color值
-     */
-    public static int computeColor(@ColorInt int fromColor, @ColorInt int toColor, float fraction) {
-        fraction = Math.max(Math.min(fraction, 1), 0);
-
-        int minColorA = Color.alpha(fromColor);
-        int maxColorA = Color.alpha(toColor);
-        int resultA = (int) ((maxColorA - minColorA) * fraction) + minColorA;
-
-        int minColorR = Color.red(fromColor);
-        int maxColorR = Color.red(toColor);
-        int resultR = (int) ((maxColorR - minColorR) * fraction) + minColorR;
-
-        int minColorG = Color.green(fromColor);
-        int maxColorG = Color.green(toColor);
-        int resultG = (int) ((maxColorG - minColorG) * fraction) + minColorG;
-
-        int minColorB = Color.blue(fromColor);
-        int maxColorB = Color.blue(toColor);
-        int resultB = (int) ((maxColorB - minColorB) * fraction) + minColorB;
-
-        return Color.argb(resultA, resultR, resultG, resultB);
-    }
-
-    /**
      * 设置Drawable的颜色
      * <b>这里不对Drawable进行mutate()，会影响到所有用到这个Drawable的地方，如果要避免，请先自行mutate()</b>
      */

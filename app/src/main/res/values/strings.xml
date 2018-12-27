@@ -162,4 +162,17 @@
     <string name="tabSegment_mode_change_content_by_index">根据 index 更新 tab 文案</string>
     <string name="tabSegment_mode_replace_tab_by_index">根据 index 完全替换 tab</string>
 
+
+
+    <!-- Utils 系列界面 -->
+
+    <!-- ColorUtils 颜色工具 -->
+    <string name="color_utils_alpha_title">设置颜色的 alpha 值</string>
+    <string name="color_utils_ratio_title">根据比例，在两个 color 值之间计算出一个 color 值</string>
+    <string name="color_utils_transform_title">将 color 颜色值转换为字符串</string>
+    <string name="color_utils_random_title">获取随机颜色</string>
+
+
+    <string name="color_utils_square_origin">原始</string>
+    <string name="color_utils_square_alpha">%1$.1f alpha</string>
 </resources>

@@ -27,8 +27,8 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2018/11/14 下午2:22
  */
-@Page(name = "组件", anim = CoreAnim.fade)
-public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdapter.OnItemClickListener{
+@Page(name = "组件", anim = CoreAnim.none)
+public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdapter.OnItemClickListener {
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -58,7 +58,7 @@ public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdap
     }
 
     private void initRecyclerView() {
-        mWidgetItemAdapter = new WidgetItemAdapter(getContext(), AppPageConfig.getInstance().getWidgets());
+        mWidgetItemAdapter = new WidgetItemAdapter(getContext(), AppPageConfig.getInstance().getComponents());
         mWidgetItemAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mWidgetItemAdapter);
         int spanCount = 3;
