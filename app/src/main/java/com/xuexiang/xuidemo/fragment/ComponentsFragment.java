@@ -12,6 +12,7 @@ import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.adapter.BaseRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -48,7 +49,7 @@ public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdap
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_components;
+        return R.layout.fragment_home_container;
     }
 
     @Override
@@ -65,6 +66,27 @@ public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdap
         mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), spanCount));
     }
 
+    @Override
+    @SingleClick
+    public void onItemClick(View itemView, int pos) {
+        PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
+        if (widgetInfo != null) {
+            openPage(widgetInfo.getName());
+            getContainer().switchTab(false);
+        }
+    }
+
+    public MainActivity getContainer() {
+        return (MainActivity) getActivity();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            getContainer().switchTab(true);
+        }
+    }
 
     /**
      * 菜单、返回键响应
@@ -75,14 +97,5 @@ public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdap
             ClickUtils.exitBy2Click();
         }
         return true;
-    }
-
-    @Override
-    @SingleClick
-    public void onItemClick(View itemView, int pos) {
-        PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
-        if (widgetInfo != null) {
-            openPage(widgetInfo.getName());
-        }
     }
 }

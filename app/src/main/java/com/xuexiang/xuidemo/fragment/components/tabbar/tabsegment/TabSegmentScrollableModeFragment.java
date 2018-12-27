@@ -103,7 +103,7 @@ public class TabSegmentScrollableModeFragment extends BaseFragment {
             TextView textView = new TextView(getContext());
             textView.setTextAppearance(getContext(), R.style.TextStyle_Content_Match);
             textView.setGravity(Gravity.CENTER);
-            textView.setText("这个是" + page.name() + "页面的内容");
+            textView.setText(String.format("这个是%s页面的内容", page.name()));
             view = textView;
             mPageMap.put(page, view);
         }

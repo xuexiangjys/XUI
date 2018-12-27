@@ -20,6 +20,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.EasyIndicatorFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.TabLayoutFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.TabSegmentFragment;
 
 /**
@@ -33,7 +34,8 @@ public class TabBarFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[] {
                 EasyIndicatorFragment.class,
-                TabSegmentFragment.class
+                TabSegmentFragment.class,
+                TabLayoutFragment.class
         };
     }
 }

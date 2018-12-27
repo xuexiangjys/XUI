@@ -16,7 +16,8 @@
 
 package com.xuexiang.xuidemo.fragment.components.tabbar;
 
-import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
@@ -25,40 +26,33 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.widget.actionbar.TitleBar;
-import com.xuexiang.xui.widget.tabbar.EasyIndicator;
+import com.xuexiang.xui.widget.tabbar.TabSegment;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.activity.EasyIndicatorActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
+import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
 
+import static android.support.design.widget.TabLayout.MODE_SCROLLABLE;
+
 /**
  * @author xuexiang
- * @since 2018/12/26 下午1:57
+ * @since 2018/12/27 上午11:45
  */
-@Page(name = "EasyIndicator\n简单的指示器")
-public class EasyIndicatorFragment extends BaseFragment {
+@Page(name = "TabLayout\nMaterial Design 组件")
+public class TabLayoutFragment extends BaseFragment implements TabLayout.OnTabSelectedListener {
 
-    @BindView(R.id.easy_indicator)
-    EasyIndicator mEasyIndicator;
+    @BindView(R.id.tab1)
+    TabLayout mTabLayout1;
+
+    @BindView(R.id.tab_layout)
+    TabLayout mTabLayout;
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
-
-    @Override
-    protected TitleBar initTitle() {
-        TitleBar titleBar = super.initTitle();
-        titleBar.addAction(new TitleBar.TextAction("fragment") {
-            @Override
-            public void performAction(View view) {
-                startActivity(new Intent(getContext(), EasyIndicatorActivity.class));
-            }
-        });
-        return titleBar;
-    }
 
     private Map<ContentPage, View> mPageMap = new HashMap<>();
 
@@ -86,6 +80,12 @@ public class EasyIndicatorFragment extends BaseFragment {
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return ContentPage.getPageNames()[position];
+        }
     };
 
     private View getPageView(ContentPage page) {
@@ -103,15 +103,34 @@ public class EasyIndicatorFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_easy_indicator;
+        return R.layout.fragment_tablayout;
     }
 
     @Override
     protected void initViews() {
-        mEasyIndicator.setTabTitles(ContentPage.getPageNames());
-        mEasyIndicator.setViewPager(mViewPager, mPagerAdapter);
-        mViewPager.setOffscreenPageLimit(ContentPage.size());
-        mViewPager.setCurrentItem(2);
+        for (String page : MultiPage.getPageNames()) {
+            mTabLayout1.addTab(mTabLayout1.newTab().setText(page));
+        }
+        mTabLayout1.setTabMode(MODE_SCROLLABLE);
+        mTabLayout1.addOnTabSelectedListener(this);
+
+        mTabLayout.addOnTabSelectedListener(this);
+        mViewPager.setAdapter(mPagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        ToastUtils.toast("选中了:" + tab.getText());
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
+    }
 }

@@ -88,7 +88,7 @@ public class TabSegmentFixModeFragment extends BaseFragment {
             TextView textView = new TextView(getContext());
             textView.setTextAppearance(getContext(), R.style.TextStyle_Content_Match);
             textView.setGravity(Gravity.CENTER);
-            textView.setText("这个是" + page.name() + "页面的内容");
+            textView.setText(String.format("这个是%s页面的内容", page.name()));
             view = textView;
             mPageMap.put(page, view);
         }
@@ -203,12 +203,12 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                                 TabSegment.Tab component = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_component),
                                         null,
-                                        "Components", true
+                                        "组件", true
                                 );
                                 TabSegment.Tab util = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_util),
                                         null,
-                                        "Helper", true
+                                        "工具", true
                                 );
                                 mTabSegment.addTab(component);
                                 mTabSegment.addTab(util);
@@ -224,12 +224,12 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                                 TabSegment.Tab component2 = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_component),
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_component_selected),
-                                        "Components", false
+                                        "组件", false
                                 );
                                 TabSegment.Tab util2 = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_util),
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_util_selected),
-                                        "Helper", false
+                                        "工具", false
                                 );
                                 mTabSegment.addTab(component2);
                                 mTabSegment.addTab(util2);
@@ -242,14 +242,14 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                                 TabSegment.Tab component3 = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_component),
                                         null,
-                                        "Components", true
+                                        "组件", true
                                 );
                                 component3.setTextColor(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent),
                                         ContextCompat.getColor(getContext(), R.color.xui_config_color_red));
                                 TabSegment.Tab util3 = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_util),
                                         null,
-                                        "Helper", true
+                                        "工具", true
                                 );
                                 util3.setTextColor(ContextCompat.getColor(getContext(), R.color.xui_config_color_gray_1),
                                         ContextCompat.getColor(getContext(), R.color.xui_config_color_red));
