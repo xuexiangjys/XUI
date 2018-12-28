@@ -27,7 +27,7 @@ import android.view.View;
  * @author xuexiang
  * @since 2018/11/16 上午12:51
  */
-public abstract class AbstractMaterialDialog {
+public abstract class CustomMaterialDialog {
 
     /**
      * 弹窗窗体
@@ -38,7 +38,7 @@ public abstract class AbstractMaterialDialog {
      * 构造窗体
      * @param context
      */
-    public AbstractMaterialDialog(Context context) {
+    public CustomMaterialDialog(Context context) {
         mDialog = getDialogBuilder(context).build();
 
         initViews(context);
@@ -62,7 +62,7 @@ public abstract class AbstractMaterialDialog {
      * @param <T>
      * @return
      */
-    public <T extends AbstractMaterialDialog> T show() {
+    public <T extends CustomMaterialDialog> T show() {
         if (mDialog != null) {
             mDialog.show();
         }
@@ -74,7 +74,7 @@ public abstract class AbstractMaterialDialog {
      * @param <T>
      * @return
      */
-    public <T extends AbstractMaterialDialog> T dismiss() {
+    public <T extends CustomMaterialDialog> T dismiss() {
         if (mDialog != null) {
             mDialog.dismiss();
         }

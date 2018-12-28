@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="button" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="20dp"
+            android:background="@color/xui_config_color_separator_dark_tablet" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_gravity_tips"
+                        style="@style/TextStyle.Content"
+                        android:text="Gravity : " />
+
+                    <RadioButton
+                        android:id="@+id/rb_st"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_gravity_tips"
+                        android:text="Start | Top"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <RadioButton
+                        android:id="@+id/rb_sb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_gravity_tips"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/rb_st"
+                        android:text="Start | Bottom"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <RadioButton
+                        android:id="@+id/rb_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_gravity_tips"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/rb_sb"
+                        android:checked="true"
+                        android:text="End | Top"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <RadioButton
+                        android:id="@+id/rb_eb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rb_st"
+                        android:text="End | Bottom"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <RadioButton
+                        android:id="@+id/rb_ct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rb_st"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/rb_eb"
+                        android:text="Center | Top"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <RadioButton
+                        android:id="@+id/rb_ce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rb_st"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/rb_ct"
+                        android:text="Center | End"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <RadioButton
+                        android:id="@+id/rb_cb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rb_eb"
+                        android:text="Center | Bottom"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <RadioButton
+                        android:id="@+id/rb_cs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rb_eb"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/rb_cb"
+                        android:text="Center | Start"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <RadioButton
+                        android:id="@+id/rb_c"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rb_eb"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/rb_cs"
+                        android:text="Center"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_offset_x"
+                            style="@style/TextStyle.Content"
+                            android:text="GravityOffsetX : 1" />
+
+                        <SeekBar
+                            android:id="@+id/seekBar_offset_x"
+                            style="@style/Widget.AppCompat.SeekBar.Discrete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:max="20"
+                            android:progress="1" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_offset_y"
+                            style="@style/TextStyle.Content"
+                            android:text="GravityOffsetY : 1" />
+
+                        <SeekBar
+                            android:id="@+id/seekBar_offset_y"
+                            style="@style/Widget.AppCompat.SeekBar.Discrete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:max="20"
+                            android:progress="1" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_padding"
+                        style="@style/TextStyle.Content"
+                        android:text="BadgePadding : 5" />
+
+                    <SeekBar
+                        android:id="@+id/seekBar_padding"
+                        style="@style/Widget.AppCompat.SeekBar.Discrete"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:max="20"
+                        android:progress="5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextStyle.Content"
+                        android:text="BadgeColor : " />
+
+                    <ImageView
+                        android:id="@+id/iv_badge_color"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:background="#E84E40" />
+
+                    <TextView
+                        style="@style/TextStyle.Content"
+                        android:layout_marginStart="30dp"
+                        android:text="ShowShadow : " />
+
+                    <Switch
+                        android:id="@+id/switch_shadow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextStyle.Content"
+                        android:text="TextColor : " />
+
+                    <ImageView
+                        android:id="@+id/iv_number_color"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:background="@color/xui_config_color_assist_explain_text" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_number_size"
+                            style="@style/TextStyle.Content"
+                            android:text="TextSize : 11" />
+
+                        <SeekBar
+                            android:id="@+id/seekBar_number_size"
+                            style="@style/Widget.AppCompat.SeekBar.Discrete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:max="30"
+                            android:progress="11" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextStyle.Content"
+                        android:text="BadgeNumber : " />
+
+                    <EditText
+                        android:id="@+id/et_badge_number"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="numberSigned"
+                        android:maxLength="7"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="5"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                    <TextView
+                        style="@style/TextStyle.Content"
+                        android:text="ExactMode : " />
+
+                    <Switch
+                        android:id="@+id/switch_exact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:checked="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextStyle.Content"
+                        android:text="Text : " />
+
+                    <EditText
+                        android:id="@+id/et_badge_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/xui_config_color_assist_explain_text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextStyle.Content"
+                        android:text="Draggable : " />
+
+                    <Switch
+                        android:id="@+id/switch_draggable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp" />
+
+                    <TextView
+                        android:id="@+id/tv_drag_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="50dp"
+                        android:text=""
+                        android:textColor="@color/xui_config_color_assist_explain_text"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_animation"
+                    style="@style/Button.Blue.wrap"
+                    android:text="animation" />
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
