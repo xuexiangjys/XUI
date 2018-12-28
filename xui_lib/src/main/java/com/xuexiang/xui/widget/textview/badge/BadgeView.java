@@ -53,6 +53,13 @@ import java.util.List;
  * @since 2018/12/28 上午9:08
  */
 public class BadgeView extends View implements Badge {
+    public static final int DEFAULT_COLOR_BACKGROUND = 0xFFE84E40;
+    public static final int DEFAULT_COLOR_BADGE_TEXT = 0xFFFFFFFF;
+
+    public static final int DEFAULT_TEXT_SIZE = 11;
+    public static final int DEFAULT_BADGE_PADDING = 5;
+    public static final int DEFAULT_GRAVITY_OFFSET = 1;
+
     protected int mColorBackground;
     protected int mColorBackgroundBorder;
     protected int mColorBadgeText;
@@ -139,14 +146,14 @@ public class BadgeView extends View implements Badge {
         mBadgeBackgroundBorderPaint = new Paint();
         mBadgeBackgroundBorderPaint.setAntiAlias(true);
         mBadgeBackgroundBorderPaint.setStyle(Paint.Style.STROKE);
-        mColorBackground = 0xFFE84E40;
-        mColorBadgeText = 0xFFFFFFFF;
-        mBadgeTextSize = DensityUtils.dp2px(getContext(), 11);
-        mBadgePadding = DensityUtils.dp2px(getContext(), 5);
+        mColorBackground = DEFAULT_COLOR_BACKGROUND;
+        mColorBadgeText = DEFAULT_COLOR_BADGE_TEXT;
+        mBadgeTextSize = DensityUtils.sp2px(getContext(), DEFAULT_TEXT_SIZE);
+        mBadgePadding = DensityUtils.dp2px(getContext(), DEFAULT_BADGE_PADDING);
         mBadgeNumber = 0;
         mBadgeGravity = Gravity.END | Gravity.TOP;
-        mGravityOffsetX = DensityUtils.dp2px(getContext(), 1);
-        mGravityOffsetY = DensityUtils.dp2px(getContext(), 1);
+        mGravityOffsetX = DensityUtils.dp2px(getContext(), DEFAULT_GRAVITY_OFFSET);
+        mGravityOffsetY = DensityUtils.dp2px(getContext(), DEFAULT_GRAVITY_OFFSET);
         mFinalDragDistance = DensityUtils.dp2px(getContext(), 90);
         mShowShadow = true;
         mDrawableBackgroundClip = false;
@@ -226,7 +233,7 @@ public class BadgeView extends View implements Badge {
                         && mBadgeText != null) {
                     initRowBadgeCenter();
                     mDragging = true;
-                    updataListener(OnDragStateChangedListener.STATE_START);
+                    updateListener(OnDragStateChangedListener.STATE_START);
                     mDefaultRadius = DensityUtils.dp2px(getContext(), 7);
                     getParent().requestDisallowInterceptTouchEvent(true);
                     screenFromWindow(true);
@@ -256,10 +263,10 @@ public class BadgeView extends View implements Badge {
     private void onPointerUp() {
         if (mDragOutOfRange) {
             animateHide(mDragCenter);
-            updataListener(OnDragStateChangedListener.STATE_SUCCEED);
+            updateListener(OnDragStateChangedListener.STATE_SUCCEED);
         } else {
             reset();
-            updataListener(OnDragStateChangedListener.STATE_CANCELED);
+            updateListener(OnDragStateChangedListener.STATE_CANCELED);
         }
     }
 
@@ -330,10 +337,10 @@ public class BadgeView extends View implements Badge {
                 mDragQuadrant = MathUtils.getQuadrant(mDragCenter, mRowBadgeCenter);
                 showShadowImpl(mShowShadow);
                 if (mDragOutOfRange = startCircleRadius < DensityUtils.dp2px(getContext(), 1.5f)) {
-                    updataListener(OnDragStateChangedListener.STATE_DRAGGING_OUT_OF_RANGE);
+                    updateListener(OnDragStateChangedListener.STATE_DRAGGING_OUT_OF_RANGE);
                     drawBadge(canvas, mDragCenter, badgeRadius);
                 } else {
-                    updataListener(OnDragStateChangedListener.STATE_DRAGGING);
+                    updateListener(OnDragStateChangedListener.STATE_DRAGGING);
                     drawDragging(canvas, startCircleRadius, badgeRadius);
                     drawBadge(canvas, mDragCenter, badgeRadius);
                 }
@@ -829,7 +836,7 @@ public class BadgeView extends View implements Badge {
     }
 
 
-    private void updataListener(int state) {
+    private void updateListener(int state) {
         if (mDragStateChangedListener != null)
             mDragStateChangedListener.onDragStateChanged(state, this, mTargetView);
     }

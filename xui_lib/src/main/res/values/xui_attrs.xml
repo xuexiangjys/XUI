@@ -733,6 +733,23 @@
     </declare-styleable>
     <attr name="TabSegmentStyle" format="reference"/>
 
+    <declare-styleable name="VerticalTabLayout">
+        <attr name="vtl_indicator_color" format="color" />
+        <attr name="vtl_indicator_width" format="dimension" />
+        <attr name="vtl_indicator_corners" format="dimension" />
+        <attr name="vtl_indicator_gravity" format="enum">
+            <enum name="left" value="3" />
+            <enum name="right" value="5" />
+            <enum name="fill" value="119" />
+        </attr>
+        <attr name="vtl_tab_margin" format="dimension" />
+        <attr name="vtl_tab_mode" format="enum">
+            <enum name="fixed" value="10" />
+            <enum name="scrollable" value="11" />
+        </attr>
+        <attr name="vtl_tab_height" format="dimension"/>
+    </declare-styleable>
+
     <!--=====================================================================-->
     <!--XUIKeyboardScrollView-->
     <declare-styleable name="XUIKeyboardScrollView">

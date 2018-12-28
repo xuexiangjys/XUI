@@ -22,6 +22,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.EasyIndicatorFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.TabLayoutFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.TabSegmentFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.VerticalTabLayoutFragment;
 
 /**
  * @author xuexiang
@@ -35,7 +36,8 @@ public class TabBarFragment extends ComponentContainerFragment {
         return new Class[] {
                 EasyIndicatorFragment.class,
                 TabSegmentFragment.class,
-                TabLayoutFragment.class
+                TabLayoutFragment.class,
+                VerticalTabLayoutFragment.class
         };
     }
 }

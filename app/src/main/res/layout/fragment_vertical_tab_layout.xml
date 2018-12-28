@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.xuexiang.xui.widget.tabbar.VerticalTabLayout
+            android:id="@+id/tab_layout0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#369DE3"
+            android:visibility="visible"
+            app:vtl_indicator_color="@color/xui_config_color_white"
+            app:vtl_tab_mode="fixed" />
+
+        <com.xuexiang.xui.widget.tabbar.VerticalTabLayout
+            android:id="@+id/tab_layout1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#EF7062"
+            android:visibility="visible"
+            app:vtl_indicator_color="@color/xui_config_color_white"
+            app:vtl_indicator_corners="5dp"
+            app:vtl_indicator_gravity="right"
+            app:vtl_tab_height="50dp"
+            app:vtl_tab_mode="scrollable" />
+
+        <com.xuexiang.xui.widget.tabbar.VerticalTabLayout
+            android:id="@+id/tab_layout2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#009687"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="visible"
+            app:vtl_indicator_color="#115E56"
+            app:vtl_indicator_corners="20dp"
+            app:vtl_indicator_gravity="fill"
+            app:vtl_tab_margin="10dp"
+            app:vtl_tab_mode="scrollable" />
+
+        <com.xuexiang.xui.widget.tabbar.VerticalTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#EDEDED"
+            android:visibility="visible"
+            app:vtl_indicator_color="@color/xui_config_color_white"
+            app:vtl_indicator_gravity="fill"
+            app:vtl_tab_height="50dp"
+            app:vtl_tab_mode="scrollable" />
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+</LinearLayout>

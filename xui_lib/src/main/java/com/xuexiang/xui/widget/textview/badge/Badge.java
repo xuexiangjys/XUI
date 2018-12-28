@@ -145,7 +145,7 @@ public interface Badge {
     float getGravityOffsetY(boolean isDpValue);
 
     /**
-     * 设置拖拽监听
+     * 设置拖拽监听,不设置的话，无法拖拽
      *
      * @param l
      * @return
