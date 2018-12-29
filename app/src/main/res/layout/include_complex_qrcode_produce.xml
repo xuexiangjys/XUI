@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_complex_create"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:visibility="gone"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="尺寸 (px)" />
+
+    <EditText
+        android:id="@+id/et_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="400"
+        android:inputType="number"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="边缘宽度 (px)" />
+
+    <EditText
+        android:id="@+id/et_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="20"
+        android:inputType="number"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="数据点的缩放比例 (0,1.0f)" />
+
+    <EditText
+        android:id="@+id/et_dotScale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="0.3"
+        android:inputType="numberDecimal"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+
+    <CheckBox
+        android:id="@+id/cb_autoColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="自动从背景图片中选择色值" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="深色 (true-dots, #dddddd)" />
+
+    <EditText
+        android:id="@+id/et_colorDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:hint="colorDark"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="浅色 (false-dots, #dddddd)" />
+
+    <EditText
+        android:id="@+id/et_colorLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:hint="colorLight"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_background_image"
+            style="@style/Button.Blue.wrap"
+            android:layout_weight="1"
+            android:text="选择背景图片" />
+
+        <Button
+            android:id="@+id/btn_remove_background_image"
+            style="@style/Button.Blue.wrap"
+            android:layout_weight="1"
+            android:layout_marginStart="30dp"
+            android:text="去除背景图片" />
+
+    </LinearLayout>
+
+
+    <CheckBox
+        android:id="@+id/cb_whiteMargin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="白色背景边框" />
+
+    <CheckBox
+        android:id="@+id/cb_binarize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="二值化(灰度)背景图片" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="二值化中值 (0,255)" />
+
+    <EditText
+        android:id="@+id/et_binarizeThreshold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:hint="128"
+        android:inputType="number"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/btn_create"
+        style="@style/Button.Blue.wrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生成二维码" />
+
+</LinearLayout>

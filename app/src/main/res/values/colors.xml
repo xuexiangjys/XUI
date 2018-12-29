@@ -25,4 +25,6 @@
     <color name="color_bg_success">#dc82ce32</color>
     <color name="color_bg_error">#dcd84315</color>
 
+    <color name="scan_corner_color">#0effc2</color>
+
 </resources>

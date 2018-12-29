@@ -3,10 +3,10 @@ package com.xuexiang.xuidemo.fragment.components.dialog;
 import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.base.XPageSimpleListFragment;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheetItemView;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  * @since 2018/11/30 下午3:18
  */
 @Page(name = "BottomSheetDialog\n底部弹出窗")
-public class BottomSheetFragment extends XPageSimpleListFragment {
+public class BottomSheetFragment extends BaseSimpleListFragment {
     /**
      * 初始化例子
      *

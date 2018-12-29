@@ -100,4 +100,7 @@ dependencies {
     implementation deps.support.recyclerview
     implementation deps.support.design
 
+    //XQRCode二维码扫描
+    implementation 'com.github.xuexiangjys:XQRCode:1.0.2'
+
 }

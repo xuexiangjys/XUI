@@ -3,8 +3,8 @@ package com.xuexiang.xuidemo.fragment.components.guideview;
 import android.content.Intent;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.base.XPageSimpleListFragment;
 import com.xuexiang.xuidemo.activity.SplashActivity;
+import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import static com.xuexiang.xuidemo.activity.SplashActivity.KEY_IS_DISPLAY;
  * @since 2018/11/30 上午12:56
  */
 @Page(name = "启动页")
-public class SplashFragment extends XPageSimpleListFragment {
+public class SplashFragment extends BaseSimpleListFragment {
     /**
      * 初始化例子
      *

@@ -23,13 +23,13 @@ import android.text.InputType;
 import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.base.XPageSimpleListFragment;
 import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;
 import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.dialog.materialdialog.simplelist.MaterialSimpleListAdapter;
 import com.xuexiang.xui.widget.dialog.materialdialog.simplelist.MaterialSimpleListItem;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ import java.util.List;
  * @date 2017/9/10 23:04
  */
 @Page(name = "MaterialDialog\n对话框")
-public class MaterialDialogFragment extends XPageSimpleListFragment {
+public class MaterialDialogFragment extends BaseSimpleListFragment {
     private Thread thread;
 
     @Override
