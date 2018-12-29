@@ -34,8 +34,11 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/xui_actionbar_height"
         android:background="@drawable/xui_list_item_bg_with_border_top"
+        app:tabGravity="fill"
         app:tabIndicatorColor="@android:color/transparent"
-        app:tabTextAppearance="@style/TabText.Explain"
-        app:tabPaddingTop="2dp"/>
+        app:tabMinWidth="300dp"
+        app:tabMode="fixed"
+        app:tabPaddingTop="2dp"
+        app:tabTextAppearance="@style/TabText.Explain" />
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.fragment.ComponentsFragment;
+import com.xuexiang.xuidemo.fragment.ExpandsFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
 
 import butterknife.BindView;
@@ -64,6 +65,11 @@ public class MainActivity extends XPageActivity {
         util.setIcon(R.drawable.selector_icon_tabbar_util);
         mTabLayout.addTab(util);
 
+        TabLayout.Tab expand = mTabLayout.newTab();
+        expand.setText("拓展");
+        expand.setIcon(R.drawable.selector_icon_tabbar_expand);
+        mTabLayout.addTab(expand);
+
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -73,6 +79,9 @@ public class MainActivity extends XPageActivity {
                         break;
                     case 1:
                         openPage(UtilitysFragment.class);
+                        break;
+                    case 2:
+                        openPage(ExpandsFragment.class);
                         break;
                     default:
                         break;

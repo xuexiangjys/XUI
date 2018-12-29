@@ -1,25 +1,12 @@
 package com.xuexiang.xuidemo.fragment;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
-import android.view.View;
-
-import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xpage.model.PageInfo;
-import com.xuexiang.xui.widget.actionbar.TitleBar;
-import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.activity.MainActivity;
-import com.xuexiang.xuidemo.adapter.BaseRecyclerAdapter;
-import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
-import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
-import com.xuexiang.xutil.common.ClickUtils;
+import com.xuexiang.xuidemo.base.BaseHomeFragment;
 
-import butterknife.BindView;
+import java.util.List;
 
 /**
  * 组件的主要界面
@@ -28,74 +15,11 @@ import butterknife.BindView;
  * @since 2018/11/14 下午2:22
  */
 @Page(name = "组件", anim = CoreAnim.none)
-public class ComponentsFragment extends BaseFragment implements BaseRecyclerAdapter.OnItemClickListener {
-
-    @BindView(R.id.recyclerView)
-    RecyclerView mRecyclerView;
-
-    private WidgetItemAdapter mWidgetItemAdapter;
+public class ComponentsFragment extends BaseHomeFragment {
 
     @Override
-    protected TitleBar initTitle() {
-        TitleBar titleBar = super.initTitle();
-        titleBar.setLeftClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ClickUtils.exitBy2Click();
-            }
-        });
-        return titleBar;
+    protected List<PageInfo> getPageContents() {
+        return AppPageConfig.getInstance().getComponents();
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_home_container;
-    }
-
-    @Override
-    protected void initViews() {
-        initRecyclerView();
-    }
-
-    private void initRecyclerView() {
-        mWidgetItemAdapter = new WidgetItemAdapter(getContext(), AppPageConfig.getInstance().getComponents());
-        mWidgetItemAdapter.setOnItemClickListener(this);
-        mRecyclerView.setAdapter(mWidgetItemAdapter);
-        int spanCount = 3;
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
-        mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), spanCount));
-    }
-
-    @Override
-    @SingleClick
-    public void onItemClick(View itemView, int pos) {
-        PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
-        if (widgetInfo != null) {
-            openPage(widgetInfo.getName());
-            getContainer().switchTab(false);
-        }
-    }
-
-    public MainActivity getContainer() {
-        return (MainActivity) getActivity();
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            getContainer().switchTab(true);
-        }
-    }
-
-    /**
-     * 菜单、返回键响应
-     */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            ClickUtils.exitBy2Click();
-        }
-        return true;
-    }
 }

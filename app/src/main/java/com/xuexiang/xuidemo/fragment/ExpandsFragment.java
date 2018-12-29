@@ -26,13 +26,13 @@ import java.util.List;
 
 /**
  * @author xuexiang
- * @since 2018/12/27 上午10:09
+ * @since 2018/12/29 上午11:16
  */
-@Page(name = "工具", anim = CoreAnim.none)
-public class UtilitysFragment extends BaseHomeFragment {
+@Page(name = "拓展", anim = CoreAnim.none)
+public class ExpandsFragment extends BaseHomeFragment {
 
     @Override
     protected List<PageInfo> getPageContents() {
-        return AppPageConfig.getInstance().getUtils();
+        return AppPageConfig.getInstance().getExpands();
     }
 }

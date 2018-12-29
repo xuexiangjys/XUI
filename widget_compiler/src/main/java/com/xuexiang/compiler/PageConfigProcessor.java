@@ -172,13 +172,21 @@ public class PageConfigProcessor extends AbstractProcessor {
                     .addModifiers(Modifier.PRIVATE)
                     .build();
 
+              /*
+               private List<PageInfo> mExpands = new ArrayList<>();
+             */
+            FieldSpec expandField = FieldSpec.builder(inputListTypeOfPage, "mExpands")
+                    .addModifiers(Modifier.PRIVATE)
+                    .build();
+
 
             //构造函数
             MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder()
                     .addModifiers(Modifier.PRIVATE)
                     .addStatement("mPages = new $T<>()", ClassName.get(ArrayList.class))
                     .addStatement("mComponents = new $T<>()", ClassName.get(ArrayList.class))
-                    .addStatement("mUtils = new $T<>()", ClassName.get(ArrayList.class));
+                    .addStatement("mUtils = new $T<>()", ClassName.get(ArrayList.class))
+                    .addStatement("mExpands = new $T<>()", ClassName.get(ArrayList.class));
 
             TypeMirror tm;
             String name;
@@ -206,6 +214,15 @@ public class PageConfigProcessor extends AbstractProcessor {
                                     extra);
                         } else if (tm.toString().contains("com.xuexiang.xuidemo.fragment.utils")) {
                             constructorBuilder.addStatement("mUtils.add(new $T($S, $S, $S, $T.$L, $L))",
+                                    PageInfo.class,
+                                    name,
+                                    tm.toString(),
+                                    PageInfo.getParams(page.params()),
+                                    ClassName.get(CoreAnim.class),
+                                    page.anim(),
+                                    extra);
+                        } else if (tm.toString().contains("com.xuexiang.xuidemo.fragment.expand")) {
+                            constructorBuilder.addStatement("mExpands.add(new $T($S, $S, $S, $T.$L, $L))",
                                     PageInfo.class,
                                     name,
                                     tm.toString(),
@@ -262,6 +279,12 @@ public class PageConfigProcessor extends AbstractProcessor {
                     .addStatement("return mUtils")
                     .build();
 
+            MethodSpec getExpandsMethod = MethodSpec.methodBuilder("getExpands")
+                    .addModifiers(Modifier.PUBLIC)
+                    .returns(inputListTypeOfPage)
+                    .addStatement("return mExpands")
+                    .build();
+
             CodeBlock javaDoc = CodeBlock.builder()
                     .add("<p>这是PageConfigProcessor自动生成的类，用以自动进行页面的注册。</p>\n")
                     .add("<p><a href=\"mailto:xuexiangjys@163.com\">Contact me.</a></p>\n")
@@ -277,11 +300,13 @@ public class PageConfigProcessor extends AbstractProcessor {
                     .addField(pagesField)
                     .addField(componentField)
                     .addField(utilField)
+                    .addField(expandField)
                     .addMethod(constructorMethod)
                     .addMethod(instanceMethod)
                     .addMethod(getPagesMethod)
                     .addMethod(getComponentsMethod)
-                    .addMethod(getUtilsMethod);
+                    .addMethod(getUtilsMethod)
+                    .addMethod(getExpandsMethod);
             JavaFile.builder(PACKAGE_NAME, pageConfigBuilder.build()).build().writeTo(mFiler);
         }
     }

@@ -15,6 +15,7 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -29,14 +30,15 @@
         android:id="@+id/tab_layout"
         style="@style/TabLayoutStyle"
         android:layout_width="match_parent"
+        android:layout_height="?attr/xui_actionbar_height"
         android:layout_marginTop="5dp"
-        android:layout_height="?attr/xui_actionbar_height" />
+        app:tabGravity="fill" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true" />
 
 </LinearLayout>
