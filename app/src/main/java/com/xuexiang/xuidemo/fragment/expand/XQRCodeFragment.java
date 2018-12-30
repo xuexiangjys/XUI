@@ -54,7 +54,7 @@ import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
  * @author xuexiang
  * @since 2018/12/29 下午12:37
  */
-@Page(name = "二维码", extra = R.drawable.ic_widget_qrcode)
+@Page(name = "二维码", extra = R.drawable.ic_expand_qrcode)
 public class XQRCodeFragment extends BaseSimpleListFragment {
     /**
      * 扫描跳转Activity RequestCode

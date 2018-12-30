@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.base;
 
+import android.content.res.Configuration;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -38,5 +40,12 @@ public abstract class BaseFragment extends XPageFragment {
     public void onDestroyView() {
 //        KeyboardUtils.fixSoftInputLeaks(getContext());
         super.onDestroyView();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig); //屏幕旋转时刷新一下title
+        ((ViewGroup) getRootView()).removeViewAt(0);
+        initTitle();
     }
 }

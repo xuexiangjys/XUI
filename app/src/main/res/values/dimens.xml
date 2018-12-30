@@ -21,4 +21,9 @@
   <dimen name="color_utils_square_margin">23dp</dimen>
   <dimen name="color_utils_square_desc_marginTop">10dp</dimen>
 
+
+  <!-- Expands 系列界面 -->
+
+  <dimen name="custom_section_height">36dp</dimen>
+
 </resources>

@@ -16,20 +16,20 @@
 
 package com.xuexiang.xuidemo.base;
 
+import android.content.res.Configuration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.xuexiang.xaop.annotation.SingleClick;
-import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.adapter.BaseRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
-import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
 import com.xuexiang.xutil.common.ClickUtils;
 
@@ -117,6 +117,13 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
             ClickUtils.exitBy2Click();
         }
         return true;
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig); //屏幕旋转时刷新一下title
+        ((ViewGroup) getRootView()).removeViewAt(0);
+        initTitle();
     }
 
 }

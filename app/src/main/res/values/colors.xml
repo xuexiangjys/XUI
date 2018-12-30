@@ -27,4 +27,10 @@
 
     <color name="scan_corner_color">#0effc2</color>
 
+
+    <!-- Expands 系列界面 -->
+
+    <color name="color_red">#FD2E4A</color>
+    <color name="color_green">#13D1BE</color>
+
 </resources>

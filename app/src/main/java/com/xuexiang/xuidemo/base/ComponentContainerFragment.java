@@ -1,10 +1,14 @@
 package com.xuexiang.xuidemo.base;
 
+import android.content.res.Configuration;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.base.XPageContainerListFragment;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
+import com.xuexiang.xui.widget.actionbar.TitleUtils;
 import com.xuexiang.xuidemo.adapter.SimpleAdapter;
 
 import java.util.ArrayList;
@@ -22,6 +26,22 @@ import static com.xuexiang.xuidemo.adapter.SimpleAdapter.KEY_TITLE;
  * @since 2018/11/22 上午11:26
  */
 public abstract class ComponentContainerFragment extends XPageContainerListFragment {
+
+    @Override
+    protected void initPage() {
+        initTitle();
+        initViews();
+        initListeners();
+    }
+
+    protected TitleBar initTitle() {
+        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popToBack();
+            }
+        });
+    }
 
     @Override
     protected void initData() {
@@ -61,5 +81,12 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
 
         getListView().setOnItemClickListener(null);
         super.onDestroyView();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig); //屏幕旋转时刷新一下title
+        ((ViewGroup) getRootView()).removeViewAt(0);
+        initTitle();
     }
 }

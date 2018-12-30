@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <!--GuideCaseView-->
+    <style name="MyTitleStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#00ff00</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+
+    <!-- FabMenu -->
+    <style name="FabMenu">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="FabMenu.Buttons">
+        <item name="fab_size">mini</item>
+        <item name="fab_colorNormal">#3E99D2</item>
+        <item name="fab_colorPressed">#2488C6</item>
+        <item name="fab_colorRipple">#AF2488C6</item>
+    </style>
+
+    <!-- PhotoPicker -->
+    <style name="actionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="actionBarSize">48dp</item>
+    </style>
+
+    <style name="PhotoPickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="actionBarTheme">@style/actionBarTheme</item>
+        <item name="colorPrimary">#299EE3</item>
+        <item name="actionBarSize">48dp</item>
+        <item name="colorPrimaryDark">#299EE3</item>
+    </style>
+
+    <!--CityPicker-->
+    <style name="CityPickerTheme.Custom">
+        <item name="cpCancelTextColor">@color/color_green</item>
+        <item name="cpSearchCursorDrawable">@color/color_green</item>
+        <item name="cpIndexBarNormalTextColor">@color/color_green</item>
+        <item name="cpIndexBarSelectedTextColor">@color/color_green</item>
+        <item name="cpSectionHeight">@dimen/custom_section_height</item>
+        <item name="cpOverlayBackground">@color/color_green</item>
+    </style>
+
+    <style name="CustomAnim">
+        <item name="android:windowEnterAnimation">@anim/custom_push_down_in</item>
+        <item name="android:windowExitAnimation">@anim/custom_push_up_out</item>
+    </style>
+
+</resources>

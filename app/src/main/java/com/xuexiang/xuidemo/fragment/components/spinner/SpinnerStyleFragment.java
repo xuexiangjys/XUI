@@ -29,9 +29,6 @@ import butterknife.OnClick;
  */
 @Page(name = "统一的下拉框样式")
 public class SpinnerStyleFragment extends BaseFragment {
-    @BindView(R.id.titlebar)
-    TitleBar mTitleBar;
-
     @BindView(R.id.spinner_system_fit_offset)
     Spinner mSpinnerFitOffset;
 
@@ -57,17 +54,6 @@ public class SpinnerStyleFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_spinner_style;
-    }
-
-    @Override
-    protected TitleBar initTitle() {
-        mTitleBar = TitleUtils.initTitleBarStyle(mTitleBar, PageConfig.getPageInfo(getClass()).getName(), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
-        return mTitleBar;
     }
 
     @Override

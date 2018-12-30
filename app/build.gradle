@@ -56,6 +56,11 @@ dependencies {
     androidTestImplementation deps.runner
     androidTestImplementation deps.espresso.core
 
+    //下拉刷新、CityPicker、XUI框架需要
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.support.design
+
     //悬浮按钮
     implementation 'com.github.clans:fab:1.6.4'
 
@@ -96,11 +101,11 @@ dependencies {
     //下拉刷新
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.5'
-    implementation deps.support.app_compat
-    implementation deps.support.recyclerview
-    implementation deps.support.design
 
     //XQRCode二维码扫描
     implementation 'com.github.xuexiangjys:XQRCode:1.0.2'
+    //CityPicker
+    implementation "com.github.xuexiangjys:CityPicker:1.0.0"
+
 
 }
