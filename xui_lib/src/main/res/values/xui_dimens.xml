@@ -167,7 +167,8 @@
 
     <!--WheelView-->
     <dimen name="default_wheel_view_text_size">20sp</dimen>
-
+    <dimen name="picker_view_topbar_padding">20dp</dimen>
+    <dimen name="picker_view_topbar_height">44dp</dimen>
     <!--*********************************************
     *                  MaterialDialog               *
     **********************************************-->

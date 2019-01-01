@@ -12,6 +12,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
     }
 
     if (isNeedPackage.toBoolean()) {
@@ -55,6 +58,8 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.runner
     androidTestImplementation deps.espresso.core
+
+    implementation 'com.android.support:multidex:1.0.3'
 
     //下拉刷新、CityPicker、XUI框架需要
     implementation deps.support.app_compat

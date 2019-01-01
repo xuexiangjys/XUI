@@ -46,6 +46,9 @@
     <color name="md_edittext_error">@color/xui_config_color_red</color>
 
     <color name="cookie_bar_default_bg_color">#323232</color>
+
+    <color name="picker_view_bg_topbar">#F5F5F5</color>
+    <color name="picker_view_bg_color_overlay">#60000000</color>
     <!--*********************************************
     *              Config Color                     *
     **********************************************-->

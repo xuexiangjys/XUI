@@ -47,7 +47,7 @@ public class VideoPlayerActivity extends FragmentActivity {
         mVideoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
-                Toast.makeText(VideoPlayerActivity.this, R.string.preview_play_failed, Toast.LENGTH_SHORT).show();
+                Toast.makeText(VideoPlayerActivity.this, R.string.xui_preview_play_failed, Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

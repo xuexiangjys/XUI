@@ -189,5 +189,16 @@
         <item name="android:minWidth">?attr/xui_tab_sign_count_view_minSize</item>
         <item name="android:minHeight">?attr/xui_tab_sign_count_view_minSize</item>
     </style>
+
+    <!-- PickerView -->
+    <style name="picker_view_scale_anim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/picker_view_dialog_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/picker_view_dialog_scale_out</item>
+    </style>
+
+    <style name="picker_view_slide_anim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/picker_view_slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/picker_view_slide_out_bottom</item>
+    </style>
     
 </resources>

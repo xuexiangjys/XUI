@@ -175,7 +175,7 @@ public class PreviewActivity extends FragmentActivity {
             mBezierBannerView.attachToViewpager(mViewPager);
         } else {
             mTvIndex.setVisibility(View.VISIBLE);
-            mTvIndex.setText(getString(R.string.preview_count_string, (mCurrentIndex + 1), mImgUrls.size()));
+            mTvIndex.setText(getString(R.string.xui_preview_count_string, (mCurrentIndex + 1), mImgUrls.size()));
             mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -186,7 +186,7 @@ public class PreviewActivity extends FragmentActivity {
                 public void onPageSelected(int position) {
                     //当被选中的时候设置小圆点和当前位置
                     if (mTvIndex != null) {
-                        mTvIndex.setText(getString(R.string.preview_count_string, (position + 1), mImgUrls.size()));
+                        mTvIndex.setText(getString(R.string.xui_preview_count_string, (position + 1), mImgUrls.size()));
                     }
                     mCurrentIndex = position;
                     mViewPager.setCurrentItem(mCurrentIndex, true);

@@ -25,9 +25,19 @@
     <string name="stfLocationOffMessage">请打开定位</string>
     <string name="stf_retry">轻触屏幕重试</string>
 
-    <string name="preview_play_failed">播放失败</string>
-    <string name="preview_count_string">%1$d/%2$d</string>
+    <string name="xui_preview_play_failed">播放失败</string>
+    <string name="xui_preview_count_string">%1$d/%2$d</string>
 
     <string name="xui_try_immediately">立即体验</string>
+
+    <!--PickerView-->
+    <string name="xui_picker_view_cancel">取消</string>
+    <string name="xui_picker_view_submit">确定</string>
+    <string name="xui_picker_view_year">年</string>
+    <string name="xui_picker_view_month">月</string>
+    <string name="xui_picker_view_day">日</string>
+    <string name="xui_picker_view_hours">时</string>
+    <string name="xui_picker_view_minutes">分</string>
+    <string name="xui_picker_view_seconds">秒</string>
 
 </resources>
