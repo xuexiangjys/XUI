@@ -165,6 +165,9 @@
     <dimen name="default_ms_dropdown_offset_phone">1dp</dimen>
     <dimen name="default_ms_arrow_size_phone">8dp</dimen>
 
+    <!--WheelView-->
+    <dimen name="default_wheel_view_text_size">20sp</dimen>
+
     <!--*********************************************
     *                  MaterialDialog               *
     **********************************************-->
@@ -175,9 +178,7 @@
     <!-- The desired padding when no title is visible,
          This plus md_content_padding_top should equals md_dialog_frame_margin -->
     <dimen name="md_notitle_vertical_padding">16dp</dimen>
-
     <dimen name="md_notitle_vertical_padding_more">20dp</dimen>
-    <dimen name="md_simplelistitem_padding_top">8dp</dimen>
 
     <dimen name="md_button_min_width">72dp</dimen>
     <!-- Above and below buttons, 36+6+6=48 for the height of the button frame -->

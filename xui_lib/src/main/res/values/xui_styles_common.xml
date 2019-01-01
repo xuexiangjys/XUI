@@ -276,19 +276,19 @@
     <!-- 标题 style -->
     <style name="TextStyle.Title">
         <item name="android:textSize">?attr/xui_config_size_title_text</item>
-        <item name="android:textColor">@color/xui_config_color_dark_blue_gray</item>
+        <item name="android:textColor">?attr/xui_config_color_title_text</item>
     </style>
 
     <!-- 内容 style -->
     <style name="TextStyle.Content">
         <item name="android:textSize">?attr/xui_config_size_content_text</item>
-        <item name="android:textColor">@color/xui_config_color_middle_blue_gray</item>
+        <item name="android:textColor">?attr/xui_config_color_content_text</item>
     </style>
 
     <!-- 辅助说明 style -->
     <style name="TextStyle.Explain">
         <item name="android:textSize">?attr/xui_config_size_explain_text</item>
-        <item name="android:textColor">@color/xui_config_color_light_blue_gray</item>
+        <item name="android:textColor">?attr/xui_config_color_explain_text</item>
     </style>
 
     <!--*********************************************

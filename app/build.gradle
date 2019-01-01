@@ -105,7 +105,7 @@ dependencies {
     //XQRCode二维码扫描
     implementation 'com.github.xuexiangjys:XQRCode:1.0.2'
     //CityPicker
-    implementation "com.github.xuexiangjys:CityPicker:1.0.0"
+    implementation "com.github.xuexiangjys:CityPicker:1.0.1"
 
 
 }

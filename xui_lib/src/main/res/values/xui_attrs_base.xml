@@ -63,7 +63,6 @@
     <attr name="xui_actionbar_action_padding" format="dimension" />
     <attr name="xui_actionbar_sidetext_padding" format="dimension" />
 
-
     <!--**********************************************
     *                  xui btn                      *
     **********************************************-->
@@ -90,6 +89,10 @@
     <attr name="xui_config_size_content_text" format="dimension" />
     <!--辅助说明文字大小-->
     <attr name="xui_config_size_explain_text" format="dimension" />
+
+    <attr name="xui_config_color_title_text" format="dimension" />
+    <attr name="xui_config_color_content_text" format="dimension" />
+    <attr name="xui_config_color_explain_text" format="dimension" />
 
     <!--输入框文字-->
     <attr name="xui_config_size_edittext_input_text" format="dimension" />
@@ -118,7 +121,6 @@
     ***********************************************-->
     <attr name="stf_progressbar_size" format="dimension" />
     <attr name="stf_tip_img_size" format="dimension" />
-
 
     <!--**********************************************
     *                 Spinner                        *

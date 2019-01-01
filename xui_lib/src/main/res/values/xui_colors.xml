@@ -31,7 +31,7 @@
     <color name="swb_md_solid_normal">#ECECEC</color>
     <color name="swb_md_solid_checked">#299EE3</color>
     <color name="swb_md_solid_disable">#FFFFFF</color>
-    <color name="swb_md_solid_checked_disable">#aaaaaa</color>
+    <color name="swb_md_solid_checked_disable">#AAAAAA</color>
 
     <!-- MaterialDialog -->
     <color name="md_btn_selected">@color/xui_config_color_background_pressed</color>
