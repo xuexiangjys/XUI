@@ -57,8 +57,24 @@
     <public name="xui_config_color_15_pure_black" type="color" />
     <public name="xui_config_color_10_pure_black" type="color" />
 
+    <public name="xui_config_color_gray_1" type="color" />
+    <public name="xui_config_color_gray_2" type="color" />
+    <public name="xui_config_color_gray_3" type="color" />
+    <public name="xui_config_color_gray_4" type="color" />
+    <public name="xui_config_color_gray_5" type="color" />
+    <public name="xui_config_color_gray_6" type="color" />
+    <public name="xui_config_color_gray_7" type="color" />
+    <public name="xui_config_color_gray_8" type="color" />
+    <public name="xui_config_color_gray_9" type="color" />
+
+    <public name="xui_config_color_waring" type="color" />
+    <public name="xui_config_color_pure_yellow" type="color" />
+    <public name="xui_config_color_light_yellow" type="color" />
+
     <public name="xui_config_color_blue" type="color" />
     <public name="xui_config_color_50_blue" type="color" />
+    <public name="xui_config_color_pure_blue" type="color" />
+
     <public name="xui_config_color_red" type="color" />
     <public name="xui_config_color_black" type="color" />
     <public name="xui_config_color_link" type="color" />
@@ -104,6 +120,7 @@
     <public name="TextStyle.Explain" type="style" />
     <public name="Button.Style" type="style" />
     <public name="Button.Blue" type="style" />
+    <public name="Button.Blue.wrap" type="style" />
     <public name="Button.Radius" type="style" />
     <public name="ButtonStyle" type="style" />
     <public name="ButtonView" type="style" />
@@ -202,7 +219,6 @@
     <public name="xui_config_color_separator_light" type="attr" />
     <public name="xui_config_color_separator_dark" type="attr" />
 
-
     <!--drawable-->
     <public name="rb_bg_selector" type="drawable" />
     <public name="ms_drop_down_bg_radius" type="drawable" />
@@ -221,11 +237,11 @@
     <public name="xui_bg_center_popwindow" type="drawable" />
     <public name="xui_popup_bg" type="drawable" />
 
-    <public name="ic_return_back" type="drawable" />
-    <public name="ic_default_tip_btn" type="drawable" />
-    <public name="ic_default_clear_btn" type="drawable" />
-    <public name="ic_arrow_down_black" type="drawable" />
-    <public name="ic_arrow_up_black" type="drawable" />
+    <public name="xui_ic_return_back" type="drawable" />
+    <public name="xui_ic_default_tip_btn" type="drawable" />
+    <public name="xui_ic_default_clear_btn" type="drawable" />
+    <public name="xui_ic_arrow_down_black" type="drawable" />
+    <public name="xui_ic_arrow_up_black" type="drawable" />
 
 
 </resources>
