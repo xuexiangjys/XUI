@@ -11,8 +11,10 @@ import com.xuexiang.xpage.PageConfiguration;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xutil.XUtil;
+import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.common.StringUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xvideo.XVideo;
 
 import java.util.List;
 
@@ -68,5 +70,15 @@ public class MyApp extends Application {
             }
 
         });
+    }
+
+
+    /**
+     * 初始化video的存放路径
+     */
+    public static void initVideo() {
+        XVideo.setVideoCachePath(PathUtils.getExtDcimPath() + "/xvideo/");
+        // 初始化拍摄
+        XVideo.initialize(false, null);
     }
 }

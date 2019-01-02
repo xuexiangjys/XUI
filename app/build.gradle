@@ -15,6 +15,10 @@ android {
 
         multiDexEnabled true
 
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+        }
+
     }
 
     if (isNeedPackage.toBoolean()) {
@@ -112,5 +116,7 @@ dependencies {
     //CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.1"
 
-
+    //XVideo
+    implementation 'com.github.xuexiangjys:XVideo:1.0.2'
+    implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.2'
 }

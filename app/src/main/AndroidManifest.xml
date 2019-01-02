@@ -4,7 +4,7 @@
 
     <application
         android:name=".MyApp"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -38,6 +38,11 @@
             android:name="me.iwf.photopicker.PhotoPagerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.EasyIndicatorActivity" />
+
+        <!--XVideo视频录制-->
+        <activity
+            android:name="com.xuexiang.xvideo.MediaRecorderActivity"
+            android:theme="@style/XVideoNoBarTheme" />
 
     </application>
 

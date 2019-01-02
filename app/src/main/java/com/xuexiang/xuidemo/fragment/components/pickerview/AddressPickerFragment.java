@@ -28,7 +28,6 @@ import com.xuexiang.xui.widget.picker.widget.OptionsPickerView;
 import com.xuexiang.xui.widget.picker.widget.builder.OptionsPickerBuilder;
 import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectListener;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.PreviewRecycleAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xutil.net.JsonUtil;
 import com.xuexiang.xutil.resource.ResourceUtils;
@@ -44,7 +43,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @since 2019/1/1 下午10:46
  */
-@Page(name = "省市区三级联动")
+@Page(name = "OptionsPicker\n条件选择器--省市区三级联动")
 public class AddressPickerFragment extends BaseFragment {
 
     @BindView(R.id.btn_load)
@@ -205,4 +204,11 @@ public class AddressPickerFragment extends BaseFragment {
         return res;
     }
 
+    @Override
+    public void onDestroyView() {
+        options1Items.clear();
+        options2Items.clear();
+        options3Items.clear();
+        super.onDestroyView();
+    }
 }

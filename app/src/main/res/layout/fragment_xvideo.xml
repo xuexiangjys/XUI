@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="?attr/xui_config_content_spacing_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_video"
+                style="@style/Button.Blue.wrap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="拍摄" />
+
+            <Button
+                android:id="@+id/btn_share"
+                style="@style/Button.Blue.wrap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:text="分享" />
+
+        </LinearLayout>
+
+        <com.xiao.nicevideoplayer.NiceVideoPlayer
+            android:id="@+id/video_player"
+            android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="350dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
