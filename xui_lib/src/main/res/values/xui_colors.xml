@@ -47,8 +47,15 @@
 
     <color name="cookie_bar_default_bg_color">#323232</color>
 
+    <!--PickerView-->
     <color name="picker_view_bg_topbar">#F5F5F5</color>
     <color name="picker_view_bg_color_overlay">#60000000</color>
+
+    <!--MaterialSearchView-->
+    <color name="default_search_view_text_color">#212121</color>
+    <color name="default_search_view_text_color_hint">#727272</color>
+    <color name="default_search_view_layover_bg_color">#50000000</color>
+
     <!--*********************************************
     *              Config Color                     *
     **********************************************-->

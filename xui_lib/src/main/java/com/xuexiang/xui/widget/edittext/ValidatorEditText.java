@@ -99,7 +99,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
                     //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
                     mErrorDrawable = getCompoundDrawables()[2];
                     if (mErrorDrawable == null) {
-                        mErrorDrawable = ResUtils.getDrawable(R.drawable.ic_default_tip_btn);
+                        mErrorDrawable = ResUtils.getDrawable(R.drawable.xui_ic_default_tip_btn);
                     }
                 }
                 mIconSize = tArray.getDimensionPixelSize(R.styleable.ValidatorEditText_vet_errorIconSize, 0);

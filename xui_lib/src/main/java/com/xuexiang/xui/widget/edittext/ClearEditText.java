@@ -74,7 +74,7 @@ public class ClearEditText extends AppCompatEditText implements
             //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
             mClearDrawable = getCompoundDrawables()[2];
             if (mClearDrawable == null) {
-                mClearDrawable = ResUtils.getDrawable(R.drawable.ic_default_clear_btn);
+                mClearDrawable = ResUtils.getDrawable(R.drawable.xui_ic_default_clear_btn);
             }
         }
         if (mIconSize != 0) {

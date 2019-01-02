@@ -40,4 +40,7 @@
     <string name="xui_picker_view_minutes">分</string>
     <string name="xui_picker_view_seconds">秒</string>
 
+    <!--MaterialSearchView-->
+    <string name="search_hint">Search</string>
+
 </resources>

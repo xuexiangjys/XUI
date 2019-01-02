@@ -169,6 +169,12 @@
     <dimen name="default_wheel_view_text_size">20sp</dimen>
     <dimen name="picker_view_topbar_padding">20dp</dimen>
     <dimen name="picker_view_topbar_height">44dp</dimen>
+
+    <!--MaterialSearchView-->
+    <dimen name="default_search_icon_padding">12dp</dimen>
+    <dimen name="default_search_view_text_padding">65dp</dimen>
+    <dimen name="default_search_view_text_size">16sp</dimen>
+
     <!--*********************************************
     *                  MaterialDialog               *
     **********************************************-->

@@ -765,6 +765,31 @@
     </declare-styleable>
 
     <!--=====================================================================-->
+    <!--MaterialSearchView-->
+    <declare-styleable name="MaterialSearchView">
+        <!--搜索框背景资源的id-->
+        <attr name="msv_searchBackground" format="integer" />
+        <!--语音按钮图标的资源id-->
+        <attr name="msv_searchVoiceIcon" format="integer" />
+        <!--清空按钮图标的资源id-->
+        <attr name="msv_searchClearIcon" format="integer" />
+        <!--返回按钮图标的资源id-->
+        <attr name="msv_searchBackIcon" format="integer" />
+        <!--搜索提示图标的资源id-->
+        <attr name="msv_searchSuggestionIcon" format="integer" />
+        <!--搜索提示的背景资源的id-->
+        <attr name="msv_searchSuggestionBackground" format="integer" />
+        <!--搜索输入框提示信息-->
+        <attr name="android:hint" />
+        <!--搜索输入框文字颜色-->
+        <attr name="android:textColor" />
+        <!--搜索输入框提示文字颜色-->
+        <attr name="android:textColorHint" />
+        <!--搜索输入框输入的类型-->
+        <attr name="android:inputType" />
+    </declare-styleable>
+
+    <!--=====================================================================-->
     <!--XUIKeyboardScrollView-->
     <declare-styleable name="XUIKeyboardScrollView">
         <!--键盘弹出后,是否自动滚动，默认false-->

@@ -15,7 +15,7 @@
     <item>
         <bitmap
             android:gravity="right"
-            android:src="@drawable/ic_arrow_down_black"
+            android:src="@drawable/xui_ic_arrow_down_black"
             android:tint="@color/xui_config_color_black" />
 
     </item>

@@ -44,6 +44,11 @@
             android:name="com.xuexiang.xvideo.MediaRecorderActivity"
             android:theme="@style/XVideoNoBarTheme" />
 
+        <!--SearchView-->
+        <activity
+            android:name=".activity.SearchViewActivity"
+            android:label="SearchView" />
+
     </application>
 
 </manifest>

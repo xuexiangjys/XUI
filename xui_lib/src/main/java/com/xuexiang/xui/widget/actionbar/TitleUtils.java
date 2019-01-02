@@ -145,7 +145,7 @@ public class TitleUtils {
      */
     public static TitleBar initTitleBarStyle(TitleBar titleBar, String title) {
         titleBar.setImmersive(false)
-                .setBackImageResource(R.drawable.ic_return_back)
+                .setBackImageResource(R.drawable.xui_ic_return_back)
                 .setTitle(title)
                 .setBackgroundColor(ResUtils.getColor(R.color.xui_config_color_titlebar));
         return titleBar;

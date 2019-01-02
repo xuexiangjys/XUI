@@ -200,5 +200,14 @@
         <item name="android:windowEnterAnimation">@anim/picker_view_slide_in_bottom</item>
         <item name="android:windowExitAnimation">@anim/picker_view_slide_out_bottom</item>
     </style>
+
+    <!--MaterialSearchView-->
+    <style name="MSV_ImageButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:paddingLeft">?attr/search_icon_padding</item>
+        <item name="android:paddingRight">?attr/search_icon_padding</item>
+    </style>
     
 </resources>

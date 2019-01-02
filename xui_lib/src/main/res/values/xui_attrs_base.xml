@@ -13,6 +13,20 @@
     <attr name="xui_alpha_pressed" format="float" />
     <attr name="xui_alpha_disabled" format="float" />
 
+    <!--MaterialSearchView-->
+    <attr name="search_icon_padding" format="dimension" />
+    <attr name="search_view_text_padding" format="dimension" />
+    <attr name="search_view_text_size" format="dimension" />
+    <attr name="search_view_text_color" format="color" />
+    <attr name="search_view_text_color_hint" format="color" />
+    <attr name="search_view_ic_suggestion" format="reference" />
+    <attr name="search_view_layover_bg_color" format="color" />
+
+    <attr name="search_view_ic_back" format="reference" />
+    <attr name="search_view_ic_video" format="reference" />
+    <attr name="search_view_ic_clear" format="reference" />
+
+
     <!--**********************************************
     *                xui splash view               *
     **********************************************-->

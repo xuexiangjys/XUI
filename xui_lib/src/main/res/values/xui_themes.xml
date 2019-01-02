@@ -140,6 +140,20 @@
         <item name="xui_tab_sign_count_view_padding_horizontal">4dp</item>
 
         <!--**********************************************
+        *                  xui MaterialSearchView        *
+        ***********************************************-->
+        <item name="search_icon_padding">@dimen/default_search_icon_padding</item>
+        <item name="search_view_text_padding">@dimen/default_search_view_text_padding</item>
+        <item name="search_view_text_size">@dimen/default_search_view_text_size</item>
+        <item name="search_view_text_color">@color/default_search_view_text_color</item>
+        <item name="search_view_text_color_hint">@color/default_search_view_text_color_hint</item>
+        <item name="search_view_ic_suggestion">@drawable/xui_ic_suggestion</item>
+        <item name="search_view_layover_bg_color">@color/default_search_view_layover_bg_color</item>
+        <item name="search_view_ic_back">@drawable/xui_ic_action_navigation_arrow_back</item>
+        <item name="search_view_ic_video">@drawable/xui_ic_action_voice_search</item>
+        <item name="search_view_ic_clear">@drawable/xui_ic_action_navigation_clear</item>
+
+        <!--**********************************************
         *               xui 提供的控件样式                  *
         ***********************************************-->
         <item name="XUITipPointStyle">@style/XUITipPoint</item>

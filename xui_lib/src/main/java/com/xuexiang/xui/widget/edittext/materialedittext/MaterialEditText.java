@@ -416,7 +416,7 @@ public class MaterialEditText extends AppCompatEditText {
         iconLeftBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconLeft, -1));
         iconRightBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconRight, -1));
         showClearButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_clearButton, false);
-        clearButtonBitmaps = generateIconBitmaps(R.drawable.ic_met_clear);
+        clearButtonBitmaps = generateIconBitmaps(R.drawable.xui_ic_met_clear);
         iconPadding = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_iconPadding, getPixel(16));
         floatingLabelAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_floatingLabelAlwaysShown, false);
         helperTextAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_helperTextAlwaysShown, false);
