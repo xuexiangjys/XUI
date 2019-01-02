@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <stroke
+        android:width="1dp"
+        android:color="@color/default_tcv_selected_color" />
+    <solid android:color="@color/default_tcv_unselected_color" />
+    <padding
+        android:bottom="8dp"
+        android:left="10dp"
+        android:right="10dp"
+        android:top="8dp" />
+    <corners
+        android:bottomLeftRadius="5dp"
+        android:topLeftRadius="5dp" />
+</shape>

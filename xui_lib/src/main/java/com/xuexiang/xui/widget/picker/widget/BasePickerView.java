@@ -21,6 +21,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -28,11 +30,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.picker.widget.configure.PickerOptions;
 import com.xuexiang.xui.widget.picker.widget.listener.OnDismissListener;
 import com.xuexiang.xui.widget.picker.widget.utils.PickerViewAnimateUtils;
@@ -336,6 +341,8 @@ public class BasePickerView {
             if (dialogWindow != null) {
                 dialogWindow.setWindowAnimations(R.style.picker_view_scale_anim);
                 dialogWindow.setGravity(Gravity.CENTER);//可以改成Bottom
+
+                setWindowMaxWidth(dialogWindow);
             }
 
             mDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -347,6 +354,31 @@ public class BasePickerView {
                 }
             });
         }
+    }
+
+    /**
+     * 设置窗口的最大宽度
+     *
+     * @param dialogWindow
+     */
+    private void setWindowMaxWidth(Window dialogWindow) {
+        final int windowWidth = getWindowWidth(dialogWindow);
+        int windowHorizontalPadding = ThemeUtils.resolveDimension(context, R.attr.md_dialog_horizontal_margin, ResUtils.getDimensionPixelSize(R.dimen.default_md_dialog_horizontal_margin_phone));
+        int maxWidth = ThemeUtils.resolveDimension(context, R.attr.md_dialog_max_width);
+        final int calculatedWidth = windowWidth - (windowHorizontalPadding * 2);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialogWindow.getAttributes());
+        lp.width = Math.min(maxWidth, calculatedWidth);
+        dialogWindow.setAttributes(lp);
+    }
+
+    private int getWindowWidth(Window dialogWindow) {
+        WindowManager wm = dialogWindow.getWindowManager();
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.x;
     }
 
     private void showDialog() {

@@ -17,6 +17,26 @@
   -->
 
 <resources>
+
+    <string-array name="three_state_option">
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+    </string-array>
+
+    <!--学科名-->
+    <string-array name="course_param_option">
+        <item>语文</item>
+        <item>数学</item>
+        <item>英语</item>
+    </string-array>
+    <!--学科考试总分-->
+    <string-array name="course_param_value">
+        <item>160</item>
+        <item>200</item>
+        <item>120</item>
+    </string-array>
+
     <string-array name="menu_values">
         <item>添加</item>
         <item>修改</item>

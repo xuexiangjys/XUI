@@ -175,6 +175,10 @@
     <dimen name="default_search_view_text_padding">65dp</dimen>
     <dimen name="default_search_view_text_size">16sp</dimen>
 
+    <!-- TabControlView-->
+    <dimen name="default_tcv_text_size">14sp</dimen>
+    <dimen name="default_tcv_stroke_width">1dp</dimen>
+
     <!--*********************************************
     *                  MaterialDialog               *
     **********************************************-->

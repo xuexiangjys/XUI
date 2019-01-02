@@ -750,6 +750,31 @@
         <attr name="vtl_tab_height" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="TabControlView">
+        <!--文字字体的大小，默认14sp-->
+        <attr name="tcv_textSize" format="dimension" />
+        <!--没选中的文字颜色，默认#299EE3-->
+        <attr name="tcv_unselectedTextColor" format="reference" />
+        <!--选中的文字颜色， 默认Color.WHITE-->
+        <attr name="tcv_selectedTextColor" format="reference" />
+        <!--没选中的背景颜色， 默认Color.TRANSPARENT-->
+        <attr name="tcv_unselectedColor" format="reference" />
+        <!--选中的背景颜色， 默认#299EE3-->
+        <attr name="tcv_selectedColor" format="reference" />
+        <!--边框宽度，默认1dp-->
+        <attr name="tcv_strokeWidth" format="dimension" />
+        <!--选项卡中展示的内容-->
+        <attr name="tcv_items" format="reference" />
+        <!--选项卡中选中的内容（默认和展示的一样）-->
+        <attr name="tcv_values" format="reference" />
+        <!--是否等宽显示，默认false-->
+        <attr name="tcv_equalWidth" format="boolean" />
+        <!--是否伸展开，填充整个父布局，默认false-->
+        <attr name="tcv_stretch" format="boolean" />
+        <!--默认选中项的索引-->
+        <attr name="tcv_defaultSelection" format="integer" />
+    </declare-styleable>
+
     <!--==============================Picker=======================================-->
     <declare-styleable name="WheelView">
         <attr name="wv_gravity">
