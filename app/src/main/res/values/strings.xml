@@ -8,6 +8,8 @@
     <string name="tip_number_only_error_message">数字必须大于0小于100!</string>
     <string name="regexp_number_only">^[1-9]?\\d$</string>
 
+    <string name="common_example">示例图片</string>
+
     <!--ExpandableTextView-->
     <string name="etv_content_demo1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</string>
 
@@ -175,7 +177,14 @@
     <string name="color_utils_transform_title">将 color 颜色值转换为字符串</string>
     <string name="color_utils_random_title">获取随机颜色</string>
 
-
     <string name="color_utils_square_origin">原始</string>
     <string name="color_utils_square_alpha">%1$.1f alpha</string>
+
+    <!-- DrawableUtils Drawable 工具 -->
+    <string name="drawable_utils_create_from_view_title">从一个 View 创建 Bitmap</string>
+    <string name="drawable_utils_create_from_view_button">以本界面 Root View 为例</string>
+    <string name="drawable_utils_solid_image_title">创建一张指定大小的纯色图片，支持圆角</string>
+    <string name="drawable_utils_circle_gradient_title">创建一张渐变图片，支持圆角</string>
+    <string name="drawable_utils_tint_color_title">设置 Drawable 的颜色</string>
+    <string name="drawable_utils_separator_title">创建带上分隔线或下分隔线的 Drawable</string>
 </resources>

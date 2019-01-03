@@ -279,10 +279,20 @@
         <item name="android:textColor">?attr/xui_config_color_title_text</item>
     </style>
 
+    <!-- 标题 style -->
+    <style name="TextStyle.Title.wrap">
+        <item name="android:layout_marginBottom">?attr/xui_config_content_spacing_horizontal</item>
+    </style>
+
     <!-- 内容 style -->
     <style name="TextStyle.Content">
         <item name="android:textSize">?attr/xui_config_size_content_text</item>
         <item name="android:textColor">?attr/xui_config_color_content_text</item>
+    </style>
+
+    <!-- 内容 style -->
+    <style name="TextStyle.Content.wrap">
+        <item name="android:layout_marginBottom">?attr/xui_config_content_spacing_vertical</item>
     </style>
 
     <!-- 辅助说明 style -->

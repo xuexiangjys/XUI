@@ -21,6 +21,10 @@
   <dimen name="color_utils_square_margin">23dp</dimen>
   <dimen name="color_utils_square_desc_marginTop">10dp</dimen>
 
+  <!-- DrawableUtils Drawable 工具 -->
+  <dimen name="drawable_utils_column_marginBottom">35dp</dimen>
+  <dimen name="drawable_utils_item_marginHorizontal">20dp</dimen>
+  <dimen name="drawable_utils_common_shape_size">50dp</dimen>
 
   <!-- Expands 系列界面 -->
 
