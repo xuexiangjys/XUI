@@ -5,6 +5,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.BadgeViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.ExpandableTextViewFragment;
+import com.xuexiang.xuidemo.fragment.components.textview.GroupListViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.LabelViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.SuperTextViewFragment;
 
@@ -21,6 +22,7 @@ public class TextViewFragment extends ComponentContainerFragment {
     public Class[] getPagesClasses() {
         return new Class[]{
                 SuperTextViewFragment.class,
+                GroupListViewFragment.class,
                 ExpandableTextViewFragment.class,
                 LabelViewFragment.class,
                 BadgeViewFragment.class

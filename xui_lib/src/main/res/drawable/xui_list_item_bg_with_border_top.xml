@@ -15,7 +15,7 @@
   ~ limitations under the License.
   -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/xui_list_item_bg_with_border_bottom_pressed" android:state_pressed="true"/>
-    <item android:drawable="@drawable/xui_list_item_bg_with_border_bottom"/>
-</selector>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="?attr/xui_config_color_separator_dark"/>
+    <item android:drawable="@color/xui_config_color_white" android:top="?attr/xui_config_divider_height"/>
+</layer-list>

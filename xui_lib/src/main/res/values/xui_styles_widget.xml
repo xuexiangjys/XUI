@@ -145,19 +145,52 @@
     </style>
 
     <!--*********************************************
-   *                  GuideCaseView                *
-   **********************************************-->
+    *                  GuideCaseView                *
+    **********************************************-->
     <style name="DefaultGuideCaseTitleStyle" parent="@android:style/Widget.TextView">
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textAppearance">@style/TextAppearance.FontPath</item>
     </style>
 
+    <!--*********************************************
+    *            Common Widget Style                *
+    **********************************************-->
     <!-- 提示更新小圆点 -->
     <style name="XUITipPoint">
         <item name="android:layout_width">@dimen/xui_tips_point_size</item>
         <item name="android:layout_height">@dimen/xui_tips_point_size</item>
         <item name="android:background">@drawable/xui_tips_point</item>
+    </style>
+
+    <!-- 提示更新new -->
+    <style name="XUITipNew">
+        <item name="android:layout_width">37dp</item>
+        <item name="android:layout_height">17dp</item>
+        <item name="android:background">@drawable/xui_icon_tip_new</item>
+    </style>
+
+    <style name="XUIGroupListView">
+        <item name="separatorStyle">normal</item>
+    </style>
+
+    <style name="XUICommonListItemView">
+        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:background">?attr/xui_list_item_bg_with_border_none_selector</item>
+        <item name="xui_commonList_titleColor">@color/xui_config_color_gray_1</item>
+        <item name="xui_commonList_detailColor">@color/xui_config_color_gray_5</item>
+    </style>
+
+    <style name="XUIGroupListSectionView">
+        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingTop">
+            @dimen/xui_group_list_section_header_footer_padding_vertical
+        </item>
+        <item name="android:paddingBottom">
+            @dimen/xui_group_list_section_header_footer_padding_vertical
+        </item>
     </style>
 
     <!-- RadiusImageView -->

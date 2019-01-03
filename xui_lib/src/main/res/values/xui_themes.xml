@@ -112,10 +112,34 @@
         <item name="xui_icon_checkbox">@drawable/xui_icon_checkbox</item>
         <item name="xui_icon_check_mark">@drawable/xui_icon_check_mark</item>
 
+        <item name="xui_common_list_item_chevron">@drawable/xui_icon_chevron</item>
+        <item name="xui_common_list_item_switch">@drawable/xui_icon_switch_selector</item>
+
+        <!--**********************************************
+        *               xui common list                  *
+        ***********************************************-->
+        <item name="xui_common_list_item_icon_margin_right">12dp</item>
+        <item name="xui_common_list_item_accessory_margin_left">14dp</item>
+        <item name="xui_common_list_item_title_v_text_size">15sp</item>
+        <item name="xui_common_list_item_title_h_text_size">16sp</item>
+        <item name="xui_common_list_item_h_space_min_width">14dp</item>
+        <item name="xui_common_list_item_detail_v_text_size">13sp</item>
+        <item name="xui_common_list_item_detail_h_text_size">14sp</item>
+        <item name="xui_common_list_item_detail_line_space">5dp</item>
+        
         <item name="xui_list_item_bg_with_border_bottom">@drawable/xui_list_item_bg_with_border_bottom</item>
         <item name="xui_list_item_bg_with_border_bottom_pressed">@drawable/xui_list_item_bg_with_border_bottom_pressed</item>
         <item name="xui_list_item_bg_with_border_bottom_selector">@drawable/xui_list_item_bg_with_border_bottom_selector</item>
+        <item name="xui_list_item_bg_with_border_double">@drawable/xui_list_item_bg_with_border_double</item>
+        <item name="xui_list_item_bg_with_border_double_pressed">@drawable/xui_list_item_bg_with_border_double_pressed</item>
+        <item name="xui_list_item_bg_with_border_double_selector">@drawable/xui_list_item_bg_with_border_double_selector</item>
+        <item name="xui_list_item_bg_with_border_none_selector">@drawable/xui_list_item_bg_with_border_none_selector</item>
+        <item name="xui_list_item_bg_with_border_top">@drawable/xui_list_item_bg_with_border_top</item>
+        <item name="xui_list_item_bg_with_border_top_pressed">@drawable/xui_list_item_bg_with_border_top_pressed</item>
+        <item name="xui_list_item_bg_with_border_top_selector">@drawable/xui_list_item_bg_with_border_top_selector</item>
 
+        <item name="xui_list_item_height">@dimen/xui_list_item_height</item>
+        <item name="xui_list_item_height_higher">@dimen/xui_list_item_height_higher</item>
         <!--**********************************************
         *                 xui bottom sheet              *
         ***********************************************-->
@@ -157,6 +181,11 @@
         *               xui 提供的控件样式                  *
         ***********************************************-->
         <item name="XUITipPointStyle">@style/XUITipPoint</item>
+        <item name="XUITipNewStyle">@style/XUITipNew</item>
+        <item name="XUIGroupListViewStyle">@style/XUIGroupListView</item>
+        <item name="XUICommonListItemViewStyle">@style/XUICommonListItemView</item>
+        <item name="XUIGroupListSectionViewStyle">@style/XUIGroupListSectionView</item>
+
         <item name="MiniLoadingStyle">@style/MiniLoadingStyle</item>
         <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
         <item name="TabSegmentStyle">@style/TabSegment</item>

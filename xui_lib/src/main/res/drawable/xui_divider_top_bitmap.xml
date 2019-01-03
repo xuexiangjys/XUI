@@ -2,4 +2,4 @@
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
     android:gravity="fill_horizontal|top"
     android:src="@drawable/xui_divider"
-    android:tint="@color/xui_config_color_separator_dark_phone" />
+    android:tint="?attr/xui_config_color_separator_dark" />

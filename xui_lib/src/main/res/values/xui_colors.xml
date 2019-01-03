@@ -131,7 +131,7 @@
     <!-- 小的分割块使用浅色的分割线-->
     <color name="xui_config_color_separator_light_tablet">#F0F2F4</color>
     <color name="xui_config_color_separator_light_phone">#F0F2F4</color>
-    <!-- 大的分割块使用深色的分割线[像listview、gridview之类]-->
+    <!-- 大的分割块使用深色的分割线[像ListView、GridView之类]-->
     <color name="xui_config_color_separator_dark_tablet">#D9DDE1</color>
     <color name="xui_config_color_separator_dark_phone">#E3E6EA</color>
     <!--条目点击后的背景颜色-->

@@ -51,20 +51,44 @@
     <attr name="xui_config_color_background" format="color" />
     <!-- 小的分割块使用浅色的分割线-->
     <attr name="xui_config_color_separator_light" format="color" />
-    <!-- 大的分割块使用深色的分割线[像listview、gridview之类]-->
+    <!-- 大的分割块使用深色的分割线[像ListView、GridView之类]-->
     <attr name="xui_config_color_separator_dark" format="color" />
 
     <!--**********************************************
     *             xui list item bg                  *
     **********************************************-->
     <attr name="xui_config_divider_height" format="dimension" />
-
     <attr name="xui_config_separator_height" format="dimension" />
+
+    <!--**********************************************
+    *              xui common list                  *
+    **********************************************-->
+
+    <attr name="xui_common_list_item_icon_margin_right" format="dimension"/>
+    <attr name="xui_common_list_item_accessory_margin_left" format="dimension"/>
+    <attr name="xui_common_list_item_title_v_text_size" format="dimension"/>
+    <attr name="xui_common_list_item_title_h_text_size" format="dimension"/>
+    <attr name="xui_common_list_item_h_space_min_width" format="dimension"/>
+    <attr name="xui_common_list_item_detail_v_text_size" format="dimension"/>
+    <attr name="xui_common_list_item_detail_h_text_size" format="dimension"/>
+    <attr name="xui_common_list_item_detail_line_space" format="dimension"/>
+
+    <attr name="xui_common_list_item_chevron" format="reference"/>
+    <attr name="xui_common_list_item_switch" format="reference"/>
 
     <attr name="xui_list_item_bg_with_border_bottom" format="reference" />
     <attr name="xui_list_item_bg_with_border_bottom_pressed" format="reference" />
     <attr name="xui_list_item_bg_with_border_bottom_selector" format="reference" />
+    <attr name="xui_list_item_bg_with_border_double" format="reference" />
+    <attr name="xui_list_item_bg_with_border_double_pressed" format="reference" />
+    <attr name="xui_list_item_bg_with_border_double_selector" format="reference" />
+    <attr name="xui_list_item_bg_with_border_none_selector" format="reference" />
+    <attr name="xui_list_item_bg_with_border_top" format="reference" />
+    <attr name="xui_list_item_bg_with_border_top_pressed" format="reference" />
+    <attr name="xui_list_item_bg_with_border_top_selector" format="reference" />
 
+    <attr name="xui_list_item_height" format="dimension"/>
+    <attr name="xui_list_item_height_higher" format="dimension"/>
     <!--**********************************************
     *                  xui topbar                   *
     ***********************************************-->
@@ -165,8 +189,6 @@
     <!--**********************************************
     *              xui bottom sheet                 *
     **********************************************-->
-    <attr name="XUITipPointStyle" format="reference" />
-
     <attr name="xui_bottom_sheet_title_height" format="dimension" />
     <attr name="xui_bottom_sheet_title_appearance" format="reference" />
     <attr name="xui_bottom_sheet_title_bg" format="reference" />

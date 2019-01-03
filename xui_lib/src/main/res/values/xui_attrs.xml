@@ -840,4 +840,28 @@
     </declare-styleable>
 
 
+    <!--===========================XUIGroupListView==========================================-->
+    <declare-styleable name="XUIGroupListView">
+        <attr name="separatorStyle" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="none" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="XUICommonListItemView">
+        <attr name="xui_orientation"/>
+        <attr name="xui_accessory_type" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="chevron" value="1"/>
+            <enum name="switcher" value="2"/>
+            <enum name="custom" value="3"/>
+        </attr>
+        <attr name="xui_commonList_titleColor" format="color"/>
+        <attr name="xui_commonList_detailColor" format="color"/>
+    </declare-styleable>
+    <attr name="XUIGroupListViewStyle" format="reference"/>
+    <attr name="XUICommonListItemViewStyle" format="reference"/>
+    <attr name="XUIGroupListSectionViewStyle" format="reference"/>
+    <attr name="XUITipPointStyle" format="reference" />
+    <attr name="XUITipNewStyle" format="reference"/>
+
 </resources>
