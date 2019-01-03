@@ -103,32 +103,8 @@ public final class ViewUtils {
         }
     }
 
-    /**
-     * 扩展点击区域的范围
-     *
-     * @param view       需要扩展的元素，此元素必需要有父级元素
-     * @param expendSize 需要扩展的尺寸（以sp为单位的）
-     */
-    public static void expendTouchArea(final View view, final int expendSize) {
-        if (view != null) {
-            final View parentView = (View) view.getParent();
+    //=======================设置背景颜色===========================//
 
-            parentView.post(new Runnable() {
-                @Override
-                public void run() {
-                    Rect rect = new Rect();
-                    view.getHitRect(rect); //如果太早执行本函数，会获取rect失败，因为此时UI界面尚未开始绘制，无法获得正确的坐标
-                    rect.left -= expendSize;
-                    rect.top -= expendSize;
-                    rect.right += expendSize;
-                    rect.bottom += expendSize;
-                    parentView.setTouchDelegate(new TouchDelegate(rect, view));
-                }
-            });
-        }
-    }
-
-    @SuppressWarnings("deprecation")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static void setBackground(View view, Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -154,6 +130,8 @@ public final class ViewUtils {
         view.setBackgroundColor(color);
         view.setPadding(padding[0], padding[1], padding[2], padding[3]);
     }
+
+    //=======================设置背景动画===========================//
 
     /**
      * 对 View 的做背景闪动的动画
@@ -296,6 +274,19 @@ public final class ViewUtils {
         }
     }
 
+    //======================动画===============================//
+    /**
+     * <p>对 View 做透明度变化的进场动画。</p>
+     * <p>相关方法 {@link #fadeOut(View, int, Animation.AnimationListener, boolean)}</p>
+     *
+     * @param view     做动画的 View
+     * @param duration 动画时长(毫秒)
+     * @param listener 动画回调
+     */
+    public static AlphaAnimation fadeIn(View view, int duration, Animation.AnimationListener listener) {
+        return fadeIn(view, duration, listener, true);
+    }
+
     /**
      * <p>对 View 做透明度变化的进场动画。</p>
      * <p>相关方法 {@link #fadeOut(View, int, Animation.AnimationListener, boolean)}</p>
@@ -325,6 +316,18 @@ public final class ViewUtils {
             view.setVisibility(View.VISIBLE);
             return null;
         }
+    }
+
+    /**
+     * <p>对 View 做透明度变化的退场动画</p>
+     * <p>相关方法 {@link #fadeIn(View, int, Animation.AnimationListener, boolean)}</p>
+     *
+     * @param view     做动画的 View
+     * @param duration 动画时长(毫秒)
+     * @param listener 动画回调
+     */
+    public static AlphaAnimation fadeOut(final View view, int duration, final Animation.AnimationListener listener) {
+        return fadeOut(view, duration, listener, true);
     }
 
     /**
@@ -375,6 +378,11 @@ public final class ViewUtils {
         }
     }
 
+    /**
+     * 清除数值动画
+     *
+     * @param animator
+     */
     public static void clearValueAnimator(Animator animator) {
         if (animator != null) {
             animator.removeAllListeners();
@@ -389,12 +397,33 @@ public final class ViewUtils {
         }
     }
 
-    public static Rect calcViewScreenLocation(View view) {
+    /**
+     * 计算控件在屏幕上的坐标
+     *
+     * @param view
+     * @return
+     */
+    public static Rect calculateViewScreenLocation(View view) {
         int[] location = new int[2];
         // 获取控件在屏幕中的位置，返回的数组分别为控件左顶点的 x、y 的值
         view.getLocationOnScreen(location);
         return new Rect(location[0], location[1], location[0] + view.getWidth(),
                 location[1] + view.getHeight());
+    }
+
+    /**
+     * <p>对 View 做上下位移的进场动画</p>
+     * <p>相关方法 {@link #slideOut(View, int, Animation.AnimationListener, boolean, Direction)}</p>
+     *
+     * @param view      做动画的 View
+     * @param duration  动画时长(毫秒)
+     * @param listener  动画回调
+     * @param direction 进场动画的方向
+     * @return 动画对应的 Animator 对象, 注意无动画时返回 null
+     */
+    @Nullable
+    public static TranslateAnimation slideIn(final View view, int duration, final Animation.AnimationListener listener, Direction direction) {
+        return slideIn(view, duration, listener, true, direction);
     }
 
     /**
@@ -408,9 +437,8 @@ public final class ViewUtils {
      * @param direction       进场动画的方向
      * @return 动画对应的 Animator 对象, 注意无动画时返回 null
      */
-    public static
     @Nullable
-    TranslateAnimation slideIn(final View view, int duration, final Animation.AnimationListener listener, boolean isNeedAnimation, Direction direction) {
+    public static TranslateAnimation slideIn(final View view, int duration, final Animation.AnimationListener listener, boolean isNeedAnimation, Direction direction) {
         if (view == null) {
             return null;
         }
@@ -454,9 +482,23 @@ public final class ViewUtils {
         } else {
             view.clearAnimation();
             view.setVisibility(View.VISIBLE);
-
             return null;
         }
+    }
+
+    /**
+     * <p>对 View 做上下位移的退场动画</p>
+     * <p>相关方法 {@link #slideIn(View, int, Animation.AnimationListener, boolean, Direction)}</p>
+     *
+     * @param view      做动画的 View
+     * @param duration  动画时长(毫秒)
+     * @param listener  动画回调
+     * @param direction 进场动画的方向
+     * @return 动画对应的 Animator 对象, 注意无动画时返回 null
+     */
+    @Nullable
+    public static TranslateAnimation slideOut(final View view, int duration, final Animation.AnimationListener listener, Direction direction) {
+        return slideOut(view, duration, listener, true, direction);
     }
 
     /**
@@ -470,9 +512,8 @@ public final class ViewUtils {
      * @param direction       进场动画的方向
      * @return 动画对应的 Animator 对象, 注意无动画时返回 null
      */
-    public static
     @Nullable
-    TranslateAnimation slideOut(final View view, int duration, final Animation.AnimationListener listener, boolean isNeedAnimation, Direction direction) {
+    public static TranslateAnimation slideOut(final View view, int duration, final Animation.AnimationListener listener, boolean isNeedAnimation, Direction direction) {
         if (view == null) {
             return null;
         }
@@ -536,7 +577,35 @@ public final class ViewUtils {
             view.setVisibility(View.GONE);
             return null;
         }
+    }
 
+    //=====================设置Padding==============================//
+
+
+    /**
+     * 扩展点击区域的范围
+     *
+     * @param view       需要扩展的元素，此元素必需要有父级元素
+     * @param expendSize 需要扩展的尺寸（以xp为单位的）
+     */
+    public static void expendTouchArea(final View view, final int expendSize) {
+        if (view != null) {
+            final View parentView = (View) view.getParent();
+
+            parentView.post(new Runnable() {
+                @Override
+                public void run() {
+                    //屏幕的坐标原点在左上角
+                    Rect rect = new Rect();
+                    view.getHitRect(rect); //如果太早执行本函数，会获取rect失败，因为此时UI界面尚未开始绘制，无法获得正确的坐标
+                    rect.left -= expendSize;
+                    rect.top -= expendSize;
+                    rect.right += expendSize;
+                    rect.bottom += expendSize;
+                    parentView.setTouchDelegate(new TouchDelegate(rect, view));
+                }
+            });
+        }
     }
 
     /**
@@ -688,9 +757,7 @@ public final class ViewUtils {
 
         if (listView.getLastVisiblePosition() == listView.getAdapter().getCount() - 1) {
             View lastItemView = listView.getChildAt(listView.getChildCount() - 1);
-            if (lastItemView != null && lastItemView.getBottom() == listView.getHeight()) {
-                return true;
-            }
+            return lastItemView != null && lastItemView.getBottom() == listView.getHeight();
         }
         return false;
     }

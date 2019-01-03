@@ -26,7 +26,6 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ColorUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.common.RandomUtils;
 
 import butterknife.BindView;
 
@@ -34,7 +33,7 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2018/12/27 下午3:11
  */
-@Page(name = "ColorUtils", extra = R.drawable.icon_util_color)
+@Page(name = "ColorUtils", extra = R.drawable.ic_util_color)
 public class ColorUtilsFragment extends BaseFragment {
 
     @BindView(R.id.square_alpha)

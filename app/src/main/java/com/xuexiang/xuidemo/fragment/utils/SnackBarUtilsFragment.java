@@ -35,7 +35,7 @@ import butterknife.OnClick;
  * @author xuexiang
  * @since 2018/12/27 下午2:49
  */
-@Page(name = "SnackBarUtils", extra = R.drawable.icon_util_snackbar)
+@Page(name = "SnackBarUtils", extra = R.drawable.ic_util_snackbar)
 public class SnackBarUtilsFragment extends BaseFragment {
 
     @Override
