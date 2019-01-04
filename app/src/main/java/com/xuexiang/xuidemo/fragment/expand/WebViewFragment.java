@@ -38,6 +38,10 @@ public class WebViewFragment extends BaseSimpleListFragment {
     protected List<String> initSimpleData(List<String> lists) {
         lists.add("使用系统默认API调用");
         lists.add("直接显示调用");
+        lists.add("文件下载");
+        lists.add("input标签文件上传");
+        lists.add("电话、信息、邮件");
+        lists.add("地图定位");
         return lists;
     }
 
@@ -49,6 +53,18 @@ public class WebViewFragment extends BaseSimpleListFragment {
                 break;
             case 1:
                 goWeb("https://www.baidu.com/");
+                break;
+            case 2:
+                goWeb("http://android.myapp.com/");
+                break;
+            case 3:
+                goWeb("file:///android_asset/upload_file/uploadfile.html");
+                break;
+            case 4:
+                goWeb("file:///android_asset/sms/sms.html");
+                break;
+            case 5:
+                goWeb("https://map.baidu.com/mobile/webapp/index/index/#index/index/foo=bar/vt=map");
                 break;
             default:
                 break;
