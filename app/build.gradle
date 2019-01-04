@@ -120,4 +120,10 @@ dependencies {
     //XVideo
     implementation 'com.github.xuexiangjys:XVideo:1.0.2'
     implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.3'
+
+    //WebView
+    implementation 'com.github.xuexiangjys.AgentWeb:agentweb-core:1.0.0'
+    implementation 'com.github.xuexiangjys.AgentWeb:agentweb-download:1.0.0'//选填
+    implementation 'com.github.xuexiangjys.AgentWeb:agentweb-filechooser:1.0.0'//选填
+
 }

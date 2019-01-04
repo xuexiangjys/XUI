@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#299EE3</color>
     <color name="colorAccent">#299EE3</color>
 
+    <color name="colorAccent_select">#65b0dc</color>
+
+
     <color name="gray_btn">#9E9E9E</color>
 
     <color name="green_btn_color_normal">#2BCFB8</color>
@@ -43,6 +46,11 @@
     <color name="app_color_theme_7">#5A9AEF</color> <!-- Blue Jeans -->
     <color name="app_color_theme_8">#AC8FEF</color> <!-- Lavender -->
     <color name="app_color_theme_9">#EE85C1</color> <!-- Pink Rose -->
+
+
+    <color name="web_colorPrimary">#393a3f</color>
+    <color name="web_colorPrimaryDark">#303135</color>
+    <color name="web_colorAccent">#1aad19</color>
 
 
 </resources>
