@@ -53,6 +53,7 @@ android {
     }
 
     lintOptions {
+        checkReleaseBuilds false
         abortOnError false
     }
 }
@@ -118,5 +119,5 @@ dependencies {
 
     //XVideo
     implementation 'com.github.xuexiangjys:XVideo:1.0.2'
-    implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.2'
+    implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.3'
 }

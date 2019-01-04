@@ -230,3 +230,5 @@
 -keepclassmembers class * {
     @com.xuexiang.xipc.annotation.* <methods>;
 }
+
+-keep public class com.xuexiang.xuidemo.fragment.components.pickerview.**{*;}
