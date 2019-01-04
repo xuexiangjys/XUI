@@ -125,5 +125,8 @@ dependencies {
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-core:1.0.0'
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-download:1.0.0'//选填
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-filechooser:1.0.0'//选填
+    //WebView的回弹布局
+    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
+
 
 }

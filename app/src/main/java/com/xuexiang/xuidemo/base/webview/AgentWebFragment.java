@@ -23,6 +23,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.PopupMenu;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -43,6 +45,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -63,6 +66,7 @@ import com.just.agentweb.download.DefaultDownloadImpl;
 import com.just.agentweb.download.DownloadListenerAdapter;
 import com.just.agentweb.download.DownloadingService;
 import com.just.agentweb.utils.LogUtils;
+import com.just.agentweb.widget.IWebLayout;
 import com.xuexiang.xuidemo.R;
 
 import java.util.HashMap;
@@ -129,6 +133,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 				.useMiddlewareWebChrome(getMiddlewareWebChrome()) //设置WebChromeClient中间件，支持多个WebChromeClient，AgentWeb 3.0.0 加入。
 				.useMiddlewareWebClient(getMiddlewareWebClient()) //设置WebViewClient中间件，支持多个WebViewClient， AgentWeb 3.0.0 加入。
 //                .setDownloadListener(mDownloadListener) 4.0.0 删除该API//下载回调
+				.setWebLayout(getWebLayout())
 //                .openParallelDownload()// 4.0.0删除该API 打开并行下载 , 默认串行下载。 请通过AgentWebDownloader#Extra实现并行下载
 //                .setNotifyIcon(R.drawable.ic_file_download_black_24dp) 4.0.0删除该api //下载通知图标。4.0.0后的版本请通过AgentWebDownloader#Extra修改icon
 				.setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)//打开其他页面时，弹窗质询用户前往其他应用 AgentWeb 3.0.0 加入。
@@ -139,6 +144,8 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 
 
 		AgentWebConfig.debug();
+
+		addBGChild(mAgentWeb.getWebCreator().getWebParentLayout()); // 得到 AgentWeb 最底层的控件
 
 		initView(view);
 
@@ -154,6 +161,23 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 
 	}
 
+	protected IWebLayout getWebLayout() {
+		return new WebLayout(getActivity());
+	}
+
+
+	protected void addBGChild(FrameLayout frameLayout) {
+		TextView mTextView = new TextView(frameLayout.getContext());
+		mTextView.setText("技术由 AgentWeb 提供");
+		mTextView.setTextSize(16);
+		mTextView.setTextColor(Color.parseColor("#727779"));
+		frameLayout.setBackgroundColor(Color.parseColor("#272b2d"));
+		FrameLayout.LayoutParams mFlp = new FrameLayout.LayoutParams(-2, -2);
+		mFlp.gravity = Gravity.CENTER_HORIZONTAL;
+		final float scale = frameLayout.getContext().getResources().getDisplayMetrics().density;
+		mFlp.topMargin = (int) (15 * scale + 0.5f);
+		frameLayout.addView(mTextView, 0, mFlp);
+	}
 
 	protected PermissionInterceptor mPermissionInterceptor = new PermissionInterceptor() {
 
