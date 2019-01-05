@@ -187,4 +187,23 @@
         <item>根据品牌名称排序</item>
     </string-array>
 
+
+    <string-array name="menu_titles">
+        <item>组件</item>
+        <item>工具</item>
+        <item>拓展</item>
+        <item>关于</item>
+        <item />
+        <item>退出</item>
+    </string-array>
+
+    <array name="menu_icons">
+        <item>@drawable/icon_tabbar_component</item>
+        <item>@drawable/icon_tabbar_util</item>
+        <item>@drawable/icon_tabbar_expand</item>
+        <item>@drawable/icon_tabbar_about</item>
+        <item>0</item>
+        <item>@drawable/icon_tabbar_logout</item>
+    </array>
+
 </resources>

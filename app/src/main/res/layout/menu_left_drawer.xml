@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_menu"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="240dp"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/iv_qrcode"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="5dp"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_menu_qrcode"/>
+
+    </FrameLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <com.xuexiang.xui.widget.imageview.RadiusImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/icon_avatar1"
+            app:riv_border_color="@color/xui_config_color_gray_6"
+            app:riv_border_width="1px"
+            app:riv_is_circle="true"
+            app:riv_selected_border_color="@color/xui_config_color_gray_4"
+            app:riv_selected_border_width="1px"
+            app:riv_selected_mask_color="@color/xui_config_color_gray_8" />
+
+        <TextView
+            android:id="@+id/tv_avatar"
+            style="@style/TextStyle.Title"
+            android:layout_marginStart="?attr/xui_config_content_spacing_horizontal"
+            android:text="Beautiful XUI" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_sign"
+        style="@style/TextStyle.Explain"
+        android:layout_width="240dp"
+        android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="这个家伙很懒，什么也没有留下～～" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="56dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/menu_item_option" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+
+</LinearLayout>

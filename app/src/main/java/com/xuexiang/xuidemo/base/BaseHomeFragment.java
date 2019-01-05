@@ -53,10 +53,11 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
     @Override
     protected TitleBar initTitle() {
         TitleBar titleBar = super.initTitle();
+        titleBar.setLeftImageResource(R.drawable.ic_action_menu);
         titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ClickUtils.exitBy2Click();
+                getContainer().openMenu();
             }
         });
         return titleBar;

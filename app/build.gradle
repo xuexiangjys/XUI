@@ -128,5 +128,9 @@ dependencies {
     //WebView的回弹布局
     implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
 
+    //侧边栏菜单
+    implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
+
+
 
 }

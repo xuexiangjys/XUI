@@ -187,4 +187,5 @@
     <string name="drawable_utils_circle_gradient_title">创建一张渐变图片，支持圆角</string>
     <string name="drawable_utils_tint_color_title">设置 Drawable 的颜色</string>
     <string name="drawable_utils_separator_title">创建带上分隔线或下分隔线的 Drawable</string>
+    <string name="lab_logout_confirm">是否确认退出？</string>
 </resources>
