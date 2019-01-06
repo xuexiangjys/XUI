@@ -157,6 +157,19 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
         }
     }
 
+    public void closeMenu() {
+        if (mSlidingRootNav != null) {
+            mSlidingRootNav.closeMenu();
+        }
+    }
+
+    public boolean isMenuOpen() {
+        if (mSlidingRootNav != null) {
+            return mSlidingRootNav.isMenuOpened();
+        }
+        return false;
+    }
+
     private void initSlidingMenu(Bundle savedInstanceState) {
         mMenuTitles = loadMenuTitles();
         mMenuIcons = loadMenuIcons();

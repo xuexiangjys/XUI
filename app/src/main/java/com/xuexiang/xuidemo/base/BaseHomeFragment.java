@@ -31,6 +31,7 @@ import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.adapter.BaseRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
 import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
+import com.xuexiang.xuidemo.fragment.AboutFragment;
 import com.xuexiang.xutil.common.ClickUtils;
 
 import java.util.List;
@@ -56,8 +57,16 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
         titleBar.setLeftImageResource(R.drawable.ic_action_menu);
         titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
+            @SingleClick
             public void onClick(View v) {
                 getContainer().openMenu();
+            }
+        });
+        titleBar.addAction(new TitleBar.ImageAction(R.drawable.icon_action_about) {
+            @Override
+            @SingleClick
+            public void performAction(View view) {
+                openPage(AboutFragment.class);
             }
         });
         return titleBar;
@@ -115,7 +124,11 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            ClickUtils.exitBy2Click();
+            if (getContainer().isMenuOpen()) {
+                getContainer().closeMenu();
+            } else {
+                ClickUtils.exitBy2Click();
+            }
         }
         return true;
     }
