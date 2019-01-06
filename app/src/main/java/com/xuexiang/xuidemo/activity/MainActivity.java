@@ -25,6 +25,7 @@ import com.xuexiang.xuidemo.adapter.menu.DrawerAdapter;
 import com.xuexiang.xuidemo.adapter.menu.DrawerItem;
 import com.xuexiang.xuidemo.adapter.menu.SimpleItem;
 import com.xuexiang.xuidemo.adapter.menu.SpaceItem;
+import com.xuexiang.xuidemo.fragment.AboutFragment;
 import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 import com.xuexiang.xuidemo.fragment.ExpandsFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
@@ -143,34 +144,11 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
     }
 
     public void switchTab(final boolean isShow) {
-        Animation animation;
         if (isShow) {
-            animation = new AlphaAnimation(0.2F, 1.0F);
+            ViewUtils.slideIn(mTabLayout,300, null, ViewUtils.Direction.BOTTOM_TO_TOP);
         } else {
-            animation = new AlphaAnimation(1.0F, 0.2F);
+            ViewUtils.slideOut(mTabLayout,300, null, ViewUtils.Direction.TOP_TO_BOTTOM);
         }
-        animation.setDuration(300);
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                if (isShow) {
-                    mTabLayout.setVisibility(View.VISIBLE);
-                } else {
-                    mTabLayout.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        mTabLayout.startAnimation(animation);
     }
 
     public void openMenu() {
@@ -246,6 +224,8 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
                 mSlidingRootNav.closeMenu();
                 break;
             case POS_ABOUT:
+                openPage(AboutFragment.class);
+                mSlidingRootNav.closeMenu();
                 break;
             case POS_LOGOUT:
                 DialogLoader.getInstance().showConfirmDialog(
