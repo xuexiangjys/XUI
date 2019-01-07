@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="../art/app_logo_xui.png" width="388" height="321" alt="Banner" />
-</p>
-
 # XUI
 
 一个简洁而又优雅的Android原生UI框架，解放你的双手！
