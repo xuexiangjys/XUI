@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
@@ -47,7 +48,7 @@ import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
  * @author xuexiang
  * @since 2019/1/7 上午9:14
  */
-@Page(name = "扫码关注")
+@Page(name = "扫码关注", anim = CoreAnim.none)
 public class QRCodeFragment extends BaseFragment implements View.OnClickListener, View.OnLongClickListener {
 
     @BindView(R.id.iv_qq_group)

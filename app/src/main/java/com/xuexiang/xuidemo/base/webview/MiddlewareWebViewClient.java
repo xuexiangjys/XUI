@@ -16,6 +16,8 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
@@ -25,7 +27,10 @@ import android.webkit.WebView;
 
 import com.just.agentweb.core.client.MiddlewareWebClientBase;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xutil.XUtil;
+import com.xuexiang.xutil.tip.ToastUtils;
 
 /**
  * WebClient（WebViewClient 这个类主要帮助WebView处理各种通知、url加载，请求时间的）中间件
@@ -59,9 +64,13 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
 
     private static int count = 1;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
         Log.i("Info", "MiddlewareWebViewClient -- >  shouldOverrideUrlLoading:" + request.getUrl().toString() + "  c:" + (count++));
+        if (shouldOverrideUrlLoadingByApp(view, request.getUrl().toString())) {
+            return true;
+        }
         return super.shouldOverrideUrlLoading(view, request);
 
     }
@@ -69,6 +78,9 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         Log.i("Info", "MiddlewareWebViewClient -- >  shouldOverrideUrlLoading:" + url + "  c:" + (count++));
+        if (shouldOverrideUrlLoadingByApp(view, url)) {
+            return true;
+        }
         return super.shouldOverrideUrlLoading(view, url);
     }
 
@@ -108,4 +120,47 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
         }
         return false;
     }
+
+
+    /**
+     * 根据url的scheme处理跳转第三方app的业务
+     */
+    private boolean shouldOverrideUrlLoadingByApp(WebView webView, final String url) {
+        if (url.startsWith("http") || url.startsWith("https") || url.startsWith("ftp")) {
+            //不处理http, https, ftp的请求
+            return false;
+        }
+        DialogLoader.getInstance().showConfirmDialog(
+                webView.getContext(),
+                ResUtils.getString(R.string.lab_open_third_app),
+                ResUtils.getString(R.string.lab_yes),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        openApp(url);
+                    }
+                },
+                ResUtils.getString(R.string.lab_no),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }
+        );
+        return true;
+    }
+
+    private void openApp(String url) {
+        Intent intent;
+        try {
+            intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            XUtil.getContext().startActivity(intent);
+        } catch (Exception e) {
+            ToastUtils.toast("您所打开的第三方App未安装！");
+        }
+    }
+
 }
