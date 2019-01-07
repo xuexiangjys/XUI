@@ -32,6 +32,8 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.tip.ToastUtils;
 
+import java.net.URISyntaxException;
+
 /**
  * WebClient（WebViewClient 这个类主要帮助WebView处理各种通知、url加载，请求时间的）中间件
  * <p>
@@ -130,9 +132,10 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
             //不处理http, https, ftp的请求
             return false;
         }
+
         DialogLoader.getInstance().showConfirmDialog(
                 webView.getContext(),
-                ResUtils.getString(R.string.lab_open_third_app),
+                getOpenTitle(url),
                 ResUtils.getString(R.string.lab_yes),
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -150,6 +153,25 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
                 }
         );
         return true;
+    }
+
+    private String getOpenTitle(String url) {
+        String scheme = getScheme(url);
+        if ("mqqopensdkapi".equals(scheme)) {
+            return "是否允许页面打开\"QQ\"?";
+        } else {
+            return ResUtils.getString(R.string.lab_open_third_app);
+        }
+    }
+
+    private String getScheme(String url) {
+        try {
+            Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+            return intent.getScheme();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     private void openApp(String url) {

@@ -18,6 +18,7 @@ package com.xuexiang.xuidemo.fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,6 +32,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
+import com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.app.SocialShareUtils;
 import com.xuexiang.xutil.display.ImageUtils;
@@ -43,6 +45,7 @@ import java.io.File;
 import butterknife.BindView;
 
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
+import static com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment.DRAWABLE_ID;
 
 /**
  * @author xuexiang
@@ -78,12 +81,15 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        Bundle bundle = new Bundle();
         switch (v.getId()) {
             case R.id.iv_qq_group:
-
+                bundle.putInt(DRAWABLE_ID, R.drawable.img_qq_group);
+                openPage(DrawablePreviewFragment.class, bundle);
                 break;
             case R.id.iv_win_xin:
-
+                bundle.putInt(DRAWABLE_ID, R.drawable.img_winxin_subscription_number);
+                openPage(DrawablePreviewFragment.class, bundle);
                 break;
             default:
                 break;
