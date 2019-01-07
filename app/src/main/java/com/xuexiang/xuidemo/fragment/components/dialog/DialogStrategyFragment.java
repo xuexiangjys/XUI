@@ -53,6 +53,8 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
         lists.add("简单的提示性对话框");
         lists.add("简单的确认对话框");
         lists.add("带输入框的对话框");
+        lists.add("类似系统的上下文菜单ContextMenu的Dialog");
+        lists.add("带单选项的Dialog");
         return lists;
     }
 
@@ -127,6 +129,31 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         },
                         getString(R.string.lab_change),
                         null);
+                break;
+            case 5:
+                DialogLoader.getInstance().showContextMenuDialog(getContext(),
+                        getString(R.string.tip_options),
+                        R.array.menu_values,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ToastUtils.toast("选择了第" + (which + 1) + "个");
+                            }
+                        });
+                break;
+            case 6:
+                DialogLoader.getInstance().showSingleChoiceDialog(
+                        getContext(),
+                        getString(R.string.tip_router_setting),
+                        R.array.router_choice_entry,
+                        0,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ToastUtils.toast("选择了第" + (which + 1) + "个");
+                            }},
+                        getString(R.string.lab_yes),
+                        getString(R.string.lab_no));
                 break;
             default:
                 break;

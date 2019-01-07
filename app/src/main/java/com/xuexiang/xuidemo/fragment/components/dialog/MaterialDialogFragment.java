@@ -203,7 +203,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
      */
     private void showSingleChoiceDialog() {
         new MaterialDialog.Builder(getContext())
-                .title(R.string.tip_capture_setting)
+                .title(R.string.tip_router_setting)
                 .items(R.array.router_choice_entry)
                 .itemsCallbackSingleChoice(
                         0,
@@ -224,7 +224,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
      */
     private void showMultiChoiceDialog() {
         new MaterialDialog.Builder(getContext())
-                .title(R.string.tip_capture_setting)
+                .title(R.string.tip_router_setting)
                 .items(R.array.router_choice_entry)
                 .itemsCallbackMultiChoice(
                         new Integer[]{0, 1},

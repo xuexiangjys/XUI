@@ -53,7 +53,7 @@
     <string name="lab_continue">继续</string>
     <string name="hint_please_input_password">请输入密码</string>
     <string name="tip_options">选项</string>
-    <string name="tip_capture_setting">采集设置</string>
+    <string name="tip_router_setting">路线设置</string>
     <string name="lab_choice">选择</string>
     <string name="tip_update">版本更新</string>
     <string name="content_downloading">正在下载中，请稍后...</string>

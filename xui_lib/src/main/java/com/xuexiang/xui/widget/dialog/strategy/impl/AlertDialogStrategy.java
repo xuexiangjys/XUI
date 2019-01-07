@@ -21,21 +21,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.ArrayRes;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
-import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;
-import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.strategy.IDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.InputCallback;
 import com.xuexiang.xui.widget.dialog.strategy.InputInfo;
-
-import static android.util.TypedValue.COMPLEX_UNIT_PX;
 
 /**
  * AlertDialog 策略
@@ -190,6 +184,56 @@ public class AlertDialogStrategy implements IDialogStrategy {
                     }
                 })
                 .setNegativeButton(cancelText, cancelListener)
+                .show();
+    }
+
+    @Override
+    public Dialog showContextMenuDialog(Context context, String title, String[] items, DialogInterface.OnClickListener listener) {
+        return new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setItems(items, listener)
+                .show();
+    }
+
+    @Override
+    public Dialog showContextMenuDialog(Context context, String title, @ArrayRes int itemsId, DialogInterface.OnClickListener listener) {
+        return new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setItems(itemsId, listener)
+                .show();
+    }
+
+    @Override
+    public Dialog showSingleChoiceDialog(Context context, String title, String[] items, int selectedIndex, final DialogInterface.OnClickListener listener, String submitText, String cancelText) {
+        return new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setSingleChoiceItems(items, selectedIndex, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (listener != null) {
+                            listener.onClick(dialog, which);
+                        }
+                        dialog.dismiss();
+                    }
+                })
+                .setCancelable(false)
+                .show();
+    }
+
+    @Override
+    public Dialog showSingleChoiceDialog(Context context, String title, int itemsId, int selectedIndex, final DialogInterface.OnClickListener listener, String submitText, String cancelText) {
+        return new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setSingleChoiceItems(itemsId, selectedIndex, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (listener != null) {
+                            listener.onClick(dialog, which);
+                        }
+                        dialog.dismiss();
+                    }
+                })
+                .setCancelable(false)
                 .show();
     }
 }

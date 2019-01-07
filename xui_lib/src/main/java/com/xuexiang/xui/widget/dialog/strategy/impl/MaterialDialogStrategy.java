@@ -21,6 +21,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
@@ -262,6 +263,80 @@ public class MaterialDialogStrategy implements IDialogStrategy {
                 .autoDismiss(false)
                 .show();
 
+    }
+
+    @Override
+    public Dialog showContextMenuDialog(Context context, String title, String[] items, final DialogInterface.OnClickListener listener) {
+        return new MaterialDialog.Builder(context)
+                .title(title)
+                .items(items)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        if (listener != null) {
+                            listener.onClick(dialog, position);
+                        }
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public Dialog showContextMenuDialog(Context context, String title, int itemsId, final DialogInterface.OnClickListener listener) {
+        return new MaterialDialog.Builder(context)
+                .title(title)
+                .items(itemsId)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        if (listener != null) {
+                            listener.onClick(dialog, position);
+                        }
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public Dialog showSingleChoiceDialog(Context context, String title, String[] items, int selectedIndex, final DialogInterface.OnClickListener listener, String submitText, String cancelText) {
+        return new MaterialDialog.Builder(context)
+                .title(title)
+                .items(items)
+                .itemsCallbackSingleChoice(selectedIndex,
+                        new MaterialDialog.ListCallbackSingleChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                                if (listener != null) {
+                                    listener.onClick(dialog, which);
+                                }
+                                return true;
+                            }
+                        })
+                .positiveText(submitText)
+                .negativeText(cancelText)
+                .cancelable(false)
+                .show();
+    }
+
+    @Override
+    public Dialog showSingleChoiceDialog(Context context, String title, int itemsId, int selectedIndex, final DialogInterface.OnClickListener listener, String submitText, String cancelText) {
+        return new MaterialDialog.Builder(context)
+                .title(title)
+                .items(itemsId)
+                .itemsCallbackSingleChoice(selectedIndex,
+                        new MaterialDialog.ListCallbackSingleChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                                if (listener != null) {
+                                    listener.onClick(dialog, which);
+                                }
+                                return true;
+                            }
+                        })
+                .positiveText(submitText)
+                .negativeText(cancelText)
+                .cancelable(false)
+                .show();
     }
 
 

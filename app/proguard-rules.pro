@@ -232,3 +232,9 @@
 }
 
 -keep public class com.xuexiang.xuidemo.fragment.components.pickerview.**{*;}
+
+# agentweb
+-keep class com.just.agentweb.** {
+    *;
+}
+-dontwarn com.just.agentweb.**
