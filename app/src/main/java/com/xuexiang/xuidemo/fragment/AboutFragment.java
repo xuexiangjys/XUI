@@ -64,13 +64,13 @@ public class AboutFragment extends BaseFragment {
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_homepage)), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        goWeb("https://github.com/xuexiangjys/");
+                        goWeb("https://xuexiangjys.github.io/XUI/");
                     }
                 })
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_github)), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        goWeb("https://github.com/xuexiangjys/");
+                        goWeb("https://github.com/xuexiangjys/XUI/");
                     }
                 })
                 .addTo(mAboutGroupListView);
