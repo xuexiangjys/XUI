@@ -10,8 +10,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.widget.LinearLayout;
 
 import com.xuexiang.xpage.base.XPageActivity;
@@ -28,9 +26,9 @@ import com.xuexiang.xuidemo.adapter.menu.SpaceItem;
 import com.xuexiang.xuidemo.fragment.AboutFragment;
 import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 import com.xuexiang.xuidemo.fragment.ExpandsFragment;
+import com.xuexiang.xuidemo.fragment.QRCodeFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
 import com.xuexiang.xutil.XUtil;
-import com.xuexiang.xutil.tip.ToastUtils;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
@@ -185,7 +183,8 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
         mSlidingRootNav.getLayout().findViewById(R.id.iv_qrcode).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("扫码二维码加关注哦～～");
+                openPage(QRCodeFragment.class);
+                mSlidingRootNav.closeMenu();
             }
         });
 

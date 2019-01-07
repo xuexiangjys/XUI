@@ -32,8 +32,8 @@
             android:paddingBottom="25dp">
 
             <ImageView
-                android:layout_width="180dp"
-                android:layout_height="180dp"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
                 android:contentDescription="Logo"
                 android:src="@mipmap/about_logo" />
 

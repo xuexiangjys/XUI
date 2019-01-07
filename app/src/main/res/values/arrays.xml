@@ -18,6 +18,38 @@
 
 <resources>
 
+    <string-array name="adBlockUrl">
+        <item>ubmcmm.baidustatic.com</item>
+        <item>gss1.bdstatic.com/</item>
+        <item>cpro2.baidustatic.com</item>
+        <item>cpro.baidustatic.com</item>
+        <item>lianmeng.360.cn</item>
+        <item>nsclick.baidu.com</item>
+        <item>caclick.baidu.com/</item>
+        <item>jieaogd.com</item>
+        <item>publish-pic-cpu.baidu.com/</item>
+        <item>cpro.baidustatic.com/</item>
+        <item>hao61.net/</item>
+        <item>cpu.baidu.com/</item>
+        <item>pos.baidu.com</item>
+        <item>cbjs.baidu.com</item>
+        <item>cpro.baidu.com</item>
+        <item>images.sohu.com/cs/jsfile/js/c.js</item>
+        <item>union.sogou.com/</item>
+        <item>sogou.com/</item>
+        <item>5txs.cn/</item>
+        <item>liuzhi520.com/</item>
+        <item>yhzm.cc/</item>
+        <item>jieaogd.com</item>
+        <item>a.baidu.com</item>
+        <item>c.baidu.com</item>
+        <item>mlnbike.com</item>
+        <item>alipays://platformapi</item>
+        <item>alipay.com/</item>
+        <item>jieaogd.com</item>
+        <item>vipshop.com</item>
+    </string-array>
+
     <string-array name="three_state_option">
         <item>待付款</item>
         <item>待发货</item>

@@ -18,7 +18,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="?android:actionBarSize"
+    android:layout_height="?attr/xui_actionbar_height"
     android:background="?attr/colorPrimary"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp"

@@ -16,18 +16,23 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 
 import com.just.agentweb.core.client.MiddlewareWebClientBase;
+import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xuidemo.R;
 
 /**
  * WebClient（WebViewClient 这个类主要帮助WebView处理各种通知、url加载，请求时间的）中间件
- *
- *
+ * <p>
+ * <p>
  * 方法的执行顺序，例如下面用了7个中间件一个 WebViewClient
- *
+ * <p>
  * .useMiddlewareWebClient(getMiddlewareWebClient())  // 1
  * .useMiddlewareWebClient(getMiddlewareWebClient())  // 2
  * .useMiddlewareWebClient(getMiddlewareWebClient())  // 3
@@ -35,16 +40,17 @@ import com.just.agentweb.core.client.MiddlewareWebClientBase;
  * .useMiddlewareWebClient(getMiddlewareWebClient())  // 5
  * .useMiddlewareWebClient(getMiddlewareWebClient())  // 6
  * .useMiddlewareWebClient(getMiddlewareWebClient())  // 7
- *  DefaultWebClient                                  // 8
- *  .setWebViewClient(mWebViewClient)                 // 9
- *
- *
+ * DefaultWebClient                                  // 8
+ * .setWebViewClient(mWebViewClient)                 // 9
+ * <p>
+ * <p>
  * 典型的洋葱模型
  * 对象内部的方法执行顺序: 1->2->3->4->5->6->7->8->9->8->7->6->5->4->3->2->1
- *
- *
+ * <p>
+ * <p>
  * 中断中间件的执行， 删除super.methodName(...) 这行即可
  *
+ * 这里主要是做去广告的工作
  */
 public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
 
@@ -64,6 +70,42 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         Log.i("Info", "MiddlewareWebViewClient -- >  shouldOverrideUrlLoading:" + url + "  c:" + (count++));
         return super.shouldOverrideUrlLoading(view, url);
+    }
 
+    @Override
+    public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+        url = url.toLowerCase();
+        if (!hasAd(url)) {
+            return super.shouldInterceptRequest(view, url);//正常加载
+        } else {
+            return new WebResourceResponse(null, null, null);//含有广告资源屏蔽请求
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+        String url = request.getUrl().toString().toLowerCase();
+        if (!hasAd(url)) {
+            return super.shouldInterceptRequest(view, request);//正常加载
+        } else {
+            return new WebResourceResponse(null, null, null);//含有广告资源屏蔽请求
+        }
+    }
+
+    /**
+     * 判断是否存在广告的链接
+     *
+     * @param url
+     * @return
+     */
+    public static boolean hasAd(String url) {
+        String[] adUrls = ResUtils.getStringArray(R.array.adBlockUrl);
+        for (String adUrl : adUrls) {
+            if (url.contains(adUrl)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
