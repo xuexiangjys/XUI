@@ -17,18 +17,6 @@
 * 兼容性高，框架还提供了3种不同尺寸设备的样式（5寸、7寸和10寸），让UI兼容性更强。
 * 扩展性强，各组件提供了丰富的属性和样式API，可以通过设置不同的样式属性，构建不同风格的UI。
 
-## 演示
-
-### 演示程序截图
-
-![](../art/1_splash.png) &emsp; ![](../art/2_main.png) &emsp; ![](../art/3_about.png) &emsp; ![](../art/4_menu.png)
-
-![](../art/5_dialog.png) &emsp; ![](../art/6_bottom_dialog.png) &emsp; ![](../art/7_picker.png) &emsp; ![](../art/8_webview.png)
-
-![](../art/9_flowlayout.png) &emsp; ![](../art/10_ninegrid.png) &emsp; ![](../art/11_radius_imageview.png) &emsp; ![](../art/12_badge_view.png)
-
-![](../art/13_tabview.png) &emsp;
-
 ### Demo下载
 
 > 演示程序大概18M（主要是demo中集成了一个小视频拍摄的库比较大，大约13M左右，而XUI库目前只有644k大小），项目比较大，推荐使用蒲公英下载。
@@ -37,10 +25,6 @@
 
 [![蒲公英](https://img.shields.io/badge/downloads-蒲公英-blue.svg)](https://www.pgyer.com/XUIDemo)
 
-![](../art/download_pugongying.png)
-
 #### Github下载
 
 [![Github](https://img.shields.io/badge/downloads-Github-blue.svg)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
-
-![](../art/download_github.png)
