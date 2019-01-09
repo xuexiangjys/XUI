@@ -1,4 +1,5 @@
 # XUI
+[![xui][xuisvg]][xui]  [![api][apisvg]][api]
 
 一个简洁而又优雅的Android原生UI框架，解放你的双手！
 
@@ -113,3 +114,21 @@ protected void onCreate(Bundle savedInstanceState) {
 #### Github下载
 
 [![Github](https://img.shields.io/badge/downloads-Github-blue.svg)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
+
+## 特别感谢
+
+* [QMUI_Android](https://github.com/Tencent/QMUI_Android)
+* [AgentWeb](https://github.com/Justson/AgentWeb)
+* [CityPicker](https://github.com/xuexiangjys/CityPicker)
+* [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
+* [PhotoPicker](https://github.com/donglua/PhotoPicker)
+
+## 联系方式
+
+[![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
+
+
+[xuisvg]: https://img.shields.io/badge/XUI-v1.0.0-brightgreen.svg
+[xui]: https://github.com/xuexiangjys/XUI
+[apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
+[api]: https://android-arsenal.com/api?level=17
