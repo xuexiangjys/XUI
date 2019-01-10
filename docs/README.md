@@ -52,14 +52,14 @@ dependencies {
 ```
 XUI.init(this); //初始化UI框架
 XUI.debug(true);  //开启UI框架调试日志
-
 ```
 
 2.调整字体库（对字体无要求的可省略）
 
 （1）设置你需要修改的字体库路径（assets下）
 ```
-XUI.getInstance().initFontStyle("...");
+//设置默认字体为华文行楷，这里写你的字体库
+XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
 ```
 
 （2）在项目的基础Activity中加入如下代码注入字体.

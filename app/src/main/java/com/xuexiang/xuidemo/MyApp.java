@@ -36,7 +36,8 @@ public class MyApp extends Application {
     private void initUI() {
         XUI.init(this);
         XUI.debug(true);
-//        XUI.getInstance().initFontStyle("");
+//        //设置默认字体为华文行楷
+//        XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
     }
 
 
