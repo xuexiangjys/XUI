@@ -117,7 +117,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ![](./art/9_flowlayout.png) &emsp; ![](./art/10_ninegrid.png) &emsp; ![](./art/11_radius_imageview.png) &emsp; ![](./art/12_badge_view.png)
 
-![](./art/13_tabview.png) &emsp;
+![](./art/13_tabview.png) &emsp; ![](./art/14_citypicker.png) &emsp; ![](./art/15_refresh_layout.png) &emsp; ![](./art/16_spinner.png) &emsp;
 
 ### Demo下载
 
