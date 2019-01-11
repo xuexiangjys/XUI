@@ -32,12 +32,12 @@ import android.widget.TextView;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
-import com.xuexiang.xui.widget.dialog.LoadingDialog;
 
 /**
  * 自定义加载布局
+ *
  * @author xuexiang
- * @date 2017/12/7 下午2:16
+ * @since 2019/1/11 下午3:58
  */
 public class LoadingViewLayout extends LinearLayout implements IMessageLoader {
 

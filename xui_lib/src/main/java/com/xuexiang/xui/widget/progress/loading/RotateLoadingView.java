@@ -36,8 +36,9 @@ import com.xuexiang.xui.utils.Utils;
 
 /**
  * 旋转加载动画控件
+ *
  * @author xuexiang
- * @date 2017/12/6 下午3:22
+ * @since 2019/1/11 下午3:58
  */
 public class RotateLoadingView extends View {
 

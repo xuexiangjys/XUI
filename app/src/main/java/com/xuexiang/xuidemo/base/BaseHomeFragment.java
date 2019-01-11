@@ -34,6 +34,8 @@ import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
 import com.xuexiang.xuidemo.fragment.AboutFragment;
 import com.xuexiang.xutil.common.ClickUtils;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -83,7 +85,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
     }
 
     private void initRecyclerView() {
-        mWidgetItemAdapter = new WidgetItemAdapter(getContext(), getPageContents());
+        mWidgetItemAdapter = new WidgetItemAdapter(getContext(), sortPageInfo(getPageContents()));
         mWidgetItemAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mWidgetItemAdapter);
         int spanCount = 3;
@@ -95,6 +97,21 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
      * @return
      */
     protected abstract List<PageInfo> getPageContents();
+
+    /**
+     * 进行排序
+     * @param pageInfoList
+     * @return
+     */
+    private List<PageInfo> sortPageInfo(List<PageInfo> pageInfoList) {
+        Collections.sort(pageInfoList, new Comparator<PageInfo>() {
+            @Override
+            public int compare(PageInfo o1, PageInfo o2) {
+                return o1.getClassPath().compareTo(o2.getClassPath());
+            }
+        });
+        return pageInfoList;
+    }
 
     @Override
     @SingleClick

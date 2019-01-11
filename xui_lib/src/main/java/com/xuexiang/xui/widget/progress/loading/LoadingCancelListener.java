@@ -19,6 +19,7 @@ package com.xuexiang.xui.widget.progress.loading;
 
 /**
  * 取消loading的监听
+ *
  * @author xuexiang
  * @date 2018/2/12 上午9:07
  */

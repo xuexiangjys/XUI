@@ -153,8 +153,10 @@
 
     <attr name="MiniLoadingStyle" format="reference" />
     <declare-styleable name="MiniLoadingView">
+        <!--loading控件的大小，默认32dp-->
         <attr name="mlv_loading_view_size" format="dimension" />
-        <attr name="mlv_loading_view_color" />
+        <!--loading控件的颜色，默认白色-->
+        <attr name="mlv_loading_view_color" format="color"/>
     </declare-styleable>
 
     <!--LoadingViewLayout-->
@@ -697,56 +699,85 @@
     <!--============================TabBar=========================================-->
 
     <declare-styleable name="EasyIndicator">
-        <attr name="indicator_height" format="dimension" />
-        <attr name="indicator_bottom_line_color" format="color" />
-        <attr name="indicator_bottom_line_height" format="dimension" />
-        <attr name="indicator_bottom_height" format="dimension" />
-        <attr name="indicator_textSize" format="dimension" />
-        <attr name="indicator_select_textSize" format="dimension" />
-        <attr name="indicator_vertical_line_w" format="dimension" />
-        <attr name="indicator_vertical_line_h" format="dimension" />
+        <!--指示器的宽度，默认-1(MATCH_PARENT)为填充满-->
         <attr name="indicator_width" format="dimension" />
+        <!--指示器的高度，默认45px-->
+        <attr name="indicator_height" format="dimension" />
+        <!--指示器底部指示线的颜色，默认R.attr.xui_config_color_separator_dark-->
+        <attr name="indicator_bottom_line_color" format="color" />
+        <!--指示器底部指示线的高度，默认0-->
+        <attr name="indicator_bottom_line_height" format="dimension" />
+        <!--指示器底部的高度，默认3-->
+        <attr name="indicator_bottom_height" format="dimension" />
+        <!--指示器文字的大小，默认14px-->
+        <attr name="indicator_textSize" format="dimension" />
+        <!--指示器选中时文字的大小，默认14px-->
+        <attr name="indicator_select_textSize" format="dimension" />
+        <!--指示器垂直分割线的宽度，默认0-->
+        <attr name="indicator_vertical_line_w" format="dimension" />
+        <!--指示器垂直分割线的高度，默认0-->
+        <attr name="indicator_vertical_line_h" format="dimension" />
+        <!--指示器选中时的背景颜色，默认R.attr.colorAccent-->
         <attr name="indicator_selected_color" format="color" />
+        <!--指示器未选中时的背景颜色，默认黑色-->
         <attr name="indicator_normal_color" format="color" />
+        <!--指示器指示线的颜色，默认R.attr.colorAccent-->
         <attr name="indicator_line_color" format="color" />
+        <!--指示器垂直分割线的颜色，默认R.attr.xui_config_color_separator_dark-->
         <attr name="indicator_vertical_line_color" format="color" />
+        <!--是否显示底部指示器，默认true-->
         <attr name="indicator_isBottom_line" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="TabSegment">
+        <!--指示器的高度, 默认2dp-->
         <attr name="ts_indicator_height" format="dimension"/>
+        <!--是否显示指示器，默认true-->
         <attr name="ts_has_indicator" format="boolean"/>
-        <attr name="android:textSize"/>
+        <!--文字大小，默认16sp-->
+        <attr name="android:textSize" format="dimension"/>
+        <!--指示器是否在顶端，默认false-->
         <attr name="ts_indicator_top" format="boolean"/>
+        <!--指示器的模式，默认fixed-->
         <attr name="ts_mode" format="enum">
             <enum name="scrollable" value="0"/>
             <enum name="fixed" value="1"/>
         </attr>
+        <!--tab间的空隙，默认10dp-->
         <attr name="ts_space" format="dimension"/>
+        <!--图标的位置，默认left-->
         <attr name="ts_icon_position" format="enum">
             <enum name="left" value="0"/>
             <enum name="top" value="1"/>
             <enum name="right" value="2"/>
             <enum name="bottom" value="3"/>
         </attr>
+        <!--文字的样式-->
         <attr name="ts_typeface_provider" format="string"/>
     </declare-styleable>
     <attr name="TabSegmentStyle" format="reference"/>
 
     <declare-styleable name="VerticalTabLayout">
+        <!--指示器的颜色，默认R.attr.colorAccent-->
         <attr name="vtl_indicator_color" format="color" />
+        <!--指示器的宽度，默认3dp-->
         <attr name="vtl_indicator_width" format="dimension" />
+        <!--指示器圆角角度，默认0-->
         <attr name="vtl_indicator_corners" format="dimension" />
+        <!--指示器的对齐方式，默认left-->
         <attr name="vtl_indicator_gravity" format="enum">
             <enum name="left" value="3" />
             <enum name="right" value="5" />
             <enum name="fill" value="119" />
         </attr>
+        <!--tab间的空隙，默认0-->
         <attr name="vtl_tab_margin" format="dimension" />
+        <!--tab的模式，默认fixed-->
         <attr name="vtl_tab_mode" format="enum">
             <enum name="fixed" value="10" />
             <enum name="scrollable" value="11" />
         </attr>
+        <!--tab的高度，默认-2:WRAP_CONTENT-->
         <attr name="vtl_tab_height" format="dimension"/>
     </declare-styleable>
 

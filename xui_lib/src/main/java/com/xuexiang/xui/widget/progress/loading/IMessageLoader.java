@@ -19,13 +19,15 @@ package com.xuexiang.xui.widget.progress.loading;
 
 /**
  * 消息loading加载者
+ *
  * @author xuexiang
- * @date 2017/12/7 下午2:45
+ * @since 2019/1/11 下午3:58
  */
 public interface IMessageLoader {
 
     /**
      * 更新提示信息
+     *
      * @param tipMessage
      * @return
      */
@@ -33,6 +35,7 @@ public interface IMessageLoader {
 
     /**
      * 更新提示信息
+     *
      * @param tipMessageId
      * @return
      */
@@ -55,18 +58,21 @@ public interface IMessageLoader {
 
     /**
      * 是否在加载
+     *
      * @return
      */
     boolean isLoading();
 
     /**
      * 设置是否可取消
+     *
      * @param cancelable
      */
     void setCancelable(boolean cancelable);
 
     /**
      * 设置取消的回掉监听
+     *
      * @param listener
      */
     void setLoadingCancelListener(LoadingCancelListener listener);

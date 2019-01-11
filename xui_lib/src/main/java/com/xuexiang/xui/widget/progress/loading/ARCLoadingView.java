@@ -41,7 +41,7 @@ import com.xuexiang.xui.utils.Utils;
  * 圆弧旋转loading
  *
  * @author xuexiang
- * @date 2017/12/5 下午4:12
+ * @since 2019/1/11 下午3:59
  */
 public class ARCLoadingView extends View {
     /**
