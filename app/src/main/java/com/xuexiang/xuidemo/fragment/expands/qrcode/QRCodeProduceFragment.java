@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.expand.qrcode;
+package com.xuexiang.xuidemo.fragment.expands.qrcode;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

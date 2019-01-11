@@ -221,7 +221,7 @@ public class PageConfigProcessor extends AbstractProcessor {
                                     ClassName.get(CoreAnim.class),
                                     page.anim(),
                                     extra);
-                        } else if (tm.toString().contains("com.xuexiang.xuidemo.fragment.expand")) {
+                        } else if (tm.toString().contains("com.xuexiang.xuidemo.fragment.expands")) {
                             constructorBuilder.addStatement("mExpands.add(new $T($S, $S, $S, $T.$L, $L))",
                                     PageInfo.class,
                                     name,

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.expand;
+package com.xuexiang.xuidemo.fragment.expands;
 
 
 import android.support.v7.widget.LinearLayoutManager;

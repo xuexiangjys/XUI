@@ -124,4 +124,18 @@ public final class DensityUtils {
         return getDisplayMetrics().densityDpi;
     }
 
+    /**
+     * 获取真实屏幕密度
+     *
+     * @param context 上下文【注意，Application和Activity的屏幕密度是不一样的】
+     * @return
+     */
+    public static int getRealDpi(Context context) {
+        DisplayMetrics metric = context.getResources().getDisplayMetrics();
+        float xdpi = metric.xdpi;
+        float ydpi = metric.ydpi;
+
+        return (int) (((xdpi + ydpi) / 2.0F) + 0.5F);
+    }
+
 }

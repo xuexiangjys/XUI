@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.expand;
+package com.xuexiang.xuidemo.fragment.expands;
 
 import android.os.Handler;
 import android.view.View;

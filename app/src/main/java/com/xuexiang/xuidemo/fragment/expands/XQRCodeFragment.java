@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.expand;
+package com.xuexiang.xuidemo.fragment.expands;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -35,8 +35,8 @@ import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
-import com.xuexiang.xuidemo.fragment.expand.qrcode.CustomCaptureFragment;
-import com.xuexiang.xuidemo.fragment.expand.qrcode.QRCodeProduceFragment;
+import com.xuexiang.xuidemo.fragment.expands.qrcode.CustomCaptureFragment;
+import com.xuexiang.xuidemo.fragment.expands.qrcode.QRCodeProduceFragment;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.common.ClickUtils;
