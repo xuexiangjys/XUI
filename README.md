@@ -7,7 +7,7 @@
 
 一个简洁而又优雅的Android原生UI框架，解放你的双手！
 
-> 涵盖绝大部分的UI组件：TextView、Button、EditText、ImageView、Spinner、Picker、Dialog、PopupWindow、MarqueeView、ProgressBar、LoadingView、StateLayout、FlowLayout、SearchView、Switch、Actionbar、TabBar、Banner、GuideView、BadgeView、WebView等一系列的组件和丰富多彩的样式主题。
+> 涵盖绝大部分的UI组件：TextView、Button、EditText、ImageView、Spinner、Picker、Dialog、PopupWindow、ProgressBar、LoadingView、StateLayout、FlowLayout、Switch、Actionbar、TabBar、Banner、GuideView、BadgeView、MarqueeView、WebView、SearchView等一系列的组件和丰富多彩的样式主题。
 
 ## 关于我
 
@@ -46,6 +46,11 @@ allprojects {
 dependencies {
   ...
   implementation 'com.github.xuexiangjys:XUI:1.0.0'
+
+  implementation 'com.android.support:appcompat-v7:27.1.1'
+  implementation 'com.android.support:recyclerview-v7:27.1.1'
+  implementation 'com.android.support:design:27.1.1'
+  implementation 'com.github.bumptech.glide:glide:4.8.0'
 }
 ```
 
