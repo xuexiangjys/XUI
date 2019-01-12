@@ -9,6 +9,11 @@
 
     <string name="xui_tip_input_error">输入不符合要求!</string>
 
+    <!--Button-->
+    <string name="xui_lab_button_submit">确 定</string>
+    <string name="xui_lab_button_cancel">取 消</string>
+    <string name="xui_lab_button_reset">重 置</string>
+
     <!--StateLayout-->
     <string name="xui_tip_error_message">出错了，请稍后重试</string>
     <string name="xui_tip_loading_message">数据加载中…</string>

@@ -57,21 +57,21 @@
     <style name="ButtonView.Green">
         <item name="textSolidColor">@color/xui_btn_green_normal_color</item>
         <item name="textSelectedSolidColor">@color/xui_btn_green_select_color</item>
-        <item name="android:text">确 定</item>
+        <item name="android:text">@string/xui_lab_button_submit</item>
     </style>
 
     <!-- Blue Button Style -->
     <style name="ButtonView.Blue">
         <item name="textSolidColor">@color/xui_btn_blue_normal_color</item>
         <item name="textSelectedSolidColor">@color/xui_btn_blue_select_color</item>
-        <item name="android:text">重 置</item>
+        <item name="android:text">@string/xui_lab_button_reset</item>
     </style>
 
     <!-- Gray Button Style -->
     <style name="ButtonView.Gray">
         <item name="textSolidColor">@color/xui_btn_gray_normal_color</item>
         <item name="textSelectedSolidColor">@color/xui_btn_gray_select_color</item>
-        <item name="android:text">取 消</item>
+        <item name="android:text">@string/xui_lab_button_cancel</item>
     </style>
 
     <!--*********************************************
@@ -94,7 +94,7 @@
     <style name="SuperButton.Green">
         <item name="sSelectorNormalColor">@color/xui_btn_green_normal_color</item>
         <item name="sSelectorPressedColor">@color/xui_btn_green_select_color</item>
-        <item name="android:text">确 定</item>
+        <item name="android:text">@string/xui_lab_button_submit</item>
     </style>
 
     <!-- Green Icon Button Style -->
@@ -107,7 +107,7 @@
     <style name="SuperButton.Blue">
         <item name="sSelectorNormalColor">@color/xui_btn_blue_normal_color</item>
         <item name="sSelectorPressedColor">@color/xui_btn_blue_select_color</item>
-        <item name="android:text">重 置</item>
+        <item name="android:text">@string/xui_lab_button_reset</item>
     </style>
 
     <!-- Blue Icon Button Style -->
@@ -120,7 +120,7 @@
     <style name="SuperButton.Gray">
         <item name="sSelectorNormalColor">@color/xui_btn_gray_normal_color</item>
         <item name="sSelectorPressedColor">@color/xui_btn_gray_select_color</item>
-        <item name="android:text">取 消</item>
+        <item name="android:text">@string/xui_lab_button_cancel</item>
     </style>
 
     <!-- Gray Icon Button Style -->
@@ -158,21 +158,21 @@
     <style name="RoundButton.Green">
         <item name="rb_backgroundColor">@color/xui_default_round_btn_green_bg</item>
         <item name="rb_borderWidth">0dp</item>
-        <item name="android:text">确 定</item>
+        <item name="android:text">@string/xui_lab_button_submit</item>
         <item name="android:textColor">@color/xui_default_round_btn_white_text</item>
     </style>
 
     <style name="RoundButton.Blue">
         <item name="rb_backgroundColor">@color/xui_default_round_btn_blue_bg</item>
         <item name="rb_borderWidth">0dp</item>
-        <item name="android:text">重 置</item>
+        <item name="android:text">@string/xui_lab_button_reset</item>
         <item name="android:textColor">@color/xui_default_round_btn_white_text</item>
     </style>
 
     <style name="RoundButton.Gray">
         <item name="rb_backgroundColor">@color/xui_default_round_btn_gray_bg</item>
         <item name="rb_borderWidth">0dp</item>
-        <item name="android:text">取 消</item>
+        <item name="android:text">@string/xui_lab_button_cancel</item>
         <item name="android:textColor">@color/xui_default_round_btn_white_text</item>
     </style>
 
