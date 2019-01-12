@@ -76,6 +76,14 @@ public interface Badge {
      */
     Badge setBadgeBackgroundColor(int color);
 
+    /**
+     * 设置边框的样式
+     *
+     * @param color     边框的颜色
+     * @param width     边框的宽度
+     * @param isDpValue
+     * @return
+     */
     Badge stroke(int color, float width, boolean isDpValue);
 
     int getBadgeBackgroundColor();
