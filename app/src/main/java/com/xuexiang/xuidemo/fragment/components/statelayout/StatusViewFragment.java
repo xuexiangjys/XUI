@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.components.popupwindow;
+package com.xuexiang.xuidemo.fragment.components.statelayout;
 
 import android.view.View;
 

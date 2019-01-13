@@ -636,14 +636,23 @@
 
     <attr name="RadiusImageViewStyle" format="reference" />
     <declare-styleable name="RadiusImageView">
-        <attr name="riv_border_width" />
-        <attr name="riv_border_color" />
+        <!--边框宽度，默认：0-->
+        <attr name="riv_border_width" format="dimension"/>
+        <!--边框的颜色，默认：Color.GRAY-->
+        <attr name="riv_border_color" format="color"/>
+        <!--选中时，覆盖在图片上的图层颜色，默认：Color.TRANSPARENT-->
         <attr name="riv_selected_mask_color" format="color" />
+        <!--边框选中时的颜色，默认：Color.GRAY-->
         <attr name="riv_selected_border_color" format="color" />
+        <!--边框选中时的宽度，默认：0-->
         <attr name="riv_selected_border_width" format="dimension" />
+        <!--圆角的大小，默认0-->
         <attr name="riv_corner_radius" format="dimension" />
+        <!--是否是椭圆形，默认：false-->
         <attr name="riv_is_oval" format="boolean" />
+        <!--图片是否是圆形的，默认：false-->
         <attr name="riv_is_circle" format="boolean" />
+        <!--图片是否可触摸选中，默认：true-->
         <attr name="riv_is_touch_select_mode_enabled" format="boolean" />
     </declare-styleable>
 

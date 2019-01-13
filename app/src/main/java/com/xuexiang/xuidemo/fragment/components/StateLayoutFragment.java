@@ -5,6 +5,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.MultipleStatusViewFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.StatefulLayoutFragment;
+import com.xuexiang.xuidemo.fragment.components.statelayout.StatusViewFragment;
 
 /**
  * 状态切换
@@ -19,7 +20,8 @@ public class StateLayoutFragment extends ComponentContainerFragment {
     public Class[] getPagesClasses() {
         return new Class[] {
                 StatefulLayoutFragment.class,
-                MultipleStatusViewFragment.class
+                MultipleStatusViewFragment.class,
+                StatusViewFragment.class
         };
     }
 }

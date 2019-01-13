@@ -241,10 +241,12 @@ public class RadiusImageView extends AppCompatImageView {
         return !mIsCircle && mIsOval;
     }
 
+    @Override
     public boolean isSelected() {
         return mIsSelected;
     }
 
+    @Override
     public void setSelected(boolean isSelected) {
         if (mIsSelected != isSelected) {
             mIsSelected = isSelected;
