@@ -16,8 +16,9 @@ import java.util.List;
 
 /**
  * 简单的适配器
+ *
  * @author xuexiang
- * @date 2017/11/11 下午4:46
+ * @since 2019/1/14 下午10:07
  */
 public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
 

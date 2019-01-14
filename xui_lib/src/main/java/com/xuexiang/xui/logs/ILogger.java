@@ -5,7 +5,7 @@ package com.xuexiang.xui.logs;
  * 简易的日志记录接口
  *
  * @author xuexiang
- * @date 2018/3/8 下午9:00
+ * @since 2019/1/14 下午10:15
  */
 public interface ILogger {
 

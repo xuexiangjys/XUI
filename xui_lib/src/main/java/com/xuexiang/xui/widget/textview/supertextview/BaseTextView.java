@@ -13,8 +13,9 @@ import uk.co.chrisjenx.calligraphy.HasTypeface;
 
 /**
  * 基础TextView
+ *
  * @author xuexiang
- * @date 2017/12/3 上午10:38
+ * @since 2019/1/14 下午10:09
  */
 public class BaseTextView extends LinearLayout implements HasTypeface {
 

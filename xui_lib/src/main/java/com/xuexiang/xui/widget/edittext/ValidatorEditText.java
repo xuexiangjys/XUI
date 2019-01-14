@@ -24,7 +24,7 @@ import java.util.List;
  * 可自动验证的EditText
  *
  * @author xuexiang
- * @date 2017/12/10 下午10:59
+ * @since 2019/1/14 下午10:13
  */
 public class ValidatorEditText extends AppCompatEditText implements View.OnFocusChangeListener {
 

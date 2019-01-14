@@ -31,7 +31,7 @@ import com.xuexiang.xui.logs.UILog;
  * 简单弹出框，对PopupWindow的简要封装
  *
  * @author xuexiang
- * @date 2017/10/30 上午11:00
+ * @since 2019/1/14 下午10:02
  */
 public class EasyPopup implements PopupWindow.OnDismissListener {
     private static final float DEFAULT_DIM = 0.7f;

@@ -20,8 +20,8 @@ import com.xuexiang.xui.utils.ResUtils;
 /**
  * 带删除按钮的输入框
  *
- * @author XUE
- * @date 2017/9/11 12:03
+ * @author xuexiang
+ * @since 2019/1/14 下午10:06
  */
 public class ClearEditText extends AppCompatEditText implements
         OnFocusChangeListener, TextWatcher {

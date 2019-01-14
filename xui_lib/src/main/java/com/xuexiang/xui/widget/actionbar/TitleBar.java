@@ -30,8 +30,8 @@ import uk.co.chrisjenx.calligraphy.HasTypeface;
 /**
  * 标题栏
  *
- * @author XUE
- * @date 2017/9/7 20:24
+ * @author xuexiang
+ * @since 2019/1/14 下午10:08
  */
 public class TitleBar extends ViewGroup implements View.OnClickListener, HasTypeface {
     private static final String STATUS_BAR_HEIGHT_RES_NAME = "status_bar_height";

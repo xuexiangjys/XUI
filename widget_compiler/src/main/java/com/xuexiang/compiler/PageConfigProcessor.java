@@ -290,7 +290,7 @@ public class PageConfigProcessor extends AbstractProcessor {
                     .add("<p><a href=\"mailto:xuexiangjys@163.com\">Contact me.</a></p>\n")
                     .add("\n")
                     .add("@author xuexiang \n")
-                    .add("@date ").add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())).add("\n")
+                    .add("@since ").add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())).add("\n")
                     .build();
 
             pageConfigBuilder

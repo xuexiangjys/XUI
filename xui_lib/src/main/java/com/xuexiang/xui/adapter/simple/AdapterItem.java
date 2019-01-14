@@ -6,8 +6,10 @@ import android.graphics.drawable.Drawable;
 import com.xuexiang.xui.utils.ResUtils;
 
 /**
+ *
+ *
  * @author xuexiang
- * @date 2017/11/11 下午4:53
+ * @since 2019/1/14 下午10:13
  */
 public class AdapterItem {
 

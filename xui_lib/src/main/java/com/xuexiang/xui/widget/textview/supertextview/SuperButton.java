@@ -13,8 +13,9 @@ import com.xuexiang.xui.R;
 
 /**
  * 超级按钮  实现shape所有的属性
- * @author XUE
- * @date 2017/9/12 9:39
+ *
+ * @author xuexiang
+ * @since 2019/1/14 下午10:10
  */
 public class SuperButton extends AppCompatButton {
 

@@ -2,8 +2,9 @@ package com.xuexiang.xui.widget.textview.marqueen;
 
 /**
  * 复合字幕条目对象
- * @author XUE
- * @date 2017/9/13 10:07
+ *
+ * @author xuexiang
+ * @since 2019/1/14 下午10:08
  */
 public class ComplexItemEntity {
 

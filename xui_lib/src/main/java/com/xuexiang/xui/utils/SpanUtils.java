@@ -61,10 +61,10 @@ import java.lang.ref.WeakReference;
 import static android.graphics.BlurMaskFilter.Blur;
 
 /**
- *
  * SpannableString相关工具类
+ *
  * @author xuexiang
- * @date 2017/10/30 上午10:13
+ * @since 2019/1/14 下午10:03
  */
 public final class SpanUtils {
 

@@ -7,8 +7,9 @@ import com.nineoldandroids.view.ViewHelper;
 
 /**
  * 侧滑逐渐消失切换
+ *
  * @author xuexiang
- * @date 2017/10/15 上午11:42
+ * @since 2019/1/14 下午10:10
  */
 public class FadeSlideTransformer implements ViewPager.PageTransformer {
     @Override

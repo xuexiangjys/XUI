@@ -31,11 +31,11 @@ import android.widget.CompoundButton;
 
 import com.xuexiang.xui.R;
 
-
 /**
  * switch切换按钮
+ *
  * @author xuexiang
- * @date 2018/1/16 上午10:29
+ * @since 2019/1/14 上午11:23
  */
 public class SwitchButton extends CompoundButton {
     public static final float DEFAULT_THUMB_RANGE_RATIO = 1.8f;

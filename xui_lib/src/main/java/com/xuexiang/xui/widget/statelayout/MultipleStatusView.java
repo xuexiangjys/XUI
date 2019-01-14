@@ -17,9 +17,8 @@ import java.util.ArrayList;
  * 一个方便在多种状态切换的view
  *
  * @author xuexiang
- * @date 2017/11/26 下午4:11
+ * @since 2019/1/14 下午10:04
  */
-@SuppressWarnings("unused")
 public class MultipleStatusView extends FrameLayout {
     private static final LayoutParams DEFAULT_LAYOUT_PARAMS = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 

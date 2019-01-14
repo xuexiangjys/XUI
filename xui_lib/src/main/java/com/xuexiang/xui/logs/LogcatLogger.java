@@ -10,7 +10,7 @@ import java.io.StringWriter;
  * 默认Logcat日志记录
  *
  * @author xuexiang
- * @date 2018/3/9 上午12:33
+ * @since 2019/1/14 下午10:14
  */
 public class LogcatLogger implements ILogger {
 

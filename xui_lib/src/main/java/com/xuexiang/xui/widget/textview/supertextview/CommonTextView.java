@@ -19,8 +19,9 @@ import uk.co.chrisjenx.calligraphy.HasTypeface;
 
 /**
  * 通用的textView可以实现大部分常用布局样式
+ *
  * @author xuexiang
- * @date 2017/12/3 上午10:38
+ * @since 2019/1/14 上午11:24
  */
 public class CommonTextView extends RelativeLayout implements HasTypeface {
 

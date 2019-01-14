@@ -26,7 +26,7 @@ import com.xuexiang.xui.utils.ThemeUtils;
  * 控件提示弹出窗，可自定义弹出的位置，持续时间以及样式
  *
  * @author xuexiang
- * @date 2017/10/29 下午7:13
+ * @since 2019/1/14 上午11:23
  */
 public class ViewTooltip {
 

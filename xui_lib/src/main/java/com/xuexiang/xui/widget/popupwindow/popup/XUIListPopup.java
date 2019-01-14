@@ -18,7 +18,7 @@ import com.xuexiang.xui.widget.XUIWrapContentListView;
  * 继承自 {@link XUIPopup}，在 {@link XUIPopup} 的基础上，支持显示一个列表。
  *
  * @author xuexiang
- * @date 2017/11/12 下午11:39
+ * @since 2019/1/14 下午10:10
  */
 public class XUIListPopup<T extends XUIListPopup> extends XUIPopup {
     protected ListView mListView;

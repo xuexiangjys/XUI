@@ -7,8 +7,9 @@ import com.nineoldandroids.view.ViewHelper;
 
 /**
  * 向下旋转切换
+ *
  * @author xuexiang
- * @date 2017/10/15 上午11:44
+ * @since 2019/1/14 下午10:09
  */
 public class RotateDownTransformer implements ViewPager.PageTransformer {
 

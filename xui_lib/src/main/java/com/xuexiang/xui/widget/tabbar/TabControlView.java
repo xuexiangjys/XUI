@@ -44,8 +44,8 @@ import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 /**
  * 选项卡控制器（单选）（RadioButton实现）
  *
- * @author XUE
- * @date 2017/11/17 10:54
+ * @author xuexiang
+ * @since 2019/1/14 下午10:03
  */
 public class TabControlView extends RadioGroup {
 

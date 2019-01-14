@@ -11,12 +11,11 @@ import android.view.MotionEvent;
 
 import com.xuexiang.xui.R;
 
-
 /**
  * 可设置阴影效果的ImageView
  *
- * @author XUE
- * @date 2017/9/13 14:22
+ * @author xuexiang
+ * @since 2019/1/14 下午10:09
  */
 public class ShadowImageView extends AppCompatImageView {
 

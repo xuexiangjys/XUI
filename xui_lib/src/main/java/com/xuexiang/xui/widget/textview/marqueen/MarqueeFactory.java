@@ -8,8 +8,9 @@ import java.util.List;
 
 /**
  * 负责解析提供数据及事件监听
- * @author XUE
- * @date 2017/9/13 9:39
+ *
+ * @author xuexiang
+ * @since 2019/1/14 下午10:05
  */
 public abstract class MarqueeFactory<T extends View, E> {
     protected Context mContext;

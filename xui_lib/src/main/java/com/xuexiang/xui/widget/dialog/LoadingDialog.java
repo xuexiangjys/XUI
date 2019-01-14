@@ -32,7 +32,7 @@ import com.xuexiang.xui.widget.progress.loading.LoadingCancelListener;
  * loading加载框
  *
  * @author xuexiang
- * @date 2017/12/6 下午11:40
+ * @since 2019/1/14 下午10:08
  */
 public class LoadingDialog extends BaseDialog implements IMessageLoader {
 

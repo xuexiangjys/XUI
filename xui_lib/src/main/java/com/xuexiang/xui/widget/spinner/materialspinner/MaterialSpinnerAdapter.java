@@ -6,8 +6,9 @@ import java.util.List;
 
 /**
  * Spinner适配器
+ *
  * @author xuexiang
- * @date 2017/11/30 下午4:22
+ * @since 2019/1/14 下午10:08
  */
 public class MaterialSpinnerAdapter<T> extends MaterialSpinnerBaseAdapter {
 

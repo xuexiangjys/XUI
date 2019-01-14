@@ -13,8 +13,8 @@ import com.xuexiang.xui.R;
 /**
  * 可设置阴影效果的Button
  *
- * @author XUE
- * @date 2017/9/13 14:21
+ * @author xuexiang
+ * @since 2019/1/14 下午10:12
  */
 public class ShadowButton extends BaseShadowButton {
 

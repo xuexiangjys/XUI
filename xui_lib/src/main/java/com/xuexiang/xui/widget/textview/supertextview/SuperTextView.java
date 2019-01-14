@@ -25,8 +25,9 @@ import uk.co.chrisjenx.calligraphy.HasTypeface;
 
 /**
  * 打造万能的布局满足市面常见的样式
+ *
  * @author xuexiang
- * @date 2017/12/3 上午10:37
+ * @since 2019/1/14 下午10:05
  */
 public class SuperTextView extends RelativeLayout implements HasTypeface {
 

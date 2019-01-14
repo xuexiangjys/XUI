@@ -22,7 +22,7 @@ import android.widget.PopupWindow;
  * 基础BasePopup
  *
  * @author xuexiang
- * @date 2017/11/3 下午5:02
+ * @since 2019/1/14 下午10:02
  */
 public abstract class XUIBasePopup {
     private Context mContext;

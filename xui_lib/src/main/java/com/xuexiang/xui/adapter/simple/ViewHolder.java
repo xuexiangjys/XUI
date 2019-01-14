@@ -5,8 +5,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
+ *
+ *
  * @author xuexiang
- * @date 2017/11/11 下午5:13
+ * @since 2019/1/14 下午10:16
  */
 public class ViewHolder {
     /**

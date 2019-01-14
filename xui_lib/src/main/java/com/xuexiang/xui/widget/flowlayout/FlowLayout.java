@@ -10,8 +10,9 @@ import java.util.List;
 
 /**
  * 流布局
+ *
  * @author xuexiang
- * @date 2017/11/20 下午3:47
+ * @since 2019/1/14 下午10:06
  */
 public class FlowLayout extends ViewGroup {
 

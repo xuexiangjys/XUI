@@ -7,8 +7,9 @@ import com.nineoldandroids.view.ViewHelper;
 
 /**
  * 翻转切换
+ *
  * @author xuexiang
- * @date 2017/10/15 上午11:43
+ * @since 2019/1/14 下午10:12
  */
 public class FlowTransformer implements ViewPager.PageTransformer {
 

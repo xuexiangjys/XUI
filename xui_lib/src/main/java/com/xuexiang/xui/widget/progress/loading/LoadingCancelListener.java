@@ -21,7 +21,7 @@ package com.xuexiang.xui.widget.progress.loading;
  * 取消loading的监听
  *
  * @author xuexiang
- * @date 2018/2/12 上午9:07
+ * @since 2019/1/14 下午10:15
  */
 public interface LoadingCancelListener {
     /**

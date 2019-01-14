@@ -11,8 +11,9 @@ import android.view.View;
 
 /**
  * Util class for {@link GuideCaseView}
- * @author XUE
- * @date 2017/9/13 18:52
+ *
+ * @author xuexiang
+ * @since 2019/1/14 下午10:15
  */
 class Utils {
 

@@ -7,8 +7,9 @@ import com.nineoldandroids.view.ViewHelper;
 
 /**
  * 侧滑缩小切换
+ *
  * @author xuexiang
- * @date 2017/10/15 上午11:45
+ * @since 2019/1/14 下午10:13
  */
 public class ZoomOutSlideTransformer implements ViewPager.PageTransformer {
 

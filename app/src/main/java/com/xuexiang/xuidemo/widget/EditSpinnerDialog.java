@@ -13,13 +13,15 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xutil.common.StringUtils;
 
 /**
+ * 可编辑下拉框弹窗
+ *
  * @author xuexiang
- * @date 2018/2/9 下午4:36
+ * @since 2019/1/14 下午10:01
  */
 public class EditSpinnerDialog {
 
     /**
-     * 签名窗体
+     * 窗体
      */
     private MaterialDialog mDialog;
     /**

@@ -17,7 +17,7 @@ import java.util.List;
  * 简单的弹窗
  *
  * @author xuexiang
- * @date 2017/11/12 下午11:41
+ * @since 2019/1/14 下午10:07
  */
 public class XUISimplePopup<T extends XUISimplePopup> extends XUIListPopup {
 

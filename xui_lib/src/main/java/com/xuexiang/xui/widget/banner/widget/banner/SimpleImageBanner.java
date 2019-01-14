@@ -22,7 +22,7 @@ import java.lang.ref.WeakReference;
  * 简单的图片轮播
  *
  * @author xuexiang
- * @date 2017/10/16 上午9:46
+ * @since 2019/1/14 下午10:07
  */
 public class SimpleImageBanner extends BaseIndicatorBanner<BannerItem, SimpleImageBanner> {
     /**

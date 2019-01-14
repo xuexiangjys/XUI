@@ -14,7 +14,7 @@ import com.xuexiang.xui.R;
  * 提供一个浮层，支持自定义浮层的内容，支持在指定 {@link View} 的任一方向旁边展示该浮层，支持自定义浮层出现/消失的动画。
  *
  * @author xuexiang
- * @date 2017/11/3 下午5:48
+ * @since 2019/1/14 下午10:00
  */
 public class XUIPopup extends XUIBasePopup {
     public static final int ANIM_GROW_FROM_LEFT = 1;

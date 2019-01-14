@@ -9,8 +9,9 @@ import com.xuexiang.xui.R;
 
 /**
  * 复合字幕
- * @author XUE
- * @date 2017/9/13 10:07
+ *
+ * @author xuexiang
+ * @since 2019/1/14 下午10:13
  */
 public class ComplexViewMF extends MarqueeFactory<RelativeLayout, ComplexItemEntity> {
     private LayoutInflater inflater;

@@ -6,9 +6,10 @@ import android.view.View;
 import com.nineoldandroids.view.ViewHelper;
 
 /**
- *  3D旋转切换
+ * 3D旋转切换
+ *
  * @author xuexiang
- * @date 2017/10/15 上午11:37
+ * @since 2019/1/14 下午10:11
  */
 public class DepthTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE_DEPTH = 0.75f;

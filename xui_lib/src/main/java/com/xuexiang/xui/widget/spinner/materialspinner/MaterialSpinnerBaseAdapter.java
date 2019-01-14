@@ -18,8 +18,9 @@ import java.util.List;
 
 /**
  * 基础Spinner适配器
+ *
  * @author xuexiang
- * @date 2017/11/30 下午4:23
+ * @since 2019/1/14 下午10:03
  */
 public abstract class MaterialSpinnerBaseAdapter<T> extends BaseAdapter {
 

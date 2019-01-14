@@ -25,9 +25,10 @@ import android.widget.TextView;
 import com.xuexiang.xui.R;
 
 /**
- * 可伸缩折叠的textview
+ * 可伸缩折叠的TextView
+ *
  * @author xuexiang
- * @date 2017/10/27 下午3:17
+ * @since 2019/1/14 下午10:05
  */
 public class ExpandableTextView extends LinearLayout implements View.OnClickListener {
 

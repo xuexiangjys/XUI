@@ -22,9 +22,10 @@ import android.view.View;
 import com.xuexiang.xui.R;
 
 /**
- *	支持显示密码的输入框
- * @author XUE
- * @date 2017/9/11 11:54
+ * 支持显示密码的输入框
+ *
+ * @author xuexiang
+ * @since 2019/1/14 下午10:08
  */
 public class PasswordEditText extends AppCompatEditText {
 

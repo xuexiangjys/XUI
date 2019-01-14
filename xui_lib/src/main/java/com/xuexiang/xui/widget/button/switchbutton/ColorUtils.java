@@ -4,8 +4,9 @@ import android.content.res.ColorStateList;
 
 /**
  * 色彩工具
+ *
  * @author xuexiang
- * @date 2018/1/16 上午10:25
+ * @since 2019/1/14 下午10:09
  */
 class ColorUtils {
     private static final int ENABLE_ATTR = android.R.attr.state_enabled;

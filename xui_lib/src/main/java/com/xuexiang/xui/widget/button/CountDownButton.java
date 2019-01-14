@@ -17,7 +17,7 @@ import java.util.Locale;
  * 倒计时按钮
  *
  * @author xuexiang
- * @date 2017/10/26 下午5:48
+ * @since 2019/1/14 下午10:10
  */
 public class CountDownButton extends AppCompatButton {
 

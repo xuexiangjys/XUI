@@ -13,8 +13,9 @@ import com.xuexiang.xui.R;
 
 /**
  * 基础可设置阴影效果的Button
- * @author XUE
- * @date 2017/9/13 14:21
+ *
+ * @author xuexiang
+ * @since 2019/1/14 下午10:00
  */
 public class BaseShadowButton extends AppCompatButton {
 

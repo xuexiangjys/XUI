@@ -10,8 +10,9 @@ import java.util.List;
 
 /**
  * 轮播页面适配器
+ *
  * @author xuexiang
- * @date 2017/11/14 上午11:43
+ * @since 2019/1/14 下午10:13
  */
 public class LoopViewPager extends ViewPager {
 

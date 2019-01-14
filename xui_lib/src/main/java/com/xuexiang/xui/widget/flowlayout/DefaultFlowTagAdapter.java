@@ -6,11 +6,11 @@ import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 
-
 /**
  * 默认流标签布局适配器
+ *
  * @author xuexiang
- * @date 2017/11/21 上午10:44
+ * @since 2019/1/14 下午10:00
  */
 public class DefaultFlowTagAdapter extends BaseTagAdapter<String, TextView> {
 
