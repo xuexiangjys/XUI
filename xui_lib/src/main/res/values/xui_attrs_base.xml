@@ -99,7 +99,7 @@
     <attr name="xui_actionbar_action_text_size" format="dimension" />
     <attr name="xui_actionbar_sub_text_size" format="dimension" />
     <attr name="xui_actionbar_action_padding" format="dimension" />
-    <attr name="xui_actionbar_sidetext_padding" format="dimension" />
+    <attr name="xui_actionbar_side_text_padding" format="dimension" />
 
     <!--**********************************************
     *                  xui btn                      *
@@ -128,9 +128,9 @@
     <!--辅助说明文字大小-->
     <attr name="xui_config_size_explain_text" format="dimension" />
 
-    <attr name="xui_config_color_title_text" format="dimension" />
-    <attr name="xui_config_color_content_text" format="dimension" />
-    <attr name="xui_config_color_explain_text" format="dimension" />
+    <attr name="xui_config_color_title_text" format="color" />
+    <attr name="xui_config_color_content_text" format="color" />
+    <attr name="xui_config_color_explain_text" format="color" />
 
     <!--输入框文字-->
     <attr name="xui_config_size_edittext_input_text" format="dimension" />

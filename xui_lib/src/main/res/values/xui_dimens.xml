@@ -58,7 +58,6 @@
     <dimen name="xui_guide_btn_padding_vertical_phone">8dp</dimen>
     <dimen name="xui_guide_btn_margin_bottom_phone">25dp</dimen>
 
-
     <!-- ActionBar-->
     <dimen name="xui_actionbar_height_tablet_big">70dp</dimen>
     <dimen name="xui_actionbar_height_tablet_small">60dp</dimen>
@@ -80,9 +79,9 @@
     <dimen name="xui_actionbar_action_padding_tablet_small">6dp</dimen>
     <dimen name="xui_actionbar_action_padding_phone">5dp</dimen>
 
-    <dimen name="xui_actionbar_sidetext_padding_tablet_big">18dp</dimen>
-    <dimen name="xui_actionbar_sidetext_padding_tablet_small">16dp</dimen>
-    <dimen name="xui_actionbar_sidetext_padding_phone">14dp</dimen>
+    <dimen name="xui_actionbar_side_text_padding_tablet_big">18dp</dimen>
+    <dimen name="xui_actionbar_side_text_padding_tablet_small">16dp</dimen>
+    <dimen name="xui_actionbar_side_text_padding_phone">14dp</dimen>
 
     <!-- ShadowButton-->
     <dimen name="default_shadow_button_radius">2dp</dimen>
@@ -360,7 +359,6 @@
     <dimen name="xui_tip_popup_padding_left_tablet_big">18dp</dimen>
     <dimen name="xui_tip_popup_padding_left_tablet_small">15dp</dimen>
     <dimen name="xui_tip_popup_padding_left_phone">12dp</dimen>
-
 
     <!--**********************************************
     *                 Spinner                        *

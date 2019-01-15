@@ -117,7 +117,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
             mImmersive = typedArray.getBoolean(R.styleable.TitleBar_tb_immersive, false);
 
             mActionPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_tb_actionPadding, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_action_padding));
-            mSideTextPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_tb_sideTextPadding, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_sidetext_padding));
+            mSideTextPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_tb_sideTextPadding, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_side_text_padding));
 
             mSideTextSize = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_sideTextSize, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_action_text_size));
             mTitleTextSize = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_titleTextSize, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_title_text_size));

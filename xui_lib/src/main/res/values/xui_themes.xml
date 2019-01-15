@@ -203,7 +203,7 @@
         <item name="android:windowFullscreen">true</item>
     </style>
     <!--*********************************************
-    *                  XUI主题                    *
+    *                  XUI主题                       *
     **********************************************-->
     <!--平板主题-->
     <style name="XUITheme.Tablet">
@@ -254,7 +254,7 @@
         <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_tablet_big</item>
         <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_tablet_big</item>
         <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_tablet_big</item>
-        <item name="xui_actionbar_sidetext_padding">@dimen/xui_actionbar_sidetext_padding_tablet_big</item>
+        <item name="xui_actionbar_side_text_padding">@dimen/xui_actionbar_side_text_padding_tablet_big</item>
         <!--*********************************************
         *                  MaterialDialog               *
         **********************************************-->
@@ -364,7 +364,7 @@
         <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_tablet_small</item>
         <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_tablet_small</item>
         <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_tablet_small</item>
-        <item name="xui_actionbar_sidetext_padding">@dimen/xui_actionbar_sidetext_padding_tablet_small</item>
+        <item name="xui_actionbar_side_text_padding">@dimen/xui_actionbar_side_text_padding_tablet_small</item>
         <!--*********************************************
         *                  MaterialDialog               *
         **********************************************-->
@@ -413,8 +413,8 @@
         <item name="mini_loading_view_size">@dimen/mini_loading_view_size_tablet_small</item>
 
         <!--**********************************************
-     *                 xui bottom sheet              *
-     ***********************************************-->
+        *                 xui bottom sheet              *
+        ***********************************************-->
         <item name="xui_bottom_sheet_title_height">84dp</item>
 
         <item name="xui_bottom_sheet_list_item_height">84dp</item>
@@ -483,7 +483,7 @@
         <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_phone</item>
         <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_phone</item>
         <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_phone</item>
-        <item name="xui_actionbar_sidetext_padding">@dimen/xui_actionbar_sidetext_padding_phone</item>
+        <item name="xui_actionbar_side_text_padding">@dimen/xui_actionbar_side_text_padding_phone</item>
         <!--*********************************************
         *                  MaterialDialog               *
         **********************************************-->
