@@ -242,5 +242,34 @@
         <item name="android:paddingLeft">?attr/search_icon_padding</item>
         <item name="android:paddingRight">?attr/search_icon_padding</item>
     </style>
+
+    <!--BottomSheet-->
+    <style name="BottomSheet" parent="android:Theme.Dialog">
+        <item name="android:backgroundDimAmount">?attr/xui_dialog_background_dim_amount</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@null
+        </item><!-- 为了避免在有 NavigationBar 的手机上 Dialog 从 NavigationBar 底部上来。去掉 Dialog 的动画，使用 View 的动画。-->
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!--MiniLoadingView-->
+    <style name="MiniLoadingStyle">
+        <item name="mlv_loading_view_size">?attr/mini_loading_view_size</item>
+        <item name="mlv_loading_view_color">@color/xui_config_color_gray_5</item>
+    </style>
+
+    <!--SwitchButton-->
+    <style name="SwitchButtonMD">
+        <item name="swb_thumbDrawable">@drawable/swb_md_thumb</item>
+        <item name="swb_backColor">@color/swb_md_back_color</item>
+        <item name="swb_thumbRangeRatio">1.5</item>
+        <item name="swb_thumbMarginLeft">-16dp</item>
+        <item name="swb_thumbMarginTop">-14dp</item>
+        <item name="swb_thumbMarginRight">-16dp</item>
+        <item name="swb_thumbMarginBottom">-14dp</item>
+        <item name="swb_thumbWidth">@dimen/swb_md_thumb_ripple_size</item>
+        <item name="swb_thumbHeight">@dimen/swb_md_thumb_ripple_size</item>
+    </style>
     
 </resources>

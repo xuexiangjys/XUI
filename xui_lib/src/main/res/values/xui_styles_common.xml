@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--**********************************************
-   *             xui drawable                      *
-   **********************************************-->
-    <attr name="xui_icon_check_mark" format="reference"/>
-    <attr name="xui_icon_checkbox" format="reference"/>
 
     <!--*********************************************
-   *                CommonButtonStyle              *
-   **********************************************-->
+    *                CommonButtonStyle              *
+    **********************************************-->
     <style name="Button.Style" parent="@style/Button">
         <item name="android:layout_width">?attr/xui_btn_view_width</item>
         <item name="android:layout_height">?attr/xui_btn_view_height</item>
@@ -176,19 +171,6 @@
         <item name="android:textColor">@color/xui_default_round_btn_white_text</item>
     </style>
 
-    <!--SwitchButton-->
-    <style name="SwitchButtonMD">
-        <item name="swb_thumbDrawable">@drawable/swb_md_thumb</item>
-        <item name="swb_backColor">@color/swb_md_back_color</item>
-        <item name="swb_thumbRangeRatio">1.5</item>
-        <item name="swb_thumbMarginLeft">-16dp</item>
-        <item name="swb_thumbMarginTop">-14dp</item>
-        <item name="swb_thumbMarginRight">-16dp</item>
-        <item name="swb_thumbMarginBottom">-14dp</item>
-        <item name="swb_thumbWidth">@dimen/swb_md_thumb_ripple_size</item>
-        <item name="swb_thumbHeight">@dimen/swb_md_thumb_ripple_size</item>
-    </style>
-    
     <!-- *******************************************组件样式***********************************************************-->
     <!--*********************************************
      *                  DialogTheme                  *
@@ -246,20 +228,6 @@
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 屏幕背景是否变暗 -->
         <item name="android:backgroundDimAmount">?attr/xui_dialog_background_dim_amount</item>
-    </style>
-
-    <style name="BottomSheet" parent="android:Theme.Dialog">
-        <item name="android:backgroundDimAmount">?attr/xui_dialog_background_dim_amount</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowAnimationStyle">@null
-        </item><!-- 为了避免在有 NavigationBar 的手机上 Dialog 从 NavigationBar 底部上来。去掉 Dialog 的动画，使用 View 的动画。-->
-        <item name="android:layout_width">match_parent</item>
-    </style>
-
-    <style name="MiniLoadingStyle">
-        <item name="mlv_loading_view_size">?attr/mini_loading_view_size</item>
-        <item name="mlv_loading_view_color">@color/xui_config_color_gray_5</item>
     </style>
 
     <!--*********************************************
@@ -325,6 +293,17 @@
     <!--*********************************************
     *                 EditTextStyle                 *
     **********************************************-->
+    <!--基础输入框样式-->
+    <style name="EditText" parent="EditTextBase">
+        <item name="android:layout_height">?attr/xui_config_size_edittext_height</item>
+        <item name="android:textSize">?attr/xui_config_size_edittext_input_text</item>
+        <item name="android:paddingLeft">?attr/xui_config_size_edittext_left_padding</item>
+        <item name="android:paddingRight">?attr/xui_config_size_edittext_left_padding</item>
+        <item name="android:textColor">@color/xui_config_color_edittext_textcolor</item>
+        <item name="android:textColorHint">@color/xui_config_color_edittext_hint_text</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <style name="EditText.Material">
         <item name="android:paddingLeft">0dp</item>
 

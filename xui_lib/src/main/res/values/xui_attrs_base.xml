@@ -228,4 +228,10 @@
     <attr name="xui_tab_sign_count_view_bg" format="reference" />
     <attr name="xui_tab_sign_count_view_padding_horizontal" format="dimension" />
 
+    <!--**********************************************
+    *             xui drawable                      *
+    **********************************************-->
+    <attr name="xui_icon_check_mark" format="reference"/>
+    <attr name="xui_icon_checkbox" format="reference"/>
+
 </resources>

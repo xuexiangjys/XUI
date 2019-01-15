@@ -573,17 +573,6 @@
         <item name="fontPath">@string/default_app_font_path</item>
     </style>
 
-    <!--基础输入框样式-->
-    <style name="EditText" parent="EditTextBase">
-        <item name="android:layout_height">?attr/xui_config_size_edittext_height</item>
-        <item name="android:textSize">?attr/xui_config_size_edittext_input_text</item>
-        <item name="android:paddingLeft">?attr/xui_config_size_edittext_left_padding</item>
-        <item name="android:paddingRight">?attr/xui_config_size_edittext_left_padding</item>
-        <item name="android:textColor">@color/xui_config_color_edittext_textcolor</item>
-        <item name="android:textColorHint">@color/xui_config_color_edittext_hint_text</item>
-        <item name="android:singleLine">true</item>
-    </style>
-
     <!--*********************************************
      *                  按钮样式                    *
      **********************************************-->
