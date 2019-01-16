@@ -165,7 +165,6 @@
     <public name="msv_loading_view" type="layout" />
     <public name="msv_no_network_view" type="layout" />
 
-
     <!--attr-->
     <public name="xui_config_content_spacing_horizontal" type="attr" />
     <public name="xui_config_content_spacing_vertical" type="attr" />
@@ -227,10 +226,8 @@
     <public name="xui_config_bg_edittext" type="drawable" />
     <public name="xui_config_bg_spinner" type="drawable" />
     <public name="xui_config_bg_splash" type="drawable" />
-    <public name="xui_config_border_separator_light" type="drawable" />
     <public name="xui_config_list_item_selector" type="drawable" />
     <public name="xui_config_list_divider" type="drawable" />
-    <public name="xui_config_popup_divider" type="drawable" />
     <public name="xui_config_preview_window" type="drawable" />
     <public name="xui_config_selectable_item_selector" type="drawable" />
 
@@ -241,7 +238,6 @@
     <public name="xui_ic_default_tip_btn" type="drawable" />
     <public name="xui_ic_default_clear_btn" type="drawable" />
     <public name="xui_ic_arrow_down_black" type="drawable" />
-    <public name="xui_ic_arrow_up_black" type="drawable" />
 
 
 </resources>
