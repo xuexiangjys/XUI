@@ -129,6 +129,8 @@ protected void onCreate(Bundle savedInstanceState) {
 
 > 演示程序大概18M（主要是demo中集成了一个小视频拍摄的库比较大，大约13M左右，而XUI库目前只有644k大小），项目比较大，推荐使用蒲公英下载。
 
+![](./art/xui_size.png)
+
 #### 蒲公英下载
 
 [![蒲公英](https://img.shields.io/badge/downloads-蒲公英-blue.svg)](https://www.pgyer.com/XUIDemo)
