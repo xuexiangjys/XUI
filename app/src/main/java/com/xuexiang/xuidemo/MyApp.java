@@ -2,6 +2,7 @@ package com.xuexiang.xuidemo;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.xuexiang.xaop.XAOP;
 import com.xuexiang.xaop.util.PermissionUtils;
@@ -23,6 +24,13 @@ import java.util.List;
  * @since 2018/11/7 下午1:12
  */
 public class MyApp extends Application {
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        //解决4.x运行崩溃的问题
+        MultiDex.install(this);
+    }
 
     @Override
     public void onCreate() {

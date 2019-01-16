@@ -159,5 +159,5 @@ protected void onCreate(Bundle savedInstanceState) {
 
 [xuisvg]: https://img.shields.io/badge/XUI-v1.0.0-brightgreen.svg
 [xui]: https://github.com/xuexiangjys/XUI
-[apisvg]: https://img.shields.io/badge/API-21+-brightgreen.svg
-[api]: https://android-arsenal.com/api?level=21
+[apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
+[api]: https://android-arsenal.com/api?level=17

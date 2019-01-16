@@ -6,9 +6,10 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ProgressBar
+    <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
         android:layout_width="?attr/stf_progressbar_size"
-        android:layout_height="?attr/stf_progressbar_size" />
+        android:layout_height="?attr/stf_progressbar_size"
+        android:indeterminate="true" />
 
     <TextView
         android:id="@+id/loading_view_tv"
