@@ -113,7 +113,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 ----
 
-## 演示
+## 演示（请star支持）
 
 ### 演示程序截图
 
