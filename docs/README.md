@@ -127,6 +127,11 @@ protected void onCreate(Bundle savedInstanceState) {
 * [CityPicker](https://github.com/xuexiangjys/CityPicker)
 * [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
 * [PhotoPicker](https://github.com/donglua/PhotoPicker)
+* [Android-PickerView](https://github.com/Bigkoo/Android-PickerView)
+* [MaterialEditText](https://github.com/rengwuxian/MaterialEditText)
+* [MaterialSpinner](https://github.com/jaredrummler/MaterialSpinner)
+* [FlycoBanner_Master](https://github.com/H07000223/FlycoBanner_Master)
+* [MaterialProgressBar](https://github.com/DreaminginCodeZH/MaterialProgressBar)
 
 ## 联系方式
 
