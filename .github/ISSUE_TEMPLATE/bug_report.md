@@ -1,14 +1,20 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: 提交Bug信息报告
+about: 创建一个bug详情报告，以方便我们更好地改进
 title: BUG
 labels: bug
 assignees: xuexiangjys
 
 ---
 
+**提Bug前需要做的事情**
+
+1.如果是集成问题的话，请保证仔细按照[如何引用](https://github.com/xuexiangjys/XUI/wiki/%E5%A6%82%E4%BD%95%E5%BC%95%E7%94%A8)的步骤，一步一步来，不要跳步骤！
+2.详细阅读过[使用手册](https://github.com/xuexiangjys/XUI/wiki)，并且确保是框架的问题。
+
+
 **问题描述**
-对问题进行清晰而简明的描述。
+对问题进行清晰而简明的描述，把我问题的关键点。
 
 **如何重现**
 重现的步骤:
