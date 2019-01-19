@@ -1,7 +1,7 @@
 ---
 name: 提交Bug报告
 about: 创建一个bug详情报告，以方便我们更好地改进
-title: 请简要描述你的bug
+title: ''
 labels: bug
 assignees: xuexiangjys
 
