@@ -498,7 +498,7 @@ public class SuperButton extends AppCompatButton {
      * @param strokeDashWidth 边框虚线宽度
      * @return 对象
      */
-    public SuperButton setShapeSrokeDashWidth(float strokeDashWidth) {
+    public SuperButton setShapeStrokeDashWidth(float strokeDashWidth) {
         this.strokeDashWidth = dip2px(mContext, strokeDashWidth);
         return this;
     }

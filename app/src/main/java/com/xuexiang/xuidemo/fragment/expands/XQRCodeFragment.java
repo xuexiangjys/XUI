@@ -207,28 +207,6 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
         }
     }
 
-    @Override
-    protected TitleBar initTitleBar() {
-        return super.initTitleBar().setLeftClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ClickUtils.exitBy2Click();
-            }
-        });
-    }
-
-
-    /**
-     * 菜单、返回键响应
-     */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            ClickUtils.exitBy2Click();
-        }
-        return true;
-    }
-
     @Permission(CAMERA)
     private void initPermission() {
         ToastUtils.toast("相机权限已获取！");
