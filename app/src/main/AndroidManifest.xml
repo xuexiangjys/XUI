@@ -6,13 +6,13 @@
     <application
         android:name=".MyApp"
         android:allowBackup="false"
-        tools:replace="android:allowBackup"
         android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
         <activity
             android:name=".activity.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
@@ -49,7 +49,7 @@
         <!--SearchView-->
         <activity
             android:name=".activity.SearchViewActivity"
-            android:label="SearchView"/>
+            android:label="SearchView" />
 
         <activity
             android:name=".base.webview.AgentWebActivity"
@@ -57,8 +57,10 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:scheme="about" />
@@ -66,8 +68,10 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:scheme="inline" />
@@ -78,6 +82,8 @@
             </intent-filter>
         </activity>
 
+        <!--应用监听服务-->
+        <service android:name=".fragment.expands.floatview.service.AppMonitorService" />
     </application>
 
 </manifest>

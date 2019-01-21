@@ -132,6 +132,9 @@ dependencies {
     //侧边栏菜单
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
 
-
+    //XFloatView悬浮窗口
+    implementation 'com.github.xuexiangjys:XFloatView:1.0.1'
+    //android进程监控
+    implementation 'com.jaredrummler:android-processes:1.1.1'
 
 }
