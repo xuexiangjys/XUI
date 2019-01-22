@@ -45,7 +45,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.xuexiangjys:XUI:1.0.0'
+  implementation 'com.github.xuexiangjys:XUI:1.0.1'
 
   implementation 'com.android.support:appcompat-v7:27.1.1'
   implementation 'com.android.support:recyclerview-v7:27.1.1'
@@ -162,7 +162,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ![](https://github.com/xuexiangjys/XPage/blob/master/img/qq_group.jpg)
 
-[xuisvg]: https://img.shields.io/badge/XUI-v1.0.0-brightgreen.svg
+[xuisvg]: https://img.shields.io/badge/XUI-v1.0.1-brightgreen.svg
 [xui]: https://github.com/xuexiangjys/XUI
 [apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
 [api]: https://android-arsenal.com/api?level=17
