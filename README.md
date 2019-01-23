@@ -158,7 +158,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ## 如果觉得项目还不错，可以考虑打赏一波
 
-![](./art/alipay.png) &emsp; ![](./art/weixinpay.png)
+![](./art/alipay.jpeg) &emsp; ![](./art/weixinpay.jpeg)
 
 ## 联系方式
 
