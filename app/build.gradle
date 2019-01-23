@@ -75,8 +75,8 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.4'
 
     //XUI框架
-    implementation project(':xui_lib')
-//    implementation 'com.github.xuexiangjys:XUI:1.0.0'
+//    implementation project(':xui_lib')
+    implementation 'com.github.xuexiangjys:XUI:1.0.1'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     //工具类
