@@ -33,7 +33,7 @@
                     android:id="@+id/spinner_system_fit_offset"
                     android:layout_width="wrap_content"
                     android:layout_height="?attr/ms_item_height_size"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
                     android:entries="@array/sort_mode_entry"
                     android:spinnerMode="dropdown" />
@@ -55,7 +55,7 @@
                 <Spinner
                     android:id="@+id/spinner_system"
                     style="@style/SpinnerStyle"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical" />
 
             </LinearLayout>
@@ -75,7 +75,7 @@
                 <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
                     app:ms_entries="@array/sort_mode_entry" />
 
@@ -95,12 +95,12 @@
                 <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
                     android:id="@+id/spinner"
                     style="@style/Material.SpinnerStyle"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical" />
 
                 <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
                     style="@style/Material.SpinnerStyle"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
                     android:enabled="false"
                     app:ms_entries="@array/sort_mode_entry" />
@@ -121,13 +121,13 @@
                 <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
                     android:id="@+id/spinner_one"
                     style="@style/Material.SpinnerStyle"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
                     app:ms_entries="@array/sort_mode_one_entry" />
 
                 <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
                     style="@style/Material.SpinnerStyle"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
                     app:ms_entries="@array/sort_mode_entry" />
 
@@ -148,10 +148,19 @@
                     android:id="@+id/editSpinner"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
                     app:es_enable="false"
                     app:es_entries="@array/sort_mode_entry"
+                    app:es_hint="@string/lab_please_select"
+                    app:es_maxLength="20" />
+
+                <com.xuexiang.xui.widget.spinner.editspinner.EditSpinner
+                    android:id="@+id/editSpinner1"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
                     app:es_hint="@string/lab_please_select"
                     app:es_maxLength="20" />
 

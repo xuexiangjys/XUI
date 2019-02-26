@@ -4,15 +4,13 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Spinner;
 
-import com.xuexiang.xpage.PageConfig;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.SnackbarUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
-import com.xuexiang.xui.widget.actionbar.TitleBar;
-import com.xuexiang.xui.widget.actionbar.TitleUtils;
 import com.xuexiang.xui.widget.spinner.editspinner.EditSpinner;
+import com.xuexiang.xui.widget.spinner.editspinner.EditSpinnerAdapter;
 import com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner;
 import com.xuexiang.xui.widget.textview.supertextview.SuperButton;
 import com.xuexiang.xuidemo.R;
@@ -43,6 +41,9 @@ public class SpinnerStyleFragment extends BaseFragment {
 
     @BindView(R.id.editSpinner)
     EditSpinner mEditSpinner;
+
+    @BindView(R.id.editSpinner1)
+    EditSpinner mEditSpinner1;
 
     @BindView(R.id.btn_enable)
     SuperButton mBtEnable;
@@ -86,6 +87,12 @@ public class SpinnerStyleFragment extends BaseFragment {
                 ToastUtils.toast("没有更多的选项！");
             }
         });
+
+        mEditSpinner1.setAdapter(new EditSpinnerAdapter(getContext(), ResUtils.getStringArray(R.array.sort_mode_entry))
+                .setTextColor(ResUtils.getColor(R.color.color_green))
+                .setTextSize(mEditSpinner1.getEditText().getTextSize())
+                .setBackgroundSelector(R.drawable.selector_custom_spinner_bg)
+        );
 
     }
 
