@@ -129,7 +129,8 @@
                     style="@style/Material.SpinnerStyle"
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
-                    app:ms_entries="@array/sort_mode_entry" />
+                    app:ms_entries="@array/sort_mode_entry"
+                    app:ms_dropdown_max_height="50dp"/>
 
             </LinearLayout>
 
