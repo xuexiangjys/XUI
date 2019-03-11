@@ -9,6 +9,8 @@
 
 > 涵盖绝大部分的UI组件：TextView、Button、EditText、ImageView、Spinner、Picker、Dialog、PopupWindow、ProgressBar、LoadingView、StateLayout、FlowLayout、Switch、Actionbar、TabBar、Banner、GuideView、BadgeView、MarqueeView、WebView、SearchView等一系列的组件和丰富多彩的样式主题。
 
+在提issue前，请先阅读[【提问的智慧】](http://www.binarywang.com/article/smart-questions)，并严格按照[issue模板](https://github.com/xuexiangjys/XUI/issues/new/choose)进行填写，节约大家的时间。
+
 ## 关于我
 
 [![github](https://img.shields.io/badge/GitHub-xuexiangjys-blue.svg)](https://github.com/xuexiangjys)   [![csdn](https://img.shields.io/badge/CSDN-xuexiangjys-green.svg)](http://blog.csdn.net/xuexiangjys)
@@ -64,25 +66,9 @@ XUI.debug(true);  //开启UI框架调试日志
 
 ```
 
-2.调整字体库（对字体无要求的可省略）
+2.调整应用的基础主题
 
-（1）设置你需要修改的字体库路径（assets下）
-```
-//设置默认字体为华文行楷，这里写你的字体库
-XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
-```
-
-（2）在项目的基础Activity中加入如下代码注入字体.
-
-```
-@Override
-protected void attachBaseContext(Context newBase) {
-    //注入字体
-    super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-}
-```
-
-### 调整应用的基础主题
+> 必须设置应用的基础主题，否则组件将无法正常使用！
 
 基础主题类型：
 
@@ -111,6 +97,25 @@ protected void onCreate(Bundle savedInstanceState) {
     ...
 }
 ```
+
+3.调整字体库（对字体无要求的可省略）
+
+（1）设置你需要修改的字体库路径（assets下）
+```
+//设置默认字体为华文行楷，这里写你的字体库
+XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
+```
+
+（2）在项目的基础Activity中加入如下代码注入字体.
+
+```
+@Override
+protected void attachBaseContext(Context newBase) {
+    //注入字体
+    super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+}
+```
+
 ----
 
 ## 演示（请star支持）
