@@ -408,6 +408,20 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="app:met_passWordButton=&quot;true&quot;"
+                    android:textColor="#888888"
+                    android:textSize="14sp" />
+
+                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="PassWord Button"
+                    android:inputType="textPassword"
+                    app:met_passWordButton="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Material Design Icon"
                     android:textColor="#333333"

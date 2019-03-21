@@ -25,13 +25,13 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.xuexiang.xui.R;
@@ -49,10 +49,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * EditText in Material Design
- * <p/>
- * author:rengwuxian
- * <p/>
+ * Material Design 输入框
+ *
+ * @author XUE
+ * @since 2019/3/20 16:47
  */
 public class MaterialEditText extends AppCompatEditText {
 
@@ -294,6 +294,16 @@ public class MaterialEditText extends AppCompatEditText {
      * Clear Button
      */
     private Bitmap[] clearButtonBitmaps;
+    /**
+     * showPwIcon Button
+     */
+    private Bitmap[] showPwIconBitmaps;
+    /**
+     * hidePwIcon Button
+     */
+    private Bitmap[] hidePwIconBitmaps;
+
+    private boolean passwordVisible;
 
     /**
      * Auto validate when focus lost.
@@ -301,13 +311,14 @@ public class MaterialEditText extends AppCompatEditText {
     private boolean validateOnFocusLost;
 
     private boolean showClearButton;
+    private boolean showPasswordButton;
     private boolean firstShown;
     private int iconSize;
     private int iconOuterWidth;
     private int iconOuterHeight;
     private int iconPadding;
-    private boolean clearButtonTouched;
-    private boolean clearButtonClicking;
+    private boolean actionButtonTouched;
+    private boolean actionButtonClicking;
     private ColorStateList textColorStateList;
     private ColorStateList textColorHintStateList;
     private ArgbEvaluator focusEvaluator = new ArgbEvaluator();
@@ -344,7 +355,7 @@ public class MaterialEditText extends AppCompatEditText {
         }
 
         iconSize = getPixel(32);
-        iconOuterWidth = getPixel(48);
+        iconOuterWidth = getPixel(16);
         iconOuterHeight = getPixel(32);
 
         bottomSpacing = getResources().getDimensionPixelSize(R.dimen.default_edittext_components_spacing);
@@ -415,8 +426,13 @@ public class MaterialEditText extends AppCompatEditText {
         autoValidate = typedArray.getBoolean(R.styleable.MaterialEditText_met_autoValidate, false);
         iconLeftBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconLeft, -1));
         iconRightBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconRight, -1));
+
         showClearButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_clearButton, false);
         clearButtonBitmaps = generateIconBitmaps(R.drawable.xui_ic_met_clear);
+        showPasswordButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_passWordButton, false);
+        showPwIconBitmaps = generateIconBitmaps(R.drawable.pet_icon_visibility);
+        hidePwIconBitmaps = generateIconBitmaps(R.drawable.pet_icon_visibility_off);
+
         iconPadding = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_iconPadding, getPixel(16));
         floatingLabelAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_floatingLabelAlwaysShown, false);
         helperTextAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_helperTextAlwaysShown, false);
@@ -527,6 +543,10 @@ public class MaterialEditText extends AppCompatEditText {
 
     public boolean isShowClearButton() {
         return showClearButton;
+    }
+
+    public boolean isShowPasswordButton() {
+        return showPasswordButton;
     }
 
     public void setShowClearButton(boolean show) {
@@ -793,7 +813,7 @@ public class MaterialEditText extends AppCompatEditText {
     }
 
     private int getButtonsCount() {
-        return isShowClearButton() ? 1 : 0;
+        return isShowClearButton() || isShowPasswordButton() ? 1 : 0;
     }
 
     @Override
@@ -1287,8 +1307,8 @@ public class MaterialEditText extends AppCompatEditText {
         // draw the icon(s)
         drawIcons(canvas, startX, endX, lineStartY);
 
-        // draw the clear button
-        drawClearButton(canvas, startX, endX, lineStartY);
+        // draw the action button
+        drawActionButton(canvas, startX, endX, lineStartY);
 
         // draw the underline
         lineStartY = drawUnderline(canvas, startX, endX, lineStartY);
@@ -1350,19 +1370,19 @@ public class MaterialEditText extends AppCompatEditText {
      * @param endX
      * @param lineStartY
      */
-    private void drawClearButton(@NonNull Canvas canvas, int startX, int endX, int lineStartY) {
-        if (hasFocus() && showClearButton && !TextUtils.isEmpty(getText()) && isEnabled()) {
+    private void drawActionButton(@NonNull Canvas canvas, int startX, int endX, int lineStartY) {
+        if (hasFocus() && isEnabled() && !TextUtils.isEmpty(getText()) && (showClearButton || showPasswordButton)) {
             paint.setAlpha(255);
-            int buttonLeft;
-            if (isRTL()) {
-                buttonLeft = startX;
+            int buttonLeft = isRTL() ? startX : ( endX - iconOuterWidth);
+            Bitmap actionButtonBitmap;
+            if (showClearButton) {
+                actionButtonBitmap = clearButtonBitmaps[0];
             } else {
-                buttonLeft = endX - iconOuterWidth;
+                actionButtonBitmap = passwordVisible ? showPwIconBitmaps[0] : hidePwIconBitmaps[0];
             }
-            Bitmap clearButtonBitmap = clearButtonBitmaps[0];
-            buttonLeft += (iconOuterWidth - clearButtonBitmap.getWidth()) / 2;
-            int iconTop = lineStartY + bottomSpacing - iconOuterHeight + (iconOuterHeight - clearButtonBitmap.getHeight()) / 2;
-            canvas.drawBitmap(clearButtonBitmap, buttonLeft, iconTop, paint);
+            buttonLeft += (iconOuterWidth - actionButtonBitmap.getWidth()) / 2;
+            int iconTop = lineStartY + bottomSpacing - iconOuterHeight + (iconOuterHeight - actionButtonBitmap.getHeight()) / 2;
+            canvas.drawBitmap(actionButtonBitmap, buttonLeft, iconTop, paint);
         }
     }
 
@@ -1531,45 +1551,49 @@ public class MaterialEditText extends AppCompatEditText {
             setSelection(0);
             return false;
         }
-        if (hasFocus() && showClearButton && isEnabled()) {
+        if (hasFocus() && (showClearButton || showPasswordButton) && isEnabled()) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    if (insideClearButton(event)) {
-                        clearButtonTouched = true;
-                        clearButtonClicking = true;
+                    if (insideActionButton(event)) {
+                        actionButtonTouched = true;
+                        actionButtonClicking = true;
                         return true;
                     }
                 case MotionEvent.ACTION_MOVE:
-                    if (clearButtonClicking && !insideClearButton(event)) {
-                        clearButtonClicking = false;
+                    if (actionButtonClicking && !insideActionButton(event)) {
+                        actionButtonClicking = false;
                     }
-                    if (clearButtonTouched) {
+                    if (actionButtonTouched) {
                         return true;
                     }
                     break;
                 case MotionEvent.ACTION_UP:
-                    if (clearButtonClicking) {
-                        if (!TextUtils.isEmpty(getText())) {
-                            setText(null);
+                    if (actionButtonClicking) {
+                        if (showClearButton) {
+                            if (!TextUtils.isEmpty(getText())) {
+                                setText(null);
+                            }
+                        } else {
+                            togglePasswordIconVisibility();
                         }
-                        clearButtonClicking = false;
+                        actionButtonClicking = false;
                     }
-                    if (clearButtonTouched) {
-                        clearButtonTouched = false;
+                    if (actionButtonTouched) {
+                        actionButtonTouched = false;
                         return true;
                     }
-                    clearButtonTouched = false;
+                    actionButtonTouched = false;
                     break;
                 case MotionEvent.ACTION_CANCEL:
-                    clearButtonTouched = false;
-                    clearButtonClicking = false;
+                    actionButtonTouched = false;
+                    actionButtonClicking = false;
                     break;
             }
         }
         return super.onTouchEvent(event);
     }
 
-    private boolean insideClearButton(MotionEvent event) {
+    private boolean insideActionButton(MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
         int startX = getScrollX() + (iconLeftBitmaps == null ? 0 : (iconOuterWidth + iconPadding));
@@ -1582,6 +1606,29 @@ public class MaterialEditText extends AppCompatEditText {
         }
         int buttonTop = getScrollY() + getHeight() - getPaddingBottom() + bottomSpacing - iconOuterHeight;
         return (x >= buttonLeft - iconOuterWidth && x < buttonLeft + iconOuterWidth && y >= buttonTop && y < buttonTop + iconOuterHeight);
+    }
+
+    /**
+     * 密码显示切换
+     */
+    private void handleSwitchPasswordInputVisibility() {
+        int selectionStart = getSelectionStart();
+        int selectionEnd = getSelectionEnd();
+        if (passwordVisible) {
+            setTransformationMethod(null);
+        } else {
+            setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+        }
+        setSelection(selectionStart, selectionEnd);
+    }
+
+    /**
+     * 密码显示切换
+     */
+    private void togglePasswordIconVisibility() {
+        passwordVisible = !passwordVisible;
+        handleSwitchPasswordInputVisibility();
     }
 
     private int checkLength(CharSequence text) {

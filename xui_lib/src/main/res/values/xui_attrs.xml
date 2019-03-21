@@ -564,6 +564,8 @@
         <attr name="met_iconPadding" format="dimension" />
         <!-- 是否使用清除按钮 -->
         <attr name="met_clearButton" format="boolean" />
+        <!-- 是否使用显示密码按钮 -->
+        <attr name="met_passWordButton" format="boolean" />
         <!-- 悬浮提示文字的大小（默认12sp） -->
         <attr name="met_floatingLabelTextSize" format="dimension" />
         <!-- 悬浮提示文字的颜色 -->
