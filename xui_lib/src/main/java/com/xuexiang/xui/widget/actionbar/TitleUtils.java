@@ -16,7 +16,11 @@ import com.xuexiang.xui.utils.ResUtils;
  * @author xuexiang
  * @since 2018/11/14 下午2:16
  */
-public class TitleUtils {
+public final class TitleUtils {
+
+    private TitleUtils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
 
     //=================================静态添加=======================================//
     /**
