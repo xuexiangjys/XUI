@@ -9,6 +9,8 @@
     <string name="lab_please_select">请选择</string>
     <string name="tip_number_only_error_message">数字必须大于0小于100!</string>
     <string name="regexp_number_only">^[1-9]?\\d$</string>
+    <string name="tip_phone_number_error">Invalid mobile number！</string>
+    <string name="regex_phone_number">^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(16[6])|(17[0,1,3,5-8])|(18[0-9])|(19[8,9]))\\d{8}$</string>
 
     <string name="common_example">示例图片</string>
 

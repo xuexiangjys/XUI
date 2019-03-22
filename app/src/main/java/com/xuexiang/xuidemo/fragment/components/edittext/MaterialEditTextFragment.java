@@ -79,12 +79,14 @@ public class MaterialEditTextFragment extends BaseFragment {
 
     private void initValidationEt() {
         final MaterialEditText validationEt = findViewById(R.id.validationEt);
+        final MaterialEditText et_phone_number = findViewById(R.id.et_phone_number);
         validationEt.addValidator(new RegexpValidator("Only Integer Valid!", "\\d+"));
         final Button validateBt = findViewById(R.id.validateBt);
         validateBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validationEt.validate();
+                et_phone_number.validate();
             }
         });
     }

@@ -586,7 +586,10 @@
         <attr name="met_validateOnFocusLost" format="boolean" />
         <!-- 是否在文字显示的时候开始计算文字的数量（默认true）-->
         <attr name="met_checkCharactersCountAtBeginning" format="boolean" />
-
+        <!--校验的正则表达式-->
+        <attr name="met_regexp" format="string" />
+        <!--校验不通过的提示信息-->
+        <attr name="met_errorMessage" format="string" />
     </declare-styleable>
 
     <!-- PasswordEditText -->

@@ -286,6 +286,16 @@
                     android:textColor="#888888"
                     android:textSize="14sp" />
 
+                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                    android:id="@+id/et_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="please input phone number"
+                    android:inputType="number"
+                    app:met_errorMessage="@string/tip_phone_number_error"
+                    app:met_regexp="@string/regex_phone_number"
+                    app:met_clearButton="true" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

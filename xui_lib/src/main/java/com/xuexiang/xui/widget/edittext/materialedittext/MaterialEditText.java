@@ -37,9 +37,11 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.Utils;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.METLengthChecker;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.METValidator;
+import com.xuexiang.xui.widget.edittext.materialedittext.validation.RegexpValidator;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -395,7 +397,7 @@ public class MaterialEditText extends AppCompatEditText {
 
         primaryColor = typedArray.getColor(R.styleable.MaterialEditText_met_primaryColor, defaultPrimaryColor);
         setFloatingLabelInternal(typedArray.getInt(R.styleable.MaterialEditText_met_floatingLabel, 0));
-        errorColor = typedArray.getColor(R.styleable.MaterialEditText_met_errorColor, Color.parseColor("#e7492E"));
+        errorColor = typedArray.getColor(R.styleable.MaterialEditText_met_errorColor, ResUtils.getColor(R.color.xui_config_color_edittext_error_text));
         minCharacters = typedArray.getInt(R.styleable.MaterialEditText_met_minCharacters, 0);
         maxCharacters = typedArray.getInt(R.styleable.MaterialEditText_met_maxCharacters, 0);
         singleLineEllipsis = typedArray.getBoolean(R.styleable.MaterialEditText_met_singleLineEllipsis, false);
@@ -432,6 +434,17 @@ public class MaterialEditText extends AppCompatEditText {
         showPasswordButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_passWordButton, false);
         showPwIconBitmaps = generateIconBitmaps(R.drawable.pet_icon_visibility);
         hidePwIconBitmaps = generateIconBitmaps(R.drawable.pet_icon_visibility_off);
+
+        String regexp = typedArray.getString(R.styleable.MaterialEditText_met_regexp);
+        if (!TextUtils.isEmpty(regexp)) {
+            validators = new ArrayList<>();
+            String errorMessage = typedArray.getString(R.styleable.MaterialEditText_met_errorMessage);
+            if (!TextUtils.isEmpty(errorMessage)) {
+                validators.add(new RegexpValidator(errorMessage, regexp));
+            } else {
+                validators.add(new RegexpValidator(ResUtils.getString(R.string.xui_tip_input_error), regexp));
+            }
+        }
 
         iconPadding = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_iconPadding, getPixel(16));
         floatingLabelAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_floatingLabelAlwaysShown, false);
@@ -1635,4 +1648,30 @@ public class MaterialEditText extends AppCompatEditText {
         if (lengthChecker == null) return text.length();
         return lengthChecker.getLength(text);
     }
+
+    /**
+     * 清除内容
+     */
+    public void clear() {
+        if (!TextUtils.isEmpty(getText())) {
+            setText(null);
+        }
+    }
+
+    /**
+     * 获取输入的内容
+     * @return
+     */
+    public String getEditValue() {
+        return getEditableText().toString().trim();
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setFocusable(enabled);
+        super.setFocusableInTouchMode(enabled);
+        super.setEnabled(enabled);
+    }
+
+
 }
