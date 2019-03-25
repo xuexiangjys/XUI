@@ -1673,5 +1673,22 @@ public class MaterialEditText extends AppCompatEditText {
         super.setEnabled(enabled);
     }
 
+    /**
+     * 输入的内容是否为空
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return TextUtils.isEmpty(getEditValue());
+    }
+
+    /**
+     * 输入的内容是否不为空
+     *
+     * @return
+     */
+    public boolean isNotEmpty() {
+        return !TextUtils.isEmpty(getEditValue());
+    }
 
 }

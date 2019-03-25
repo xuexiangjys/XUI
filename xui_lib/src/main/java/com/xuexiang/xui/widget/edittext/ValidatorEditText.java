@@ -339,6 +339,24 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
     }
 
     /**
+     * 输入的内容是否为空
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return TextUtils.isEmpty(getInputValue());
+    }
+
+    /**
+     * 输入的内容是否不为空
+     *
+     * @return
+     */
+    public boolean isNotEmpty() {
+        return !TextUtils.isEmpty(getInputValue());
+    }
+
+    /**
      * 校验监听
      */
     public interface OnValidateListener {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -325,5 +326,23 @@ public class MultiLineEditText extends LinearLayout {
         mIsShowSurplusNumber = isShowSurplusNumber;
         configCount();
         return this;
+    }
+
+    /**
+     * 输入的内容是否为空
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return TextUtils.isEmpty(getContentText());
+    }
+
+    /**
+     * 输入的内容是否不为空
+     *
+     * @return
+     */
+    public boolean isNotEmpty() {
+        return !TextUtils.isEmpty(getContentText());
     }
 }
