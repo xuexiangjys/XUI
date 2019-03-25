@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/mlet_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:selectAllOnFocus="true"
+        android:textColor="@color/xui_config_color_edittext_textcolor"
+        android:textColorHint="@color/xui_config_color_edittext_hint_text"
+        android:textSize="?attr/xui_config_size_edittext_input_text" />
+
+    <TextView
+        android:id="@+id/mlet_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="3dp"
+        android:textColor="?attr/xui_config_color_explain_text"
+        android:textSize="?attr/xui_config_size_explain_text" />
+
+</LinearLayout>

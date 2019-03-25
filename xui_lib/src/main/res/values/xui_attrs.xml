@@ -634,7 +634,31 @@
             <enum name="top" value="2" />
             <enum name="bottom" value="3" />
         </attr>
+    </declare-styleable>
 
+    <declare-styleable name="MultiLineEditText">
+        <!--最大输入文字的数目，默认240-->
+        <attr name="mlet_maxCount" format="integer" />
+        <!--是否忽略中英文的差异，默认true-->
+        <attr name="mlet_ignoreCnOrEn" format="boolean" />
+        <!--输入框提示文字-->
+        <attr name="mlet_hintText" format="string|reference" />
+        <!--输入框提示文字的颜色-->
+        <attr name="mlet_hintTextColor" format="color|reference" />
+        <!--输入框的padding， 默认10dp-->
+        <attr name="mlet_contentPadding" format="dimension" />
+        <!--输入框背景-->
+        <attr name="mlet_contentBackground" format="reference" />
+        <!--输入框的内容-->
+        <attr name="mlet_contentText" format="string|reference" />
+        <!--输入框文字的大小-->
+        <attr name="mlet_contentTextSize" format="dimension|reference" />
+        <!--输入框文字的颜色-->
+        <attr name="mlet_contentTextColor" format="color|reference" />
+        <!--输入框的高度，默认140dp-->
+        <attr name="mlet_contentViewHeight" format="dimension|reference" />
+        <!--统计数字显示剩余数目,默认false-->
+        <attr name="mlet_showSurplusNumber" format="boolean" />
     </declare-styleable>
 
     <!--===============================ImageView======================================-->

@@ -32,9 +32,9 @@
                 android:id="@+id/clearEditText1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 app:cet_clearIcon="@drawable/icon_clear"
-                app:cet_clearIconSize="@dimen/default_clear_icon_size"
-                android:layout_margin="5dp" />
+                app:cet_clearIconSize="@dimen/default_clear_icon_size" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -75,6 +75,12 @@
                 android:textAlignment="viewStart"
                 app:pet_enableIconAlpha="true"
                 app:pet_hoverShowsPw="true" />
+
+            <com.xuexiang.xui.widget.edittext.MultiLineEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
