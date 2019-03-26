@@ -156,7 +156,7 @@
         <!--loading控件的大小，默认32dp-->
         <attr name="mlv_loading_view_size" format="dimension" />
         <!--loading控件的颜色，默认白色-->
-        <attr name="mlv_loading_view_color" format="color"/>
+        <attr name="mlv_loading_view_color" format="color" />
     </declare-styleable>
 
     <!--LoadingViewLayout-->
@@ -257,6 +257,36 @@
             <enum name="screen" value="15" />
             <enum name="add" value="16" />
         </attr>
+    </declare-styleable>
+
+    <!--星级评分控件-->
+    <declare-styleable name="RatingBar">
+        <!--总共最大的星级数，默认为5-->
+        <attr name="srb_numStars" format="integer" />
+        <!--最小星级数，默认为0-->
+        <attr name="srb_minimumStars" format="float" />
+        <!--当前的星级，默认为0-->
+        <attr name="srb_rating" format="float" />
+        <!--星星之间的间距，默认20px-->
+        <attr name="srb_starPadding" format="dimension" />
+        <!--星星为空时的图案-->
+        <attr name="srb_drawableEmpty" format="reference" />
+        <!--星星填充时的图案-->
+        <attr name="srb_drawableFilled" format="reference" />
+        <!--是否只是指示器，不可以评分？默认false-->
+        <attr name="srb_isIndicator" format="boolean" />
+        <!--是否可以滑动设置评分，默认true-->
+        <attr name="srb_scrollable" format="boolean" />
+        <!--是否可以点击设置评分，默认true-->
+        <attr name="srb_clickable" format="boolean" />
+        <!--重复点击是否可以清空评分，默认true-->
+        <attr name="srb_clearRatingEnabled" format="boolean" />
+        <!--星星的宽度，默认WRAP_CONTENT-->
+        <attr name="srb_starWidth" format="dimension" />
+        <!--星星的高度，默认WRAP_CONTENT-->
+        <attr name="srb_starHeight" format="dimension" />
+        <!--星星的进度单位，默认是1-->
+        <attr name="srb_stepSize" format="float" />
     </declare-styleable>
 
     <!--=============================Button========================================-->
@@ -666,9 +696,9 @@
     <attr name="RadiusImageViewStyle" format="reference" />
     <declare-styleable name="RadiusImageView">
         <!--边框宽度，默认：0-->
-        <attr name="riv_border_width" format="dimension"/>
+        <attr name="riv_border_width" format="dimension" />
         <!--边框的颜色，默认：Color.GRAY-->
-        <attr name="riv_border_color" format="color"/>
+        <attr name="riv_border_color" format="color" />
         <!--选中时，覆盖在图片上的图层颜色，默认：Color.TRANSPARENT-->
         <attr name="riv_selected_mask_color" format="color" />
         <!--边框选中时的颜色，默认：Color.GRAY-->
@@ -721,17 +751,17 @@
 
     <declare-styleable name="CookieBar">
         <!--CookieBar-->
-        <attr name="cookieTitleColor" format="color"/>
-        <attr name="cookieMessageColor" format="color"/>
-        <attr name="cookieActionColor" format="color"/>
-        <attr name="cookieBackgroundColor" format="color"/>
+        <attr name="cookieTitleColor" format="color" />
+        <attr name="cookieMessageColor" format="color" />
+        <attr name="cookieActionColor" format="color" />
+        <attr name="cookieBackgroundColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="StatusView">
         <attr name="sv_complete" format="reference" />
         <attr name="sv_error" format="reference" />
         <attr name="sv_loading" format="reference" />
-        <attr name="sv_dismissOnComplete" format="boolean"/>
+        <attr name="sv_dismissOnComplete" format="boolean" />
     </declare-styleable>
 
     <!--============================TabBar=========================================-->
@@ -769,31 +799,31 @@
 
     <declare-styleable name="TabSegment">
         <!--指示器的高度, 默认2dp-->
-        <attr name="ts_indicator_height" format="dimension"/>
+        <attr name="ts_indicator_height" format="dimension" />
         <!--是否显示指示器，默认true-->
-        <attr name="ts_has_indicator" format="boolean"/>
+        <attr name="ts_has_indicator" format="boolean" />
         <!--文字大小，默认16sp-->
-        <attr name="android:textSize" format="dimension"/>
+        <attr name="android:textSize" format="dimension" />
         <!--指示器是否在顶端，默认false-->
-        <attr name="ts_indicator_top" format="boolean"/>
+        <attr name="ts_indicator_top" format="boolean" />
         <!--指示器的模式，默认fixed-->
         <attr name="ts_mode" format="enum">
-            <enum name="scrollable" value="0"/>
-            <enum name="fixed" value="1"/>
+            <enum name="scrollable" value="0" />
+            <enum name="fixed" value="1" />
         </attr>
         <!--tab间的空隙，默认10dp-->
-        <attr name="ts_space" format="dimension"/>
+        <attr name="ts_space" format="dimension" />
         <!--图标的位置，默认left-->
         <attr name="ts_icon_position" format="enum">
-            <enum name="left" value="0"/>
-            <enum name="top" value="1"/>
-            <enum name="right" value="2"/>
-            <enum name="bottom" value="3"/>
+            <enum name="left" value="0" />
+            <enum name="top" value="1" />
+            <enum name="right" value="2" />
+            <enum name="bottom" value="3" />
         </attr>
         <!--文字的样式-->
-        <attr name="ts_typeface_provider" format="string"/>
+        <attr name="ts_typeface_provider" format="string" />
     </declare-styleable>
-    <attr name="TabSegmentStyle" format="reference"/>
+    <attr name="TabSegmentStyle" format="reference" />
 
     <declare-styleable name="VerticalTabLayout">
         <!--指示器的颜色，默认R.attr.colorAccent-->
@@ -816,7 +846,7 @@
             <enum name="scrollable" value="11" />
         </attr>
         <!--tab的高度，默认-2:WRAP_CONTENT-->
-        <attr name="vtl_tab_height" format="dimension"/>
+        <attr name="vtl_tab_height" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="TabControlView">
@@ -847,15 +877,15 @@
     <!--==============================Picker=======================================-->
     <declare-styleable name="WheelView">
         <attr name="wv_gravity">
-            <enum name="center" value="17"/>
-            <enum name="left" value="3"/>
-            <enum name="right" value="5"/>
+            <enum name="center" value="17" />
+            <enum name="left" value="3" />
+            <enum name="right" value="5" />
         </attr>
-        <attr name="wv_textSize" format="dimension"/>
-        <attr name="wv_textColorOut" format="color"/>
-        <attr name="wv_textColorCenter" format="color"/>
-        <attr name="wv_dividerColor" format="color"/>
-        <attr name="wv_lineSpacingMultiplier" format="float"/>
+        <attr name="wv_textSize" format="dimension" />
+        <attr name="wv_textColorOut" format="color" />
+        <attr name="wv_textColorCenter" format="color" />
+        <attr name="wv_dividerColor" format="color" />
+        <attr name="wv_lineSpacingMultiplier" format="float" />
     </declare-styleable>
 
     <!--=====================================================================-->
@@ -912,25 +942,25 @@
     <!--===========================XUIGroupListView==========================================-->
     <declare-styleable name="XUIGroupListView">
         <attr name="separatorStyle" format="enum">
-            <enum name="normal" value="0"/>
-            <enum name="none" value="1"/>
+            <enum name="normal" value="0" />
+            <enum name="none" value="1" />
         </attr>
     </declare-styleable>
     <declare-styleable name="XUICommonListItemView">
-        <attr name="xui_orientation"/>
+        <attr name="xui_orientation" />
         <attr name="xui_accessory_type" format="enum">
-            <enum name="none" value="0"/>
-            <enum name="chevron" value="1"/>
-            <enum name="switcher" value="2"/>
-            <enum name="custom" value="3"/>
+            <enum name="none" value="0" />
+            <enum name="chevron" value="1" />
+            <enum name="switcher" value="2" />
+            <enum name="custom" value="3" />
         </attr>
-        <attr name="xui_commonList_titleColor" format="color"/>
-        <attr name="xui_commonList_detailColor" format="color"/>
+        <attr name="xui_commonList_titleColor" format="color" />
+        <attr name="xui_commonList_detailColor" format="color" />
     </declare-styleable>
-    <attr name="XUIGroupListViewStyle" format="reference"/>
-    <attr name="XUICommonListItemViewStyle" format="reference"/>
-    <attr name="XUIGroupListSectionViewStyle" format="reference"/>
+    <attr name="XUIGroupListViewStyle" format="reference" />
+    <attr name="XUICommonListItemViewStyle" format="reference" />
+    <attr name="XUIGroupListSectionViewStyle" format="reference" />
     <attr name="XUITipPointStyle" format="reference" />
-    <attr name="XUITipNewStyle" format="reference"/>
+    <attr name="XUITipNewStyle" format="reference" />
 
 </resources>

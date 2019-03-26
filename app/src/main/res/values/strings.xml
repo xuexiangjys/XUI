@@ -205,4 +205,11 @@
     <string name="warning_message">Beware of the dog.</string>
     <string name="normal_message_without_icon">Normal toast w/o icon</string>
     <string name="normal_message_with_icon">Normal toast w/ icon</string>
+
+    <string name="ratingbar_title">RatingBar</string>
+    <string name="scale_ratingbar_title">ScaleRatingBar</string>
+    <string name="rotation_ratingbar_title">RotationRatingBar</string>
+    <string name="add_rating_title">增加星级</string>
+
+
 </resources>

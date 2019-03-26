@@ -1,10 +1,8 @@
 package com.xuexiang.xuidemo.fragment.components.popupwindow;
 
-import android.support.annotation.NonNull;
 import android.view.Gravity;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.widget.textview.label.LabelView;
 import com.xuexiang.xui.widget.toast.XToast;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
@@ -15,7 +13,7 @@ import java.util.List;
  * @author XUE
  * @since 2019/3/26 10:06
  */
-@Page(name = "XToast")
+@Page(name = "XToast\n多重样式的Toast显示")
 public class XToastFragment extends BaseSimpleListFragment {
 
     @Override
@@ -49,7 +47,7 @@ public class XToastFragment extends BaseSimpleListFragment {
      */
     @Override
     protected void onItemClick(int position) {
-        switch(position) {
+        switch (position) {
             case 0:
                 XToast.error(getContext(), R.string.error_message).show();
                 break;

@@ -1,4 +1,4 @@
-package com.xuexiang.xuidemo.fragment.components.loading;
+package com.xuexiang.xuidemo.fragment.components.progress;
 
 import android.view.View;
 import android.widget.Button;

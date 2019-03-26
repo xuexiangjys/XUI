@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/ratingbar_title"
+            android:textStyle="bold" />
+
+        <com.xuexiang.xui.widget.progress.ratingbar.RatingBar
+            android:id="@+id/rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            app:srb_numStars="7"
+            app:srb_rating="2.5"
+            app:srb_starHeight="35dp"
+            app:srb_starPadding="5dp"
+            app:srb_starWidth="35dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/scale_ratingbar_title"
+            android:textStyle="bold" />
+
+
+        <com.xuexiang.xui.widget.progress.ratingbar.ScaleRatingBar
+            android:id="@+id/scale_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            app:srb_rating="4"
+            app:srb_stepSize="0.5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/rotation_ratingbar_title"
+            android:textStyle="bold" />
+
+        <com.xuexiang.xui.widget.progress.ratingbar.RotationRatingBar
+            android:id="@+id/rrb_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            app:srb_drawableEmpty="@android:color/transparent"
+            app:srb_drawableFilled="@drawable/ic_star_green"
+            app:srb_isIndicator="true"
+            app:srb_starHeight="12dp"
+            app:srb_starPadding="3dp"
+            app:srb_starWidth="12dp">
+
+        </com.xuexiang.xui.widget.progress.ratingbar.RotationRatingBar>
+
+        <Button
+            android:id="@+id/btn_add_rating"
+            style="@style/Button.Blue.wrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/add_rating_title" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
