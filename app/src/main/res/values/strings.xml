@@ -197,4 +197,12 @@
     <string name="drawable_utils_separator_title">创建带上分隔线或下分隔线的 Drawable</string>
     <string name="lab_logout_confirm">是否确认退出？</string>
     <string name="lab_open_third_app">是否允许页面打开第三方应用?</string>
+
+
+    <string name="error_message">This is an error toast.</string>
+    <string name="success_message">Success!</string>
+    <string name="info_message">Here is some info for you.</string>
+    <string name="warning_message">Beware of the dog.</string>
+    <string name="normal_message_without_icon">Normal toast w/o icon</string>
+    <string name="normal_message_with_icon">Normal toast w/ icon</string>
 </resources>

@@ -60,6 +60,14 @@
     <color name="default_tcv_selected_color">@color/xui_config_color_main_theme</color>
     <color name="default_tcv_unselected_color">@color/xui_config_color_white</color>
 
+    <!--Toast-->
+    <color name="toast_default_text_color">@color/xui_config_color_white</color>
+    <color name="toast_error_color">@color/xui_config_color_red</color>
+    <color name="toast_info_color">#3F51B5</color>
+    <color name="toast_success_color">#388E3C</color>
+    <color name="toast_warning_color">@color/xui_config_color_waring</color>
+    <color name="toast_normal_tint_color">#353A3E</color>
+
     <!--*********************************************
     *              Config Color                     *
     **********************************************-->
@@ -148,7 +156,5 @@
     <color name="xui_config_color_edittext_stroke">#BEC2C7</color>
     <!--不可输入的填充颜色-->
     <color name="xui_config_color_edittext_disable">#EDF2F7</color>
-
-
 
 </resources>
