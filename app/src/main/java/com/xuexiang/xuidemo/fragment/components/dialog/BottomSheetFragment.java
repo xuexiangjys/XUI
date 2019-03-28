@@ -56,6 +56,7 @@ public class BottomSheetFragment extends BaseSimpleListFragment {
                 .addItem("Item 1")
                 .addItem("Item 2")
                 .addItem("Item 3")
+                .setIsCenter(true)
                 .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
                     @Override
                     public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
