@@ -52,6 +52,7 @@ public class BottomSheetFragment extends BaseSimpleListFragment {
     // ================================ 生成不同类型的BottomSheet
     private void showSimpleBottomSheetList() {
         new BottomSheet.BottomListSheetBuilder(getActivity())
+                .setTitle("标题")
                 .addItem("Item 1")
                 .addItem("Item 2")
                 .addItem("Item 3")

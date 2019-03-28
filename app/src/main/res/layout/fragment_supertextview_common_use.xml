@@ -6,66 +6,69 @@
     android:orientation="vertical">
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlEnablePureScrollMode="true"
-        app:srlEnableLoadMore="true"
-        app:srlDragRate="0.75">
+        app:srlEnableOverScrollDrag="true"
+        app:srlEnablePureScrollMode="true">
 
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:layout_height="match_parent">
 
-            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                app:sDividerLineType="both"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:sLeftIconRes="@drawable/icon_head_default"
-                app:sLeftTextString="帐号管理"
-                app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
 
-            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:sLeftTextString="通知设置"
-                app:sRightIconRes="@drawable/icon_arrow_right_red" />
-            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                android:layout_width="match_parent"
-                app:sLeftTextString="账号与安全"
-                app:sRightTextString="已保护"
-                app:sRightIconRes="@drawable/icon_arrow_right_red"
-                app:sRightTvDrawableLeft="@drawable/icon_crown"
-                android:layout_height="50dp" />
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    app:sDividerLineType="both"
+                    app:sLeftIconRes="@drawable/icon_head_default"
+                    app:sLeftTextString="帐号管理"
+                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
 
-            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:sDividerLineType="bottom"
-                app:sLeftTextString="设置中心"
-                app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:sLeftTextString="通知设置"
+                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:sLeftTextString="账号与安全"
+                    app:sRightIconRes="@drawable/icon_arrow_right_red"
+                    app:sRightTextString="已保护"
+                    app:sRightTvDrawableLeft="@drawable/icon_crown" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:sDividerLineType="bottom"
+                    app:sLeftTextString="设置中心"
+                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
 
 
-            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="50dp"
-                app:sDividerLineType="both"
-                app:sLeftTextString="意见反馈"
-                app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="50dp"
+                    app:sDividerLineType="both"
+                    app:sLeftTextString="意见反馈"
+                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
 
-            <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                app:sDividerLineType="both"
-                app:sLeftTextString="关于微博"
-                app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    app:sDividerLineType="both"
+                    app:sLeftTextString="关于微博"
+                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
 
-        </LinearLayout>
-
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

@@ -41,7 +41,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      */
     private static int DEFAULT_TEXT_COLOR = Color.WHITE;
 
-    private TextView mLeftText;
+    private XUIAlphaTextView mLeftText;
     private LinearLayout mRightLayout;
     private LinearLayout mCenterLayout;
     private TextView mCenterText;
@@ -149,7 +149,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     private void initView(Context context) {
-        mLeftText = new TextView(context);
+        mLeftText = new XUIAlphaTextView(context);
         mCenterLayout = new LinearLayout(context);
         mRightLayout = new LinearLayout(context);
         mDividerView = new View(context);
@@ -800,7 +800,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mSubTitleText.setTypeface(tf);
     }
 
-    public TextView getLeftText() {
+    public XUIAlphaTextView getLeftText() {
         return mLeftText;
     }
 

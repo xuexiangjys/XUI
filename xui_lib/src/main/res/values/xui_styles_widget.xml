@@ -271,5 +271,30 @@
         <item name="swb_thumbWidth">@dimen/swb_md_thumb_ripple_size</item>
         <item name="swb_thumbHeight">@dimen/swb_md_thumb_ripple_size</item>
     </style>
-    
+
+    <!--BottomSheet-->
+    <style name="BottomSheetTitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/xui_bottom_sheet_title_height</item>
+        <item name="android:background">?attr/xui_bottom_sheet_title_bg</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">?attr/xui_bottom_sheet_list_item_padding_horizontal</item>
+        <item name="android:paddingRight">?attr/xui_bottom_sheet_list_item_padding_horizontal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="BottomSheetListItemTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="BottomSheetTitleStyle.Center">
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="BottomSheetListItemTextStyle.Center">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

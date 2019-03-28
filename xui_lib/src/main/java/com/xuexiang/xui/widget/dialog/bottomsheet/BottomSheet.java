@@ -346,8 +346,8 @@ public class BottomSheet extends Dialog {
 
         private View buildViews() {
             View wrapperView = View.inflate(mContext, getContentViewLayoutId(), null);
-            mTitleTv = (TextView) wrapperView.findViewById(R.id.title);
-            mContainerView = (ListView) wrapperView.findViewById(R.id.listview);
+            mTitleTv = wrapperView.findViewById(R.id.title);
+            mContainerView = wrapperView.findViewById(R.id.listview);
             if (mTitle != null && mTitle.length() != 0) {
                 mTitleTv.setVisibility(View.VISIBLE);
                 mTitleTv.setText(mTitle);

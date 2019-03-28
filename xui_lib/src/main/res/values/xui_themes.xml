@@ -143,10 +143,12 @@
         <!--**********************************************
         *                 xui bottom sheet              *
         ***********************************************-->
+        <item name="xui_bottom_sheet_title_style">@style/BottomSheetTitleStyle</item>
         <item name="xui_bottom_sheet_title_appearance">@style/TextStyle.Title</item>
         <item name="xui_bottom_sheet_title_bg">?attr/xui_list_item_bg_with_border_bottom_selector</item>
 
         <item name="xui_bottom_sheet_list_item_padding_horizontal">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="xui_bottom_sheet_list_item_text_style">@style/BottomSheetListItemTextStyle</item>
         <item name="xui_bottom_sheet_list_item_text_appearance">@style/TextStyle.Content</item>
         <item name="xui_bottom_sheet_list_item_bg">?attr/xui_list_item_bg_with_border_bottom_selector</item>
         <item name="xui_bottom_sheet_grid_item_text_appearance">@style/TextStyle.Explain</item>

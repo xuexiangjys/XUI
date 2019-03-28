@@ -189,6 +189,8 @@
     <!--**********************************************
     *              xui bottom sheet                 *
     **********************************************-->
+
+    <attr name="xui_bottom_sheet_title_style" format="reference" />
     <attr name="xui_bottom_sheet_title_height" format="dimension" />
     <attr name="xui_bottom_sheet_title_appearance" format="reference" />
     <attr name="xui_bottom_sheet_title_bg" format="reference" />
@@ -197,7 +199,10 @@
     <attr name="xui_bottom_sheet_list_item_height" format="dimension" />
     <attr name="xui_bottom_sheet_list_item_mark_margin_left" format="dimension" />
     <attr name="xui_bottom_sheet_list_item_tip_point_margin_left" format="dimension" />
+
+    <attr name="xui_bottom_sheet_list_item_text_style" format="reference" />
     <attr name="xui_bottom_sheet_list_item_text_appearance" format="reference" />
+
     <attr name="xui_bottom_sheet_list_item_bg" format="reference" />
     <attr name="xui_bottom_sheet_list_item_icon_size" format="dimension" />
     <attr name="xui_bottom_sheet_list_item_icon_margin_right" format="dimension" />
