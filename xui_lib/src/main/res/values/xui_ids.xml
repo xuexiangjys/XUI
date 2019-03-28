@@ -4,6 +4,7 @@
     <!--SuperTextView-->
     <item name="sLeftViewId" type="id" />
     <item name="sCenterViewId" type="id" />
+    <item name="sCenterEditTextId" type="id" />
     <item name="sRightViewId" type="id" />
     <item name="sLeftImgId" type="id" />
     <item name="sRightImgId" type="id" />

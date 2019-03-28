@@ -107,4 +107,22 @@
         <item name="cpOverlayBackground">@color/color_green</item>
     </style>
 
+    <style name="EditInfoItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="sLeftTextSize">17sp</item>
+        <item name="sLeftTextColor">@color/xui_config_color_black</item>
+        <item name="sCenterTextColor">@color/xui_config_color_black</item>
+        <item name="sLeftViewWidth">60dp</item>
+        <item name="sLeftViewGravity">left_center</item>
+        <item name="sCenterViewGravity">left_center</item>
+        <item name="sCenterViewMarginLeft">25dp</item>
+        <item name="sCenterViewMarginRight">25dp</item>
+        <item name="sDividerLineHeight">2dp</item>
+        <item name="sRightTextSize">13sp</item>
+        <item name="sRightViewMarginRight">0dp</item>
+        <item name="sUseRipple">false</item>
+        <item name="sEnableEdit">true</item>
+    </style>
+
 </resources>

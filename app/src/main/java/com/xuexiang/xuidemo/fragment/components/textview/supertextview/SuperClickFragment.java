@@ -1,5 +1,6 @@
 package com.xuexiang.xuidemo.fragment.components.textview.supertextview;
 
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
@@ -19,6 +20,10 @@ public class SuperClickFragment extends BaseFragment {
     SuperTextView superTextView_cb;
     @BindView(R.id.super_switch_tv)
     SuperTextView superTextView_switch;
+    @BindView(R.id.stv_name)
+    SuperTextView stvName;
+    @BindView(R.id.stv_phone)
+    SuperTextView stvPhone;
 
     @Override
     protected int getLayoutId() {
@@ -96,7 +101,6 @@ public class SuperClickFragment extends BaseFragment {
         });
 
 
-
         superTextView_cb.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
             public void onClickListener(SuperTextView superTextView) {
@@ -120,5 +124,20 @@ public class SuperClickFragment extends BaseFragment {
                 ToastUtils.toast("isChecked : " + isChecked);
             }
         });
+
+        stvName.setCenterEditTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                ToastUtils.toast("聚焦变化：" + hasFocus);
+            }
+        });
+
+        stvPhone.setCenterEditTextClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.toast("点击监听");
+            }
+        });
     }
+
 }

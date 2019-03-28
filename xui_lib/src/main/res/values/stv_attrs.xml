@@ -171,6 +171,18 @@
             <enum name="switchBtn" value="1" />
         </attr>
 
+        <!--中间是否可编辑，默认false-->
+        <attr name="sEnableEdit" format="boolean"/>
+        <attr name="sEditBackGround" format="reference"/>
+        <!--MATCH_PARENT=-1(默认), WRAP_CONTENT=-2-->
+        <attr name="sEditTextWidth" format="dimension"/>
+        <attr name="sEditTextString" format="string"/>
+        <!--输入框的提示信息-->
+        <attr name="sEditTextHint" format="string"/>
+        <!--是否支持清空按钮，默认true-->
+        <attr name="sEditTextClearButton" format="boolean"/>
+        <attr name="android:inputType" />
+
         <!--CheckBox-->
         <attr name="sRightCheckBoxRes" format="reference" />
         <attr name="sRightCheckBoxMarginRight" format="dimension" />
