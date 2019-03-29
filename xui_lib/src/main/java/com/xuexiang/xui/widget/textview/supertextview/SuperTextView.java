@@ -73,7 +73,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private String mCenterTopTextString;
     private String mCenterBottomTextString;
 
-
     private int mLeftTextColor;
     private int mLeftTopTextColor;
     private int mLeftBottomTextColor;
@@ -1339,6 +1338,19 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     }
 
     /**
+     * 设置输入框字符串
+     *
+     * @param string 字符串
+     * @return 方便链式调用
+     */
+    public SuperTextView setCenterEditString(CharSequence string) {
+        if (mCenterEditText != null) {
+            mCenterEditText.setText(string);
+        }
+        return this;
+    }
+
+    /**
      * 设置中下字符串
      *
      * @param string 字符串
@@ -1893,6 +1905,30 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             return mCenterEditText.getText().toString();
         }
         return "";
+    }
+
+    /**
+     * 获取输入框内容是否为空
+     *
+     * @return
+     */
+    public boolean isEditEmpty() {
+        if (mCenterEditText != null) {
+            return TextUtils.isEmpty(mCenterEditText.getText().toString());
+        }
+        return true;
+    }
+
+    /**
+     * 获取输入框内容是否不为空
+     *
+     * @return
+     */
+    public boolean isEditNotEmpty() {
+        if (mCenterEditText != null) {
+            return !TextUtils.isEmpty(mCenterEditText.getText().toString());
+        }
+        return false;
     }
 
     /**
