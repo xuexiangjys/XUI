@@ -24,7 +24,6 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xutil.app.AppUtils;
@@ -40,7 +39,7 @@ import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
  * @author xuexiang
  * @since 2019/1/6 下午12:11
  */
-@Page(name = "关于", anim = CoreAnim.none)
+@Page(name = "关于")
 public class AboutFragment extends BaseFragment {
 
     @BindView(R.id.version)
@@ -56,8 +55,6 @@ public class AboutFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        getContainer().switchTab(false);
-
         mVersionTextView.setText(String.format("版本号：%s", AppUtils.getAppVersionName()));
 
         XUIGroupListView.newSection(getContext())
@@ -89,10 +86,6 @@ public class AboutFragment extends BaseFragment {
         Intent intent = new Intent(getContext(), AgentWebActivity.class);
         intent.putExtra(KEY_URL, url);
         startActivity(intent);
-    }
-
-    public MainActivity getContainer() {
-        return (MainActivity) getActivity();
     }
 
 }

@@ -29,7 +29,6 @@ import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment;
@@ -51,7 +50,7 @@ import static com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreview
  * @author xuexiang
  * @since 2019/1/7 上午9:14
  */
-@Page(name = "扫码关注", anim = CoreAnim.none)
+@Page(name = "扫码关注")
 public class QRCodeFragment extends BaseFragment implements View.OnClickListener, View.OnLongClickListener {
 
     @BindView(R.id.iv_qq_group)
@@ -66,7 +65,7 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     protected void initViews() {
-        getContainer().switchTab(false);
+
     }
 
     @Override
@@ -94,10 +93,6 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
             default:
                 break;
         }
-    }
-
-    public MainActivity getContainer() {
-        return (MainActivity) getActivity();
     }
 
     @Override

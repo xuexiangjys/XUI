@@ -86,7 +86,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.1'
 
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.4'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.5'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime

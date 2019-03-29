@@ -1,6 +1,5 @@
 package com.xuexiang.xuidemo.activity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -12,8 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.xuexiang.xpage.base.XPageActivity;
-import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.ViewUtils;
@@ -23,6 +20,7 @@ import com.xuexiang.xuidemo.adapter.menu.DrawerAdapter;
 import com.xuexiang.xuidemo.adapter.menu.DrawerItem;
 import com.xuexiang.xuidemo.adapter.menu.SimpleItem;
 import com.xuexiang.xuidemo.adapter.menu.SpaceItem;
+import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.fragment.AboutFragment;
 import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 import com.xuexiang.xuidemo.fragment.ExpandsFragment;
@@ -36,9 +34,6 @@ import com.yarolegovich.slidingrootnav.callback.DragStateListener;
 import java.util.Arrays;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * 项目壳工程
@@ -46,20 +41,12 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * @author xuexiang
  * @since 2018/11/13 下午5:20
  */
-public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemSelectedListener {
+public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSelectedListener {
     private static final int POS_COMPONENTS = 0;
     private static final int POS_UTILITYS = 1;
     private static final int POS_EXPANDS = 2;
     private static final int POS_ABOUT = 3;
     private static final int POS_LOGOUT = 5;
-
-    Unbinder unbinder;
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        //注入字体
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
@@ -77,9 +64,7 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        XUI.initTheme(this);
         super.onCreate(savedInstanceState);
-        unbinder = ButterKnife.bind(this);
 
         initSlidingMenu(savedInstanceState);
 
@@ -117,13 +102,13 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
                 mAdapter.setSelected(tab.getPosition());
                 switch (tab.getPosition()) {
                     case POS_COMPONENTS:
-                        openPage(ComponentsFragment.class);
+                        switchPage(ComponentsFragment.class);
                         break;
                     case 1:
-                        openPage(UtilitysFragment.class);
+                        switchPage(UtilitysFragment.class);
                         break;
                     case 2:
-                        openPage(ExpandsFragment.class);
+                        switchPage(ExpandsFragment.class);
                         break;
                     default:
                         break;
@@ -141,13 +126,13 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
         });
     }
 
-    public void switchTab(final boolean isShow) {
-        if (isShow) {
-            ViewUtils.slideIn(mTabLayout,300, null, ViewUtils.Direction.BOTTOM_TO_TOP);
-        } else {
-            ViewUtils.slideOut(mTabLayout,300, null, ViewUtils.Direction.TOP_TO_BOTTOM);
-        }
-    }
+//    public void switchTab(final boolean isShow) {
+//        if (isShow) {
+//            ViewUtils.slideIn(mTabLayout,300, null, ViewUtils.Direction.BOTTOM_TO_TOP);
+//        } else {
+//            ViewUtils.slideOut(mTabLayout,300, null, ViewUtils.Direction.TOP_TO_BOTTOM);
+//        }
+//    }
 
     public void openMenu() {
         if (mSlidingRootNav != null) {
@@ -183,8 +168,8 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
         mSlidingRootNav.getLayout().findViewById(R.id.iv_qrcode).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPage(QRCodeFragment.class);
-                mSlidingRootNav.closeMenu();
+                openNewPage(QRCodeFragment.class);
+//                mSlidingRootNav.closeMenu();
             }
         });
 
@@ -203,22 +188,17 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
         list.setAdapter(mAdapter);
 
         mAdapter.setSelected(POS_COMPONENTS);
-        mSlidingRootNav.setMenuLocked(true);
+        mSlidingRootNav.setMenuLocked(false);
         mSlidingRootNav.getLayout().addDragStateListener(new DragStateListener() {
             @Override
             public void onDragStart() {
-                if (mSlidingRootNav.isMenuOpened()) {
-                    ViewUtils.fadeOut(mLLMenu, 300, null);
-                } else {
-                    ViewUtils.fadeIn(mLLMenu, 300, null);
-                }
+
             }
             @Override
             public void onDragEnd(boolean isMenuOpened) {
 
             }
         });
-        mLLMenu.setVisibility(View.GONE);
     }
 
     @Override
@@ -236,8 +216,8 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
                 mSlidingRootNav.closeMenu();
                 break;
             case POS_ABOUT:
-                openPage(AboutFragment.class);
-                mSlidingRootNav.closeMenu();
+                openNewPage(AboutFragment.class);
+//                mSlidingRootNav.closeMenu();
                 break;
             case POS_LOGOUT:
                 DialogLoader.getInstance().showConfirmDialog(
@@ -290,11 +270,7 @@ public class MainActivity extends XPageActivity implements DrawerAdapter.OnItemS
         return icons;
     }
 
-    @Override
-    protected void onRelease() {
-        unbinder.unbind();
-        super.onRelease();
-    }
+
 
 
 }

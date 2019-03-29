@@ -118,8 +118,8 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
     public void onItemClick(View itemView, int pos) {
         PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
         if (widgetInfo != null) {
-            openPage(widgetInfo.getName());
-            getContainer().switchTab(false);
+            openNewPage(widgetInfo.getName());
+//            getContainer().switchTab(false);
         }
     }
 
@@ -127,13 +127,13 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
         return (MainActivity) getActivity();
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            getContainer().switchTab(true);
-        }
-    }
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (!hidden) {
+//            getContainer().switchTab(true);
+//        }
+//    }
 
     /**
      * 菜单、返回键响应

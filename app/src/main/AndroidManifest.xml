@@ -81,6 +81,7 @@
                 <data android:mimeType="application/vnd.wap.xhtml+xml" />
             </intent-filter>
         </activity>
+        <activity android:name=".base.BaseActivity" />
 
         <!--应用监听服务-->
         <service android:name=".fragment.expands.floatview.service.AppMonitorService" />
