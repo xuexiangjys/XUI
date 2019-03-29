@@ -68,7 +68,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
             @Override
             @SingleClick
             public void performAction(View view) {
-                openPage(AboutFragment.class);
+                openNewPage(AboutFragment.class);
             }
         });
         return titleBar;
@@ -119,21 +119,12 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
         PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
         if (widgetInfo != null) {
             openNewPage(widgetInfo.getName());
-//            getContainer().switchTab(false);
         }
     }
 
     public MainActivity getContainer() {
         return (MainActivity) getActivity();
     }
-
-//    @Override
-//    public void onHiddenChanged(boolean hidden) {
-//        super.onHiddenChanged(hidden);
-//        if (!hidden) {
-//            getContainer().switchTab(true);
-//        }
-//    }
 
     /**
      * 菜单、返回键响应
