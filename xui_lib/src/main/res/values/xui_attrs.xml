@@ -409,6 +409,28 @@
         <attr name="swb_textAdjust" format="dimension" />
     </declare-styleable>
 
+
+    <!-- 阴影 -->
+    <declare-styleable name="ShadowDrawable">
+        <!-- 阴影圆角弧度-->
+        <attr name="sd_shadowRadius" format="dimension" />
+        <!-- 阴影颜色 -->
+        <attr name="sd_shadowColor" format="color" />
+        <!--形状， 默认rectangle-->
+        <attr name="sd_shapeType" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="round" value="1" />
+        </attr>
+        <!-- 圆角弧度 -->
+        <attr name="sd_shapeRadius" format="dimension" />
+        <!-- X轴阴影偏移 -->
+        <attr name="sd_offsetX" format="dimension" />
+        <!-- Y轴阴影偏移 -->
+        <attr name="sd_offsetY" format="dimension" />
+        <!-- 背景颜色 -->
+        <attr name="sd_bgColor" format="color" />
+    </declare-styleable>
+
     <!--===============================Spinner======================================-->
     <!--MaterialSpinner-->
     <declare-styleable name="MaterialSpinner">

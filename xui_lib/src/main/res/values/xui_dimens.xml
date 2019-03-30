@@ -90,6 +90,10 @@
     <dimen name="default_rb_border_width">1dp</dimen>
     <dimen name="default_rb_radius">5dp</dimen>
 
+    <!--ShadowDrawable-->
+    <dimen name="default_sd_shadow_radius">8dp</dimen>
+    <dimen name="default_sd_shape_radius">5dp</dimen>
+
     <!--SwitchButton-->
     <dimen name="swb_md_thumb_ripple_size">42dp</dimen>
     <dimen name="swb_md_thumb_solid_inset">11dp</dimen>
