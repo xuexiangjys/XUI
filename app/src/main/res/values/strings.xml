@@ -210,6 +210,8 @@
     <string name="scale_ratingbar_title">ScaleRatingBar</string>
     <string name="rotation_ratingbar_title">RotationRatingBar</string>
     <string name="add_rating_title">增加星级</string>
+    <string name="title_grade_class_select">班级选择</string>
+    <string name="title_sex_select">性别选择</string>
 
 
 </resources>

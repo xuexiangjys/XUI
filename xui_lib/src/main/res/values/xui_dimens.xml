@@ -317,9 +317,9 @@
     <!--标题文字大小-->
     <dimen name="xui_config_size_title_text_phone">18sp</dimen>
     <!--正文内容文字大小-->
-    <dimen name="xui_config_size_content_text_phone">15dp</dimen>
+    <dimen name="xui_config_size_content_text_phone">15sp</dimen>
     <!--辅助说明文字大小-->
-    <dimen name="xui_config_size_explain_text_phone">12dp</dimen>
+    <dimen name="xui_config_size_explain_text_phone">12sp</dimen>
 
     <!--*********************************************
     *                  EditText                     *

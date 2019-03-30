@@ -79,7 +79,7 @@ public class OptionsPickerViewFragment extends BaseFragment {
                 sexSelectOption = options1;
             }
         })
-                .setTitleText("性别选择")
+                .setTitleText(getString(R.string.title_sex_select))
                 .setSelectOptions(sexSelectOption)
                 .build();
         pvOptions.setPicker(mSexOption);
@@ -99,7 +99,7 @@ public class OptionsPickerViewFragment extends BaseFragment {
                 classSelectOption = options2;
             }
         })
-                .setTitleText("班级选择")
+                .setTitleText(getString(R.string.title_grade_class_select))
                 .setSelectOptions(gradeSelectOption, classSelectOption)
                 .build();
         pvOptions.setNPicker(mGradeOption, mClassOption);

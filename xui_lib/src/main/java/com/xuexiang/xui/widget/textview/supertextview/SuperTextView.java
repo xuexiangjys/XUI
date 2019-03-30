@@ -244,7 +244,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private String mEditTextString;
     private int mEditTextInputType;
     private boolean mEditTextClearButton = true;
-    private OnFocusChangeListener mOnFocusChangeListener;
 
     private static final int TYPE_CHECKBOX = 0;
     private static final int TYPE_SWITCH = 1;
