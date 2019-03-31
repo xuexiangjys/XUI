@@ -191,7 +191,7 @@ public class ShadowDrawable extends Drawable {
             return this;
         }
 
-        public ShadowDrawable builder() {
+        public ShadowDrawable build() {
             return new ShadowDrawable(mShape, mBgColor, mShapeRadius, mShadowColor, mShadowRadius, mOffsetX, mOffsetY);
         }
     }
@@ -209,7 +209,7 @@ public class ShadowDrawable extends Drawable {
                 .setShadowRadius(shadowRadius)
                 .setOffsetX(offsetX)
                 .setOffsetY(offsetY)
-                .builder();
+                .build();
         view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         ViewCompat.setBackground(view, drawable);
     }
@@ -222,7 +222,7 @@ public class ShadowDrawable extends Drawable {
                 .setShadowRadius(shadowRadius)
                 .setOffsetX(offsetX)
                 .setOffsetY(offsetY)
-                .builder();
+                .build();
         view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         ViewCompat.setBackground(view, drawable);
     }
@@ -236,7 +236,7 @@ public class ShadowDrawable extends Drawable {
                 .setShadowRadius(shadowRadius)
                 .setOffsetX(offsetX)
                 .setOffsetY(offsetY)
-                .builder();
+                .build();
         view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         ViewCompat.setBackground(view, drawable);
     }
@@ -249,7 +249,7 @@ public class ShadowDrawable extends Drawable {
                 .setShadowRadius(shadowRadius)
                 .setOffsetX(offsetX)
                 .setOffsetY(offsetY)
-                .builder();
+                .build();
         view.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         ViewCompat.setBackground(view, drawable);
     }
@@ -271,17 +271,25 @@ public class ShadowDrawable extends Drawable {
         int offsetX = typedArray.getDimensionPixelSize(R.styleable.ShadowDrawable_sd_offsetX, 0);
         int offsetY = typedArray.getDimensionPixelSize(R.styleable.ShadowDrawable_sd_offsetY, 0);
         int bgColor = typedArray.getColor(R.styleable.ShadowDrawable_sd_bgColor, ResUtils.getColor(R.color.xui_config_color_white));
+        int secondBgColor = typedArray.getColor(R.styleable.ShadowDrawable_sd_secondBgColor, -1);
+
+
         typedArray.recycle();
 
-        return new Builder()
-                .setBgColor(bgColor)
+        Builder builder = new Builder()
                 .setShape(shape)
                 .setShapeRadius(shapeRadius)
                 .setShadowColor(shadowColor)
                 .setShadowRadius(shadowRadius)
                 .setOffsetX(offsetX)
-                .setOffsetY(offsetY)
-                .builder();
+                .setOffsetY(offsetY);
+
+        if (secondBgColor != -1) {
+            builder.setBgColor(new int[]{bgColor, secondBgColor});
+        } else {
+            builder.setBgColor(bgColor);
+        }
+        return builder.build();
     }
 
 }

@@ -8,6 +8,7 @@ import com.xuexiang.xuidemo.fragment.components.button.ButtonStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ButtonViewFragment;
 import com.xuexiang.xuidemo.fragment.components.button.RoundButtonFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ShadowButtonFragment;
+import com.xuexiang.xuidemo.fragment.components.button.ShadowViewFragment;
 import com.xuexiang.xuidemo.fragment.components.button.SwitchButtonFragment;
 
 /**
@@ -29,6 +30,7 @@ public class ButtonFragment extends ComponentContainerFragment {
         return new Class[]{
                 ButtonStyleFragment.class,
                 ShadowButtonFragment.class,
+                ShadowViewFragment.class,
                 RoundButtonFragment.class,
                 ButtonViewFragment.class,
                 SwitchButtonFragment.class,

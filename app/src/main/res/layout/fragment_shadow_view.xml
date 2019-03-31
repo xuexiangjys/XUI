@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.xuexiang.xui.widget.shadow.ShadowButton
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="默认样式" />
+
+        <com.xuexiang.xui.widget.shadow.ShadowTextView
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp"
+            android:text="ShadowTextView"
+            android:textColor="@color/xui_config_color_white"
+            app:sd_bgColor="?attr/colorAccent"
+            app:sd_offsetX="5dp"
+            app:sd_offsetY="5dp"
+            app:sd_shadowRadius="5dp"
+            app:sd_shapeRadius="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.xuexiang.xui.widget.shadow.ShadowButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:sd_shadowRadius="10dp"
+            app:sd_shapeType="round" />
+
+
+        <com.xuexiang.xui.widget.shadow.ShadowTextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp"
+            android:text="渐变色"
+            android:textColor="@color/xui_config_color_white"
+            app:sd_bgColor="?attr/colorAccent"
+            app:sd_offsetX="5dp"
+            app:sd_offsetY="5dp"
+            app:sd_secondBgColor="@color/color_green"
+            app:sd_shadowRadius="5dp"
+            app:sd_shapeRadius="5dp"
+            app:sd_shapeType="round" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -429,6 +429,8 @@
         <attr name="sd_offsetY" format="dimension" />
         <!-- 背景颜色 -->
         <attr name="sd_bgColor" format="color" />
+        <!-- 第二背景颜色，渐变色使用 -->
+        <attr name="sd_secondBgColor" format="color" />
     </declare-styleable>
 
     <!--===============================Spinner======================================-->
