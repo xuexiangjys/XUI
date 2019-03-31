@@ -81,7 +81,7 @@
         <item name="cpGridItemBackground">@drawable/cp_grid_item_bg</item>
         <item name="cpGridItemSpace">@dimen/cp_grid_item_space</item>
 
-        <item name="cpSectionHeight">@dimen/cp_section_height</item>
+        <item name="cpSectionHeight">@dimen/custom_section_height</item>
         <item name="cpSectionTextSize">@dimen/cp_section_text_size</item>
         <item name="cpSectionTextColor">@color/cp_color_gray</item>
         <item name="cpSectionBackground">@color/cp_color_section_bg</item>

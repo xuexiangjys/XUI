@@ -23,6 +23,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
 import com.xuexiang.citypicker.CityPicker;
 import com.xuexiang.citypicker.adapter.OnLocationListener;
 import com.xuexiang.citypicker.adapter.OnPickListener;
@@ -30,11 +32,13 @@ import com.xuexiang.citypicker.model.City;
 import com.xuexiang.citypicker.model.HotCity;
 import com.xuexiang.citypicker.model.LocateState;
 import com.xuexiang.citypicker.model.LocatedCity;
+import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.LocationService;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
@@ -42,6 +46,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.xuexiang.xaop.consts.PermissionConsts.LOCATION;
 
 /**
  * @author xuexiang
@@ -111,38 +117,55 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
                 getActivity().setTheme(mTheme);
                 break;
             case R.id.btn_pick:
-                CityPicker.from(this)
-                        .enableAnimation(mEnableAnimation)
-                        .setAnimationStyle(mAnim)
-                        .setLocatedCity(null)
-                        .setHotCities(mHotCities)
-                        .setOnPickListener(new OnPickListener() {
-                            @Override
-                            public void onPick(int position, City data) {
-                                tvCurrent.setText(String.format("当前城市：%s，%s", data.getName(), data.getCode()));
-                                ToastUtils.toast(String.format("点击的数据：%s，%s", data.getName(), data.getCode()));
-                            }
-
-                            @Override
-                            public void onCancel() {
-                                ToastUtils.toast("取消选择");
-                            }
-
-                            @Override
-                            public void onLocate(final OnLocationListener locationListener) {
-                                //开始定位，这里模拟一下定位
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        locationListener.onLocationChanged(new LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS);
-                                    }
-                                }, 3000);
-                            }
-                        })
-                        .show();
+                pickCity();
+                break;
+            default:
                 break;
         }
     }
+
+    @Permission(LOCATION)
+    private void pickCity() {
+        CityPicker.from(this)
+                .enableAnimation(mEnableAnimation)
+                .setAnimationStyle(mAnim)
+                .setLocatedCity(null)
+                .setHotCities(mHotCities)
+                .setOnPickListener(new OnPickListener() {
+
+                    OnBDLocationListener mListener = new OnBDLocationListener();
+
+                    @Override
+                    public void onPick(int position, City data) {
+                        tvCurrent.setText(String.format("当前城市：%s，%s", data.getName(), data.getCode()));
+                        ToastUtils.toast(String.format("点击的数据：%s，%s", data.getName(), data.getCode()));
+                        LocationService.stop(mListener);
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        ToastUtils.toast("取消选择");
+                        LocationService.stop(mListener);
+                    }
+
+                    @Override
+                    public void onLocate(final OnLocationListener locationListener) {
+                        //开始定位
+                        mListener.setOnLocationListener(locationListener);
+                        LocationService.start(mListener);
+//                                new Handler().postDelayed(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        //模拟定位成功
+//                                        locationListener.onLocationChanged(new LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS);
+//                                    }
+//                                }, 5000);
+                    }
+
+                })
+                .show();
+    }
+
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -165,6 +188,8 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
             case R.id.cb_enable_anim:
                 mEnableAnimation = isChecked;
                 break;
+            default:
+                break;
         }
     }
 
@@ -172,6 +197,27 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
     public void onDestroyView() {
         super.onDestroyView();
         XUI.initTheme(getActivity()); //主题还原
+    }
+
+    /**
+     * 百度定位
+     */
+    public static class OnBDLocationListener extends BDAbstractLocationListener {
+
+        private OnLocationListener mOnLocationListener;
+
+        public OnBDLocationListener setOnLocationListener(OnLocationListener onLocationListener) {
+            mOnLocationListener = onLocationListener;
+            return this;
+        }
+
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            if (mOnLocationListener != null) {
+                mOnLocationListener.onLocationChanged(new LocatedCity(bdLocation.getCity(), bdLocation.getProvince(), bdLocation.getCityCode()), LocateState.SUCCESS);
+                LocationService.get().unregisterListener(this);
+            }
+        }
     }
 
 }
