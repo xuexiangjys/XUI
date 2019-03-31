@@ -20,6 +20,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.RefreshBasicFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.RefreshHeadViewFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.RefreshStatusLayoutFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.RefreshStyleFragment;
 
@@ -40,6 +41,7 @@ public class RefreshLayoutFragment extends ComponentContainerFragment {
                 RefreshBasicFragment.class,
                 RefreshStatusLayoutFragment.class,
                 RefreshStyleFragment.class,
+                RefreshHeadViewFragment.class
         };
     }
 }
