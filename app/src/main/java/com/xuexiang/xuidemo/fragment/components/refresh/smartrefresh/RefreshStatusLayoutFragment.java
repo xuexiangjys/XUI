@@ -77,7 +77,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
         mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
-                mRefreshLayout.getLayout().postDelayed(new Runnable() {
+                refreshLayout.getLayout().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         Status status = getRefreshStatus();

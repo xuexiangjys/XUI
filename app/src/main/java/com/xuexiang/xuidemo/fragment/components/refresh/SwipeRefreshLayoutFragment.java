@@ -75,7 +75,9 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
             @Override
             public void run() {
                 mAdapter.refresh(DemoDataProvider.getDemoData());
-                swipeRefreshLayout.setRefreshing(false);
+                if (swipeRefreshLayout != null) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
             }
         }, 1000);
     }
