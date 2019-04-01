@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.style;
+package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 
 import android.content.Context;
 import android.support.annotation.StringRes;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh;
+package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -47,7 +47,7 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
  * @author xuexiang
  * @since 2018/12/7 下午3:30
  */
-@Page(name = "刷新状态布局")
+@Page(name = "刷新状态布局\n自动切换状态，包含出错、无网络、暂无数据等")
 public class RefreshStatusLayoutFragment extends BaseFragment {
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh;
+package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh;
 
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -39,7 +39,7 @@ import static android.R.layout.simple_list_item_2;
  * @author xuexiang
  * @since 2018/12/6 下午5:57
  */
-@Page(name = "下拉刷新基础用法")
+@Page(name = "下拉刷新基础用法\n上拉加载、下拉刷新、自动刷新和点击事件")
 public class RefreshBasicFragment extends BaseFragment {
 
     private SmartRecyclerAdapter<String> mAdapter;

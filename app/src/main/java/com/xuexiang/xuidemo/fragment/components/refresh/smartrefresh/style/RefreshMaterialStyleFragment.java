@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.style;
+package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
@@ -26,25 +24,18 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 
+import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
-import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.DynamicTimeFormat;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
 
 import butterknife.BindView;
 
@@ -53,26 +44,15 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author xuexiang
- * @since 2018/12/7 上午12:45
+ * @since 2018/12/7 上午1:43
  */
-@Page(name = "经典样式")
-public class RefreshClassicsStyleFragment extends BaseFragment implements SmartViewHolder.OnItemClickListener {
-    @BindView(R.id.recyclerView)
-    RecyclerView mRecyclerView;
-    @BindView(R.id.refreshLayout)
-    SmartRefreshLayout mRefreshLayout;
-
-    private ClassicsHeader mClassicsHeader;
-    private Drawable mDrawableProgress;
+@Page(name = "Material Design风格")
+public class RefreshMaterialStyleFragment extends BaseFragment implements SmartViewHolder.OnItemClickListener{
 
     private TitleBar mTitleBar;
-
-
-    @Override
-    protected TitleBar initTitle() {
-        mTitleBar = super.initTitle();
-        return mTitleBar;
-    }
+    @BindView(R.id.refreshLayout)
+    SmartRefreshLayout mRefreshLayout;
+    private MaterialHeader mMaterialHeader;
 
     /**
      * 点击
@@ -85,37 +65,17 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
         if (!RefreshState.None.equals(mRefreshLayout.getState())) return;
 
         switch (Item.values()[position]) {
-            case 背后固定:
-                mClassicsHeader.setSpinnerStyle(SpinnerStyle.FixedBehind);
-                mRefreshLayout.setPrimaryColors(0xff444444, 0xffffffff);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    mDrawableProgress.setTint(0xffffffff);
-                }
-                /*
-                 * 由于是后面才设置，需要手动更改视图的位置
-                 * 如果在 onCreate 或者 xml 中设置好[SpinnerStyle] 就不用手动调整位置了
-                 */
-                mRefreshLayout.getLayout().bringChildToFront(mRecyclerView);
+            case 内容不偏移:
+                mRefreshLayout.setEnableHeaderTranslationContent(false);
                 break;
-            case 尺寸拉伸:
-                mClassicsHeader.setSpinnerStyle(SpinnerStyle.Scale);
+            case 内容跟随偏移:
+                mRefreshLayout.setEnableHeaderTranslationContent(true);
                 break;
-            case 位置平移:
-                mClassicsHeader.setSpinnerStyle(SpinnerStyle.Translate);
+            case 打开背景:
+                mMaterialHeader.setShowBezierWave(true);
                 break;
-            case 显示时间:
-                mClassicsHeader.setEnableLastTime(true);
-                break;
-            case 隐藏时间:
-                mClassicsHeader.setEnableLastTime(false);
-                break;
-            case 默认主题:
-                setThemeColor(R.color.colorPrimary);
-                mRefreshLayout.getLayout().setBackgroundResource(android.R.color.transparent);
-                mRefreshLayout.setPrimaryColors(0, 0xff666666);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    mDrawableProgress.setTint(0xff666666);
-                }
+            case 关闭背景:
+                mMaterialHeader.setShowBezierWave(false);
                 break;
             case 蓝色主题:
                 setThemeColor(R.color.colorPrimary);
@@ -129,11 +89,6 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
             case 橙色主题:
                 setThemeColor(android.R.color.holo_orange_light);
                 break;
-//            case 加载更多:
-//                mRefreshLayout.autoLoadMore();
-//                break;
-            default:
-                break;
         }
         mRefreshLayout.autoRefresh();
     }
@@ -143,29 +98,30 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
         mTitleBar.setBackgroundColor(ContextCompat.getColor(getContext(), colorPrimary));
         if (Build.VERSION.SDK_INT >= 21) {
             getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(getContext(), colorPrimary));
-            mDrawableProgress.setTint(0xffffffff);
         }
     }
 
     private enum Item {
-        尺寸拉伸(R.string.item_style_spinner_scale),
-        位置平移(R.string.item_style_spinner_translation),
-        背后固定(R.string.item_style_spinner_behind),
-        显示时间(R.string.item_style_spinner_update_on),
-        隐藏时间(R.string.item_style_spinner_update_off),
-        默认主题(R.string.item_style_theme_default_abstract),
+        打开背景(R.string.item_style_bezier_on),
+        关闭背景(R.string.item_style_bezier_off),
+        内容不偏移(R.string.item_style_content_translation_off),
+        内容跟随偏移(R.string.item_style_content_translation_on),
         橙色主题(R.string.item_style_theme_orange_abstract),
         红色主题(R.string.item_style_theme_red_abstract),
         绿色主题(R.string.item_style_theme_green_abstract),
-        蓝色主题(R.string.item_style_theme_blue_abstract);
-        //        加载更多(R.string.item_style_load_more);
+        蓝色主题(R.string.item_style_theme_blue_abstract),
+        ;
         public int nameId;
-
         Item(@StringRes int nameId) {
             this.nameId = nameId;
         }
     }
 
+    @Override
+    protected TitleBar initTitle() {
+        mTitleBar = super.initTitle();
+        return mTitleBar;
+    }
     /**
      * 布局的资源id
      *
@@ -173,7 +129,7 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_refresh_classics_style;
+        return R.layout.fragment_refresh_material_style;
     }
 
     /**
@@ -181,16 +137,7 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
      */
     @Override
     protected void initViews() {
-        mClassicsHeader = (ClassicsHeader) mRefreshLayout.getRefreshHeader();
-        int delta = new Random().nextInt(7 * 24 * 60 * 60 * 1000);
-        mClassicsHeader.setLastUpdateTime(new Date(System.currentTimeMillis() - delta));
-        mClassicsHeader.setTimeFormat(new SimpleDateFormat("更新于 MM-dd HH:mm", Locale.CHINA));
-        mClassicsHeader.setTimeFormat(new DynamicTimeFormat("更新于 %s"));
-
-        mDrawableProgress = ((ImageView) mClassicsHeader.findViewById(ClassicsHeader.ID_IMAGE_PROGRESS)).getDrawable();
-        if (mDrawableProgress instanceof LayerDrawable) {
-            mDrawableProgress = ((LayerDrawable) mDrawableProgress).getDrawable(0);
-        }
+        mMaterialHeader = (MaterialHeader)mRefreshLayout.getRefreshHeader();
 
         View view = findViewById(R.id.recyclerView);
         if (view instanceof RecyclerView) {
@@ -198,7 +145,7 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
+            recyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2,this) {
                 @Override
                 protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {
                     holder.text(android.R.id.text1, model.name());
@@ -206,11 +153,7 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
                     holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
                 }
             });
-            mRecyclerView = recyclerView;
-            //触发自动刷新
-            mRefreshLayout.autoRefresh();
         }
-
+        mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
     }
-
 }
