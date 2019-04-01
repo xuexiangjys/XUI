@@ -13,6 +13,7 @@
 
   <dimen name="list_divider_height_negative">-1px</dimen>
 
+  <dimen name="dp_70">70dp</dimen>
 
   <!-- Utils 系列界面 -->
 

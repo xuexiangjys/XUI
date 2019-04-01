@@ -15,6 +15,8 @@ import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridInfo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -78,6 +80,10 @@ public class DemoDataProvider {
             "1080 × 1920",
             "720 × 1280",
     };
+
+    public static Collection<String> getDemoData() {
+        return Arrays.asList("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+    }
 
     public static AdapterItem[] menuItems = new AdapterItem[]{
             new AdapterItem("登陆", R.drawable.icon_password_login),

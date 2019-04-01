@@ -5,17 +5,15 @@ import android.view.View;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
-import com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.RefreshBasicFragment;
-import com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.RefreshStatusLayoutFragment;
-import com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.RefreshStyleFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.swipe.SwipeMenuItemFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
 /**
  * @author XUE
- * @since 2019/4/1 9:47
+ * @since 2019/4/1 11:00
  */
-@Page(name = "SmartRefreshLayout\nAndroid智能下拉刷新框架")
-public class SmartRefreshLayoutFragment extends ComponentContainerFragment {
+@Page(name = "SwipeRecyclerView\n基于RecyclerView封装, 支持Item侧滑菜单、Item滑动删除、Item长按拖拽、添加HeaderView/FooterView、加载更多、Item点击监听等功能")
+public class SwipeRecyclerViewFragment extends ComponentContainerFragment {
     /**
      * 获取页面的类集合[使用@Page注解进行注册的页面]
      *
@@ -23,11 +21,8 @@ public class SmartRefreshLayoutFragment extends ComponentContainerFragment {
      */
     @Override
     protected Class[] getPagesClasses() {
-        return new Class[] {
-                RefreshBasicFragment.class,
-                RefreshStatusLayoutFragment.class,
-                RefreshStyleFragment.class,
-                SwipeRefreshLayoutFragment.class
+        return new Class[]{
+                SwipeMenuItemFragment.class
         };
     }
 
@@ -37,7 +32,7 @@ public class SmartRefreshLayoutFragment extends ComponentContainerFragment {
         titleBar.addAction(new TitleBar.TextAction("Github") {
             @Override
             public void performAction(View view) {
-                Utils.goWeb(getContext(), "https://github.com/scwang90/SmartRefreshLayout");
+                Utils.goWeb(getContext(), "https://github.com/yanzhenjie/SwipeRecyclerView");
             }
         });
         return titleBar;

@@ -7,18 +7,14 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 import butterknife.BindView;
 
-import static android.R.layout.simple_list_item_2;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
@@ -27,7 +23,7 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
  */
 @Page(name = "SwipeRefreshLayout\n谷歌官方下拉刷新控件")
 public class SwipeRefreshLayoutFragment extends BaseFragment {
-    private SmartRecyclerAdapter<String> mAdapter;
+    private SimpleRecyclerAdapter mAdapter;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -52,14 +48,7 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter = new SmartRecyclerAdapter<String>(simple_list_item_2) {
-            @Override
-            protected void onBindViewHolder(SmartViewHolder holder, String model, int position) {
-                holder.text(android.R.id.text1, getString(R.string.item_example_number_title, position));
-                holder.text(android.R.id.text2, getString(R.string.item_example_number_abstract, position));
-                holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
-            }
-        });
+        recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         swipeRefreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);
     }
@@ -85,13 +74,10 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mAdapter.refresh(initData());
+                mAdapter.refresh(DemoDataProvider.getDemoData());
                 swipeRefreshLayout.setRefreshing(false);
             }
         }, 1000);
     }
 
-    private Collection<String> initData() {
-        return Arrays.asList("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
-    }
 }

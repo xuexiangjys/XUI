@@ -24,23 +24,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.statelayout.StatefulLayout;
+import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
 
-import java.util.Arrays;
-import java.util.Collection;
-
 import butterknife.BindView;
 
-import static android.R.layout.simple_list_item_2;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
@@ -55,7 +51,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
     StatefulLayout mLlStateful;
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout mRefreshLayout;
-    private SmartRecyclerAdapter<String> mAdapter;
+    private SimpleRecyclerAdapter mAdapter;
 
     /**
      * 布局的资源id
@@ -75,14 +71,8 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mAdapter = new SmartRecyclerAdapter<String>(simple_list_item_2) {
-            @Override
-            protected void onBindViewHolder(SmartViewHolder holder, String v, int position) {
-                holder.text(android.R.id.text1, getString(R.string.item_example_number_title, position));
-                holder.text(android.R.id.text2, getString(R.string.item_example_number_abstract, position));
-                holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
-            }
-        });
+        mRecyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
+
         //下拉刷新
         mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -93,7 +83,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
                         Status status = getRefreshStatus();
                         switch(status) {
                             case SUCCESS:
-                                mAdapter.refresh(initData());
+                                mAdapter.refresh(DemoDataProvider.getDemoData());
                                 mRefreshLayout.resetNoMoreData();//setNoMoreData(false);
                                 mLlStateful.showContent();
                                 mRefreshLayout.setEnableLoadMore(true);
@@ -128,7 +118,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
                             ToastUtils.toast("数据全部加载完毕");
                             refreshLayout.finishLoadMoreWithNoMoreData();//将不会再次触发加载更多事件
                         } else {
-                            mAdapter.loadMore(initData());
+                            mAdapter.loadMore(DemoDataProvider.getDemoData());
                             refreshLayout.finishLoadMore();
                         }
                     }
@@ -157,11 +147,6 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
         });
         mRefreshLayout.setEnableLoadMore(false);
     }
-
-    private Collection<String> initData() {
-        return Arrays.asList("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
-    }
-
 
     private enum Status {
         SUCCESS,

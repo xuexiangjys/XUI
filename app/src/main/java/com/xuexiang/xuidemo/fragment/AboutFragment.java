@@ -16,24 +16,20 @@
 
 package com.xuexiang.xuidemo.fragment;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.app.AppUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import butterknife.BindView;
-
-import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
 /**
  * @author xuexiang
@@ -61,13 +57,13 @@ public class AboutFragment extends BaseFragment {
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_homepage)), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        goWeb("https://xuexiangjys.github.io/XUI/");
+                        Utils.goWeb(getContext(), "https://xuexiangjys.github.io/XUI/");
                     }
                 })
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_github)), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        goWeb("https://github.com/xuexiangjys/XUI/");
+                        Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/");
                     }
                 })
                 .addTo(mAboutGroupListView);
@@ -75,17 +71,6 @@ public class AboutFragment extends BaseFragment {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy", Locale.CHINA);
         String currentYear = dateFormat.format(new java.util.Date());
         mCopyrightTextView.setText(String.format(getResources().getString(R.string.about_copyright), currentYear));
-    }
-
-    /**
-     * 请求浏览器
-     *
-     * @param url
-     */
-    public void goWeb(final String url) {
-        Intent intent = new Intent(getContext(), AgentWebActivity.class);
-        intent.putExtra(KEY_URL, url);
-        startActivity(intent);
     }
 
 }
