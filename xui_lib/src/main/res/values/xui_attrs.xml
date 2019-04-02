@@ -912,6 +912,58 @@
         <attr name="wv_lineSpacingMultiplier" format="float" />
     </declare-styleable>
 
+    <!--刻度尺-->
+    <declare-styleable name="RulerView">
+        <!--尺子的高度, 默认50dp-->
+        <attr name="rv_rulerHeight" format="dimension" />
+        <!--尺子距离结果的高度,默认12.5-->
+        <attr name="rv_rulerToResultGap" format="dimension" />
+        <!--刻度间距, 默认20dp-->
+        <attr name="rv_scaleGap" format="dimension" />
+        <!--相邻2个刻度之间的数量， 默认1-->
+        <attr name="rv_scaleLimit" format="integer" />
+        <!--刻度数，默认10-->
+        <attr name="rv_scaleCount" format="integer" />
+        <!--默认选中的刻度，默认50-->
+        <attr name="rv_firstScale" format="float" />
+        <!--最大刻度，默认100-->
+        <attr name="rv_maxScale" format="integer" />
+        <!--最小刻度， 默认0-->
+        <attr name="rv_minScale" format="integer" />
+        <!--背景色，默认#fffcfffc-->
+        <attr name="rv_bgColor" format="color" />
+        <!--小刻度的颜色，默认#ff999999-->
+        <attr name="rv_smallScaleColor" format="color" />
+        <!--中刻度的颜色，默认#ff666666-->
+        <attr name="rv_midScaleColor" format="color" />
+        <!--大刻度的颜色，默认#ff50b586-->
+        <attr name="rv_largeScaleColor" format="color" />
+        <!--刻度数的颜色，默认#ff333333-->
+        <attr name="rv_scaleNumColor" format="color" />
+        <!--结果字体的颜色，默认#ff50b586-->
+        <attr name="rv_resultNumColor" format="color" />
+        <!--单位，默认kg-->
+        <attr name="rv_unit" format="string" />
+        <!--单位颜色，默认#ff50b586-->
+        <attr name="rv_unitColor" format="color" />
+        <!--小刻度的宽度，默认1dp-->
+        <attr name="rv_smallScaleStroke" format="dimension" />
+        <!--中刻度的宽度，默认2dp-->
+        <attr name="rv_midScaleStroke" format="dimension" />
+        <!--大刻度的宽度，默认3dp-->
+        <attr name="rv_largeScaleStroke" format="dimension" />
+        <!--结果字体大小，默认20sp-->
+        <attr name="rv_resultNumTextSize" format="dimension" />
+        <!--刻度字体大小，默认16sp-->
+        <attr name="rv_scaleNumTextSize" format="dimension" />
+        <!--单位字体大小，默认13sp-->
+        <attr name="rv_unitTextSize" format="dimension" />
+        <!--是否显示结果值，默认true-->
+        <attr name="rv_showScaleResult" format="boolean" />
+        <!--背景是否圆角，默认true-->
+        <attr name="rv_isBgRoundRect" format="boolean" />
+    </declare-styleable>
+
     <!--=====================================================================-->
     <!--MaterialSearchView-->
     <declare-styleable name="MaterialSearchView">
