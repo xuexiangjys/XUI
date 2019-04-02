@@ -23,8 +23,8 @@ import android.graphics.drawable.Drawable;
 /**
  * 支持设置图片左右间距的 ImageSpan
  *
- * @author chantchen
- * @date 2015-12-16
+ * @author xuexiang
+ * @since 2019/4/2 下午9:34
  */
 public class MarginImageSpan extends AlignMiddleImageSpan {
 

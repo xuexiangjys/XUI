@@ -188,7 +188,8 @@
         <item name="XUICommonListItemViewStyle">@style/XUICommonListItemView</item>
         <item name="XUIGroupListSectionViewStyle">@style/XUIGroupListSectionView</item>
 
-        <item name="MiniLoadingStyle">@style/MiniLoadingStyle</item>
+        <item name="MiniLoadingStyle">@style/MiniLoadingView</item>
+        <item name="RulerViewStyle">@style/RulerView</item>
         <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
         <item name="TabSegmentStyle">@style/TabSegment</item>
 

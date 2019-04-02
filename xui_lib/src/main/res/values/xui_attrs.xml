@@ -913,12 +913,13 @@
     </declare-styleable>
 
     <!--刻度尺-->
+    <attr name="RulerViewStyle" format="reference" />
     <declare-styleable name="RulerView">
         <!--尺子的高度, 默认50dp-->
         <attr name="rv_rulerHeight" format="dimension" />
         <!--尺子距离结果的高度,默认12.5-->
         <attr name="rv_rulerToResultGap" format="dimension" />
-        <!--刻度间距, 默认20dp-->
+        <!--刻度间距, 默认10dp-->
         <attr name="rv_scaleGap" format="dimension" />
         <!--相邻2个刻度之间的数量， 默认1-->
         <attr name="rv_scaleLimit" format="integer" />
@@ -946,11 +947,11 @@
         <attr name="rv_unit" format="string" />
         <!--单位颜色，默认#ff50b586-->
         <attr name="rv_unitColor" format="color" />
-        <!--小刻度的宽度，默认1dp-->
+        <!--小刻度的宽度，默认2dp-->
         <attr name="rv_smallScaleStroke" format="dimension" />
-        <!--中刻度的宽度，默认2dp-->
+        <!--中刻度的宽度，默认3dp-->
         <attr name="rv_midScaleStroke" format="dimension" />
-        <!--大刻度的宽度，默认3dp-->
+        <!--大刻度的宽度，默认5dp-->
         <attr name="rv_largeScaleStroke" format="dimension" />
         <!--结果字体大小，默认20sp-->
         <attr name="rv_resultNumTextSize" format="dimension" />
@@ -962,6 +963,8 @@
         <attr name="rv_showScaleResult" format="boolean" />
         <!--背景是否圆角，默认true-->
         <attr name="rv_isBgRoundRect" format="boolean" />
+        <!--圆角大小，默认10dp-->
+        <attr name="rv_roundRadius" format="dimension" />
     </declare-styleable>
 
     <!--=====================================================================-->

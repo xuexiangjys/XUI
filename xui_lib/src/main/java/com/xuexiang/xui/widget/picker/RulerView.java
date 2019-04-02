@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
@@ -38,7 +39,6 @@ public class RulerView extends View {
      * 尺子高度
      */
     private int rulerHeight = 50;
-
     /**
      * 尺子和屏幕顶部以及结果之间的高度
      */
@@ -46,11 +46,11 @@ public class RulerView extends View {
     /**
      * 刻度平分多少份
      */
-    private int scaleCount = 10;  //刻度评分多少份
+    private int scaleCount = 10;
     /**
      * 刻度间距
      */
-    private int scaleGap = 20;
+    private int scaleGap = 10;
     /**
      * 刻度最小值
      */
@@ -67,27 +67,27 @@ public class RulerView extends View {
     /**
      * 背景颜色
      */
-    private int bgColor = 0xfffcfffc;
+    private int bgColor;
     /**
      * 小刻度的颜色
      */
-    private int smallScaleColor = 0xff999999;
+    private int smallScaleColor;
     /**
      * 中刻度的颜色
      */
-    private int midScaleColor = 0xff666666;
+    private int midScaleColor;
     /**
      * 大刻度的颜色
      */
-    private int largeScaleColor = 0xff50b586;
+    private int largeScaleColor;
     /**
      * 刻度颜色
      */
-    private int scaleNumColor = 0xff333333;
+    private int scaleNumColor;
     /**
      * 结果值颜色
      */
-    private int resultNumColor = 0xff50b586;
+    private int resultNumColor;
     /**
      * kg颜色
      */
@@ -95,19 +95,19 @@ public class RulerView extends View {
     /**
      * kg颜色
      */
-    private int unitColor = 0xff50b586;
+    private int unitColor;
     /**
      * 小刻度粗细大小
      */
-    private int smallScaleStroke = 1;
+    private int smallScaleStroke = 2;
     /**
      * 中刻度粗细大小
      */
-    private int midScaleStroke = 2;
+    private int midScaleStroke = 3;
     /**
      * 大刻度粗细大小
      */
-    private int largeScaleStroke = 3;
+    private int largeScaleStroke = 5;
     /**
      * 结果字体大小
      */
@@ -128,7 +128,10 @@ public class RulerView extends View {
      * 是否背景显示圆角
      */
     private boolean isBgRoundRect = true;
-
+    /**
+     * 圆角大小
+     */
+    private int roundRadius = 10;
     /**
      * 结果回调
      */
@@ -172,21 +175,17 @@ public class RulerView extends View {
     private int xVelocity;
 
     public RulerView(Context context) {
-        this(context, null);
+        this(context, null, R.attr.RulerViewStyle);
     }
 
     public RulerView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.RulerViewStyle);
     }
 
     public RulerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttrs(attrs, defStyleAttr);
         init();
-    }
-
-    public void setOnChooseResultListener(OnChooseResultListener onChooseResultListener) {
-        this.onChooseResultListener = onChooseResultListener;
     }
 
     /**
@@ -205,13 +204,13 @@ public class RulerView extends View {
         minScale = a.getInt(R.styleable.RulerView_rv_minScale, minScale) / scaleLimit;
         firstScale = a.getFloat(R.styleable.RulerView_rv_firstScale, firstScale) / scaleLimit;
         maxScale = a.getInt(R.styleable.RulerView_rv_maxScale, maxScale) / scaleLimit;
-        bgColor = a.getColor(R.styleable.RulerView_rv_bgColor, bgColor);
-        smallScaleColor = a.getColor(R.styleable.RulerView_rv_smallScaleColor, smallScaleColor);
-        midScaleColor = a.getColor(R.styleable.RulerView_rv_midScaleColor, midScaleColor);
-        largeScaleColor = a.getColor(R.styleable.RulerView_rv_largeScaleColor, largeScaleColor);
-        scaleNumColor = a.getColor(R.styleable.RulerView_rv_scaleNumColor, scaleNumColor);
-        resultNumColor = a.getColor(R.styleable.RulerView_rv_resultNumColor, resultNumColor);
-        unitColor = a.getColor(R.styleable.RulerView_rv_unitColor, unitColor);
+        bgColor = a.getColor(R.styleable.RulerView_rv_bgColor, ResUtils.getColor(R.color.default_ruler_view_bg_color));
+        smallScaleColor = a.getColor(R.styleable.RulerView_rv_smallScaleColor, ResUtils.getColor(R.color.default_ruler_view_small_scale_color));
+        midScaleColor = a.getColor(R.styleable.RulerView_rv_midScaleColor, ResUtils.getColor(R.color.default_ruler_view_mid_scale_color));
+        largeScaleColor = a.getColor(R.styleable.RulerView_rv_largeScaleColor, ResUtils.getColor(R.color.default_ruler_view_large_scale_color));
+        scaleNumColor = a.getColor(R.styleable.RulerView_rv_scaleNumColor, ResUtils.getColor(R.color.default_ruler_view_scale_num_color));
+        resultNumColor = a.getColor(R.styleable.RulerView_rv_resultNumColor, ResUtils.getColor(R.color.default_ruler_view_result_num_color));
+        unitColor = a.getColor(R.styleable.RulerView_rv_unitColor, ResUtils.getColor(R.color.default_ruler_view_unit_color));
         String tempUnit = unit;
         unit = a.getString(R.styleable.RulerView_rv_unit);
         if (TextUtils.isEmpty(unit)) {
@@ -225,6 +224,7 @@ public class RulerView extends View {
         unitTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_unitTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, unitTextSize, getResources().getDisplayMetrics()));
         showScaleResult = a.getBoolean(R.styleable.RulerView_rv_showScaleResult, showScaleResult);
         isBgRoundRect = a.getBoolean(R.styleable.RulerView_rv_isBgRoundRect, isBgRoundRect);
+        roundRadius = a.getDimensionPixelSize(R.styleable.RulerView_rv_roundRadius, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, roundRadius, getResources().getDisplayMetrics()));
         a.recycle();
     }
 
@@ -295,6 +295,8 @@ public class RulerView extends View {
             case MeasureSpec.EXACTLY:
                 height = heightSize + getPaddingTop() + getPaddingBottom();
                 break;
+            default:
+                break;
         }
 
         width = widthSize + getPaddingLeft() + getPaddingRight();
@@ -312,6 +314,11 @@ public class RulerView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (getParent() != null) {
+            //拦截事件，不让父布局获取
+            getParent().requestDisallowInterceptTouchEvent(true);
+        }
+
         currentX = event.getX();
         isUp = false;
         velocityTracker.computeCurrentVelocity(500);
@@ -340,6 +347,8 @@ public class RulerView extends View {
                 xVelocity = (int) velocityTracker.getXVelocity();
                 autoVelocityScroll(xVelocity);
                 velocityTracker.clear();
+                break;
+            default:
                 break;
         }
         invalidate();
@@ -530,13 +539,14 @@ public class RulerView extends View {
     private void drawBg(Canvas canvas) {
         bgRect.set(0, 0, width, height);
         if (isBgRoundRect) {
-            canvas.drawRoundRect(bgRect, 20, 20, bgPaint); //20->椭圆的用于圆形角x-radius
+            //椭圆的用于圆形角x-radius
+            canvas.drawRoundRect(bgRect, roundRadius, roundRadius, bgPaint);
         } else {
             canvas.drawRect(bgRect, bgPaint);
         }
     }
 
-    public void computeScrollTo(float scale) {
+    private void computeScrollTo(float scale) {
         scale = scale / scaleLimit;
         if (scale < minScale || scale > maxScale) {
             return;
@@ -684,11 +694,20 @@ public class RulerView extends View {
     }
 
     /**
+     * 设置刻度尺的值
+     *
+     * @param value
+     */
+    public void setCurrentValue(float value) {
+        computeScrollTo(value);
+    }
+
+    /**
      * 获取当前刻度尺的刻度
      *
      * @return
      */
-    public float getCurrentScale() {
+    public float getCurrentValue() {
         return currentScale;
     }
 
@@ -697,7 +716,18 @@ public class RulerView extends View {
      *
      * @return
      */
-    public String getResultText() {
+    public String getSelectValue() {
         return resultText;
+    }
+
+    /**
+     * 设置选择监听
+     *
+     * @param onChooseResultListener
+     * @return
+     */
+    public RulerView setOnChooseResultListener(OnChooseResultListener onChooseResultListener) {
+        this.onChooseResultListener = onChooseResultListener;
+        return this;
     }
 }

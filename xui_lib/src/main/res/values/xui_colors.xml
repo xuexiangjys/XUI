@@ -51,6 +51,15 @@
     <color name="picker_view_bg_topbar">#F5F5F5</color>
     <color name="picker_view_bg_color_overlay">#60000000</color>
 
+    <!-- RulerView -->
+    <color name="default_ruler_view_bg_color">#FFFCFFFC</color>
+    <color name="default_ruler_view_small_scale_color">#FF999999</color>
+    <color name="default_ruler_view_mid_scale_color">#FF666666</color>
+    <color name="default_ruler_view_large_scale_color">#FF50B586</color>
+    <color name="default_ruler_view_scale_num_color">#FF333333</color>
+    <color name="default_ruler_view_result_num_color">#FF50B586</color>
+    <color name="default_ruler_view_unit_color">#FF50B586</color>
+
     <!--MaterialSearchView-->
     <color name="default_search_view_text_color">#212121</color>
     <color name="default_search_view_text_color_hint">#727272</color>

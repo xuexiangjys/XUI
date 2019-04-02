@@ -25,12 +25,15 @@ import android.text.style.ImageSpan;
 /**
  * 支持垂直居中的ImageSpan
  *
- * @author cginechen
- * @date 2016-03-17
+ * @author xuexiang
+ * @since 2019/4/2 下午9:33
  */
 public class AlignMiddleImageSpan extends ImageSpan {
 
-    public static final int ALIGN_MIDDLE = -100; // 不要和父类重复
+    /**
+     * 不要和父类重复
+     */
+    public static final int ALIGN_MIDDLE = -100;
 
     /**
      * 规定这个Span占几个字的宽度

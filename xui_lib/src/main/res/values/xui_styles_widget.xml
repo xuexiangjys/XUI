@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -195,7 +194,7 @@
 
     <!-- RadiusImageView -->
     <style name="RadiusImageView">
-        <item name="riv_border_width">1dp</item>
+        <item name="riv_border_width">0dp</item>
         <item name="riv_border_color">@color/xui_config_color_gray_4</item>
         <item name="riv_is_touch_select_mode_enabled">true</item>
     </style>
@@ -234,6 +233,35 @@
         <item name="android:windowExitAnimation">@anim/picker_view_slide_out_bottom</item>
     </style>
 
+    <!-- RulerView -->
+    <style name="RulerView">
+        <item name="rv_rulerHeight">50dp</item>
+        <item name="rv_rulerToResultGap">30dp</item>
+        <item name="rv_scaleGap">10dp</item>
+        <item name="rv_scaleLimit">1</item>
+        <item name="rv_scaleCount">10</item>
+
+        <item name="rv_bgColor">@color/default_ruler_view_bg_color</item>
+        <item name="rv_smallScaleColor">@color/default_ruler_view_small_scale_color</item>
+        <item name="rv_midScaleColor">@color/default_ruler_view_mid_scale_color</item>
+        <item name="rv_largeScaleColor">@color/default_ruler_view_large_scale_color</item>
+        <item name="rv_scaleNumColor">@color/default_ruler_view_scale_num_color</item>
+        <item name="rv_resultNumColor">@color/default_ruler_view_result_num_color</item>
+        <item name="rv_unitColor">@color/default_ruler_view_unit_color</item>
+
+        <item name="rv_smallScaleStroke">2dp</item>
+        <item name="rv_midScaleStroke">3dp</item>
+        <item name="rv_largeScaleStroke">5dp</item>
+
+        <item name="rv_resultNumTextSize">20sp</item>
+        <item name="rv_scaleNumTextSize">16sp</item>
+        <item name="rv_unitTextSize">13sp</item>
+
+        <item name="rv_showScaleResult">true</item>
+        <item name="rv_isBgRoundRect">true</item>
+        <item name="rv_roundRadius">10dp</item>
+    </style>
+
     <!--MaterialSearchView-->
     <style name="MSV_ImageButton">
         <item name="android:layout_width">wrap_content</item>
@@ -254,7 +282,7 @@
     </style>
 
     <!--MiniLoadingView-->
-    <style name="MiniLoadingStyle">
+    <style name="MiniLoadingView">
         <item name="mlv_loading_view_size">?attr/mini_loading_view_size</item>
         <item name="mlv_loading_view_color">@color/xui_config_color_gray_5</item>
     </style>
@@ -283,15 +311,18 @@
         <item name="android:paddingRight">?attr/xui_bottom_sheet_list_item_padding_horizontal</item>
         <item name="android:singleLine">true</item>
     </style>
+
     <style name="BottomSheetListItemTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:ellipsize">middle</item>
         <item name="android:singleLine">true</item>
     </style>
+
     <style name="BottomSheetTitleStyle.Center">
         <item name="android:gravity">center</item>
     </style>
+
     <style name="BottomSheetListItemTextStyle.Center">
         <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">center</item>
