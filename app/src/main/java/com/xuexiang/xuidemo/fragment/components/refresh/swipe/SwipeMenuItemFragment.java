@@ -1,6 +1,8 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
 import android.graphics.Color;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +31,8 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
  */
 @Page(name = "SwipeMenuItem\nItem侧滑菜单")
 public class SwipeMenuItemFragment extends BaseFragment {
+    @BindView(R.id.refresh_layout)
+    SwipeRefreshLayout refreshLayout;
     private SimpleRecyclerAdapter mAdapter;
 
     @BindView(R.id.recycler_view)
@@ -56,11 +60,8 @@ public class SwipeMenuItemFragment extends BaseFragment {
         recyclerView.setSwipeMenuCreator(swipeMenuCreator); //必须在setAdapter之前调用
         recyclerView.setOnItemMenuClickListener(mMenuItemClickListener); //必须在setAdapter之前调用
         recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
-    }
 
-    @Override
-    protected void initListeners() {
-        mAdapter.refresh(DemoDataProvider.getDemoData());
+        refreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);
     }
 
     /**
@@ -129,4 +130,34 @@ public class SwipeMenuItemFragment extends BaseFragment {
             }
         }
     };
+
+    @Override
+    protected void initListeners() {
+        //下拉刷新
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+            }
+        });
+        refresh(); //第一次进入触发自动刷新，演示效果
+    }
+
+    private void refresh() {
+        refreshLayout.setRefreshing(true);
+        loadData();
+    }
+
+    private void loadData() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.refresh(DemoDataProvider.getDemoData());
+                if (refreshLayout != null) {
+                    refreshLayout.setRefreshing(false);
+                }
+            }
+        }, 1000);
+    }
+
 }
