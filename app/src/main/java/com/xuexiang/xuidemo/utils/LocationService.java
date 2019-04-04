@@ -25,7 +25,6 @@ public class LocationService {
 
     private LocationClient mClient = null;
     private LocationClientOption mOption, mDIYOption;
-    private final Object mObjLock = new Object();
 
     private LocationService() {
 
@@ -36,11 +35,9 @@ public class LocationService {
      * @param context
      */
     public void init(Context context) {
-        synchronized (mObjLock) {
-            if (mClient == null) {
-                mClient = new LocationClient(context.getApplicationContext());
-                mClient.setLocOption(getDefaultLocationClientOption());
-            }
+        if (mClient == null) {
+            mClient = new LocationClient(context.getApplicationContext());
+            mClient.setLocOption(getDefaultLocationClientOption());
         }
     }
 
@@ -152,10 +149,8 @@ public class LocationService {
      * 开始定位
      */
     public LocationService start() {
-        synchronized (mObjLock) {
-            if (mClient != null && !mClient.isStarted()) {
-                mClient.start();
-            }
+        if (mClient != null && !mClient.isStarted()) {
+            mClient.start();
         }
         return this;
     }
@@ -171,10 +166,8 @@ public class LocationService {
      * 停止定位
      */
     public LocationService stop() {
-        synchronized (mObjLock) {
-            if (mClient != null && mClient.isStarted()) {
-                mClient.stop();
-            }
+        if (mClient != null && mClient.isStarted()) {
+            mClient.stop();
         }
         return this;
     }
