@@ -5,6 +5,7 @@ import android.view.View;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.swipe.SwipeDragMoveFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.swipe.SwipeMenuItemFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
@@ -22,7 +23,8 @@ public class SwipeRecyclerViewFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
-                SwipeMenuItemFragment.class
+                SwipeMenuItemFragment.class,
+                SwipeDragMoveFragment.class
         };
     }
 

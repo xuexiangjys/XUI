@@ -389,6 +389,18 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     /**
+     * 设置标题和副标题的文字
+     *
+     * @param subTitle    副标题
+     * @return
+     */
+    public TitleBar setSubTitle(CharSequence subTitle) {
+        mSubTitleText.setText(subTitle);
+        mSubTitleText.setVisibility(View.VISIBLE);
+        return this;
+    }
+
+    /**
      * 设置中心点击
      *
      * @param l
