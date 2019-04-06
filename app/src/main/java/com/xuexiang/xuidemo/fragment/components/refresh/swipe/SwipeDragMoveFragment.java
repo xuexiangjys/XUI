@@ -1,8 +1,5 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -10,6 +7,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.swipe.SwipeDragTouchListAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 import com.yanzhenjie.recyclerview.touch.OnItemMoveListener;
@@ -19,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author xuexiang
@@ -48,7 +44,7 @@ public class SwipeDragMoveFragment extends BaseFragment {
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_swipe_drag_move;
+        return R.layout.fragment_swipe_recycler_view;
     }
 
     /**
@@ -56,9 +52,7 @@ public class SwipeDragMoveFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        Utils.initRecyclerView(recyclerView);
 
         // 监听拖拽和侧滑删除，更新UI和数据源。
         recyclerView.setOnItemMoveListener(onItemMoveListener);

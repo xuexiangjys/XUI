@@ -85,6 +85,10 @@ public class DemoDataProvider {
         return Arrays.asList("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
     }
 
+    public static Collection<String> getDemoData1() {
+        return Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18");
+    }
+
     public static AdapterItem[] menuItems = new AdapterItem[]{
             new AdapterItem("登陆", R.drawable.icon_password_login),
             new AdapterItem("筛选", R.drawable.icon_filter),

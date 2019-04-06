@@ -18,9 +18,6 @@ package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 
 import android.content.Context;
 import android.support.annotation.StringRes;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -32,6 +29,7 @@ import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -40,7 +38,6 @@ import java.util.Arrays;
 import butterknife.BindView;
 
 import static android.R.layout.simple_list_item_2;
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author xuexiang
@@ -117,9 +114,8 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
      */
     @Override
     protected void initViews() {
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        Utils.initRecyclerView(mRecyclerView);
+
         mRecyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
             @Override
             protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {

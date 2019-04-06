@@ -2,9 +2,6 @@ package com.xuexiang.xuidemo.fragment.components.refresh;
 
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -12,10 +9,9 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 
 import butterknife.BindView;
-
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author XUE
@@ -45,9 +41,8 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        Utils.initRecyclerView(recyclerView);
+
         recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         swipeRefreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);

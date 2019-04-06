@@ -17,9 +17,6 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -33,11 +30,10 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
-
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author xuexiang
@@ -68,9 +64,8 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        Utils.initRecyclerView(mRecyclerView);
+
         mRecyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         //下拉刷新

@@ -3,9 +3,6 @@ package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.ViewGroup;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -13,6 +10,7 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
 import com.yanzhenjie.recyclerview.OnItemMenuClickListener;
 import com.yanzhenjie.recyclerview.SwipeMenu;
@@ -22,8 +20,6 @@ import com.yanzhenjie.recyclerview.SwipeMenuItem;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
 import butterknife.BindView;
-
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author XUE
@@ -53,12 +49,12 @@ public class SwipeMenuItemFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        Utils.initRecyclerView(recyclerView);
 
-        recyclerView.setSwipeMenuCreator(swipeMenuCreator); //必须在setAdapter之前调用
-        recyclerView.setOnItemMenuClickListener(mMenuItemClickListener); //必须在setAdapter之前调用
+        //必须在setAdapter之前调用
+        recyclerView.setSwipeMenuCreator(swipeMenuCreator);
+        //必须在setAdapter之前调用
+        recyclerView.setOnItemMenuClickListener(mMenuItemClickListener);
         recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         refreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);

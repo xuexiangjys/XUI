@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center_vertical"
+    android:background="@color/xui_config_color_gray_9"
+    android:orientation="horizontal">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:background="?attr/xui_config_color_separator_dark"/>
+
+    <TextView
+        style="@style/TextStyle.Explain"
+        android:layout_margin="10dp"
+        android:text="我是有底线的"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:background="?attr/xui_config_color_separator_dark"/>
+
+
+</LinearLayout>

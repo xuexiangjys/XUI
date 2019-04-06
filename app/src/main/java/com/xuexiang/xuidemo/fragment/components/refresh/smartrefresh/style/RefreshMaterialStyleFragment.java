@@ -19,9 +19,6 @@ package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 import android.os.Build;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -34,13 +31,13 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 
 import java.util.Arrays;
 
 import butterknife.BindView;
 
 import static android.R.layout.simple_list_item_2;
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author xuexiang
@@ -142,9 +139,8 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
         View view = findViewById(R.id.recyclerView);
         if (view instanceof RecyclerView) {
             RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            Utils.initRecyclerView(recyclerView);
+
             recyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2,this) {
                 @Override
                 protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {

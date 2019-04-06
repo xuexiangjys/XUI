@@ -5,6 +5,8 @@ import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xuidemo.R;
 
+import java.util.Collection;
+
 /**
  * 基于simple_list_item_2简单的适配器
  *
@@ -15,6 +17,10 @@ public class SimpleRecyclerAdapter extends SmartRecyclerAdapter<String> {
 
     public SimpleRecyclerAdapter() {
         super(android.R.layout.simple_list_item_2);
+    }
+
+    public SimpleRecyclerAdapter(Collection<String> data) {
+        super(data, android.R.layout.simple_list_item_2);
     }
 
     /**

@@ -1,9 +1,6 @@
 package com.xuexiang.xuidemo.fragment.components.refresh;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -15,13 +12,12 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.RefreshHeadViewAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 
 import java.util.Arrays;
 import java.util.Collection;
 
 import butterknife.BindView;
-
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author xuexiang
@@ -51,9 +47,8 @@ public class RefreshHeadViewFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        Utils.initRecyclerView(recyclerView);
+
         recyclerView.setAdapter(mAdapter = new RefreshHeadViewAdapter(DemoDataProvider.getBannerList()));
     }
 
