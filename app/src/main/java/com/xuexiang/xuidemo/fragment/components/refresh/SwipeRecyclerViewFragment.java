@@ -8,6 +8,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.swipe.SwipeDragMoveFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.swipe.SwipeHeadFootViewFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.swipe.SwipeMenuItemFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.swipe.SwipeRefreshFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
 /**
@@ -26,7 +27,8 @@ public class SwipeRecyclerViewFragment extends ComponentContainerFragment {
         return new Class[]{
                 SwipeMenuItemFragment.class,
                 SwipeDragMoveFragment.class,
-                SwipeHeadFootViewFragment.class
+                SwipeHeadFootViewFragment.class,
+                SwipeRefreshFragment.class
         };
     }
 

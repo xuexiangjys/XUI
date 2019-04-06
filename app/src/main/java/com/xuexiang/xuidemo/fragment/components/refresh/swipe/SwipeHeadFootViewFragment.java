@@ -65,7 +65,7 @@ public class SwipeHeadFootViewFragment extends BaseFragment {
         adapter.setOnItemClickListener(new SmartViewHolder.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                //需要注意的是，因为加了HeaderView，所以position都被自动加了1,因此获取内容时需要减1
+                //需要注意的是，因为加了一个HeaderView，所以position都被自动加了1,因此获取内容时需要减1
                 ToastUtils.toast("点击了第" + position + "个条目：" + adapter.getItem(position - 1));
             }
         });
