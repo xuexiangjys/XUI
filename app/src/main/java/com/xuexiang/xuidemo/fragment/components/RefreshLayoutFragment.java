@@ -19,6 +19,7 @@ package com.xuexiang.xuidemo.fragment.components;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.BroccoliFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.RefreshHeadViewFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.SmartRefreshLayoutFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.SwipeRecyclerViewFragment;
@@ -41,7 +42,8 @@ public class RefreshLayoutFragment extends ComponentContainerFragment {
                 SmartRefreshLayoutFragment.class,
                 SwipeRecyclerViewFragment.class,
                 SwipeRefreshLayoutFragment.class,
-                RefreshHeadViewFragment.class
+                RefreshHeadViewFragment.class,
+                BroccoliFragment.class
         };
     }
 }
