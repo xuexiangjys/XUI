@@ -35,7 +35,6 @@
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
 
-
         <activity
             android:name=".activity.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
@@ -105,6 +104,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".base.BaseActivity" />
+        <activity android:name=".activity.TranslucentActivity" />
 
         <service
             android:name="com.baidu.location.f"

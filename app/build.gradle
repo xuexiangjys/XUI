@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.xuexiang.xaop' //引用xaop插件
 //apply plugin: 'img-optimizer'
 
-
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
@@ -57,6 +56,10 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
     }
 
     sourceSets {
@@ -150,5 +153,8 @@ dependencies {
     implementation 'com.github.xuexiangjys:XFloatView:1.0.1'
     //android进程监控
     implementation 'com.jaredrummler:android-processes:1.1.1'
+
+    //Android图表库
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }
