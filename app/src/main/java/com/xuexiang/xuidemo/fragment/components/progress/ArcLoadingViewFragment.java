@@ -7,6 +7,7 @@ import com.xuexiang.rxutil2.rxjava.RxJavaUtils;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.dialog.LoadingDialog;
+import com.xuexiang.xui.widget.dialog.MiniLoadingDialog;
 import com.xuexiang.xui.widget.progress.loading.ARCLoadingView;
 import com.xuexiang.xui.widget.progress.loading.LoadingViewLayout;
 import com.xuexiang.xuidemo.R;
@@ -35,6 +36,8 @@ public class ArcLoadingViewFragment extends BaseFragment {
 
     LoadingDialog mLoadingDialog;
 
+    MiniLoadingDialog mMiniLoadingDialog;
+
     @BindView(R.id.loading_view_layout)
     LoadingViewLayout mLoadingViewLayout;
 
@@ -48,6 +51,8 @@ public class ArcLoadingViewFragment extends BaseFragment {
         mLoadingDialog = WidgetUtils.getLoadingDialog(getContext())
                 .setIconScale(0.4F)
                 .setLoadingSpeed(8);
+
+        mMiniLoadingDialog =  WidgetUtils.getMiniLoadingDialog(getContext());
     }
 
     @Override
@@ -93,7 +98,13 @@ public class ArcLoadingViewFragment extends BaseFragment {
 
     @OnClick(R.id.btn_test_dialog)
     void showTestDialog(View v) {
-
+        mMiniLoadingDialog.show();
+        RxJavaUtils.delay(4, new Consumer<Long>() {
+            @Override
+            public void accept(Long aLong) throws Exception {
+                mMiniLoadingDialog.dismiss();
+            }
+        });
     }
 
     @Override

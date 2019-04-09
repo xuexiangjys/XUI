@@ -176,10 +176,17 @@
     *                 Dialog /Loading                *
     ***********************************************-->
     <attr name="xui_dialog_radius_size" format="dimension" />
-    <attr name="xui_dialog_loading_padding_size" format="dimension" />
-    <attr name="xui_dialog_loading_min_size" format="dimension" />
     <attr name="xui_dialog_background_dim_amount" format="float" />
 
+    <attr name="xui_dialog_loading_padding_size" format="dimension" />
+    <attr name="xui_dialog_loading_min_size" format="dimension" />
+
+    <attr name="xui_dialog_mini_loading_padding_size" format="dimension" />
+    <attr name="xui_dialog_mini_loading_min_size" format="dimension" />
+    <attr name="xui_mini_loading_margin_size" format="dimension" />
+    <attr name="xui_mini_loading_view_size" format="dimension" />
+
+    <attr name="xui_loading_text_size" format="dimension" />
     <attr name="xui_loading_view_size" format="dimension" />
     <attr name="xui_loading_view_width" format="dimension" />
     <attr name="xui_loading_margin_size" format="dimension" />

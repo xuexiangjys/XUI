@@ -19,7 +19,6 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <com.xuexiang.xui.widget.progress.loading.ARCLoadingView
         android:id="@+id/arc_loading_view"
         android:layout_width="?attr/xui_loading_view_size"
@@ -31,5 +30,6 @@
         android:id="@+id/tv_tip_message"
         style="@style/TextStyle.Explain"
         android:layout_marginTop="?attr/xui_loading_margin_size"
+        android:textSize="?attr/xui_loading_text_size"
         android:text="@string/xui_tip_loading_message" />
 </merge>

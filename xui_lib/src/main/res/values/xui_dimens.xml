@@ -400,6 +400,26 @@
     <dimen name="xui_loading_margin_size_phone">6dp</dimen>
     <dimen name="mini_loading_view_size_phone">20dp</dimen>
 
+    <dimen name="xui_dialog_mini_loading_padding_size_tablet_big">30dp</dimen>
+    <dimen name="xui_dialog_mini_loading_min_size_tablet_big">200dp</dimen>
+    <dimen name="xui_dialog_mini_loading_padding_size_tablet_small">25dp</dimen>
+    <dimen name="xui_dialog_mini_loading_min_size_tablet_small">140dp</dimen>
+    <dimen name="xui_dialog_mini_loading_padding_size_phone">18dp</dimen>
+    <dimen name="xui_dialog_mini_loading_min_size_phone">90dp</dimen>
+
+    <dimen name="xui_mini_loading_margin_size_tablet_big">25dp</dimen>
+    <dimen name="xui_mini_loading_margin_size_tablet_small">18dp</dimen>
+    <dimen name="xui_mini_loading_margin_size_phone">12dp</dimen>
+
+    <dimen name="xui_mini_loading_view_size_tablet_big">45dp</dimen>
+    <dimen name="xui_mini_loading_view_size_tablet_small">35dp</dimen>
+    <dimen name="xui_mini_loading_view_size_phone">25dp</dimen>
+
+    <dimen name="xui_loading_text_size_tablet_big">21sp</dimen>
+    <dimen name="xui_loading_text_size_tablet_small">16sp</dimen>
+    <dimen name="xui_loading_text_size_phone">12sp</dimen>
+
+
     <!-- 提示标点 -->
     <dimen name="xui_tips_point_size">8dp</dimen>
 
