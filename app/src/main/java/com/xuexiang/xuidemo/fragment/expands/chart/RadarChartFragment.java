@@ -1,9 +1,7 @@
 package com.xuexiang.xuidemo.fragment.expands.chart;
 
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.Chart;
@@ -20,7 +18,6 @@ import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
@@ -84,11 +81,11 @@ public class RadarChartFragment extends BaseFragment {
         chart.setWebAlpha(100);
 
         // 设置标识雷达图上各点的数字控件
-        MarkerView mv = new RadarMarkerView(getContext(), R.layout.radar_markerview);
+        MarkerView mv = new RadarMarkerView(getContext(), R.layout.marker_view_radar);
         mv.setChartView(chart);
         chart.setMarker(mv);
 
-        setDemoData();
+        setChartData();
 
         // 设置雷达图显示的动画
         chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
@@ -131,9 +128,9 @@ public class RadarChartFragment extends BaseFragment {
     }
 
     /**
-     * 设置模拟数据
+     * 设置图表数据
      */
-    private void setDemoData() {
+    private void setChartData() {
 
         float mul = 80;
         float min = 20;
@@ -187,13 +184,13 @@ public class RadarChartFragment extends BaseFragment {
 
     private void showBottomSheetList() {
         new BottomSheet.BottomListSheetBuilder(getActivity())
-                .addItem(getResources().getString(R.string.chart_modify_1))
-                .addItem(getResources().getString(R.string.chart_modify_2))
-                .addItem(getResources().getString(R.string.chart_modify_3))
-                .addItem(getResources().getString(R.string.chart_modify_4))
-                .addItem(getResources().getString(R.string.chart_modify_5))
-                .addItem(getResources().getString(R.string.chart_modify_6))
-                .addItem(getResources().getString(R.string.chart_modify_7))
+                .addItem(getResources().getString(R.string.chart_toggle_values))
+                .addItem(getResources().getString(R.string.chart_toggle_x_values))
+                .addItem(getResources().getString(R.string.chart_toggle_y_values))
+                .addItem(getResources().getString(R.string.chart_animate_x))
+                .addItem(getResources().getString(R.string.chart_animate_y))
+                .addItem(getResources().getString(R.string.chart_animate_xy))
+                .addItem(getResources().getString(R.string.chart_save))
                 .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
                     @Override
                     public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
