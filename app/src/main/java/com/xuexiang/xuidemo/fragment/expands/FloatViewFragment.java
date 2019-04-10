@@ -1,10 +1,14 @@
 package com.xuexiang.xuidemo.fragment.expands;
 
+import android.view.View;
+
 import com.xuexiang.xfloatview.permission.FloatWindowPermission;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.fragment.expands.floatview.service.AppMonitorService;
+import com.xuexiang.xuidemo.utils.Utils;
 
 import java.util.List;
 
@@ -53,4 +57,17 @@ public class FloatViewFragment extends BaseSimpleListFragment {
                 break;
         }
     }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("Github") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XFloatView");
+            }
+        });
+        return titleBar;
+    }
+
 }

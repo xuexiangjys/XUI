@@ -18,8 +18,10 @@ package com.xuexiang.xuidemo.fragment.expands;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.utils.Utils;
@@ -77,6 +79,18 @@ public class WebViewFragment extends BaseSimpleListFragment {
     public void systemApi(final String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
+    }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("Github") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://github.com/Justson/AgentWeb");
+            }
+        });
+        return titleBar;
     }
 
 

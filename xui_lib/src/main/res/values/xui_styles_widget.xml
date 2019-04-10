@@ -201,7 +201,7 @@
 
     <!-- TabSegment -->
     <style name="TabSegment">
-        <item name="ts_has_indicator">false</item>
+        <item name="ts_has_indicator">true</item>
         <item name="ts_indicator_height">@dimen/xui_tab_segment_indicator_height</item>
         <item name="android:textSize">@dimen/xui_tab_segment_text_size</item>
         <item name="ts_indicator_top">false</item>

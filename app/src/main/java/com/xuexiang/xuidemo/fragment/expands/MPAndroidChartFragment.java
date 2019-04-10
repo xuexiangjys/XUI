@@ -1,12 +1,16 @@
 package com.xuexiang.xuidemo.fragment.expands;
 
+import android.view.View;
+
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.BarChartFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.LineChartFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.PieChartFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.RadarChartFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 
 /**
  * @author xuexiang
@@ -27,5 +31,17 @@ public class MPAndroidChartFragment extends ComponentContainerFragment {
                 PieChartFragment.class,
                 RadarChartFragment.class
         };
+    }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("Github") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://github.com/PhilJay/MPAndroidChart");
+            }
+        });
+        return titleBar;
     }
 }

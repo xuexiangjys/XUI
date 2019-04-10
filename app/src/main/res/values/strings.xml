@@ -109,6 +109,14 @@
     <string name="circularImageView_modify_8">禁止使用touchSelect态</string>
     <string name="circularImageView_modify_9">重置为初始态</string>
 
+    <string name="chart_modify_1">显示/隐藏图表值</string>
+    <string name="chart_modify_2">显示/隐藏X轴</string>
+    <string name="chart_modify_3">显示/隐藏Y轴</string>
+    <string name="chart_modify_4">X轴动画</string>
+    <string name="chart_modify_5">Y轴动画</string>
+    <string name="chart_modify_6">XY轴动画</string>
+    <string name="chart_modify_7">图表保存</string>
+
     <!--PhotoPicker-->
     <string name="pick_photo">选择图片</string>
     <string name="pick_photo_without_camera">选择图片（不带拍照按钮且点击不预览图片）</string>

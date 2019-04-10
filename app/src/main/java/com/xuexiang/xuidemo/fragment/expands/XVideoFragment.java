@@ -31,10 +31,12 @@ import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xaop.consts.PermissionConsts;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.imageview.preview.loader.GlideMediaLoader;
 import com.xuexiang.xuidemo.MyApp;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.app.SocialShareUtils;
 import com.xuexiang.xutil.common.StringUtils;
@@ -164,5 +166,18 @@ public class XVideoFragment extends BaseFragment implements TxVideoPlayerControl
     @Override
     public void onShare() {
         SocialShareUtils.shareVideo(PathUtils.getMediaContentUri(FileUtils.getFileByPath(videoPlayer.getUrl())), SocialShareUtils.ShareType.DEFAULT);
+    }
+
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("Github") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XVideo");
+            }
+        });
+        return titleBar;
     }
 }

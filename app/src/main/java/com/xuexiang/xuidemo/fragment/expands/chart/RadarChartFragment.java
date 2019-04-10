@@ -1,8 +1,12 @@
 package com.xuexiang.xuidemo.fragment.expands.chart;
 
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.MarkerView;
@@ -12,15 +16,23 @@ import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.data.RadarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
+import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
+import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.radar.RadarMarkerView;
+import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
 /**
  * @author xuexiang
@@ -41,6 +53,18 @@ public class RadarChartFragment extends BaseFragment {
         return R.layout.fragment_radar_chart;
     }
 
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.ImageAction(R.drawable.icon_topbar_overflow) {
+            @Override
+            public void performAction(View view) {
+                showBottomSheetList();
+            }
+        });
+        return titleBar;
+    }
+
     /**
      * 初始化控件
      */
@@ -48,6 +72,8 @@ public class RadarChartFragment extends BaseFragment {
     protected void initViews() {
         // 设置雷达图的背景颜色
         chart.setBackgroundColor(Color.rgb(60, 65, 82));
+        // 禁止图表旋转
+        chart.setRotationEnabled(false);
 
         //设置雷达图网格的样式
         chart.getDescription().setEnabled(false);
@@ -156,6 +182,73 @@ public class RadarChartFragment extends BaseFragment {
 
         chart.setData(data);
         chart.invalidate();
+    }
+
+
+    private void showBottomSheetList() {
+        new BottomSheet.BottomListSheetBuilder(getActivity())
+                .addItem(getResources().getString(R.string.chart_modify_1))
+                .addItem(getResources().getString(R.string.chart_modify_2))
+                .addItem(getResources().getString(R.string.chart_modify_3))
+                .addItem(getResources().getString(R.string.chart_modify_4))
+                .addItem(getResources().getString(R.string.chart_modify_5))
+                .addItem(getResources().getString(R.string.chart_modify_6))
+                .addItem(getResources().getString(R.string.chart_modify_7))
+                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
+                    @Override
+                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
+                        dialog.dismiss();
+                        switch (position) {
+                            case 0:
+                                for (IDataSet<?> set : chart.getData().getDataSets()) {
+                                    set.setDrawValues(!set.isDrawValuesEnabled());
+                                }
+                                chart.invalidate();
+                                break;
+                            case 1:
+                                chart.getXAxis().setEnabled(!chart.getXAxis().isEnabled());
+                                chart.invalidate();
+                                break;
+                            case 2:
+                                chart.getYAxis().setEnabled(!chart.getYAxis().isEnabled());
+                                chart.invalidate();
+                                break;
+                            case 3:
+                                chart.animateX(1400);
+                                break;
+                            case 4:
+                                chart.animateY(1400);
+                                break;
+                            case 5:
+                                chart.animateXY(1400, 1400);
+                                break;
+                            case 6:
+                                saveToGallery(chart, "RadarChart");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                })
+                .build()
+                .show();
+
+    }
+
+    /**
+     * 图表保存
+     *
+     * @param chart
+     * @param name
+     */
+    @Permission(STORAGE)
+    protected void saveToGallery(Chart chart, String name) {
+        if (chart.saveToGallery(name + "_" + System.currentTimeMillis(), 70)) {
+            ToastUtils.toast("保存成功!");
+
+        } else {
+            ToastUtils.toast("保存失败!");
+        }
     }
 
 

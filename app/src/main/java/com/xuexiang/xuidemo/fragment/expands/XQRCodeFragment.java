@@ -29,14 +29,15 @@ import com.xuexiang.xaop.annotation.IOThread;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.enums.ThreadType;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.utils.TitleBar;
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.fragment.expands.qrcode.CustomCaptureFragment;
 import com.xuexiang.xuidemo.fragment.expands.qrcode.QRCodeProduceFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.common.ClickUtils;
@@ -230,5 +231,16 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
         CUSTOM,
     }
 
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("Github") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XQRCode");
+            }
+        });
+        return titleBar;
+    }
 
 }

@@ -16,7 +16,6 @@
 
 package com.xuexiang.xuidemo.fragment.expands;
 
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -36,9 +35,11 @@ import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.LocationService;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
@@ -75,6 +76,18 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_city_picker;
+    }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("Github") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://github.com/xuexiangjys/CityPicker");
+            }
+        });
+        return titleBar;
     }
 
     @Override
