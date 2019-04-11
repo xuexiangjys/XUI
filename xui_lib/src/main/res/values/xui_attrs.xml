@@ -791,37 +791,45 @@
     <!--============================TabBar=========================================-->
 
     <declare-styleable name="EasyIndicator">
-        <!--指示器的宽度，默认-1(MATCH_PARENT)为填充满-->
+        <!--指示器(整个Tab）的宽度，默认-1(MATCH_PARENT)为填充满-->
         <attr name="indicator_width" format="dimension" />
         <!--指示器的高度，默认45px-->
         <attr name="indicator_height" format="dimension" />
-        <!--指示器底部指示线的颜色，默认R.attr.xui_config_color_separator_dark-->
-        <attr name="indicator_bottom_line_color" format="color" />
-        <!--指示器底部指示线的高度，默认0-->
-        <attr name="indicator_bottom_line_height" format="dimension" />
-        <!--指示器底部的高度，默认3-->
-        <attr name="indicator_bottom_height" format="dimension" />
+
         <!--指示器文字的大小，默认14px-->
         <attr name="indicator_textSize" format="dimension" />
         <!--指示器选中时文字的大小，默认14px-->
         <attr name="indicator_select_textSize" format="dimension" />
-        <!--指示器垂直分割线的宽度，默认0-->
-        <attr name="indicator_vertical_line_w" format="dimension" />
-        <!--指示器垂直分割线的高度，默认0-->
-        <attr name="indicator_vertical_line_h" format="dimension" />
         <!--指示器选中时的背景颜色，默认R.attr.colorAccent-->
         <attr name="indicator_selected_color" format="color" />
         <!--指示器未选中时的背景颜色，默认黑色-->
         <attr name="indicator_normal_color" format="color" />
+
+        <!--是否显示底部指示器，默认true-->
+        <attr name="indicator_line_show" format="boolean" />
+        <!--指示器底部的高度，默认3-->
+        <attr name="indicator_line_height" format="dimension" />
         <!--指示器指示线的颜色，默认R.attr.colorAccent-->
         <attr name="indicator_line_color" format="color" />
+
+        <!--指示器底部指示线的颜色，默认R.attr.xui_config_color_separator_dark-->
+        <attr name="indicator_bottom_line_color" format="color" />
+        <!--指示器底部指示线的高度，默认0-->
+        <attr name="indicator_bottom_line_height" format="dimension" />
+
+        <!--指示器垂直分割线的宽度，默认0-->
+        <attr name="indicator_vertical_line_w" format="dimension" />
+        <!--指示器垂直分割线的高度，默认0-->
+        <attr name="indicator_vertical_line_h" format="dimension" />
         <!--指示器垂直分割线的颜色，默认R.attr.xui_config_color_separator_dark-->
         <attr name="indicator_vertical_line_color" format="color" />
-        <!--是否显示底部指示器，默认true-->
-        <attr name="indicator_isBottom_line" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="TabSegment">
+        <!--tab选中时的颜色，默认R.attr.colorAccent-->
+        <attr name="ts_selected_color" format="color" />
+        <!--tab未选中时的颜色，默认R.color.xui_config_color_gray_5-->
+        <attr name="ts_normal_color" format="boolean" />
         <!--指示器的高度, 默认2dp-->
         <attr name="ts_indicator_height" format="dimension" />
         <!--是否显示指示器，默认true-->

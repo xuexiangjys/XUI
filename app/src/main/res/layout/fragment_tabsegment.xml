@@ -17,11 +17,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.tabbar.TabSegment
+        android:id="@+id/tabSegment1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:ts_normal_color="@color/xui_config_color_pure_black"
+        android:background="@color/xui_config_color_white"/>
 
     <com.xuexiang.xui.widget.tabbar.TabSegment
         android:id="@+id/tabSegment"
         android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_height="40dp"
         android:background="@drawable/bg_tab_panel"/>
 

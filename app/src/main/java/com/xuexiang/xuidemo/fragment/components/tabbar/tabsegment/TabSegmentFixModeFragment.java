@@ -34,6 +34,7 @@ import com.xuexiang.xui.widget.tabbar.TabSegment;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.ContentPage;
+import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +48,8 @@ import butterknife.BindView;
 @Page(name = "固定宽度，内容均分")
 public class TabSegmentFixModeFragment extends BaseFragment {
 
+    @BindView(R.id.tabSegment1)
+    TabSegment mTabSegment1;
     @BindView(R.id.tabSegment)
     TabSegment mTabSegment;
     @BindView(R.id.contentViewPager)
@@ -144,6 +147,27 @@ public class TabSegmentFixModeFragment extends BaseFragment {
 
             }
         });
+
+        initNoViewPagerTabSegment();
+    }
+
+    /**
+     * 不使用ViewPager的情况
+     */
+    private void initNoViewPagerTabSegment() {
+        for (String page : pages) {
+            mTabSegment1.addTab(new TabSegment.Tab(page));
+        }
+        mTabSegment1.setMode(TabSegment.MODE_FIXED);
+        mTabSegment1.setOnTabClickListener(new TabSegment.OnTabClickListener() {
+            @Override
+            public void onTabClick(int index) {
+                ToastUtils.toast("点击了" + index);
+            }
+        });
+        mTabSegment1.notifyDataChanged();
+        mTabSegment1.selectTab(0);
+
     }
 
     private void showBottomSheetList() {

@@ -29,6 +29,7 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -74,10 +75,29 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
      * tab宽度,默认填充全屏
      */
     private int indicator_width = -1;
+    //==============//
+    /**
+     * 是否显示指示器
+     */
+    private boolean indicator_line_show = true;
+    /**
+     * 指示器默认高度
+     */
+    private int indicator_line_height = 3;
+    /**
+     * 指示器颜色
+     */
+    private int indicator_line_color;
+    //==============//
     /**
      * 指示器底部线条高度
      */
     private int indicator_bottom_line_height = 0;
+    /**
+     * 指示器底部线条颜色
+     */
+    private int indicator_bottom_line_color;
+
     /**
      * 中间分割线宽度
      */
@@ -87,21 +107,11 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
      */
     private int indicator_vertical_line_h = 0;
     /**
-     * 指示器默认高度
-     */
-    private int indicator_bottom_height = 3;
-    /**
-     * 指示器底部线条颜色
-     */
-    private int indicator_bottom_line_color;
-    /**
-     * 指示器颜色
-     */
-    private int indicator_line_color;
-    /**
      * 中间分割线颜色
      */
     private int indicator_vertical_line_color;
+
+
     /**
      * 选中颜色和默认颜色
      */
@@ -114,10 +124,7 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
      * 选中字体大小
      */
     private float indicator_select_textSize = indicator_textSize;
-    /**
-     * 是否显示指示器
-     */
-    private boolean indicator_isBottom_line = true;
+
 
     public EasyIndicator(Context context) {
         super(context);
@@ -136,33 +143,19 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.EasyIndicator);
         if (a != null) {
-            // mIndicator height
             indicatorHeight = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_height, indicatorHeight);
-            // indicator_bottom_height
-            indicator_bottom_height = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_bottom_height, indicator_bottom_height);
-            // indicator_bottom_line_height
+            indicator_line_height = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_line_height, indicator_line_height);
             indicator_bottom_line_height = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_bottom_line_height, indicator_bottom_line_height);
-            // indicator_bottom_line_color
             indicator_bottom_line_color = a.getColor(R.styleable.EasyIndicator_indicator_bottom_line_color, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
-            // indicator_selected_color
             indicator_selected_color = a.getColor(R.styleable.EasyIndicator_indicator_selected_color, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
-            // indicator_normal_color
             indicator_normal_color = a.getColor(R.styleable.EasyIndicator_indicator_normal_color, ResUtils.getColor(R.color.xui_config_color_black));
-            // indicator_line_color
             indicator_line_color = a.getColor(R.styleable.EasyIndicator_indicator_line_color, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
-            // indicator_textSize
             indicator_textSize = getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_textSize, (int) indicator_textSize);
-            // indicator_isBottom_line
-            indicator_isBottom_line = a.getBoolean(R.styleable.EasyIndicator_indicator_isBottom_line, indicator_isBottom_line);
-            // indicator_vertical_line
+            indicator_line_show = a.getBoolean(R.styleable.EasyIndicator_indicator_line_show, indicator_line_show);
             indicator_vertical_line_w = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_vertical_line_w, indicator_vertical_line_w);
-            // indicator_vertical_line_color
             indicator_vertical_line_color = a.getColor(R.styleable.EasyIndicator_indicator_vertical_line_color, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
-            // indicator_vertical_line_h
             indicator_vertical_line_h = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_vertical_line_h, indicator_vertical_line_h);
-            // indicator_width
             indicator_width = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_width, indicator_width);
-            // indicator_select_textSize
             indicator_select_textSize = getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_select_textSize, 14);
             if (indicator_width == 0) {
                 indicator_width = -1;
@@ -220,23 +213,21 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
         removeAllViews();
         addView(tab_content);
 
-        if (indicator_isBottom_line) {
+        if (indicator_line_show) {
             // Create tab mIndicator
             mIndicator = new View(getContext());
             int iw = 0;
             if (indicator_width == 0 || indicator_width == -1) {
                 iw = screenWidth / tvs.length;
             }
-            mIndicator.setLayoutParams(new LinearLayoutCompat.LayoutParams(iw, indicator_bottom_height));
+            mIndicator.setLayoutParams(new LinearLayoutCompat.LayoutParams(iw, indicator_line_height));
             mIndicator.setBackgroundColor(indicator_line_color);
             addView(mIndicator);
         }
 
         // Create tab bottom line
         View line = new View(getContext());
-        LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams
-                (ViewGroup.LayoutParams.MATCH_PARENT
-                        , indicator_bottom_line_height);
+        LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, indicator_bottom_line_height);
         line.setLayoutParams(params);
         line.setBackgroundColor(indicator_bottom_line_color);
         addView(line);
@@ -297,7 +288,7 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
             mViewPager.setCurrentItem(mPosition);
         } else {
             setSelectorColor(tv);
-            if (indicator_isBottom_line) {
+            if (indicator_line_show) {
                 buildIndicatorAnimatorTowards(tv).start();
             }
         }
