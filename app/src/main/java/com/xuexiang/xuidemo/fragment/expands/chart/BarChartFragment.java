@@ -2,7 +2,9 @@ package com.xuexiang.xuidemo.fragment.expands.chart;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.bar.BasicBarChartFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.bar.SimpleBarChartFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.bar.HorizontalBarChartFragment;
 
 /**
  * @author xuexiang
@@ -18,7 +20,9 @@ public class BarChartFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[] {
-                SimpleBarChartFragment.class
+                BasicBarChartFragment.class,
+                SimpleBarChartFragment.class,
+                HorizontalBarChartFragment.class
         };
     }
 }

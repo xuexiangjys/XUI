@@ -119,7 +119,13 @@
 
     <string name="chart_toggle_bar_borders">显示/隐藏边线</string>
     <string name="chart_toggle_icons">显示/隐藏图标</string>
-    <string name="chart_modify_10">显示/隐藏Y轴</string>
+    <string name="chart_toggle_percent">数值/百分比</string>
+    <string name="chart_toggle_hole">显示/隐藏中心圆</string>
+    <string name="chart_toggle_center_text">显示/隐藏中心文字</string>
+    <string name="chart_toggle_curved_slices">切换分割线样式</string>
+    <string name="chart_spin_animation">旋转动画</string>
+
+
 
     <!--PhotoPicker-->
     <string name="pick_photo">选择图片</string>
