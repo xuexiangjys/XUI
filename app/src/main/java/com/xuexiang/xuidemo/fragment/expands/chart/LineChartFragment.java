@@ -2,6 +2,8 @@ package com.xuexiang.xuidemo.fragment.expands.chart;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.line.BasicLineChartFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.line.MultiLineChartFragment;
 
 /**
  * @author xuexiang
@@ -18,7 +20,8 @@ public class LineChartFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
-
+                BasicLineChartFragment.class,
+                MultiLineChartFragment.class
         };
     }
 }

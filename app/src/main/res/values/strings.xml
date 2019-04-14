@@ -125,6 +125,11 @@
     <string name="chart_toggle_curved_slices">切换分割线样式</string>
     <string name="chart_spin_animation">旋转动画</string>
 
+    <string name="chart_toggle_filled">切换区域填充</string>
+    <string name="chart_toggle_circles">显示/隐藏圆点</string>
+    <string name="chart_toggle_cubic">开启/关闭贝塞尔曲线</string>
+    <string name="chart_toggle_pinch_zoom">开启/关闭自由缩放手势</string>
+    <string name="chart_toggle_highlight">开启/关闭标记</string>
 
 
     <!--PhotoPicker-->

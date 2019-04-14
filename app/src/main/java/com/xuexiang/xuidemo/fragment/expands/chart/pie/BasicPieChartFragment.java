@@ -9,7 +9,6 @@ import android.text.style.StyleSpan;
 import android.view.View;
 
 import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
@@ -22,12 +21,11 @@ import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.MPPointF;
-import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.BaseChartFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
@@ -35,14 +33,12 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
-
 /**
  * @author xuexiang
  * @since 2019/4/11 下午11:32
  */
 @Page(name = "BasicPieChart\n基础饼图，详细API")
-public class BasicPieChartFragment extends BaseFragment implements OnChartValueSelectedListener {
+public class BasicPieChartFragment extends BaseChartFragment implements OnChartValueSelectedListener {
 
     @BindView(R.id.chart1)
     PieChart chart;
@@ -54,7 +50,7 @@ public class BasicPieChartFragment extends BaseFragment implements OnChartValueS
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_pie_chart;
+        return R.layout.fragment_chart_pie;
     }
 
     @Override
@@ -74,6 +70,19 @@ public class BasicPieChartFragment extends BaseFragment implements OnChartValueS
      */
     @Override
     protected void initViews() {
+        initChartStyle();
+        initChartLabel();
+        setChartData(4, 10);
+
+        chart.animateY(1400, Easing.EaseInOutQuad);
+        chart.setOnChartValueSelectedListener(this);
+    }
+
+    /**
+     * 初始化图表的样式
+     */
+    @Override
+    protected void initChartStyle() {
         //使用百分百显示
         chart.setUsePercentValues(true);
         chart.getDescription().setEnabled(false);
@@ -97,16 +106,15 @@ public class BasicPieChartFragment extends BaseFragment implements OnChartValueS
 
         //设置可以旋转
         chart.setRotationAngle(0);
-        // enable rotation of the chart by touch
         chart.setRotationEnabled(true);
         chart.setHighlightPerTapEnabled(true);
+    }
 
-        chart.setOnChartValueSelectedListener(this);
-
-        setChartData(4, 10);
-
-        chart.animateY(1400, Easing.EaseInOutQuad);
-
+    /**
+     * 初始化图表的 标题
+     */
+    @Override
+    protected void initChartLabel() {
         Legend l = chart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
@@ -121,23 +129,16 @@ public class BasicPieChartFragment extends BaseFragment implements OnChartValueS
         chart.setEntryLabelTextSize(12f);
     }
 
-    protected final String[] parties = new String[] {
-            "Party A", "Party B", "Party C", "Party D", "Party E", "Party F", "Party G", "Party H",
-            "Party I", "Party J", "Party K", "Party L", "Party M", "Party N", "Party O", "Party P",
-            "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
-            "Party Y", "Party Z"
-    };
-
-
     /**
      * 设置图表数据
      *
      * @param count 柱状图中柱的数量
      * @param range
      */
-    private void setChartData(int count, float range) {
+    @Override
+    protected void setChartData(int count, float range) {
         List<PieEntry> entries = new ArrayList<>();
-        for (int i = 0; i < count ; i++) {
+        for (int i = 0; i < count; i++) {
             //设置数据源
             entries.add(new PieEntry((float) ((Math.random() * range) + range / 5), parties[i % parties.length], getResources().getDrawable(R.drawable.ic_star_green)));
         }
@@ -147,7 +148,6 @@ public class BasicPieChartFragment extends BaseFragment implements OnChartValueS
         dataSet.setSliceSpace(3f);
         dataSet.setIconsOffset(new MPPointF(0, 40));
         dataSet.setSelectionShift(5f);
-
 
         List<Integer> colors = new ArrayList<>();
         for (int c : ColorTemplate.VORDIPLOM_COLORS) {
@@ -182,6 +182,7 @@ public class BasicPieChartFragment extends BaseFragment implements OnChartValueS
 
     /**
      * 生成饼图中间的文字
+     *
      * @return
      */
     private SpannableString generateCenterSpannableText() {
@@ -277,7 +278,7 @@ public class BasicPieChartFragment extends BaseFragment implements OnChartValueS
                                 chart.animateXY(1400, 1400);
                                 break;
                             case 11:
-                                saveToGallery(chart, "SimpleBarChart");
+                                saveToGallery(chart, "BasicPieChart");
                                 break;
                             default:
                                 break;
@@ -289,19 +290,5 @@ public class BasicPieChartFragment extends BaseFragment implements OnChartValueS
 
     }
 
-    /**
-     * 图表保存
-     *
-     * @param chart
-     * @param name
-     */
-    @Permission(STORAGE)
-    protected void saveToGallery(Chart chart, String name) {
-        if (chart.saveToGallery(name + "_" + System.currentTimeMillis(), 70)) {
-            ToastUtils.toast("保存成功!");
 
-        } else {
-            ToastUtils.toast("保存失败!");
-        }
-    }
 }

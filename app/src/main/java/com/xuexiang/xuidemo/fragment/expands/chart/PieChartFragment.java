@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.fragment.expands.chart;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.pie.BasicPieChartFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.pie.HalfPieChartFragment;
 
 /**
  * @author xuexiang
@@ -18,7 +19,8 @@ public class PieChartFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[] {
-                BasicPieChartFragment.class
+                BasicPieChartFragment.class,
+                HalfPieChartFragment.class
         };
     }
 }

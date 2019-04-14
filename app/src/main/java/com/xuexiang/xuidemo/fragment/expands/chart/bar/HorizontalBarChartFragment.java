@@ -11,6 +11,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.BaseChartFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import butterknife.BindView;
  * @since 2019/4/11 下午11:15
  */
 @Page(name = "HorizontalBarChart\n水平横向柱状图")
-public class HorizontalBarChartFragment extends BaseFragment {
+public class HorizontalBarChartFragment extends BaseChartFragment {
 
     @BindView(R.id.chart1)
     HorizontalBarChart chart;
@@ -34,7 +35,7 @@ public class HorizontalBarChartFragment extends BaseFragment {
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_horizontal_barchart;
+        return R.layout.fragment_chart_bar_horizontal;
     }
 
     /**
@@ -42,6 +43,19 @@ public class HorizontalBarChartFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
+        initChartStyle();
+        initChartLabel();
+        // setting data
+        setChartData(12, 50);
+
+        chart.animateY(2500);
+    }
+
+    /**
+     * 初始化图表的样式
+     */
+    @Override
+    protected void initChartStyle() {
         chart.setDrawBarShadow(false);
         //开启在柱状图顶端显示值
         chart.setDrawValueAboveBar(true);
@@ -54,6 +68,15 @@ public class HorizontalBarChartFragment extends BaseFragment {
         //设置不画背景网格
         chart.setDrawGridBackground(false);
 
+        chart.setFitBars(true);
+
+        initXYAxisStyle();
+    }
+
+    /**
+     * 初始化图表X、Y轴的样式
+     */
+    private void initXYAxisStyle() {
         //设置X轴样式
         XAxis xl = chart.getXAxis();
         xl.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -72,13 +95,13 @@ public class HorizontalBarChartFragment extends BaseFragment {
         yr.setDrawAxisLine(true);
         yr.setDrawGridLines(false);
         yr.setAxisMinimum(0f);
+    }
 
-        chart.setFitBars(true);
-        chart.animateY(2500);
-
-        // setting data
-        setChartData(12, 50);
-
+    /**
+     * 初始化图表的 标题 样式
+     */
+    @Override
+    protected void initChartLabel() {
         //设置图表 标题 的样式
         Legend l = chart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
@@ -89,14 +112,14 @@ public class HorizontalBarChartFragment extends BaseFragment {
         l.setXEntrySpace(4f);
     }
 
-
     /**
      * 设置图表数据
      *
      * @param count 柱状图中柱的数量
      * @param range
      */
-    private void setChartData(int count, float range) {
+    @Override
+    protected void setChartData(int count, float range) {
         float barWidth = 9f;
         float spaceForBar = 10f;
         List<BarEntry> values = new ArrayList<>();

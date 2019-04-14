@@ -4,7 +4,6 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -18,12 +17,11 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.model.GradientColor;
-import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.BaseChartFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
@@ -31,14 +29,12 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
-
 /**
  * @author xuexiang
  * @since 2019/4/10 下午11:03
  */
 @Page(name = "BasicBarChart\n基础的柱状图，详细API")
-public class BasicBarChartFragment extends BaseFragment implements OnChartValueSelectedListener {
+public class BasicBarChartFragment extends BaseChartFragment implements OnChartValueSelectedListener {
 
     @BindView(R.id.chart1)
     BarChart chart;
@@ -50,7 +46,7 @@ public class BasicBarChartFragment extends BaseFragment implements OnChartValueS
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_simple_barchart;
+        return R.layout.fragment_chart_bar;
     }
 
     @Override
@@ -70,8 +66,18 @@ public class BasicBarChartFragment extends BaseFragment implements OnChartValueS
      */
     @Override
     protected void initViews() {
-        chart.setOnChartValueSelectedListener(this);
+        initChartStyle();
+        initChartLabel();
+        setChartData(12, 50);
 
+        chart.setOnChartValueSelectedListener(this);
+    }
+
+    /**
+     * 初始化图表的样式
+     */
+    @Override
+    protected void initChartStyle() {
         //关闭描述
         chart.getDescription().setEnabled(false);
         chart.setDrawBarShadow(false);
@@ -86,6 +92,13 @@ public class BasicBarChartFragment extends BaseFragment implements OnChartValueS
         //设置不画背景网格
         chart.setDrawGridBackground(false);
 
+        initXYAxisStyle();
+    }
+
+    /**
+     * 初始化图表X、Y轴的样式
+     */
+    private void initXYAxisStyle() {
         //设置X轴样式
         ValueFormatter xAxisFormatter = new DayAxisValueFormatter(chart);
         XAxis xAxis = chart.getXAxis();
@@ -113,6 +126,17 @@ public class BasicBarChartFragment extends BaseFragment implements OnChartValueS
         rightAxis.setSpaceTop(15f);
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
+        //设置图表的数值指示器
+        XYMarkerView mv = new XYMarkerView(getContext(), xAxisFormatter, yAxisFormatter);
+        mv.setChartView(chart);
+        chart.setMarker(mv);
+    }
+
+    /**
+     * 初始化图表的 标题 样式
+     */
+    @Override
+    protected void initChartLabel() {
         //设置图表 标题 的样式
         Legend l = chart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
@@ -123,14 +147,6 @@ public class BasicBarChartFragment extends BaseFragment implements OnChartValueS
         l.setFormSize(9f);
         l.setTextSize(11f);
         l.setXEntrySpace(4f);
-
-        //设置图表的数值指示器
-        XYMarkerView mv = new XYMarkerView(getContext(), xAxisFormatter, yAxisFormatter);
-        mv.setChartView(chart);
-        chart.setMarker(mv);
-
-
-        setChartData(12, 50);
     }
 
     /**
@@ -139,7 +155,8 @@ public class BasicBarChartFragment extends BaseFragment implements OnChartValueS
      * @param count 柱状图中柱的数量
      * @param range
      */
-    private void setChartData(int count, float range) {
+    @Override
+    protected void setChartData(int count, float range) {
         float start = 1f;
         List<BarEntry> values = new ArrayList<>();
         //设置数据源
@@ -253,7 +270,7 @@ public class BasicBarChartFragment extends BaseFragment implements OnChartValueS
                                 chart.animateXY(2000, 2000);
                                 break;
                             case 6:
-                                saveToGallery(chart, "SimpleBarChart");
+                                saveToGallery(chart, "BasicBarChart");
                                 break;
                             default:
                                 break;
@@ -263,21 +280,5 @@ public class BasicBarChartFragment extends BaseFragment implements OnChartValueS
                 .build()
                 .show();
 
-    }
-
-    /**
-     * 图表保存
-     *
-     * @param chart
-     * @param name
-     */
-    @Permission(STORAGE)
-    protected void saveToGallery(Chart chart, String name) {
-        if (chart.saveToGallery(name + "_" + System.currentTimeMillis(), 70)) {
-            ToastUtils.toast("保存成功!");
-
-        } else {
-            ToastUtils.toast("保存失败!");
-        }
     }
 }

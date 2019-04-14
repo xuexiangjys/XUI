@@ -10,6 +10,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.BaseChartFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import butterknife.BindView;
  * @since 2019/4/11 下午10:59
  */
 @Page(name = "SimpleBarChart\n默认的柱状图样式")
-public class SimpleBarChartFragment extends BaseFragment {
+public class SimpleBarChartFragment extends BaseChartFragment {
 
     @BindView(R.id.chart1)
     BarChart chart;
@@ -33,7 +34,7 @@ public class SimpleBarChartFragment extends BaseFragment {
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_simple_barchart;
+        return R.layout.fragment_chart_bar;
     }
 
     /**
@@ -41,6 +42,19 @@ public class SimpleBarChartFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
+        initChartStyle();
+        initChartLabel();
+        setChartData(10, 100);
+
+        // 设置Y轴进入动画
+        chart.animateY(1500);
+    }
+
+    /**
+     * 初始化图表的样式
+     */
+    @Override
+    protected void initChartStyle() {
         //关闭描述
         chart.getDescription().setEnabled(false);
         //设置显示值时，最大的柱数量
@@ -58,11 +72,13 @@ public class SimpleBarChartFragment extends BaseFragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
         chart.getAxisLeft().setDrawGridLines(false);
+    }
 
-        setChartData(10, 100);
-
-        // 设置Y轴进入动画
-        chart.animateY(1500);
+    /**
+     * 初始化图表的 标题 样式
+     */
+    @Override
+    protected void initChartLabel() {
         //不显示图标 标题
         chart.getLegend().setEnabled(false);
     }
@@ -73,7 +89,8 @@ public class SimpleBarChartFragment extends BaseFragment {
      * @param count 柱状图中柱的数量
      * @param range
      */
-    private void setChartData(int count, float range) {
+    @Override
+    protected void setChartData(int count, float range) {
         List<BarEntry> values = new ArrayList<>();
         //设置数据源
         for (int i = 0; i < count; i++) {

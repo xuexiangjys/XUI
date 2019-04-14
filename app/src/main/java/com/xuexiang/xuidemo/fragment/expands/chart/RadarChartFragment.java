@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.view.View;
 
 import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.MarkerView;
@@ -16,27 +15,22 @@ import com.github.mikephil.charting.data.RadarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
-import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.radar.RadarMarkerView;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
 /**
  * @author xuexiang
  * @since 2019/4/10 上午12:08
  */
 @Page(name = "RadarChart\n雷达图")
-public class RadarChartFragment extends BaseFragment {
+public class RadarChartFragment extends BaseChartFragment {
     @BindView(R.id.chart1)
     RadarChart chart;
 
@@ -47,7 +41,7 @@ public class RadarChartFragment extends BaseFragment {
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_radar_chart;
+        return R.layout.fragment_chart_radar;
     }
 
     @Override
@@ -67,6 +61,19 @@ public class RadarChartFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
+        initChartStyle();
+        initChartLabel();
+        setChartData(5, 80);
+
+        // 设置雷达图显示的动画
+        chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
+    }
+
+    /**
+     * 初始化图表的样式
+     */
+    @Override
+    protected void initChartStyle() {
         // 设置雷达图的背景颜色
         chart.setBackgroundColor(Color.rgb(60, 65, 82));
         // 禁止图表旋转
@@ -85,11 +92,10 @@ public class RadarChartFragment extends BaseFragment {
         mv.setChartView(chart);
         chart.setMarker(mv);
 
-        setChartData();
+        initXYAxisStyle();
+    }
 
-        // 设置雷达图显示的动画
-        chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
-
+    private void initXYAxisStyle() {
         //设置X轴（雷达图的项目点）的样式
         XAxis xAxis = chart.getXAxis();
         xAxis.setTextSize(9f);
@@ -115,7 +121,13 @@ public class RadarChartFragment extends BaseFragment {
         yAxis.setAxisMaximum(80f);
         //是否画出分值
         yAxis.setDrawLabels(false);
+    }
 
+    /**
+     * 初始化图表的 标题 样式
+     */
+    @Override
+    protected void initChartLabel() {
         //设置图表数据 标题 的样式
         Legend l = chart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -129,22 +141,22 @@ public class RadarChartFragment extends BaseFragment {
 
     /**
      * 设置图表数据
+     *
+     * @param count 一组数据的数量
+     * @param range
      */
-    private void setChartData() {
-
-        float mul = 80;
+    @Override
+    protected void setChartData(int count, float range) {
         float min = 20;
-        //5组数据
-        int cnt = 5;
 
         ArrayList<RadarEntry> entries1 = new ArrayList<>();
         ArrayList<RadarEntry> entries2 = new ArrayList<>();
         //雷达图的数据一般都有最大值，数据在一定范围内
-        for (int i = 0; i < cnt; i++) {
-            float val1 = (float) (Math.random() * mul) + min;
+        for (int i = 0; i < count; i++) {
+            float val1 = (float) (Math.random() * range) + min;
             entries1.add(new RadarEntry(val1));
 
-            float val2 = (float) (Math.random() * mul) + min;
+            float val2 = (float) (Math.random() * range) + min;
             entries2.add(new RadarEntry(val2));
         }
 
@@ -180,7 +192,6 @@ public class RadarChartFragment extends BaseFragment {
         chart.setData(data);
         chart.invalidate();
     }
-
 
     private void showBottomSheetList() {
         new BottomSheet.BottomListSheetBuilder(getActivity())
@@ -232,21 +243,6 @@ public class RadarChartFragment extends BaseFragment {
 
     }
 
-    /**
-     * 图表保存
-     *
-     * @param chart
-     * @param name
-     */
-    @Permission(STORAGE)
-    protected void saveToGallery(Chart chart, String name) {
-        if (chart.saveToGallery(name + "_" + System.currentTimeMillis(), 70)) {
-            ToastUtils.toast("保存成功!");
-
-        } else {
-            ToastUtils.toast("保存失败!");
-        }
-    }
 
 
 }
