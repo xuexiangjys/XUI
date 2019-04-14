@@ -47,4 +47,39 @@
         app:sSwitchIsChecked="true"
         app:sThumbResource="@drawable/thumb"
         app:sTrackResource="@drawable/track" />
+
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/super_message_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:sDividerLineType="both"
+        app:sLeftTextString="消息"
+        app:sRightViewMarginRight="0dp"
+        app:sRightIconRes="@drawable/icon_arrow_right_red" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/xui_config_color_white"
+        android:orientation="vertical">
+
+        <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+            android:id="@+id/stv_name"
+            style="@style/EditInfoItem"
+            app:sEditTextHint="请输入姓名"
+            app:sEditTextClearButton="false"
+            app:sLeftTextString="姓名" />
+
+        <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+            android:id="@+id/stv_phone"
+            style="@style/EditInfoItem"
+            android:inputType="phone"
+            app:sEditTextHint="请输入手机号"
+            app:sLeftTextString="手机号" />
+
+    </LinearLayout>
+
+
 </LinearLayout>

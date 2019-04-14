@@ -106,7 +106,11 @@ public class XUI {
      * @return 获取默认字体
      */
     public static Typeface getDefaultTypeface() {
-        return TypefaceUtils.load(getContext().getAssets(), CalligraphyConfig.get().getFontPath());
+        String fontPath = CalligraphyConfig.get().getFontPath();
+        if (!TextUtils.isEmpty(fontPath)) {
+            return TypefaceUtils.load(getContext().getAssets(), fontPath);
+        }
+        return null;
     }
 
     /**

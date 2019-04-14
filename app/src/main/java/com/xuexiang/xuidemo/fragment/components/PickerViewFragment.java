@@ -20,6 +20,8 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.pickerview.AddressPickerFragment;
+import com.xuexiang.xuidemo.fragment.components.pickerview.OptionsPickerViewFragment;
+import com.xuexiang.xuidemo.fragment.components.pickerview.RulerViewFragment;
 import com.xuexiang.xuidemo.fragment.components.pickerview.TimePickerFragment;
 
 /**
@@ -32,7 +34,9 @@ public class PickerViewFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[] {
                 TimePickerFragment.class,
-                AddressPickerFragment.class
+                AddressPickerFragment.class,
+                OptionsPickerViewFragment.class,
+                RulerViewFragment.class
         };
     }
 }

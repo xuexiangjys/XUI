@@ -39,6 +39,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 /**
  * BottomSheet 在 {@link Dialog} 的基础上重新定制了 {@link #show()} 和 {@link #hide()} 时的动画效果, 使 {@link Dialog} 在界面底部升起和降下。
  * <p>
@@ -216,6 +219,7 @@ public class BottomSheet extends Dialog {
         private boolean mNeedRightMark; //是否需要rightMark,标识当前项
         private int mCheckedIndex;
         private String mTitle;
+        private boolean mIsCenter;
         private TextView mTitleTv;
         private OnSheetItemClickListener mOnSheetItemClickListener;
         private OnDismissListener mOnBottomDialogDismissListener;
@@ -232,6 +236,7 @@ public class BottomSheet extends Dialog {
             mItems = new ArrayList<>();
             mHeaderViews = new ArrayList<>();
             mNeedRightMark = needRightMark;
+            mIsCenter = false;
         }
 
         /**
@@ -333,6 +338,16 @@ public class BottomSheet extends Dialog {
             return this;
         }
 
+        /**
+         * 设置文字是否居中对齐
+         * @param isCenter
+         * @return
+         */
+        public BottomListSheetBuilder setIsCenter(boolean isCenter) {
+            mIsCenter = isCenter;
+            return this;
+        }
+
         public BottomSheet build() {
             mDialog = new BottomSheet(mContext);
             View contentView = buildViews();
@@ -346,13 +361,16 @@ public class BottomSheet extends Dialog {
 
         private View buildViews() {
             View wrapperView = View.inflate(mContext, getContentViewLayoutId(), null);
-            mTitleTv = (TextView) wrapperView.findViewById(R.id.title);
-            mContainerView = (ListView) wrapperView.findViewById(R.id.listview);
+            mTitleTv = wrapperView.findViewById(R.id.title);
+            mContainerView = wrapperView.findViewById(R.id.listview);
             if (mTitle != null && mTitle.length() != 0) {
                 mTitleTv.setVisibility(View.VISIBLE);
                 mTitleTv.setText(mTitle);
             } else {
                 mTitleTv.setVisibility(View.GONE);
+            }
+            if (mIsCenter) {
+                mTitleTv.setGravity(Gravity.CENTER);
             }
             if (mHeaderViews.size() > 0) {
                 for (View headerView : mHeaderViews) {
@@ -369,7 +387,7 @@ public class BottomSheet extends Dialog {
                 });
             }
 
-            mAdapter = new ListAdapter();
+            mAdapter = new ListAdapter(mIsCenter);
             mContainerView.setAdapter(mAdapter);
             return wrapperView;
         }
@@ -460,6 +478,12 @@ public class BottomSheet extends Dialog {
 
         private class ListAdapter extends BaseAdapter {
 
+            private boolean mIsCenter;
+
+            public ListAdapter(boolean isCenter) {
+                mIsCenter = isCenter;
+            }
+
             @Override
             public int getCount() {
                 return mItems.size();
@@ -485,6 +509,10 @@ public class BottomSheet extends Dialog {
                     holder = new ViewHolder();
                     holder.imageView = convertView.findViewById(R.id.bottom_dialog_list_item_img);
                     holder.textView = convertView.findViewById(R.id.bottom_dialog_list_item_title);
+                    if (mIsCenter) {
+                        holder.textView.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+                        holder.textView.setGravity(Gravity.CENTER);
+                    }
                     holder.markView = convertView.findViewById(R.id.bottom_dialog_list_item_mark_view_stub);
                     holder.redPoint = convertView.findViewById(R.id.bottom_dialog_list_item_point);
                     convertView.setTag(holder);

@@ -143,10 +143,12 @@
         <!--**********************************************
         *                 xui bottom sheet              *
         ***********************************************-->
+        <item name="xui_bottom_sheet_title_style">@style/BottomSheetTitleStyle</item>
         <item name="xui_bottom_sheet_title_appearance">@style/TextStyle.Title</item>
         <item name="xui_bottom_sheet_title_bg">?attr/xui_list_item_bg_with_border_bottom_selector</item>
 
         <item name="xui_bottom_sheet_list_item_padding_horizontal">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="xui_bottom_sheet_list_item_text_style">@style/BottomSheetListItemTextStyle</item>
         <item name="xui_bottom_sheet_list_item_text_appearance">@style/TextStyle.Content</item>
         <item name="xui_bottom_sheet_list_item_bg">?attr/xui_list_item_bg_with_border_bottom_selector</item>
         <item name="xui_bottom_sheet_grid_item_text_appearance">@style/TextStyle.Explain</item>
@@ -186,7 +188,8 @@
         <item name="XUICommonListItemViewStyle">@style/XUICommonListItemView</item>
         <item name="XUIGroupListSectionViewStyle">@style/XUIGroupListSectionView</item>
 
-        <item name="MiniLoadingStyle">@style/MiniLoadingStyle</item>
+        <item name="MiniLoadingStyle">@style/MiniLoadingView</item>
+        <item name="RulerViewStyle">@style/RulerView</item>
         <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
         <item name="TabSegmentStyle">@style/TabSegment</item>
 
@@ -297,9 +300,14 @@
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_big</item>
         <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_big</item>
         <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_big</item>
+        <item name="xui_dialog_mini_loading_padding_size">@dimen/xui_dialog_mini_loading_padding_size_tablet_big</item>
+        <item name="xui_dialog_mini_loading_min_size">@dimen/xui_dialog_mini_loading_min_size_tablet_big</item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_big</item>
+        <item name="xui_mini_loading_view_size">@dimen/xui_mini_loading_view_size_tablet_big</item>
+        <item name="xui_loading_text_size">@dimen/xui_loading_text_size_tablet_big</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_big</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_big</item>
+        <item name="xui_mini_loading_margin_size">@dimen/xui_mini_loading_margin_size_tablet_big</item>
         <item name="mini_loading_view_size">@dimen/mini_loading_view_size_tablet_big</item>
 
         <!--**********************************************
@@ -407,9 +415,14 @@
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_small</item>
         <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_small</item>
         <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_small</item>
+        <item name="xui_dialog_mini_loading_padding_size">@dimen/xui_dialog_mini_loading_padding_size_tablet_small</item>
+        <item name="xui_dialog_mini_loading_min_size">@dimen/xui_dialog_mini_loading_min_size_tablet_small</item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_small</item>
+        <item name="xui_mini_loading_view_size">@dimen/xui_mini_loading_view_size_tablet_small</item>
+        <item name="xui_loading_text_size">@dimen/xui_loading_text_size_tablet_small</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_small</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_small</item>
+        <item name="xui_mini_loading_margin_size">@dimen/xui_mini_loading_margin_size_tablet_small</item>
         <item name="mini_loading_view_size">@dimen/mini_loading_view_size_tablet_small</item>
 
         <!--**********************************************
@@ -526,9 +539,14 @@
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_phone</item>
         <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_phone</item>
         <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_phone</item>
+        <item name="xui_dialog_mini_loading_padding_size">@dimen/xui_dialog_mini_loading_padding_size_phone</item>
+        <item name="xui_dialog_mini_loading_min_size">@dimen/xui_dialog_mini_loading_min_size_phone</item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_phone</item>
+        <item name="xui_mini_loading_view_size">@dimen/xui_mini_loading_view_size_phone</item>
+        <item name="xui_loading_text_size">@dimen/xui_loading_text_size_phone</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_phone</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_phone</item>
+        <item name="xui_mini_loading_margin_size">@dimen/xui_mini_loading_margin_size_phone</item>
         <item name="mini_loading_view_size">@dimen/mini_loading_view_size_phone</item>
 
         <!--**********************************************

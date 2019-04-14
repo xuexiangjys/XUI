@@ -8,6 +8,7 @@ import com.xuexiang.xuidemo.fragment.components.popupwindow.EasyPopFragment;
 import com.xuexiang.xuidemo.fragment.components.popupwindow.PopupWindowStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.popupwindow.SnackbarFragment;
 import com.xuexiang.xuidemo.fragment.components.popupwindow.ViewTipFragment;
+import com.xuexiang.xuidemo.fragment.components.popupwindow.XToastFragment;
 import com.xuexiang.xuidemo.fragment.components.popupwindow.XUIPopupFragment;
 
 /**
@@ -25,7 +26,8 @@ public class PopupWindowFragment extends ComponentContainerFragment {
                 EasyPopFragment.class,
                 XUIPopupFragment.class,
                 SnackbarFragment.class,
-                CookieBarFragment.class
+                CookieBarFragment.class,
+                XToastFragment.class
         };
     }
 }

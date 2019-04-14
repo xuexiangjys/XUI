@@ -566,7 +566,10 @@ public class MaterialSpinner extends AppCompatTextView {
         // 获取屏幕的高宽
         final int screenHeight = Utils.getScreenHeight(getContext());
         // 计算ListView的高宽
-        final int listViewHeight = Utils.getListViewHeightBasedOnChildren(mListView);
+        int listViewHeight = Utils.getListViewHeightBasedOnChildren(mListView);
+        if (mPopupWindowMaxHeight > 0 && listViewHeight > mPopupWindowMaxHeight) {
+            listViewHeight = mPopupWindowMaxHeight;
+        }
         // 判断需要向上弹出还是向下弹出显示
         final boolean isNeedShowUp = (screenHeight - anchorLoc[1] - anchorHeight < listViewHeight);
         if (isNeedShowUp) {
@@ -595,7 +598,10 @@ public class MaterialSpinner extends AppCompatTextView {
         // 获取屏幕的高宽
         final int screenHeight = Utils.getScreenHeight(getContext());
         // 计算ListView的高宽
-        final int listViewHeight = Utils.getListViewHeightBasedOnChildren(mListView);
+        int listViewHeight = Utils.getListViewHeightBasedOnChildren(mListView);
+        if (mPopupWindowMaxHeight > 0 && listViewHeight > mPopupWindowMaxHeight) {
+            listViewHeight = mPopupWindowMaxHeight;
+        }
         // 判断需要向上弹出还是向下弹出显示
         final boolean isNeedShowUp = (screenHeight - anchorLoc[1] < listViewHeight + anchorHeight);
         if (isNeedShowUp) {

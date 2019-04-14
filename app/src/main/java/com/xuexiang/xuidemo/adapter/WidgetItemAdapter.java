@@ -1,9 +1,9 @@
 package com.xuexiang.xuidemo.adapter;
 
-import android.content.Context;
-
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
+import com.xuexiang.xuidemo.adapter.base.RecyclerViewHolder;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class WidgetItemAdapter extends BaseRecyclerAdapter<PageInfo> {
 
-    public WidgetItemAdapter(Context ctx, List<PageInfo> list) {
-        super(ctx, list);
+    public WidgetItemAdapter(List<PageInfo> list) {
+        super(list);
     }
 
     @Override

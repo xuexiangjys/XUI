@@ -30,6 +30,7 @@ import com.xuexiang.xui.widget.tabbar.EasyIndicator;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.EasyIndicatorActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +43,9 @@ import butterknife.BindView;
  */
 @Page(name = "EasyIndicator\n简单的指示器")
 public class EasyIndicatorFragment extends BaseFragment {
+
+    @BindView(R.id.easy_indicator1)
+    EasyIndicator mEasyIndicator1;
 
     @BindView(R.id.easy_indicator)
     EasyIndicator mEasyIndicator;
@@ -112,6 +116,20 @@ public class EasyIndicatorFragment extends BaseFragment {
         mEasyIndicator.setViewPager(mViewPager, mPagerAdapter);
         mViewPager.setOffscreenPageLimit(ContentPage.size());
         mViewPager.setCurrentItem(2);
+
+
+        initIndicatorNoViewPager();
+    }
+
+    private void initIndicatorNoViewPager() {
+        mEasyIndicator1.setTabTitles(ContentPage.getPageNames());
+        mEasyIndicator1.setOnTabClickListener(new EasyIndicator.onTabClickListener() {
+            @Override
+            public void onTabClick(String title, int position) {
+                ToastUtils.toast("点击了" + title);
+            }
+        });
+
     }
 
 }

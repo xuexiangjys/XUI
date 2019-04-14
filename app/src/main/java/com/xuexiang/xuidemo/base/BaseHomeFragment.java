@@ -28,7 +28,7 @@ import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
-import com.xuexiang.xuidemo.adapter.BaseRecyclerAdapter;
+import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
 import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
 import com.xuexiang.xuidemo.fragment.AboutFragment;
@@ -68,7 +68,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
             @Override
             @SingleClick
             public void performAction(View view) {
-                openPage(AboutFragment.class);
+                openNewPage(AboutFragment.class);
             }
         });
         return titleBar;
@@ -85,7 +85,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
     }
 
     private void initRecyclerView() {
-        mWidgetItemAdapter = new WidgetItemAdapter(getContext(), sortPageInfo(getPageContents()));
+        mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
         mWidgetItemAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mWidgetItemAdapter);
         int spanCount = 3;
@@ -118,21 +118,12 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
     public void onItemClick(View itemView, int pos) {
         PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
         if (widgetInfo != null) {
-            openPage(widgetInfo.getName());
-            getContainer().switchTab(false);
+            openNewPage(widgetInfo.getName());
         }
     }
 
     public MainActivity getContainer() {
         return (MainActivity) getActivity();
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            getContainer().switchTab(true);
-        }
     }
 
     /**

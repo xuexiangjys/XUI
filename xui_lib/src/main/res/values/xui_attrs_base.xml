@@ -176,10 +176,17 @@
     *                 Dialog /Loading                *
     ***********************************************-->
     <attr name="xui_dialog_radius_size" format="dimension" />
-    <attr name="xui_dialog_loading_padding_size" format="dimension" />
-    <attr name="xui_dialog_loading_min_size" format="dimension" />
     <attr name="xui_dialog_background_dim_amount" format="float" />
 
+    <attr name="xui_dialog_loading_padding_size" format="dimension" />
+    <attr name="xui_dialog_loading_min_size" format="dimension" />
+
+    <attr name="xui_dialog_mini_loading_padding_size" format="dimension" />
+    <attr name="xui_dialog_mini_loading_min_size" format="dimension" />
+    <attr name="xui_mini_loading_margin_size" format="dimension" />
+    <attr name="xui_mini_loading_view_size" format="dimension" />
+
+    <attr name="xui_loading_text_size" format="dimension" />
     <attr name="xui_loading_view_size" format="dimension" />
     <attr name="xui_loading_view_width" format="dimension" />
     <attr name="xui_loading_margin_size" format="dimension" />
@@ -189,6 +196,8 @@
     <!--**********************************************
     *              xui bottom sheet                 *
     **********************************************-->
+
+    <attr name="xui_bottom_sheet_title_style" format="reference" />
     <attr name="xui_bottom_sheet_title_height" format="dimension" />
     <attr name="xui_bottom_sheet_title_appearance" format="reference" />
     <attr name="xui_bottom_sheet_title_bg" format="reference" />
@@ -197,7 +206,10 @@
     <attr name="xui_bottom_sheet_list_item_height" format="dimension" />
     <attr name="xui_bottom_sheet_list_item_mark_margin_left" format="dimension" />
     <attr name="xui_bottom_sheet_list_item_tip_point_margin_left" format="dimension" />
+
+    <attr name="xui_bottom_sheet_list_item_text_style" format="reference" />
     <attr name="xui_bottom_sheet_list_item_text_appearance" format="reference" />
+
     <attr name="xui_bottom_sheet_list_item_bg" format="reference" />
     <attr name="xui_bottom_sheet_list_item_icon_size" format="dimension" />
     <attr name="xui_bottom_sheet_list_item_icon_margin_right" format="dimension" />

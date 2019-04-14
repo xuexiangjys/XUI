@@ -11,11 +11,18 @@
 
     <color name="gray_icon">#99A0AA</color>
 
-
     <color name="green_btn_color_normal">#2BCFB8</color>
     <color name="green_btn_color_disable">#CCCCCC</color>
     <color name="green_btn_color_pressed">#05bca2</color>
 
+    <color name="menu_white_normal">#FFFFFF</color>
+    <color name="menu_white_pressed">#CFCFCF</color>
+    <color name="menu_red_normal">#FF0000</color>
+    <color name="menu_red_pressed">#FF6666</color>
+    <color name="menu_green_normal">#37C000</color>
+    <color name="menu_green_pressed">#30A070</color>
+    <color name="menu_purple_normal">#9932CC</color>
+    <color name="menu_purple_pressed">#9F79EE</color>
 
     <color name="tint">#f44336</color>
     <color name="tint_background">#42f44336</color>

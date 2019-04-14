@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+//apply plugin: 'img-optimizer'
 
 android {
     compileSdkVersion build_versions.target_sdk

@@ -8,7 +8,7 @@ import com.xuexiang.xuidemo.base.BaseFragment;
  * @author XUE
  * @date 2017/9/13 16:07
  */
-@Page(name = "自带阴影效果的按钮")
+@Page(name = "ShadowButton\n点击自带阴影效果的按钮")
 public class ShadowButtonFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {

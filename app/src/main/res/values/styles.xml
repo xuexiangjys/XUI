@@ -1,5 +1,18 @@
 <resources>
 
+    <!-- 拓展主题 theme. -->
+    <style name="XUITheme" parent="AppRootTheme">
+        <!--设置默认窗口的动画样式-->
+        <item name="android:windowAnimationStyle">@style/WindowAnimStyle</item>
+    </style>
+
+    <style name="WindowAnimStyle" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/xpage_slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/xpage_slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/xpage_slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/xpage_slide_out_right</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="XUITheme.Phone">
         <!-- Customize your theme here. -->
@@ -7,6 +20,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
 
     <!--窗体背景，这个背景能在第一时间显示, 避免启动时白屏，黑屏问题-->
     <style name="XUITheme.Launch.Demo">

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextStyle.Content"
+                    android:layout_marginStart="10dp"
+                    android:text="体重" />
+
+                <EditText
+                    android:id="@+id/et_weight"
+                    style="@style/EditText.Normal"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:layout_marginStart="10dp"
+                    android:hint="请输入体重值"
+                    android:layout_height="?attr/xui_btn_view_height" />
+
+                <Button
+                    android:id="@+id/btn_set"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:text="设值"/>
+
+                <Button
+                    android:id="@+id/btn_get"
+                    style="@style/Button.Blue.wrap"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="取值"/>
+
+            </LinearLayout>
+
+            <com.xuexiang.xui.widget.picker.RulerView
+                android:id="@+id/rulerView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+
+                app:rv_firstScale="50"
+                app:rv_minScale="0"
+                app:rv_maxScale="100"
+                app:rv_scaleCount="10"
+                app:rv_unit="kg"
+
+                app:rv_bgColor="#fcfffc"
+                app:rv_smallScaleColor="#aaaaaa"
+                app:rv_midScaleColor="#999999"
+                app:rv_largeScaleColor="#50b586"
+                app:rv_resultNumColor="#50b586"
+                app:rv_scaleNumColor="#666666"
+                app:rv_unitColor="#50b586"
+                app:rv_unitTextSize="10sp" />
+
+            <TextView
+                style="@style/TextStyle.Content.wrap"
+                android:layout_marginStart="10dp"
+                android:text="身高" />
+
+            <com.xuexiang.xui.widget.picker.RulerView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+
+                app:rv_firstScale="175"
+                app:rv_minScale="50"
+                app:rv_maxScale="230"
+                app:rv_scaleCount="5"
+                app:rv_unit="cm"
+
+                app:rv_bgColor="#fcfffc"
+                app:rv_smallScaleColor="@color/colorPrimary"
+                app:rv_midScaleColor="@color/colorPrimaryDark"
+                app:rv_largeScaleColor="@color/colorAccent"
+                app:rv_resultNumColor="#50b586"
+                app:rv_scaleNumColor="#666666"
+                app:rv_unitColor="#50b586"
+                app:rv_unitTextSize="10sp" />
+
+            <TextView
+                style="@style/TextStyle.Content.wrap"
+                android:layout_marginStart="10dp"
+                android:text="视力" />
+
+            <com.xuexiang.xui.widget.picker.RulerView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+
+                app:rv_firstScale="1.0"
+                app:rv_minScale="0"
+                app:rv_maxScale="6"
+                app:rv_scaleCount="10"
+                app:rv_unit=" "
+
+                app:rv_bgColor="#fcfffc"
+                app:rv_smallScaleColor="#aaaaaa"
+                app:rv_midScaleColor="#999999"
+                app:rv_largeScaleColor="#50b586"
+                app:rv_resultNumColor="#50b586"
+                app:rv_scaleNumColor="#666666"
+                app:rv_unitColor="#50b586"
+                app:rv_unitTextSize="10sp" />
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

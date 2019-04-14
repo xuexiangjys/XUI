@@ -1,9 +1,10 @@
 package com.xuexiang.xuidemo.fragment.components;
 
-import com.xuexiang.xuidemo.fragment.components.loading.ArcLoadingViewFragment;
-import com.xuexiang.xuidemo.fragment.components.loading.DeterminateCircularFragment;
-import com.xuexiang.xuidemo.fragment.components.loading.MaterialProgressBarFragment;
-import com.xuexiang.xuidemo.fragment.components.loading.RotateLoadingViewFragment;
+import com.xuexiang.xuidemo.fragment.components.progress.ArcLoadingViewFragment;
+import com.xuexiang.xuidemo.fragment.components.progress.DeterminateCircularFragment;
+import com.xuexiang.xuidemo.fragment.components.progress.MaterialProgressBarFragment;
+import com.xuexiang.xuidemo.fragment.components.progress.RatingBarFragment;
+import com.xuexiang.xuidemo.fragment.components.progress.RotateLoadingViewFragment;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
@@ -20,7 +21,8 @@ public class ProgressBarFragment extends ComponentContainerFragment {
                 ArcLoadingViewFragment.class,
                 RotateLoadingViewFragment.class,
                 MaterialProgressBarFragment.class,
-                DeterminateCircularFragment.class
+                DeterminateCircularFragment.class,
+                RatingBarFragment.class
         };
     }
 }

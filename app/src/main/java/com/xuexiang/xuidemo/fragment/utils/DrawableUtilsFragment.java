@@ -59,7 +59,7 @@ public class DrawableUtilsFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_utils_drawable;
+        return R.layout.fragment_util_drawable;
     }
 
     @Override

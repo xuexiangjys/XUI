@@ -151,6 +151,12 @@ public class ClearEditText extends AppCompatEditText implements
 
     }
 
+    @Override
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(text, type);
+        setClearIconVisible(false);
+    }
+
     /**
      * 设置晃动动画
      */

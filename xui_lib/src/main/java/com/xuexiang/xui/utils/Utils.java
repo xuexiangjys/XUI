@@ -43,7 +43,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
 
+import java.io.Closeable;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * 工具类（不建议外部调用)
@@ -219,6 +221,23 @@ public final class Utils {
         float scaleHeight = ((float) h / height);
         matrix.postScale(scaleWidth, scaleHeight);
         return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+    }
+
+    /**
+     * 安静关闭 IO
+     *
+     * @param closeables closeables
+     */
+    public static void closeIOQuietly(final Closeable... closeables) {
+        if (closeables == null) return;
+        for (Closeable closeable : closeables) {
+            if (closeable != null) {
+                try {
+                    closeable.close();
+                } catch (IOException ignored) {
+                }
+            }
+        }
     }
 
     /**

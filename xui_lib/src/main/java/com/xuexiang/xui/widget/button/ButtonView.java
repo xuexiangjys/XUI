@@ -4,13 +4,10 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatTextView;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
@@ -96,7 +93,7 @@ public class ButtonView extends AppCompatTextView {
         setBackgroundDrawable(gradientDrawable);
 
         if (textDrawable != null) {
-            setText(new SpanUtils().appendImage(textDrawable, SpanUtils.ALIGN_BASELINE).appendSpace(20, Color.TRANSPARENT).append(getText()).setBackgroundColor(Color.TRANSPARENT).create());
+            setTextDrawable(textDrawable, 20);
         }
 
         if (normalTextColor != 0 && selectedTextColor != 0) {
@@ -123,19 +120,27 @@ public class ButtonView extends AppCompatTextView {
      *
      * @param drawableId drawable id
      */
-    public ButtonView setTextDrawable(int drawableId) {
+    public ButtonView setTextDrawable(int drawableId, int space) {
         if (drawableId != 0) {
-            Drawable textdrwable = getResources().getDrawable(drawableId);
-            BitmapDrawable bd = (BitmapDrawable) textdrwable;
-            ImageSpan imageSpan = new ImageSpan(getContext(), bd.getBitmap());
-
-            String text = "[icon]";
-            SpannableString ss = new SpannableString("[icon]");
-
-            ss.setSpan(imageSpan, 0, text.length(),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            setText(ss);
+            Drawable textDrawable = getResources().getDrawable(drawableId);
+            setTextDrawable(textDrawable, space);
         }
+        return this;
+    }
+
+    /**
+     * 设置填充图片
+     *
+     * @param textDrawable drawable
+     * @param textDrawable space 空隙
+     */
+    public ButtonView setTextDrawable(@NonNull Drawable textDrawable, int space) {
+        setText(new SpanUtils()
+                    .appendImage(textDrawable, SpanUtils.ALIGN_BASELINE)
+                    .appendSpace(space, Color.TRANSPARENT)
+                    .append(getText())
+                    .setBackgroundColor(Color.TRANSPARENT)
+                    .create());
         return this;
     }
 

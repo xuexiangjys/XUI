@@ -4,7 +4,7 @@
     *              Widget Color                     *
     **********************************************-->
     <!-- SuperTextView -->
-    <color name="xui_common_pressed">#20000000</color>  <!--白色背景按下去的颜色-->
+    <color name="xui_common_pressed">#10000000</color>  <!--白色背景按下去的颜色-->
 
     <!-- ShadowButton -->
     <color name="default_shadow_button_color_pressed">#9C000000</color>
@@ -51,6 +51,15 @@
     <color name="picker_view_bg_topbar">#F5F5F5</color>
     <color name="picker_view_bg_color_overlay">#60000000</color>
 
+    <!-- RulerView -->
+    <color name="default_ruler_view_bg_color">#FFFCFFFC</color>
+    <color name="default_ruler_view_small_scale_color">#FF999999</color>
+    <color name="default_ruler_view_mid_scale_color">#FF666666</color>
+    <color name="default_ruler_view_large_scale_color">#FF50B586</color>
+    <color name="default_ruler_view_scale_num_color">#FF333333</color>
+    <color name="default_ruler_view_result_num_color">#FF50B586</color>
+    <color name="default_ruler_view_unit_color">#FF50B586</color>
+
     <!--MaterialSearchView-->
     <color name="default_search_view_text_color">#212121</color>
     <color name="default_search_view_text_color_hint">#727272</color>
@@ -59,6 +68,14 @@
     <!-- TabControlView -->
     <color name="default_tcv_selected_color">@color/xui_config_color_main_theme</color>
     <color name="default_tcv_unselected_color">@color/xui_config_color_white</color>
+
+    <!--Toast-->
+    <color name="toast_default_text_color">@color/xui_config_color_white</color>
+    <color name="toast_error_color">@color/xui_config_color_red</color>
+    <color name="toast_info_color">#3F51B5</color>
+    <color name="toast_success_color">#388E3C</color>
+    <color name="toast_warning_color">@color/xui_config_color_waring</color>
+    <color name="toast_normal_tint_color">#353A3E</color>
 
     <!--*********************************************
     *              Config Color                     *
@@ -148,7 +165,5 @@
     <color name="xui_config_color_edittext_stroke">#BEC2C7</color>
     <!--不可输入的填充颜色-->
     <color name="xui_config_color_edittext_disable">#EDF2F7</color>
-
-
 
 </resources>

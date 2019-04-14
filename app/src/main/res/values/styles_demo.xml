@@ -81,7 +81,7 @@
         <item name="cpGridItemBackground">@drawable/cp_grid_item_bg</item>
         <item name="cpGridItemSpace">@dimen/cp_grid_item_space</item>
 
-        <item name="cpSectionHeight">@dimen/cp_section_height</item>
+        <item name="cpSectionHeight">@dimen/custom_section_height</item>
         <item name="cpSectionTextSize">@dimen/cp_section_text_size</item>
         <item name="cpSectionTextColor">@color/cp_color_gray</item>
         <item name="cpSectionBackground">@color/cp_color_section_bg</item>
@@ -105,6 +105,24 @@
         <item name="cpIndexBarSelectedTextColor">@color/color_green</item>
         <item name="cpSectionHeight">@dimen/custom_section_height</item>
         <item name="cpOverlayBackground">@color/color_green</item>
+    </style>
+
+    <style name="EditInfoItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="sLeftTextSize">17sp</item>
+        <item name="sLeftTextColor">@color/xui_config_color_black</item>
+        <item name="sCenterTextColor">@color/xui_config_color_black</item>
+        <item name="sLeftViewWidth">60dp</item>
+        <item name="sLeftViewGravity">left_center</item>
+        <item name="sCenterViewGravity">left_center</item>
+        <item name="sCenterViewMarginLeft">25dp</item>
+        <item name="sCenterViewMarginRight">25dp</item>
+        <item name="sDividerLineHeight">2dp</item>
+        <item name="sRightTextSize">13sp</item>
+        <item name="sRightViewMarginRight">0dp</item>
+        <item name="sUseRipple">false</item>
+        <item name="sEnableEdit">true</item>
     </style>
 
 </resources>

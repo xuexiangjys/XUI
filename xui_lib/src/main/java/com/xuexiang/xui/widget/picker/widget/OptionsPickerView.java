@@ -17,6 +17,7 @@
 package com.xuexiang.xui.widget.picker.widget;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,8 @@ import android.widget.TextView;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.picker.widget.configure.PickerOptions;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -166,6 +169,10 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
         }
     }
 
+    public void setPicker(@NonNull T[] optionsItems) {
+        this.setPicker(Arrays.asList(optionsItems), null, null);
+    }
+
     public void setPicker(List<T> optionsItems) {
         this.setPicker(optionsItems, null, null);
     }
@@ -177,11 +184,30 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
     public void setPicker(List<T> options1Items,
                           List<List<T>> options2Items,
                           List<List<List<T>>> options3Items) {
-
         wheelOptions.setPicker(options1Items, options2Items, options3Items);
         reSetCurrentItems();
     }
 
+    //不联动情况下调用
+    public void setNPicker(@NonNull T[] options1Items,
+                           @NonNull T[] options2Items) {
+        setNPicker(Arrays.asList(options1Items), Arrays.asList(options2Items));
+    }
+
+    //不联动情况下调用
+    public void setNPicker(List<T> options1Items,
+                           List<T> options2Items) {
+        wheelOptions.setLinkage(false);
+        wheelOptions.setNPicker(options1Items, options2Items, null);
+        reSetCurrentItems();
+    }
+
+    //不联动情况下调用
+    public void setNPicker(@NonNull T[] options1Items,
+                           @NonNull T[] options2Items,
+                           @NonNull T[] options3Items) {
+        setNPicker(Arrays.asList(options1Items), Arrays.asList(options2Items), Arrays.asList(options3Items));
+    }
 
     //不联动情况下调用
     public void setNPicker(List<T> options1Items,

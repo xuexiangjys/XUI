@@ -231,6 +231,12 @@
         <item name="android:backgroundDimAmount">?attr/xui_dialog_background_dim_amount</item>
     </style>
 
+    <!--自定义弹窗样式-->
+    <style name="XUIDialog.Custom.MiniLoading">
+        <!-- 屏幕背景是否变暗 -->
+        <item name="android:backgroundDimAmount">0</item>
+    </style>
+
     <!--*********************************************
     *                 TextStyle                     *
     **********************************************-->

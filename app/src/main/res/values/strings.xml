@@ -9,10 +9,13 @@
     <string name="lab_please_select">请选择</string>
     <string name="tip_number_only_error_message">数字必须大于0小于100!</string>
     <string name="regexp_number_only">^[1-9]?\\d$</string>
+    <string name="tip_phone_number_error">Invalid mobile number！</string>
+    <string name="regex_phone_number">^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(16[6])|(17[0,1,3,5-8])|(18[0-9])|(19[8,9]))\\d{8}$</string>
 
     <string name="common_example">示例图片</string>
 
     <string name="about_item_homepage">访问官网</string>
+    <string name="about_item_update">版本更新</string>
     <string name="about_item_github">GitHub</string>
     <string name="about_copyright">© %1$s xuexiangjys All rights reserved.</string>
 
@@ -107,6 +110,33 @@
     <string name="circularImageView_modify_8">禁止使用touchSelect态</string>
     <string name="circularImageView_modify_9">重置为初始态</string>
 
+    <string name="chart_toggle_values">显示/隐藏图表值</string>
+    <string name="chart_toggle_x_values">显示/隐藏X轴</string>
+    <string name="chart_toggle_y_values">显示/隐藏Y轴</string>
+    <string name="chart_animate_x">X轴动画</string>
+    <string name="chart_animate_y">Y轴动画</string>
+    <string name="chart_animate_xy">XY轴动画</string>
+    <string name="chart_save">图表保存</string>
+
+    <string name="chart_toggle_bar_borders">显示/隐藏边线</string>
+    <string name="chart_toggle_icons">显示/隐藏图标</string>
+    <string name="chart_toggle_percent">数值/百分比</string>
+    <string name="chart_toggle_hole">显示/隐藏中心圆</string>
+    <string name="chart_toggle_center_text">显示/隐藏中心文字</string>
+    <string name="chart_toggle_curved_slices">切换分割线样式</string>
+    <string name="chart_spin_animation">旋转动画</string>
+
+    <string name="chart_toggle_filled">切换区域填充</string>
+    <string name="chart_toggle_circles">显示/隐藏圆点</string>
+    <string name="chart_toggle_cubic">开启/关闭贝塞尔曲线</string>
+    <string name="chart_toggle_pinch_zoom">开启/关闭自由缩放手势</string>
+    <string name="chart_toggle_highlight">开启/关闭标记</string>
+
+    <string name="tab1">信息</string>
+    <string name="tab2">报告</string>
+    <string name="tab3">活动</string>
+    <string name="tab4">设置</string>
+
     <!--PhotoPicker-->
     <string name="pick_photo">选择图片</string>
     <string name="pick_photo_without_camera">选择图片（不带拍照按钮且点击不预览图片）</string>
@@ -195,4 +225,21 @@
     <string name="drawable_utils_separator_title">创建带上分隔线或下分隔线的 Drawable</string>
     <string name="lab_logout_confirm">是否确认退出？</string>
     <string name="lab_open_third_app">是否允许页面打开第三方应用?</string>
+
+
+    <string name="error_message">This is an error toast.</string>
+    <string name="success_message">Success!</string>
+    <string name="info_message">Here is some info for you.</string>
+    <string name="warning_message">Beware of the dog.</string>
+    <string name="normal_message_without_icon">Normal toast w/o icon</string>
+    <string name="normal_message_with_icon">Normal toast w/ icon</string>
+
+    <string name="ratingbar_title">RatingBar</string>
+    <string name="scale_ratingbar_title">ScaleRatingBar</string>
+    <string name="rotation_ratingbar_title">RotationRatingBar</string>
+    <string name="add_rating_title">增加星级</string>
+    <string name="title_grade_class_select">班级选择</string>
+    <string name="title_sex_select">性别选择</string>
+
+
 </resources>

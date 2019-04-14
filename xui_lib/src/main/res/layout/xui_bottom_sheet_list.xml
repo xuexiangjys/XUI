@@ -6,14 +6,7 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/xui_bottom_sheet_title_height"
-        android:background="?attr/xui_bottom_sheet_title_bg"
-        android:ellipsize="middle"
-        android:gravity="center_vertical"
-        android:paddingLeft="?attr/xui_bottom_sheet_list_item_padding_horizontal"
-        android:paddingRight="?attr/xui_bottom_sheet_list_item_padding_horizontal"
-        android:singleLine="true"
+        style="?attr/xui_bottom_sheet_title_style"
         android:textAppearance="?attr/xui_bottom_sheet_title_appearance"
         android:visibility="gone" />
 

@@ -19,9 +19,11 @@ package com.xuexiang.xuidemo.fragment.components;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
-import com.xuexiang.xuidemo.fragment.components.refresh.RefreshBasicFragment;
-import com.xuexiang.xuidemo.fragment.components.refresh.RefreshStatusLayoutFragment;
-import com.xuexiang.xuidemo.fragment.components.refresh.RefreshStyleFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.BroccoliFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.RefreshHeadViewFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.SmartRefreshLayoutFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.SwipeRecyclerViewFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.SwipeRefreshLayoutFragment;
 
 /**
  * @author xuexiang
@@ -37,9 +39,11 @@ public class RefreshLayoutFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
-                RefreshBasicFragment.class,
-                RefreshStatusLayoutFragment.class,
-                RefreshStyleFragment.class,
+                SmartRefreshLayoutFragment.class,
+                SwipeRecyclerViewFragment.class,
+                SwipeRefreshLayoutFragment.class,
+                RefreshHeadViewFragment.class,
+                BroccoliFragment.class
         };
     }
 }

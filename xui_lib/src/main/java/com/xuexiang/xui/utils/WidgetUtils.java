@@ -28,6 +28,7 @@ import android.widget.Spinner;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.dialog.LoadingDialog;
+import com.xuexiang.xui.widget.dialog.MiniLoadingDialog;
 import com.xuexiang.xui.widget.progress.loading.IMessageLoader;
 import com.xuexiang.xui.widget.progress.loading.LoadingViewLayout;
 
@@ -129,6 +130,28 @@ public final class WidgetUtils {
      */
     public static IMessageLoader getMessageLoader(boolean isDialog, Context context) {
         return isDialog ? new LoadingDialog(context) : new LoadingViewLayout(context);
+    }
+
+
+    /**
+     * 获取MiniLoadingDialog加载框
+     *
+     * @param context
+     * @return
+     */
+    public static MiniLoadingDialog getMiniLoadingDialog(Context context) {
+        return new MiniLoadingDialog(context);
+    }
+
+    /**
+     * 获取MiniLoadingDialog加载框
+     *
+     * @param context
+     * @param message 提示文字
+     * @return
+     */
+    public static MiniLoadingDialog getMiniLoadingDialog(Context context, String message) {
+        return new MiniLoadingDialog(context, message);
     }
 
 }

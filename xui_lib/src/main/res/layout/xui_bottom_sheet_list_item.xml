@@ -18,10 +18,7 @@
 
     <TextView
         android:id="@+id/bottom_dialog_list_item_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="middle"
-        android:singleLine="true"
+        style="?attr/xui_bottom_sheet_list_item_text_style"
         android:textAppearance="?attr/xui_bottom_sheet_list_item_text_appearance"/>
 
     <ImageView

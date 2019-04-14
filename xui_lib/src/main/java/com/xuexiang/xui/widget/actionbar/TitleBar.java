@@ -21,6 +21,7 @@ import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.widget.alpha.XUIAlphaTextView;
 import com.xuexiang.xui.widget.textview.AutoMoveTextView;
 
 import java.util.LinkedList;
@@ -40,7 +41,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      */
     private static int DEFAULT_TEXT_COLOR = Color.WHITE;
 
-    private TextView mLeftText;
+    private XUIAlphaTextView mLeftText;
     private LinearLayout mRightLayout;
     private LinearLayout mCenterLayout;
     private TextView mCenterText;
@@ -148,7 +149,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     private void initView(Context context) {
-        mLeftText = new TextView(context);
+        mLeftText = new XUIAlphaTextView(context);
         mCenterLayout = new LinearLayout(context);
         mRightLayout = new LinearLayout(context);
         mDividerView = new View(context);
@@ -388,6 +389,18 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     /**
+     * 设置标题和副标题的文字
+     *
+     * @param subTitle    副标题
+     * @return
+     */
+    public TitleBar setSubTitle(CharSequence subTitle) {
+        mSubTitleText.setText(subTitle);
+        mSubTitleText.setVisibility(View.VISIBLE);
+        return this;
+    }
+
+    /**
      * 设置中心点击
      *
      * @param l
@@ -603,7 +616,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
             img.setImageResource(action.getDrawable());
             view = img;
         } else {
-            TextView text = new TextView(getContext());
+            TextView text = new XUIAlphaTextView(getContext());
             text.setGravity(Gravity.CENTER);
             text.setText(action.getText());
             text.setTextSize(TypedValue.COMPLEX_UNIT_PX, mActionTextSize);
@@ -799,7 +812,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mSubTitleText.setTypeface(tf);
     }
 
-    public TextView getLeftText() {
+    public XUIAlphaTextView getLeftText() {
         return mLeftText;
     }
 

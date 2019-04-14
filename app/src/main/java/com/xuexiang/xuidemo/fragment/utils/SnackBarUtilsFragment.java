@@ -40,7 +40,7 @@ public class SnackBarUtilsFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_snack_bar;
+        return R.layout.fragment_util_snack_bar;
     }
 
     @Override

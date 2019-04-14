@@ -16,17 +16,15 @@
 
 package com.xuexiang.xuidemo.fragment;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
+import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xutil.app.AppUtils;
 
 import java.text.SimpleDateFormat;
@@ -34,13 +32,11 @@ import java.util.Locale;
 
 import butterknife.BindView;
 
-import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
-
 /**
  * @author xuexiang
  * @since 2019/1/6 下午12:11
  */
-@Page(name = "关于", anim = CoreAnim.none)
+@Page(name = "关于")
 public class AboutFragment extends BaseFragment {
 
     @BindView(R.id.version)
@@ -56,21 +52,25 @@ public class AboutFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        getContainer().switchTab(false);
-
         mVersionTextView.setText(String.format("版本号：%s", AppUtils.getAppVersionName()));
 
         XUIGroupListView.newSection(getContext())
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_homepage)), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        goWeb("https://xuexiangjys.github.io/XUI/");
+                        Utils.goWeb(getContext(), "https://xuexiangjys.github.io/XUI/");
                     }
                 })
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_github)), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        goWeb("https://github.com/xuexiangjys/XUI/");
+                        Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/");
+                    }
+                })
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_update)), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Utils.checkUpdate(getContext(), true);
                     }
                 })
                 .addTo(mAboutGroupListView);
@@ -78,21 +78,6 @@ public class AboutFragment extends BaseFragment {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy", Locale.CHINA);
         String currentYear = dateFormat.format(new java.util.Date());
         mCopyrightTextView.setText(String.format(getResources().getString(R.string.about_copyright), currentYear));
-    }
-
-    /**
-     * 请求浏览器
-     *
-     * @param url
-     */
-    public void goWeb(final String url) {
-        Intent intent = new Intent(getContext(), AgentWebActivity.class);
-        intent.putExtra(KEY_URL, url);
-        startActivity(intent);
-    }
-
-    public MainActivity getContainer() {
-        return (MainActivity) getActivity();
     }
 
 }

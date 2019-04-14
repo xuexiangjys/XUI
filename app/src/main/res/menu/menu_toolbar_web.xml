@@ -30,6 +30,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/share"
+        android:title="网页分享"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/default_clean"
         android:title="清空缓存"
         android:visible="false"
@@ -46,4 +52,5 @@
         android:title="在浏览器打开"
         android:visible="true"
         app:showAsAction="never" />
+
 </menu>

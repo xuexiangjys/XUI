@@ -171,11 +171,11 @@ public class TabSegment extends HorizontalScrollView {
     /**
      * item normal color
      */
-    private int mDefaultNormalColor;
+    private int mNormalColor;
     /**
      * item selected color
      */
-    private int mDefaultSelectedColor;
+    private int mSelectedColor;
     /**
      * item icon的默认位置
      */
@@ -251,14 +251,12 @@ public class TabSegment extends HorizontalScrollView {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         String typefaceProviderName;
-        mDefaultSelectedColor = ThemeUtils.resolveColor(context, R.attr.colorAccent);
-        mDefaultNormalColor = ContextCompat.getColor(context, R.color.xui_config_color_gray_5);
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TabSegment, defStyleAttr, 0);
+        mSelectedColor = array.getColor(R.styleable.TabSegment_ts_selected_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        mNormalColor = array.getColor(R.styleable.TabSegment_ts_normal_color, ContextCompat.getColor(context, R.color.xui_config_color_gray_5));
         mHasIndicator = array.getBoolean(R.styleable.TabSegment_ts_has_indicator, true);
-        mIndicatorHeight = array.getDimensionPixelSize(R.styleable.TabSegment_ts_indicator_height,
-                getResources().getDimensionPixelSize(R.dimen.xui_tab_segment_indicator_height));
-        mTabTextSize = array.getDimensionPixelSize(R.styleable.TabSegment_android_textSize,
-                getResources().getDimensionPixelSize(R.dimen.xui_tab_segment_text_size));
+        mIndicatorHeight = array.getDimensionPixelSize(R.styleable.TabSegment_ts_indicator_height, getResources().getDimensionPixelSize(R.dimen.xui_tab_segment_indicator_height));
+        mTabTextSize = array.getDimensionPixelSize(R.styleable.TabSegment_android_textSize, getResources().getDimensionPixelSize(R.dimen.xui_tab_segment_text_size));
         mIndicatorTop = array.getBoolean(R.styleable.TabSegment_ts_indicator_top, false);
         mDefaultTabIconPosition = array.getInt(R.styleable.TabSegment_ts_icon_position, ICON_POSITION_LEFT);
         mMode = array.getInt(R.styleable.TabSegment_ts_mode, MODE_FIXED);
@@ -526,14 +524,14 @@ public class TabSegment extends HorizontalScrollView {
      * 设置 Tab 正常状态下的颜色
      */
     public void setDefaultNormalColor(@ColorInt int defaultNormalColor) {
-        mDefaultNormalColor = defaultNormalColor;
+        mNormalColor = defaultNormalColor;
     }
 
     /**
      * 设置 Tab 选中状态下的颜色
      */
     public void setDefaultSelectedColor(@ColorInt int defaultSelectedColor) {
-        mDefaultSelectedColor = defaultSelectedColor;
+        mSelectedColor = defaultSelectedColor;
     }
 
     /**
@@ -819,7 +817,7 @@ public class TabSegment extends HorizontalScrollView {
     private int getTabNormalColor(Tab item) {
         int color = item.getNormalColor();
         if (color == Tab.USE_TAB_SEGMENT) {
-            color = mDefaultNormalColor;
+            color = mNormalColor;
         }
         return color;
     }
@@ -843,7 +841,7 @@ public class TabSegment extends HorizontalScrollView {
     private int getTabSelectedColor(Tab item) {
         int color = item.getSelectedColor();
         if (color == Tab.USE_TAB_SEGMENT) {
-            color = mDefaultSelectedColor;
+            color = mSelectedColor;
         }
         return color;
     }

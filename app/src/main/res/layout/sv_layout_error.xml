@@ -26,7 +26,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="-16dp"
-        android:src="@drawable/ic_error_outline_white_24dp" />
+        android:src="@drawable/xtoast_ic_error_outline_white_24dp" />
 
     <TextView
         android:layout_width="wrap_content"
