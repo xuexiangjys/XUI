@@ -19,7 +19,6 @@ android {
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
         }
-
     }
 
     if (isNeedPackage.toBoolean()) {
@@ -158,5 +157,9 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     //TabBar
     implementation 'com.github.xuexiangjys:JPTabBar:1.0.0'
+
+    //版本更新
+    implementation 'com.github.xuexiangjys:XUpdate:1.0.7'
+    implementation 'com.qianwen:okhttp-utils:3.8.0'
 
 }

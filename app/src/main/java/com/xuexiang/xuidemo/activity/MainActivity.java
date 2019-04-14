@@ -26,6 +26,7 @@ import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 import com.xuexiang.xuidemo.fragment.ExpandsFragment;
 import com.xuexiang.xuidemo.fragment.QRCodeFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.XUtil;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
@@ -75,6 +76,9 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         openPage(ComponentsFragment.class);
 
         initTab();
+
+        //静默检查版本更新
+        Utils.checkUpdate(this, false);
     }
 
     /**

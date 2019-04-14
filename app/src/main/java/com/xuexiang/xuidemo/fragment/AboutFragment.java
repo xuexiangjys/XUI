@@ -24,6 +24,7 @@ import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xutil.app.AppUtils;
 
 import java.text.SimpleDateFormat;
@@ -64,6 +65,12 @@ public class AboutFragment extends BaseFragment {
                     @Override
                     public void onClick(View v) {
                         Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/");
+                    }
+                })
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_update)), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Utils.checkUpdate(getContext(), true);
                     }
                 })
                 .addTo(mAboutGroupListView);

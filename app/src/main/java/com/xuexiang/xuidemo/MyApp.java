@@ -12,6 +12,9 @@ import com.xuexiang.xpage.PageConfiguration;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.utils.LocationService;
+import com.xuexiang.xuidemo.utils.update.OKHttpUpdateHttpService;
+import com.xuexiang.xupdate.XUpdate;
+import com.xuexiang.xupdate.utils.UpdateUtils;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.common.StringUtils;
@@ -40,6 +43,8 @@ public class MyApp extends Application {
         initLibs();
 
         initUI();
+
+        initUpdate();
     }
 
     private void initUI() {
@@ -93,5 +98,23 @@ public class MyApp extends Application {
         XVideo.setVideoCachePath(PathUtils.getExtDcimPath() + "/xvideo/");
         // 初始化拍摄
         XVideo.initialize(false, null);
+    }
+
+    private void initUpdate() {
+        XUpdate.get()
+                .debug(BuildConfig.DEBUG)
+                //默认设置只在wifi下检查版本更新
+                .isWifiOnly(false)
+                //默认设置使用get请求检查版本
+                .isGet(true)
+                //默认设置非自动模式，可根据具体使用配置
+                .isAutoMode(false)
+                //设置默认公共请求参数
+                .param("versionCode", UpdateUtils.getVersionCode(this))
+                .param("appKey", getPackageName())
+                //这个必须设置！实现网络请求功能。
+                .setIUpdateHttpService(new OKHttpUpdateHttpService())
+                //这个必须初始化
+                .init(this);
     }
 }
