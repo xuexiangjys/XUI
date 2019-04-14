@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 4,
-  "VersionName": "1.0.3",
-  "UploadTime": "2019-04-16 12:00:00",
+  "VersionCode": 3,
+  "VersionName": "1.0.2",
+  "UploadTime": "2019-04-15 12:00:00",
   "ModifyContent": "\r\n1、优化界面体验。\r\n2、添加更多组件的使用案例。\r\n3、新增多种组件和工具。",
-  "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo_1.0.3.apk",
+  "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo.apk",
   "ApkSize": 25600
 }

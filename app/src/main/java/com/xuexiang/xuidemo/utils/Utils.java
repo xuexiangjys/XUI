@@ -22,8 +22,6 @@ public final class Utils {
 
     public final static String mUpdateUrl = "https://raw.githubusercontent.com/xuexiangjys/XUI/master/jsonapi/update_api.json";
 
-    public final static String mUpdateUrl_dev = "https://raw.githubusercontent.com/xuexiangjys/XUI/dev/1.0.2/jsonapi/update_api.json";
-
     private Utils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
@@ -51,7 +49,7 @@ public final class Utils {
      * @param context
      */
     public static void checkUpdate(Context context, boolean needErrorTip) {
-        XUpdate.newBuild(context).updateUrl(mUpdateUrl_dev).update();
+        XUpdate.newBuild(context).updateUrl(mUpdateUrl).update();
         XUpdate.get().setOnUpdateFailureListener(new CustomUpdateFailureListener(needErrorTip));
 
     }
