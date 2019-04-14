@@ -131,6 +131,10 @@
     <string name="chart_toggle_pinch_zoom">开启/关闭自由缩放手势</string>
     <string name="chart_toggle_highlight">开启/关闭标记</string>
 
+    <string name="tab1">信息</string>
+    <string name="tab2">报告</string>
+    <string name="tab3">活动</string>
+    <string name="tab4">设置</string>
 
     <!--PhotoPicker-->
     <string name="pick_photo">选择图片</string>

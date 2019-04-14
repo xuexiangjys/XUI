@@ -156,5 +156,7 @@ dependencies {
 
     //Android图表库
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //TabBar
+    implementation 'com.github.xuexiangjys:JPTabBar:1.0.0'
 
 }
