@@ -177,4 +177,7 @@ public class BaseTextView extends LinearLayout implements HasTypeface {
         centerTextView.setTypeface(typeface);
         bottomTextView.setTypeface(typeface);
     }
+
+
+
 }

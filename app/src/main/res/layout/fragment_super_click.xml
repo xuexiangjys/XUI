@@ -48,6 +48,16 @@
         app:sThumbResource="@drawable/thumb"
         app:sTrackResource="@drawable/track" />
 
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/super_message_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:sDividerLineType="both"
+        app:sLeftTextString="消息"
+        app:sRightViewMarginRight="0dp"
+        app:sRightIconRes="@drawable/icon_arrow_right_red" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

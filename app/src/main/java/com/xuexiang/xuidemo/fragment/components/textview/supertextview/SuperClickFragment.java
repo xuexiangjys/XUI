@@ -1,10 +1,13 @@
 package com.xuexiang.xuidemo.fragment.components.textview.supertextview;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.textview.badge.Badge;
+import com.xuexiang.xui.widget.textview.badge.BadgeView;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -20,10 +23,14 @@ public class SuperClickFragment extends BaseFragment {
     SuperTextView superTextView_cb;
     @BindView(R.id.super_switch_tv)
     SuperTextView superTextView_switch;
+    @BindView(R.id.super_message_tv)
+    SuperTextView stvMessage;
     @BindView(R.id.stv_name)
     SuperTextView stvName;
     @BindView(R.id.stv_phone)
     SuperTextView stvPhone;
+
+    Badge mBadge;
 
     @Override
     protected int getLayoutId() {
@@ -32,6 +39,13 @@ public class SuperClickFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+        //设置空字符串用于占位
+        stvMessage.setRightString("      ");
+        mBadge = new BadgeView(getContext()).bindTarget(stvMessage.getRightTextView())
+                .setBadgeGravity(Gravity.END | Gravity.CENTER)
+                .setBadgePadding(3, true)
+                .setBadgeTextSize(9, true)
+                .setBadgeNumber(3);
 
     }
 
@@ -125,6 +139,13 @@ public class SuperClickFragment extends BaseFragment {
             }
         });
 
+        stvMessage.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
+            @Override
+            public void onClickListener(SuperTextView superTextView) {
+                mBadge.hide(true);
+            }
+        });
+
         stvName.setCenterEditTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -138,6 +159,8 @@ public class SuperClickFragment extends BaseFragment {
                 ToastUtils.toast("点击监听");
             }
         });
+
+
     }
 
 }
