@@ -5,12 +5,12 @@
   由于 Theme 需要在不同 API Level 下有不同的配置，并且继承自不同的系统 Theme，所以多层继承。
 
   继承关系和每个层的分工如下：
-  AppBaseTheme（Theme 的最顶层，各个 API Level 自行决定继承自系统的哪个 Theme）
+  XUIRootTheme（Theme 的最顶层，各个 API Level 自行决定继承自系统的哪个 Theme）
     |-values
     |-values-v21
     |-values-...
     |
-  AppRootTheme（基础 Theme，定义所有公用的 style。）
+  XUIBaseTheme（基础 Theme，定义所有公用的 style。）
     |-values
     |
   XUITheme（可配置的 Theme，各个 API Level 自行配置各自的 style 差异。）
@@ -21,14 +21,14 @@
   XUI（XUI提供的theme控制，供外界使用）
 
   So，
-  如果要对某 API Level 配置继承自某个系统的 Theme，在 values-v* 目录下修改 xui_themes.xml 的 AppBaseTheme。
+  如果要对某 API Level 配置继承自某个系统的 Theme，在 values-v* 目录下修改 xui_themes.xml 的 XUIRootTheme。
   如果要对某 API Level 配置定制化的 Theme，在 values-v* 目录下修改 xui_themes.xml 的 XUITheme。
   如果在项目中要对特定项目配置业务相关的 Theme，在 values 目录下修改 themes.xml 的 AppTheme。
    -->
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="XUIRootTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
-    <style name="AppRootTheme" parent="AppBaseTheme">
+    <style name="XUIBaseTheme" parent="XUIRootTheme">
 
         <!--**********************************************
         *                   xui color                   *
@@ -195,7 +195,7 @@
 
     </style>
 
-    <style name="XUITheme" parent="AppRootTheme" />
+    <style name="XUITheme" parent="XUIBaseTheme" />
 
     <!--窗体背景，这个背景能在第一时间显示, 避免启动时白屏，黑屏问题-->
     <style name="XUITheme.Launch">

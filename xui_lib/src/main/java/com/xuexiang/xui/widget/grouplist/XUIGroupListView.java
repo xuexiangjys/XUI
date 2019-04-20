@@ -115,7 +115,7 @@ public class XUIGroupListView extends LinearLayout {
     public XUIGroupListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs);
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.XUIGroupListView, defStyleAttr, 0);
-        mSeparatorStyle = array.getInt(R.styleable.XUIGroupListView_separatorStyle, SEPARATOR_STYLE_NORMAL);
+        mSeparatorStyle = array.getInt(R.styleable.XUIGroupListView_xui_separatorStyle, SEPARATOR_STYLE_NORMAL);
         array.recycle();
 
         mSections = new SparseArray<>();

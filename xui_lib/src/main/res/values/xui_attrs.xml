@@ -1028,7 +1028,7 @@
 
     <!--===========================XUIGroupListView==========================================-->
     <declare-styleable name="XUIGroupListView">
-        <attr name="separatorStyle" format="enum">
+        <attr name="xui_separatorStyle" format="enum">
             <enum name="normal" value="0" />
             <enum name="none" value="1" />
         </attr>
