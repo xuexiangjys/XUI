@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 3,
-  "VersionName": "1.0.2",
-  "UploadTime": "2019-04-15 12:00:00",
-  "ModifyContent": "\r\n1、优化界面体验。\r\n2、添加更多组件的使用案例。\r\n3、新增多种组件和工具。",
+  "VersionCode": 4,
+  "VersionName": "1.0.3",
+  "UploadTime": "2019-05-05 10:40:20",
+  "ModifyContent": "\r\n1、修改部分属性和主题的命名，以解决与qmui的冲突。",
   "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo.apk",
-  "ApkSize": 25600
+  "ApkSize": 21811
 }
