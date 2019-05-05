@@ -170,7 +170,7 @@
     </style>
 
     <style name="XUIGroupListView">
-        <item name="separatorStyle">normal</item>
+        <item name="xui_separatorStyle">normal</item>
     </style>
 
     <style name="XUICommonListItemView">

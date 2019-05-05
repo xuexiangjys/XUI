@@ -1,7 +1,7 @@
 <resources>
 
     <!-- 拓展主题 theme. -->
-    <style name="XUITheme" parent="AppRootTheme">
+    <style name="XUITheme" parent="XUIBaseTheme">
         <!--设置默认窗口的动画样式-->
         <item name="android:windowAnimationStyle">@style/WindowAnimStyle</item>
     </style>
