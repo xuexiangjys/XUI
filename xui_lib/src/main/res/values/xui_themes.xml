@@ -192,6 +192,7 @@
         <item name="RulerViewStyle">@style/RulerView</item>
         <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
         <item name="TabSegmentStyle">@style/TabSegment</item>
+        <item name="VerifyCodeEditTextStyle">@style/VerifyCodeEditText</item>
 
     </style>
 

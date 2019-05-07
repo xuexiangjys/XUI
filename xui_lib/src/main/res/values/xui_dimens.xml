@@ -140,6 +140,11 @@
     <dimen name="default_floating_label_text_size">12sp</dimen>
     <dimen name="default_bottom_text_size">12sp</dimen>
 
+    <!-- VerifyCodeEditText-->
+    <dimen name="default_vcet_width">21dp</dimen>
+    <dimen name="default_vcet_pwd_radius">5dp</dimen>
+    <dimen name="default_vcet_text_size">16sp</dimen>
+
     <!--StatefulLayout-->
     <dimen name="default_stf_progressbar_size_tablet_big">75dp</dimen>
     <dimen name="default_stf_progressbar_size_tablet_small">65dp</dimen>

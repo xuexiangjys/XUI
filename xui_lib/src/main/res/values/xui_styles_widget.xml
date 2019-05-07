@@ -264,6 +264,20 @@
         <item name="rv_roundRadius">10dp</item>
     </style>
 
+    <!-- VerifyCodeEditText -->
+    <style name="VerifyCodeEditText">
+        <item name="vcet_number">4</item>
+        <item name="vcet_width">@dimen/default_vcet_width</item>
+        <item name="vcet_divider">@drawable/vcet_shape_divider</item>
+        <item name="vcet_text_color">@color/xui_config_color_pure_black</item>
+        <item name="vcet_text_size">@dimen/default_vcet_text_size</item>
+        <item name="vcet_bg_focus">@drawable/vcet_shape_bg_focus</item>
+        <item name="vcet_bg_normal">@drawable/vcet_shape_bg_normal</item>
+        <item name="vcet_is_pwd">false</item>
+        <item name="vcet_pwd_radius">@dimen/default_vcet_pwd_radius</item>
+    </style>
+
+
     <!--MaterialSearchView-->
     <style name="MSV_ImageButton">
         <item name="android:layout_width">wrap_content</item>

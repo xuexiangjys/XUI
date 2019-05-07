@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+        android:id="@+id/vcet_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="10dp"
+        app:vcet_is_pwd="true"
+        app:vcet_number="6"
+        app:vcet_pwd_radius="10dp"
+        app:vcet_text_color="#000000"
+        app:vcet_width="50dp" />
+
+    <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+        android:id="@+id/vcet_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:vcet_number="5" />
+
+    <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+        android:id="@+id/vcet_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:vcet_is_pwd="true" />
+
+    <Button
+        android:id="@+id/btn_clear"
+        style="@style/Button.Blue.wrap"
+        android:layout_gravity="center_horizontal"
+        android:text="清空"/>
+
+</LinearLayout>
