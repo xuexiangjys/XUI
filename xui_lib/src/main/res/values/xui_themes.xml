@@ -39,6 +39,7 @@
         <item name="colorPrimary">@color/xui_config_color_main_theme</item>
         <!--应用的主要暗色调，statusBarColor默认使用该颜色-->
         <item name="colorPrimaryDark">@color/xui_config_color_main_theme</item>
+        <item name="colorControlNormal">@color/xui_config_color_control_normal</item>
 
         <!--无Title-->
         <item name="android:windowNoTitle">true</item>

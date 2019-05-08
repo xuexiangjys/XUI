@@ -241,5 +241,7 @@
     <string name="title_grade_class_select">班级选择</string>
     <string name="title_sex_select">性别选择</string>
 
+    <string name="title_toolbar">主标题</string>
+    <string name="title_toolbar_sub">副标题</string>
 
 </resources>
