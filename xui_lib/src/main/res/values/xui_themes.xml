@@ -603,6 +603,7 @@
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">0dp</item>
         <item name="android:minHeight">?attr/xui_btn_view_height</item>
+        <item name="android:background">@null</item>
     </style>
 
     <!--**********************************************
