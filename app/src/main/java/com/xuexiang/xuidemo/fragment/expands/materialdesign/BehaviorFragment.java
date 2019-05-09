@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.RecyclerViewBehaviorFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.TabLayoutBehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.ToolbarBehaviorFragment;
 
 /**
@@ -15,7 +16,8 @@ public class BehaviorFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[] {
                 ToolbarBehaviorFragment.class,
-                RecyclerViewBehaviorFragment.class
+                RecyclerViewBehaviorFragment.class,
+                TabLayoutBehaviorFragment.class
         };
     }
 
