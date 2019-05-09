@@ -3,7 +3,11 @@
 /LocalRepository
 /keystores
 /local.properties
-/.idea
+/.idea/caches
+/.idea/inspectionProfiles
+/.idea/libraries
+/.idea/markdown-navigator
+/.idea/*.xml
 .DS_Store
 /build
 /captures
