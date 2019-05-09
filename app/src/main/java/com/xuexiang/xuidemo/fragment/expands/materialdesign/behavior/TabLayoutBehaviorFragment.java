@@ -1,6 +1,7 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +9,7 @@ import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
+import com.xuexiang.xui.utils.SnackbarUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -20,7 +22,7 @@ import static android.support.design.widget.TabLayout.MODE_FIXED;
  * @author XUE
  * @since 2019/5/9 11:43
  */
-@Page(name = "TabLayout Behavior")
+@Page(name = "TabLayout + ViewPager + AppBarLayout")
 public class TabLayoutBehaviorFragment extends BaseFragment {
 
     @BindView(R.id.toolbar)
@@ -34,7 +36,7 @@ public class TabLayoutBehaviorFragment extends BaseFragment {
 
     @Override
     protected TitleBar initTitle() {
-        toolbar.setTitle("TabLayout使用案例");
+        toolbar.setTitle("TabLayout");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +61,7 @@ public class TabLayoutBehaviorFragment extends BaseFragment {
             tabLayout.addTab(tabLayout.newTab().setText(title));
             adapter.addFragment(new SimpleListFragment(), title);
         }
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(titles.length);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -82,6 +84,19 @@ public class TabLayoutBehaviorFragment extends BaseFragment {
             @Override
             public void onPageScrollStateChanged(int i) {
 
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SnackbarUtils.Long(v, "是否确认新建?")
+                        .setAction("是", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }).show();
             }
         });
     }

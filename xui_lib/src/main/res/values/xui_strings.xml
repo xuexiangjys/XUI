@@ -48,4 +48,10 @@
     <!--MaterialSearchView-->
     <string name="search_hint">Search</string>
 
+    <!--Behavior-->
+    <string name="xui_float_behavior">com.xuexiang.xui.widget.behavior.FloatingActionButtonBehavior</string>
+    <string name="xui_bottom_behavior">com.xuexiang.xui.widget.behavior.BottomNavigationViewBehavior</string>
+    <string name="xui_title_behavior">com.xuexiang.xui.widget.behavior.ToolBarBehavior</string>
+
+
 </resources>
