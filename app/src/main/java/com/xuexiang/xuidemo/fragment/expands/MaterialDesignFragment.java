@@ -3,7 +3,7 @@ package com.xuexiang.xuidemo.fragment.expands;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
-import com.xuexiang.xuidemo.fragment.expands.materialdesign.AppBarLayoutFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.BehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ToolBarFragment;
 
 /**
@@ -21,21 +21,8 @@ public class MaterialDesignFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 ToolBarFragment.class,
-                AppBarLayoutFragment.class
+                BehaviorFragment.class
         };
     }
 
-    /**
-     * 条目点击
-     *
-     * @param position
-     */
-    @Override
-    protected void onItemClick(int position) {
-        if (position == 1) {
-            openNewPage(getSimpleDataItem(position));
-        } else {
-            openPage(getSimpleDataItem(position));
-        }
-    }
 }

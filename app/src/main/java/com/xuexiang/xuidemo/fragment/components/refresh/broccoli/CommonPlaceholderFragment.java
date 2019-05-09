@@ -55,7 +55,6 @@ public class CommonPlaceholderFragment extends BaseFragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL, DensityUtils.dp2px(5), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_background)));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-
         recyclerView.setAdapter(mNewsListAdapter = new NewsListAdapter(false));
     }
 

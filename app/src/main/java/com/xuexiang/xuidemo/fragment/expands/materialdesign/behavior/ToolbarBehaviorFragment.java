@@ -1,4 +1,4 @@
-package com.xuexiang.xuidemo.fragment.expands.materialdesign;
+package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -21,7 +21,7 @@ import butterknife.BindView;
  * @since 2019-05-08 23:15
  */
 @Page(name = "CoordinatorLayout + AppBarLayout\n详情页常用组合")
-public class AppBarLayoutFragment extends BaseFragment {
+public class ToolbarBehaviorFragment extends BaseFragment {
     @BindView(R.id.appbar_layout_toolbar)
     Toolbar toolbar;
     @BindView(R.id.collapse_layout)
@@ -38,7 +38,7 @@ public class AppBarLayoutFragment extends BaseFragment {
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_appbar;
+        return R.layout.fragment_behavior_toolbar;
     }
 
     @Override

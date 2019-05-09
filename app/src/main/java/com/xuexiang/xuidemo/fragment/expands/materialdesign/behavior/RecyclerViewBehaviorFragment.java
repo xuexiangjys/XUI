@@ -1,64 +1,87 @@
-package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
+package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
+import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
+import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.widget.MaterialLoadMoreView;
+import com.xuexiang.xutil.tip.ToastUtils;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
 import butterknife.BindView;
 
 /**
- * @author xuexiang
- * @since 2019/4/6 下午6:57
+ * @author XUE
+ * @since 2019/5/9 9:08
  */
-@Page(name = "下拉刷新和加载更多\n拓展SwipeRefreshLayout的功能")
-public class SwipeRefreshFragment extends BaseFragment {
-
-    private SimpleRecyclerAdapter mAdapter;
-
-    @BindView(R.id.recycler_view)
+@Page(name = "RecyclerView + CardView\n常见的列表展示组合")
+public class RecyclerViewBehaviorFragment extends BaseFragment {
+    @BindView(R.id.toolbar_recycler_view)
+    Toolbar toolbar;
+    @BindView(R.id.recyclerView)
     SwipeRecyclerView recyclerView;
-    @BindView(R.id.refresh_layout)
+    @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.fab_recycler_view)
+    FloatingActionButton fab;
 
+    private NewsCardViewListAdapter mAdapter;
     private Handler mHandler = new Handler();
-
     private boolean mEnableLoadMore;
-    /**
-     * 布局的资源id
-     *
-     * @return
-     */
+
     @Override
     protected int getLayoutId() {
-        return R.layout.layout_swipe_recycler_view;
+        return R.layout.fragment_behavior_recyclerview;
     }
 
-    /**
-     * 初始化控件
-     */
+    @Override
+    protected TitleBar initTitle() {
+        return null;
+    }
+
     @Override
     protected void initViews() {
-        Utils.initRecyclerView(recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
-
+        recyclerView.setAdapter(mAdapter = new NewsCardViewListAdapter());
         swipeRefreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);
     }
 
-
     @Override
     protected void initListeners() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popToBack();
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.toast("新建");
+            }
+        });
+        mAdapter.setOnItemClickListener(new SmartViewHolder.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+                Utils.goWeb(getContext(), mAdapter.getItem(position).getDetailUrl());
+            }
+        });
         // 刷新监听。
         swipeRefreshLayout.setOnRefreshListener(mRefreshListener);
-
         refresh();
     }
 
@@ -81,7 +104,7 @@ public class SwipeRefreshFragment extends BaseFragment {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mAdapter.refresh(DemoDataProvider.getDemoData());
+                mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
                 if (swipeRefreshLayout != null) {
                     swipeRefreshLayout.setRefreshing(false);
                 }
@@ -96,8 +119,6 @@ public class SwipeRefreshFragment extends BaseFragment {
     private void enableLoadMore() {
         if (recyclerView != null && !mEnableLoadMore) {
             mEnableLoadMore = true;
-            //SwipeRefreshLayout不支持加载更多
-//            recyclerView.useDefaultLoadMore();
             useMaterialLoadMore();
             // 加载更多的监听。
             recyclerView.setLoadMoreListener(mLoadMoreListener);
@@ -120,30 +141,19 @@ public class SwipeRefreshFragment extends BaseFragment {
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    mAdapter.loadMore(DemoDataProvider.getDemoData());
-                    // 数据完更多数据，一定要掉用这个方法。
-                    // 第一个参数：表示此次数据是否为空。
-                    // 第二个参数：表示是否还有更多数据。
+                    mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
                     if (recyclerView != null) {
                         recyclerView.loadMoreFinish(false, true);
                     }
-                    // 如果加载失败调用下面的方法，传入errorCode和errorMessage。
-                    // errorCode随便传，你自定义LoadMoreView时可以根据errorCode判断错误类型。
-                    // errorMessage是会显示到loadMoreView上的，用户可以看到。
-                    // mRecyclerView.loadMoreError(0, "请求网络失败");
                 }
             }, 1000);
         }
     };
-
 
     @Override
     public void onDestroyView() {
         mHandler.removeCallbacksAndMessages(null);
         super.onDestroyView();
     }
+
 }
-
-
-
-
