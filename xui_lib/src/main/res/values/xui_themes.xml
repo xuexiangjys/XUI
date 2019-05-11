@@ -78,7 +78,7 @@
 
         <!-- 条目的style -->
         <item name="android:gridViewStyle">@style/GridView</item>
-        <item name="selectableItemBackground">@drawable/xui_config_selectable_item_selector</item>
+        <!--<item name="selectableItemBackground">@drawable/xui_config_selectable_item_selector</item>-->
         <item name="android:listSelector">@drawable/xui_config_selectable_item_selector</item>
         <item name="android:listDivider">@drawable/xui_config_list_divider</item>
 

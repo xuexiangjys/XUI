@@ -23,6 +23,7 @@ public class StatusBarUtilsFragment extends BaseFragment {
     @BindView(R.id.groupListView)
     XUIGroupListView groupListView;
 
+    boolean isFullScreen;
     /**
      * 布局的资源id
      *
@@ -69,7 +70,21 @@ public class StatusBarUtilsFragment extends BaseFragment {
                 .addItemView(groupListView.createItemView("获取状态栏的实际高度"), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ToastUtils.toast("状态栏的实际高度：" + StatusBarUtils.getStatusbarHeight(getContext()));
+                        ToastUtils.toast("状态栏的实际高度：" + StatusBarUtils.getStatusBarHeight(getContext()));
+                    }
+                })
+                .addTo(groupListView);
+
+        XUIGroupListView.newSection(getContext())
+                .addItemView(groupListView.createItemView("切换全屏"), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (isFullScreen) {
+                            StatusBarUtils.cancelFullScreen(getActivity());
+                        } else {
+                            StatusBarUtils.fullScreen(getActivity());
+                        }
+                        isFullScreen = !isFullScreen;
                     }
                 })
                 .addTo(groupListView);

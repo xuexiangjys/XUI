@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<resources>
+    <style name="XUITheme" parent="XUIBaseTheme">
+        <!--设置默认窗口的动画样式-->
+        <item name="android:windowAnimationStyle">@style/WindowAnimStyle</item>
+        <item name="android:navigationBarColor">@color/xui_config_color_50_pure_black</item>
+    </style>
+
+    <!--窗体背景，这个背景能在第一时间显示, 避免启动时白屏，黑屏问题-->
+    <style name="XUITheme.Launch.Demo">
+        <item name="android:windowBackground">@drawable/xui_config_bg_splash</item>
+        <item name="xui_config_splash_app_logo">@drawable/ic_splash_app_logo_xui</item>
+        <item name="xui_config_splash_company_logo">@drawable/ic_splash_company_logo_xuexiang</item>
+        <item name="android:navigationBarColor">@color/xui_config_color_transparent</item>
+    </style>
+</resources>
