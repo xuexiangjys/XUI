@@ -345,4 +345,28 @@
     <string name="nav_my_apps">我的应用</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <!-- Strings related to Settings -->
+    <string name="settings_category_basic">基本设置</string>
+    <string name="settings_category_advanced">高级设置</string>
+    <string name="settings_category_other">其他设置</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="settings_switch_preference_title">Switch Preference</string>
+    <string name="settings_switch_preference_summary">Switch Preference 描述</string>
+    <string name="settings_check_box_preference_title">Check Box Preference</string>
+    <string name="settings_edit_text_preference_title">Edit Text Preference</string>
+    <string name="settings_edit_text_preference_default_value">Material Design</string>
+    <string name="settings_list_preference_dialog_title">List Preference</string>
+    <string name="settings_list_preference_title">List Preference</string>
+    <string name="settings_multi_select_list_preference_dialog_title">Multi Select List Preference</string>
+    <string name="settings_multi_select_list_preference_title">Multi Select List Preference</string>
+    <string name="settings_preference_click_title">OnPreferenceClickListener</string>
+    <string name="settings_preference_click_to_activity">点击跳转Activity</string>
+    <string name="pref_title_system_sync_settings">账户同步设置</string>
+    <string name="pref_title_new_message_notifications">消息通知</string>
+    <string name="pref_title_ringtone">铃声</string>
+    <string name="pref_ringtone_silent">静音</string>
+    <string name="pref_title_vibrate">震动</string>
+    <string name="pref_on_preference_click">onPreferenceClick</string>
 </resources>

@@ -30,4 +30,21 @@
         <item name="xui_config_splash_company_logo">@drawable/ic_splash_company_logo_xuexiang</item>
         <item name="android:navigationBarColor">@color/xui_config_color_transparent</item>
     </style>
+
+    <!--SettingTheme-->
+    <style name="SettingTheme" parent="XUITheme.Phone">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--有Title-->
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="actionBarStyle">@style/ActionBarStyle</item>
+
+        <item name="android:navigationBarColor">@color/xui_config_color_50_pure_black</item>
+    </style>
+
+
 </resources>

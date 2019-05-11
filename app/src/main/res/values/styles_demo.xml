@@ -149,12 +149,12 @@
         <item name="contentInsetStartWithNavigation">0dp</item>
     </style>
 
-    <style name="ToolbarTitle">
+    <style name="ToolbarTitle" parent="TextAppearance.AppCompat.Title">
         <item name="android:textSize">?attr/xui_actionbar_title_text_size</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="ToolbarSubTitle">
+    <style name="ToolbarSubTitle" parent="TextAppearance.AppCompat.Subhead">
         <item name="android:textSize">?attr/xui_actionbar_sub_text_size</item>
         <item name="android:textColor">@android:color/white</item>
     </style>

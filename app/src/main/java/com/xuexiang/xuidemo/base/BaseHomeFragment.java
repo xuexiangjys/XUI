@@ -85,12 +85,13 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
     }
 
     private void initRecyclerView() {
-        mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
-        mWidgetItemAdapter.setOnItemClickListener(this);
-        mRecyclerView.setAdapter(mWidgetItemAdapter);
         int spanCount = 3;
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
         mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), spanCount));
+
+        mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
+        mWidgetItemAdapter.setOnItemClickListener(this);
+        mRecyclerView.setAdapter(mWidgetItemAdapter);
     }
 
     /**
