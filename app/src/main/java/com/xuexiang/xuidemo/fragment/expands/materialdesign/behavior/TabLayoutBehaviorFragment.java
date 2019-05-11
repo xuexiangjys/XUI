@@ -61,7 +61,7 @@ public class TabLayoutBehaviorFragment extends BaseFragment {
             tabLayout.addTab(tabLayout.newTab().setText(title));
             adapter.addFragment(new SimpleListFragment(), title);
         }
-        viewPager.setOffscreenPageLimit(titles.length);
+        viewPager.setOffscreenPageLimit(titles.length - 1);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }

@@ -4,6 +4,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BehaviorFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.DrawerLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ToolBarFragment;
 
 /**
@@ -21,7 +22,8 @@ public class MaterialDesignFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 ToolBarFragment.class,
-                BehaviorFragment.class
+                BehaviorFragment.class,
+                DrawerLayoutFragment.class
         };
     }
 

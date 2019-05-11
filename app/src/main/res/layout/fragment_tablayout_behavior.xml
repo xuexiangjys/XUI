@@ -16,7 +16,8 @@
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@drawable/ic_navigation_back_white"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/white" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"

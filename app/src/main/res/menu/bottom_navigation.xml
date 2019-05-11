@@ -21,20 +21,20 @@
     <item
         android:id="@+id/item_dashboard"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="资讯" />
+        android:title="@string/nav_dashboard" />
 
     <item
         android:id="@+id/item_photo"
         android:icon="@drawable/ic_photo_black_24dp"
-        android:title="照片" />
+        android:title="@string/nav_photo" />
 
     <item
         android:id="@+id/item_music"
         android:icon="@drawable/ic_music_note_black_24dp"
-        android:title="音乐" />
+        android:title="@string/nav_music" />
 
     <item
         android:id="@+id/item_movie"
         android:icon="@drawable/ic_movie_black_24dp"
-        android:title="电影" />
+        android:title="@string/nav_movie" />
 </menu>

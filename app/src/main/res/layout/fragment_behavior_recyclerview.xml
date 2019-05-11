@@ -17,7 +17,8 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@drawable/ic_navigation_back_white"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="RecyclerView演示" />
+            app:title="RecyclerView演示"
+            app:titleTextColor="@color/white" />
 
     </android.support.design.widget.AppBarLayout>
 

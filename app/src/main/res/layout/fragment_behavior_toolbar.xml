@@ -24,8 +24,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
                 android:src="@drawable/img_beautiful_girl"
                 app:layout_collapseMode="parallax" />
 
@@ -33,8 +33,8 @@
                 android:id="@+id/appbar_layout_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/ic_navigation_back_white"
                 app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_navigation_back_white"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 app:title="我的故事"
                 app:titleTextColor="@color/white" />

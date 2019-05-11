@@ -421,7 +421,7 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
     private void setViewPager() {
         InnerBannerAdapter mInnerAdapter = new InnerBannerAdapter();
         mViewPager.setAdapter(mInnerAdapter);
-        mViewPager.setOffscreenPageLimit(mDatas.size());
+        mViewPager.setOffscreenPageLimit(mDatas.size() - 1);
 
         try {
             if (mTransformerClass != null) {

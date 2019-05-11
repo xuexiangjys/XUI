@@ -15,21 +15,27 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
+package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.SimpleListFragment;
 import com.xuexiang.xutil.common.CollectionUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
@@ -37,10 +43,10 @@ import butterknife.BindView;
 
 /**
  * @author xuexiang
- * @since 2019-05-10 00:17
+ * @since 2019-05-11 16:19
  */
-@Page(name = "BottomNavigationView Behavior")
-public class BottomNavigationViewBehaviorFragment extends BaseFragment implements ViewPager.OnPageChangeListener, BottomNavigationView.OnNavigationItemSelectedListener {
+@Page(name = "DrawerLayout + NavigationView\n常见主页布局")
+public class DrawerLayoutFragment extends BaseFragment implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, ViewPager.OnPageChangeListener, BottomNavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.view_pager)
@@ -49,19 +55,12 @@ public class BottomNavigationViewBehaviorFragment extends BaseFragment implement
     FloatingActionButton fab;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigation;
+    @BindView(R.id.nav_view)
+    NavigationView navView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
-    @Override
-    protected TitleBar initTitle() {
-        toolbar.setNavigationIcon(R.drawable.ic_navigation_back_white);
-        toolbar.setTitle("BottomNavigationView");
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
-        return null;
-    }
+    String[] titles = new String[]{"资讯", "照片", "音乐", "电影"};
 
     /**
      * 布局的资源id
@@ -70,17 +69,27 @@ public class BottomNavigationViewBehaviorFragment extends BaseFragment implement
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_bottom_navigationview_behavior;
+        return R.layout.fragment_drawerlayout;
     }
 
-    int[] menuItemIds = new int[]{R.id.item_dashboard, R.id.item_photo, R.id.item_music, R.id.item_movie};
-    String[] titles = new String[]{"资讯", "照片", "音乐", "电影"};
+    @Override
+    protected TitleBar initTitle() {
+        toolbar.setTitle("资讯");
+        toolbar.inflateMenu(R.menu.menu_setting);
+        return null;
+    }
 
     /**
      * 初始化控件
      */
     @Override
     protected void initViews() {
+        navView.setItemIconTintList(null);
+        View headerView = navView.getHeaderView(0);
+        LinearLayout nav_header = headerView.findViewById(R.id.nav_header);
+        nav_header.setOnClickListener(this);
+
+        //主页
         FragmentAdapter<BaseFragment> adapter = new FragmentAdapter<>(getChildFragmentManager());
         for (String title : titles) {
             adapter.addFragment(new SimpleListFragment(), title);
@@ -89,16 +98,41 @@ public class BottomNavigationViewBehaviorFragment extends BaseFragment implement
         viewPager.setAdapter(adapter);
     }
 
+
     @Override
     protected void initListeners() {
-        viewPager.addOnPageChangeListener(this);
-        bottomNavigation.setOnNavigationItemSelectedListener(this);
-        fab.setOnClickListener(new View.OnClickListener() {
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                getActivity(), drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                ToastUtils.toast("新建");
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                ToastUtils.toast("点击了:" + menuItem.getTitle());
+                return true;
             }
         });
+        fab.setOnClickListener(this);
+
+        //主页
+        viewPager.addOnPageChangeListener(this);
+        bottomNavigation.setOnNavigationItemSelectedListener(this);
+    }
+
+    @SingleClick
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.nav_header:
+                ToastUtils.toast("点击头部！");
+                break;
+            case R.id.fab:
+                ToastUtils.toast("新建");
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -108,8 +142,9 @@ public class BottomNavigationViewBehaviorFragment extends BaseFragment implement
 
     @Override
     public void onPageSelected(int position) {
-        bottomNavigation.getMenu().getItem(position).setChecked(true);
-//        bottomNavigation.setSelectedItemId(menuItemIds[position]);
+        MenuItem item = bottomNavigation.getMenu().getItem(position);
+        toolbar.setTitle(item.getTitle());
+        item.setChecked(true);
     }
 
     @Override
@@ -121,6 +156,7 @@ public class BottomNavigationViewBehaviorFragment extends BaseFragment implement
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int index = CollectionUtils.arrayIndexOf(titles, menuItem.getTitle());
         if (index != -1) {
+            toolbar.setTitle(menuItem.getTitle());
             viewPager.setCurrentItem(index, true);
             return true;
         }

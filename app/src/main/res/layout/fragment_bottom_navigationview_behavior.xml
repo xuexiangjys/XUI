@@ -31,8 +31,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@drawable/ic_navigation_back_white"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/white" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -61,7 +61,6 @@
         app:labelVisibilityMode="labeled"
         app:layout_behavior="@string/xui_bottom_behavior"
         app:menu="@menu/bottom_navigation" />
-
 
 
 </android.support.design.widget.CoordinatorLayout>

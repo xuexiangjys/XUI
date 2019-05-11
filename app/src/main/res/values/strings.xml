@@ -333,4 +333,16 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
+    <string name="nav_download">下载</string>
+    <string name="nav_movie">电影</string>
+    <string name="nav_music">音乐</string>
+    <string name="nav_photo">照片</string>
+    <string name="nav_dashboard">资讯</string>
+    <string name="nav_settings">设置</string>
+    <string name="nav_about">关于</string>
+    <string name="nav_donate">捐赠</string>
+    <string name="nav_my_apps">我的应用</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
