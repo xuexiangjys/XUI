@@ -30,6 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="?attr/xui_config_content_spacing_horizontal"
-        android:src="@drawable/ic_action_search" />
+        android:src="@drawable/ic_action_search_white" />
 
 </FrameLayout>
