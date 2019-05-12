@@ -183,12 +183,12 @@
         <!--**********************************************
         *               xui 提供的控件样式                  *
         ***********************************************-->
+        <item name="TitleBarStyle">@style/TitleBar</item>
         <item name="XUITipPointStyle">@style/XUITipPoint</item>
         <item name="XUITipNewStyle">@style/XUITipNew</item>
         <item name="XUIGroupListViewStyle">@style/XUIGroupListView</item>
         <item name="XUICommonListItemViewStyle">@style/XUICommonListItemView</item>
         <item name="XUIGroupListSectionViewStyle">@style/XUIGroupListSectionView</item>
-
         <item name="MiniLoadingStyle">@style/MiniLoadingView</item>
         <item name="RulerViewStyle">@style/RulerView</item>
         <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
@@ -196,6 +196,14 @@
         <item name="VerifyCodeEditTextStyle">@style/VerifyCodeEditText</item>
         <item name="HorizontalProgressViewStyle">@style/HorizontalProgressView</item>
         <item name="CircleProgressViewStyle">@style/CircleProgressView</item>
+        <item name="ClearEditTextStyle">@style/EditText.Clear</item>
+        <item name="PasswordEditTextStyle">@style/EditText.Password</item>
+        <item name="MaterialEditTextStyle">@style/EditText.Material</item>
+        <item name="ValidatorEditTextStyle">@style/EditText.Validator</item>
+        <item name="EasyIndicatorStyle">@style/EasyIndicator</item>
+        <item name="MultipleStatusViewStyle">@style/MultipleStatusView</item>
+        <item name="StatefulLayoutStyle">@style/StatefulLayout</item>
+        <item name="CountDownButtonStyle">@style/CountDownButton</item>
 
     </style>
 

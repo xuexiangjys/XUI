@@ -61,26 +61,22 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
     private boolean mIsShowErrorIcon = true;
 
     public ValidatorEditText(Context context) {
-        super(context);
-        initAttrs(context, null);
-        initView();
+        this(context, null);
     }
 
     public ValidatorEditText(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initAttrs(context, attrs);
-        initView();
+        this(context, attrs, R.attr.ValidatorEditTextStyle);
     }
 
     public ValidatorEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttrs(context, attrs);
+        initAttrs(context, attrs, defStyleAttr);
         initView();
     }
 
-    private void initAttrs(Context context, AttributeSet attrs) {
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         if (attrs != null) {
-            TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.ValidatorEditText);
+            TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.ValidatorEditText, defStyleAttr, 0);
             try {
                 String regexp = tArray.getString(R.styleable.ValidatorEditText_vet_regexp);
                 if (!TextUtils.isEmpty(regexp)) {

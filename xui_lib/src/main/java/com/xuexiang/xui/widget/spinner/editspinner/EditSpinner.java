@@ -61,16 +61,17 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     private boolean mIsFilterKey = false;
 
     public EditSpinner(Context context) {
-        super(context);
-        initView(context);
-        initAttrs(context, null);
-        initAnimation();
+        this(context, null);
     }
 
     public EditSpinner(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, R.attr.EditSpinnerStyle);
+    }
+
+    public EditSpinner(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         initView(context);
-        initAttrs(context, attrs);
+        initAttrs(context, attrs, defStyleAttr);
         initAnimation();
     }
 
@@ -82,8 +83,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
         mEditText.addTextChangedListener(this);
     }
 
-    private void initAttrs(Context context, AttributeSet attrs) {
-        TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.EditSpinner);
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.EditSpinner, defStyleAttr, 0);
         if (tArray != null) {
             mIsShowFilterData = tArray.getBoolean(R.styleable.EditSpinner_es_isShowFilterData, true);
             mIsFilterKey = tArray.getBoolean(R.styleable.EditSpinner_es_isFilterKey, false);

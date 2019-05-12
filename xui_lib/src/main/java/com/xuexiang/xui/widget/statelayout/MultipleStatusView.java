@@ -84,13 +84,11 @@ public class MultipleStatusView extends FrameLayout {
     private final ArrayList<Integer> mOtherIds = new ArrayList<>();
 
     public MultipleStatusView(Context context) {
-        super(context);
-        initAttrs(context, null, 0);
+        this(context, null);
     }
 
     public MultipleStatusView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initAttrs(context, attrs, 0);
+        this(context, attrs, R.attr.MultipleStatusViewStyle);
     }
 
     public MultipleStatusView(Context context, AttributeSet attrs, int defStyleAttr) {

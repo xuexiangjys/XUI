@@ -254,18 +254,21 @@
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/setErrorBt"
                         style="@style/RoundButton.Auto"
+                        android:layout_width="50dp"
                         android:layout_marginLeft="8dp"
                         android:text="1" />
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/setError2Bt"
                         style="@style/RoundButton.Auto"
+                        android:layout_width="50dp"
                         android:layout_marginLeft="8dp"
                         android:text="2" />
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/setError3Bt"
                         style="@style/RoundButton.Auto"
+                        android:layout_width="50dp"
                         android:layout_marginLeft="8dp"
                         android:text="3" />
 

@@ -91,28 +91,24 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     private int mDividerColor;
 
     public TitleBar(Context context) {
-        super(context);
-        initAttrs(context, null);
-        init(context);
+        this(context, null);
     }
 
     public TitleBar(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initAttrs(context, attrs);
-        init(context);
+        this(context, attrs, R.attr.TitleBarStyle);
     }
 
     public TitleBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttrs(context, attrs);
+        initAttrs(context, attrs, defStyleAttr);
         init(context);
     }
 
-    private void initAttrs(Context context, AttributeSet attrs) {
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         if (isInEditMode()) {
             return;
         }
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleBar);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleBar, defStyleAttr, 0);
         if (typedArray != null) {
             mBarHeight = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_tb_barHeight, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_height));
             mImmersive = typedArray.getBoolean(R.styleable.TitleBar_tb_immersive, false);
@@ -391,7 +387,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置标题和副标题的文字
      *
-     * @param subTitle    副标题
+     * @param subTitle 副标题
      * @return
      */
     public TitleBar setSubTitle(CharSequence subTitle) {

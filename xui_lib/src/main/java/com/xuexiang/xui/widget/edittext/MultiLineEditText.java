@@ -84,12 +84,12 @@ public class MultiLineEditText extends LinearLayout {
     }
 
     public MultiLineEditText(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.MultiLineEditTextStyle);
     }
 
     public MultiLineEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttrs(context, attrs);
+        initAttrs(context, attrs, defStyleAttr);
         init();
     }
 
@@ -99,8 +99,8 @@ public class MultiLineEditText extends LinearLayout {
      * @param context
      * @param attrs
      */
-    private void initAttrs(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiLineEditText);
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiLineEditText, defStyleAttr, 0);
         mMaxCount = typedArray.getInteger(R.styleable.MultiLineEditText_mlet_maxCount, 240);
         mIgnoreCnOrEn = typedArray.getBoolean(R.styleable.MultiLineEditText_mlet_ignoreCnOrEn, true);
         mHintText = typedArray.getString(R.styleable.MultiLineEditText_mlet_hintText);

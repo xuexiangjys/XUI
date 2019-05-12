@@ -32,6 +32,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+
 import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.xuexiang.xui.R;
@@ -218,7 +219,7 @@ public class MaterialEditText extends AppCompatEditText {
     private int helperTextColor = -1;
 
     /**
-     * error text for manually invoked {@link #setError(CharSequence)}
+     * error text for manually invoked
      */
     private String tempErrorText;
 
@@ -336,22 +337,19 @@ public class MaterialEditText extends AppCompatEditText {
     private METLengthChecker lengthChecker;
 
     public MaterialEditText(Context context) {
-        super(context);
-        init(context, null);
+        this(context, null);
     }
 
     public MaterialEditText(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs);
+        this(context, attrs, R.attr.MaterialEditTextStyle);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public MaterialEditText(Context context, AttributeSet attrs, int style) {
-        super(context, attrs, style);
-        init(context, attrs);
+    public MaterialEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs, defStyleAttr);
     }
 
-    private void init(Context context, AttributeSet attrs) {
+    private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         if (isInEditMode()) {
             return;
         }
@@ -366,7 +364,7 @@ public class MaterialEditText extends AppCompatEditText {
         // default baseColor is black
         int defaultBaseColor = Color.BLACK;
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MaterialEditText);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MaterialEditText, defStyleAttr, 0);
         textColorStateList = typedArray.getColorStateList(R.styleable.MaterialEditText_met_textColor);
         textColorHintStateList = typedArray.getColorStateList(R.styleable.MaterialEditText_met_textColorHint);
         baseColor = typedArray.getColor(R.styleable.MaterialEditText_met_baseColor, defaultBaseColor);
@@ -581,8 +579,9 @@ public class MaterialEditText extends AppCompatEditText {
     }
 
     private Bitmap[] generateIconBitmaps(Drawable drawable) {
-        if (drawable == null)
+        if (drawable == null) {
             return null;
+        }
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -1386,7 +1385,7 @@ public class MaterialEditText extends AppCompatEditText {
     private void drawActionButton(@NonNull Canvas canvas, int startX, int endX, int lineStartY) {
         if (hasFocus() && isEnabled() && !TextUtils.isEmpty(getText()) && (showClearButton || showPasswordButton)) {
             paint.setAlpha(255);
-            int buttonLeft = isRTL() ? startX : ( endX - iconOuterWidth);
+            int buttonLeft = isRTL() ? startX : (endX - iconOuterWidth);
             Bitmap actionButtonBitmap;
             if (showClearButton) {
                 actionButtonBitmap = clearButtonBitmaps[0];
@@ -1645,7 +1644,9 @@ public class MaterialEditText extends AppCompatEditText {
     }
 
     private int checkLength(CharSequence text) {
-        if (lengthChecker == null) return text.length();
+        if (lengthChecker == null) {
+            return text.length();
+        }
         return lengthChecker.getLength(text);
     }
 
@@ -1660,6 +1661,7 @@ public class MaterialEditText extends AppCompatEditText {
 
     /**
      * 获取输入的内容
+     *
      * @return
      */
     public String getEditValue() {

@@ -27,6 +27,7 @@
         <attr name="tb_subTitleText" format="string" />
         <attr name="tb_dividerColor" format="color" />
     </declare-styleable>
+    <attr name="TitleBarStyle" format="reference" />
 
 
     <!--============================Banner=========================================-->
@@ -112,6 +113,8 @@
         <!--退出的动画-->
         <attr name="stf_outAnimation" format="reference" />
     </declare-styleable>
+    <attr name="StatefulLayoutStyle" format="reference" />
+
 
     <!--MultipleStatusView-->
     <declare-styleable name="MultipleStatusView">
@@ -126,6 +129,8 @@
         <!--主内容页面-->
         <attr name="msv_contentView" format="reference" />
     </declare-styleable>
+    <attr name="MultipleStatusViewStyle" format="reference" />
+
 
     <!--=====================================================================-->
 
@@ -424,6 +429,7 @@
         <!--倒计时是否可用，默认为 true-->
         <attr name="cdbt_enableCountDown" format="boolean" />
     </declare-styleable>
+    <attr name="CountDownButtonStyle" format="reference" />
 
     <!-- ShadowButton -->
     <declare-styleable name="ShadowButton">
@@ -560,6 +566,7 @@
         <!--是否在dialog中, 默认false-->
         <attr name="ms_in_dialog" format="boolean" />
     </declare-styleable>
+    <attr name="MaterialSpinnerStyle" format="reference" />
 
     <!--EditSpinner-->
     <declare-styleable name="EditSpinner">
@@ -592,8 +599,8 @@
         <attr name="es_isShowFilterData" format="boolean" />
         <!--输入下拉框显示筛选信息时，是否显示key为醒目的颜色，默认false-->
         <attr name="es_isFilterKey" format="boolean" />
-
     </declare-styleable>
+    <attr name="EditSpinnerStyle" format="reference" />
 
     <!--===============================TextView======================================-->
     <!-- MarqueeView -->
@@ -743,6 +750,8 @@
         <!--校验不通过的提示信息-->
         <attr name="met_errorMessage" format="string" />
     </declare-styleable>
+    <attr name="MaterialEditTextStyle" format="reference" />
+
 
     <!-- 验证码输入框-->
     <declare-styleable name="VerifyCodeEditText">
@@ -770,9 +779,9 @@
     <!-- PasswordEditText -->
     <declare-styleable name="PasswordEditText">
         <!--显示密码的图标资源-->
-        <attr name="pet_iconShow" format="integer" />
+        <attr name="pet_iconShow" format="reference" />
         <!--隐藏密码的图标资源-->
-        <attr name="pet_iconHide" format="integer" />
+        <attr name="pet_iconHide" format="reference" />
         <!--是否触摸显示密码-->
         <attr name="pet_hoverShowsPw" format="boolean" />
         <!--是否使用系统默认字体-->
@@ -780,6 +789,7 @@
         <!--图标是否设置透明度-->
         <attr name="pet_enableIconAlpha" format="boolean" />
     </declare-styleable>
+    <attr name="PasswordEditTextStyle" format="reference" />
 
     <declare-styleable name="ClearEditText">
         <!--清除按钮的图片资源-->
@@ -787,6 +797,7 @@
         <!--清除按钮的图片尺寸-->
         <attr name="cet_clearIconSize" format="dimension" />
     </declare-styleable>
+    <attr name="ClearEditTextStyle" format="reference" />
 
     <!--ValidatorEditText-->
     <declare-styleable name="ValidatorEditText">
@@ -810,6 +821,8 @@
             <enum name="bottom" value="3" />
         </attr>
     </declare-styleable>
+    <attr name="ValidatorEditTextStyle" format="reference" />
+
 
     <declare-styleable name="MultiLineEditText">
         <!--最大输入文字的数目，默认240-->
@@ -835,6 +848,8 @@
         <!--统计数字显示剩余数目,默认false-->
         <attr name="mlet_showSurplusNumber" format="boolean" />
     </declare-styleable>
+    <attr name="MultiLineEditTextStyle" format="reference" />
+
 
     <!--===============================ImageView======================================-->
 
@@ -914,12 +929,12 @@
     <declare-styleable name="EasyIndicator">
         <!--指示器(整个Tab）的宽度，默认-1(MATCH_PARENT)为填充满-->
         <attr name="indicator_width" format="dimension" />
-        <!--指示器的高度，默认45px-->
+        <!--指示器的高度，默认45dp-->
         <attr name="indicator_height" format="dimension" />
 
-        <!--指示器文字的大小，默认14px-->
+        <!--指示器文字的大小，默认14sp-->
         <attr name="indicator_textSize" format="dimension" />
-        <!--指示器选中时文字的大小，默认14px-->
+        <!--指示器选中时文字的大小，默认14sp-->
         <attr name="indicator_select_textSize" format="dimension" />
         <!--指示器选中时的背景颜色，默认R.attr.colorAccent-->
         <attr name="indicator_selected_color" format="color" />
@@ -945,6 +960,8 @@
         <!--指示器垂直分割线的颜色，默认R.attr.xui_config_color_separator_dark-->
         <attr name="indicator_vertical_line_color" format="color" />
     </declare-styleable>
+    <attr name="EasyIndicatorStyle" format="reference" />
+
 
     <declare-styleable name="TabSegment">
         <!--tab选中时的颜色，默认R.attr.colorAccent-->
