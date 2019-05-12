@@ -59,11 +59,11 @@
         <!-- 文字的style -->
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
         <item name="textFieldStyle">@style/TextField</item>
-        <item name="xui_config_color_title_text">@color/xui_config_color_dark_blue_gray</item>
-        <item name="xui_config_color_content_text">@color/xui_config_color_middle_blue_gray</item>
-        <item name="xui_config_color_explain_text">@color/xui_config_color_light_blue_gray</item>
+        <item name="xui_config_color_title_text">@color/xui_config_color_title_text</item>
+        <item name="xui_config_color_content_text">@color/xui_config_color_content_text</item>
+        <item name="xui_config_color_explain_text">@color/xui_config_color_explain_text</item>
         <!--应用的主要文字颜色，actionBar的标题文字默认使用该颜色-->
-        <item name="android:textColorPrimary">?attr/xui_config_color_title_text</item>
+        <item name="android:textColorPrimary">@color/xui_config_color_primary_text</item>
 
         <!-- 按钮的style -->
         <item name="android:imageButtonStyle">@style/ImageButton</item>
@@ -194,6 +194,8 @@
         <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
         <item name="TabSegmentStyle">@style/TabSegment</item>
         <item name="VerifyCodeEditTextStyle">@style/VerifyCodeEditText</item>
+        <item name="HorizontalProgressViewStyle">@style/HorizontalProgressView</item>
+        <item name="CircleProgressViewStyle">@style/CircleProgressView</item>
 
     </style>
 

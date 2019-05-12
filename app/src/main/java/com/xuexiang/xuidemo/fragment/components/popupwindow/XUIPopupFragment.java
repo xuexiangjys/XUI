@@ -84,7 +84,7 @@ public class XUIPopupFragment extends BaseFragment {
             int padding = DensityUtils.dp2px(20);
             textView.setPadding(padding, padding, padding, padding);
             textView.setText("Popup 可以设置其位置以及显示和隐藏的动画");
-            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.xui_config_color_sub_title_common_explain_text));
+            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.xui_config_color_content_text));
             mNormalPopup.setContentView(textView);
             mNormalPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
                 @Override

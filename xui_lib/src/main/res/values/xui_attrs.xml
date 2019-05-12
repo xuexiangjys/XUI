@@ -289,6 +289,104 @@
         <attr name="srb_stepSize" format="float" />
     </declare-styleable>
 
+    <!--CircleProgressView-->
+    <declare-styleable name="CircleProgressView">
+        <!--起始进度，默认是0-->
+        <attr name="cpv_start_progress" format="integer" />
+        <!--终止进度，默认是60-->
+        <attr name="cpv_end_progress" format="integer" />
+        <!--渐变效果的起始颜色，默认是#FFC288-->
+        <attr name="cpv_start_color" format="color" />
+        <!--渐变效果的终止颜色，默认是#FF8F5D-->
+        <attr name="cpv_end_color" format="color" />
+        <!--是否显示轨迹背景， 默认是false-->
+        <attr name="cpv_isTracked" format="boolean" />
+        <!--进度条的宽度（边界宽度）,默认是16dp-->
+        <attr name="cpv_track_width" format="dimension" />
+        <!--轨迹背景的颜色，默认是#f3e5dd-->
+        <attr name="cpv_track_color" format="color" />
+        <!--动画时长， 默认是1200ms-->
+        <attr name="cpv_progress_duration" format="integer" />
+        <!--是否显示进度值文本， 默认是true-->
+        <attr name="cpv_progress_textVisibility" format="boolean" />
+        <!--进度值的颜色， 默认是R.attr.colorAccent-->
+        <attr name="cpv_progress_textColor" format="color" />
+        <!--进度值的文本字体大小， 默认是14sp-->
+        <attr name="cpv_progress_textSize" format="dimension" />
+        <!--动画类型， 默认是AccelerateDecelerateInterpolator-->
+        <attr name="cpv_animate_type" format="enum">
+            <!--加速减速插值器-->
+            <enum name="AccelerateDecelerateInterpolator" value="0" />
+            <!--线性插值器-->
+            <enum name="LinearInterpolator" value="1" />
+            <!--加速插值器-->
+            <enum name="AccelerateInterpolator" value="2" />
+            <!--减速插值器-->
+            <enum name="DecelerateInterpolator" value="3" />
+            <enum name="OvershootInterpolator" value="4" />
+        </attr>
+        <!--是否内部填充， 默认是false-->
+        <attr name="cpv_isFilled" format="boolean" />
+        <!--是选择圆形还是弧形进度条， 默认是true-->
+        <attr name="cpv_circle_broken" format="boolean" />
+        <!--圆弧是否是分层级的（不连续），默认是false-->
+        <attr name="cpv_isGraduated" format="boolean" />
+        <!--指示条的宽度，默认是6dp-->
+        <attr name="cpv_scaleZone_width" format="dimension" />
+        <!--指示条的长度，默认是22dp-->
+        <attr name="cpv_scaleZone_length" format="dimension" />
+        <!--指示条的圆角，默认是8dp-->
+        <attr name="cpv_scaleZone_corner_radius" format="dimension" />
+        <!--指示条的padding，默认是16dp-->
+        <attr name="cpv_scaleZone_padding" format="dimension" />
+    </declare-styleable>
+    <attr name="CircleProgressViewStyle" format="reference" />
+
+    <!--HorizontalProgressView-->
+    <declare-styleable name="HorizontalProgressView">
+        <!--起始进度，默认是0-->
+        <attr name="hpv_start_progress" format="integer" />
+        <!--终止进度，默认是60-->
+        <attr name="hpv_end_progress" format="integer" />
+        <!--渐变效果的起始颜色，默认是#FFC288-->
+        <attr name="hpv_start_color" format="color" />
+        <!--渐变效果的终止颜色，默认是#FF8F5D-->
+        <attr name="hpv_end_color" format="color" />
+        <!--是否显示轨迹背景， 默认是false-->
+        <attr name="hpv_isTracked" format="boolean" />
+        <!--进度条的宽度（边界宽度）,默认是16dp-->
+        <attr name="hpv_track_width" format="dimension" />
+        <!--轨迹背景的颜色， 默认是#f3e5dd-->
+        <attr name="hpv_track_color" format="color" />
+        <!--动画时长， 默认是1200ms-->
+        <attr name="hpv_progress_duration" format="integer" />
+        <!--是否显示进度值文本， 默认是true-->
+        <attr name="hpv_progress_textVisibility" format="boolean" />
+        <!--进度值的颜色， 默认是R.attr.colorAccent-->
+        <attr name="hpv_progress_textColor" format="color" />
+        <!--进度值的文本字体大小， 默认是14sp-->
+        <attr name="hpv_progress_textSize" format="dimension" />
+        <!--动画类型， 默认是AccelerateDecelerateInterpolator-->
+        <attr name="hpv_animate_type" format="enum">
+            <!--加速减速插值器-->
+            <enum name="AccelerateDecelerateInterpolator" value="0" />
+            <!--线性插值器-->
+            <enum name="LinearInterpolator" value="1" />
+            <!--加速插值器-->
+            <enum name="AccelerateInterpolator" value="2" />
+            <!--减速插值器-->
+            <enum name="DecelerateInterpolator" value="3" />
+            <enum name="OvershootInterpolator" value="4" />
+        </attr>
+        <!--圆角半径,默认5dp-->
+        <attr name="hpv_corner_radius" format="dimension" />
+        <!--文字距离view的padding，默认5dp-->
+        <attr name="hpv_text_padding_bottom" format="dimension" />
+        <!--设置进度值是否跟随控件动画移动， 默认是true-->
+        <attr name="hpv_text_movedEnable" format="boolean" />
+    </declare-styleable>
+    <attr name="HorizontalProgressViewStyle" format="reference" />
+
     <!--=============================Button========================================-->
 
     <!-- 自定义按钮控件 ButtonView -->

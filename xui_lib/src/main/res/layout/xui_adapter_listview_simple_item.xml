@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设置"
-            android:textColor="@color/xui_config_color_title_content_text"
+            android:textColor="@color/xui_config_color_title_text"
             android:textSize="?attr/xui_config_size_content_text" />
 
     </LinearLayout>

@@ -344,4 +344,47 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <!--CircleProgressView-->
+    <style name="CircleProgressView">
+        <item name="cpv_start_progress">0</item>
+        <item name="cpv_end_progress">60</item>
+        <item name="cpv_start_color">@color/xui_config_color_light_orange</item>
+        <item name="cpv_end_color">@color/xui_config_color_dark_orange</item>
+        <item name="cpv_isTracked">false</item>
+        <item name="cpv_track_width">@dimen/default_pv_trace_width</item>
+        <item name="cpv_track_color">@color/default_pv_track_color</item>
+        <item name="cpv_progress_duration">1200</item>
+        <item name="cpv_progress_textVisibility">true</item>
+        <item name="cpv_progress_textColor">?attr/colorAccent</item>
+        <item name="cpv_progress_textSize">@dimen/default_pv_progress_text_size</item>
+        <item name="cpv_animate_type">AccelerateDecelerateInterpolator</item>
+        <item name="cpv_isFilled">false</item>
+        <item name="cpv_circle_broken">true</item>
+        <item name="cpv_isGraduated">false</item>
+        <item name="cpv_scaleZone_width">@dimen/default_pv_zone_width</item>
+        <item name="cpv_scaleZone_length">@dimen/default_pv_zone_length</item>
+        <item name="cpv_scaleZone_corner_radius">@dimen/default_pv_zone_corner_radius</item>
+        <item name="cpv_scaleZone_padding">@dimen/default_pv_zone_padding</item>
+    </style>
+
+    <!--HorizontalProgressView-->
+    <style name="HorizontalProgressView">
+        <item name="hpv_start_progress">0</item>
+        <item name="hpv_end_progress">60</item>
+        <item name="hpv_start_color">@color/xui_config_color_light_orange</item>
+        <item name="hpv_end_color">@color/xui_config_color_dark_orange</item>
+        <item name="hpv_isTracked">false</item>
+        <item name="hpv_track_width">@dimen/default_pv_trace_width</item>
+        <item name="hpv_track_color">@color/default_pv_track_color</item>
+        <item name="hpv_progress_duration">1200</item>
+        <item name="hpv_progress_textVisibility">true</item>
+        <item name="hpv_progress_textColor">?attr/colorAccent</item>
+        <item name="hpv_progress_textSize">@dimen/default_pv_progress_text_size</item>
+        <item name="hpv_animate_type">AccelerateDecelerateInterpolator</item>
+        <item name="hpv_corner_radius">@dimen/default_pv_corner_radius</item>
+        <item name="hpv_text_padding_bottom">@dimen/default_pv_corner_radius</item>
+        <item name="hpv_text_movedEnable">true</item>
+
+    </style>
+
 </resources>

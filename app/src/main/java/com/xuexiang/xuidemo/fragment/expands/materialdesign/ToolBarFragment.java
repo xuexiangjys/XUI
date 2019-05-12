@@ -55,6 +55,7 @@ public class ToolBarFragment extends BaseFragment {
         toolBar1.setNavigationIcon(R.drawable.ic_navigation_menu);
         // 设置 NavigationIcon 点击事件
         toolBar1.setNavigationOnClickListener(onClickListener);
+        toolBar1.setContentInsetStartWithNavigation(0);
         // 设置 toolbar 背景色
         toolBar1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         // 设置 Title
@@ -68,7 +69,7 @@ public class ToolBarFragment extends BaseFragment {
         toolBar1.setLogo(R.mipmap.ic_launcher);
 
         //设置 Toolbar menu
-        toolBar1.inflateMenu(R.menu.menu_setting);
+        toolBar1.inflateMenu(R.menu.menu_custom);
         // 设置溢出菜单的图标
         toolBar1.setOverflowIcon(getResources().getDrawable(R.drawable.ic_navigation_more));
         // 设置menu item 点击事件
