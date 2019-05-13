@@ -70,7 +70,8 @@ public class TitleBarFragment extends BaseFragment {
                     public void onClick(View v) {
                         ToastUtils.toast("点击返回");
                     }
-                }).addAction(new TitleBar.TextAction("更多") {
+                })
+                .addAction(new TitleBar.TextAction("更多") {
             @Override
             public void performAction(View view) {
                 ToastUtils.toast("点击更多！");

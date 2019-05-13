@@ -53,5 +53,7 @@
     <string name="xui_bottom_behavior">com.xuexiang.xui.widget.behavior.BottomNavigationViewBehavior</string>
     <string name="xui_title_behavior">com.xuexiang.xui.widget.behavior.ToolBarBehavior</string>
 
+    <string name="xui_count_down_finish">重新获取</string>
+
 
 </resources>

@@ -207,9 +207,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mSubTitleText.setEllipsize(TextUtils.TruncateAt.END);
         mSubTitleText.setTypeface(XUI.getDefaultTypeface());
 
-        if (mCenterGravity == CENTER_CENTER) {
-            setCenterGravity(Gravity.CENTER);
-        } else if (mCenterGravity == CENTER_LEFT) {
+        if (mCenterGravity == CENTER_LEFT) {
             setCenterGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         } else if (mCenterGravity == CENTER_RIGHT) {
             setCenterGravity(Gravity.CENTER_VERTICAL | Gravity.END);
@@ -710,13 +708,22 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mLeftText.layout(0, mStatusBarHeight, mLeftText.getMeasuredWidth(), mLeftText.getMeasuredHeight() + mStatusBarHeight);
         mRightLayout.layout(mScreenWidth - mRightLayout.getMeasuredWidth(), mStatusBarHeight,
                 mScreenWidth, mRightLayout.getMeasuredHeight() + mStatusBarHeight);
-        if (mLeftText.getMeasuredWidth() > mRightLayout.getMeasuredWidth()) {
+        if (mCenterGravity == CENTER_LEFT) {
             mCenterLayout.layout(mLeftText.getMeasuredWidth(), mStatusBarHeight,
                     mScreenWidth - mLeftText.getMeasuredWidth(), getMeasuredHeight());
-        } else {
+        } else if (mCenterGravity == CENTER_RIGHT) {
             mCenterLayout.layout(mRightLayout.getMeasuredWidth(), mStatusBarHeight,
                     mScreenWidth - mRightLayout.getMeasuredWidth(), getMeasuredHeight());
+        } else {
+            if (mLeftText.getMeasuredWidth() > mRightLayout.getMeasuredWidth()) {
+                mCenterLayout.layout(mLeftText.getMeasuredWidth(), mStatusBarHeight,
+                        mScreenWidth - mLeftText.getMeasuredWidth(), getMeasuredHeight());
+            } else {
+                mCenterLayout.layout(mRightLayout.getMeasuredWidth(), mStatusBarHeight,
+                        mScreenWidth - mRightLayout.getMeasuredWidth(), getMeasuredHeight());
+            }
         }
+
         mDividerView.layout(0, getMeasuredHeight() - mDividerView.getMeasuredHeight(), getMeasuredWidth(), getMeasuredHeight());
     }
 
