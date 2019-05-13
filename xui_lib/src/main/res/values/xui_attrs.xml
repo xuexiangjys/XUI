@@ -15,6 +15,12 @@
         <attr name="tb_titleTextColor" format="color" />
         <attr name="tb_subTitleTextColor" format="color" />
         <attr name="tb_actionTextColor" format="color" />
+        <!--中间title的对齐方式-->
+        <attr name="tb_centerGravity" format="enum">
+            <enum name="center" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
         <!--文字的大小-->
         <attr name="tb_sideTextSize" format="dimension" />
         <attr name="tb_titleTextSize" format="dimension" />

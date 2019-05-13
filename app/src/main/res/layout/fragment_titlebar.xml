@@ -31,4 +31,16 @@
         app:tb_titleText="这是一个Title" />
 
 
+    <com.xuexiang.xui.widget.actionbar.TitleBar
+        android:id="@+id/titlebar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/xui_config_color_titlebar"
+        app:tb_centerGravity="left"
+        app:tb_leftImageResource="@drawable/ic_navigation_back_white"
+        app:tb_actionPadding="20dp"
+        app:tb_titleText="这是一个Title" />
+
+
 </LinearLayout>
