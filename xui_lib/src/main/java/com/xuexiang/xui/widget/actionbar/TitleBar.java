@@ -132,11 +132,11 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleBar, defStyleAttr, 0);
         if (typedArray != null) {
-            mBarHeight = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_tb_barHeight, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_height));
+            mBarHeight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_barHeight, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_height));
             mImmersive = typedArray.getBoolean(R.styleable.TitleBar_tb_immersive, false);
 
-            mActionPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_tb_actionPadding, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_action_padding));
-            mSideTextPadding = typedArray.getDimensionPixelOffset(R.styleable.TitleBar_tb_sideTextPadding, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_side_text_padding));
+            mActionPadding = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_actionPadding, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_action_padding));
+            mSideTextPadding = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_sideTextPadding, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_side_text_padding));
             mCenterGravity = typedArray.getInt(R.styleable.TitleBar_tb_centerGravity, CENTER_CENTER);
 
             mSideTextSize = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_sideTextSize, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_action_text_size));

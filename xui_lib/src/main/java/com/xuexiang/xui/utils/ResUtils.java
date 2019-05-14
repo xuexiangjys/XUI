@@ -76,7 +76,7 @@ public final class ResUtils {
     }
 
     /**
-     * 获取dimes值
+     * 获取dimes值，返回的是精确的值
      *
      * @param resId
      * @return
@@ -106,7 +106,7 @@ public final class ResUtils {
     }
 
     /**
-     * 获取dimes值【px不会乘以denstiy.】
+     * 获取dimes值，返回的是【去余取整】的值
      *
      * @param resId
      * @return
@@ -116,7 +116,7 @@ public final class ResUtils {
     }
 
     /**
-     * 获取dimes值【getDimensionPixelSize则不管写的是dp还是sp还是px,都会乘以denstiy.】
+     * 获取dimes值，返回的是【4舍5入】的值
      *
      * @param resId
      * @return

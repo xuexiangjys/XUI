@@ -173,7 +173,7 @@ public class WheelView extends View {
             textColorOut = a.getColor(R.styleable.WheelView_wv_textColorOut, 0xFFA8A8A8);
             textColorCenter = a.getColor(R.styleable.WheelView_wv_textColorCenter, 0xFF2A2A2A);
             dividerColor = a.getColor(R.styleable.WheelView_wv_dividerColor, 0xFFD5D5D5);
-            textSize = a.getDimensionPixelOffset(R.styleable.WheelView_wv_textSize, textSize);
+            textSize = a.getDimensionPixelSize(R.styleable.WheelView_wv_textSize, textSize);
             lineSpacingMultiplier = a.getFloat(R.styleable.WheelView_wv_lineSpacingMultiplier, lineSpacingMultiplier);
             a.recycle();//回收内存
         }

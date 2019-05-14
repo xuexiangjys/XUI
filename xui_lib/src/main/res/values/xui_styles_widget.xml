@@ -479,4 +479,10 @@
         <item name="cdbt_enableCountDown">true</item>
     </style>
 
+    <style name="AutoFitTextView">
+        <item name="aftv_enable">true</item>
+        <item name="aftv_minTextSize">8sp</item>
+        <item name="aftv_precision">0.5</item>
+    </style>
+
 </resources>

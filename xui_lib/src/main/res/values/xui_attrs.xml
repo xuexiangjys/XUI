@@ -680,6 +680,17 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="AutoFitTextView">
+        <!--自动字体大小适应功能是否开启，默认是true-->
+        <attr name="aftv_enable" format="boolean" />
+        <!--调整的最小的字体大小，默认是8sp-->
+        <attr name="aftv_minTextSize" format="dimension" />
+        <!--调整的精度，精度值越小，越精准，耗时越长，默认是0.5-->
+        <attr name="aftv_precision" format="float" />
+    </declare-styleable>
+    <attr name="AutoFitTextViewStyle" format="reference" />
+
+
     <!--=============================EditText========================================-->
     <!-- MaterialEditText -->
     <declare-styleable name="MaterialEditText">
