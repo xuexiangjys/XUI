@@ -299,6 +299,26 @@ public class MultipleStatusView extends FrameLayout {
         showContentView();
     }
 
+    public View getErrorView() {
+        return mErrorView;
+    }
+
+    public View getEmptyView() {
+        return mEmptyView;
+    }
+
+    public View getLoadingView() {
+        return mLoadingView;
+    }
+
+    public View getNoNetworkView() {
+        return mNoNetworkView;
+    }
+
+    public View getContentView() {
+        return mContentView;
+    }
+
     private void showContentView() {
         final int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
