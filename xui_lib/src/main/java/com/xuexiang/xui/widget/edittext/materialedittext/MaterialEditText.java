@@ -1179,14 +1179,22 @@ public class MaterialEditText extends AppCompatEditText {
                 if (allowEmpty) {
                     it.remove();
                 } else {
-                    item.setErrorMessage(errorEmpty);
+                    if (!TextUtils.isEmpty(errorEmpty)) {
+                        item.setErrorMessage(errorEmpty);
+                    } else {
+                        item.setErrorMessage(ResUtils.getString(R.string.xui_met_not_allow_empty));
+                    }
                     updateError = true;
                 }
                 break;
             }
         }
         if (!allowEmpty && !updateError) {
-            validators.add(new NotAllowEmptyValidator(errorEmpty));
+            if (!TextUtils.isEmpty(errorEmpty)) {
+                validators.add(new NotAllowEmptyValidator(errorEmpty));
+            } else {
+                validators.add(new NotAllowEmptyValidator(ResUtils.getString(R.string.xui_met_not_allow_empty)));
+            }
         }
         return this;
     }
