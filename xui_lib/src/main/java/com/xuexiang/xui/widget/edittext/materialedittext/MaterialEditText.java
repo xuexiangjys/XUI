@@ -28,7 +28,6 @@ import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,14 +38,17 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.METLengthChecker;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.METValidator;
+import com.xuexiang.xui.widget.edittext.materialedittext.validation.NotAllowEmptyValidator;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.RegexpValidator;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -333,7 +335,7 @@ public class MaterialEditText extends AppCompatEditText {
     ObjectAnimator bottomLinesAnimator;
     OnFocusChangeListener innerFocusChangeListener;
     OnFocusChangeListener outerFocusChangeListener;
-    private List<METValidator> validators;
+    private List<METValidator> validators = new ArrayList<>();
     private METLengthChecker lengthChecker;
 
     public MaterialEditText(Context context) {
@@ -369,33 +371,19 @@ public class MaterialEditText extends AppCompatEditText {
         textColorHintStateList = typedArray.getColorStateList(R.styleable.MaterialEditText_met_textColorHint);
         baseColor = typedArray.getColor(R.styleable.MaterialEditText_met_baseColor, defaultBaseColor);
 
-        // retrieve the default primaryColor
-        int defaultPrimaryColor;
-        TypedValue primaryColorTypedValue = new TypedValue();
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                context.getTheme().resolveAttribute(android.R.attr.colorPrimary, primaryColorTypedValue, true);
-                defaultPrimaryColor = primaryColorTypedValue.data;
-            } else {
-                throw new RuntimeException("SDK_INT less than LOLLIPOP");
-            }
-        } catch (Exception e) {
-            try {
-                int colorPrimaryId = getResources().getIdentifier("colorPrimary", "attr", getContext().getPackageName());
-                if (colorPrimaryId != 0) {
-                    context.getTheme().resolveAttribute(colorPrimaryId, primaryColorTypedValue, true);
-                    defaultPrimaryColor = primaryColorTypedValue.data;
-                } else {
-                    throw new RuntimeException("colorPrimary not found");
-                }
-            } catch (Exception e1) {
-                defaultPrimaryColor = baseColor;
-            }
-        }
-
-        primaryColor = typedArray.getColor(R.styleable.MaterialEditText_met_primaryColor, defaultPrimaryColor);
+        primaryColor = typedArray.getColor(R.styleable.MaterialEditText_met_primaryColor, ThemeUtils.resolveColor(getContext(), R.attr.colorPrimary, baseColor));
         setFloatingLabelInternal(typedArray.getInt(R.styleable.MaterialEditText_met_floatingLabel, 0));
         errorColor = typedArray.getColor(R.styleable.MaterialEditText_met_errorColor, ResUtils.getColor(R.color.xui_config_color_edittext_error_text));
+
+        boolean allowEmpty = typedArray.getBoolean(R.styleable.MaterialEditText_met_allowEmpty, true);
+        if (!allowEmpty) {
+            String errorEmpty = typedArray.getString(R.styleable.MaterialEditText_met_errorEmpty);
+            if (!TextUtils.isEmpty(errorEmpty)) {
+                validators.add(new NotAllowEmptyValidator(errorEmpty));
+            } else {
+                validators.add(new NotAllowEmptyValidator(ResUtils.getString(R.string.xui_met_not_allow_empty)));
+            }
+        }
         minCharacters = typedArray.getInt(R.styleable.MaterialEditText_met_minCharacters, 0);
         maxCharacters = typedArray.getInt(R.styleable.MaterialEditText_met_maxCharacters, 0);
         singleLineEllipsis = typedArray.getBoolean(R.styleable.MaterialEditText_met_singleLineEllipsis, false);
@@ -435,12 +423,11 @@ public class MaterialEditText extends AppCompatEditText {
 
         String regexp = typedArray.getString(R.styleable.MaterialEditText_met_regexp);
         if (!TextUtils.isEmpty(regexp)) {
-            validators = new ArrayList<>();
             String errorMessage = typedArray.getString(R.styleable.MaterialEditText_met_errorMessage);
             if (!TextUtils.isEmpty(errorMessage)) {
                 validators.add(new RegexpValidator(errorMessage, regexp));
             } else {
-                validators.add(new RegexpValidator(ResUtils.getString(R.string.xui_tip_input_error), regexp));
+                validators.add(new RegexpValidator(ResUtils.getString(R.string.xui_met_input_error), regexp));
             }
         }
 
@@ -522,34 +509,40 @@ public class MaterialEditText extends AppCompatEditText {
         });
     }
 
-    public void setIconLeft(@DrawableRes int res) {
+    public MaterialEditText setIconLeft(@DrawableRes int res) {
         iconLeftBitmaps = generateIconBitmaps(res);
         initPadding();
+        return this;
     }
 
-    public void setIconLeft(Drawable drawable) {
+    public MaterialEditText setIconLeft(Drawable drawable) {
         iconLeftBitmaps = generateIconBitmaps(drawable);
         initPadding();
+        return this;
     }
 
-    public void setIconLeft(Bitmap bitmap) {
+    public MaterialEditText setIconLeft(Bitmap bitmap) {
         iconLeftBitmaps = generateIconBitmaps(bitmap);
         initPadding();
+        return this;
     }
 
-    public void setIconRight(@DrawableRes int res) {
+    public MaterialEditText setIconRight(@DrawableRes int res) {
         iconRightBitmaps = generateIconBitmaps(res);
         initPadding();
+        return this;
     }
 
-    public void setIconRight(Drawable drawable) {
+    public MaterialEditText setIconRight(Drawable drawable) {
         iconRightBitmaps = generateIconBitmaps(drawable);
         initPadding();
+        return this;
     }
 
-    public void setIconRight(Bitmap bitmap) {
+    public MaterialEditText setIconRight(Bitmap bitmap) {
         iconRightBitmaps = generateIconBitmaps(bitmap);
         initPadding();
+        return this;
     }
 
     public boolean isShowClearButton() {
@@ -560,9 +553,10 @@ public class MaterialEditText extends AppCompatEditText {
         return showPasswordButton;
     }
 
-    public void setShowClearButton(boolean show) {
+    public MaterialEditText setShowClearButton(boolean show) {
         showClearButton = show;
         correctPaddings();
+        return this;
     }
 
     private Bitmap[] generateIconBitmaps(@DrawableRes int origin) {
@@ -636,45 +630,50 @@ public class MaterialEditText extends AppCompatEditText {
         return floatingLabelFraction;
     }
 
-    public void setFloatingLabelFraction(float floatingLabelFraction) {
+    public MaterialEditText setFloatingLabelFraction(float floatingLabelFraction) {
         this.floatingLabelFraction = floatingLabelFraction;
         invalidate();
+        return this;
     }
 
     public float getFocusFraction() {
         return focusFraction;
     }
 
-    public void setFocusFraction(float focusFraction) {
+    public MaterialEditText setFocusFraction(float focusFraction) {
         this.focusFraction = focusFraction;
         invalidate();
+        return this;
     }
 
     public float getCurrentBottomLines() {
         return currentBottomLines;
     }
 
-    public void setCurrentBottomLines(float currentBottomLines) {
+    public MaterialEditText setCurrentBottomLines(float currentBottomLines) {
         this.currentBottomLines = currentBottomLines;
         initPadding();
+        return this;
     }
 
     public boolean isFloatingLabelAlwaysShown() {
         return floatingLabelAlwaysShown;
     }
 
-    public void setFloatingLabelAlwaysShown(boolean floatingLabelAlwaysShown) {
+    public MaterialEditText setFloatingLabelAlwaysShown(boolean floatingLabelAlwaysShown) {
         this.floatingLabelAlwaysShown = floatingLabelAlwaysShown;
         invalidate();
+        return this;
     }
 
     public boolean isHelperTextAlwaysShown() {
         return helperTextAlwaysShown;
     }
 
-    public void setHelperTextAlwaysShown(boolean helperTextAlwaysShown) {
+    public MaterialEditText setHelperTextAlwaysShown(boolean helperTextAlwaysShown) {
         this.helperTextAlwaysShown = helperTextAlwaysShown;
         invalidate();
+        return this;
     }
 
     @Nullable
@@ -685,10 +684,11 @@ public class MaterialEditText extends AppCompatEditText {
     /**
      * Set typeface used for the accent texts (floating label, error/helper text, character counter, etc.)
      */
-    public void setAccentTypeface(Typeface accentTypeface) {
+    public MaterialEditText setAccentTypeface(Typeface accentTypeface) {
         this.accentTypeface = accentTypeface;
         this.textPaint.setTypeface(accentTypeface);
         postInvalidate();
+        return this;
     }
 
     public boolean isHideUnderline() {
@@ -702,10 +702,11 @@ public class MaterialEditText extends AppCompatEditText {
      * <p/>
      * NOTE: You probably don't want to hide this if you have any subtext features of this enabled, as it can look weird to not have a dividing line between them.
      */
-    public void setHideUnderline(boolean hideUnderline) {
+    public MaterialEditText setHideUnderline(boolean hideUnderline) {
         this.hideUnderline = hideUnderline;
         initPadding();
         postInvalidate();
+        return this;
     }
 
     /**
@@ -720,9 +721,10 @@ public class MaterialEditText extends AppCompatEditText {
      *
      * @param color
      */
-    public void setUnderlineColor(int color) {
+    public MaterialEditText setUnderlineColor(int color) {
         this.underlineColor = color;
         postInvalidate();
+        return this;
     }
 
     public CharSequence getFloatingLabelText() {
@@ -736,27 +738,30 @@ public class MaterialEditText extends AppCompatEditText {
      *
      * @param floatingLabelText
      */
-    public void setFloatingLabelText(@Nullable CharSequence floatingLabelText) {
+    public MaterialEditText setFloatingLabelText(@Nullable CharSequence floatingLabelText) {
         this.floatingLabelText = floatingLabelText == null ? getHint() : floatingLabelText;
         postInvalidate();
+        return this;
     }
 
     public int getFloatingLabelTextSize() {
         return floatingLabelTextSize;
     }
 
-    public void setFloatingLabelTextSize(int size) {
+    public MaterialEditText setFloatingLabelTextSize(int size) {
         floatingLabelTextSize = size;
         initPadding();
+        return this;
     }
 
     public int getFloatingLabelTextColor() {
         return floatingLabelTextColor;
     }
 
-    public void setFloatingLabelTextColor(int color) {
+    public MaterialEditText setFloatingLabelTextColor(int color) {
         this.floatingLabelTextColor = color;
         postInvalidate();
+        return this;
     }
 
     public int getBottomTextSize() {
@@ -802,12 +807,13 @@ public class MaterialEditText extends AppCompatEditText {
     /**
      * Use this method instead of {@link #setPadding(int, int, int, int)} to automatically set the paddingTop and the paddingBottom correctly.
      */
-    public void setPaddings(int left, int top, int right, int bottom) {
+    public MaterialEditText setPaddings(int left, int top, int right, int bottom) {
         innerPaddingTop = top;
         innerPaddingBottom = bottom;
         innerPaddingLeft = left;
         innerPaddingRight = right;
         correctPaddings();
+        return this;
     }
 
     /**
@@ -950,39 +956,42 @@ public class MaterialEditText extends AppCompatEditText {
         return validateOnFocusLost;
     }
 
-    public void setValidateOnFocusLost(boolean validate) {
+    public MaterialEditText setValidateOnFocusLost(boolean validate) {
         this.validateOnFocusLost = validate;
+        return this;
     }
 
-    public void setBaseColor(int color) {
+    public MaterialEditText setBaseColor(int color) {
         if (baseColor != color) {
             baseColor = color;
         }
-
         initText();
-
         postInvalidate();
+        return this;
     }
 
-    public void setPrimaryColor(int color) {
+    public MaterialEditText setPrimaryColor(int color) {
         primaryColor = color;
         postInvalidate();
+        return this;
     }
 
     /**
      * Same function as {@link #setTextColor(int)}. (Directly overriding the built-in one could cause some error, so use this method instead.)
      */
-    public void setMetTextColor(int color) {
+    public MaterialEditText setMetTextColor(int color) {
         textColorStateList = ColorStateList.valueOf(color);
         resetTextColor();
+        return this;
     }
 
     /**
      * Same function as {@link #setTextColor(ColorStateList)}. (Directly overriding the built-in one could cause some error, so use this method instead.)
      */
-    public void setMetTextColor(ColorStateList colors) {
+    public MaterialEditText setMetTextColor(ColorStateList colors) {
         textColorStateList = colors;
         resetTextColor();
+        return this;
     }
 
     private void resetTextColor() {
@@ -997,17 +1006,19 @@ public class MaterialEditText extends AppCompatEditText {
     /**
      * Same function as {@link #setHintTextColor(int)}. (The built-in one is a final method that can't be overridden, so use this method instead.)
      */
-    public void setMetHintTextColor(int color) {
+    public MaterialEditText setMetHintTextColor(int color) {
         textColorHintStateList = ColorStateList.valueOf(color);
         resetHintTextColor();
+        return this;
     }
 
     /**
      * Same function as {@link #setHintTextColor(ColorStateList)}. (The built-in one is a final method that can't be overridden, so use this method instead.)
      */
-    public void setMetHintTextColor(ColorStateList colors) {
+    public MaterialEditText setMetHintTextColor(ColorStateList colors) {
         textColorHintStateList = colors;
         resetHintTextColor();
+        return this;
     }
 
     private void resetHintTextColor() {
@@ -1035,97 +1046,107 @@ public class MaterialEditText extends AppCompatEditText {
         }
     }
 
-    public void setFloatingLabel(@FloatingLabelType int mode) {
+    public MaterialEditText setFloatingLabel(@FloatingLabelType int mode) {
         setFloatingLabelInternal(mode);
         initPadding();
+        return this;
     }
 
     public int getFloatingLabelPadding() {
         return floatingLabelPadding;
     }
 
-    public void setFloatingLabelPadding(int padding) {
+    public MaterialEditText setFloatingLabelPadding(int padding) {
         floatingLabelPadding = padding;
         postInvalidate();
+        return this;
     }
 
     public boolean isFloatingLabelAnimating() {
         return floatingLabelAnimating;
     }
 
-    public void setFloatingLabelAnimating(boolean animating) {
+    public MaterialEditText setFloatingLabelAnimating(boolean animating) {
         floatingLabelAnimating = animating;
+        return this;
     }
 
-    public void setSingleLineEllipsis() {
-        setSingleLineEllipsis(true);
+    public MaterialEditText setSingleLineEllipsis() {
+        return setSingleLineEllipsis(true);
     }
 
-    public void setSingleLineEllipsis(boolean enabled) {
+    public MaterialEditText setSingleLineEllipsis(boolean enabled) {
         singleLineEllipsis = enabled;
         initMinBottomLines();
         initPadding();
         postInvalidate();
+        return this;
     }
 
     public int getMaxCharacters() {
         return maxCharacters;
     }
 
-    public void setMaxCharacters(int max) {
+    public MaterialEditText setMaxCharacters(int max) {
         maxCharacters = max;
         initMinBottomLines();
         initPadding();
         postInvalidate();
+        return this;
     }
 
     public int getMinCharacters() {
         return minCharacters;
     }
 
-    public void setMinCharacters(int min) {
+    public MaterialEditText setMinCharacters(int min) {
         minCharacters = min;
         initMinBottomLines();
         initPadding();
         postInvalidate();
+        return this;
     }
 
     public int getMinBottomTextLines() {
         return minBottomTextLines;
     }
 
-    public void setMinBottomTextLines(int lines) {
+    public MaterialEditText setMinBottomTextLines(int lines) {
         minBottomTextLines = lines;
         initMinBottomLines();
         initPadding();
         postInvalidate();
+        return this;
     }
 
     public boolean isAutoValidate() {
         return autoValidate;
     }
 
-    public void setAutoValidate(boolean autoValidate) {
+    public MaterialEditText setAutoValidate(boolean autoValidate) {
         this.autoValidate = autoValidate;
         if (autoValidate) {
             validate();
         }
+        return this;
     }
 
     public int getErrorColor() {
         return errorColor;
     }
 
-    public void setErrorColor(int color) {
+    public MaterialEditText setErrorColor(int color) {
         errorColor = color;
         postInvalidate();
+        return this;
     }
 
-    public void setHelperText(CharSequence helperText) {
+    public MaterialEditText setHelperText(CharSequence helperText) {
         this.helperText = helperText == null ? null : helperText.toString();
         if (adjustBottomLines()) {
             postInvalidate();
         }
+        return this;
     }
 
     public String getHelperText() {
@@ -1136,9 +1157,38 @@ public class MaterialEditText extends AppCompatEditText {
         return helperTextColor;
     }
 
-    public void setHelperTextColor(int color) {
+    public MaterialEditText setHelperTextColor(int color) {
         helperTextColor = color;
         postInvalidate();
+        return this;
+    }
+
+    /**
+     * 设置输入框是否允许为空
+     *
+     * @param allowEmpty
+     * @param errorEmpty
+     * @return
+     */
+    public MaterialEditText setAllowEmpty(boolean allowEmpty, String errorEmpty) {
+        boolean updateError = false;
+        Iterator<METValidator> it = validators.iterator();
+        while (it.hasNext()) {
+            METValidator item = it.next();
+            if (item instanceof NotAllowEmptyValidator) {
+                if (allowEmpty) {
+                    it.remove();
+                } else {
+                    item.setErrorMessage(errorEmpty);
+                    updateError = true;
+                }
+                break;
+            }
+        }
+        if (!allowEmpty && !updateError) {
+            validators.add(new NotAllowEmptyValidator(errorEmpty));
+        }
+        return this;
     }
 
     @Override
@@ -1260,10 +1310,11 @@ public class MaterialEditText extends AppCompatEditText {
         return this;
     }
 
-    public void clearValidators() {
+    public MaterialEditText clearValidators() {
         if (this.validators != null) {
             this.validators.clear();
         }
+        return this;
     }
 
     @Nullable
@@ -1271,8 +1322,52 @@ public class MaterialEditText extends AppCompatEditText {
         return this.validators;
     }
 
-    public void setLengthChecker(METLengthChecker lengthChecker) {
+    public MaterialEditText setLengthChecker(METLengthChecker lengthChecker) {
         this.lengthChecker = lengthChecker;
+        return this;
+    }
+
+    /**
+     * 清除内容
+     */
+    public void clear() {
+        if (!TextUtils.isEmpty(getText())) {
+            setText(null);
+        }
+    }
+
+    /**
+     * 获取输入的内容
+     *
+     * @return
+     */
+    public String getEditValue() {
+        return getEditableText().toString().trim();
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setFocusable(enabled);
+        super.setFocusableInTouchMode(enabled);
+        super.setEnabled(enabled);
+    }
+
+    /**
+     * 输入的内容是否为空
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return TextUtils.isEmpty(getEditValue());
+    }
+
+    /**
+     * 输入的内容是否不为空
+     *
+     * @return
+     */
+    public boolean isNotEmpty() {
+        return !TextUtils.isEmpty(getEditValue());
     }
 
     @Override
@@ -1650,47 +1745,6 @@ public class MaterialEditText extends AppCompatEditText {
         return lengthChecker.getLength(text);
     }
 
-    /**
-     * 清除内容
-     */
-    public void clear() {
-        if (!TextUtils.isEmpty(getText())) {
-            setText(null);
-        }
-    }
 
-    /**
-     * 获取输入的内容
-     *
-     * @return
-     */
-    public String getEditValue() {
-        return getEditableText().toString().trim();
-    }
-
-    @Override
-    public void setEnabled(boolean enabled) {
-        super.setFocusable(enabled);
-        super.setFocusableInTouchMode(enabled);
-        super.setEnabled(enabled);
-    }
-
-    /**
-     * 输入的内容是否为空
-     *
-     * @return
-     */
-    public boolean isEmpty() {
-        return TextUtils.isEmpty(getEditValue());
-    }
-
-    /**
-     * 输入的内容是否不为空
-     *
-     * @return
-     */
-    public boolean isNotEmpty() {
-        return !TextUtils.isEmpty(getEditValue());
-    }
 
 }

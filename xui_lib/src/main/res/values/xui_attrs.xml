@@ -695,6 +695,10 @@
         </attr>
         <!-- 出现错误时文字的颜色 -->
         <attr name="met_errorColor" format="color" />
+        <!-- 是否允许输入为空， 默认是true -->
+        <attr name="met_allowEmpty" format="boolean" />
+        <!-- 为空的错误提示，默认是“输入不能为空” -->
+        <attr name="met_errorEmpty" format="string" />
         <!-- 最少文字的限制（0代表无限）-->
         <attr name="met_minCharacters" format="integer" />
         <!-- 最多文字的限制（0代表无限） -->

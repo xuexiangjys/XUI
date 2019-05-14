@@ -85,7 +85,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
                     if (!TextUtils.isEmpty(errorMessage)) {
                         mValidators.add(new RegexpValidator(errorMessage, regexp));
                     } else {
-                        mValidators.add(new RegexpValidator(ResUtils.getString(R.string.xui_tip_input_error), regexp));
+                        mValidators.add(new RegexpValidator(ResUtils.getString(R.string.xui_met_input_error), regexp));
                     }
                 }
                 mIsAutoValidate = tArray.getBoolean(R.styleable.ValidatorEditText_vet_autoValidate, true);

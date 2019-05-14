@@ -299,6 +299,23 @@
                     app:met_regexp="@string/regex_phone_number"
                     app:met_clearButton="true" />
 
+                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                    android:id="@+id/et_not_allow_empty1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="please input your name"
+                    android:inputType="text"
+                    app:met_allowEmpty="false"
+                    app:met_clearButton="true" />
+
+                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                    android:id="@+id/et_not_allow_empty2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="please input your name"
+                    android:inputType="text"
+                    app:met_clearButton="true" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

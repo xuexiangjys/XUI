@@ -7,7 +7,8 @@
     <string name="xui_tip_expand">展开</string>
     <string name="xui_tip_shrink">收缩</string>
 
-    <string name="xui_tip_input_error">输入不符合要求!</string>
+    <string name="xui_met_input_error">输入不符合要求!</string>
+    <string name="xui_met_not_allow_empty">输入不能为空!</string>
 
     <!--Button-->
     <string name="xui_lab_button_submit">确 定</string>

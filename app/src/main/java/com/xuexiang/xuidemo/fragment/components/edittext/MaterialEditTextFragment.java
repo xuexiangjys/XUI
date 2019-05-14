@@ -10,12 +10,19 @@ import com.xuexiang.xui.widget.edittext.materialedittext.validation.RegexpValida
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
+import butterknife.BindView;
+
 /**
  * @author XUE
  * @date 2017/9/29 11:09
  */
 @Page(name = "MaterialEditText\nMaterial Design风格的输入框")
 public class MaterialEditTextFragment extends BaseFragment {
+
+    @BindView(R.id.et_not_allow_empty1)
+    MaterialEditText etNotAllowEmpty1;
+    @BindView(R.id.et_not_allow_empty2)
+    MaterialEditText etNotAllowEmpty2;
 
     @Override
     protected int getLayoutId() {
@@ -80,6 +87,7 @@ public class MaterialEditTextFragment extends BaseFragment {
     private void initValidationEt() {
         final MaterialEditText validationEt = findViewById(R.id.validationEt);
         final MaterialEditText et_phone_number = findViewById(R.id.et_phone_number);
+        etNotAllowEmpty2.setAllowEmpty(false, "your name not allow empty！");
         validationEt.addValidator(new RegexpValidator("Only Integer Valid!", "\\d+"));
         final Button validateBt = findViewById(R.id.validateBt);
         validateBt.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +95,10 @@ public class MaterialEditTextFragment extends BaseFragment {
             public void onClick(View v) {
                 validationEt.validate();
                 et_phone_number.validate();
+                etNotAllowEmpty1.validate();
+                etNotAllowEmpty2.validate();
             }
         });
     }
+
 }
