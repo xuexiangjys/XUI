@@ -543,6 +543,38 @@
         <attr name="sd_secondBgColor" format="color" />
     </declare-styleable>
 
+    <!--RippleView-->
+    <declare-styleable name="RippleView">
+        <!--水波的透明度，默认90-->
+        <attr name="rv_alpha" format="integer" />
+        <!--水波变化的帧率，默认是10-->
+        <attr name="rv_frameRate" format="integer" />
+        <!--水波持续的时间，默认是400ms-->
+        <attr name="rv_rippleDuration" format="integer" />
+        <!--水波的颜色， 默认白色-->
+        <attr name="rv_color" format="color" />
+        <!--水波是否从控件的中心起，默认是false-->
+        <attr name="rv_centered" format="boolean" />
+        <!--水波的样式-->
+        <attr name="rv_type" format="enum">
+            <!--单波纹-->
+            <enum name="simpleRipple" value="0" />
+            <!--双波纹-->
+            <enum name="doubleRipple" value="1" />
+            <!--方形-->
+            <enum name="rectangle" value="2" />
+        </attr>
+        <!--水波的padding，默认是0-->
+        <attr name="rv_ripplePadding" format="dimension" />
+        <!--是否支持缩放动画，默认：false-->
+        <attr name="rv_zoom" format="boolean" />
+        <!--缩放倍率，默认是1.03F-->
+        <attr name="rv_zoomScale" format="float" />
+        <!--缩放动画持续的时间，默认是200ms-->
+        <attr name="rv_zoomDuration" format="integer" />
+    </declare-styleable>
+    <attr name="RippleViewStyle" format="reference" />
+
     <!--===============================Spinner======================================-->
     <!--MaterialSpinner-->
     <declare-styleable name="MaterialSpinner">

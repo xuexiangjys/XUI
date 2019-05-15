@@ -209,6 +209,7 @@
         <item name="StatefulLayoutStyle">@style/StatefulLayout</item>
         <item name="CountDownButtonStyle">@style/CountDownButton</item>
         <item name="AutoFitTextViewStyle">@style/AutoFitTextView</item>
+        <item name="RippleViewStyle">@style/RippleView</item>
 
     </style>
 
