@@ -67,11 +67,15 @@
 
         <!-- 按钮的style -->
         <item name="android:imageButtonStyle">@style/ImageButton</item>
+        <item name="imageButtonStyle">@style/ImageButton</item>
         <item name="android:buttonStyle">@style/Button</item>
+        <item name="buttonStyle">@style/Button</item>
 
         <!-- 输入框的style -->
         <item name="android:editTextColor">@color/xui_config_color_edittext_input_text</item>
+        <item name="editTextColor">@color/xui_config_color_edittext_input_text</item>
         <item name="android:editTextStyle">@style/EditText</item>
+        <item name="editTextStyle">@style/EditText</item>
 
         <!-- Dialog的style -->
         <item name="xui_dialog_background_dim_amount">0.6</item>

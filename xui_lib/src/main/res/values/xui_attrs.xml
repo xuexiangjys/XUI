@@ -807,7 +807,7 @@
         <attr name="pet_hoverShowsPw" format="boolean" />
         <!--是否使用系统默认字体-->
         <attr name="pet_nonMonospaceFont" format="boolean" />
-        <!--图标是否设置透明度-->
+        <!--图标是否设置透明度, 默认是true-->
         <attr name="pet_enableIconAlpha" format="boolean" />
     </declare-styleable>
     <attr name="PasswordEditTextStyle" format="reference" />

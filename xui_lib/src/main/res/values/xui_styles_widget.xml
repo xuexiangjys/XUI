@@ -396,7 +396,7 @@
         <item name="pet_iconHide">@drawable/pet_icon_visibility_off_24dp</item>
         <item name="pet_hoverShowsPw">false</item>
         <item name="pet_nonMonospaceFont">false</item>
-        <item name="pet_enableIconAlpha">false</item>
+        <item name="pet_enableIconAlpha">true</item>
     </style>
 
     <style name="EditText.Material">

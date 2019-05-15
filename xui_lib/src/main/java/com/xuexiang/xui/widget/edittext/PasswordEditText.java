@@ -28,11 +28,6 @@ import com.xuexiang.xui.utils.ResUtils;
  */
 public class PasswordEditText extends AppCompatEditText {
 
-    /**
-     * This area is added as padding to increase the clickable area of the icon
-     */
-    private final static int EXTRA_TAPPABLE_AREA = 50;
-
     private final static int ALPHA_ICON_ENABLED = (int) (255 * 0.54f);
 
     private final static int ALPHA_ICON_DISABLED = (int) (255 * 0.38f);
@@ -71,23 +66,21 @@ public class PasswordEditText extends AppCompatEditText {
     }
 
     public void initAttrs(AttributeSet attrs, int defStyleAttr) {
-        if (attrs != null) {
-            TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.PasswordEditText, defStyleAttr, 0);
-            try {
-                showPwDrawable = typedArray.getDrawable(R.styleable.PasswordEditText_pet_iconShow);
-                if (showPwDrawable == null) {
-                    showPwDrawable = ResUtils.getDrawable(getContext(), R.drawable.pet_icon_visibility_24dp);
-                }
-                hidePwDrawable = typedArray.getDrawable(R.styleable.PasswordEditText_pet_iconHide);
-                if (hidePwDrawable == null) {
-                    hidePwDrawable = ResUtils.getDrawable(getContext(), R.drawable.pet_icon_visibility_off_24dp);
-                }
-                hoverShowsPw = typedArray.getBoolean(R.styleable.PasswordEditText_pet_hoverShowsPw, false);
-                useNonMonospaceFont = typedArray.getBoolean(R.styleable.PasswordEditText_pet_nonMonospaceFont, false);
-                enableIconAlpha = typedArray.getBoolean(R.styleable.PasswordEditText_pet_enableIconAlpha, false);
-            } finally {
-                typedArray.recycle();
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.PasswordEditText, defStyleAttr, 0);
+        try {
+            showPwDrawable = typedArray.getDrawable(R.styleable.PasswordEditText_pet_iconShow);
+            if (showPwDrawable == null) {
+                showPwDrawable = ResUtils.getDrawable(getContext(), R.drawable.pet_icon_visibility_24dp);
             }
+            hidePwDrawable = typedArray.getDrawable(R.styleable.PasswordEditText_pet_iconHide);
+            if (hidePwDrawable == null) {
+                hidePwDrawable = ResUtils.getDrawable(getContext(), R.drawable.pet_icon_visibility_off_24dp);
+            }
+            hoverShowsPw = typedArray.getBoolean(R.styleable.PasswordEditText_pet_hoverShowsPw, false);
+            useNonMonospaceFont = typedArray.getBoolean(R.styleable.PasswordEditText_pet_nonMonospaceFont, false);
+            enableIconAlpha = typedArray.getBoolean(R.styleable.PasswordEditText_pet_enableIconAlpha, true);
+        } finally {
+            typedArray.recycle();
         }
 
         if (enableIconAlpha) {
@@ -178,15 +171,16 @@ public class PasswordEditText extends AppCompatEditText {
         if (!showingIcon) {
             return super.onTouchEvent(event);
         } else {
-            final Rect bounds = showPwDrawable.getBounds();
-            final int x = (int) event.getX();
-            int iconXRect = isRTL ? getLeft() + bounds.width() + EXTRA_TAPPABLE_AREA :
-                    getRight() - bounds.width() - EXTRA_TAPPABLE_AREA;
-
+            boolean touchable;
+            if (isRTL) {
+                touchable = event.getX() > getPaddingLeft() && event.getX() < (getPaddingLeft() + showPwDrawable.getIntrinsicWidth());
+            } else {
+                touchable = event.getX() > (getWidth() - getPaddingRight() - showPwDrawable.getIntrinsicWidth()) && event.getX() < ((getWidth() - getPaddingRight()));
+            }
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     if (hoverShowsPw) {
-                        if (isRTL ? x <= iconXRect : x >= iconXRect) {
+                        if (touchable) {
                             togglePasswordIconVisibility();
                             // prevent keyboard from coming up
                             event.setAction(MotionEvent.ACTION_CANCEL);
@@ -195,7 +189,7 @@ public class PasswordEditText extends AppCompatEditText {
                     }
                     break;
                 case MotionEvent.ACTION_UP:
-                    if (handlingHoverEvent || (isRTL ? x <= iconXRect : x >= iconXRect)) {
+                    if (handlingHoverEvent || touchable) {
                         togglePasswordIconVisibility();
                         // prevent keyboard from coming up
                         event.setAction(MotionEvent.ACTION_CANCEL);

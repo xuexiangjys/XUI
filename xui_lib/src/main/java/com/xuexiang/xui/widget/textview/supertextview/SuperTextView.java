@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.edittext.ClearEditText;
+import com.xuexiang.xui.widget.edittext.PasswordEditText;
 
 import uk.co.chrisjenx.calligraphy.HasTypeface;
 
@@ -243,7 +244,11 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private String mEditTextHint;
     private String mEditTextString;
     private int mEditTextInputType;
-    private boolean mEditTextClearButton = true;
+
+    private static final int TYPE_NONE = 0;
+    private static final int TYPE_CLEAR = 1;
+    private static final int TYPE_PASSWORD = 2;
+    private int mEditTextButtonType = TYPE_CLEAR;
 
     private static final int TYPE_CHECKBOX = 0;
     private static final int TYPE_SWITCH = 1;
@@ -486,7 +491,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mEditTextString = typedArray.getString(R.styleable.SuperTextView_sEditTextString);
         mEditTextHint = typedArray.getString(R.styleable.SuperTextView_sEditTextHint);
         mEditTextInputType = typedArray.getInt(R.styleable.SuperTextView_android_inputType, -1);
-        mEditTextClearButton = typedArray.getBoolean(R.styleable.SuperTextView_sEditTextClearButton, mEditTextClearButton);
+        mEditTextButtonType = typedArray.getInt(R.styleable.SuperTextView_sEditTextButtonType, mEditTextButtonType);
 
         //////////////////////////////////////////////
         mUseRipple = typedArray.getBoolean(R.styleable.SuperTextView_sUseRipple, true);
@@ -686,10 +691,12 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private void initCenterTextView() {
         if (mEnableEdit) {
             if (mCenterEditText == null) {
-                if (mEditTextClearButton) {
-                    mCenterEditText = new ClearEditText(mContext);
-                } else {
+                if (mEditTextButtonType == TYPE_NONE) {
                     mCenterEditText = new AppCompatEditText(mContext);
+                } else if (mEditTextButtonType == TYPE_CLEAR) {
+                    mCenterEditText = new ClearEditText(mContext);
+                } else if (mEditTextButtonType == TYPE_PASSWORD) {
+                    mCenterEditText = new PasswordEditText(mContext);
                 }
             }
             mCenterEditTextParams = new LayoutParams(mEditTextWidth, LayoutParams.WRAP_CONTENT);
@@ -2121,7 +2128,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return
      */
     public SuperTextView setCenterEditTextFocusChangeListener(OnFocusChangeListener focusChangeListener) {
-        if (mCenterEditText != null && !mEditTextClearButton) {
+        if (mCenterEditText != null && mEditTextButtonType == TYPE_NONE) {
             mCenterEditText.setOnFocusChangeListener(focusChangeListener);
         }
         return this;

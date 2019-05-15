@@ -69,15 +69,24 @@
             android:id="@+id/stv_name"
             style="@style/EditInfoItem"
             app:sEditTextHint="请输入姓名"
-            app:sEditTextClearButton="false"
+            app:sEditTextButtonType="none"
             app:sLeftTextString="姓名" />
 
         <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
             android:id="@+id/stv_phone"
             style="@style/EditInfoItem"
             android:inputType="phone"
+            app:sEditTextButtonType="clear"
             app:sEditTextHint="请输入手机号"
             app:sLeftTextString="手机号" />
+
+        <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+            android:id="@+id/stv_password"
+            style="@style/EditInfoItem"
+            android:inputType="textPassword"
+            app:sEditTextButtonType="password"
+            app:sEditTextHint="请输入密码"
+            app:sLeftTextString="密码" />
 
     </LinearLayout>
 
