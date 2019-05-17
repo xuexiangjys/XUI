@@ -45,9 +45,7 @@
             android:id="@+id/tab_layout"
             style="@style/TabLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="?attr/xui_actionbar_height"
-            app:layout_anchor="@id/fab_scrolling"
-            app:layout_anchorGravity="bottom" />
+            android:layout_height="?attr/xui_actionbar_height" />
 
     </android.support.design.widget.AppBarLayout>
 
