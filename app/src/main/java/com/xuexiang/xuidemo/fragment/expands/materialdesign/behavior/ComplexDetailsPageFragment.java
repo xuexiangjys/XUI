@@ -110,8 +110,10 @@ public class ComplexDetailsPageFragment extends BaseFragment {
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                     StatusBarUtils.setStatusBarDarkMode(getActivity());
+                    fabScrolling.hide();
                 } else {
                     StatusBarUtils.setStatusBarLightMode(getActivity());
+                    fabScrolling.show();
                 }
             }
         });
