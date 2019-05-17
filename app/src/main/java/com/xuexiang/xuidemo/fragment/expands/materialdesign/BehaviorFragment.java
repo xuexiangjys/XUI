@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.BottomNavigationViewBehaviorFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.ComplexDetailsPageFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.RecyclerViewBehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.TabLayoutBehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.ToolbarBehaviorFragment;
@@ -19,7 +20,8 @@ public class BehaviorFragment extends ComponentContainerFragment {
                 ToolbarBehaviorFragment.class,
                 RecyclerViewBehaviorFragment.class,
                 TabLayoutBehaviorFragment.class,
-                BottomNavigationViewBehaviorFragment.class
+                BottomNavigationViewBehaviorFragment.class,
+                ComplexDetailsPageFragment.class
         };
     }
 
@@ -30,7 +32,7 @@ public class BehaviorFragment extends ComponentContainerFragment {
      */
     @Override
     protected void onItemClick(int position) {
-        if (position == 0) {
+        if (position == 0 || position == 4 ) {
             openNewPage(getSimpleDataItem(position));
         } else {
             openPage(getSimpleDataItem(position));
