@@ -98,7 +98,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.3'
 
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.5'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.6'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime
@@ -132,7 +132,7 @@ dependencies {
     implementation 'me.samlss:broccoli:1.0.0'
 
     //XQRCode二维码扫描
-    implementation 'com.github.xuexiangjys:XQRCode:1.0.2'
+    implementation 'com.github.xuexiangjys:XQRCode:1.0.4'
     //CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.1"
 
@@ -161,7 +161,7 @@ dependencies {
     implementation 'com.github.xuexiangjys:JPTabBar:1.0.0'
 
     //版本更新
-    implementation 'com.github.xuexiangjys:XUpdate:1.0.7'
+    implementation 'com.github.xuexiangjys:XUpdate:1.0.9'
     implementation 'com.qianwen:okhttp-utils:3.8.0'
 
 }
