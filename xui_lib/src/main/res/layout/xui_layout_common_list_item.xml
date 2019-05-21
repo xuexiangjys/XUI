@@ -80,7 +80,7 @@
     </LinearLayout>
 
     <!-- 红点，代码会再修改这个View的位置 -->
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/group_list_item_tips_dot"
         style="?attr/XUITipPointStyle"
         android:contentDescription="Red dot"

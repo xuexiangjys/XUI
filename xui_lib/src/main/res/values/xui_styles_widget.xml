@@ -498,4 +498,8 @@
         <item name="rv_zoomDuration">200</item>
     </style>
 
+    <style name="StatusView">
+        <item name="sv_dismissOnComplete">true</item>
+    </style>
+
 </resources>

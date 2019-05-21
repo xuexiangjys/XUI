@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -17,27 +16,25 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
-    android:gravity="center_vertical"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/colorAccent"
+    android:gravity="center"
     android:orientation="horizontal">
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/icon"
+        android:id="@+id/iconError"
         android:layout_width="24dp"
-        android:layout_height="24dp" />
-
-    <Space
-        android:layout_width="12dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="24dp"
+        android:layout_marginStart="-16dp"
+        app:srcCompat="@drawable/xtoast_ic_error_outline_white_24dp" />
 
     <TextView
-        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:textColor="?android:textColorPrimary" />
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="自定义状态"
+        android:textColor="@color/xui_config_color_white" />
 
 </LinearLayout>

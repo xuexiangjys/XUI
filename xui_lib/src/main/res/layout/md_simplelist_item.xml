@@ -30,13 +30,12 @@
   android:paddingRight="?attr/md_dialog_frame_margin"
   android:paddingStart="?attr/md_dialog_frame_margin">
 
-  <ImageView
+  <android.support.v7.widget.AppCompatImageView
     android:id="@android:id/icon"
     android:layout_width="?attr/md_simplelist_icon"
     android:layout_height="?attr/md_simplelist_icon"
     android:layout_gravity="start|center_vertical"
     android:layout_marginEnd="?attr/md_simplelist_icon_margin"
-    android:layout_marginRight="?attr/md_simplelist_icon_margin"
     android:background="@color/xui_config_color_transparent"
     android:scaleType="fitXY"
     tools:background="#f5f5f5"

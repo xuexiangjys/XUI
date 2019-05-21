@@ -12,6 +12,7 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 一个方便在多种状态切换的view
@@ -81,7 +82,7 @@ public class MultipleStatusView extends FrameLayout {
      */
     private OnClickListener mOnRetryClickListener;
 
-    private final ArrayList<Integer> mOtherIds = new ArrayList<>();
+    private final List<Integer> mOtherIds = new ArrayList<>();
 
     public MultipleStatusView(Context context) {
         this(context, null);

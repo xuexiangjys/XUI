@@ -20,9 +20,9 @@ import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.popupwindow.status.Status;
+import com.xuexiang.xui.widget.popupwindow.status.StatusView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.widget.ConnectionStatusView;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
@@ -36,7 +36,7 @@ import butterknife.OnClick;
 public class StatusViewFragment extends BaseFragment {
 
     @BindView(R.id.status)
-    ConnectionStatusView mStatusView;
+    StatusView mStatusView;
 
     @Override
     protected int getLayoutId() {
@@ -60,10 +60,18 @@ public class StatusViewFragment extends BaseFragment {
                 mStatusView.dismiss();
             }
         });
+
+        mStatusView.setOnCustomClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.toast("点击自定义状态视图");
+                mStatusView.dismiss();
+            }
+        });
     }
 
 
-    @OnClick({R.id.complete, R.id.error, R.id.loading, R.id.none})
+    @OnClick({R.id.complete, R.id.error, R.id.loading, R.id.none, R.id.custom})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.complete:
@@ -77,6 +85,9 @@ public class StatusViewFragment extends BaseFragment {
                 break;
             case R.id.none:
                 mStatusView.setStatus(Status.NONE);
+                break;
+            case R.id.custom:
+                mStatusView.setStatus(Status.CUSTOM);
                 break;
         }
     }

@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/iv_back"
             android:layout_width="55dp"
             android:layout_height="match_parent"
@@ -48,7 +48,7 @@
             android:layout_toEndOf="@+id/iv_back"
             android:background="@color/xui_config_color_white" />
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/iv_finish"
             android:layout_width="55dp"
             android:layout_height="match_parent"
@@ -66,7 +66,7 @@
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/iv_more"
             android:layout_width="55dp"
             android:layout_height="match_parent"

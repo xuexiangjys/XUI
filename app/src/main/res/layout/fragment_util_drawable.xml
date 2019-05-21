@@ -35,7 +35,7 @@
                 style="@style/TextStyle.Content.wrap"
                 android:text="@string/drawable_utils_solid_image_title" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/solidImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                 style="@style/TextStyle.Content.wrap"
                 android:text="@string/drawable_utils_circle_gradient_title" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/circleGradient"
                 android:layout_width="@dimen/drawable_utils_common_shape_size"
                 android:layout_height="@dimen/drawable_utils_common_shape_size"
@@ -66,20 +66,20 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/tintColorOrigin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/common_example" />
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/color_utils_square_margin"
                     android:contentDescription="@null"
                     android:src="@drawable/icon_arrow_right" />
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/tintColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

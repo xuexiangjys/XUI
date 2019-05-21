@@ -8,11 +8,11 @@
               android:paddingLeft="?attr/xui_bottom_sheet_list_item_padding_horizontal"
               android:paddingRight="?attr/xui_bottom_sheet_list_item_padding_horizontal">
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/bottom_dialog_list_item_img"
         android:layout_width="?attr/xui_bottom_sheet_list_item_icon_size"
         android:layout_height="?attr/xui_bottom_sheet_list_item_icon_size"
-        android:layout_marginRight="?attr/xui_bottom_sheet_list_item_icon_margin_right"
+        android:layout_marginEnd="?attr/xui_bottom_sheet_list_item_icon_margin_right"
         android:contentDescription="Item icon"
         android:scaleType="centerInside"/>
 
@@ -21,14 +21,14 @@
         style="?attr/xui_bottom_sheet_list_item_text_style"
         android:textAppearance="?attr/xui_bottom_sheet_list_item_text_appearance"/>
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/bottom_dialog_list_item_point"
         style="?attr/XUITipPointStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="Tips dot"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="?attr/xui_bottom_sheet_list_item_tip_point_margin_left"
+        android:layout_marginStart="?attr/xui_bottom_sheet_list_item_tip_point_margin_left"
         android:visibility="gone"/>
 
     <View

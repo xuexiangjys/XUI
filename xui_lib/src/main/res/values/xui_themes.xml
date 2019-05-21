@@ -206,6 +206,7 @@
         <item name="ValidatorEditTextStyle">@style/EditText.Validator</item>
         <item name="EasyIndicatorStyle">@style/EasyIndicator</item>
         <item name="MultipleStatusViewStyle">@style/MultipleStatusView</item>
+        <item name="StatusViewStyle">@style/StatusView</item>
         <item name="StatefulLayoutStyle">@style/StatefulLayout</item>
         <item name="CountDownButtonStyle">@style/CountDownButton</item>
         <item name="AutoFitTextViewStyle">@style/AutoFitTextView</item>

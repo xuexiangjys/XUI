@@ -8,6 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     lintOptions {

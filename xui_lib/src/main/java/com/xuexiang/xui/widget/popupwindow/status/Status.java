@@ -38,5 +38,9 @@ public enum Status {
     /**
      * 完成
      */
-    COMPLETE
+    COMPLETE,
+    /**
+     * 自定义
+     */
+    CUSTOM
 }

@@ -15,6 +15,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
 
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'

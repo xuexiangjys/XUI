@@ -14,7 +14,7 @@
   ~ limitations under the License.
   -->
 
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.AppCompatImageView xmlns:android="http://schemas.android.com/apk/res/android"
     style="?attr/XUITipNewStyle"
            android:contentDescription="Update tips"
     android:layout_gravity="center_vertical"/>

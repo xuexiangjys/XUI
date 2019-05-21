@@ -974,8 +974,10 @@
         <attr name="sv_complete" format="reference" />
         <attr name="sv_error" format="reference" />
         <attr name="sv_loading" format="reference" />
+        <attr name="sv_custom" format="reference" />
         <attr name="sv_dismissOnComplete" format="boolean" />
     </declare-styleable>
+    <attr name="StatusViewStyle" format="reference" />
 
     <!--============================TabBar=========================================-->
 
