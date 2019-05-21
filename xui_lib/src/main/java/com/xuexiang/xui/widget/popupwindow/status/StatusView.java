@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 
@@ -194,11 +195,27 @@ public class StatusView extends FrameLayout {
     }
 
     /**
+     * 设置自定义状态的标题
+     *
+     * @param id
+     * @param title
+     * @return
+     */
+    public View setCustomViewTitle(int id, String title) {
+        View view = mCustomView.findViewById(id);
+        if (view instanceof TextView) {
+            ((TextView) view).setText(title);
+        }
+        return view;
+    }
+
+    /**
      * 设置当前控件状态
      *
      * @param status
      */
     public void setStatus(final Status status) {
+        setVisibility(VISIBLE);
         if (mCurrentStatus == Status.NONE) {
             mCurrentStatus = status;
             enterAnimation(getCurrentView(mCurrentStatus));
@@ -282,6 +299,7 @@ public class StatusView extends FrameLayout {
                 mCurrentStatus = Status.NONE;
                 exitView.setVisibility(INVISIBLE);
                 mSlideOut.setAnimationListener(null);
+                setVisibility(GONE);
             }
         });
     }

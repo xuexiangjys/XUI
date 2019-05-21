@@ -25,6 +25,13 @@
         android:layout_width="match_parent"
         android:layout_height="48dp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="这里是内容"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
