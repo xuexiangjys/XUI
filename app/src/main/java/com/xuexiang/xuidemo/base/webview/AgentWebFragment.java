@@ -68,7 +68,6 @@ import com.just.agentweb.download.DownloadingService;
 import com.just.agentweb.utils.LogUtils;
 import com.just.agentweb.widget.IWebLayout;
 import com.xuexiang.xui.utils.DrawableUtils;
-import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
@@ -644,31 +643,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 //        Utils.showCaptureBitmap(mAgentWeb.getWebCreator().getWebView());
 
         //网页长截图
-        captureLongWebView(mAgentWeb.getWebCreator().getWebView());
-    }
-
-    /**
-     * 显示截图结果
-     *
-     * @param view
-     */
-    public static void captureLongWebView(WebView view) {
-        final MaterialDialog dialog = new MaterialDialog.Builder(view.getContext())
-                .customView(R.layout.dialog_drawable_utils_createfromview, true)
-                .title("截图结果")
-                .build();
-        ImageView displayImageView = dialog.findViewById(R.id.createFromViewDisplay);
-        Bitmap createFromViewBitmap = DrawableUtils.createBitmapFromWebView(view);
-        displayImageView.setImageBitmap(createFromViewBitmap);
-
-        displayImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
+        Utils.showCaptureBitmap(getContext(), DrawableUtils.createBitmapFromWebView(mAgentWeb.getWebCreator().getWebView()));
     }
 
     /**

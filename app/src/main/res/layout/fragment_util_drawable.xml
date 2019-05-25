@@ -19,7 +19,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:id="@+id/contentWrap"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -118,6 +118,6 @@
                 android:text="截取scrollview长图" />
 
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

@@ -36,6 +36,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.FloatRange;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.content.res.AppCompatResources;
 import android.view.View;
 import android.webkit.WebView;
@@ -58,7 +59,9 @@ public final class DrawableUtils {
 
     private static final String TAG = DrawableUtils.class.getSimpleName();
 
-    //节省每次创建时产生的开销，但要注意多线程操作synchronized
+    /**
+     * 节省每次创建时产生的开销，但要注意多线程操作synchronized
+     */
     private static final Canvas sCanvas = new Canvas();
 
     /**
@@ -81,6 +84,10 @@ public final class DrawableUtils {
         if (view instanceof ScrollView) {
             for (int i = 0; i < ((ScrollView) view).getChildCount(); i++) {
                 viewHeight += ((ScrollView) view).getChildAt(i).getHeight();
+            }
+        } else if (view instanceof NestedScrollView) {
+            for (int i = 0; i < ((NestedScrollView) view).getChildCount(); i++) {
+                viewHeight += ((NestedScrollView) view).getChildAt(i).getHeight();
             }
         } else {
             viewHeight = view.getHeight();

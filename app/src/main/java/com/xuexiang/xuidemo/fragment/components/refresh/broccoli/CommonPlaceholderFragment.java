@@ -10,9 +10,11 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsListAdapter;
@@ -44,6 +46,19 @@ public class CommonPlaceholderFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_broccoli_place_holder;
+    }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("截图") {
+            @SingleClick
+            @Override
+            public void performAction(View view) {
+                Utils.showCaptureBitmap(getContext(), Utils.getRecyclerViewScreenSpot(recyclerView));
+            }
+        });
+        return titleBar;
     }
 
     /**

@@ -20,6 +20,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -56,7 +57,7 @@ public class DrawableUtilsFragment extends BaseFragment {
     @BindView(R.id.separator)
     View mSeparatorView;
     @BindView(R.id.contentWrap)
-    ScrollView contentWrap;
+    NestedScrollView contentWrap;
 
     @Override
     protected int getLayoutId() {
