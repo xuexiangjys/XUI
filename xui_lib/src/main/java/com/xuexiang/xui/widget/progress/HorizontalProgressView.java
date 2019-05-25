@@ -43,11 +43,16 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * @author xuexiang
  * @since 2019-05-12 12:34
  */
 public class HorizontalProgressView extends View {
+
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({ACCELERATE_DECELERATE_INTERPOLATOR, LINEAR_INTERPOLATOR, ACCELERATE_INTERPOLATOR, DECELERATE_INTERPOLATOR, OVERSHOOT_INTERPOLATOR})
     private @interface AnimateType {
 

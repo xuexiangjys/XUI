@@ -46,12 +46,16 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * @author xuexiang
  * @since 2019-05-12 12:34
  */
 public class CircleProgressView extends View {
 
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({ACCELERATE_DECELERATE_INTERPOLATOR, LINEAR_INTERPOLATOR, ACCELERATE_INTERPOLATOR, DECELERATE_INTERPOLATOR, OVERSHOOT_INTERPOLATOR})
     private @interface AnimateType {
 
@@ -703,17 +707,22 @@ public class CircleProgressView extends View {
     public interface CircleProgressUpdateListener {
         /**
          * 进度条开始更新
+         *
          * @param view
          */
         void onCircleProgressStart(View view);
+
         /**
          * 进度条更新中
+         *
          * @param view
          * @param progress
          */
         void onCircleProgressUpdate(View view, float progress);
+
         /**
          * 进度条更新结束
+         *
          * @param view
          */
         void onCircleProgressFinished(View view);

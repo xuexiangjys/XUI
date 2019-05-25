@@ -38,7 +38,9 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.Nullable;
 import android.support.v7.content.res.AppCompatResources;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.xuexiang.xui.logs.UILog;
 
@@ -75,14 +77,24 @@ public final class DrawableUtils {
             }
         }
         view.clearFocus();
+        int viewHeight = 0;
+        if (view instanceof ScrollView) {
+            for (int i = 0; i < ((ScrollView) view).getChildCount(); i++) {
+                viewHeight += ((ScrollView) view).getChildAt(i).getHeight();
+            }
+        } else {
+            viewHeight = view.getHeight();
+        }
+
         Bitmap bitmap = createBitmapSafely((int) (view.getWidth() * scale),
-                (int) (view.getHeight() * scale), Bitmap.Config.ARGB_8888, 1);
+                (int) (viewHeight * scale), Bitmap.Config.ARGB_8888, 1);
         if (bitmap != null) {
             synchronized (sCanvas) {
                 Canvas canvas = sCanvas;
                 canvas.setBitmap(bitmap);
                 canvas.save();
-                canvas.drawColor(Color.WHITE); // 防止 View 上面有些区域空白导致最终 Bitmap 上有些区域变黑
+                // 防止 View 上面有些区域空白导致最终 Bitmap 上有些区域变黑
+                canvas.drawColor(Color.WHITE);
                 canvas.scale(scale, scale);
                 view.draw(canvas);
                 canvas.restore();
@@ -91,6 +103,45 @@ public final class DrawableUtils {
         }
         return bitmap;
     }
+
+
+    public static Bitmap createBitmapFromWebView(WebView view) {
+        return createBitmapFromWebView(view, 1f);
+    }
+
+    public static Bitmap createBitmapFromWebView(WebView view, float scale) {
+        view.clearFocus();
+        int viewHeight = (int) (view.getContentHeight() * view.getScale());
+        Bitmap bitmap = createBitmapSafely((int) (view.getWidth() * scale), (int) (viewHeight * scale), Bitmap.Config.ARGB_8888, 1);
+
+        int unitHeight = view.getHeight();
+        int bottom = viewHeight;
+
+        if (bitmap != null) {
+            synchronized (sCanvas) {
+                Canvas canvas = sCanvas;
+                canvas.setBitmap(bitmap);
+                // 防止 View 上面有些区域空白导致最终 Bitmap 上有些区域变黑
+                canvas.drawColor(Color.WHITE);
+                canvas.scale(scale, scale);
+                while (bottom > 0) {
+                    if (bottom < unitHeight) {
+                        bottom = 0;
+                    } else {
+                        bottom -= unitHeight;
+                    }
+                    canvas.save();
+                    canvas.clipRect(0, bottom, canvas.getWidth(), bottom + unitHeight);
+                    view.scrollTo(0, bottom);
+                    view.draw(canvas);
+                    canvas.restore();
+                }
+                canvas.setBitmap(null);
+            }
+        }
+        return bitmap;
+    }
+
 
     public static Bitmap createBitmapFromView(View view) {
         return createBitmapFromView(view, 1f);
@@ -175,7 +226,7 @@ public final class DrawableUtils {
      */
     public static ColorFilter setDrawableTintColor(Drawable drawable, @ColorInt int tintColor) {
         LightingColorFilter colorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), tintColor);
-        if(drawable != null){
+        if (drawable != null) {
             drawable.setColorFilter(colorFilter);
         }
         return colorFilter;
@@ -194,8 +245,9 @@ public final class DrawableUtils {
         int intrinsicWidth = drawable.getIntrinsicWidth();
         int intrinsicHeight = drawable.getIntrinsicHeight();
 
-        if (!(intrinsicWidth > 0 && intrinsicHeight > 0))
+        if (!(intrinsicWidth > 0 && intrinsicHeight > 0)) {
             return null;
+        }
 
         try {
             Bitmap.Config config = drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888

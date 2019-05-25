@@ -24,7 +24,7 @@ import com.just.agentweb.core.client.MiddlewareWebChromeBase;
 
 /**
  * WebChrome（WebChromeClient主要辅助WebView处理JavaScript的对话框、网站图片、网站title、加载进度等）中间件
- *
+ * 【浏览器】
  * @author xuexiang
  * @since 2019/1/4 下午11:31
  */

@@ -75,7 +75,7 @@
                 <android.support.v7.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/color_utils_square_margin"
+                    android:layout_marginStart="@dimen/color_utils_square_margin"
                     android:contentDescription="@null"
                     android:src="@drawable/icon_arrow_right" />
 
@@ -83,7 +83,7 @@
                     android:id="@+id/tintColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/color_utils_square_margin"
+                    android:layout_marginStart="@dimen/color_utils_square_margin"
                     android:contentDescription="@string/common_example" />
 
             </LinearLayout>
@@ -109,6 +109,13 @@
                 style="@style/Button.Blue.wrap"
                 android:layout_width="wrap_content"
                 android:text="@string/drawable_utils_create_from_view_button" />
+
+            <Button
+                android:id="@+id/createFromView1"
+                style="@style/Button.Blue.wrap"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="截取scrollview长图" />
 
         </LinearLayout>
     </ScrollView>

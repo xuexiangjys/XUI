@@ -1,7 +1,6 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.jpeng.jptabbar.anno.NorIcons;
@@ -10,7 +9,6 @@ import com.jpeng.jptabbar.anno.Titles;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
-import com.xuexiang.xpage.logger.PageLog;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.R;
 

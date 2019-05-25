@@ -2,11 +2,17 @@ package com.xuexiang.xuidemo.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.xuexiang.xui.utils.DrawableUtils;
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
+import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
@@ -52,5 +58,30 @@ public final class Utils {
         XUpdate.newBuild(context).updateUrl(mUpdateUrl).update();
         XUpdate.get().setOnUpdateFailureListener(new CustomUpdateFailureListener(needErrorTip));
 
+    }
+
+
+    /**
+     * 显示截图结果
+     *
+     * @param view
+     */
+    public static void showCaptureBitmap(View view) {
+        final MaterialDialog dialog = new MaterialDialog.Builder(view.getContext())
+                .customView(R.layout.dialog_drawable_utils_createfromview, true)
+                .title("截图结果")
+                .build();
+        ImageView displayImageView = dialog.findViewById(R.id.createFromViewDisplay);
+        Bitmap createFromViewBitmap = DrawableUtils.createBitmapFromView(view);
+        displayImageView.setImageBitmap(createFromViewBitmap);
+
+        displayImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }
