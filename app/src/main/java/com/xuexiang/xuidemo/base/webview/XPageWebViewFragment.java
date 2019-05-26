@@ -5,17 +5,17 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
 package com.xuexiang.xuidemo.base.webview;
-
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -30,12 +30,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.PopupMenu;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,12 +45,9 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.just.agentweb.action.PermissionInterceptor;
 import com.just.agentweb.core.AgentWeb;
 import com.just.agentweb.core.client.DefaultWebClient;
@@ -65,64 +61,99 @@ import com.just.agentweb.download.AgentWebDownloader;
 import com.just.agentweb.download.DefaultDownloadImpl;
 import com.just.agentweb.download.DownloadListenerAdapter;
 import com.just.agentweb.download.DownloadingService;
-import com.just.agentweb.utils.LogUtils;
 import com.just.agentweb.widget.IWebLayout;
+import com.xuexiang.xaop.annotation.SingleClick;
+import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xpage.base.XPageActivity;
+import com.xuexiang.xpage.base.XPageFragment;
+import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xui.utils.DrawableUtils;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xutil.common.logger.Logger;
 import com.xuexiang.xutil.net.JsonUtil;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.HashMap;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+
+import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
+
 /**
- * 通用WebView页面
+ * 使用XPageFragment
  *
  * @author xuexiang
- * @since 2019/1/4 下午11:13
+ * @since 2019-05-26 18:15
  */
-public class AgentWebFragment extends Fragment implements FragmentKeyDown {
-    public static final String KEY_URL = "com.xuexiang.xuidemo.base.webview.key_url";
+@Page(params = {KEY_URL})
+public class XPageWebViewFragment extends BaseFragment {
 
-    private ImageView mBackImageView;
-    private View mLineView;
-    private ImageView mFinishImageView;
-    private TextView mTitleTextView;
+    @BindView(R.id.iv_back)
+    AppCompatImageView mIvBack;
+    @BindView(R.id.view_line)
+    View mLineView;
+    @BindView(R.id.toolbar_title)
+    TextView mTvTitle;
+
     protected AgentWeb mAgentWeb;
-    private ImageView mMoreImageView;
     private PopupMenu mPopupMenu;
-    public static final String TAG = AgentWebFragment.class.getSimpleName();
-    private MiddlewareWebClientBase mMiddleWareWebClient;
-    private MiddlewareWebChromeBase mMiddleWareWebChrome;
+
     private DownloadingService mDownloadingService;
-    private AgentWebDownloader.ExtraService mExtraService;
 
-    public static AgentWebFragment getInstance(String url) {
-        Bundle bundle = new Bundle();
-        bundle.putString(KEY_URL, url);
-        return getInstance(bundle);
+    /**
+     * 打开网页
+     *
+     * @param xPageActivity
+     * @param url
+     * @return
+     */
+    public static Fragment openUrl(XPageActivity xPageActivity, String url) {
+        return PageOption.to(XPageWebViewFragment.class)
+                .putString(KEY_URL, url)
+                .open(xPageActivity);
     }
 
-    public static AgentWebFragment getInstance(Bundle bundle) {
-        AgentWebFragment fragment = new AgentWebFragment();
-        if (bundle != null) {
-            fragment.setArguments(bundle);
-        }
-        return fragment;
+    /**
+     * 打开网页
+     *
+     * @param fragment
+     * @param url
+     * @return
+     */
+    public static Fragment openUrl(XPageFragment fragment, String url) {
+        return PageOption.to(XPageWebViewFragment.class)
+                .setNewActivity(true)
+                .putString(KEY_URL, url)
+                .open(fragment);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_agentweb, container, false);
+    protected TitleBar initTitle() {
+        return null;
     }
 
+    /**
+     * 布局的资源id
+     *
+     * @return
+     */
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.fragment_agentweb;
+    }
+
+    /**
+     * 初始化控件
+     */
+    @Override
+    protected void initViews() {
         mAgentWeb = AgentWeb.with(this)
                 //传入AgentWeb的父控件。
-                .setAgentWebParent((LinearLayout) view, -1, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+                .setAgentWebParent((LinearLayout) getRootView(), -1, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
                 //设置进度条颜色与高度，-1为默认值，高度为2，单位为dp。
                 .useDefaultIndicator(-1, 3)
                 //设置 IAgentWebSettings。
@@ -143,10 +174,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
                 .setAgentWebUIController(new UIController(getActivity()))
                 //参数1是错误显示的布局，参数2点击刷新控件ID -1表示点击整个布局都刷新， AgentWeb 3.0.0 加入。
                 .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
-//                .setDownloadListener(mDownloadListener) 4.0.0 删除该API//下载回调
                 .setWebLayout(getWebLayout())
-//                .openParallelDownload()// 4.0.0删除该API 打开并行下载 , 默认串行下载。 请通过AgentWebDownloader#Extra实现并行下载
-//                .setNotifyIcon(R.drawable.ic_file_download_black_24dp) 4.0.0删除该api //下载通知图标。4.0.0后的版本请通过AgentWebDownloader#Extra修改icon
                 //打开其他页面时，弹窗质询用户前往其他应用 AgentWeb 3.0.0 加入。
                 .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
                 //拦截找不到相关页面的Url AgentWeb 3.0.0 加入。
@@ -160,40 +188,19 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 
         AgentWebConfig.debug();
 
+        pageNavigator(View.GONE);
         // 得到 AgentWeb 最底层的控件
-        addBGChild(mAgentWeb.getWebCreator().getWebParentLayout());
-
-        initView(view);
-
-        // AgentWeb 4.0 开始，删除该类以及删除相关的API
-//        DefaultMsgConfig.DownloadMsgConfig mDownloadMsgConfig = mAgentWeb.getDefaultMsgConfig().getDownloadMsgConfig();
-        //  mDownloadMsgConfig.setCancel("放弃");  // 修改下载提示信息，这里可以语言切换
+        addBackground(mAgentWeb.getWebCreator().getWebParentLayout());
 
         // AgentWeb 没有把WebView的功能全面覆盖 ，所以某些设置 AgentWeb 没有提供，请从WebView方面入手设置。
         mAgentWeb.getWebCreator().getWebView().setOverScrollMode(WebView.OVER_SCROLL_NEVER);
-        //mAgentWeb.getWebCreator().getWebView()  获取WebView .
-
-//		mAgentWeb.getWebCreator().getWebView().setOnLongClickListener();
-
     }
 
     protected IWebLayout getWebLayout() {
         return new WebLayout(getActivity());
     }
 
-    protected void initView(View view) {
-        mBackImageView = view.findViewById(R.id.iv_back);
-        mLineView = view.findViewById(R.id.view_line);
-        mFinishImageView = view.findViewById(R.id.iv_finish);
-        mTitleTextView = view.findViewById(R.id.toolbar_title);
-        mBackImageView.setOnClickListener(mOnClickListener);
-        mFinishImageView.setOnClickListener(mOnClickListener);
-        mMoreImageView = view.findViewById(R.id.iv_more);
-        mMoreImageView.setOnClickListener(mOnClickListener);
-        pageNavigator(View.GONE);
-    }
-
-    protected void addBGChild(FrameLayout frameLayout) {
+    protected void addBackground(FrameLayout frameLayout) {
         TextView mTextView = new TextView(frameLayout.getContext());
         mTextView.setText("技术由 AgentWeb 提供");
         mTextView.setTextSize(16);
@@ -208,53 +215,31 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 
 
     private void pageNavigator(int tag) {
-        mBackImageView.setVisibility(tag);
+        //返回的导航按钮
+        mIvBack.setVisibility(tag);
         mLineView.setVisibility(tag);
     }
 
-    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.iv_back:
-                    // true表示AgentWeb处理了该事件
-                    if (!mAgentWeb.back()) {
-                        AgentWebFragment.this.getActivity().finish();
-                    }
-                    break;
-                case R.id.iv_finish:
-                    AgentWebFragment.this.getActivity().finish();
-                    break;
-                case R.id.iv_more:
-                    showPoPup(v);
-                    break;
-                default:
-                    break;
-
-            }
+    @SingleClick
+    @OnClick({R.id.iv_back, R.id.iv_finish, R.id.iv_more})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                // true表示AgentWeb处理了该事件
+                if (!mAgentWeb.back()) {
+                    popToBack();
+                }
+                break;
+            case R.id.iv_finish:
+                popToBack();
+                break;
+            case R.id.iv_more:
+                showPoPup(view);
+                break;
+            default:
+                break;
         }
-
-    };
-
-    //========================================//
-
-    /**
-     * 权限申请拦截器
-     */
-    protected PermissionInterceptor mPermissionInterceptor = new PermissionInterceptor() {
-        /**
-         * PermissionInterceptor 能达到 url1 允许授权， url2 拒绝授权的效果。
-         * @param url
-         * @param permissions
-         * @param action
-         * @return true 该Url对应页面请求权限进行拦截 ，false 表示不拦截。
-         */
-        @Override
-        public boolean intercept(String url, String[] permissions, String action) {
-            Log.i(TAG, "mUrl:" + url + "  permission:" + JsonUtil.toJson(permissions) + " action:" + action);
-            return false;
-        }
-    };
+    }
 
     //=====================下载============================//
 
@@ -267,14 +252,14 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
          * @param url                下载链接
          * @param userAgent          UserAgent
          * @param contentDisposition ContentDisposition
-         * @param mimetype           资源的媒体类型
+         * @param mimeType           资源的媒体类型
          * @param contentLength      文件长度
          * @param extra              下载配置 ， 用户可以通过 Extra 修改下载icon ， 关闭进度条 ， 是否强制下载。
          * @return true 表示用户处理了该下载事件 ， false 交给 AgentWeb 下载
          */
         @Override
-        public boolean onStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength, AgentWebDownloader.Extra extra) {
-            LogUtils.i(TAG, "onStart:" + url);
+        public boolean onStart(String url, String userAgent, String contentDisposition, String mimeType, long contentLength, AgentWebDownloader.Extra extra) {
+            Logger.i("onStart:" + url);
             // 是否开启断点续传
             extra.setOpenBreakPointDownload(true)
                     //下载通知的icon
@@ -308,7 +293,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         public void onBindService(String url, DownloadingService downloadingService) {
             super.onBindService(url, downloadingService);
             mDownloadingService = downloadingService;
-            LogUtils.i(TAG, "onBindService:" + url + "  DownloadingService:" + downloadingService);
+            Logger.i("onBindService:" + url + "  DownloadingService:" + downloadingService);
         }
 
         /**
@@ -320,7 +305,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         public void onUnbindService(String url, DownloadingService downloadingService) {
             super.onUnbindService(url, downloadingService);
             mDownloadingService = null;
-            LogUtils.i(TAG, "onUnbindService:" + url);
+            Logger.i("onUnbindService:" + url);
         }
 
         /**
@@ -334,7 +319,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         @Override
         public void onProgress(String url, long loaded, long length, long usedTime) {
             int mProgress = (int) ((loaded) / Float.valueOf(length) * 100);
-            LogUtils.i(TAG, "onProgress:" + mProgress);
+            Logger.i("onProgress:" + mProgress);
             super.onProgress(url, loaded, length, usedTime);
         }
 
@@ -359,6 +344,8 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     };
 
     /**
+     * 下载服务设置
+     *
      * @return IAgentWebSettings
      */
     public IAgentWebSettings getSettings() {
@@ -387,7 +374,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
                                         webView,
                                         mDownloadListenerAdapter,
                                         mDownloadListenerAdapter,
-                                        this.mAgentWeb.getPermissionInterceptor()));
+                                        mAgentWeb.getPermissionInterceptor()));
             }
         };
     }
@@ -415,25 +402,26 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     protected WebChromeClient mWebChromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
-            //  super.onProgressChanged(view, newProgress);
-            Log.i(TAG, "onProgressChanged:" + newProgress + "  view:" + view);
+            super.onProgressChanged(view, newProgress);
+            //网页加载进度
         }
 
         @Override
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
-            if (mTitleTextView != null && !TextUtils.isEmpty(title)) {
+            if (mTvTitle != null && !TextUtils.isEmpty(title)) {
                 if (title.length() > 10) {
                     title = title.substring(0, 10).concat("...");
                 }
-                mTitleTextView.setText(title);
+                mTvTitle.setText(title);
             }
+
         }
     };
 
     protected WebViewClient mWebViewClient = new WebViewClient() {
 
-        private HashMap<String, Long> timer = new HashMap<>();
+        private HashMap<String, Long> mTimer = new HashMap<>();
 
         @Override
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
@@ -455,96 +443,48 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         //
         @Override
         public boolean shouldOverrideUrlLoading(final WebView view, String url) {
-
-            Log.i(TAG, "view:" + new Gson().toJson(view.getHitTestResult()));
-            Log.i(TAG, "mWebViewClient shouldOverrideUrlLoading:" + url);
             //intent:// scheme的处理 如果返回false ， 则交给 DefaultWebClient 处理 ， 默认会打开该Activity  ， 如果Activity不存在则跳到应用市场上去.  true 表示拦截
             //例如优酷视频播放 ，intent://play?...package=com.youku.phone;end;
             //优酷想唤起自己应用播放该视频 ， 下面拦截地址返回 true  则会在应用内 H5 播放 ，禁止优酷唤起播放该视频， 如果返回 false ， DefaultWebClient  会根据intent 协议处理 该地址 ， 首先匹配该应用存不存在 ，如果存在 ， 唤起该应用播放 ， 如果不存在 ， 则跳到应用市场下载该应用 .
             if (url.startsWith("intent://") && url.contains("com.youku.phone")) {
                 return true;
             }
-			/*else if (isAlipay(view, mUrl))   //1.2.5开始不用调用该方法了 ，只要引入支付宝sdk即可 ， DefaultWebClient 默认会处理相应url调起支付宝
-			    return true;*/
-
             return false;
         }
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            Log.i(TAG, "mUrl:" + url + " onPageStarted  target:" + getUrl());
-            timer.put(url, System.currentTimeMillis());
+            mTimer.put(url, System.currentTimeMillis());
             if (url.equals(getUrl())) {
                 pageNavigator(View.GONE);
             } else {
                 pageNavigator(View.VISIBLE);
             }
-
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-
-            if (timer.get(url) != null) {
+            if (mTimer.get(url) != null) {
                 long overTime = System.currentTimeMillis();
-                Long startTime = timer.get(url);
-                Log.i(TAG, "  page mUrl:" + url + "  used time:" + (overTime - startTime));
+                Long startTime = mTimer.get(url);
+                //统计页面的使用时长
+                Logger.i(" page mUrl:" + url + "  used time:" + (overTime - startTime));
             }
-
         }
-        /*错误页回调该方法 ， 如果重写了该方法， 上面传入了布局将不会显示 ， 交由开发者实现，注意参数对齐。*/
-	   /* public void onMainFrameError(AbsAgentWebUIController agentWebUIController, WebView view, int errorCode, String description, String failingUrl) {
-
-            Log.i(TAG, "AgentWebFragment onMainFrameError");
-            agentWebUIController.onMainFrameError(view,errorCode,description,failingUrl);
-
-        }*/
 
         @Override
         public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
             super.onReceivedHttpError(view, request, errorResponse);
-//			Log.i(TAG, "onReceivedHttpError:" + 3 + "  request:" + mGson.toJson(request) + "  errorResponse:" + mGson.toJson(errorResponse));
         }
 
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             super.onReceivedError(view, errorCode, description, failingUrl);
-//			Log.i(TAG, "onReceivedError:" + errorCode + "  description:" + description + "  errorResponse:" + failingUrl);
         }
     };
 
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        /**
-         * 2.0.0开始 废弃该api ，没有api代替 ,使用 ActionActivity 绕过该方法 ,降低使用门槛,4.0.0 删除该API。
-         */
-//        mAgentWeb.uploadFileResult(requestCode, resultCode, data);
-    }
-
-
-    //========================菜单功能================================//
-
-    /**
-     * 打开浏览器
-     *
-     * @param targetUrl 外部浏览器打开的地址
-     */
-    private void openBrowser(String targetUrl) {
-        if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
-            ToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
-            return;
-        }
-        Intent intent = new Intent();
-        intent.setAction("android.intent.action.VIEW");
-        Uri uri = Uri.parse(targetUrl);
-        intent.setData(uri);
-        startActivity(intent);
-    }
-
+    //=====================菜单========================//
 
     /**
      * 显示更多菜单
@@ -572,7 +512,6 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
                         mAgentWeb.getUrlLoader().reload(); // 刷新
                     }
                     return true;
-
                 case R.id.copy:
                     if (mAgentWeb != null) {
                         toCopy(getContext(), mAgentWeb.getWebCreator().getWebView().getUrl());
@@ -596,26 +535,29 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
                 case R.id.default_clean:
                     toCleanWebCache();
                     return true;
-//				case R.id.error_website:
-//					loadErrorWebSite();
-                // test DownloadingService
-//			        LogUtils.i(TAG, " :" + mDownloadingService + "  " + (mDownloadingService == null ? "" : mDownloadingService.isShutdown()) + "  :" + mExtraService);
-//                    if (mDownloadingService != null && !mDownloadingService.isShutdown()) {
-//                        mExtraService = mDownloadingService.shutdownNow();
-//                        LogUtils.i(TAG, "mExtraService::" + mExtraService);
-//                        return true;
-//                    }
-//                    if (mExtraService != null) {
-//                        mExtraService.performReDownload();
-//                    }
-
-//					return true;
                 default:
                     return false;
             }
 
         }
     };
+
+    /**
+     * 打开浏览器
+     *
+     * @param targetUrl 外部浏览器打开的地址
+     */
+    private void openBrowser(String targetUrl) {
+        if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
+            ToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
+            return;
+        }
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        Uri uri = Uri.parse(targetUrl);
+        intent.setData(uri);
+        startActivity(intent);
+    }
 
     /**
      * 分享网页链接
@@ -659,7 +601,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         if (mAgentWeb != null) {
             //清理所有跟WebView相关的缓存 ，数据库， 历史记录 等。
             mAgentWeb.clearWebCache();
-            Toast.makeText(getActivity(), "已清理缓存", Toast.LENGTH_SHORT).show();
+            ToastUtils.toast("已清理缓存");
             //清空所有 AgentWeb 硬盘缓存，包括 WebView 的缓存 , AgentWeb 下载的图片 ，视频 ，apk 等文件。
 //            AgentWebConfig.clearDiskCache(this.getContext());
         }
@@ -682,7 +624,6 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     }
 
     //===================生命周期管理===========================//
-
     @Override
     public void onResume() {
         mAgentWeb.getWebLifeCycle().onResume();//恢复
@@ -696,7 +637,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     }
 
     @Override
-    public boolean onFragmentKeyDown(int keyCode, KeyEvent event) {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         return mAgentWeb.handleKeyEvent(keyCode, event);
     }
 
@@ -705,6 +646,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         mAgentWeb.getWebLifeCycle().onDestroy();
         super.onDestroyView();
     }
+
 
     //===================中间键===========================//
 
@@ -718,7 +660,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
      * @return
      */
     protected MiddlewareWebClientBase getMiddlewareWebClient() {
-        return this.mMiddleWareWebClient = new MiddlewareWebViewClient() {
+        return new MiddlewareWebViewClient() {
             /**
              *
              * @param view
@@ -729,7 +671,6 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // 拦截 url，不执行 DefaultWebClient#shouldOverrideUrlLoading
                 if (url.startsWith("agentweb")) {
-                    Log.i(TAG, "agentweb scheme ~");
                     return true;
                 }
                 // 执行 DefaultWebClient#shouldOverrideUrlLoading
@@ -749,7 +690,26 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     }
 
     protected MiddlewareWebChromeBase getMiddlewareWebChrome() {
-        return this.mMiddleWareWebChrome = new MiddlewareChromeClient() {
+        return new MiddlewareChromeClient() {
         };
     }
+
+    /**
+     * 权限申请拦截器
+     */
+    protected PermissionInterceptor mPermissionInterceptor = new PermissionInterceptor() {
+        /**
+         * PermissionInterceptor 能达到 url1 允许授权， url2 拒绝授权的效果。
+         * @param url
+         * @param permissions
+         * @param action
+         * @return true 该Url对应页面请求权限进行拦截 ，false 表示不拦截。
+         */
+        @Override
+        public boolean intercept(String url, String[] permissions, String action) {
+            Logger.i("mUrl:" + url + "  permission:" + JsonUtil.toJson(permissions) + " action:" + action);
+            return false;
+        }
+    };
+
 }

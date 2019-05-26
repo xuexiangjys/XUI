@@ -80,6 +80,8 @@
 
         <activity
             android:name=".base.webview.AgentWebActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:hardwareAccelerated="true"
             android:label="XUI浏览器"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -108,12 +110,15 @@
                 <data android:mimeType="application/vnd.wap.xhtml+xml" />
             </intent-filter>
         </activity>
-        <activity android:name=".base.BaseActivity" />
+        <activity
+            android:name=".base.BaseActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".activity.TranslucentActivity" />
         <activity
             android:name=".activity.SettingsActivity"
-            android:theme="@style/SettingTheme"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:theme="@style/SettingTheme" />
 
         <service
             android:name="com.baidu.location.f"

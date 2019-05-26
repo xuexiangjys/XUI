@@ -104,8 +104,12 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig); //屏幕旋转时刷新一下title
-        ((ViewGroup) getRootView()).removeViewAt(0);
-        initTitle();
+        //屏幕旋转时刷新一下title
+        super.onConfigurationChanged(newConfig);
+        ViewGroup root = (ViewGroup) getRootView();
+        if (root.getChildAt(0) instanceof TitleBar) {
+            root.removeViewAt(0);
+            initTitle();
+        }
     }
 }
