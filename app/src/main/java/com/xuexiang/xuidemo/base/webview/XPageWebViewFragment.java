@@ -643,7 +643,7 @@ public class XPageWebViewFragment extends BaseFragment {
 
     @Override
     public void onDestroyView() {
-        mAgentWeb.getWebLifeCycle().onDestroy();
+        mAgentWeb.destroy();
         super.onDestroyView();
     }
 
