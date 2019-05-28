@@ -158,6 +158,8 @@ dependencies {
 
     //Android图表库
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //ECharts图表库
+    implementation 'com.github.abel533:ECharts:3.0.0.2'
     //TabBar
     implementation 'com.github.xuexiangjys:JPTabBar:1.0.0'
 

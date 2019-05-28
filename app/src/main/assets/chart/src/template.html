@@ -18,14 +18,17 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>ECharts模版</title>
-    <script src="../lib/echarts.min.js"></script>
+    <script src="../lib/echarts-all.js"></script>
+    <script src="../js/template.js"></script>
 </head>
 
 <body>
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="chart" style="width:100%; height:500px;"></div>
+    <div id="chart" style="width:100%; height:300px;"></div>
+    <script type="text/javascript">
+        initChart()
+    </script>
 </body>
 
 </html>

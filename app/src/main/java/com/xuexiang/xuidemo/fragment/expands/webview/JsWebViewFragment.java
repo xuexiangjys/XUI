@@ -18,22 +18,16 @@
 package com.xuexiang.xuidemo.fragment.expands.webview;
 
 import android.os.Build;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.just.agentweb.core.AgentWeb;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.base.webview.BaseWebViewFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
@@ -47,11 +41,10 @@ import butterknife.OnClick;
  * @since 2019-05-26 18:13
  */
 @Page(name = "简单的JS通信")
-public class JsWebViewFragment extends BaseFragment {
+public class JsWebViewFragment extends BaseWebViewFragment {
+
     @BindView(R.id.fl_container)
     FrameLayout flContainer;
-
-    protected AgentWeb mAgentWeb;
 
     /**
      * 布局的资源id
@@ -130,31 +123,6 @@ public class JsWebViewFragment extends BaseFragment {
             ToastUtils.toast("这是Js调用Android的方法，内容:" + msg);
         }
 
-    }
-
-
-    //===================生命周期管理===========================//
-    @Override
-    public void onResume() {
-        mAgentWeb.getWebLifeCycle().onResume();//恢复
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        mAgentWeb.getWebLifeCycle().onPause(); //暂停应用内所有WebView ， 调用mWebView.resumeTimers();/mAgentWeb.getWebLifeCycle().onResume(); 恢复。
-        super.onPause();
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return mAgentWeb.handleKeyEvent(keyCode, event);
-    }
-
-    @Override
-    public void onDestroyView() {
-        mAgentWeb.destroy();
-        super.onDestroyView();
     }
 
 }

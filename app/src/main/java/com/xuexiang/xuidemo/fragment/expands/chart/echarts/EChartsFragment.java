@@ -37,6 +37,7 @@ public class EChartsFragment extends BaseSimpleListFragment {
     @Override
     protected List<String> initSimpleData(List<String> lists) {
         lists.add("简单的ECharts使用（直接使用Js）");
+        lists.add("使用Android原生封装调用ECharts");
         return lists;
     }
 
@@ -45,6 +46,9 @@ public class EChartsFragment extends BaseSimpleListFragment {
         switch(position) {
             case 0:
                 XPageWebViewFragment.openUrl(this, "file:///android_asset/chart/src/index.html");
+                break;
+            case 1:
+                openPage(EChartsAndroidFragment.class);
                 break;
             default:
                 break;
