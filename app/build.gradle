@@ -162,6 +162,8 @@ dependencies {
     implementation 'com.github.abel533:ECharts:3.0.0.2'
     //TabBar
     implementation 'com.github.xuexiangjys:JPTabBar:1.0.0'
+    //日历控件
+    implementation 'com.github.xuexiangjys:CalendarExaple:1.0.1'
 
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.0.9'
