@@ -108,6 +108,40 @@
         <attr name="bb_indicatorUnselectRes" format="reference" />
     </declare-styleable>
 
+    <!--RecyclerView实现的banner-->
+    <declare-styleable name="RecyclerViewBannerBase">
+        <attr name="rvbb_interval" format="integer"/>
+        <attr name="rvbb_showIndicator" format="boolean"/>
+        <attr name="rvbb_orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+        <attr name="rvbb_autoPlaying" format="boolean"/>
+        <attr name="rvbb_indicatorSelectedSrc" format="color|reference"/>
+        <attr name="rvbb_indicatorUnselectedSrc" format="color|reference"/>
+        <attr name="rvbb_indicatorSpace" format="dimension|reference"/>
+        <attr name="rvbb_indicatorMarginLeft" format="dimension|reference"/>
+        <attr name="rvbb_indicatorMarginRight" format="dimension|reference"/>
+        <attr name="rvbb_indicatorMarginBottom" format="dimension|reference"/>
+        <attr name="rvbb_indicatorGravity" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="BannerLayout">
+        <attr name="bl_interval" format="integer"/>
+        <attr name="bl_showIndicator" format="boolean"/>
+        <attr name="bl_orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+        <attr name="bl_autoPlaying" format="boolean"/>
+        <attr name="bl_itemSpace" format="integer"/>
+        <attr name="bl_centerScale" format="float"/>
+        <attr name="bl_moveSpeed" format="float"/>
+    </declare-styleable>
+
     <!--=====================================================================-->
 
     <!-- StatefulLayout -->
