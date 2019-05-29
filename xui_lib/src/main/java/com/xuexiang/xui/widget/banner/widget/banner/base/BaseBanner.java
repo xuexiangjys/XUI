@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.logs.UILog;
-import com.xuexiang.xui.utils.Utils;
 import com.xuexiang.xui.widget.banner.widget.loopviewpager.FixedSpeedScroller;
 import com.xuexiang.xui.widget.banner.widget.loopviewpager.LoopViewPager;
 
@@ -63,11 +62,11 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
     /**
      * 当前position
      */
-    protected int mCurrentPositon;
+    protected int mCurrentPosition;
     /**
      * 上一个position
      */
-    protected int mLastPositon;
+    protected int mLastPosition;
     /**
      * 多久后开始滚动
      */
@@ -131,7 +130,7 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
     private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
-            scrollToNextItem(mCurrentPositon);
+            scrollToNextItem(mCurrentPosition);
             return true;
         }
     });
@@ -459,13 +458,13 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
 
         @Override
         public void onPageSelected(int position) {
-            mCurrentPositon = position % mDatas.size();
+            mCurrentPosition = position % mDatas.size();
 
-            setCurrentIndicator(mCurrentPositon);
-            onTitleSelect(mTvTitle, mCurrentPositon);
-            mLlBottomBar.setVisibility(mCurrentPositon == mDatas.size() - 1 && !mIsBarShowWhenLast ? GONE : VISIBLE);
+            setCurrentIndicator(mCurrentPosition);
+            onTitleSelect(mTvTitle, mCurrentPosition);
+            mLlBottomBar.setVisibility(mCurrentPosition == mDatas.size() - 1 && !mIsBarShowWhenLast ? GONE : VISIBLE);
 
-            mLastPositon = mCurrentPositon;
+            mLastPosition = mCurrentPosition;
             if (mOnPageChangeListener != null) {
                 mOnPageChangeListener.onPageSelected(position);
             }
@@ -487,11 +486,11 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
             throw new IllegalStateException("Data source is empty,you must setSource() before startScroll()");
         }
 
-        if (mDatas.size() > 0 && mCurrentPositon > mDatas.size() - 1) {
-            mCurrentPositon = 0;
+        if (mDatas.size() > 0 && mCurrentPosition > mDatas.size() - 1) {
+            mCurrentPosition = 0;
         }
 
-        onTitleSelect(mTvTitle, mCurrentPositon);
+        onTitleSelect(mTvTitle, mCurrentPosition);
         setViewPager();
         //create indicator
         View indicatorViews = onCreateIndicator();

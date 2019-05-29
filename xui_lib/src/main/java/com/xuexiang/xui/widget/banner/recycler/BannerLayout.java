@@ -115,7 +115,7 @@ public class BannerLayout extends FrameLayout {
             selectedGradientDrawable.setShape(GradientDrawable.OVAL);
             selectedGradientDrawable.setColor(Color.RED);
             selectedGradientDrawable.setSize(dp2px(5), dp2px(5));
-            selectedGradientDrawable.setCornerRadius(dp2px(5) / 2);
+            selectedGradientDrawable.setCornerRadius(dp2px(5) >> 1);
             mSelectedDrawable = new LayerDrawable(new Drawable[]{selectedGradientDrawable});
         }
         if (mUnselectedDrawable == null) {
@@ -124,7 +124,7 @@ public class BannerLayout extends FrameLayout {
             unSelectedGradientDrawable.setShape(GradientDrawable.OVAL);
             unSelectedGradientDrawable.setColor(Color.GRAY);
             unSelectedGradientDrawable.setSize(dp2px(5), dp2px(5));
-            unSelectedGradientDrawable.setCornerRadius(dp2px(5) / 2);
+            unSelectedGradientDrawable.setCornerRadius(dp2px(5) >> 1);
             mUnselectedDrawable = new LayerDrawable(new Drawable[]{unSelectedGradientDrawable});
         }
 
@@ -138,8 +138,7 @@ public class BannerLayout extends FrameLayout {
 
         //轮播图部分
         mRecyclerView = new RecyclerView(context);
-        LayoutParams vpLayoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+        LayoutParams vpLayoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         addView(mRecyclerView, vpLayoutParams);
         mLayoutManager = new BannerLayoutManager(getContext(), orientation);
         mLayoutManager.setItemSpace(mItemSpace);
@@ -154,8 +153,7 @@ public class BannerLayout extends FrameLayout {
         mIndicatorContainer.setLayoutManager(indicatorLayoutManager);
         mIndicatorAdapter = new IndicatorAdapter();
         mIndicatorContainer.setAdapter(mIndicatorAdapter);
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.BOTTOM | gravity;
         params.setMargins(marginLeft, 0, marginRight, marginBottom);
         addView(mIndicatorContainer, params);

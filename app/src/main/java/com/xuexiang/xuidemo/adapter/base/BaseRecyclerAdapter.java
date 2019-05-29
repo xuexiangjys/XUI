@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
 
-    protected final List<T> mData;
+    protected final List<T> mData = new ArrayList<>();
     private OnItemClickListener mClickListener;
     private OnItemLongClickListener mLongClickListener;
 
@@ -33,9 +34,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 
     public BaseRecyclerAdapter(List<T> list) {
         if (list != null) {
-            mData = list;
-        } else {
-            mData = new ArrayList<>();
+            mData.addAll(list);
         }
     }
 

@@ -68,4 +68,25 @@ public class GlideImageLoader implements ImageLoader {
                 .apply(options)
                 .into(imageView);
     }
+
+    /**
+     * 展示图片
+     *
+     * @param context
+     * @param path
+     * @param imageView
+     * @param placeholder
+     * @param strategy
+     */
+    @Override
+    public void displayImage(Context context, Object path, ImageView imageView, Drawable placeholder, DiskCacheStrategy strategy) {
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(placeholder)
+                .diskCacheStrategy(strategy);
+        Glide.with(context)
+                .load(path)
+                .apply(options)
+                .into(imageView);
+    }
 }
