@@ -368,8 +368,10 @@
         <attr name="cpv_end_color" format="color" />
         <!--是否显示轨迹背景， 默认是false-->
         <attr name="cpv_isTracked" format="boolean" />
-        <!--进度条的宽度（边界宽度）,默认是16dp-->
+        <!-- 轨迹宽度（边界宽度）,默认是16dp-->
         <attr name="cpv_track_width" format="dimension" />
+        <!--进度条的宽度, 默认是16dp-->
+        <attr name="cpv_progress_width" format="dimension" />
         <!--轨迹背景的颜色，默认是#f3e5dd-->
         <attr name="cpv_track_color" format="color" />
         <!--动画时长， 默认是1200ms-->
@@ -394,7 +396,7 @@
         </attr>
         <!--是否内部填充， 默认是false-->
         <attr name="cpv_isFilled" format="boolean" />
-        <!--是选择圆形还是弧形进度条， 默认是true-->
+        <!--是选择圆形还是弧形进度条[true: 弧形, false: 圆形], 默认是false, 圆形-->
         <attr name="cpv_circle_broken" format="boolean" />
         <!--圆弧是否是分层级的（不连续），默认是false-->
         <attr name="cpv_isGraduated" format="boolean" />

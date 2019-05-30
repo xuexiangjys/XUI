@@ -92,19 +92,23 @@ public class CircleProgressView extends View {
     /**
      * has track of moving or not
      */
-    private boolean trackEnabled = false;
+    private boolean trackEnabled;
     /**
      * filling the inner space or not
      */
-    private boolean fillEnabled = false;
+    private boolean fillEnabled;
+    /**
+     * the stroke width of Track
+     */
+    private int mTrackWidth;
     /**
      * the stroke width of progress
      */
-    private int mTrackWidth = 6;
+    private int mProgressWidth;
     /**
      * the size of inner text
      */
-    private int mProgressTextSize = 48;
+    private int mProgressTextSize;
     /**
      * the color of inner text
      */
@@ -112,7 +116,7 @@ public class CircleProgressView extends View {
     /**
      * the circle of progress broken or not
      */
-    private boolean circleBroken = true;
+    private boolean circleBroken;
     /**
      * the color of progress track
      */
@@ -124,7 +128,7 @@ public class CircleProgressView extends View {
     /**
      * show the inner text or not
      */
-    private boolean textVisibility = true;
+    private boolean textVisibility;
 
     /**
      * the animator of progress moving
@@ -138,6 +142,10 @@ public class CircleProgressView extends View {
      * the paint of drawing progress
      */
     private Paint progressPaint;
+    /**
+     * the paint of drawing track
+     */
+    private Paint trackPaint;
     /**
      * the gradient of color
      */
@@ -206,10 +214,11 @@ public class CircleProgressView extends View {
         mEndColor = typedArray.getColor(R.styleable.CircleProgressView_cpv_end_color, getResources().getColor(R.color.xui_config_color_dark_orange));
         fillEnabled = typedArray.getBoolean(R.styleable.CircleProgressView_cpv_isFilled, false);
         trackEnabled = typedArray.getBoolean(R.styleable.CircleProgressView_cpv_isTracked, false);
-        circleBroken = typedArray.getBoolean(R.styleable.CircleProgressView_cpv_circle_broken, true);
+        circleBroken = typedArray.getBoolean(R.styleable.CircleProgressView_cpv_circle_broken, false);
         mProgressTextColor = typedArray.getColor(R.styleable.CircleProgressView_cpv_progress_textColor, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
         mProgressTextSize = typedArray.getDimensionPixelSize(R.styleable.CircleProgressView_cpv_progress_textSize, getResources().getDimensionPixelSize(R.dimen.default_pv_progress_text_size));
         mTrackWidth = typedArray.getDimensionPixelSize(R.styleable.CircleProgressView_cpv_track_width, getResources().getDimensionPixelSize(R.dimen.default_pv_trace_width));
+        mProgressWidth = typedArray.getDimensionPixelSize(R.styleable.CircleProgressView_cpv_progress_width, getResources().getDimensionPixelSize(R.dimen.default_pv_trace_width));
         mAnimateType = typedArray.getInt(R.styleable.CircleProgressView_cpv_animate_type, ACCELERATE_DECELERATE_INTERPOLATOR);
         mTrackColor = typedArray.getColor(R.styleable.CircleProgressView_cpv_track_color, getResources().getColor(R.color.default_pv_track_color));
         textVisibility = typedArray.getBoolean(R.styleable.CircleProgressView_cpv_progress_textVisibility, true);
@@ -228,15 +237,19 @@ public class CircleProgressView extends View {
         progressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         progressPaint.setStyle(Paint.Style.STROKE);
         progressPaint.setStrokeCap(Paint.Cap.ROUND);
-        progressPaint.setStrokeWidth(mTrackWidth);
+        progressPaint.setStrokeWidth(mProgressWidth);
+
+        trackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        trackPaint.setStyle(Paint.Style.STROKE);
+        trackPaint.setStrokeCap(Paint.Cap.ROUND);
+        trackPaint.setStrokeWidth(mTrackWidth);
+
         mScaleZonePath = new Path();
 
         /**
          * if set the scale zone mode for progress view, should not let the circle be filled
          */
         drawScaleZones(isGraduated);
-
-
     }
 
     @Override
@@ -245,16 +258,7 @@ public class CircleProgressView extends View {
 
         drawTrack(canvas);
 
-        //mShader = new LinearGradient(mOval.left,mOval.top,mOval.right,mOval.bottom,mStartColor,mEndColor, Shader.TileMode.CLAMP);
-        progressPaint.setShader(mShader);
-        updateTheTrack();
-        if (fillEnabled) {
-            progressPaint.setStyle(Paint.Style.FILL);
-            initProgressDrawing(canvas, true);
-        } else {
-            progressPaint.setStyle(Paint.Style.STROKE);
-            initProgressDrawing(canvas, false);
-        }
+        drawProgress(canvas);
 
         drawProgressText(canvas);
     }
@@ -283,17 +287,16 @@ public class CircleProgressView extends View {
      */
     private void drawTrack(Canvas canvas) {
         if (trackEnabled) {
-            progressPaint.setShader(null);
-            progressPaint.setColor(mTrackColor);
-            if (fillEnabled) {
-                progressPaint.setStyle(Paint.Style.FILL);
-                initTrack(canvas, true);
-            } else {
-                progressPaint.setStyle(Paint.Style.STROKE);
-                initTrack(canvas, false);
-
-            }
+            trackPaint.setShader(null);
+            trackPaint.setColor(mTrackColor);
+            initTrack(canvas, fillEnabled);
         }
+    }
+
+    private void drawProgress(Canvas canvas) {
+        progressPaint.setShader(mShader);
+        updateTheTrack();
+        initProgressDrawing(canvas, fillEnabled);
     }
 
     /**
@@ -321,10 +324,15 @@ public class CircleProgressView extends View {
      * @param isFilled whether filled or not
      */
     private void initTrack(Canvas canvas, boolean isFilled) {
-        if (circleBroken) {
-            canvas.drawArc(mOval, 135, 270, isFilled, progressPaint);
+        if (isFilled) {
+            trackPaint.setStyle(Paint.Style.FILL);
         } else {
-            canvas.drawArc(mOval, 90, 360, isFilled, progressPaint);
+            trackPaint.setStyle(Paint.Style.STROKE);
+        }
+        if (circleBroken) {
+            canvas.drawArc(mOval, 135, 270, isFilled, trackPaint);
+        } else {
+            canvas.drawArc(mOval, 90, 360, isFilled, trackPaint);
         }
     }
 
@@ -465,8 +473,7 @@ public class CircleProgressView extends View {
     public void setEndColor(@ColorInt int endColor) {
         this.mEndColor = endColor;
         updateTheTrack();
-        mShader = new LinearGradient(mOval.left - 200, mOval.top - 200, mOval.right + 20, mOval.bottom + 20,
-                mStartColor, mEndColor, Shader.TileMode.CLAMP);
+        mShader = new LinearGradient(mOval.left - 200, mOval.top - 200, mOval.right + 20, mOval.bottom + 20, mStartColor, mEndColor, Shader.TileMode.CLAMP);
         refreshTheView();
     }
 
@@ -476,9 +483,20 @@ public class CircleProgressView extends View {
      * @param width stroke
      */
     public void setTrackWidth(int width) {
-        this.mTrackWidth = DensityUtils.dp2px(getContext(), width);
-        progressPaint.setStrokeWidth(width);
+        mTrackWidth = DensityUtils.dp2px(getContext(), width);
+        trackPaint.setStrokeWidth(width);
         updateTheTrack();
+        refreshTheView();
+    }
+
+    /**
+     * set the width of progress stroke
+     *
+     * @param width stroke
+     */
+    public void setProgressWidth(int width) {
+        mProgressWidth = DensityUtils.dp2px(getContext(), width);
+        progressPaint.setStrokeWidth(width);
         refreshTheView();
     }
 
@@ -694,6 +712,11 @@ public class CircleProgressView extends View {
      * @param isFilled filled or not
      */
     private void initProgressDrawing(Canvas canvas, boolean isFilled) {
+        if (isFilled) {
+            progressPaint.setStyle(Paint.Style.FILL);
+        } else {
+            progressPaint.setStyle(Paint.Style.STROKE);
+        }
         if (circleBroken) {
             canvas.drawArc(mOval, 135 + mStartProgress * 2.7f, (moveProgress - mStartProgress) * 2.7f, isFilled, progressPaint);
         } else {

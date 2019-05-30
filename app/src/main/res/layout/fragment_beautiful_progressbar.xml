@@ -48,7 +48,8 @@
                 app:cpv_start_color="#0052a3"
                 app:cpv_start_progress="0"
                 app:cpv_track_color="#22FFF5"
-                app:cpv_track_width="8dp" />
+                app:cpv_track_width="4dp"
+                app:cpv_progress_width="8dp"/>
 
             <com.xuexiang.xui.widget.progress.CircleProgressView
                 android:id="@+id/progressView_circle_main"
@@ -69,7 +70,8 @@
                 app:cpv_start_color="@color/red_end"
                 app:cpv_start_progress="0"
                 app:cpv_track_color="#F0F0F0"
-                app:cpv_track_width="26dp" />
+                app:cpv_track_width="26dp"
+                app:cpv_progress_width="26dp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
