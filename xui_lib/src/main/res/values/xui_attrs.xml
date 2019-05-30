@@ -117,12 +117,15 @@
             <enum name="vertical" value="1"/>
         </attr>
         <attr name="rvbb_autoPlaying" format="boolean"/>
-        <attr name="rvbb_indicatorSelectedSrc" format="color|reference"/>
-        <attr name="rvbb_indicatorUnselectedSrc" format="color|reference"/>
-        <attr name="rvbb_indicatorSpace" format="dimension|reference"/>
-        <attr name="rvbb_indicatorMarginLeft" format="dimension|reference"/>
-        <attr name="rvbb_indicatorMarginRight" format="dimension|reference"/>
-        <attr name="rvbb_indicatorMarginBottom" format="dimension|reference"/>
+        <attr name="rvbb_indicatorSelectedSrc" format="reference"/>
+        <attr name="rvbb_indicatorUnselectedSrc" format="reference"/>
+        <attr name="rvbb_indicatorSize" format="dimension"/>
+        <attr name="rvbb_indicatorSelectedColor" format="color"/>
+        <attr name="rvbb_indicatorUnselectedColor" format="color"/>
+        <attr name="rvbb_indicatorSpace" format="dimension"/>
+        <attr name="rvbb_indicatorMarginLeft" format="dimension"/>
+        <attr name="rvbb_indicatorMarginRight" format="dimension"/>
+        <attr name="rvbb_indicatorMarginBottom" format="dimension"/>
         <attr name="rvbb_indicatorGravity" format="enum">
             <enum name="left" value="0"/>
             <enum name="center" value="1"/>
@@ -130,17 +133,36 @@
         </attr>
     </declare-styleable>
     <declare-styleable name="BannerLayout">
+        <!--轮播间隔，单位ms，默认是4000ms-->
         <attr name="bl_interval" format="integer"/>
         <attr name="bl_showIndicator" format="boolean"/>
         <attr name="bl_orientation" format="enum">
             <enum name="horizontal" value="0"/>
             <enum name="vertical" value="1"/>
         </attr>
+        <!--是否是自动轮播，默认是true-->
         <attr name="bl_autoPlaying" format="boolean"/>
-        <attr name="bl_itemSpace" format="integer"/>
+        <attr name="bl_indicatorSelectedSrc" format="reference"/>
+        <attr name="bl_indicatorUnselectedSrc" format="reference"/>
+        <attr name="bl_indicatorSize" format="dimension"/>
+        <attr name="bl_indicatorSelectedColor" format="color"/>
+        <attr name="bl_indicatorUnselectedColor" format="color"/>
+        <attr name="bl_indicatorSpace" format="dimension"/>
+        <attr name="bl_indicatorMarginLeft" format="dimension"/>
+        <attr name="bl_indicatorMarginRight" format="dimension"/>
+        <attr name="bl_indicatorMarginBottom" format="dimension"/>
+        <attr name="bl_indicatorGravity" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <!--轮播图之间的间距，默认是10dp-->
+        <attr name="bl_itemSpace" format="dimension"/>
         <attr name="bl_centerScale" format="float"/>
+        <!--轮播速度，默认是1.0-->
         <attr name="bl_moveSpeed" format="float"/>
     </declare-styleable>
+    <attr name="BannerLayoutStyle" format="integer"/>
 
     <!--=====================================================================-->
 

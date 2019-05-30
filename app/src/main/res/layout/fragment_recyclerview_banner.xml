@@ -28,7 +28,7 @@
         android:layout_height="200dp"
         app:bl_autoPlaying="true"
         app:bl_centerScale="1.3"
-        app:bl_itemSpace="20"
+        app:bl_itemSpace="10dp"
         app:bl_moveSpeed="1.8" />
 
     <com.xuexiang.xui.widget.banner.recycler.BannerLayout

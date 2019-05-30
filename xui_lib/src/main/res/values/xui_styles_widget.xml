@@ -502,4 +502,22 @@
         <item name="sv_dismissOnComplete">true</item>
     </style>
 
+    <style name="BannerLayout">
+        <item name="bl_interval">4000</item>
+        <item name="bl_showIndicator">true</item>
+        <item name="bl_orientation">horizontal</item>
+        <item name="bl_autoPlaying">true</item>
+        <item name="bl_indicatorSize">@dimen/default_recycler_banner_indicatorSize</item>
+        <item name="bl_indicatorSelectedColor">@color/xui_config_color_red</item>
+        <item name="bl_indicatorUnselectedColor">@color/xui_config_color_gray_2</item>
+        <item name="bl_indicatorSpace">@dimen/default_recycler_banner_indicatorSpace</item>
+        <item name="bl_indicatorMarginLeft">@dimen/default_recycler_banner_indicatorMarginLeft</item>
+        <item name="bl_indicatorMarginRight">@dimen/default_recycler_banner_indicatorMarginRight</item>
+        <item name="bl_indicatorMarginBottom">@dimen/default_recycler_banner_indicatorMarginBottom</item>
+        <item name="bl_indicatorGravity">left</item>
+        <item name="bl_itemSpace">@dimen/default_recycler_banner_itemSpace</item>
+        <item name="bl_centerScale">1.2</item>
+        <item name="bl_moveSpeed">1.0</item>
+    </style>
+
 </resources>

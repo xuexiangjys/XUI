@@ -18,9 +18,7 @@
 package com.xuexiang.xui.widget.banner.recycler;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -31,7 +29,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
@@ -39,6 +36,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.banner.recycler.layout.BannerLayoutManager;
 import com.xuexiang.xui.widget.banner.recycler.layout.CenterSnapHelper;
 
@@ -73,6 +71,9 @@ public class BannerLayout extends FrameLayout {
     private int mItemSpace;
     private float mCenterScale;
     private float mMoveSpeed;
+
+    private OnIndicatorIndexChangedListener mOnIndicatorIndexChangedListener;
+
     protected Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -93,46 +94,59 @@ public class BannerLayout extends FrameLayout {
     }
 
     public BannerLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.BannerLayoutStyle);
     }
 
     public BannerLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context, attrs);
+        initView(context, attrs, defStyleAttr);
     }
 
-    protected void initView(Context context, AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BannerLayout);
+    protected void initView(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BannerLayout, defStyleAttr, 0);
         mShowIndicator = a.getBoolean(R.styleable.BannerLayout_bl_showIndicator, true);
         mAutoPlayDuration = a.getInt(R.styleable.BannerLayout_bl_interval, 4000);
         mIsAutoPlaying = a.getBoolean(R.styleable.BannerLayout_bl_autoPlaying, true);
-        mItemSpace = a.getInt(R.styleable.BannerLayout_bl_itemSpace, 20);
-        mCenterScale = a.getFloat(R.styleable.BannerLayout_bl_centerScale, 1.2f);
-        mMoveSpeed = a.getFloat(R.styleable.BannerLayout_bl_moveSpeed, 1.0f);
+        mItemSpace = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_itemSpace, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_itemSpace));
+        mCenterScale = a.getFloat(R.styleable.BannerLayout_bl_centerScale, 1.2F);
+        mMoveSpeed = a.getFloat(R.styleable.BannerLayout_bl_moveSpeed, 1.0F);
+        mSelectedDrawable = a.getDrawable(R.styleable.BannerLayout_bl_indicatorSelectedSrc);
+        mUnselectedDrawable = a.getDrawable(R.styleable.BannerLayout_bl_indicatorUnselectedSrc);
+        int indicatorSize = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorSize, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSize));
+        int indicatorSelectedColor = a.getColor(R.styleable.BannerLayout_bl_indicatorSelectedColor, ResUtils.getColor(R.color.xui_config_color_red));
+        int indicatorUnselectedColor = a.getColor(R.styleable.BannerLayout_bl_indicatorUnselectedColor, ResUtils.getColor(R.color.xui_config_color_gray_2));
         if (mSelectedDrawable == null) {
             //绘制默认选中状态图形
             GradientDrawable selectedGradientDrawable = new GradientDrawable();
             selectedGradientDrawable.setShape(GradientDrawable.OVAL);
-            selectedGradientDrawable.setColor(Color.RED);
-            selectedGradientDrawable.setSize(dp2px(5), dp2px(5));
-            selectedGradientDrawable.setCornerRadius(dp2px(5) >> 1);
+            selectedGradientDrawable.setColor(indicatorSelectedColor);
+            selectedGradientDrawable.setSize(indicatorSize, indicatorSize);
+            selectedGradientDrawable.setCornerRadius(indicatorSize >> 1);
             mSelectedDrawable = new LayerDrawable(new Drawable[]{selectedGradientDrawable});
         }
         if (mUnselectedDrawable == null) {
             //绘制默认未选中状态图形
             GradientDrawable unSelectedGradientDrawable = new GradientDrawable();
             unSelectedGradientDrawable.setShape(GradientDrawable.OVAL);
-            unSelectedGradientDrawable.setColor(Color.GRAY);
-            unSelectedGradientDrawable.setSize(dp2px(5), dp2px(5));
-            unSelectedGradientDrawable.setCornerRadius(dp2px(5) >> 1);
+            unSelectedGradientDrawable.setColor(indicatorUnselectedColor);
+            unSelectedGradientDrawable.setSize(indicatorSize, indicatorSize);
+            unSelectedGradientDrawable.setCornerRadius(indicatorSize >> 1);
             mUnselectedDrawable = new LayerDrawable(new Drawable[]{unSelectedGradientDrawable});
         }
 
-        mIndicatorMargin = dp2px(4);
-        int marginLeft = dp2px(16);
-        int marginRight = dp2px(0);
-        int marginBottom = dp2px(11);
-        int gravity = GravityCompat.START;
+        mIndicatorMargin = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorSpace, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSpace));
+        int marginLeft = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginLeft, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginLeft));
+        int marginRight = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginRight, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginRight));
+        int marginBottom = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginBottom, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginBottom));
+        int g = a.getInt(R.styleable.BannerLayout_bl_indicatorGravity, 0);
+        int gravity;
+        if (g == 0) {
+            gravity = GravityCompat.START;
+        } else if (g == 2) {
+            gravity = GravityCompat.END;
+        } else {
+            gravity = Gravity.CENTER;
+        }
         int orientation = a.getInt(R.styleable.BannerLayout_bl_orientation, OrientationHelper.HORIZONTAL);
         a.recycle();
 
@@ -163,9 +177,10 @@ public class BannerLayout extends FrameLayout {
     }
 
     // 设置是否禁止滚动播放
-    public void setAutoPlaying(boolean isAutoPlaying) {
-        this.mIsAutoPlaying = isAutoPlaying;
+    public BannerLayout setAutoPlaying(boolean isAutoPlaying) {
+        mIsAutoPlaying = isAutoPlaying;
         setPlaying(this.mIsAutoPlaying);
+        return this;
     }
 
     public boolean isPlaying() {
@@ -173,27 +188,31 @@ public class BannerLayout extends FrameLayout {
     }
 
     //设置是否显示指示器
-    public void setShowIndicator(boolean showIndicator) {
+    public BannerLayout setShowIndicator(boolean showIndicator) {
         mShowIndicator = showIndicator;
         mIndicatorContainer.setVisibility(showIndicator ? VISIBLE : GONE);
+        return this;
     }
 
     //设置当前图片缩放系数
-    public void setCenterScale(float centerScale) {
+    public BannerLayout setCenterScale(float centerScale) {
         mCenterScale = centerScale;
         mLayoutManager.setCenterScale(centerScale);
+        return this;
     }
 
     //设置跟随手指的移动速度
-    public void setMoveSpeed(float moveSpeed) {
+    public BannerLayout setMoveSpeed(float moveSpeed) {
         mMoveSpeed = moveSpeed;
         mLayoutManager.setMoveSpeed(moveSpeed);
+        return this;
     }
 
     //设置图片间距
-    public void setItemSpace(int itemSpace) {
+    public BannerLayout setItemSpace(int itemSpace) {
         mItemSpace = itemSpace;
         mLayoutManager.setItemSpace(itemSpace);
+        return this;
     }
 
     /**
@@ -201,12 +220,14 @@ public class BannerLayout extends FrameLayout {
      *
      * @param autoPlayDuration 时间毫秒
      */
-    public void setAutoPlayDuration(int autoPlayDuration) {
+    public BannerLayout setAutoPlayDuration(int autoPlayDuration) {
         mAutoPlayDuration = autoPlayDuration;
+        return this;
     }
 
-    public void setOrientation(int orientation) {
+    public BannerLayout setOrientation(int orientation) {
         mLayoutManager.setOrientation(orientation);
+        return this;
     }
 
     /**
@@ -237,7 +258,6 @@ public class BannerLayout extends FrameLayout {
         mLayoutManager.setInfinite(mBannerSize >= 3);
         setPlaying(true);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 if (dx != 0) {
@@ -309,7 +329,6 @@ public class BannerLayout extends FrameLayout {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
             ImageView bannerPoint = new ImageView(getContext());
             RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -332,23 +351,41 @@ public class BannerLayout extends FrameLayout {
         }
     }
 
-    protected int dp2px(int dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
-                Resources.getSystem().getDisplayMetrics());
-    }
-
     /**
      * 改变导航的指示点
      */
     protected synchronized void refreshIndicator() {
-        if (mShowIndicator && mBannerSize > 1) {
-            mIndicatorAdapter.setPosition(mCurrentIndex % mBannerSize);
-            mIndicatorAdapter.notifyDataSetChanged();
+        if (mBannerSize > 1) {
+            final int position = mCurrentIndex % mBannerSize;
+            if (mShowIndicator) {
+                mIndicatorAdapter.setPosition(position);
+                mIndicatorAdapter.notifyDataSetChanged();
+            }
+            if (mOnIndicatorIndexChangedListener != null) {
+                mOnIndicatorIndexChangedListener.onIndexChanged(position);
+            }
         }
     }
 
     public interface OnBannerItemClickListener {
         void onItemClick(int position);
+    }
+
+    public BannerLayout setOnIndicatorIndexChangedListener(OnIndicatorIndexChangedListener onIndicatorIndexChangedListener) {
+        mOnIndicatorIndexChangedListener = onIndicatorIndexChangedListener;
+        return this;
+    }
+
+    /**
+     * 索引变化监听
+     */
+    public interface OnIndicatorIndexChangedListener {
+        /**
+         * 索引变化
+         *
+         * @param position
+         */
+        void onIndexChanged(int position);
     }
 
 }

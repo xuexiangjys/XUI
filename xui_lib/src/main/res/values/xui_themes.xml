@@ -211,6 +211,7 @@
         <item name="CountDownButtonStyle">@style/CountDownButton</item>
         <item name="AutoFitTextViewStyle">@style/AutoFitTextView</item>
         <item name="RippleViewStyle">@style/RippleView</item>
+        <item name="BannerLayoutStyle">@style/BannerLayout</item>
 
     </style>
 

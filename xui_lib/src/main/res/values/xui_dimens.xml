@@ -197,6 +197,14 @@
     <dimen name="default_pv_zone_padding">16dp</dimen>
     <dimen name="default_pv_zone_corner_radius">8dp</dimen>
 
+    <!--BannerLayout-->
+    <dimen name="default_recycler_banner_itemSpace">10dp</dimen>
+    <dimen name="default_recycler_banner_indicatorSize">5dp</dimen>
+    <dimen name="default_recycler_banner_indicatorSpace">4dp</dimen>
+    <dimen name="default_recycler_banner_indicatorMarginLeft">16dp</dimen>
+    <dimen name="default_recycler_banner_indicatorMarginRight">0dp</dimen>
+    <dimen name="default_recycler_banner_indicatorMarginBottom">11dp</dimen>
+
     <!--*********************************************
     *                  MaterialDialog               *
     **********************************************-->
