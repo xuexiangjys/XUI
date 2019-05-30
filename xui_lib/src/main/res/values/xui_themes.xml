@@ -98,8 +98,10 @@
         **********************************************-->
         <item name="md_regular_font">@string/default_app_font_path</item>
         <item name="md_medium_font">@string/default_app_font_path</item>
+        <item name="md_title_color">?attr/xui_config_color_title_text</item>
         <item name="md_content_color">?attr/xui_config_color_content_text</item>
         <item name="md_explain_color">?attr/xui_config_color_explain_text</item>
+        <item name="md_link_color">?attr/colorAccent</item>
         <item name="md_icon_limit_icon_to_default_size">false</item>
 
         <!--**********************************************
