@@ -58,8 +58,8 @@ public class DemoDataProvider {
         return list;
     }
 
-    public static ArrayList<Integer> getUsertGuides() {
-        ArrayList<Integer> list = new ArrayList<>();
+    public static List<Object> getUsertGuides() {
+        List<Object> list = new ArrayList<>();
         list.add(R.drawable.guide_img_1);
         list.add(R.drawable.guide_img_2);
         list.add(R.drawable.guide_img_3);

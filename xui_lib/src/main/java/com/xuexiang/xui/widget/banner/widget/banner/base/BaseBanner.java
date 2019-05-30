@@ -186,8 +186,10 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
 
         //create ViewPager
         mViewPager = isLoopEnable ? new LoopViewPager(context) : new ViewPager(context);
+        mViewPager.setOverScrollMode(OVER_SCROLL_NEVER);
         mItemWidth = mDisplayMetrics.widthPixels;
-        if (scale < 0) {//scale not set in xml
+        //scale not set in xml
+        if (scale < 0) {
             if (height.equals(ViewGroup.LayoutParams.MATCH_PARENT + "")) {
                 mItemHeight = LayoutParams.MATCH_PARENT;
             } else if (height.equals(ViewGroup.LayoutParams.WRAP_CONTENT + "")) {

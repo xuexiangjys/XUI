@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class UserGuideActivity extends BaseGuideActivity {
     @Override
-    protected List<Integer> getGuidesResIdList() {
+    protected List<Object> getGuideResourceList() {
         return DemoDataProvider.getUsertGuides();
     }
 
