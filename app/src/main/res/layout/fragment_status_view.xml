@@ -15,16 +15,22 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.xuexiang.xuidemo.widget.ConnectionStatusView
+    <com.xuexiang.xui.widget.popupwindow.status.StatusView
         android:id="@+id/status"
+        style="@style/StatusView.Custom"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:sv_dismissOnComplete="true" />
+        android:layout_height="48dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="这里是内容"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -73,6 +79,21 @@
                     style="@style/Button.Blue"
                     android:layout_marginStart="20dp"
                     android:text="none" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/custom"
+                    style="@style/Button.Blue"
+                    android:layout_marginStart="20dp"
+                    android:text="custom" />
 
             </LinearLayout>
 

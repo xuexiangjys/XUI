@@ -254,18 +254,21 @@
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/setErrorBt"
                         style="@style/RoundButton.Auto"
+                        android:layout_width="50dp"
                         android:layout_marginLeft="8dp"
                         android:text="1" />
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/setError2Bt"
                         style="@style/RoundButton.Auto"
+                        android:layout_width="50dp"
                         android:layout_marginLeft="8dp"
                         android:text="2" />
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/setError3Bt"
                         style="@style/RoundButton.Auto"
+                        android:layout_width="50dp"
                         android:layout_marginLeft="8dp"
                         android:text="3" />
 
@@ -294,6 +297,23 @@
                     android:inputType="number"
                     app:met_errorMessage="@string/tip_phone_number_error"
                     app:met_regexp="@string/regex_phone_number"
+                    app:met_clearButton="true" />
+
+                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                    android:id="@+id/et_not_allow_empty1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="please input your name"
+                    android:inputType="text"
+                    app:met_allowEmpty="false"
+                    app:met_clearButton="true" />
+
+                <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                    android:id="@+id/et_not_allow_empty2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="please input your name"
+                    android:inputType="text"
                     app:met_clearButton="true" />
 
                 <LinearLayout

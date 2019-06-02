@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -29,8 +28,8 @@ import com.xuexiang.xaop.annotation.IOThread;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.enums.ThreadType;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xqrcode.XQRCode;
-import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
@@ -40,7 +39,6 @@ import com.xuexiang.xuidemo.fragment.expands.qrcode.QRCodeProduceFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
-import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.List;
@@ -133,10 +131,13 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
     private void startScan(ScanType scanType) {
         switch (scanType) {
             case CUSTOM:
-                openPageForResult(CustomCaptureFragment.class, null, REQUEST_CUSTOM_SCAN);
+                PageOption.to(CustomCaptureFragment.class)
+                        .setRequestCode(REQUEST_CUSTOM_SCAN)
+                        .setNewActivity(true)
+                        .open(this);
                 break;
             case DEFAULT:
-                startActivityForResult(new Intent(getActivity(), CaptureActivity.class), REQUEST_CODE);
+                XQRCode.startScan(this, REQUEST_CODE);
                 break;
             case REMOTE:
                 Intent intent = new Intent(XQRCode.ACTION_DEFAULT_CAPTURE);

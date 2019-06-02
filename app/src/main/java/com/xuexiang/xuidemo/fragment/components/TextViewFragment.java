@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.fragment.components;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.textview.AutoFitTextViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.BadgeViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.ExpandableTextViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.GroupListViewFragment;
@@ -25,7 +26,8 @@ public class TextViewFragment extends ComponentContainerFragment {
                 GroupListViewFragment.class,
                 ExpandableTextViewFragment.class,
                 LabelViewFragment.class,
-                BadgeViewFragment.class
+                BadgeViewFragment.class,
+                AutoFitTextViewFragment.class
         };
     }
 

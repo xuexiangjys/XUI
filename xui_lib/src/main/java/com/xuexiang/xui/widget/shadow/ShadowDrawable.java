@@ -263,11 +263,11 @@ public class ShadowDrawable extends Drawable {
      */
     public static ShadowDrawable fromAttributeSet(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ShadowDrawable);
-        int shadowRadius = typedArray.getDimensionPixelSize(R.styleable.ShadowDrawable_sd_shadowRadius, ResUtils.getDimensionPixelOffset(R.dimen.default_sd_shadow_radius));
+        int shadowRadius = typedArray.getDimensionPixelSize(R.styleable.ShadowDrawable_sd_shadowRadius, ResUtils.getDimensionPixelSize(R.dimen.default_sd_shadow_radius));
         int shadowColor = typedArray.getColor(R.styleable.ShadowDrawable_sd_shadowColor, DEFAULT_SHADOW_COLOR);
 
         int shape = typedArray.getInt(R.styleable.ShadowDrawable_sd_shapeType, SHAPE_RECTANGLE);
-        int shapeRadius = typedArray.getDimensionPixelSize(R.styleable.ShadowDrawable_sd_shapeRadius, ResUtils.getDimensionPixelOffset(R.dimen.default_sd_shape_radius));
+        int shapeRadius = typedArray.getDimensionPixelSize(R.styleable.ShadowDrawable_sd_shapeRadius, ResUtils.getDimensionPixelSize(R.dimen.default_sd_shape_radius));
         int offsetX = typedArray.getDimensionPixelSize(R.styleable.ShadowDrawable_sd_offsetX, 0);
         int offsetY = typedArray.getDimensionPixelSize(R.styleable.ShadowDrawable_sd_offsetY, 0);
         int bgColor = typedArray.getColor(R.styleable.ShadowDrawable_sd_bgColor, ResUtils.getColor(R.color.xui_config_color_white));

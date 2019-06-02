@@ -44,7 +44,7 @@ public class SwipeHeadFootViewFragment extends BaseFragment {
     protected void initViews() {
         Utils.initRecyclerView(recyclerView);
 
-        // HeaderView。
+        // HeaderView，必须在setAdapter之前调用
         View headerView = getLayoutInflater().inflate(R.layout.include_head_view_banner, recyclerView, false);
 
         banner = headerView.findViewById(R.id.sib_simple_usage);

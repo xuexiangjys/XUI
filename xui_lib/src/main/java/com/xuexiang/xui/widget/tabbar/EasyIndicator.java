@@ -125,23 +125,26 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
      */
     private float indicator_select_textSize = indicator_textSize;
 
-
     public EasyIndicator(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public EasyIndicator(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, R.attr.EasyIndicatorStyle);
+    }
+
+    public EasyIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         setOrientation(VERTICAL);
         initScreenWidth();
-        init(context, attrs);
+        init(context, attrs, defStyleAttr);
     }
 
     /**
      * 初始化View
      */
-    private void init(Context context, AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.EasyIndicator);
+    private void init(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.EasyIndicator, defStyleAttr, 0);
         if (a != null) {
             indicatorHeight = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_height, indicatorHeight);
             indicator_line_height = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_line_height, indicator_line_height);

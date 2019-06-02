@@ -303,33 +303,37 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    app:sGradientEndColor="@color/colorPrimary"
+                    app:sCornersRadius="5dp"
+                    app:sGradientEndColor="#FFD3B0"
                     app:sGradientOrientation="TOP_BOTTOM"
-                    app:sGradientStartColor="@color/colorAccent" />
+                    app:sGradientStartColor="#FF9900" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    app:sGradientEndColor="@color/colorPrimary"
+                    app:sCornersRadius="5dp"
+                    app:sGradientEndColor="#FFD3B0"
                     app:sGradientOrientation="BOTTOM_TOP"
-                    app:sGradientStartColor="@color/colorAccent" />
+                    app:sGradientStartColor="#FF9900" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    app:sGradientEndColor="@color/colorPrimary"
+                    app:sCornersRadius="5dp"
+                    app:sGradientEndColor="#FFD3B0"
                     app:sGradientOrientation="RIGHT_LEFT"
-                    app:sGradientStartColor="@color/colorAccent" />
+                    app:sGradientStartColor="#FF9900" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    app:sGradientEndColor="@color/colorPrimary"
+                    app:sCornersRadius="5dp"
+                    app:sGradientEndColor="#FFD3B0"
                     app:sGradientOrientation="LEFT_RIGHT"
-                    app:sGradientStartColor="@color/colorAccent" />
+                    app:sGradientStartColor="#FF9900" />
             </LinearLayout>
 
             <LinearLayout

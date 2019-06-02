@@ -13,6 +13,9 @@
     <attr name="xui_alpha_pressed" format="float" />
     <attr name="xui_alpha_disabled" format="float" />
 
+    <attr name="xui_general_shadow_elevation" format="dimension"/>
+    <attr name="xui_general_shadow_alpha" format="float"/>
+
     <!--MaterialSearchView-->
     <attr name="search_icon_padding" format="dimension" />
     <attr name="search_view_text_padding" format="dimension" />

@@ -18,7 +18,7 @@ import com.xuexiang.xui.widget.banner.widget.banner.base.ImageLoader;
  * @author xuexiang
  * @since 2018/12/6 下午4:32
  */
-public class SimpleGuideBanner extends BaseIndicatorBanner<Integer, SimpleGuideBanner> {
+public class SimpleGuideBanner extends BaseIndicatorBanner<Object, SimpleGuideBanner> {
 
     private ImageLoader mImageLoader;
 
@@ -47,25 +47,26 @@ public class SimpleGuideBanner extends BaseIndicatorBanner<Integer, SimpleGuideB
         if (mImageLoader == null) {
             mImageLoader = new GlideImageLoader();
         }
-        return  mImageLoader;
+        return mImageLoader;
     }
 
     @Override
     public View onCreateItemView(int position) {
         View inflate = View.inflate(mContext, R.layout.xui_adapter_simple_guide, null);
         ImageView iv = inflate.findViewById(R.id.iv);
-        TextView tv_jump = inflate.findViewById(R.id.tv_jump);
+        TextView tvJump = inflate.findViewById(R.id.tv_jump);
 
-        final Integer resId = mDatas.get(position);
-        tv_jump.setVisibility(position == mDatas.size() - 1 ? VISIBLE : GONE);
+        final Object resId = mDatas.get(position);
+        tvJump.setVisibility(position == mDatas.size() - 1 ? VISIBLE : GONE);
 
         getImageLoader().displayImage(mContext, resId, iv);
 
-        tv_jump.setOnClickListener(new View.OnClickListener() {
+        tvJump.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onJumpClickListener != null)
+                if (onJumpClickListener != null) {
                     onJumpClickListener.onJumpClick();
+                }
             }
         });
 

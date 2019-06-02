@@ -9,7 +9,6 @@
     <public name="xui_tip_no_network" type="string" />
     <public name="xui_tip_retry" type="string" />
 
-
     <!--dimen-->
     <public name="xui_list_divider_height_table" type="dimen" />
     <public name="xui_list_divider_height_phone" type="dimen" />
@@ -85,10 +84,10 @@
     <public name="xui_config_color_light_blue_gray" type="color" />
     <public name="xui_config_color_light_blue" type="color" />
 
-    <public name="xui_config_color_title_content_text" type="color" />
-    <public name="xui_config_color_sub_title_common_explain_text" type="color" />
-    <public name="xui_config_color_assist_explain_text" type="color" />
-    <public name="xui_config_color_major_prompt_message_text" type="color" />
+    <public name="xui_config_color_title_text" type="color" />
+    <public name="xui_config_color_content_text" type="color" />
+    <public name="xui_config_color_explain_text" type="color" />
+    <public name="xui_config_color_primary_text" type="color" />
 
     <public name="xui_config_color_background_tablet" type="color" />
     <public name="xui_config_color_background_phone" type="color" />

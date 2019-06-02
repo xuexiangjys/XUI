@@ -29,7 +29,7 @@
         android:textColor="?attr/search_view_text_color_hint"
         android:textSize="?attr/search_view_text_size" />
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/suggestion_icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

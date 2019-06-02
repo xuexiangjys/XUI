@@ -53,20 +53,23 @@ public class StatefulLayout extends LinearLayout {
     private Button stButton;
 
     public StatefulLayout(Context context) {
-        super(context);
-        initAttrs(context, null);
+        this(context, null);
     }
 
     public StatefulLayout(Context context, AttributeSet attrs) {
-        super(context, attrs, 0);
-        initAttrs(context, attrs);
+        this(context, attrs, R.attr.StatefulLayoutStyle);
     }
 
-    private void initAttrs(Context context, AttributeSet attrs) {
+    public StatefulLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initAttrs(context, attrs, defStyleAttr);
+    }
+
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         if (isInEditMode()) {
             return;
         }
-        TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.StatefulLayout, 0, 0);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.StatefulLayout, defStyleAttr, 0);
         animationEnabled = array.getBoolean(R.styleable.StatefulLayout_stf_animationEnabled, UIConfig.getInstance().getStateLayoutConfig().animationEnabled);
         int inAnimationResId = array.getResourceId(R.styleable.StatefulLayout_stf_inAnimation, -1);
         if (inAnimationResId != -1) {
@@ -123,8 +126,12 @@ public class StatefulLayout extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        if (getChildCount() > 1) throw new IllegalStateException(MSG_ONE_CHILD);
-        if (isInEditMode()) return; // hide state views in designer
+        if (getChildCount() > 1) {
+            throw new IllegalStateException(MSG_ONE_CHILD);
+        }
+        if (isInEditMode()) {
+            return; // hide state views in designer
+        }
         setOrientation(VERTICAL);
         content = getChildAt(0); // assume first child as content
         LayoutInflater.from(getContext()).inflate(R.layout.xui_layout_stateful_template, this, true);
@@ -149,7 +156,9 @@ public class StatefulLayout extends LinearLayout {
                 outAnimation.setAnimationListener(new CustomAnimationListener() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        if (animCounter != animCounterCopy) return;
+                        if (animCounter != animCounterCopy) {
+                            return;
+                        }
                         stContainer.setVisibility(GONE);
                         content.setVisibility(VISIBLE);
                         content.startAnimation(inAnimation);
@@ -297,7 +306,9 @@ public class StatefulLayout extends LinearLayout {
                 outAnimation.setAnimationListener(new CustomAnimationListener() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        if (animCounterCopy != animCounter) return;
+                        if (animCounterCopy != animCounter) {
+                            return;
+                        }
                         content.setVisibility(GONE);
                         stContainer.setVisibility(VISIBLE);
                         stContainer.startAnimation(inAnimation);
@@ -309,8 +320,9 @@ public class StatefulLayout extends LinearLayout {
                 outAnimation.setAnimationListener(new CustomAnimationListener() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        if (animCounterCopy != animCounter)
+                        if (animCounterCopy != animCounter) {
                             return;
+                        }
                         state(options);
                         stContainer.startAnimation(inAnimation);
                     }

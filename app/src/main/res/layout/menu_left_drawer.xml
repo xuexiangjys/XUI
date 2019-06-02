@@ -16,7 +16,6 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_menu"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,7 +26,7 @@
         android:layout_width="240dp"
         android:layout_height="50dp">
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/iv_qrcode"
             android:layout_width="36dp"
             android:layout_height="36dp"
@@ -39,49 +38,13 @@
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="40dp" />
+        android:layout_height="20dp" />
 
-    <LinearLayout
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
-
-        <com.xuexiang.xui.widget.imageview.RadiusImageView
-            android:id="@+id/iv_avatar"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/icon_avatar1"
-            app:riv_border_color="@color/xui_config_color_gray_6"
-            app:riv_border_width="1px"
-            app:riv_is_circle="true"
-            app:riv_selected_border_color="@color/xui_config_color_gray_4"
-            app:riv_selected_border_width="1px"
-            app:riv_selected_mask_color="@color/xui_config_color_gray_8" />
-
-        <TextView
-            android:id="@+id/tv_avatar"
-            style="@style/TextStyle.Title"
-            android:layout_marginStart="?attr/xui_config_content_spacing_horizontal"
-            android:text="Beautiful XUI" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_sign"
-        style="@style/TextStyle.Explain"
-        android:layout_width="240dp"
-        android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:text="这个家伙很懒，什么也没有留下～～" />
+    <include layout="@layout/include_nav_header" />
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="56dp" />
+        android:layout_height="36dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"

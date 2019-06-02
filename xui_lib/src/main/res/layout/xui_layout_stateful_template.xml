@@ -18,7 +18,7 @@
             android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
             android:indeterminate="true" />
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/stImage"
             android:layout_width="?attr/stf_tip_img_size"
             android:layout_height="?attr/stf_tip_img_size"

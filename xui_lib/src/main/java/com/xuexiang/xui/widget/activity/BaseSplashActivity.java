@@ -26,8 +26,6 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //解决白屏问题
-        getWindow().setBackgroundDrawable(null);
         initView();
         initSplashView(getSplashImgResId());
         onCreateActivity();

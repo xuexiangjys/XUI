@@ -17,6 +17,7 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.banner.anim.BaseAnimator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 轮播下方的引导器
@@ -28,7 +29,7 @@ public abstract class BaseIndicatorBanner<E, T extends BaseIndicatorBanner<E, T>
     public static final int STYLE_DRAWABLE_RESOURCE = 0;
     public static final int STYLE_CORNER_RECTANGLE = 1;
 
-    private ArrayList<ImageView> mIndicatorViews = new ArrayList<>();
+    private List<ImageView> mIndicatorViews = new ArrayList<>();
     private int mIndicatorStyle;
     private int mIndicatorWidth;
     private int mIndicatorHeight;
@@ -100,7 +101,7 @@ public abstract class BaseIndicatorBanner<E, T extends BaseIndicatorBanner<E, T>
         mLlIndicators.removeAllViews();
         for (int i = 0; i < size; i++) {
             ImageView iv = new ImageView(mContext);
-            iv.setImageDrawable(i == mCurrentPositon ? mSelectDrawable : mUnSelectDrawable);
+            iv.setImageDrawable(i == mCurrentPosition ? mSelectDrawable : mUnSelectDrawable);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(mIndicatorWidth,
                     mIndicatorHeight);
             lp.leftMargin = i == 0 ? 0 : mIndicatorGap;
@@ -108,7 +109,7 @@ public abstract class BaseIndicatorBanner<E, T extends BaseIndicatorBanner<E, T>
             mIndicatorViews.add(iv);
         }
 
-        setCurrentIndicator(mCurrentPositon);
+        setCurrentIndicator(mCurrentPosition);
 
         return mLlIndicators;
     }
@@ -120,14 +121,14 @@ public abstract class BaseIndicatorBanner<E, T extends BaseIndicatorBanner<E, T>
         }
         try {
             if (mSelectAnimClass != null) {
-                if (position == mLastPositon) {
+                if (position == mLastPosition) {
                     mSelectAnimClass.newInstance().playOn(mIndicatorViews.get(position));
                 } else {
                     mSelectAnimClass.newInstance().playOn(mIndicatorViews.get(position));
                     if (mUnselectAnimClass == null) {
-                        mSelectAnimClass.newInstance().interpolator(new ReverseInterpolator()).playOn(mIndicatorViews.get(mLastPositon));
+                        mSelectAnimClass.newInstance().interpolator(new ReverseInterpolator()).playOn(mIndicatorViews.get(mLastPosition));
                     } else {
-                        mUnselectAnimClass.newInstance().playOn(mIndicatorViews.get(mLastPositon));
+                        mUnselectAnimClass.newInstance().playOn(mIndicatorViews.get(mLastPosition));
                     }
                 }
             }

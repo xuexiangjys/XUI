@@ -48,7 +48,7 @@ class BaseProgressLayerDrawable<
     public BaseProgressLayerDrawable(Drawable[] layers, Context context) {
         super(layers);
 
-        mBackgroundAlpha = ThemeUtils.getFloatFromAttrRes(context, android.R.attr.disabledAlpha, 0);
+        mBackgroundAlpha = ThemeUtils.resolveFloat(context, android.R.attr.disabledAlpha, 0);
 
         setId(0, android.R.id.background);
         //noinspection unchecked

@@ -24,6 +24,8 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
+import com.xuexiang.xuidemo.base.webview.XPageWebViewFragment;
+import com.xuexiang.xuidemo.fragment.expands.webview.JsWebViewFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
 import java.util.List;
@@ -42,6 +44,8 @@ public class WebViewFragment extends BaseSimpleListFragment {
         lists.add("input标签文件上传");
         lists.add("电话、信息、邮件");
         lists.add("地图定位");
+        lists.add("视频播放");
+        lists.add("简单的JS通信");
         return lists;
     }
 
@@ -52,7 +56,7 @@ public class WebViewFragment extends BaseSimpleListFragment {
                 systemApi("https://www.baidu.com/");
                 break;
             case 1:
-                Utils.goWeb(getContext(), "https://www.baidu.com/");
+                XPageWebViewFragment.openUrl(this, "https://www.baidu.com/");
                 break;
             case 2:
                 Utils.goWeb(getContext(), "http://android.myapp.com/");
@@ -65,6 +69,12 @@ public class WebViewFragment extends BaseSimpleListFragment {
                 break;
             case 5:
                 Utils.goWeb(getContext(), "https://map.baidu.com/mobile/webapp/index/index/#index/index/foo=bar/vt=map");
+                break;
+            case 6:
+                Utils.goWeb(getContext(), "https://v.youku.com/v_show/id_XMjY1Mzc4MjU3Ng==.html?tpa=dW5pb25faWQ9MTAzNzUzXzEwMDAwMV8wMV8wMQ&refer=sousuotoufang_market.qrwang_00002944_000000_QJFFvi_19031900");
+                break;
+            case 7:
+                openPage(JsWebViewFragment.class);
                 break;
             default:
                 break;

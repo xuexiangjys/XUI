@@ -18,10 +18,8 @@ package com.xuexiang.xui.widget.popupwindow.status;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +27,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 
@@ -58,6 +57,7 @@ public class StatusView extends FrameLayout {
     private View mCompleteView;
     private View mErrorView;
     private View mLoadingView;
+    private View mCustomView;
 
     /**
      * Fade in out animations
@@ -82,48 +82,36 @@ public class StatusView extends FrameLayout {
     };
 
     public StatusView(Context context) {
-        super(context);
-        init(context, null, 0, 0, 0);
+        this(context, null);
     }
 
     public StatusView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0, 0, 0);
+        this(context, attrs, R.attr.StatusViewStyle);
     }
 
     public StatusView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs, 0, 0, 0);
+        initAttrs(context, attrs, defStyleAttr);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public StatusView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context, attrs, 0, 0, 0);
+    public StatusView(Context context, int completeLayout, int errorLayout, int loadingLayout, int customLayout) {
+        this(context, null, completeLayout, errorLayout, loadingLayout, customLayout);
     }
 
-    public StatusView(Context context, int completeLayout, int errorLayout, int loadingLayout) {
-        super(context);
-        init(context, null, completeLayout, errorLayout, loadingLayout);
+    public StatusView(Context context, AttributeSet attrs, int completeLayout, int errorLayout, int loadingLayout, int customLayout) {
+        this(context, attrs, R.attr.StatusViewStyle, completeLayout, errorLayout, loadingLayout, customLayout);
     }
 
-    public StatusView(Context context, AttributeSet attrs, int completeLayout, int errorLayout, int loadingLayout) {
-        super(context, attrs);
-        init(context, attrs, completeLayout, errorLayout, loadingLayout);
-    }
-
-    public StatusView(Context context, AttributeSet attrs, int defStyleAttr, int completeLayout, int errorLayout, int loadingLayout) {
+    public StatusView(Context context, AttributeSet attrs, int defStyleAttr, int completeLayout, int errorLayout, int loadingLayout, int customLayout) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs, completeLayout, errorLayout, loadingLayout);
+        init(context, attrs, defStyleAttr, completeLayout, errorLayout, loadingLayout, customLayout);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public StatusView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, int completeLayout, int errorLayout, int loadingLayout) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context, attrs, completeLayout, errorLayout, loadingLayout);
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        init(context, attrs, defStyleAttr, 0, 0, 0, 0);
     }
 
-    private void init(Context context, AttributeSet attrs, int completeLayout, int errorLayout, int loadingLayout) {
+    private void init(Context context, AttributeSet attrs, int defStyleAttr, int completeLayout, int errorLayout, int loadingLayout, int customLayout) {
         // Load initial values
         mCurrentStatus = Status.NONE;
         mSlideIn = AnimationUtils.loadAnimation(context, R.anim.sv_slide_in);
@@ -132,12 +120,13 @@ public class StatusView extends FrameLayout {
         LayoutInflater inflate = LayoutInflater.from(context);
         mHandler = new Handler();
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.StatusView);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.StatusView, defStyleAttr, 0);
 
         // get status layout ids
         int completeLayoutId = a.getResourceId(R.styleable.StatusView_sv_complete, 0);
         int errorLayoutId = a.getResourceId(R.styleable.StatusView_sv_error, 0);
         int loadingLayoutId = a.getResourceId(R.styleable.StatusView_sv_loading, 0);
+        int customLayoutId = a.getResourceId(R.styleable.StatusView_sv_custom, 0);
 
         mHideOnComplete = a.getBoolean(R.styleable.StatusView_sv_dismissOnComplete, mHideOnComplete);
 
@@ -145,28 +134,35 @@ public class StatusView extends FrameLayout {
         mCompleteView = inflate.inflate(completeLayout != 0 ? completeLayout : completeLayoutId, null);
         mErrorView = inflate.inflate(errorLayout != 0 ? errorLayout : errorLayoutId, null);
         mLoadingView = inflate.inflate(loadingLayout != 0 ? loadingLayout : loadingLayoutId, null);
-
+        mCustomView = inflate.inflate(customLayout != 0 ? customLayout : customLayoutId, null);
 
         // Default layout params
         mCompleteView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mErrorView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mLoadingView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mCustomView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         // Add layout to root
         addView(mCompleteView);
         addView(mErrorView);
         addView(mLoadingView);
+        addView(mCustomView);
 
         // set visibilities of childs
         mCompleteView.setVisibility(View.INVISIBLE);
         mErrorView.setVisibility(View.INVISIBLE);
         mLoadingView.setVisibility(View.INVISIBLE);
+        mCustomView.setVisibility(View.INVISIBLE);
 
         a.recycle();
     }
 
     public void setOnErrorClickListener(@NonNull OnClickListener onErrorClickListener) {
         mErrorView.setOnClickListener(onErrorClickListener);
+    }
+
+    public void setOnCustomClickListener(@NonNull OnClickListener onErrorClickListener) {
+        mCustomView.setOnClickListener(onErrorClickListener);
     }
 
     public void setOnLoadingClickListener(@NonNull OnClickListener onLoadingClickListener) {
@@ -189,9 +185,28 @@ public class StatusView extends FrameLayout {
         return mLoadingView;
     }
 
+    public View getCustomView() {
+        return mCustomView;
+    }
+
     public StatusView setHideOnComplete(boolean hideOnComplete) {
         mHideOnComplete = hideOnComplete;
         return this;
+    }
+
+    /**
+     * 设置自定义状态的标题
+     *
+     * @param id
+     * @param title
+     * @return
+     */
+    public View setCustomViewTitle(int id, String title) {
+        View view = mCustomView.findViewById(id);
+        if (view instanceof TextView) {
+            ((TextView) view).setText(title);
+        }
+        return view;
     }
 
     /**
@@ -200,6 +215,7 @@ public class StatusView extends FrameLayout {
      * @param status
      */
     public void setStatus(final Status status) {
+        setVisibility(VISIBLE);
         if (mCurrentStatus == Status.NONE) {
             mCurrentStatus = status;
             enterAnimation(getCurrentView(mCurrentStatus));
@@ -241,6 +257,8 @@ public class StatusView extends FrameLayout {
             return mErrorView;
         } else if (status == Status.LOADING) {
             return mLoadingView;
+        } else if (status == Status.CUSTOM) {
+            return mCustomView;
         } else {
             return null;
         }
@@ -281,6 +299,7 @@ public class StatusView extends FrameLayout {
                 mCurrentStatus = Status.NONE;
                 exitView.setVisibility(INVISIBLE);
                 mSlideOut.setAnimationListener(null);
+                setVisibility(GONE);
             }
         });
     }

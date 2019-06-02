@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
+
+            <com.xuexiang.xui.widget.progress.CircleProgressView
+                android:id="@+id/progressView_circle_small"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                app:cpv_animate_type="AccelerateDecelerateInterpolator"
+                app:cpv_circle_broken="false"
+                app:cpv_end_color="#00EEFA"
+                app:cpv_end_progress="78"
+                app:cpv_isFilled="false"
+                app:cpv_isTracked="true"
+                app:cpv_progress_duration="2000"
+                app:cpv_progress_textColor="#28AAFB"
+                app:cpv_progress_textSize="18sp"
+                app:cpv_start_color="#0052a3"
+                app:cpv_start_progress="0"
+                app:cpv_track_color="#22FFF5"
+                app:cpv_track_width="4dp"
+                app:cpv_progress_width="8dp"/>
+
+            <com.xuexiang.xui.widget.progress.CircleProgressView
+                android:id="@+id/progressView_circle_main"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                app:cpv_animate_type="AccelerateDecelerateInterpolator"
+                app:cpv_circle_broken="true"
+                app:cpv_end_color="@color/red_start"
+                app:cpv_end_progress="98"
+                app:cpv_isFilled="false"
+                app:cpv_isTracked="true"
+                app:cpv_progress_duration="2000"
+                app:cpv_progress_textColor="@color/colorAccent"
+                app:cpv_progress_textSize="48sp"
+                app:cpv_progress_textVisibility="false"
+                app:cpv_start_color="@color/red_end"
+                app:cpv_start_progress="0"
+                app:cpv_track_color="#F0F0F0"
+                app:cpv_track_width="26dp"
+                app:cpv_progress_width="26dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/progress_text_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="48sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="32sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:text="RESULT"
+                android:textColor="@color/colorAccent"
+                android:textSize="28sp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Language"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp" />
+
+                <com.xuexiang.xui.widget.progress.HorizontalProgressView
+                    android:id="@+id/hpv_language"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    app:hpv_end_color="@color/purple_start"
+                    app:hpv_end_progress="92"
+                    app:hpv_isTracked="true"
+                    app:hpv_progress_duration="2600"
+                    app:hpv_progress_textColor="#696969"
+                    app:hpv_progress_textVisibility="false"
+                    app:hpv_start_color="@color/purple_light"
+                    app:hpv_track_color="#f4f4f4"
+                    app:hpv_track_width="8dp" />
+
+                <TextView
+                    android:id="@+id/progress_text_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="History"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp" />
+
+                <com.xuexiang.xui.widget.progress.HorizontalProgressView
+                    android:id="@+id/hpv_history"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    app:hpv_end_color="@color/dark_orange"
+                    app:hpv_end_progress="86"
+                    app:hpv_isTracked="true"
+                    app:hpv_progress_duration="2200"
+                    app:hpv_progress_textColor="#696969"
+                    app:hpv_progress_textVisibility="false"
+                    app:hpv_start_color="@color/light_orange"
+                    app:hpv_track_color="#f4f4f4"
+                    app:hpv_track_width="8dp" />
+
+                <TextView
+                    android:id="@+id/progress_text_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mathematics"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp" />
+
+                <com.xuexiang.xui.widget.progress.HorizontalProgressView
+                    android:id="@+id/hpv_math"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    app:hpv_end_color="@color/colorPrimary"
+                    app:hpv_end_progress="88"
+                    app:hpv_isTracked="true"
+                    app:hpv_progress_duration="1800"
+                    app:hpv_progress_textColor="#696969"
+                    app:hpv_progress_textVisibility="false"
+                    app:hpv_start_color="@color/blue_start"
+                    app:hpv_track_color="#f4f4f4"
+                    app:hpv_track_width="8dp" />
+
+                <TextView
+                    android:id="@+id/progress_text_math"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="English"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp" />
+
+                <com.xuexiang.xui.widget.progress.HorizontalProgressView
+                    android:id="@+id/hpv_english"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    app:hpv_end_color="@color/green_end"
+                    app:hpv_end_progress="96"
+                    app:hpv_isTracked="true"
+                    app:hpv_progress_duration="2900"
+                    app:hpv_progress_textColor="#696969"
+                    app:hpv_progress_textVisibility="false"
+                    app:hpv_start_color="@color/green_start"
+                    app:hpv_track_color="#f4f4f4"
+                    app:hpv_track_width="8dp" />
+
+                <TextView
+                    android:id="@+id/progress_text_english"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_start"
+        style="@style/Button.Blue.wrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="开始" />
+</LinearLayout>

@@ -10,6 +10,7 @@ import com.xuexiang.xuidemo.fragment.expands.chart.BarChartFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.LineChartFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.PieChartFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.RadarChartFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.echarts.EChartsFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
 /**
@@ -29,7 +30,8 @@ public class MPAndroidChartFragment extends ComponentContainerFragment {
                 LineChartFragment.class,
                 BarChartFragment.class,
                 PieChartFragment.class,
-                RadarChartFragment.class
+                RadarChartFragment.class,
+                EChartsFragment.class
         };
     }
 

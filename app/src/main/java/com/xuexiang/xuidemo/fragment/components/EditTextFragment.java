@@ -6,6 +6,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.edittext.CustomEditTextFragment;
 import com.xuexiang.xuidemo.fragment.components.edittext.EditTextStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.edittext.MaterialEditTextFragment;
+import com.xuexiang.xuidemo.fragment.components.edittext.VerifyCodeEditTextFragment;
 
 /**
  * 输入框组件
@@ -21,7 +22,8 @@ public class EditTextFragment extends ComponentContainerFragment {
         return new Class[]{
                 EditTextStyleFragment.class,
                 CustomEditTextFragment.class,
-                MaterialEditTextFragment.class
+                MaterialEditTextFragment.class,
+                VerifyCodeEditTextFragment.class
         };
     }
 }

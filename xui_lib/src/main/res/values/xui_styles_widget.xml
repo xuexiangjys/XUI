@@ -264,6 +264,20 @@
         <item name="rv_roundRadius">10dp</item>
     </style>
 
+    <!-- VerifyCodeEditText -->
+    <style name="VerifyCodeEditText">
+        <item name="vcet_number">4</item>
+        <item name="vcet_width">@dimen/default_vcet_width</item>
+        <item name="vcet_divider">@drawable/vcet_shape_divider</item>
+        <item name="vcet_text_color">@color/xui_config_color_pure_black</item>
+        <item name="vcet_text_size">@dimen/default_vcet_text_size</item>
+        <item name="vcet_bg_focus">@drawable/vcet_shape_bg_focus</item>
+        <item name="vcet_bg_normal">@drawable/vcet_shape_bg_normal</item>
+        <item name="vcet_is_pwd">false</item>
+        <item name="vcet_pwd_radius">@dimen/default_vcet_pwd_radius</item>
+    </style>
+
+
     <!--MaterialSearchView-->
     <style name="MSV_ImageButton">
         <item name="android:layout_width">wrap_content</item>
@@ -328,6 +342,182 @@
     <style name="BottomSheetListItemTextStyle.Center">
         <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <!--CircleProgressView-->
+    <style name="CircleProgressView">
+        <item name="cpv_start_progress">0</item>
+        <item name="cpv_end_progress">60</item>
+        <item name="cpv_start_color">@color/xui_config_color_light_orange</item>
+        <item name="cpv_end_color">@color/xui_config_color_dark_orange</item>
+        <item name="cpv_isTracked">false</item>
+        <item name="cpv_track_width">@dimen/default_pv_trace_width</item>
+        <item name="cpv_track_color">@color/default_pv_track_color</item>
+        <item name="cpv_progress_duration">1200</item>
+        <item name="cpv_progress_textVisibility">true</item>
+        <item name="cpv_progress_textColor">?attr/colorAccent</item>
+        <item name="cpv_progress_textSize">@dimen/default_pv_progress_text_size</item>
+        <item name="cpv_animate_type">AccelerateDecelerateInterpolator</item>
+        <item name="cpv_isFilled">false</item>
+        <item name="cpv_circle_broken">true</item>
+        <item name="cpv_isGraduated">false</item>
+        <item name="cpv_scaleZone_width">@dimen/default_pv_zone_width</item>
+        <item name="cpv_scaleZone_length">@dimen/default_pv_zone_length</item>
+        <item name="cpv_scaleZone_corner_radius">@dimen/default_pv_zone_corner_radius</item>
+        <item name="cpv_scaleZone_padding">@dimen/default_pv_zone_padding</item>
+    </style>
+
+    <!--HorizontalProgressView-->
+    <style name="HorizontalProgressView">
+        <item name="hpv_start_progress">0</item>
+        <item name="hpv_end_progress">60</item>
+        <item name="hpv_start_color">@color/xui_config_color_light_orange</item>
+        <item name="hpv_end_color">@color/xui_config_color_dark_orange</item>
+        <item name="hpv_isTracked">false</item>
+        <item name="hpv_track_width">@dimen/default_pv_trace_width</item>
+        <item name="hpv_track_color">@color/default_pv_track_color</item>
+        <item name="hpv_progress_duration">1200</item>
+        <item name="hpv_progress_textVisibility">true</item>
+        <item name="hpv_progress_textColor">?attr/colorAccent</item>
+        <item name="hpv_progress_textSize">@dimen/default_pv_progress_text_size</item>
+        <item name="hpv_animate_type">AccelerateDecelerateInterpolator</item>
+        <item name="hpv_corner_radius">@dimen/default_pv_corner_radius</item>
+        <item name="hpv_text_padding_bottom">@dimen/default_pv_corner_radius</item>
+        <item name="hpv_text_movedEnable">true</item>
+    </style>
+
+    <style name="EditText.Clear">
+        <item name="cet_clearIcon">@drawable/xui_ic_default_clear_btn</item>
+        <item name="cet_clearIconSize">21dp</item>
+    </style>
+
+    <style name="EditText.Password">
+        <item name="pet_iconShow">@drawable/pet_icon_visibility_24dp</item>
+        <item name="pet_iconHide">@drawable/pet_icon_visibility_off_24dp</item>
+        <item name="pet_hoverShowsPw">false</item>
+        <item name="pet_nonMonospaceFont">false</item>
+        <item name="pet_enableIconAlpha">true</item>
+    </style>
+
+    <style name="EditText.Material">
+        <item name="android:paddingLeft">0dp</item>
+
+        <item name="met_textColor">@color/xui_config_color_edittext_textcolor</item>
+        <item name="met_textColorHint">@color/xui_config_color_edittext_hint_text</item>
+        <item name="met_underlineColor">@color/xui_config_color_edittext_stroke</item>
+        <item name="met_errorColor">@color/xui_config_color_edittext_error_text</item>
+        <item name="met_helperTextColor">@color/xui_config_color_edittext_error_text</item>
+
+        <item name="met_floatingLabelTextSize">?attr/xui_config_size_edittext_helper_text</item>
+        <item name="met_bottomTextSize">?attr/xui_config_size_edittext_helper_text</item>
+
+        <item name="met_floatingLabelPadding">?attr/xui_config_size_edittext_components_spacing</item>
+    </style>
+
+    <style name="EditText.Validator">
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+
+        <item name="android:background">@drawable/xui_config_bg_edittext</item>
+        <item name="vet_autoValidate">true</item>
+        <item name="vet_show_errorIcon">true</item>
+        <item name="vet_errorIcon">@drawable/xui_ic_default_tip_btn</item>
+        <item name="vet_errorIconSize">21dp</item>
+        <item name="vet_tipPosition">top</item>
+    </style>
+
+    <style name="EasyIndicator">
+        <item name="indicator_width">0dp</item>
+        <item name="indicator_height">45dp</item>
+        <item name="indicator_textSize">14sp</item>
+        <item name="indicator_select_textSize">14sp</item>
+        <item name="indicator_selected_color">?attr/colorAccent</item>
+        <item name="indicator_normal_color">@color/xui_config_color_black</item>
+        <item name="indicator_line_show">true</item>
+        <item name="indicator_line_height">3dp</item>
+        <item name="indicator_line_color">?attr/colorAccent</item>
+        <item name="indicator_bottom_line_color">?attr/xui_config_color_separator_dark</item>
+        <item name="indicator_bottom_line_height">0dp</item>
+        <item name="indicator_vertical_line_w">0dp</item>
+        <item name="indicator_vertical_line_h">0dp</item>
+        <item name="indicator_vertical_line_color">?attr/xui_config_color_separator_dark</item>
+    </style>
+
+    <style name="MultipleStatusView">
+        <item name="msv_loadingView">@layout/msv_loading_view</item>
+        <item name="msv_errorView">@layout/msv_error_view</item>
+        <item name="msv_emptyView">@layout/msv_empty_view</item>
+        <item name="msv_noNetworkView">@layout/msv_no_network_view</item>
+    </style>
+
+    <style name="StatefulLayout">
+        <item name="stf_animationEnabled">true</item>
+        <item name="stf_inAnimation">@android:anim/fade_in</item>
+        <item name="stf_outAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="TitleBar">
+        <item name="tb_barHeight">?attr/xui_actionbar_height</item>
+        <item name="tb_immersive">false</item>
+        <item name="tb_actionPadding">?attr/xui_actionbar_action_padding</item>
+        <item name="tb_sideTextPadding">?attr/xui_actionbar_side_text_padding</item>
+        <item name="tb_sideTextColor">@color/xui_config_color_white</item>
+        <item name="tb_titleTextColor">@color/xui_config_color_white</item>
+        <item name="tb_subTitleTextColor">@color/xui_config_color_white</item>
+        <item name="tb_actionTextColor">@color/xui_config_color_white</item>
+        <item name="tb_sideTextSize">?attr/xui_actionbar_action_text_size</item>
+        <item name="tb_titleTextSize">?attr/xui_actionbar_title_text_size</item>
+        <item name="tb_subTitleTextSize">?attr/xui_actionbar_sub_text_size</item>
+        <item name="tb_actionTextSize">?attr/xui_actionbar_action_text_size</item>
+        <item name="tb_dividerColor">@color/xui_config_color_transparent</item>
+    </style>
+
+    <style name="CountDownButton">
+        <item name="cdbt_countDownFormat">%ds</item>
+        <item name="cdbt_countDown">60000</item>
+        <item name="cdbt_countDownInterval">1000</item>
+        <item name="cdbt_enableCountDown">true</item>
+    </style>
+
+    <style name="AutoFitTextView">
+        <item name="aftv_enable">true</item>
+        <item name="aftv_minTextSize">8sp</item>
+        <item name="aftv_precision">0.5</item>
+    </style>
+
+    <style name="RippleView">
+        <item name="rv_alpha">90</item>
+        <item name="rv_frameRate">10</item>
+        <item name="rv_rippleDuration">400</item>
+        <item name="rv_color">@color/xui_config_color_white</item>
+        <item name="rv_centered">false</item>
+        <item name="rv_type">simpleRipple</item>
+        <item name="rv_ripplePadding">0dp</item>
+        <item name="rv_zoom">false</item>
+        <item name="rv_zoomScale">1.03</item>
+        <item name="rv_zoomDuration">200</item>
+    </style>
+
+    <style name="StatusView">
+        <item name="sv_dismissOnComplete">true</item>
+    </style>
+
+    <style name="BannerLayout">
+        <item name="bl_interval">4000</item>
+        <item name="bl_showIndicator">true</item>
+        <item name="bl_orientation">horizontal</item>
+        <item name="bl_autoPlaying">true</item>
+        <item name="bl_indicatorSize">@dimen/default_recycler_banner_indicatorSize</item>
+        <item name="bl_indicatorSelectedColor">@color/xui_config_color_red</item>
+        <item name="bl_indicatorUnselectedColor">@color/xui_config_color_gray_2</item>
+        <item name="bl_indicatorSpace">@dimen/default_recycler_banner_indicatorSpace</item>
+        <item name="bl_indicatorMarginLeft">@dimen/default_recycler_banner_indicatorMarginLeft</item>
+        <item name="bl_indicatorMarginRight">@dimen/default_recycler_banner_indicatorMarginRight</item>
+        <item name="bl_indicatorMarginBottom">@dimen/default_recycler_banner_indicatorMarginBottom</item>
+        <item name="bl_indicatorGravity">left</item>
+        <item name="bl_itemSpace">@dimen/default_recycler_banner_itemSpace</item>
+        <item name="bl_centerScale">1.2</item>
+        <item name="bl_moveSpeed">1.0</item>
     </style>
 
 </resources>

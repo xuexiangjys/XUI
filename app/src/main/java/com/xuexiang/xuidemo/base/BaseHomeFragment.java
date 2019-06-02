@@ -85,12 +85,13 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
     }
 
     private void initRecyclerView() {
-        mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
-        mWidgetItemAdapter.setOnItemClickListener(this);
-        mRecyclerView.setAdapter(mWidgetItemAdapter);
         int spanCount = 3;
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
         mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), spanCount));
+
+        mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
+        mWidgetItemAdapter.setOnItemClickListener(this);
+        mRecyclerView.setAdapter(mWidgetItemAdapter);
     }
 
     /**
@@ -143,9 +144,13 @@ public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyc
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig); //屏幕旋转时刷新一下title
-        ((ViewGroup) getRootView()).removeViewAt(0);
-        initTitle();
+        //屏幕旋转时刷新一下title
+        super.onConfigurationChanged(newConfig);
+        ViewGroup root = (ViewGroup) getRootView();
+        if (root.getChildAt(0) instanceof TitleBar) {
+            root.removeViewAt(0);
+            initTitle();
+        }
     }
 
 }

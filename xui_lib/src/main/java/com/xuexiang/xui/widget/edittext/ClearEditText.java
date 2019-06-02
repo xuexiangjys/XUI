@@ -32,19 +32,16 @@ public class ClearEditText extends AppCompatEditText implements
     private int mIconSize;
 
     public ClearEditText(Context context) {
-        super(context);
-        initAttrs(context, null);
+        this(context, null);
     }
 
     public ClearEditText(Context context, AttributeSet attrs) {
-        //这里构造方法也很重要，不加这个很多属性不能再XML里面定义
-        super(context, attrs, android.R.attr.editTextStyle);
-        initAttrs(context, attrs);
+        this(context, attrs, R.attr.ClearEditTextStyle);
     }
 
     public ClearEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initAttrs(context, attrs);
+        initAttrs(context, attrs, defStyle);
     }
 
     /**
@@ -60,11 +57,11 @@ public class ClearEditText extends AppCompatEditText implements
         return translateAnimation;
     }
 
-    private void initAttrs(Context context, AttributeSet attrs) {
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         if (isInEditMode()) {
             return;
         }
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClearEditText);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClearEditText, defStyleAttr, 0);
         if (typedArray != null) {
             mClearDrawable = typedArray.getDrawable(R.styleable.ClearEditText_cet_clearIcon);
             mIconSize = typedArray.getDimensionPixelSize(R.styleable.ClearEditText_cet_clearIconSize, 0);

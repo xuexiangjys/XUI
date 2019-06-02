@@ -12,6 +12,7 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 一个方便在多种状态切换的view
@@ -81,16 +82,14 @@ public class MultipleStatusView extends FrameLayout {
      */
     private OnClickListener mOnRetryClickListener;
 
-    private final ArrayList<Integer> mOtherIds = new ArrayList<>();
+    private final List<Integer> mOtherIds = new ArrayList<>();
 
     public MultipleStatusView(Context context) {
-        super(context);
-        initAttrs(context, null, 0);
+        this(context, null);
     }
 
     public MultipleStatusView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initAttrs(context, attrs, 0);
+        this(context, attrs, R.attr.MultipleStatusViewStyle);
     }
 
     public MultipleStatusView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -299,6 +298,26 @@ public class MultipleStatusView extends FrameLayout {
             addView(mContentView, 0, DEFAULT_LAYOUT_PARAMS);
         }
         showContentView();
+    }
+
+    public View getErrorView() {
+        return mErrorView;
+    }
+
+    public View getEmptyView() {
+        return mEmptyView;
+    }
+
+    public View getLoadingView() {
+        return mLoadingView;
+    }
+
+    public View getNoNetworkView() {
+        return mNoNetworkView;
+    }
+
+    public View getContentView() {
+        return mContentView;
     }
 
     private void showContentView() {

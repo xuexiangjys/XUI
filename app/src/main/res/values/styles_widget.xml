@@ -123,5 +123,11 @@
         <item name="tabTextColor">@color/xui_config_color_gray_6</item>
     </style>
 
+    <style name="StatusView.Custom">
+        <item name="sv_complete">@layout/sv_layout_complete</item>
+        <item name="sv_error">@layout/sv_layout_error</item>
+        <item name="sv_loading">@layout/sv_layout_loading</item>
+        <item name="sv_custom">@layout/sv_layout_custom</item>
+    </style>
 
 </resources>

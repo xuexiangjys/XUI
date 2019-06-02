@@ -24,6 +24,11 @@
     <color name="radius_button_color_blue">#31BDF3</color>
     <color name="radius_button_color_blue_pressed">#7F31BDF3</color>
 
+    <!--ProgressView-->
+    <color name="default_pv_track_color">#F3E5DD</color>
+    <color name="xui_config_color_light_orange">#FFC288</color>
+    <color name="xui_config_color_dark_orange">#FF8F5D</color>
+
     <!--SwitchButton-->
     <color name="swb_md_ripple_normal">#1E000000</color>
     <color name="swb_md_ripple_checked">#3F299EE3</color>
@@ -136,10 +141,11 @@
     <color name="xui_config_color_light_blue">#299EE3</color>
 
     <!--text color-->
-    <color name="xui_config_color_title_content_text">@color/xui_config_color_dark_blue_gray</color>
-    <color name="xui_config_color_sub_title_common_explain_text">@color/xui_config_color_middle_blue_gray</color>
-    <color name="xui_config_color_assist_explain_text">@color/xui_config_color_light_blue_gray</color>
-    <color name="xui_config_color_major_prompt_message_text">@color/xui_config_color_light_blue</color>
+    <color name="xui_config_color_title_text">@color/xui_config_color_dark_blue_gray</color>
+    <color name="xui_config_color_content_text">@color/xui_config_color_middle_blue_gray</color>
+    <color name="xui_config_color_explain_text">@color/xui_config_color_light_blue_gray</color>
+    <color name="xui_config_color_primary_text">@color/xui_config_color_dark_blue_gray</color>
+    <color name="xui_config_color_control_normal">#BEC2C7</color>
 
     <!--ListView\GridView color-->
     <!--背景颜色-->
@@ -162,7 +168,7 @@
     <!--提示文字的颜色-->
     <color name="xui_config_color_edittext_hint_text">#C5CDD9</color>
     <!--边框颜色-->
-    <color name="xui_config_color_edittext_stroke">#BEC2C7</color>
+    <color name="xui_config_color_edittext_stroke">@color/xui_config_color_control_normal</color>
     <!--不可输入的填充颜色-->
     <color name="xui_config_color_edittext_disable">#EDF2F7</color>
 

@@ -3,6 +3,8 @@ package com.xuexiang.xui.utils;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
+import com.xuexiang.xui.R;
+
 /**
  * 倒计时Button帮助类
  *
@@ -76,7 +78,7 @@ public class CountDownButtonHelper {
                     if (mListener != null) {
                         mListener.onFinished();
                     } else {
-                        mButton.setText("重试");
+                        mButton.setText(mButton.getResources().getString(R.string.xui_count_down_finish));
                     }
                 }
             };

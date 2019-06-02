@@ -12,7 +12,6 @@ import com.xuexiang.xui.widget.banner.anim.select.ZoomInEnter;
 import com.xuexiang.xui.widget.banner.transform.DepthTransformer;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleGuideBanner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +27,7 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
         WidgetUtils.requestFullScreen(this);
 
         setContentView(R.layout.xui_activity_guide);
-        initGuideView(getGuidesResIdList(), getSkipClass());
+        initGuideView(getGuideResourceList(), getSkipClass());
         onCreateActivity();
     }
 
@@ -40,11 +39,11 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
     }
 
     /**
-     * 获取引导页资源的ID集合
+     * 获取引导页资源的集合[可以是url也可以是资源id]
      *
      * @return
      */
-    protected abstract List<Integer> getGuidesResIdList();
+    protected abstract List<Object> getGuideResourceList();
 
     /**
      * 获取跳转activity的类
@@ -59,7 +58,7 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
      * @param guidesResIdList 引导图片
      * @param cls             点击后跳转的Activity类
      */
-    public void initGuideView(List<Integer> guidesResIdList, final Class<?> cls) {
+    public void initGuideView(List<Object> guidesResIdList, final Class<?> cls) {
         initGuideView(guidesResIdList, DepthTransformer.class, cls);
     }
 
@@ -70,7 +69,7 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
      * @param transformerClass 引导图片切换的效果
      * @param cls              点击后跳转的Activity类
      */
-    public void initGuideView(List<Integer> guidesResIdList, Class<? extends ViewPager.PageTransformer> transformerClass, final Class<?> cls) {
+    public void initGuideView(List<Object> guidesResIdList, Class<? extends ViewPager.PageTransformer> transformerClass, final Class<?> cls) {
         SimpleGuideBanner sgb = findViewById(R.id.sgb);
 
         sgb.setIndicatorWidth(6).setIndicatorHeight(6).setIndicatorGap(12)
@@ -94,7 +93,7 @@ public abstract class BaseGuideActivity extends AppCompatActivity {
      * @param guidesResIdList  引导图片
      * @param transformerClass 引导图片切换的效果
      */
-    public void initGuideView(ArrayList<Integer> guidesResIdList, Class<? extends ViewPager.PageTransformer> transformerClass, SimpleGuideBanner.OnJumpClickListener onJumpClickListener) {
+    public void initGuideView(List<Object> guidesResIdList, Class<? extends ViewPager.PageTransformer> transformerClass, SimpleGuideBanner.OnJumpClickListener onJumpClickListener) {
         SimpleGuideBanner sgb = findViewById(R.id.sgb);
 
         sgb.setIndicatorWidth(6).setIndicatorHeight(6).setIndicatorGap(12)

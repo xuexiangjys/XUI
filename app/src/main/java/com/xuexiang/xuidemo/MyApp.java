@@ -11,6 +11,7 @@ import com.xuexiang.xpage.PageConfig;
 import com.xuexiang.xpage.PageConfiguration;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.utils.LocationService;
 import com.xuexiang.xuidemo.utils.update.OKHttpUpdateHttpService;
 import com.xuexiang.xupdate.XUpdate;
@@ -73,6 +74,7 @@ public class MyApp extends Application {
                     }
                 })
                 .debug("PageLog")
+                .setContainActivityClazz(BaseActivity.class)
                 .enableWatcher(false)
                 .init(this);
 

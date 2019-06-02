@@ -34,7 +34,7 @@
         app:inner_marginTop="60dp"
         app:inner_scan_bitmap="@drawable/ic_scan_image"
         app:inner_scan_isCircle="false"
-        app:inner_scan_speed="10"
+        app:inner_scan_speed="10dp"
         app:inner_height="300dp"
         app:inner_width="300dp" />
 

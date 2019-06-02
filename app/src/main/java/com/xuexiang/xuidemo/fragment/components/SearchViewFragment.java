@@ -53,7 +53,7 @@ public class SearchViewFragment extends BaseFragment {
     @Override
     protected TitleBar initTitle() {
         TitleBar titleBar = super.initTitle();
-        titleBar.addAction(new TitleBar.ImageAction(R.drawable.ic_action_search) {
+        titleBar.addAction(new TitleBar.ImageAction(R.drawable.ic_action_search_white) {
 
             @Override
             @SingleClick

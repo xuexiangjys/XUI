@@ -68,22 +68,27 @@ public class MaterialSpinner extends AppCompatTextView {
     private int dropDownOffset;
 
     public MaterialSpinner(Context context) {
-        super(context);
-        init(context, null);
+        this(context, null);
     }
 
     public MaterialSpinner(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs);
+        this(context, attrs, R.attr.MaterialSpinnerStyle);
     }
 
     public MaterialSpinner(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs);
+        initAttrs(context, attrs, defStyleAttr);
     }
 
-    private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MaterialSpinner);
+    /**
+     * 初始化属性
+     *
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
+     */
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MaterialSpinner, defStyleAttr, 0);
         int defaultColor = getTextColors().getDefaultColor();
         boolean rtl = ResUtils.isRtl();
 
@@ -180,8 +185,8 @@ public class MaterialSpinner extends AppCompatTextView {
         } else {
             mPopupWindow.setBackgroundDrawable(ResUtils.getDrawable(getContext(), R.drawable.ms_drop_down_bg));
         }
-
-        if (mBackgroundColor != Color.WHITE) { // default color is white
+        // default color is white
+        if (mBackgroundColor != Color.WHITE) {
             setBackgroundColor(mBackgroundColor);
         } else if (mBackgroundSelector != 0) {
             setBackgroundResource(mBackgroundSelector);

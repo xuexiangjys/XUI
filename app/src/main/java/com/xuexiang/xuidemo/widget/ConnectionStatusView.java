@@ -33,19 +33,15 @@ import com.xuexiang.xuidemo.R;
 public class ConnectionStatusView extends StatusView {
 
     public ConnectionStatusView(Context context) {
-        super(context, R.layout.sv_layout_complete, R.layout.sv_layout_error, R.layout.sv_layout_loading);
+        super(context, R.layout.sv_layout_complete, R.layout.sv_layout_error, R.layout.sv_layout_loading, R.layout.sv_layout_custom);
     }
 
     public ConnectionStatusView(Context context, AttributeSet attrs) {
-        super(context, attrs, R.layout.sv_layout_complete, R.layout.sv_layout_error, R.layout.sv_layout_loading);
+        super(context, attrs, R.layout.sv_layout_complete, R.layout.sv_layout_error, R.layout.sv_layout_loading,  R.layout.sv_layout_custom);
     }
 
     public ConnectionStatusView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr, R.layout.sv_layout_complete, R.layout.sv_layout_error, R.layout.sv_layout_loading);
+        super(context, attrs, defStyleAttr, R.layout.sv_layout_complete, R.layout.sv_layout_error, R.layout.sv_layout_loading,  R.layout.sv_layout_custom);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public ConnectionStatusView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes, R.layout.sv_layout_complete, R.layout.sv_layout_error, R.layout.sv_layout_loading);
-    }
 }

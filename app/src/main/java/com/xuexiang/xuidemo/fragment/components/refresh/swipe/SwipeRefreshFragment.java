@@ -9,6 +9,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.widget.MaterialLoadMoreView;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
 import butterknife.BindView;
@@ -46,6 +47,7 @@ public class SwipeRefreshFragment extends BaseFragment {
     @Override
     protected void initViews() {
         Utils.initRecyclerView(recyclerView);
+
         recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         swipeRefreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);
@@ -95,12 +97,18 @@ public class SwipeRefreshFragment extends BaseFragment {
         if (recyclerView != null && !mEnableLoadMore) {
             mEnableLoadMore = true;
             //SwipeRefreshLayout不支持加载更多
-            recyclerView.useDefaultLoadMore();
+//            recyclerView.useDefaultLoadMore();
+            useMaterialLoadMore();
             // 加载更多的监听。
             recyclerView.setLoadMoreListener(mLoadMoreListener);
             recyclerView.loadMoreFinish(false, true);
-
         }
+    }
+
+    private void useMaterialLoadMore() {
+        MaterialLoadMoreView loadMoreView = new MaterialLoadMoreView(getContext());
+        recyclerView.addFooterView(loadMoreView);
+        recyclerView.setLoadMoreView(loadMoreView);
     }
 
     /**

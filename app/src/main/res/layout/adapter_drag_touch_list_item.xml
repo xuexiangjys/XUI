@@ -20,7 +20,7 @@
     android:orientation="horizontal"
     android:padding="5dp">
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv_icon"
         android:layout_width="@dimen/dp_70"
         android:layout_height="@dimen/dp_70"

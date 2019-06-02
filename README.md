@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/xuexiangjys/XUI/blob/master/art/app_logo_xui.png" width="388" height="321" alt="Banner" />
+  <img src="./art/app_logo_xui.png" width="388" height="321" alt="Banner" />
 </p>
 
 # XUI
@@ -9,7 +9,7 @@
 
 > 涵盖绝大部分的UI组件：TextView、Button、EditText、ImageView、Spinner、Picker、Dialog、PopupWindow、ProgressBar、LoadingView、StateLayout、FlowLayout、Switch、Actionbar、TabBar、Banner、GuideView、BadgeView、MarqueeView、WebView、SearchView等一系列的组件和丰富多彩的样式主题。
 
-在提issue前，请先阅读[【提问的智慧】](http://www.binarywang.com/article/smart-questions)，并严格按照[issue模板](https://github.com/xuexiangjys/XUI/issues/new/choose)进行填写，节约大家的时间。
+在提issue前，请先阅读[【提问的智慧】](https://xuexiangjys.blog.csdn.net/article/details/83344235)，并严格按照[issue模板](https://github.com/xuexiangjys/XUI/issues/new/choose)进行填写，节约大家的时间。
 
 ## 关于我
 

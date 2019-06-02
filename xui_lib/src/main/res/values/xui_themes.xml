@@ -39,6 +39,7 @@
         <item name="colorPrimary">@color/xui_config_color_main_theme</item>
         <!--应用的主要暗色调，statusBarColor默认使用该颜色-->
         <item name="colorPrimaryDark">@color/xui_config_color_main_theme</item>
+        <item name="colorControlNormal">@color/xui_config_color_control_normal</item>
 
         <!--无Title-->
         <item name="android:windowNoTitle">true</item>
@@ -52,32 +53,39 @@
         <item name="xui_alpha_pressed">@dimen/xui_alpha_pressed</item>
         <item name="xui_alpha_disabled">@dimen/xui_alpha_disabled</item>
 
+        <item name="xui_general_shadow_elevation">@dimen/default_xui_general_shadow_elevation</item>
+        <item name="xui_general_shadow_alpha">@dimen/default_xui_general_shadow_alpha</item>
+
         <!--actionbar的样式-->
         <item name="xui_actionbar_color">@color/xui_config_color_titlebar</item>
 
         <!-- 文字的style -->
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
         <item name="textFieldStyle">@style/TextField</item>
-        <item name="xui_config_color_title_text">@color/xui_config_color_dark_blue_gray</item>
-        <item name="xui_config_color_content_text">@color/xui_config_color_middle_blue_gray</item>
-        <item name="xui_config_color_explain_text">@color/xui_config_color_light_blue_gray</item>
+        <item name="xui_config_color_title_text">@color/xui_config_color_title_text</item>
+        <item name="xui_config_color_content_text">@color/xui_config_color_content_text</item>
+        <item name="xui_config_color_explain_text">@color/xui_config_color_explain_text</item>
         <!--应用的主要文字颜色，actionBar的标题文字默认使用该颜色-->
-        <item name="android:textColorPrimary">?attr/xui_config_color_title_text</item>
+        <item name="android:textColorPrimary">@color/xui_config_color_primary_text</item>
 
         <!-- 按钮的style -->
         <item name="android:imageButtonStyle">@style/ImageButton</item>
+        <item name="imageButtonStyle">@style/ImageButton</item>
         <item name="android:buttonStyle">@style/Button</item>
+        <item name="buttonStyle">@style/Button</item>
 
         <!-- 输入框的style -->
         <item name="android:editTextColor">@color/xui_config_color_edittext_input_text</item>
+        <item name="editTextColor">@color/xui_config_color_edittext_input_text</item>
         <item name="android:editTextStyle">@style/EditText</item>
+        <item name="editTextStyle">@style/EditText</item>
 
         <!-- Dialog的style -->
         <item name="xui_dialog_background_dim_amount">0.6</item>
 
         <!-- 条目的style -->
         <item name="android:gridViewStyle">@style/GridView</item>
-        <item name="selectableItemBackground">@drawable/xui_config_selectable_item_selector</item>
+        <!--<item name="selectableItemBackground">@drawable/xui_config_selectable_item_selector</item>-->
         <item name="android:listSelector">@drawable/xui_config_selectable_item_selector</item>
         <item name="android:listDivider">@drawable/xui_config_list_divider</item>
 
@@ -93,8 +101,10 @@
         **********************************************-->
         <item name="md_regular_font">@string/default_app_font_path</item>
         <item name="md_medium_font">@string/default_app_font_path</item>
+        <item name="md_title_color">?attr/xui_config_color_title_text</item>
         <item name="md_content_color">?attr/xui_config_color_content_text</item>
         <item name="md_explain_color">?attr/xui_config_color_explain_text</item>
+        <item name="md_link_color">?attr/colorAccent</item>
         <item name="md_icon_limit_icon_to_default_size">false</item>
 
         <!--**********************************************
@@ -182,16 +192,31 @@
         <!--**********************************************
         *               xui 提供的控件样式                  *
         ***********************************************-->
+        <item name="TitleBarStyle">@style/TitleBar</item>
         <item name="XUITipPointStyle">@style/XUITipPoint</item>
         <item name="XUITipNewStyle">@style/XUITipNew</item>
         <item name="XUIGroupListViewStyle">@style/XUIGroupListView</item>
         <item name="XUICommonListItemViewStyle">@style/XUICommonListItemView</item>
         <item name="XUIGroupListSectionViewStyle">@style/XUIGroupListSectionView</item>
-
         <item name="MiniLoadingStyle">@style/MiniLoadingView</item>
         <item name="RulerViewStyle">@style/RulerView</item>
         <item name="RadiusImageViewStyle">@style/RadiusImageView</item>
         <item name="TabSegmentStyle">@style/TabSegment</item>
+        <item name="VerifyCodeEditTextStyle">@style/VerifyCodeEditText</item>
+        <item name="HorizontalProgressViewStyle">@style/HorizontalProgressView</item>
+        <item name="CircleProgressViewStyle">@style/CircleProgressView</item>
+        <item name="ClearEditTextStyle">@style/EditText.Clear</item>
+        <item name="PasswordEditTextStyle">@style/EditText.Password</item>
+        <item name="MaterialEditTextStyle">@style/EditText.Material</item>
+        <item name="ValidatorEditTextStyle">@style/EditText.Validator</item>
+        <item name="EasyIndicatorStyle">@style/EasyIndicator</item>
+        <item name="MultipleStatusViewStyle">@style/MultipleStatusView</item>
+        <item name="StatusViewStyle">@style/StatusView</item>
+        <item name="StatefulLayoutStyle">@style/StatefulLayout</item>
+        <item name="CountDownButtonStyle">@style/CountDownButton</item>
+        <item name="AutoFitTextViewStyle">@style/AutoFitTextView</item>
+        <item name="RippleViewStyle">@style/RippleView</item>
+        <item name="BannerLayoutStyle">@style/BannerLayout</item>
 
     </style>
 
@@ -602,6 +627,7 @@
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">0dp</item>
         <item name="android:minHeight">?attr/xui_btn_view_height</item>
+        <item name="android:background">@null</item>
     </style>
 
     <!--**********************************************

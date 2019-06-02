@@ -1,7 +1,6 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.jpeng.jptabbar.anno.NorIcons;
@@ -10,7 +9,6 @@ import com.jpeng.jptabbar.anno.Titles;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
-import com.xuexiang.xpage.logger.PageLog;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.R;
 
@@ -47,48 +45,6 @@ public class BaseActivity extends XPageActivity {
         XUI.initTheme(this);
         super.onCreate(savedInstanceState);
         mUnbinder = ButterKnife.bind(this);
-    }
-
-    /**
-     * 根据SwitchPage打开activity
-     *
-     * @param page CoreSwitchBean对象
-     */
-    @Override
-    public void startActivity(CoreSwitchBean page) {
-        try {
-            Intent intent = new Intent(this, BaseActivity.class);
-            intent.putExtra(CoreSwitchBean.KEY_SWITCH_BEAN, page);
-
-            this.startActivity(intent);
-            int[] animations = page.getAnim();
-            if (animations != null && animations.length >= 2) {
-                overridePendingTransition(animations[0], animations[1]);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            PageLog.e(e);
-        }
-    }
-
-    /**
-     * @param page CoreSwitchBean对象
-     */
-    @Override
-    public void startActivityForResult(CoreSwitchBean page) {
-        try {
-            Intent intent = new Intent(this, BaseActivity.class);
-            intent.putExtra(CoreSwitchBean.KEY_SWITCH_BEAN, page);
-            intent.putExtra(CoreSwitchBean.KEY_START_ACTIVITY_FOR_RESULT, true);
-            this.startActivityForResult(intent, page.getRequestCode());
-
-            int[] animations = page.getAnim();
-            if (animations != null && animations.length >= 2) {
-                this.overridePendingTransition(animations[0], animations[1]);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /**

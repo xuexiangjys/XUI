@@ -16,24 +16,26 @@
 
 package com.xuexiang.xuidemo.fragment.utils;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ViewUtils;
-import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * {@link DrawableUtils} 的使用示例。
@@ -44,8 +46,6 @@ import butterknife.BindView;
 @Page(name = "DrawableUtils", extra = R.drawable.ic_util_drawable)
 public class DrawableUtilsFragment extends BaseFragment {
 
-    @BindView(R.id.createFromView)
-    Button mCreateFromViewButton;
     @BindView(R.id.solidImage)
     ImageView mSolidImageView;
     @BindView(R.id.circleGradient)
@@ -56,6 +56,8 @@ public class DrawableUtilsFragment extends BaseFragment {
     ImageView mTintColorOriginImageView;
     @BindView(R.id.separator)
     View mSeparatorView;
+    @BindView(R.id.contentWrap)
+    NestedScrollView contentWrap;
 
     @Override
     protected int getLayoutId() {
@@ -94,28 +96,22 @@ public class DrawableUtilsFragment extends BaseFragment {
                 ContextCompat.getColor(getContext(), R.color.app_color_theme_6), DensityUtils.dp2px(getContext(), 2), true);
         ViewUtils.setBackgroundKeepingPadding(mSeparatorView, separatorLayerDrawable);
 
-        // 从一个 View 创建 Bitmap
-        mCreateFromViewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final MaterialDialog dialog = new MaterialDialog.Builder(getContext())
-                        .customView(R.layout.dialog_drawable_utils_createfromview, false)
-                        .title("示例效果")
-                        .build();
-                ImageView displayImageView = dialog.findViewById(R.id.createFromViewDisplay);
-                Bitmap createFromViewBitmap = DrawableUtils.createBitmapFromView(getRootView());
-                displayImageView.setImageBitmap(createFromViewBitmap);
+    }
 
-                displayImageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
 
-                dialog.show();
-            }
-        });
+    @SingleClick
+    @OnClick({R.id.createFromView, R.id.createFromView1})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.createFromView:
+                Utils.showCaptureBitmap(getRootView());
+                break;
+            case R.id.createFromView1:
+                Utils.showCaptureBitmap(contentWrap);
+                break;
+            default:
+                break;
+        }
     }
 
 

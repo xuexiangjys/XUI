@@ -53,7 +53,7 @@ public class EasyIndicatorActivity extends AppCompatActivity {
         }
         mEasyIndicator.setTabTitles(ContentPage.getPageNames());
         mEasyIndicator.setViewPager(mViewPager, new FragmentAdapter<>(getSupportFragmentManager(), list));
-        mViewPager.setOffscreenPageLimit(ContentPage.size());
+        mViewPager.setOffscreenPageLimit(ContentPage.size() - 1);
 
     }
 }

@@ -46,6 +46,9 @@
     <dimen name="xui_alpha_pressed">0.5</dimen>
     <dimen name="xui_alpha_disabled">0.5</dimen>
 
+    <dimen name="default_xui_general_shadow_elevation">14dp</dimen>
+    <dimen name="default_xui_general_shadow_alpha">0.25</dimen>
+
     <dimen name="xui_guide_btn_padding_horizontal_table_big">60dp</dimen>
     <dimen name="xui_guide_btn_padding_vertical_table_big">16dp</dimen>
     <dimen name="xui_guide_btn_margin_bottom_table_big">50dp</dimen>
@@ -140,6 +143,11 @@
     <dimen name="default_floating_label_text_size">12sp</dimen>
     <dimen name="default_bottom_text_size">12sp</dimen>
 
+    <!-- VerifyCodeEditText-->
+    <dimen name="default_vcet_width">21dp</dimen>
+    <dimen name="default_vcet_pwd_radius">5dp</dimen>
+    <dimen name="default_vcet_text_size">16sp</dimen>
+
     <!--StatefulLayout-->
     <dimen name="default_stf_progressbar_size_tablet_big">75dp</dimen>
     <dimen name="default_stf_progressbar_size_tablet_small">65dp</dimen>
@@ -181,6 +189,24 @@
     <!-- TabControlView-->
     <dimen name="default_tcv_text_size">14sp</dimen>
     <dimen name="default_tcv_stroke_width">1dp</dimen>
+
+    <!--ProgressView-->
+    <dimen name="default_pv_trace_width">16dp</dimen>
+    <dimen name="default_pv_progress_text_size">28sp</dimen>
+    <dimen name="default_pv_corner_radius">5dp</dimen>
+    <dimen name="default_pv_horizontal_text_size">14sp</dimen>
+    <dimen name="default_pv_zone_length">22dp</dimen>
+    <dimen name="default_pv_zone_width">6dp</dimen>
+    <dimen name="default_pv_zone_padding">16dp</dimen>
+    <dimen name="default_pv_zone_corner_radius">8dp</dimen>
+
+    <!--BannerLayout-->
+    <dimen name="default_recycler_banner_itemSpace">10dp</dimen>
+    <dimen name="default_recycler_banner_indicatorSize">5dp</dimen>
+    <dimen name="default_recycler_banner_indicatorSpace">4dp</dimen>
+    <dimen name="default_recycler_banner_indicatorMarginLeft">16dp</dimen>
+    <dimen name="default_recycler_banner_indicatorMarginRight">0dp</dimen>
+    <dimen name="default_recycler_banner_indicatorMarginBottom">11dp</dimen>
 
     <!--*********************************************
     *                  MaterialDialog               *

@@ -22,6 +22,11 @@ public class SplashActivity extends BaseSplashActivity {
     private boolean isDisplay = false;
 
     @Override
+    protected long getSplashDurationMillis() {
+        return 500;
+    }
+
+    @Override
     public void onCreateActivity() {
         isDisplay = getIntent().getBooleanExtra(KEY_IS_DISPLAY, isDisplay);
         boolean enableAlphaAnim = getIntent().getBooleanExtra(KEY_ENABLE_ALPHA_ANIM, false);

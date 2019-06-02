@@ -38,6 +38,9 @@ public class TitleBarFragment extends BaseFragment {
     @BindView(R.id.titlebar)
     TitleBar mTitleBar;
 
+    @BindView(R.id.titlebar1)
+    TitleBar mTitleBar1;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_titlebar;
@@ -55,13 +58,25 @@ public class TitleBarFragment extends BaseFragment {
             public void onClick(View v) {
                 ToastUtils.toast("点击标题");
             }
-        }).addAction(new TitleBar.ImageAction(R.drawable.icon_more) {
+        }).addAction(new TitleBar.ImageAction(R.drawable.ic_add_white_24dp) {
             @Override
             public void performAction(View view) {
                 ToastUtils.toast("点击更多！");
             }
         });
 
+        mTitleBar1.setLeftClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ToastUtils.toast("点击返回");
+                    }
+                })
+                .addAction(new TitleBar.TextAction("更多") {
+            @Override
+            public void performAction(View view) {
+                ToastUtils.toast("点击更多！");
+            }
+        });
     }
 
 }

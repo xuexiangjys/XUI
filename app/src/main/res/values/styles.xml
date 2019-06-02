@@ -39,4 +39,28 @@
         <item name="windowActionBar">false</item>
     </style>
 
+
+    <!--SettingTheme-->
+    <style name="SettingTheme" parent="XUITheme.Phone">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--有Title-->
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="actionBarStyle">@style/ActionBarStyle</item>
+    </style>
+
+
+    <style name="ActionBarStyle" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="titleTextStyle">@style/ToolbarTitle</item>
+        <item name="subtitleTextStyle">@style/ToolbarSubTitle</item>
+        <item name="background">?attr/colorPrimary</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+
 </resources>

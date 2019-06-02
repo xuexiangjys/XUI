@@ -47,4 +47,14 @@ public interface ImageLoader {
      * @param imageView
      */
     void displayImage(Context context, Object path, ImageView imageView, int width, int height, Drawable placeholder, DiskCacheStrategy strategy);
+
+
+    /**
+     * 展示图片
+     *
+     * @param context
+     * @param path
+     * @param imageView
+     */
+    void displayImage(Context context, Object path, ImageView imageView, Drawable placeholder, DiskCacheStrategy strategy);
 }

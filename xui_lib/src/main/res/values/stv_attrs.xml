@@ -179,8 +179,12 @@
         <attr name="sEditTextString" format="string"/>
         <!--输入框的提示信息-->
         <attr name="sEditTextHint" format="string"/>
-        <!--是否支持清空按钮，默认true-->
-        <attr name="sEditTextClearButton" format="boolean"/>
+        <!--输入框的按钮类型,默认是clear-->
+        <attr name="sEditTextButtonType" format="enum">
+            <enum name="none" value="0" />
+            <enum name="clear" value="1" />
+            <enum name="password" value="2" />
+        </attr>
         <attr name="android:inputType" />
 
         <!--CheckBox-->

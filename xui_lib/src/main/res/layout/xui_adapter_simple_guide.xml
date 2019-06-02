@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY" />
 
-    <com.xuexiang.xui.widget.button.ButtonView
+    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
         android:id="@+id/tv_jump"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="?attr/xui_guide_btn_margin_bottom"
+        android:clickable="true"
+        android:focusable="true"
         android:paddingLeft="?attr/xui_guide_btn_padding_horizontal"
         android:paddingTop="?attr/xui_guide_btn_padding_vertical"
         android:paddingRight="?attr/xui_guide_btn_padding_horizontal"
@@ -24,8 +25,6 @@
         android:text="@string/xui_try_immediately"
         android:textColor="@color/xui_config_color_white"
         android:textSize="?attr/xui_btn_view_text_size"
-        app:textRadius="?attr/xui_btn_view_radius"
-        app:textStrokeColor="@color/xui_config_color_white"
-        app:textStrokeWidth="1dp" />
+        android:background="@drawable/xui_config_bg_button_corner_white" />
 
 </RelativeLayout>

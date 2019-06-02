@@ -63,4 +63,15 @@
     <color name="web_colorAccent">#1aad19</color>
 
 
+    <color name="light_orange">#FFC2aa</color>
+    <color name="dark_orange">#ee8a3a</color>
+    <color name="purple_start">#7117ea</color>
+    <color name="purple_end">#ea6060</color>
+    <color name="green_start">#42e695</color>
+    <color name="green_end">#3bb2b8</color>
+    <color name="blue_start">#879af2</color>
+    <color name="blue_end">#fda000</color>
+    <color name="purple_light">#e488ff</color>
+    <color name="red_start">#EE3455</color>
+    <color name="red_end">#FFaa89</color>
 </resources>

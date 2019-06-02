@@ -69,22 +69,21 @@ public class CountDownButton extends AppCompatButton {
     private boolean isCountDownNow;
 
     public CountDownButton(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public CountDownButton(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs);
+        this(context, attrs, R.attr.CountDownButtonStyle);
     }
 
     public CountDownButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs);
+        init(context, attrs, defStyleAttr);
     }
 
-    private void init(Context context, AttributeSet attrs) {
+    private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         // 获取自定义属性值
-        initAttr(context, attrs);
+        initAttr(context, attrs, defStyleAttr);
 
         // 初始化倒计时Timer
         if (mCountDownTimer == null) {
@@ -110,8 +109,8 @@ public class CountDownButton extends AppCompatButton {
      * @param context
      * @param attrs
      */
-    private void initAttr(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CountDownButton);
+    private void initAttr(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CountDownButton, defStyleAttr, 0);
         if (typedArray != null) {
             mCountDownFormat = typedArray.getString(R.styleable.CountDownButton_cdbt_countDownFormat);
             if (TextUtils.isEmpty(mCountDownFormat)) {

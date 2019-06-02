@@ -8,13 +8,14 @@ android {
 
     defaultConfig {
         applicationId "com.xuexiang.xuidemo"
-        minSdkVersion 19
+        minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
 
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
@@ -86,10 +87,10 @@ dependencies {
 
     //XUI框架
     implementation project(':xui_lib')
-//    implementation 'com.github.xuexiangjys:XUI:1.0.2'
+//    implementation 'com.github.xuexiangjys:XUI:1.0.3'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
-    implementation 'com.qmuiteam:qmui:1.2.0'
+//    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
     implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.5'
@@ -98,7 +99,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.3'
 
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.5'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.6'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime
@@ -132,7 +133,7 @@ dependencies {
     implementation 'me.samlss:broccoli:1.0.0'
 
     //XQRCode二维码扫描
-    implementation 'com.github.xuexiangjys:XQRCode:1.0.2'
+    implementation 'com.github.xuexiangjys:XQRCode:1.0.5'
     //CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.1"
 
@@ -157,11 +158,15 @@ dependencies {
 
     //Android图表库
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //ECharts图表库
+    implementation 'com.github.abel533:ECharts:3.0.0.2'
     //TabBar
     implementation 'com.github.xuexiangjys:JPTabBar:1.0.0'
+    //日历控件
+    implementation 'com.github.xuexiangjys:CalendarExaple:1.0.1'
 
     //版本更新
-    implementation 'com.github.xuexiangjys:XUpdate:1.0.7'
+    implementation 'com.github.xuexiangjys:XUpdate:1.0.9'
     implementation 'com.qianwen:okhttp-utils:3.8.0'
 
 }

@@ -2,11 +2,26 @@ package com.xuexiang.xuidemo.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.LruCache;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
+import com.just.agentweb.core.AgentWeb;
+import com.xuexiang.xui.utils.DrawableUtils;
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
+import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
@@ -37,6 +52,23 @@ public final class Utils {
         context.startActivity(intent);
     }
 
+    /**
+     * 创建AgentWeb
+     *
+     * @param fragment
+     * @param viewGroup
+     * @param url
+     * @return
+     */
+    public static AgentWeb createAgentWeb(Fragment fragment, ViewGroup viewGroup, String url) {
+        return AgentWeb.with(fragment)
+                .setAgentWebParent(viewGroup, -1, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+                .useDefaultIndicator(-1, 3)
+                .createAgentWeb()
+                .ready()
+                .go(url);
+    }
+
     public static void initRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL));
@@ -52,5 +84,106 @@ public final class Utils {
         XUpdate.newBuild(context).updateUrl(mUpdateUrl).update();
         XUpdate.get().setOnUpdateFailureListener(new CustomUpdateFailureListener(needErrorTip));
 
+    }
+
+
+    /**
+     * 显示截图结果
+     *
+     * @param view
+     */
+    public static void showCaptureBitmap(View view) {
+        final MaterialDialog dialog = new MaterialDialog.Builder(view.getContext())
+                .customView(R.layout.dialog_drawable_utils_createfromview, true)
+                .title("截图结果")
+                .build();
+        ImageView displayImageView = dialog.findViewById(R.id.createFromViewDisplay);
+        Bitmap createFromViewBitmap = DrawableUtils.createBitmapFromView(view);
+        displayImageView.setImageBitmap(createFromViewBitmap);
+
+        displayImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    /**
+     * 显示截图结果
+     */
+    public static void showCaptureBitmap(Context context, Bitmap bitmap) {
+        final MaterialDialog dialog = new MaterialDialog.Builder(context)
+                .customView(R.layout.dialog_drawable_utils_createfromview, true)
+                .title("截图结果")
+                .build();
+        ImageView displayImageView = dialog.findViewById(R.id.createFromViewDisplay);
+        displayImageView.setImageBitmap(bitmap);
+
+        displayImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+
+    /**
+     * 截图RecyclerView
+     *
+     * @param recyclerView
+     * @return
+     */
+    public static Bitmap getRecyclerViewScreenSpot(RecyclerView recyclerView) {
+        RecyclerView.Adapter adapter = recyclerView.getAdapter();
+        Bitmap bigBitmap = null;
+        if (adapter != null) {
+            int size = adapter.getItemCount();
+            int height = 0;
+            Paint paint = new Paint();
+            int iHeight = 0;
+            final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+            final int cacheSize = maxMemory / 8;
+            LruCache<String, Bitmap> bitmapCache = new LruCache<>(cacheSize);
+            for (int i = 0; i < size; i++) {
+                RecyclerView.ViewHolder holder = adapter.createViewHolder(recyclerView, adapter.getItemViewType(i));
+                adapter.onBindViewHolder(holder, i);
+                holder.itemView.measure(
+                        View.MeasureSpec.makeMeasureSpec(recyclerView.getWidth(), View.MeasureSpec.EXACTLY),
+                        View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+                holder.itemView.layout(0, 0, holder.itemView.getMeasuredWidth(),
+                        holder.itemView.getMeasuredHeight());
+                holder.itemView.setDrawingCacheEnabled(true);
+                holder.itemView.buildDrawingCache();
+                Bitmap drawingCache = holder.itemView.getDrawingCache();
+                if (drawingCache != null) {
+                    bitmapCache.put(String.valueOf(i), drawingCache);
+                }
+                height += holder.itemView.getMeasuredHeight();
+            }
+            // 这个地方容易出现OOM，关键是要看截取RecyclerView的展开的宽高
+            bigBitmap = Bitmap.createBitmap(recyclerView.getMeasuredWidth(), height, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bigBitmap);
+            Drawable background = recyclerView.getBackground();
+            //先画RecyclerView的背景色
+            if (background instanceof ColorDrawable) {
+                ColorDrawable lColorDrawable = (ColorDrawable) background;
+                int color = lColorDrawable.getColor();
+                canvas.drawColor(color);
+            }
+            for (int i = 0; i < size; i++) {
+                Bitmap bitmap = bitmapCache.get(String.valueOf(i));
+                canvas.drawBitmap(bitmap, 0f, iHeight, paint);
+                iHeight += bitmap.getHeight();
+                bitmap.recycle();
+            }
+            canvas.setBitmap(null);
+        }
+        return bigBitmap;
     }
 }

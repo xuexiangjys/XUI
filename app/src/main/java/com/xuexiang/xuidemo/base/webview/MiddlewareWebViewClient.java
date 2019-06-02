@@ -35,6 +35,7 @@ import com.xuexiang.xutil.tip.ToastUtils;
 import java.net.URISyntaxException;
 
 /**
+ * 【网络请求、加载】
  * WebClient（WebViewClient 这个类主要帮助WebView处理各种通知、url加载，请求时间的）中间件
  * <p>
  * <p>
@@ -90,9 +91,11 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         url = url.toLowerCase();
         if (!hasAd(url)) {
-            return super.shouldInterceptRequest(view, url);//正常加载
+            //正常加载
+            return super.shouldInterceptRequest(view, url);
         } else {
-            return new WebResourceResponse(null, null, null);//含有广告资源屏蔽请求
+            //含有广告资源屏蔽请求
+            return new WebResourceResponse(null, null, null);
         }
     }
 
@@ -101,9 +104,11 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
         String url = request.getUrl().toString().toLowerCase();
         if (!hasAd(url)) {
-            return super.shouldInterceptRequest(view, request);//正常加载
+            //正常加载
+            return super.shouldInterceptRequest(view, request);
         } else {
-            return new WebResourceResponse(null, null, null);//含有广告资源屏蔽请求
+            //含有广告资源屏蔽请求
+            return new WebResourceResponse(null, null, null);
         }
     }
 

@@ -10,9 +10,11 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsListAdapter;
@@ -46,6 +48,19 @@ public class CommonPlaceholderFragment extends BaseFragment {
         return R.layout.fragment_broccoli_place_holder;
     }
 
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("截图") {
+            @SingleClick
+            @Override
+            public void performAction(View view) {
+                Utils.showCaptureBitmap(getContext(), Utils.getRecyclerViewScreenSpot(recyclerView));
+            }
+        });
+        return titleBar;
+    }
+
     /**
      * 初始化控件
      */
@@ -54,7 +69,6 @@ public class CommonPlaceholderFragment extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL, DensityUtils.dp2px(5), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_background)));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
 
         recyclerView.setAdapter(mNewsListAdapter = new NewsListAdapter(false));
     }

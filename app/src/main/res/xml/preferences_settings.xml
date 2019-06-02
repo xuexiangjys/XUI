@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_category_basic">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="example_switch"
+            android:summary="@string/settings_switch_preference_summary"
+            android:title="@string/settings_switch_preference_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="example_check_box"
+            android:title="@string/settings_check_box_preference_title" />
+
+        <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+        <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+        <EditTextPreference
+            android:capitalize="words"
+            android:defaultValue="@string/settings_edit_text_preference_default_value"
+            android:inputType="textCapWords"
+            android:key="example_text"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/settings_edit_text_preference_title" />
+
+        <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to dismiss it. -->
+        <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+        <ListPreference
+            android:defaultValue="60"
+            android:dialogTitle="@string/settings_list_preference_dialog_title"
+            android:entries="@array/settings_list_preference_titles"
+            android:entryValues="@array/settings_list_preference_values"
+            android:key="sync_frequency"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/settings_list_preference_title" />
+
+        <MultiSelectListPreference
+            android:dialogTitle="@string/settings_multi_select_list_preference_dialog_title"
+            android:entries="@array/settings_multi_select_list_preference_titles"
+            android:entryValues="@array/settings_multi_select_list_preference_values"
+            android:key="multi_select_list"
+            android:title="@string/settings_multi_select_list_preference_title" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/settings_category_advanced">
+        <!-- This preference simply launches an intent when selected. Use this UI sparingly, per design guidelines. -->
+        <Preference android:title="@string/pref_title_system_sync_settings">
+            <intent android:action="android.settings.SYNC_SETTINGS" />
+        </Preference>
+
+        <!-- A 'parent' preference, which enables/disables child preferences (below) when checked/unchecked. -->
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="notifications_new_message"
+            android:title="@string/pref_title_new_message_notifications" />
+
+        <!-- Allows the user to choose a ringtone in the 'notification' category. -->
+        <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+        <!-- NOTE: RingtonePreference's summary should be set to its value by the activity code. -->
+        <RingtonePreference
+            android:defaultValue="content://settings/system/notification_sound"
+            android:dependency="notifications_new_message"
+            android:key="notifications_new_message_ringtone"
+            android:ringtoneType="notification"
+            android:title="@string/pref_title_ringtone" />
+
+        <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="notifications_new_message"
+            android:key="notifications_new_message_vibrate"
+            android:title="@string/pref_title_vibrate" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/settings_category_other">
+        <!-- This preference simply launches an intent when selected. Use this UI sparingly, per design guidelines. -->
+        <Preference
+            android:key="clear_cache"
+            android:title="@string/settings_preference_click_title" />
+
+        <Preference
+            android:summary="@string/settings_preference_click_to_activity"
+            android:title="Preference">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.xuexiang.xuidemo.activity.SearchViewActivity"
+                android:targetPackage="com.xuexiang.xuidemo" />
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>
