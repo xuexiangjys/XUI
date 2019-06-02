@@ -178,4 +178,25 @@ public class BeautifulProgressBarFragment extends BaseFragment implements Horizo
             progressViewCircleSmall.startProgressAnimation();
         }
     }
+
+    @Override
+    public void onDestroyView() {
+        progressViewCircleSmall.stopProgressAnimation();
+        progressViewCircleMain.stopProgressAnimation();
+
+        hpvLanguage.stopProgressAnimation();
+        hpvMath.stopProgressAnimation();
+        hpvHistory.stopProgressAnimation();
+        hpvEnglish.stopProgressAnimation();
+
+
+        progressViewCircleSmall.setProgressViewUpdateListener(null);
+        progressViewCircleMain.setProgressViewUpdateListener(null);
+
+        hpvLanguage.setProgressViewUpdateListener(null);
+        hpvMath.setProgressViewUpdateListener(null);
+        hpvHistory.setProgressViewUpdateListener(null);
+        hpvEnglish.setProgressViewUpdateListener(null);
+        super.onDestroyView();
+    }
 }
