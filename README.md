@@ -47,7 +47,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.xuexiangjys:XUI:1.0.3'
+  implementation 'com.github.xuexiangjys:XUI:1.0.4'
 
   implementation 'com.android.support:appcompat-v7:28.0.0'
   implementation 'com.android.support:recyclerview-v7:28.0.0'
@@ -171,7 +171,7 @@ protected void attachBaseContext(Context newBase) {
 
 ![](https://github.com/xuexiangjys/XPage/blob/master/img/qq_group.jpg)
 
-[xuisvg]: https://img.shields.io/badge/XUI-v1.0.3-brightgreen.svg
+[xuisvg]: https://img.shields.io/badge/XUI-v1.0.4-brightgreen.svg
 [xui]: https://github.com/xuexiangjys/XUI
 [apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
 [api]: https://android-arsenal.com/api?level=17
