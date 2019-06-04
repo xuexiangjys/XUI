@@ -57,7 +57,7 @@
         <attr name="xui_topDividerInsetLeft" format="dimension" />
         <!--顶部分割线右侧的边距，默认0-->
         <attr name="xui_topDividerInsetRight" format="dimension" />
-        <!--左侧分割线的高度，默认0-->
+        <!--左侧分割线的宽度，默认0-->
         <attr name="xui_leftDividerWidth" format="dimension" />
         <!--左侧分割线的颜色，默认R.attr.xui_config_color_separator_light-->
         <attr name="xui_leftDividerColor" format="color|reference" />
@@ -65,7 +65,7 @@
         <attr name="xui_leftDividerInsetTop" format="dimension" />
         <!--左侧分割线底部的边距，默认0-->
         <attr name="xui_leftDividerInsetBottom" format="dimension" />
-        <!--右侧分割线的高度，默认0-->
+        <!--右侧分割线的宽度，默认0-->
         <attr name="xui_rightDividerWidth" format="dimension" />
         <!--右侧分割线的颜色，默认R.attr.xui_config_color_separator_light-->
         <attr name="xui_rightDividerColor" format="color|reference" />
@@ -89,7 +89,7 @@
             <enum name="bottom" value="3" />
             <enum name="left" value="4" />
         </attr>
-        <!--是否显示边框-->
+        <!--是否显示边框, 默认true-->
         <attr name="xui_showBorderOnlyBeforeL" format="boolean" />
         <!--阴影的大小，默认0-->
         <attr name="xui_shadowElevation" format="dimension" />
@@ -97,15 +97,15 @@
         <attr name="xui_useThemeGeneralShadowElevation" format="boolean" />
         <!--阴影的透明度，默认0.25-->
         <attr name="xui_shadowAlpha" format="float" />
-        <!--轮廓的顶部边距-->
+        <!--轮廓的顶部边距，默认0-->
         <attr name="xui_outlineInsetTop" format="dimension" />
-        <!--轮廓的左侧边距-->
+        <!--轮廓的左侧边距，默认0-->
         <attr name="xui_outlineInsetLeft" format="dimension" />
-        <!--轮廓的右侧边距-->
+        <!--轮廓的右侧边距，默认0-->
         <attr name="xui_outlineInsetRight" format="dimension" />
-        <!--轮廓的底部边距-->
+        <!--轮廓的底部边距，默认0-->
         <attr name="xui_outlineInsetBottom" format="dimension" />
-        <!--轮廓是否使用内边距-->
+        <!--轮廓是否使用内边距，默认false-->
         <attr name="xui_outlineExcludePadding" format="boolean" />
     </declare-styleable>
     <!--============================Banner=========================================-->
@@ -207,22 +207,34 @@
     <declare-styleable name="BannerLayout">
         <!--轮播间隔，单位ms，默认是4000ms-->
         <attr name="bl_interval" format="integer" />
+        <!--是否显示轮播索引，默认是true-->
         <attr name="bl_showIndicator" format="boolean" />
+        <!--轮播的方向，默认是horizontal-->
         <attr name="bl_orientation" format="enum">
             <enum name="horizontal" value="0" />
             <enum name="vertical" value="1" />
         </attr>
         <!--是否是自动轮播，默认是true-->
         <attr name="bl_autoPlaying" format="boolean" />
+        <!--轮播索引选中的效果-->
         <attr name="bl_indicatorSelectedSrc" format="reference" />
+        <!--轮播索引未选中的效果-->
         <attr name="bl_indicatorUnselectedSrc" format="reference" />
+        <!--轮播索引的大小，默认5dp-->
         <attr name="bl_indicatorSize" format="dimension" />
+        <!--轮播索引选中的颜色-->
         <attr name="bl_indicatorSelectedColor" format="color" />
+        <!--轮播索引未选中的颜色-->
         <attr name="bl_indicatorUnselectedColor" format="color" />
+        <!--索引器之间的间隔，默认4dp-->
         <attr name="bl_indicatorSpace" format="dimension" />
+        <!--索引器的左侧边距，默认16dp-->
         <attr name="bl_indicatorMarginLeft" format="dimension" />
+        <!--索引器的右侧边距，默认0dp-->
         <attr name="bl_indicatorMarginRight" format="dimension" />
+        <!--索引器的底部边距，默认11dp-->
         <attr name="bl_indicatorMarginBottom" format="dimension" />
+        <!--索引器的对齐方式，默认left-->
         <attr name="bl_indicatorGravity" format="enum">
             <enum name="left" value="0" />
             <enum name="center" value="1" />
@@ -230,8 +242,9 @@
         </attr>
         <!--轮播图之间的间距，默认是10dp-->
         <attr name="bl_itemSpace" format="dimension" />
+        <!--图片缩放系数，默认是1.2F-->
         <attr name="bl_centerScale" format="float" />
-        <!--轮播速度，默认是1.0-->
+        <!--轮播速度，默认是1.0F-->
         <attr name="bl_moveSpeed" format="float" />
     </declare-styleable>
     <attr name="BannerLayoutStyle" format="integer" />
@@ -948,9 +961,9 @@
         <attr name="vcet_text_color" format="color|reference" />
         <!--输入框文字大小，默认16sp-->
         <attr name="vcet_text_size" format="dimension|reference" />
-        <!--输入框获取焦点时边框-->
+        <!--输入框获取焦点时背景-->
         <attr name="vcet_bg_focus" format="reference" />
-        <!--输入框没有焦点时边框-->
+        <!--输入框没有焦点时背景-->
         <attr name="vcet_bg_normal" format="reference" />
         <!--是否是密码模式, 默认是false-->
         <attr name="vcet_is_pwd" format="boolean" />
@@ -1101,10 +1114,15 @@
     </declare-styleable>
 
     <declare-styleable name="StatusView">
+        <!--完成状态的布局-->
         <attr name="sv_complete" format="reference" />
+        <!--出错状态的布局-->
         <attr name="sv_error" format="reference" />
+        <!--loading加载中状态的布局-->
         <attr name="sv_loading" format="reference" />
+        <!--自定义状态的布局-->
         <attr name="sv_custom" format="reference" />
+        <!--是否自动隐藏当是完成状态的时候， 默认true-->
         <attr name="sv_dismissOnComplete" format="boolean" />
     </declare-styleable>
     <attr name="StatusViewStyle" format="reference" />
