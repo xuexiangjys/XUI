@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.xuexiang.xui.R;
-import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 
 /**
  * 标题栏工具
@@ -148,10 +148,9 @@ public final class TitleUtils {
      * @return
      */
     public static TitleBar initTitleBarStyle(TitleBar titleBar, String title) {
-        titleBar.setImmersive(false)
-                .setBackImageResource(R.drawable.xui_ic_return_back)
+        titleBar.setBackImageResource(R.drawable.xui_ic_return_back)
                 .setTitle(title)
-                .setBackgroundColor(ResUtils.getColor(R.color.xui_config_color_titlebar));
+                .setBackgroundColor(ThemeUtils.resolveColor(titleBar.getContext(), R.attr.xui_actionbar_color));
         return titleBar;
     }
 }

@@ -95,14 +95,26 @@
     <!--**********************************************
     *                  xui topbar                   *
     ***********************************************-->
+    <!--标题栏的背景颜色-->
     <attr name="xui_actionbar_color" format="color" />
+    <!--标题栏文字的颜色-->
+    <attr name="xui_actionbar_text_color" format="color" />
 
+    <!--标题栏的高度-->
     <attr name="xui_actionbar_height" format="dimension" />
+    <!--标题栏标题文字的大小-->
     <attr name="xui_actionbar_title_text_size" format="dimension" />
-    <attr name="xui_actionbar_action_text_size" format="dimension" />
+    <!--标题栏副标题文字的大小-->
     <attr name="xui_actionbar_sub_text_size" format="dimension" />
+    <!--标题栏动作文字的大小-->
+    <attr name="xui_actionbar_action_text_size" format="dimension" />
+    <!--标题栏动作图片的padding-->
     <attr name="xui_actionbar_action_padding" format="dimension" />
+    <!--标题栏两侧文字的padding-->
     <attr name="xui_actionbar_side_text_padding" format="dimension" />
+
+    <!--是否支持沉浸式标题栏-->
+    <attr name="xui_actionbar_immersive" format="boolean" />
 
     <!--**********************************************
     *                  xui btn                      *

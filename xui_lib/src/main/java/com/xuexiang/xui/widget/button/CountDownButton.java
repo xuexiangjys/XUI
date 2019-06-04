@@ -111,16 +111,14 @@ public class CountDownButton extends AppCompatButton {
      */
     private void initAttr(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CountDownButton, defStyleAttr, 0);
-        if (typedArray != null) {
-            mCountDownFormat = typedArray.getString(R.styleable.CountDownButton_cdbt_countDownFormat);
-            if (TextUtils.isEmpty(mCountDownFormat)) {
-                mCountDownFormat = DEFAULT_COUNT_FORMAT;
-            }
-            mCountDownTime = typedArray.getInteger(R.styleable.CountDownButton_cdbt_countDown, DEFAULT_COUNTDOWN_TIME);
-            mInterval = typedArray.getInteger(R.styleable.CountDownButton_cdbt_countDownInterval, DEFAULT_INTERVAL);
-            mEnableCountDown = (mCountDownTime > mInterval) && typedArray.getBoolean(R.styleable.CountDownButton_cdbt_enableCountDown, true);
-            typedArray.recycle();
+        mCountDownFormat = typedArray.getString(R.styleable.CountDownButton_cdbt_countDownFormat);
+        if (TextUtils.isEmpty(mCountDownFormat)) {
+            mCountDownFormat = DEFAULT_COUNT_FORMAT;
         }
+        mCountDownTime = typedArray.getInteger(R.styleable.CountDownButton_cdbt_countDown, DEFAULT_COUNTDOWN_TIME);
+        mInterval = typedArray.getInteger(R.styleable.CountDownButton_cdbt_countDownInterval, DEFAULT_INTERVAL);
+        mEnableCountDown = (mCountDownTime > mInterval) && typedArray.getBoolean(R.styleable.CountDownButton_cdbt_enableCountDown, true);
+        typedArray.recycle();
     }
 
 

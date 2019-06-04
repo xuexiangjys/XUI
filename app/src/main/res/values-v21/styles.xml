@@ -17,11 +17,26 @@
   -->
 
 <resources>
+
+    <!-- 拓展主题 theme. -->
     <style name="XUITheme" parent="XUIBaseTheme">
         <!--设置默认窗口的动画样式-->
         <item name="android:windowAnimationStyle">@style/WindowAnimStyle</item>
         <item name="android:navigationBarColor">@color/xui_config_color_50_pure_black</item>
+
+        <!--自定义标题栏样式方法1-->
+        <!--<item name="xui_actionbar_color">@color/app_color_theme_1</item>-->
+        <!--<item name="xui_actionbar_text_color">@color/xui_config_color_primary_text</item>-->
+        <!--<item name="xui_actionbar_immersive">true</item>-->
+
+        <!--自定义标题栏样式方法2-->
+        <!--<item name="TitleBarStyle">@style/TitleBar.Custom</item>-->
     </style>
+
+    <!--<style name="TitleBar.Custom">-->
+        <!--<item name="tb_titleTextColor">@color/xui_config_color_primary_text</item>-->
+        <!--<item name="tb_immersive">true</item>-->
+    <!--</style>-->
 
     <!--窗体背景，这个背景能在第一时间显示, 避免启动时白屏，黑屏问题-->
     <style name="XUITheme.Launch.Demo">

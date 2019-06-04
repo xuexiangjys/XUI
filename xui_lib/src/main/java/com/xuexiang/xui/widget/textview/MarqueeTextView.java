@@ -88,15 +88,13 @@ public class MarqueeTextView extends AppCompatTextView {
         }
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MarqueeTextView);
-        if (typedArray != null) {
-            mIsAutoFit = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoFit, false);
-            mIsAutoDisplay = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoDisplay, false);
+        mIsAutoFit = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoFit, false);
+        mIsAutoDisplay = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoDisplay, false);
 
-            if (mIsAutoDisplay) {
-                setVisibility(GONE);
-            }
-            typedArray.recycle();
+        if (mIsAutoDisplay) {
+            setVisibility(GONE);
         }
+        typedArray.recycle();
     }
 
     @Override
