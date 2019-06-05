@@ -111,6 +111,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     private String mTitleTextString;
     private String mSubTextString;
     private int mDividerColor;
+    private int mDivideHeight;
 
     public TitleBar(Context context) {
         this(context, null);
@@ -153,6 +154,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mTitleTextString = typedArray.getString(R.styleable.TitleBar_tb_titleText);
         mSubTextString = typedArray.getString(R.styleable.TitleBar_tb_subTitleText);
         mDividerColor = typedArray.getColor(R.styleable.TitleBar_tb_dividerColor, Color.TRANSPARENT);
+        mDivideHeight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_dividerHeight, DensityUtils.dp2px(1));
 
         typedArray.recycle();
     }
@@ -222,7 +224,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         addView(mLeftText, layoutParams);
         addView(mCenterLayout);
         addView(mRightLayout, layoutParams);
-        addView(mDividerView, new LayoutParams(LayoutParams.MATCH_PARENT, 1));
+        addView(mDividerView, new LayoutParams(LayoutParams.MATCH_PARENT, mDivideHeight));
 
         setBackgroundColor(ThemeUtils.resolveColor(context, R.attr.xui_actionbar_color));
     }
@@ -265,7 +267,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     public TitleBar setLeftImageDrawable(Drawable leftImageDrawable) {
         mLeftImageResource = leftImageDrawable;
         if (mLeftText != null) {
-            mLeftText.setCompoundDrawables(mLeftImageResource, null, null, null);
+            mLeftText.setCompoundDrawablesWithIntrinsicBounds(mLeftImageResource, null, null, null);
         }
         return this;
     }

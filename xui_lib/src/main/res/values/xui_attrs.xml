@@ -9,11 +9,15 @@
         <attr name="tb_immersive" format="boolean" />
         <!--左右图标和文字的padding-->
         <attr name="tb_actionPadding" format="dimension" />
+        <!--标题栏两侧控件的padding-->
         <attr name="tb_sideTextPadding" format="dimension" />
-        <!--文字的颜色-->
+        <!--标题栏左侧文字的颜色-->
         <attr name="tb_sideTextColor" format="color" />
+        <!--标题栏标题文字的颜色-->
         <attr name="tb_titleTextColor" format="color" />
+        <!--标题栏副标题文字的颜色-->
         <attr name="tb_subTitleTextColor" format="color" />
+        <!---标题栏右侧文字的颜色-->
         <attr name="tb_actionTextColor" format="color" />
         <!--中间title的对齐方式-->
         <attr name="tb_centerGravity" format="enum">
@@ -21,17 +25,26 @@
             <enum name="left" value="1" />
             <enum name="right" value="2" />
         </attr>
-        <!--文字的大小-->
+        <!--标题栏左侧文字的大小-->
         <attr name="tb_sideTextSize" format="dimension" />
+        <!--标题栏标题文字的大小-->
         <attr name="tb_titleTextSize" format="dimension" />
+        <!--标题栏副标题文字的大小-->
         <attr name="tb_subTitleTextSize" format="dimension" />
+        <!--标题栏右侧文字的大小-->
         <attr name="tb_actionTextSize" format="dimension" />
         <!--文字的内容以及图标内容-->
         <attr name="tb_leftImageResource" format="reference" />
+        <!--标题栏左侧的文字-->
         <attr name="tb_leftText" format="string" />
+        <!--标题栏标题的文字-->
         <attr name="tb_titleText" format="string" />
+        <!--标题栏副标题的文字-->
         <attr name="tb_subTitleText" format="string" />
+        <!--标题栏分割线的颜色-->
         <attr name="tb_dividerColor" format="color" />
+        <!--标题栏分割线的高度-->
+        <attr name="tb_dividerHeight" format="dimension" />
     </declare-styleable>
     <attr name="TitleBarStyle" format="reference" />
 

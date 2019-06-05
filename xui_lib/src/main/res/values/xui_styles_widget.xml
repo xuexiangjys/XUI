@@ -469,7 +469,9 @@
         <item name="tb_titleTextSize">?attr/xui_actionbar_title_text_size</item>
         <item name="tb_subTitleTextSize">?attr/xui_actionbar_sub_text_size</item>
         <item name="tb_actionTextSize">?attr/xui_actionbar_action_text_size</item>
+        <item name="tb_leftImageResource">?attr/xui_actionbar_ic_navigation_back</item>
         <item name="tb_dividerColor">@color/xui_config_color_transparent</item>
+        <item name="tb_dividerHeight">1dp</item>
     </style>
 
     <style name="CountDownButton">

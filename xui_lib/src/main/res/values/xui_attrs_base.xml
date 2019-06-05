@@ -99,6 +99,10 @@
     <attr name="xui_actionbar_color" format="color" />
     <!--标题栏文字的颜色-->
     <attr name="xui_actionbar_text_color" format="color" />
+    <!--是否支持沉浸式标题栏-->
+    <attr name="xui_actionbar_immersive" format="boolean" />
+    <!--标题栏返回箭头-->
+    <attr name="xui_actionbar_ic_navigation_back" format="reference" />
 
     <!--标题栏的高度-->
     <attr name="xui_actionbar_height" format="dimension" />
@@ -112,9 +116,6 @@
     <attr name="xui_actionbar_action_padding" format="dimension" />
     <!--标题栏两侧文字的padding-->
     <attr name="xui_actionbar_side_text_padding" format="dimension" />
-
-    <!--是否支持沉浸式标题栏-->
-    <attr name="xui_actionbar_immersive" format="boolean" />
 
     <!--**********************************************
     *                  xui btn                      *
