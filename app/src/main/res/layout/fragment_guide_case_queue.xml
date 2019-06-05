@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/step1"
+        style="@style/Button.Blue.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         android:text="步骤1" />
 
     <Button
         android:id="@+id/step2"
+        style="@style/Button.Blue.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -21,6 +26,7 @@
 
     <Button
         android:id="@+id/step3"
+        style="@style/Button.Blue.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -30,6 +36,7 @@
 
     <Button
         android:id="@+id/step4"
+        style="@style/Button.Blue.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -39,9 +46,11 @@
 
     <Button
         android:id="@+id/changePicture"
+        style="@style/Button.Blue.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         android:text="更换图片" />
 
 </LinearLayout>

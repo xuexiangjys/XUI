@@ -18,8 +18,9 @@
 package com.xuexiang.xui.widget.alpha;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * @author xuexiang

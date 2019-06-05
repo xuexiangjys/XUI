@@ -12,7 +12,7 @@ android {
         targetSdkVersion build_versions.target_sdk
         versionCode 5
         versionName "1.0.4"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -67,6 +67,11 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -75,12 +80,18 @@ dependencies {
     androidTestImplementation deps.runner
     androidTestImplementation deps.espresso.core
 
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     //下拉刷新、CityPicker、XUI框架需要
-    implementation deps.support.app_compat
-    implementation deps.support.recyclerview
-    implementation deps.support.design
+//    implementation deps.support.app_compat
+//    implementation deps.support.recyclerview
+//    implementation deps.support.design
+
+    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "androidx.annotation:annotation:1.1.0-rc01"
+    implementation "com.google.android.material:material:1.1.0-alpha07"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+
 
     //悬浮按钮
     implementation 'com.github.clans:fab:1.6.4'

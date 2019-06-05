@@ -1,6 +1,6 @@
 package com.xuexiang.xuidemo.fragment.expands.chart.bar;
 
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.BarChart;

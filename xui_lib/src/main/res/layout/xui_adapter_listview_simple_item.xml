@@ -11,7 +11,7 @@
         android:layout_height="?attr/xui_config_simple_list_item_height"
         android:orientation="horizontal">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_icon"
             android:layout_width="?attr/xui_config_simple_list_icon_size"
             android:layout_height="?attr/xui_config_simple_list_icon_size"

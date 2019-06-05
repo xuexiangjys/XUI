@@ -46,7 +46,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageView"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -261,7 +261,7 @@
                         style="@style/TextStyle.Content"
                         android:text="BadgeColor : " />
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_badge_color"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -292,7 +292,7 @@
                         style="@style/TextStyle.Content"
                         android:text="TextColor : " />
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_number_color"
                         android:layout_width="30dp"
                         android:layout_height="30dp"

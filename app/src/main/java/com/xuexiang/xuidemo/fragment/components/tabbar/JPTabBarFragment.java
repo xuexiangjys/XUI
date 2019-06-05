@@ -1,17 +1,15 @@
 package com.xuexiang.xuidemo.fragment.components.tabbar;
 
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.jpeng.jptabbar.JPTabBar;
 import com.jpeng.jptabbar.OnTabSelectListener;
-import com.jpeng.jptabbar.anno.NorIcons;
-import com.jpeng.jptabbar.anno.SeleIcons;
-import com.jpeng.jptabbar.anno.Titles;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseActivity;

@@ -3,7 +3,6 @@ package com.xuexiang.xui.widget.edittext;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -13,6 +12,8 @@ import android.view.View.OnFocusChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;

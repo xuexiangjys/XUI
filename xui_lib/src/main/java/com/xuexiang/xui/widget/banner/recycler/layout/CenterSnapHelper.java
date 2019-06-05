@@ -17,9 +17,9 @@
 
 package com.xuexiang.xui.widget.banner.recycler.layout;
 
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 
@@ -160,10 +160,11 @@ public class CenterSnapHelper extends RecyclerView.OnFlingListener {
         final int delta = layoutManager.getOffsetToCenter();
         if (delta != 0) {
             if (layoutManager.getOrientation()
-                    == BannerLayoutManager.VERTICAL)
+                    == BannerLayoutManager.VERTICAL) {
                 mRecyclerView.smoothScrollBy(0, delta);
-            else
+            } else {
                 mRecyclerView.smoothScrollBy(delta, 0);
+            }
         } else {
             // set it false to make smoothScrollToPosition keep trigger the listener
             snapToCenter = false;

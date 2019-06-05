@@ -14,7 +14,7 @@
   ~ limitations under the License.
   -->
 
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="?attr/xui_actionbar_height"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_back"
             android:layout_width="55dp"
             android:layout_height="match_parent"
@@ -45,7 +45,7 @@
             android:layout_toEndOf="@id/iv_back"
             android:background="@color/xui_config_color_white" />
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_finish"
             android:layout_width="55dp"
             android:layout_height="match_parent"
@@ -63,7 +63,7 @@
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_more"
             android:layout_width="55dp"
             android:layout_height="match_parent"
@@ -74,5 +74,5 @@
     </RelativeLayout>
 
 
-</android.support.v7.widget.Toolbar>
+</androidx.appcompat.widget.Toolbar>
 

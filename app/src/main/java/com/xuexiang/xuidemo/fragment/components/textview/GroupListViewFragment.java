@@ -16,12 +16,11 @@
 
 package com.xuexiang.xuidemo.fragment.components.textview;
 
-import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
+import androidx.core.content.ContextCompat;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;

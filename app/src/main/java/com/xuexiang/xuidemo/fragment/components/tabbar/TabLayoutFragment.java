@@ -16,17 +16,17 @@
 
 package com.xuexiang.xuidemo.fragment.components.tabbar;
 
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.widget.tabbar.TabSegment;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
@@ -37,7 +37,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 
-import static android.support.design.widget.TabLayout.MODE_SCROLLABLE;
+import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
 
 /**
  * @author xuexiang

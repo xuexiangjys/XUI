@@ -18,7 +18,7 @@
 package com.xuexiang.xui.widget.dialog.strategy;
 
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * 输入内容回调

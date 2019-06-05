@@ -24,29 +24,31 @@ import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
-import com.xuexiang.xui.widget.tabbar.vertical.XTabView;
 import com.xuexiang.xui.widget.tabbar.vertical.TabAdapter;
 import com.xuexiang.xui.widget.tabbar.vertical.TabFragmentManager;
 import com.xuexiang.xui.widget.tabbar.vertical.TabView;
+import com.xuexiang.xui.widget.tabbar.vertical.XTabView;
 
 import java.util.ArrayList;
 import java.util.List;
-import static android.support.v4.view.ViewPager.SCROLL_STATE_IDLE;
-import static android.support.v4.view.ViewPager.SCROLL_STATE_SETTLING;
+
+import static androidx.viewpager.widget.ViewPager.SCROLL_STATE_IDLE;
+import static androidx.viewpager.widget.ViewPager.SCROLL_STATE_SETTLING;
 
 /**
  * 垂直方向上的TabLayout
@@ -112,7 +114,9 @@ public class VerticalTabLayout extends ScrollView {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        if (getChildCount() > 0) removeAllViews();
+        if (getChildCount() > 0) {
+            removeAllViews();
+        }
         initTabStrip();
     }
 
@@ -279,7 +283,9 @@ public class VerticalTabLayout extends ScrollView {
         if (mode != TAB_MODE_FIXED && mode != TAB_MODE_SCROLLABLE) {
             throw new IllegalStateException("only support TAB_MODE_FIXED or TAB_MODE_SCROLLABLE");
         }
-        if (mode == mTabMode) return;
+        if (mode == mTabMode) {
+            return;
+        }
         mTabMode = mode;
         for (int i = 0; i < mTabStrip.getChildCount(); i++) {
             View view = mTabStrip.getChildAt(i);
@@ -305,9 +311,13 @@ public class VerticalTabLayout extends ScrollView {
      * @param margin margin
      */
     public void setTabMargin(int margin) {
-        if (margin == mTabMargin) return;
+        if (margin == mTabMargin) {
+            return;
+        }
         mTabMargin = margin;
-        if (mTabMode == TAB_MODE_FIXED) return;
+        if (mTabMode == TAB_MODE_FIXED) {
+            return;
+        }
         for (int i = 0; i < mTabStrip.getChildCount(); i++) {
             View view = mTabStrip.getChildAt(i);
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
@@ -329,9 +339,13 @@ public class VerticalTabLayout extends ScrollView {
      * @param height height
      */
     public void setTabHeight(int height) {
-        if (height == mTabHeight) return;
+        if (height == mTabHeight) {
+            return;
+        }
         mTabHeight = height;
-        if (mTabMode == TAB_MODE_FIXED) return;
+        if (mTabMode == TAB_MODE_FIXED) {
+            return;
+        }
         for (int i = 0; i < mTabStrip.getChildCount(); i++) {
             View view = mTabStrip.getChildAt(i);
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
@@ -536,10 +550,14 @@ public class VerticalTabLayout extends ScrollView {
         protected void setIndicatorGravity() {
             if (mIndicatorGravity == Gravity.LEFT) {
                 mIndicatorX = 0;
-                if (mLastWidth != 0) mIndicatorWidth = mLastWidth;
+                if (mLastWidth != 0) {
+                    mIndicatorWidth = mLastWidth;
+                }
                 setPadding(mIndicatorWidth, 0, 0, 0);
             } else if (mIndicatorGravity == Gravity.RIGHT) {
-                if (mLastWidth != 0) mIndicatorWidth = mLastWidth;
+                if (mLastWidth != 0) {
+                    mIndicatorWidth = mLastWidth;
+                }
                 setPadding(0, 0, mIndicatorWidth, 0);
             } else if (mIndicatorGravity == Gravity.FILL) {
                 mIndicatorX = 0;
@@ -592,7 +610,9 @@ public class VerticalTabLayout extends ScrollView {
             View childView = getChildAt(index);
             final float targetTop = childView.getTop();
             final float targetBottom = childView.getBottom();
-            if (mIndicatorTopY == targetTop && mIndicatorBottomY == targetBottom) return;
+            if (mIndicatorTopY == targetTop && mIndicatorBottomY == targetBottom) {
+                return;
+            }
             if (mIndicatorAnimatorSet != null && mIndicatorAnimatorSet.isRunning()) {
                 mIndicatorAnimatorSet.end();
             }

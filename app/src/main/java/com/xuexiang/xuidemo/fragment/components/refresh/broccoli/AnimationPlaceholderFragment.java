@@ -1,10 +1,11 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.broccoli;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
@@ -22,7 +23,7 @@ import com.xuexiang.xuidemo.utils.Utils;
 
 import butterknife.BindView;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
 
 /**
  * @author xuexiang

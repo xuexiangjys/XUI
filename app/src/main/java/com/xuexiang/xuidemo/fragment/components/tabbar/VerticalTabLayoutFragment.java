@@ -17,12 +17,13 @@
 package com.xuexiang.xuidemo.fragment.components.tabbar;
 
 import android.graphics.Color;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
@@ -199,13 +200,15 @@ public class VerticalTabLayoutFragment extends BaseFragment {
 
         @Override
         public TabView.TabBadge getBadge(int position) {
-            if (position == 5) return new TabView.TabBadge.Builder().setBadgeNumber(666)
-                    .setExactMode(true)
-                    .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
-                        @Override
-                        public void onDragStateChanged(int dragState, Badge badge, View targetView) {
-                        }
-                    }).build();
+            if (position == 5) {
+                return new TabView.TabBadge.Builder().setBadgeNumber(666)
+                        .setExactMode(true)
+                        .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
+                            @Override
+                            public void onDragStateChanged(int dragState, Badge badge, View targetView) {
+                            }
+                        }).build();
+            }
             return null;
         }
 

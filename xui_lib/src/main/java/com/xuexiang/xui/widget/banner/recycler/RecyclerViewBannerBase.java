@@ -25,13 +25,15 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -415,13 +417,16 @@ public abstract class RecyclerViewBannerBase<L extends RecyclerView.LayoutManage
     }
 
     protected boolean compareListDifferent(List<String> newTabList, List<String> oldTabList) {
-        if (oldTabList == null || oldTabList.isEmpty())
+        if (oldTabList == null || oldTabList.isEmpty()) {
             return true;
-        if (newTabList.size() != oldTabList.size())
+        }
+        if (newTabList.size() != oldTabList.size()) {
             return true;
+        }
         for (int i = 0; i < newTabList.size(); i++) {
-            if (TextUtils.isEmpty(newTabList.get(i)))
+            if (TextUtils.isEmpty(newTabList.get(i))) {
                 return true;
+            }
             if (!newTabList.get(i).equals(oldTabList.get(i))) {
                 return true;
             }

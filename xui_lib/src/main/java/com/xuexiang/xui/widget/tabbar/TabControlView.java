@@ -309,7 +309,6 @@ public class TabControlView extends RadioGroup {
      *
      * @param itemArray
      * @param valueArray
-     * @throws Exception
      */
     public TabControlView setItems(String[] itemArray, String[] valueArray) throws Exception {
         mItemMap.clear();
@@ -358,7 +357,6 @@ public class TabControlView extends RadioGroup {
      * @param items
      * @param values
      * @param defaultSelection
-     * @throws Exception
      */
     public TabControlView setItems(String[] items, String[] values, int defaultSelection) throws Exception {
         if (defaultSelection > (items.length - 1)) {
@@ -371,10 +369,10 @@ public class TabControlView extends RadioGroup {
     }
 
     /**
-     * 设置默认选中的Tab.
+     * 设置默认选中的Tab
      *
      * @param defaultSelection
-     * @throws Exception
+     * @return
      */
     public TabControlView setDefaultSelection(int defaultSelection) throws Exception {
         if (defaultSelection > (mItemMap.size() - 1)) {
@@ -497,7 +495,7 @@ public class TabControlView extends RadioGroup {
          * 选中
          *
          * @param title 选中展示的内容
-         * @param value      选中的值
+         * @param value 选中的值
          */
         void newSelection(String title, String value);
     }

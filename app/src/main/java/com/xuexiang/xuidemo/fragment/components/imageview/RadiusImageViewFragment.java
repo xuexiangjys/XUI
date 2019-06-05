@@ -1,7 +1,7 @@
 package com.xuexiang.xuidemo.fragment.components.imageview;
 
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;

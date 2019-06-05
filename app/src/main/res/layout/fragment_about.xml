@@ -31,7 +31,7 @@
             android:paddingTop="50dp"
             android:paddingBottom="25dp">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="165dp"
                 android:layout_height="165dp"
                 android:contentDescription="Logo"

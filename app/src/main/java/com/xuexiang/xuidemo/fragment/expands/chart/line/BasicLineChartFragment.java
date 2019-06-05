@@ -3,7 +3,7 @@ package com.xuexiang.xuidemo.fragment.expands.chart.line;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.view.View;
 
 import com.github.mikephil.charting.animation.Easing;

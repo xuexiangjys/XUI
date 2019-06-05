@@ -17,7 +17,7 @@
 
 package com.xuexiang.xui.widget.edittext.materialedittext.validation;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * 非空检验

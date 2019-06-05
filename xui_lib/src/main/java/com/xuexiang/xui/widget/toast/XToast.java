@@ -4,20 +4,20 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.CheckResult;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.CheckResult;
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
 import com.xuexiang.xui.R;
 
@@ -301,15 +301,17 @@ public class XToast {
         final TextView toastTextView = toastLayout.findViewById(R.id.toast_text);
         Drawable drawableFrame;
 
-        if (shouldTint)
+        if (shouldTint) {
             drawableFrame = Utils.tint9PatchDrawableFrame(context, tintColor);
-        else
+        } else {
             drawableFrame = Utils.getDrawable(context, R.drawable.xtoast_frame);
+        }
         Utils.setBackground(toastLayout, drawableFrame);
 
         if (withIcon) {
-            if (icon == null)
+            if (icon == null) {
                 throw new IllegalArgumentException("Avoid passing 'icon' as null if 'withIcon' is set to true");
+            }
             Utils.setBackground(toastIcon, Config.get().tintIcon ? Utils.tintIcon(icon, textColor) : icon);
         } else {
             toastIcon.setVisibility(View.GONE);
@@ -327,8 +329,9 @@ public class XToast {
         currentToast.setView(toastLayout);
 
         if (!Config.get().allowQueue) {
-            if (lastToast != null)
+            if (lastToast != null) {
                 lastToast.cancel();
+            }
             lastToast = currentToast;
         }
         if (Config.get().gravity != -1) {

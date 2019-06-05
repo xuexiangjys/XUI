@@ -17,11 +17,11 @@
 package com.xuexiang.xuidemo.fragment.components.popupwindow;
 
 import android.graphics.Color;
-import android.support.design.widget.Snackbar;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.SnackbarUtils;

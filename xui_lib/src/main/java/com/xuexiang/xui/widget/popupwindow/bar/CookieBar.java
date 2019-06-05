@@ -17,9 +17,9 @@
 package com.xuexiang.xui.widget.popupwindow.bar;
 
 import android.app.Activity;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
 import android.view.Gravity;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;

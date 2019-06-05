@@ -32,16 +32,17 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.content.res.AppCompatResources;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.widget.NestedScrollView;
 
 import com.xuexiang.xui.logs.UILog;
 
@@ -243,9 +244,9 @@ public final class DrawableUtils {
      * 由一个drawable生成bitmap
      */
     public static Bitmap drawableToBitmap(Drawable drawable) {
-        if (drawable == null)
+        if (drawable == null) {
             return null;
-        else if (drawable instanceof BitmapDrawable) {
+        } else if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
         }
 

@@ -11,7 +11,7 @@
   android:paddingRight="?attr/md_dialog_frame_margin"
   android:paddingTop="?attr/md_dialog_frame_margin">
 
-  <android.support.v7.widget.AppCompatImageView
+  <androidx.appcompat.widget.AppCompatImageView
     android:id="@+id/md_icon"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
