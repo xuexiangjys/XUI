@@ -91,9 +91,9 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.4'
 
     //XUI框架
-    implementation project(':xui_lib')
+//    implementation project(':xui_lib')
+    implementation 'com.github.xuexiangjys:XUI:1.0.5'
     implementation deps.glide
-//    implementation 'com.github.xuexiangjys:XUI:1.0.4'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
