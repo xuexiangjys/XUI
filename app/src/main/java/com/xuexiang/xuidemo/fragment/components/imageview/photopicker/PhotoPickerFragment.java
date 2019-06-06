@@ -17,10 +17,11 @@
 package com.xuexiang.xuidemo.fragment.components.imageview.photopicker;
 
 import android.content.Intent;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;

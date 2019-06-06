@@ -3,8 +3,9 @@ package com.xuexiang.xui.widget.progress.ratingbar;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+
+import androidx.annotation.Nullable;
 
 import java.util.UUID;
 

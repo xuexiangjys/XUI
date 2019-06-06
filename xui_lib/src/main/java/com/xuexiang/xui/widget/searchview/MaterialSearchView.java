@@ -237,7 +237,7 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
     }
 
     private final OnClickListener mOnClickListener = new OnClickListener() {
-
+        @Override
         public void onClick(View v) {
             if (v == mBackBtn) {
                 closeSearch();
@@ -656,9 +656,13 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
     @Override
     public boolean requestFocus(int direction, Rect previouslyFocusedRect) {
         // Don't accept focus if in the middle of clearing focus
-        if (mClearingFocus) return false;
+        if (mClearingFocus) {
+            return false;
+        }
         // Check if SearchView is focusable.
-        if (!isFocusable()) return false;
+        if (!isFocusable()) {
+            return false;
+        }
         return mSearchSrcTextView.requestFocus(direction, previouslyFocusedRect);
     }
 
@@ -723,10 +727,12 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
         //required field that makes Parcelables from a Parcel
         public static final Creator<SavedState> CREATOR =
                 new Creator<SavedState>() {
+                    @Override
                     public SavedState createFromParcel(Parcel in) {
                         return new SavedState(in);
                     }
 
+                    @Override
                     public SavedState[] newArray(int size) {
                         return new SavedState[size];
                     }

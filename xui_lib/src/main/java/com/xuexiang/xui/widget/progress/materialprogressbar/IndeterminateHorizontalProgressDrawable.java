@@ -22,7 +22,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.Keep;
+
+import androidx.annotation.Keep;
 
 import com.xuexiang.xui.utils.ThemeUtils;
 
@@ -151,13 +152,11 @@ public class IndeterminateHorizontalProgressDrawable extends BaseIndeterminatePr
         }
 
         @Keep
-        @SuppressWarnings("unused")
         public void setTranslateX(float translateX) {
             mTranslateX = translateX;
         }
 
         @Keep
-        @SuppressWarnings("unused")
         public void setScaleX(float scaleX) {
             mScaleX = scaleX;
         }

@@ -19,10 +19,11 @@ package com.xuexiang.xui.widget.dialog;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatDialog;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatDialog;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.KeyboardUtils;

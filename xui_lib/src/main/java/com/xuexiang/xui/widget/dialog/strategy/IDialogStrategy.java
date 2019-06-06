@@ -20,8 +20,8 @@ package com.xuexiang.xui.widget.dialog.strategy;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.ArrayRes;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.ArrayRes;
+import androidx.annotation.DrawableRes;
 
 /**
  * 对话框的策略

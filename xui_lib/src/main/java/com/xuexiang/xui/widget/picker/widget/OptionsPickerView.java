@@ -17,19 +17,18 @@
 package com.xuexiang.xui.widget.picker.widget;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.picker.widget.configure.PickerOptions;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 

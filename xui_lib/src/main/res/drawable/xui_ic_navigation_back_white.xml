@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<!--
   ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +15,12 @@
   ~
   -->
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="250dp"
-    android:layout_height="100dp"
-    app:cardCornerRadius="5dp">
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_item"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
-
-</androidx.cardview.widget.CardView>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M671.97,912c-12.29,0 -24.58,-4.67 -33.95,-14.05L286.05,545.98c-18.75,-18.72 -18.75,-49.12 0,-67.87l351.97,-352c18.75,-18.75 49.12,-18.75 67.87,0 18.75,18.72 18.75,49.12 0,67.87L387.87,512.03l318.02,318.02c18.75,18.75 18.75,49.12 0,67.87 -9.34,9.41 -21.63,14.08 -33.92,14.08z" />
+</vector>

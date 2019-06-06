@@ -2,8 +2,9 @@ package com.xuexiang.xui.widget.textview.label;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 标签文字

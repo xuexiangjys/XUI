@@ -25,11 +25,12 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.TintTypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ProgressBar;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.TintTypedArray;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.progress.materialprogressbar.internal.DrawableCompat;
@@ -223,7 +224,6 @@ public class MaterialProgressBar extends ProgressBar {
      * Get whether the current drawable is using an intrinsic padding. The default is {@code true}.
      *
      * @return Whether the current drawable is using an intrinsic padding.
-     * @throws IllegalStateException If the current drawable does not implement
      * {@link IntrinsicPaddingDrawable}.
      */
     public boolean getUseIntrinsicPadding() {
@@ -240,7 +240,6 @@ public class MaterialProgressBar extends ProgressBar {
      * {@code true}.
      *
      * @param useIntrinsicPadding Whether the current drawable should use its intrinsic padding.
-     * @throws IllegalStateException If the current drawable does not implement
      * {@link IntrinsicPaddingDrawable}.
      */
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
@@ -274,10 +273,7 @@ public class MaterialProgressBar extends ProgressBar {
      * Set whether the current drawable should show a background. The default is {@code true}.
      *
      * @param show Whether background should be shown. When {@code false}, does nothing if the
-     *             progress drawable does not implement {@link ShowBackgroundDrawable}, otherwise a
-     *             {@link IllegalStateException} is thrown.
-     * @throws IllegalStateException If {@code show} is {@code true} but the current drawable
-     * does not implement {@link ShowBackgroundDrawable}.
+     *             progress drawable does not implement {@link ShowBackgroundDrawable}
      */
     public void setShowProgressBackground(boolean show) {
         Drawable drawable = getCurrentDrawable();
@@ -463,8 +459,10 @@ public class MaterialProgressBar extends ProgressBar {
     }
 
     private void logProgressBarTintWarning() {
-        if (getContext().getApplicationInfo().minSdkVersion >= Build.VERSION_CODES.LOLLIPOP) {
-            return;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            if (getContext().getApplicationInfo().minSdkVersion >= Build.VERSION_CODES.LOLLIPOP) {
+                return;
+            }
         }
         Log.w(TAG, "Non-support version of tint method called, this is error-prone and will crash" +
                 " below Lollipop if you are calling it as a method of ProgressBar instead of" +

@@ -17,17 +17,19 @@
 
 package com.xuexiang.xui.widget.progress.materialprogressbar;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ThemeUtils;
@@ -106,10 +108,9 @@ class BaseProgressLayerDrawable<
      * {@inheritDoc}
      */
     @Override
-    @SuppressLint("NewApi")
     public void setTint(@ColorInt int tintColor) {
         // Modulate alpha of tintColor against mBackgroundAlpha.
-        int backgroundTintColor = android.support.v4.graphics.ColorUtils.setAlphaComponent(
+        int backgroundTintColor = androidx.core.graphics.ColorUtils.setAlphaComponent(
                 tintColor, Math.round(Color.alpha(tintColor) * mBackgroundAlpha));
         mBackgroundDrawable.setTint(backgroundTintColor);
         mSecondaryProgressDrawable.setTint(backgroundTintColor);
@@ -119,8 +120,8 @@ class BaseProgressLayerDrawable<
     /**
      * {@inheritDoc}
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    @SuppressLint("NewApi")
     public void setTintList(@Nullable ColorStateList tint) {
         ColorStateList backgroundTint;
         if (tint != null) {
@@ -141,7 +142,6 @@ class BaseProgressLayerDrawable<
      * {@inheritDoc}
      */
     @Override
-    @SuppressLint("NewApi")
     public void setTintMode(@NonNull PorterDuff.Mode tintMode) {
         mBackgroundDrawable.setTintMode(tintMode);
         mSecondaryProgressDrawable.setTintMode(tintMode);

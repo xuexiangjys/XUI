@@ -2,7 +2,7 @@ package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
 import android.graphics.Color;
 import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.ViewGroup;
 
 import com.xuexiang.xpage.annotation.Page;

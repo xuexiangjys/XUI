@@ -28,7 +28,7 @@
     android:paddingRight="?attr/xui_config_content_spacing_horizontal"
     android:paddingBottom="?attr/xui_config_content_spacing_horizontal">
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
         android:visibility="gone"
         tools:text="ACTION" />
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btn_action_with_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -18,10 +18,10 @@
 package com.xuexiang.xui.widget.textview.autofit;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 能够自适应字体大小的TextView

@@ -17,12 +17,13 @@
 package com.xuexiang.xuidemo.fragment.expands;
 
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -92,10 +93,10 @@ public class SnapHelperFragment extends BaseFragment {
                         dialog.dismiss();
                         switch (position) {
                             case 0:
-                                mPagerLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                                mPagerLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
                                 break;
                             case 1:
-                                mPagerLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                                mPagerLayoutManager.setOrientation(RecyclerView.VERTICAL);
                                 break;
                             default:
                                 break;

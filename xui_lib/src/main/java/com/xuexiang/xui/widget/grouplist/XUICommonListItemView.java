@@ -19,8 +19,6 @@ package com.xuexiang.xui.widget.grouplist;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IntDef;
-import android.support.v4.widget.Space;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -33,7 +31,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Space;
 import android.widget.TextView;
+
+import androidx.annotation.IntDef;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;

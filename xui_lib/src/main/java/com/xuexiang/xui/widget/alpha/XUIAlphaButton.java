@@ -1,8 +1,9 @@
 package com.xuexiang.xui.widget.alpha;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatButton;
 
 /**
  * 在 pressed 和 disabled 时改变 View 的透明度

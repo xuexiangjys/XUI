@@ -2,13 +2,13 @@ package com.xuexiang.xui.widget.actionbar;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.xuexiang.xui.R;
-import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 
 /**
  * 标题栏工具
@@ -23,6 +23,7 @@ public final class TitleUtils {
     }
 
     //=================================静态添加=======================================//
+
     /**
      * 利用TitleBar初始化ActionBar
      */
@@ -46,8 +47,10 @@ public final class TitleUtils {
         return titleBar;
     }
     //=================================动态添加=======================================//
+
     /**
      * 动态添加TitleBar
+     *
      * @param activity
      * @param title
      */
@@ -64,6 +67,7 @@ public final class TitleUtils {
 
     /**
      * 动态添加TitleBar
+     *
      * @param viewGroup
      * @param title
      * @param listener
@@ -76,6 +80,7 @@ public final class TitleUtils {
 
     /**
      * 动态生成TitleBar
+     *
      * @param fragment
      * @param title
      * @return
@@ -92,6 +97,7 @@ public final class TitleUtils {
 
     /**
      * 动态添加TitleBar
+     *
      * @param fragment
      * @param viewGroup
      * @param title
@@ -104,8 +110,9 @@ public final class TitleUtils {
 
     /**
      * 动态生成TitleBar
+     *
      * @param context
-     * @param title 标题
+     * @param title    标题
      * @param listener 左侧监听
      * @return
      */
@@ -132,6 +139,7 @@ public final class TitleUtils {
 
     /**
      * 初始化title的样式
+     *
      * @param titleBar
      * @param title
      * @param listener
@@ -143,15 +151,15 @@ public final class TitleUtils {
 
     /**
      * 初始化title的样式
+     *
      * @param titleBar
      * @param title
      * @return
      */
     public static TitleBar initTitleBarStyle(TitleBar titleBar, String title) {
-        titleBar.setImmersive(false)
-                .setBackImageResource(R.drawable.xui_ic_return_back)
+        titleBar.setLeftImageDrawable(ThemeUtils.resolveDrawable(titleBar.getContext(), R.attr.xui_actionbar_ic_navigation_back))
                 .setTitle(title)
-                .setBackgroundColor(ResUtils.getColor(R.color.xui_config_color_titlebar));
+                .setBackgroundColor(ThemeUtils.resolveColor(titleBar.getContext(), R.attr.xui_actionbar_color));
         return titleBar;
     }
 }

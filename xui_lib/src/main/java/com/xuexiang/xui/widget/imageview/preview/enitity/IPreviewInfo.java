@@ -18,7 +18,7 @@ package com.xuexiang.xui.widget.imageview.preview.enitity;
 
 import android.graphics.Rect;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.io.Serializable;
 

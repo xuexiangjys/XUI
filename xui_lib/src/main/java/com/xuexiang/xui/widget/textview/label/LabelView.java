@@ -21,7 +21,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -32,6 +31,8 @@ import android.view.animation.Transformation;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

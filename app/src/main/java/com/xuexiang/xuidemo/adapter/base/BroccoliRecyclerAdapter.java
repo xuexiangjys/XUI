@@ -1,6 +1,6 @@
 package com.xuexiang.xuidemo.adapter.base;
 
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 import android.view.View;
 
 import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;

@@ -23,7 +23,6 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -31,6 +30,8 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
@@ -307,7 +308,6 @@ public class MultiTabControlView extends LinearLayout {
      *
      * @param itemArray
      * @param valueArray
-     * @throws Exception
      */
     public MultiTabControlView setItems(String[] itemArray, String[] valueArray) throws Exception {
         mItemMap.clear();
@@ -356,7 +356,6 @@ public class MultiTabControlView extends LinearLayout {
      * @param items
      * @param values
      * @param defaultSelection
-     * @throws Exception
      */
     public MultiTabControlView setItems(String[] items, String[] values, int... defaultSelection) throws Exception {
         if (defaultSelection == null) {
@@ -379,7 +378,6 @@ public class MultiTabControlView extends LinearLayout {
      * 设置默认选中的Tab.
      *
      * @param defaultSelections
-     * @throws Exception
      */
     public MultiTabControlView setDefaultSelection(int... defaultSelections) throws Exception {
         if (defaultSelections == null) {
@@ -402,7 +400,6 @@ public class MultiTabControlView extends LinearLayout {
      * 设置默认选中的Tab.
      *
      * @param defaultSelections
-     * @throws Exception
      */
     public MultiTabControlView setDefaultSelection(@NonNull List<Integer> defaultSelections) throws Exception {
         int[] selections = new int[defaultSelections.size()];

@@ -2,8 +2,6 @@ package com.xuexiang.xui.widget.statelayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.AnimRes;
-import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,6 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.AnimRes;
+import androidx.annotation.StringRes;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConfig;
@@ -153,7 +154,7 @@ public class StatefulLayout extends LinearLayout {
             content.clearAnimation();
             final int animCounterCopy = ++animCounter;
             if (stContainer.getVisibility() == VISIBLE) {
-                outAnimation.setAnimationListener(new CustomAnimationListener() {
+                outAnimation.setAnimationListener(new SimpleAnimationListener() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         if (animCounter != animCounterCopy) {
@@ -303,7 +304,7 @@ public class StatefulLayout extends LinearLayout {
             content.clearAnimation();
             final int animCounterCopy = ++animCounter;
             if (stContainer.getVisibility() == GONE) {
-                outAnimation.setAnimationListener(new CustomAnimationListener() {
+                outAnimation.setAnimationListener(new SimpleAnimationListener() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         if (animCounterCopy != animCounter) {
@@ -317,7 +318,7 @@ public class StatefulLayout extends LinearLayout {
                 content.startAnimation(outAnimation);
                 state(options);
             } else {
-                outAnimation.setAnimationListener(new CustomAnimationListener() {
+                outAnimation.setAnimationListener(new SimpleAnimationListener() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         if (animCounterCopy != animCounter) {

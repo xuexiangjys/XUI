@@ -3,7 +3,7 @@ package com.xuexiang.xui.widget.flowlayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -97,18 +97,16 @@ public class FlowTagLayout extends ViewGroup {
         }
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FlowTagLayout);
-        if (typedArray != null) {
-            mTagCheckMode = typedArray.getInt(R.styleable.FlowTagLayout_ftl_check_mode, FLOW_TAG_CHECKED_NONE);
-            int entriesID = typedArray.getResourceId(R.styleable.FlowTagLayout_ftl_entries, 0);
-            if (entriesID != 0) {
-                BaseTagAdapter tagAdapter = setItems(ResUtils.getStringArray(entriesID));
-                int selectedIDs = typedArray.getResourceId(R.styleable.FlowTagLayout_ftl_selecteds, 0);
-                if (selectedIDs != 0) {
-                    tagAdapter.setSelectedPositions(ResUtils.getIntArray(selectedIDs));
-                }
+        mTagCheckMode = typedArray.getInt(R.styleable.FlowTagLayout_ftl_check_mode, FLOW_TAG_CHECKED_NONE);
+        int entriesID = typedArray.getResourceId(R.styleable.FlowTagLayout_ftl_entries, 0);
+        if (entriesID != 0) {
+            BaseTagAdapter tagAdapter = setItems(ResUtils.getStringArray(entriesID));
+            int selectedIDs = typedArray.getResourceId(R.styleable.FlowTagLayout_ftl_selecteds, 0);
+            if (selectedIDs != 0) {
+                tagAdapter.setSelectedPositions(ResUtils.getIntArray(selectedIDs));
             }
-            typedArray.recycle();
         }
+        typedArray.recycle();
     }
 
 

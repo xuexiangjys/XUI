@@ -1,7 +1,7 @@
 package com.xuexiang.xuidemo.widget;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.UIConsts;
 import com.xuexiang.xui.XUI;

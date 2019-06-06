@@ -1,7 +1,8 @@
 package com.xuexiang.xui.widget.statelayout;
 
-import android.support.annotation.DrawableRes;
 import android.view.View;
+
+import androidx.annotation.DrawableRes;
 
 import java.io.Serializable;
 
@@ -9,7 +10,6 @@ import java.io.Serializable;
  * Model builder class to show custom state
  * @see com.xuexiang.xui.widget.statelayout.StatefulLayout#showCustom(CustomStateOptions)
  */
-@SuppressWarnings("PMD.AvoidFieldNameMatchingMethodName")
 public class CustomStateOptions implements Serializable {
 
     @DrawableRes

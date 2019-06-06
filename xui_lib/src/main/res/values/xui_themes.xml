@@ -58,6 +58,10 @@
 
         <!--actionbar的样式-->
         <item name="xui_actionbar_color">@color/xui_config_color_titlebar</item>
+        <item name="xui_actionbar_text_color">@color/xui_config_color_white</item>
+        <item name="xui_actionbar_immersive">false</item>
+        <item name="xui_actionbar_ic_navigation_back">@drawable/xui_ic_navigation_back_white</item>
+
 
         <!-- 文字的style -->
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>

@@ -17,14 +17,15 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.StatusBarUtils;
@@ -36,7 +37,7 @@ import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
 
-import static android.support.design.widget.TabLayout.MODE_FIXED;
+import static com.google.android.material.tabs.TabLayout.MODE_FIXED;
 
 /**
  * @author xuexiang

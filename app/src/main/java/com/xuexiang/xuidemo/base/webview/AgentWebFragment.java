@@ -27,10 +27,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.PopupMenu;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -50,6 +46,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.just.agentweb.action.PermissionInterceptor;
@@ -148,7 +149,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 //                .openParallelDownload()// 4.0.0删除该API 打开并行下载 , 默认串行下载。 请通过AgentWebDownloader#Extra实现并行下载
 //                .setNotifyIcon(R.drawable.ic_file_download_black_24dp) 4.0.0删除该api //下载通知图标。4.0.0后的版本请通过AgentWebDownloader#Extra修改icon
                 //打开其他页面时，弹窗质询用户前往其他应用 AgentWeb 3.0.0 加入。
-                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
+//                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
                 //拦截找不到相关页面的Url AgentWeb 3.0.0 加入。
                 .interceptUnkownUrl()
                 //创建AgentWeb。

@@ -3,7 +3,6 @@ package com.xuexiang.xui.widget.edittext;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -13,6 +12,8 @@ import android.view.View.OnFocusChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
@@ -61,12 +62,12 @@ public class ClearEditText extends AppCompatEditText implements
         if (isInEditMode()) {
             return;
         }
+
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClearEditText, defStyleAttr, 0);
-        if (typedArray != null) {
-            mClearDrawable = typedArray.getDrawable(R.styleable.ClearEditText_cet_clearIcon);
-            mIconSize = typedArray.getDimensionPixelSize(R.styleable.ClearEditText_cet_clearIconSize, 0);
-            typedArray.recycle();
-        }
+        mClearDrawable = typedArray.getDrawable(R.styleable.ClearEditText_cet_clearIcon);
+        mIconSize = typedArray.getDimensionPixelSize(R.styleable.ClearEditText_cet_clearIconSize, 0);
+        typedArray.recycle();
+
         if (mClearDrawable == null) {
             //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
             mClearDrawable = getCompoundDrawables()[2];

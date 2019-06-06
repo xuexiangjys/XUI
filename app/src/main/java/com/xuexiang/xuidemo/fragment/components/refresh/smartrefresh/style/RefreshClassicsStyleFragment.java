@@ -19,14 +19,15 @@ package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
-import android.support.annotation.StringRes;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
@@ -49,7 +50,7 @@ import java.util.Random;
 import butterknife.BindView;
 
 import static android.R.layout.simple_list_item_2;
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
 
 /**
  * @author xuexiang
@@ -82,7 +83,9 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
      */
     @Override
     public void onItemClick(View itemView, int position) {
-        if (!RefreshState.None.equals(mRefreshLayout.getState())) return;
+        if (!RefreshState.None.equals(mRefreshLayout.getState())) {
+            return;
+        }
 
         switch (Item.values()[position]) {
             case 背后固定:

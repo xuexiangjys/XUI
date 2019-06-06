@@ -7,16 +7,17 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.LruCache;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.just.agentweb.core.AgentWeb;
 import com.xuexiang.xui.utils.DrawableUtils;
@@ -26,7 +27,7 @@ import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
 /**

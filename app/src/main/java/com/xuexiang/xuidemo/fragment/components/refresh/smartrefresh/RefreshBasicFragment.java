@@ -16,7 +16,7 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.AbsListView;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;

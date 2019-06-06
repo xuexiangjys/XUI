@@ -3,12 +3,13 @@ package com.xuexiang.xui.widget.progress.ratingbar;
 import android.content.Context;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IntRange;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.IntRange;
 
 /**
  *

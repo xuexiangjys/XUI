@@ -27,13 +27,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConfig;
-import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.Utils;
 
@@ -249,9 +249,9 @@ public class ARCLoadingView extends View {
      */
     @NonNull
     private SweepGradient getSweepGradient(Canvas canvas) {
-        SweepGradient sweepGradient = new SweepGradient(canvas.getWidth() / 2, canvas.getHeight() / 2, mGradientColors, null);
+        SweepGradient sweepGradient = new SweepGradient(canvas.getWidth() >> 1, canvas.getHeight() >> 1, mGradientColors, null);
         Matrix matrix = new Matrix();
-        matrix.setRotate(mStartDegree, canvas.getWidth() / 2, canvas.getHeight() / 2);
+        matrix.setRotate(mStartDegree, canvas.getWidth() >> 1, canvas.getHeight() >> 1);
         sweepGradient.setLocalMatrix(matrix);
         return sweepGradient;
     }

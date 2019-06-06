@@ -3,7 +3,9 @@ package com.xuexiang.xuidemo.fragment.expands.chart.line;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+
+import androidx.core.content.ContextCompat;
+
 import android.view.View;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -201,6 +203,7 @@ public class BasicLineChartFragment extends BaseChartFragment implements OnChart
             set1.setFillFormatter(new IFillFormatter() {
                 @Override
                 public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                    if (chart == null) return 0;
                     return chart.getAxisLeft().getAxisMinimum();
                 }
             });
@@ -281,7 +284,7 @@ public class BasicLineChartFragment extends BaseChartFragment implements OnChart
                                     LineDataSet set = (LineDataSet) iSet;
                                     set.setMode(set.getMode() == LineDataSet.Mode.CUBIC_BEZIER
                                             ? LineDataSet.Mode.LINEAR
-                                            :  LineDataSet.Mode.CUBIC_BEZIER);
+                                            : LineDataSet.Mode.CUBIC_BEZIER);
                                 }
                                 chart.invalidate();
                                 break;
@@ -290,7 +293,7 @@ public class BasicLineChartFragment extends BaseChartFragment implements OnChart
                                 chart.invalidate();
                                 break;
                             case 6:
-                                if(chart.getData() != null) {
+                                if (chart.getData() != null) {
                                     chart.getData().setHighlightEnabled(!chart.getData().isHighlightEnabled());
                                     chart.invalidate();
                                 }

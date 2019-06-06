@@ -19,7 +19,7 @@ package com.xuexiang.xuidemo.fragment.components.imageview.preview;
 import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
 

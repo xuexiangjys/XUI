@@ -3,11 +3,12 @@ package com.xuexiang.xui.widget.statelayout;
 import android.view.animation.Animation;
 
 /**
- * simple class to reduce callback hell
+ * 简易的动画监听
+ *
+ * @author xuexiang
+ * @since 2019-06-06 00:42
  */
-@SuppressWarnings("PMD.UncommentedEmptyMethodBody")
-public class CustomAnimationListener
-        implements Animation.AnimationListener {
+public class SimpleAnimationListener implements Animation.AnimationListener {
 
     @Override
     public void onAnimationStart(Animation animation) {

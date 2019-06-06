@@ -107,7 +107,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_praise"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
@@ -120,7 +120,7 @@
                 android:text="点赞" />
 
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_comment"
                 android:layout_width="16dp"
                 android:layout_height="16dp"

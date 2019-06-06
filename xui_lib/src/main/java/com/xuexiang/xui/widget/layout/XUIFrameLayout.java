@@ -19,8 +19,9 @@ package com.xuexiang.xui.widget.layout;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
+
+import androidx.annotation.ColorInt;
 
 import com.xuexiang.xui.widget.alpha.XUIAlphaFrameLayout;
 

@@ -17,13 +17,14 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 
-import android.support.design.widget.BottomSheetDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.model.PageInfo;
@@ -95,7 +96,7 @@ public class BottomSheetDialogFragment extends BaseSimpleListFragment {
 
     private void initDialogList(RecyclerView recyclerView) {
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        manager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(manager);
         SimpleRecyclerAdapter adapter = new SimpleRecyclerAdapter();
         recyclerView.setAdapter(adapter);

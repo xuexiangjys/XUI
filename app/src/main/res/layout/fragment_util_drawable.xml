@@ -19,7 +19,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/contentWrap"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,7 +35,7 @@
                 style="@style/TextStyle.Content.wrap"
                 android:text="@string/drawable_utils_solid_image_title" />
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/solidImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                 style="@style/TextStyle.Content.wrap"
                 android:text="@string/drawable_utils_circle_gradient_title" />
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/circleGradient"
                 android:layout_width="@dimen/drawable_utils_common_shape_size"
                 android:layout_height="@dimen/drawable_utils_common_shape_size"
@@ -66,20 +66,20 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/tintColorOrigin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/common_example" />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/color_utils_square_margin"
                     android:contentDescription="@null"
                     android:src="@drawable/icon_arrow_right" />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/tintColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,6 +118,6 @@
                 android:text="截取scrollview长图" />
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <!--没有设置主题-->
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,11 +21,11 @@
             android:text="View"
             android:textColor="@color/white"
             android:textSize="14sp" />
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <!--设置主题，全局主题被覆盖： AppTheme -> android:theme -> app:popupTheme-->
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar_2"
         style="@style/ToolbarStyle"
         android:layout_marginTop="10dp"
@@ -34,10 +34,10 @@
         app:subtitle="@string/title_toolbar_sub"
         app:title="@string/title_toolbar">
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <!--ToolbarTheme起作用-->
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar_3"
         style="@style/ToolbarStyle"
         android:layout_marginTop="10dp"
@@ -45,7 +45,7 @@
         app:navigationIcon="@drawable/ic_navigation_back_white"
         app:title="@string/title_toolbar" />
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar_4"
         style="@style/ToolbarStyle"
         android:layout_marginTop="10dp"
@@ -58,6 +58,6 @@
             android:layout_height="match_parent"
             android:textColor="@color/white" />
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
 </LinearLayout>
