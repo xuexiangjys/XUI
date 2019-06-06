@@ -51,6 +51,14 @@ support.v4 = "com.android.support:support-v4:$versions.support"
 support.core_utils = "com.android.support:support-core-utils:$versions.support"
 deps.support = support
 
+def androidx = [:]
+androidx.annotations = "androidx.annotation:annotation:1.1.0"
+androidx.appcompat = 'androidx.appcompat:appcompat:1.0.2'
+androidx.recyclerview = 'androidx.recyclerview:recyclerview:1.0.0'
+androidx.design = 'com.google.android.material:material:1.1.0-alpha07'
+androidx.multidex = 'androidx.multidex:multidex:2.0.1'
+deps.androidx = androidx
+
 def room = [:]
 room.runtime = "android.arch.persistence.room:runtime:$versions.room"
 room.compiler = "android.arch.persistence.room:compiler:$versions.room"

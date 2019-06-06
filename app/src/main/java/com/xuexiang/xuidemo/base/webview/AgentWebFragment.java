@@ -149,7 +149,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 //                .openParallelDownload()// 4.0.0删除该API 打开并行下载 , 默认串行下载。 请通过AgentWebDownloader#Extra实现并行下载
 //                .setNotifyIcon(R.drawable.ic_file_download_black_24dp) 4.0.0删除该api //下载通知图标。4.0.0后的版本请通过AgentWebDownloader#Extra修改icon
                 //打开其他页面时，弹窗质询用户前往其他应用 AgentWeb 3.0.0 加入。
-                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
+//                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
                 //拦截找不到相关页面的Url AgentWeb 3.0.0 加入。
                 .interceptUnkownUrl()
                 //创建AgentWeb。

@@ -18,16 +18,11 @@ android {
 }
 
 dependencies {
-    compileOnly "androidx.appcompat:appcompat:1.0.2"
-    compileOnly "androidx.annotation:annotation:1.1.0-rc01"
-    compileOnly "com.google.android.material:material:1.1.0-alpha07"
-    compileOnly "androidx.recyclerview:recyclerview:1.0.0"
+    compileOnly deps.androidx.appcompat
+    compileOnly deps.androidx.recyclerview
+    compileOnly deps.androidx.design
 
-//    compileOnly deps.support.app_compat
-//    compileOnly deps.support.recyclerview
-//    compileOnly deps.support.design
-
-    compileOnly 'com.github.bumptech.glide:glide:4.8.0'
+    compileOnly deps.glide
 
     api 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'com.nineoldandroids:library:2.4.0'

@@ -80,27 +80,20 @@ dependencies {
     androidTestImplementation deps.runner
     androidTestImplementation deps.espresso.core
 
-    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation deps.androidx.multidex
 
     //下拉刷新、CityPicker、XUI框架需要
-//    implementation deps.support.app_compat
-//    implementation deps.support.recyclerview
-//    implementation deps.support.design
-
-    implementation "androidx.appcompat:appcompat:1.0.2"
-    implementation "androidx.annotation:annotation:1.1.0-rc01"
-    implementation "com.google.android.material:material:1.1.0-alpha07"
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
-
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.recyclerview
+    implementation deps.androidx.design
 
     //悬浮按钮
     implementation 'com.github.clans:fab:1.6.4'
 
     //XUI框架
     implementation project(':xui_lib')
+    implementation deps.glide
 //    implementation 'com.github.xuexiangjys:XUI:1.0.4'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
