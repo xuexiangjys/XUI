@@ -18,9 +18,9 @@ android {
 }
 
 dependencies {
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.recyclerview
-    implementation deps.androidx.design
+    compileOnly deps.androidx.appcompat
+    compileOnly deps.androidx.recyclerview
+    compileOnly deps.androidx.design
 
     compileOnly deps.glide
 
