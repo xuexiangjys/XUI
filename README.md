@@ -47,11 +47,12 @@ allprojects {
 ```
 dependencies {
   ...
+  //1.0.5版本后只支持androidx
   implementation 'com.github.xuexiangjys:XUI:1.0.5'
 
-  implementation 'com.android.support:appcompat-v7:28.0.0'
-  implementation 'com.android.support:recyclerview-v7:28.0.0'
-  implementation 'com.android.support:design:28.0.0'
+  implementation 'androidx.appcompat:appcompat:1.0.2'
+  implementation 'androidx.recyclerview:recyclerview:1.0.0'
+  implementation 'com.google.android.material:material:1.1.0-alpha07'
   implementation 'com.github.bumptech.glide:glide:4.8.0'
 }
 ```
