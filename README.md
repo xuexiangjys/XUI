@@ -57,6 +57,20 @@ dependencies {
 }
 ```
 
+【注意】如果你的项目目前还未使用androidx，那你只能使用1.0.5之前的版本了。
+
+```
+dependencies {
+  ...
+  implementation 'com.github.xuexiangjys:XUI:1.0.4'
+
+  implementation 'com.android.support:appcompat-v7:28.0.0'
+  implementation 'com.android.support:recyclerview-v7:28.0.0'
+  implementation 'com.android.support:design:28.0.0'
+  implementation 'com.github.bumptech.glide:glide:4.8.0'
+}
+```
+
 ### 初始化XUI设置
 
 1.在Application最顶部初始化设置
