@@ -100,7 +100,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.5'
     implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.5'
     //切片
-    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.3'
+    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:x1.0.3'
 
     //XPage页面框架
     implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.6'
