@@ -116,12 +116,12 @@ public abstract class BaseFragment extends XPageFragment {
     @Override
     public void onResume() {
         super.onResume();
-        MobclickAgent.onPageStart(getPageTitle());
+        MobclickAgent.onPageStart(getPageName());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        MobclickAgent.onPageEnd(getPageTitle());
+        MobclickAgent.onPageEnd(getPageName());
     }
 }
