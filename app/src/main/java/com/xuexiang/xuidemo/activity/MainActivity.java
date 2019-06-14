@@ -236,6 +236,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+                                MobclickAgent.onProfileSignOff();
                                 XUtil.get().exitApp();
                             }
                         },
