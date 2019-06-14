@@ -6,6 +6,6 @@
   "VersionName": "1.0.5",
   "UploadTime": "2019-06-14 12:45:55",
   "ModifyContent": "\r\n1、最新支持androidx。\n2、增加了友盟统计和Bugly日志上报。\n3、去除XVideo的演示，缩小包的体积。",
-  "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo.apk",
+  "DownloadUrl": "http://oss.pgyer.com/d015d5e943389c41128cd945ee6f9e26.apk?auth_key=1560492141-445d931bb266c0653007ef181660e520-0-6a719ea47a3fb91036d9073344bf14d8&response-content-disposition=attachment;+filename=xuidemo.apk",
   "ApkSize": 10445
 }
