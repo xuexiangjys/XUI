@@ -26,10 +26,11 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import java.io.File;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  * 使用okhttp
@@ -40,7 +41,10 @@ import okhttp3.Response;
 public class OKHttpUpdateHttpService implements IUpdateHttpService {
 
     public OKHttpUpdateHttpService() {
-        OkHttpUtils.getInstance().timeout(20000);
+        OkHttpUtils.initClient(new OkHttpClient.Builder()
+                .connectTimeout(20000L, TimeUnit.MILLISECONDS)
+                .readTimeout(20000L, TimeUnit.MILLISECONDS)
+                .build());
     }
 
     @Override
@@ -51,7 +55,7 @@ public class OKHttpUpdateHttpService implements IUpdateHttpService {
                 .build()
                 .execute(new StringCallback() {
                     @Override
-                    public void onError(Call call, Response response, Exception e, int id) {
+                    public void onError(Call call, Exception e, int id) {
                         callBack.onError(e);
                     }
 
@@ -70,7 +74,7 @@ public class OKHttpUpdateHttpService implements IUpdateHttpService {
                 .build()
                 .execute(new StringCallback() {
                     @Override
-                    public void onError(Call call, Response response, Exception e, int id) {
+                    public void onError(Call call, Exception e, int id) {
                         callBack.onError(e);
                     }
 
@@ -93,7 +97,7 @@ public class OKHttpUpdateHttpService implements IUpdateHttpService {
                     }
 
                     @Override
-                    public void onError(Call call, Response response, Exception e, int id) {
+                    public void onError(Call call, Exception e, int id) {
                         callback.onError(e);
                     }
 

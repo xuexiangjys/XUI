@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xpage.enums.CoreAnim;
@@ -110,5 +111,17 @@ public abstract class BaseFragment extends XPageFragment {
             root.removeViewAt(0);
             initTitle();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getPageTitle());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getPageTitle());
     }
 }

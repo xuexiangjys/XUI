@@ -141,9 +141,9 @@ dependencies {
     //CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.1"
 
-    //XVideo
-    implementation 'com.github.xuexiangjys:XVideo:1.0.2'
-    implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.3'
+//    //XVideo，太大，暂时去除
+//    implementation 'com.github.xuexiangjys:XVideo:1.0.2'
+//    implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.3'
 
     //WebView
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-core:1.0.0'
@@ -171,6 +171,15 @@ dependencies {
 
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.0.9'
-    implementation 'com.qianwen:okhttp-utils:3.8.0'
+    implementation 'com.zhy:okhttputils:2.6.2'
+
+    //umeng统计
+    implementation  'com.umeng.umsdk:analytics:8.0.2'
+    implementation  'com.umeng.umsdk:common:2.0.2'
+
+    //bugly统计
+    implementation 'com.tencent.bugly:crashreport:3.0.0' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.1' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+
 
 }

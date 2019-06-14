@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
@@ -28,6 +29,7 @@ import com.xuexiang.xuidemo.fragment.QRCodeFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.XUtil;
+import com.xuexiang.xutil.system.DeviceUtils;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
@@ -66,6 +68,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //登记一下
+        MobclickAgent.onProfileSignIn(DeviceUtils.getAndroidID());
 
         initSlidingMenu(savedInstanceState);
 

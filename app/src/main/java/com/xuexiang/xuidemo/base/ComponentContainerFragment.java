@@ -1,11 +1,14 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.base.XPageContainerListFragment;
 import com.xuexiang.xpage.base.XPageFragment;
@@ -111,5 +114,17 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
             root.removeViewAt(0);
             initTitle();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getPageTitle());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getPageTitle());
     }
 }
