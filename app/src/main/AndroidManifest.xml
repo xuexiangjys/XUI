@@ -68,10 +68,10 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.EasyIndicatorActivity" />
 
-        <!--XVideo视频录制-->
-        <activity
-            android:name="com.xuexiang.xvideo.MediaRecorderActivity"
-            android:theme="@style/XVideoNoBarTheme" />
+        <!--&lt;!&ndash;XVideo视频录制&ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name="com.xuexiang.xvideo.MediaRecorderActivity"-->
+            <!--android:theme="@style/XVideoNoBarTheme" />-->
 
         <!--SearchView-->
         <activity
@@ -119,6 +119,10 @@
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/SettingTheme" />
+
+        <activity
+            android:name=".utils.update.UpdateTipDialog"
+            android:theme="@style/DialogTheme" />
 
         <service
             android:name="com.baidu.location.f"

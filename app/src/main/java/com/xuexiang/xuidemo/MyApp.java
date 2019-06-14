@@ -19,6 +19,7 @@ import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.utils.LocationService;
+import com.xuexiang.xuidemo.utils.update.CustomUpdateDownloader;
 import com.xuexiang.xuidemo.utils.update.OKHttpUpdateHttpService;
 import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xupdate.utils.UpdateUtils;
@@ -129,6 +130,7 @@ public class MyApp extends Application {
                 .param("appKey", getPackageName())
                 //这个必须设置！实现网络请求功能。
                 .setIUpdateHttpService(new OKHttpUpdateHttpService())
+                .setIUpdateDownLoader(new CustomUpdateDownloader())
                 //这个必须初始化
                 .init(this);
     }
