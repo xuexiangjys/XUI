@@ -50,6 +50,7 @@
         android:id="@+id/list"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
+        android:overScrollMode="never"
         tools:listitem="@layout/menu_item_option" />
 
     <Space
