@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 
 /**
  * This file is part of XToast.
@@ -319,7 +320,9 @@ public class XToast {
 
         toastTextView.setText(message);
         toastTextView.setTextColor(textColor);
-        toastTextView.setTypeface(Config.get().typeface);
+        if (XUI.getDefaultTypeface() == null) {
+            toastTextView.setTypeface(Config.get().typeface);
+        }
         if (Config.get().textSize != -1) {
             toastTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, Config.get().textSize);
         }

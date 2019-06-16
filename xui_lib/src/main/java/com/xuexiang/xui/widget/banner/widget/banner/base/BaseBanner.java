@@ -3,6 +3,7 @@ package com.xuexiang.xui.widget.banner.widget.banner.base;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
 
@@ -34,13 +35,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import uk.co.chrisjenx.calligraphy.HasTypeface;
+
 /**
  * 轮播条
  *
  * @author xuexiang
  * @since 2018/11/25 下午7:18
  */
-public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends RelativeLayout {
+public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends RelativeLayout implements HasTypeface {
     /**
      * 单线程池定时任务
      */
@@ -713,4 +716,13 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
             mHandler.removeCallbacksAndMessages(null);
         }
     }
+
+    @Override
+    public void setTypeface(Typeface typeface) {
+        if (mTvTitle != null) {
+            mTvTitle.setTypeface(typeface);
+        }
+    }
+
+
 }

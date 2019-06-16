@@ -27,13 +27,15 @@ import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectChangeListe
 
 import java.util.List;
 
+import uk.co.chrisjenx.calligraphy.HasTypeface;
+
 /**
  * 条件滚轮
  *
  * @author xuexiang
  * @since 2019/1/1 下午7:10
  */
-public class WheelOptions<T> {
+public class WheelOptions<T> implements HasTypeface {
     private View view;
     private WheelView wv_option1;
     private WheelView wv_option2;
@@ -191,7 +193,12 @@ public class WheelOptions<T> {
     }
 
 
-    //不联动情况下
+    /**
+     * 不联动情况下
+     * @param options1Items
+     * @param options2Items
+     * @param options3Items
+     */
     public void setNPicker(List<T> options1Items, List<T> options2Items, List<T> options3Items) {
 
         // 选项1
@@ -329,10 +336,17 @@ public class WheelOptions<T> {
      *
      * @param font 系统提供的几种样式
      */
+    @Override
     public void setTypeface(Typeface font) {
-        wv_option1.setTypeface(font);
-        wv_option2.setTypeface(font);
-        wv_option3.setTypeface(font);
+        if (wv_option1 != null) {
+            wv_option1.setTypeface(font);
+        }
+        if (wv_option2 != null) {
+            wv_option2.setTypeface(font);
+        }
+        if (wv_option3 != null) {
+            wv_option3.setTypeface(font);
+        }
     }
 
     /**

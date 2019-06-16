@@ -53,13 +53,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import uk.co.chrisjenx.calligraphy.HasTypeface;
+
 /**
  * Material Design 输入框
  *
  * @author XUE
  * @since 2019/3/20 16:47
  */
-public class MaterialEditText extends AppCompatEditText {
+public class MaterialEditText extends AppCompatEditText implements HasTypeface {
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({FLOATING_LABEL_NONE, FLOATING_LABEL_NORMAL, FLOATING_LABEL_HIGHLIGHT})
@@ -1753,6 +1755,11 @@ public class MaterialEditText extends AppCompatEditText {
         return lengthChecker.getLength(text);
     }
 
-
-
+    @Override
+    public void setTypeface(Typeface typeface) {
+        super.setTypeface(typeface);
+        if (textPaint != null) {
+            textPaint.setTypeface(typeface);
+        }
+    }
 }

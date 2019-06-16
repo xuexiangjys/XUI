@@ -2203,9 +2203,21 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
 
     @Override
     public void setTypeface(Typeface typeface) {
-        mLeftView.setTypeface(typeface);
-        mCenterView.setTypeface(typeface);
-        mRightView.setTypeface(typeface);
+        if (mLeftView != null) {
+            mLeftView.setTypeface(typeface);
+        }
+        if (mCenterView != null) {
+            mCenterView.setTypeface(typeface);
+        }
+        if (mCenterEditText != null) {
+            mCenterEditText.setTypeface(typeface);
+        }
+        if (mRightView != null) {
+            mRightView.setTypeface(typeface);
+        }
+        if (mCenterView != null) {
+            mCenterView.setTypeface(typeface);
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////

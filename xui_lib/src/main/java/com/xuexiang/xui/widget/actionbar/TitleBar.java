@@ -875,9 +875,15 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      */
     @Override
     public void setTypeface(Typeface tf) {
-        mLeftText.setTypeface(tf);
-        mCenterText.setTypeface(tf);
-        mSubTitleText.setTypeface(tf);
+        if (mLeftText != null) {
+            mLeftText.setTypeface(tf);
+        }
+        if (mCenterText != null) {
+            mCenterText.setTypeface(tf);
+        }
+        if (mSubTitleText != null) {
+            mSubTitleText.setTypeface(tf);
+        }
     }
 
     public XUIAlphaTextView getLeftText() {

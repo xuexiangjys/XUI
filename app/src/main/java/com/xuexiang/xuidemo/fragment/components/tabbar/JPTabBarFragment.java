@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.jpeng.jptabbar.JPTabBar;
 import com.jpeng.jptabbar.OnTabSelectListener;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -97,6 +98,7 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
         //页面可以滑动
         mTabbar.setGradientEnable(true);
         mTabbar.setPageAnimateEnable(true);
+        mTabbar.setTabTypeFace(XUI.getDefaultTypeface());
 
         mViewPager.setAdapter(mPagerAdapter);
         mTabbar.setContainer(mViewPager);

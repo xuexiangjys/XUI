@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
@@ -34,6 +35,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
 
 import java.util.ArrayList;
@@ -41,6 +43,8 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import uk.co.chrisjenx.calligraphy.HasTypeface;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 
@@ -50,7 +54,7 @@ import static android.os.Build.VERSION_CODES.JELLY_BEAN;
  * @author xuexiang
  * @since 2019/1/2 下午11:25
  */
-public class MultiTabControlView extends LinearLayout {
+public class MultiTabControlView extends LinearLayout implements HasTypeface {
 
     private Context mContext;
 
@@ -99,7 +103,7 @@ public class MultiTabControlView extends LinearLayout {
 
     //Item organization
     private LinkedHashMap<String, String> mItemMap = new LinkedHashMap<>();
-    private ArrayList<CheckBox> mOptions;
+    private List<CheckBox> mOptions;
 
     /**
      * 增加多选框监听
@@ -232,6 +236,7 @@ public class MultiTabControlView extends LinearLayout {
             cb.setMinWidth(mStrokeWidth * 10);
             cb.setGravity(Gravity.CENTER);
             cb.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
+            cb.setTypeface(XUI.getDefaultTypeface());
             cb.setText(item.getKey());
             addOnCheckedChangeListener(cb);
             textWidth = Math.max(cb.getPaint().measureText(item.getKey()), textWidth);
@@ -522,6 +527,15 @@ public class MultiTabControlView extends LinearLayout {
         mStretch = stretch;
         update();
         return this;
+    }
+
+    @Override
+    public void setTypeface(Typeface typeface) {
+        if (mOptions != null) {
+            for (int i = 0; i < mOptions.size(); i++) {
+                mOptions.get(i).setTypeface(typeface);
+            }
+        }
     }
 
     /**

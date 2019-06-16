@@ -8,6 +8,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
@@ -85,6 +86,7 @@ public class XUIPopupFragment extends BaseFragment {
             textView.setPadding(padding, padding, padding, padding);
             textView.setText("Popup 可以设置其位置以及显示和隐藏的动画");
             textView.setTextColor(ContextCompat.getColor(getContext(), R.color.xui_config_color_content_text));
+            textView.setTypeface(XUI.getDefaultTypeface());
             mNormalPopup.setContentView(textView);
             mNormalPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
                 @Override
