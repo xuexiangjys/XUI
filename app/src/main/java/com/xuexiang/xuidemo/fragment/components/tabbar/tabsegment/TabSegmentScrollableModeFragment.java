@@ -47,6 +47,8 @@ import butterknife.BindView;
 @Page(name = "内容自适应，超过父容器则滚动")
 public class TabSegmentScrollableModeFragment extends BaseFragment {
 
+    @BindView(R.id.tabSegment1)
+    TabSegment mTabSegment1;
     @BindView(R.id.tabSegment)
     TabSegment mTabSegment;
     @BindView(R.id.contentViewPager)
@@ -131,6 +133,8 @@ public class TabSegmentScrollableModeFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+        mTabSegment1.setVisibility(View.GONE);
+
         mContentViewPager.setAdapter(mPagerAdapter);
         mContentViewPager.setCurrentItem(mDestPage.getPosition(), false);
         for (int i = 0; i < mCurrentItemCount; i++) {
