@@ -10,6 +10,9 @@ buildscript {
         classpath 'com.github.xuexiangjys.XAOP:xaop-plugin:1.0.3'
 
         classpath 'com.chenenyu:img-optimizer:1.1.1' // 图片压缩
+
+        // Tinker热更新
+        classpath "com.tinkerpatch.sdk:tinkerpatch-gradle-plugin:1.2.13"
     }
 }
 
