@@ -23,10 +23,10 @@ apply plugin: 'tinkerpatch-support'
 /**
  * TODO: 请按自己的需求修改为适应自己工程的参数
  */
-def bakPath = file("${buildDir}/bakApk/")
+def bakPath = file("${projectDir}/bakApk/")
 
 /** 每次在打补丁包的时候，需要更新这里的旧包的位置，注意：基准包需要备份**/
-def baseInfo = "app-1.0.6-0618-15-35-46"
+def baseInfo = "app-1.0.6-0618-16-45-37"
 def variantName = "release"
 def AppVersion = "1.0.6"
 
@@ -103,6 +103,7 @@ tinkerPatch {
     }
 
     packageConfig {
+//        configField("patchVersion", "1.0")
     }
     sevenZip {
         zipArtifact = "com.tencent.mm:SevenZip:1.1.10"
