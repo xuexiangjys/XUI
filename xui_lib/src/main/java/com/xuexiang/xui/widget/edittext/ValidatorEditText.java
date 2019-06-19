@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.METValidator;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.RegexpValidator;
 import com.xuexiang.xui.widget.popupwindow.ViewTooltip;
@@ -170,7 +171,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
         if (!mIsValid) {
             ViewTooltip
                     .on(this)
-                    .color(ResUtils.getColor(R.color.xui_config_color_edittext_error_text))
+                    .color(ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_error_text))
                     .position(parsePosition(mPosition))
                     .text(mErrorMsg.toString())
                     .show();

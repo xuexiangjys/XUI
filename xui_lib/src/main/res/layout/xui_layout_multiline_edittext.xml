@@ -16,7 +16,7 @@
         android:padding="10dp"
         android:selectAllOnFocus="true"
         android:textColor="@color/xui_config_color_edittext_textcolor"
-        android:textColorHint="@color/xui_config_color_edittext_hint_text"
+        android:textColorHint="?attr/xui_config_color_hint_text"
         android:textSize="?attr/xui_config_size_edittext_input_text" />
 
     <TextView

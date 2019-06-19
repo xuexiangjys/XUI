@@ -17,5 +17,5 @@
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
     <item android:drawable="?attr/xui_config_color_separator_dark"/>
-    <item android:drawable="@color/xui_config_color_background_pressed" android:top="?attr/xui_config_divider_height"/>
+    <item android:drawable="?attr/xui_config_color_pressed" android:top="?attr/xui_config_divider_height"/>
 </layer-list>

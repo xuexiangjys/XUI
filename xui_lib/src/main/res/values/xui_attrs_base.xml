@@ -13,8 +13,8 @@
     <attr name="xui_alpha_pressed" format="float" />
     <attr name="xui_alpha_disabled" format="float" />
 
-    <attr name="xui_general_shadow_elevation" format="dimension"/>
-    <attr name="xui_general_shadow_alpha" format="float"/>
+    <attr name="xui_general_shadow_elevation" format="dimension" />
+    <attr name="xui_general_shadow_alpha" format="float" />
 
     <!--MaterialSearchView-->
     <attr name="search_icon_padding" format="dimension" />
@@ -51,11 +51,24 @@
     <!--**********************************************
     *                xui common color               *
     **********************************************-->
+    <!--应用默认的背景颜色-->
     <attr name="xui_config_color_background" format="color" />
     <!-- 小的分割块使用浅色的分割线-->
     <attr name="xui_config_color_separator_light" format="color" />
     <!-- 大的分割块使用深色的分割线[像ListView、GridView之类]-->
     <attr name="xui_config_color_separator_dark" format="color" />
+    <!--出错文字的颜色-->
+    <attr name="xui_config_color_error_text" format="color" />
+    <!--输入文字的颜色-->
+    <attr name="xui_config_color_input_text" format="color" />
+    <!--提示文字的颜色-->
+    <attr name="xui_config_color_hint_text" format="color" />
+    <!--应用边框的颜色-->
+    <attr name="xui_config_color_stroke" format="color" />
+    <!--应用不可点击的颜色-->
+    <attr name="xui_config_color_disable" format="color" />
+    <!--应用点击后的颜色-->
+    <attr name="xui_config_color_pressed" format="color" />
 
     <!--**********************************************
     *             xui list item bg                  *
@@ -67,17 +80,17 @@
     *              xui common list                  *
     **********************************************-->
 
-    <attr name="xui_common_list_item_icon_margin_right" format="dimension"/>
-    <attr name="xui_common_list_item_accessory_margin_left" format="dimension"/>
-    <attr name="xui_common_list_item_title_v_text_size" format="dimension"/>
-    <attr name="xui_common_list_item_title_h_text_size" format="dimension"/>
-    <attr name="xui_common_list_item_h_space_min_width" format="dimension"/>
-    <attr name="xui_common_list_item_detail_v_text_size" format="dimension"/>
-    <attr name="xui_common_list_item_detail_h_text_size" format="dimension"/>
-    <attr name="xui_common_list_item_detail_line_space" format="dimension"/>
+    <attr name="xui_common_list_item_icon_margin_right" format="dimension" />
+    <attr name="xui_common_list_item_accessory_margin_left" format="dimension" />
+    <attr name="xui_common_list_item_title_v_text_size" format="dimension" />
+    <attr name="xui_common_list_item_title_h_text_size" format="dimension" />
+    <attr name="xui_common_list_item_h_space_min_width" format="dimension" />
+    <attr name="xui_common_list_item_detail_v_text_size" format="dimension" />
+    <attr name="xui_common_list_item_detail_h_text_size" format="dimension" />
+    <attr name="xui_common_list_item_detail_line_space" format="dimension" />
 
-    <attr name="xui_common_list_item_chevron" format="reference"/>
-    <attr name="xui_common_list_item_switch" format="reference"/>
+    <attr name="xui_common_list_item_chevron" format="reference" />
+    <attr name="xui_common_list_item_switch" format="reference" />
 
     <attr name="xui_list_item_bg_with_border_bottom" format="reference" />
     <attr name="xui_list_item_bg_with_border_bottom_pressed" format="reference" />
@@ -90,8 +103,8 @@
     <attr name="xui_list_item_bg_with_border_top_pressed" format="reference" />
     <attr name="xui_list_item_bg_with_border_top_selector" format="reference" />
 
-    <attr name="xui_list_item_height" format="dimension"/>
-    <attr name="xui_list_item_height_higher" format="dimension"/>
+    <attr name="xui_list_item_height" format="dimension" />
+    <attr name="xui_list_item_height_higher" format="dimension" />
     <!--**********************************************
     *                  xui topbar                   *
     ***********************************************-->
@@ -259,7 +272,7 @@
     <!--**********************************************
     *             xui drawable                      *
     **********************************************-->
-    <attr name="xui_icon_check_mark" format="reference"/>
-    <attr name="xui_icon_checkbox" format="reference"/>
+    <attr name="xui_icon_check_mark" format="reference" />
+    <attr name="xui_icon_checkbox" format="reference" />
 
 </resources>

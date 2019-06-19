@@ -402,11 +402,11 @@
     <style name="EditText.Material">
         <item name="android:paddingLeft">0dp</item>
 
-        <item name="met_textColor">@color/xui_config_color_edittext_textcolor</item>
-        <item name="met_textColorHint">@color/xui_config_color_edittext_hint_text</item>
-        <item name="met_underlineColor">@color/xui_config_color_edittext_stroke</item>
-        <item name="met_errorColor">@color/xui_config_color_edittext_error_text</item>
-        <item name="met_helperTextColor">@color/xui_config_color_edittext_error_text</item>
+        <item name="met_textColor">?attr/xui_config_color_input_text</item>
+        <item name="met_textColorHint">?attr/xui_config_color_hint_text</item>
+        <item name="met_underlineColor">?attr/xui_config_color_stroke</item>
+        <item name="met_errorColor">?attr/xui_config_color_error_text</item>
+        <item name="met_helperTextColor">?attr/xui_config_color_error_text</item>
 
         <item name="met_floatingLabelTextSize">?attr/xui_config_size_edittext_helper_text</item>
         <item name="met_bottomTextSize">?attr/xui_config_size_edittext_helper_text</item>

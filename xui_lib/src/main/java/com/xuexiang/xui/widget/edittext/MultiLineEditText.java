@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
-import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 
 import static com.xuexiang.xui.utils.DensityUtils.dp2px;
 import static com.xuexiang.xui.utils.DensityUtils.sp2px;
@@ -104,11 +104,11 @@ public class MultiLineEditText extends LinearLayout {
         mMaxCount = typedArray.getInteger(R.styleable.MultiLineEditText_mlet_maxCount, 240);
         mIgnoreCnOrEn = typedArray.getBoolean(R.styleable.MultiLineEditText_mlet_ignoreCnOrEn, true);
         mHintText = typedArray.getString(R.styleable.MultiLineEditText_mlet_hintText);
-        mHintTextColor = typedArray.getColor(R.styleable.MultiLineEditText_mlet_hintTextColor, ResUtils.getColor(R.color.xui_config_color_edittext_hint_text));
+        mHintTextColor = typedArray.getColor(R.styleable.MultiLineEditText_mlet_hintTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_hint_text));
         mContentPadding = typedArray.getDimensionPixelSize(R.styleable.MultiLineEditText_mlet_contentPadding, dp2px(context, 10));
         mContentBackground = typedArray.getDrawable(R.styleable.MultiLineEditText_mlet_contentBackground);
         mContentText = typedArray.getString(R.styleable.MultiLineEditText_mlet_contentText);
-        mContentTextColor = typedArray.getColor(R.styleable.MultiLineEditText_mlet_contentTextColor, ResUtils.getColor(R.color.xui_config_color_edittext_input_text));
+        mContentTextColor = typedArray.getColor(R.styleable.MultiLineEditText_mlet_contentTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_input_text));
         mContentTextSize = typedArray.getDimensionPixelSize(R.styleable.MultiLineEditText_mlet_contentTextSize, sp2px(context, 14));
         mContentViewHeight = typedArray.getDimensionPixelSize(R.styleable.MultiLineEditText_mlet_contentViewHeight, dp2px(context, 140));
         mIsShowSurplusNumber = typedArray.getBoolean(R.styleable.MultiLineEditText_mlet_showSurplusNumber, false);

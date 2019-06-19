@@ -375,7 +375,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
 
         primaryColor = typedArray.getColor(R.styleable.MaterialEditText_met_primaryColor, ThemeUtils.resolveColor(getContext(), R.attr.colorPrimary, baseColor));
         setFloatingLabelInternal(typedArray.getInt(R.styleable.MaterialEditText_met_floatingLabel, 0));
-        errorColor = typedArray.getColor(R.styleable.MaterialEditText_met_errorColor, ResUtils.getColor(R.color.xui_config_color_edittext_error_text));
+        errorColor = typedArray.getColor(R.styleable.MaterialEditText_met_errorColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_error_text));
 
         boolean allowEmpty = typedArray.getBoolean(R.styleable.MaterialEditText_met_allowEmpty, true);
         if (!allowEmpty) {
