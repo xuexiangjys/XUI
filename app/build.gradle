@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.xuexiang.xaop' //引用xaop插件
 //apply plugin: 'img-optimizer'
+if (isNeedPackage.toBoolean()) {
+    apply plugin: 'com.didiglobal.booster'
+}
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -169,12 +172,14 @@ dependencies {
     implementation 'com.zhy:okhttputils:2.6.2'
 
     //umeng统计
-    implementation  'com.umeng.umsdk:analytics:8.0.2'
-    implementation  'com.umeng.umsdk:common:2.0.2'
+    implementation 'com.umeng.umsdk:analytics:8.0.2'
+    implementation 'com.umeng.umsdk:common:2.0.2'
 
     //bugly统计
-    implementation 'com.tencent.bugly:crashreport:3.0.0' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
-    implementation 'com.tencent.bugly:nativecrashreport:3.7.1' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    implementation 'com.tencent.bugly:crashreport:3.0.0'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
 
     //Tinker热更新
     implementation 'com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.13'
