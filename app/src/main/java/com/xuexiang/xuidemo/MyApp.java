@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import com.luck.picture.lib.tools.PictureFileUtils;
 import com.xuexiang.xaop.XAOP;
 import com.xuexiang.xaop.util.PermissionUtils;
 import com.xuexiang.xpage.AppPageConfig;
@@ -63,6 +64,8 @@ public class MyApp extends Application {
         XUI.debug(BuildConfig.DEBUG);
 //        //设置默认字体为华文行楷
 //        XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
+
+        PictureFileUtils.setAppName("xui");
     }
 
 

@@ -1,0 +1,35 @@
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="16dp"
+    android:height="16dp"
+    android:viewportWidth="16"
+    android:viewportHeight="16">
+    <path
+        android:fillColor="#FF5252"
+        android:fillType="evenOdd"
+        android:pathData="M8.5,8.5m-7.5,0a7.5,7.5 0,1 1,15 0a7.5,7.5 0,1 1,-15 0"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M8.5123,7.793L11.0231,5.3684C11.2256,5.1729 11.5508,5.1812 11.737,5.374C11.9289,5.5727 11.9243,5.8882 11.7177,6.0878L9.207,8.5123L11.6316,11.0231C11.8271,11.2256 11.8188,11.5508 11.626,11.737C11.4273,11.9289 11.1117,11.9243 10.9122,11.7177L8.4877,9.207L5.9769,11.6316C5.7744,11.8271 5.4492,11.8188 5.263,11.626C5.0711,11.4273 5.0757,11.1117 5.2823,10.9122L7.793,8.4877L5.3684,5.9769C5.1729,5.7744 5.1812,5.4492 5.374,5.263C5.5727,5.0711 5.8882,5.0757 6.0878,5.2823L8.5123,7.793Z"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+</vector>

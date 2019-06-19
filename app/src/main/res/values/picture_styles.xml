@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<resources>
+
+    <!--图片选择的主题，注意每一项都不能少-->
+    <style name="XUIPictureStyle" parent="XUITheme.Phone">
+        <!-- Customize your theme here. -->
+        <!--标题栏背景色-->
+        <item name="colorPrimary">?attr/colorAccent</item>
+        <!--状态栏背景色-->
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <!--是否改变图片列表界面状态栏字体颜色为黑色-->
+        <item name="picture_statusFontColor">false</item>
+        <!--返回键图标-->
+        <item name="picture_leftBack_icon">@drawable/xui_ic_navigation_back_white</item>
+        <!--title图标文字的padding-->
+        <item name="picture_title_action_padding">?attr/xui_actionbar_side_text_padding</item>
+        <!--标题下拉箭头-->
+        <item name="picture_arrow_down_icon">@drawable/pic_arrow_down</item>
+        <!--标题上拉箭头-->
+        <item name="picture_arrow_up_icon">@drawable/pic_arrow_up</item>
+        <!--标题文字颜色-->
+        <item name="picture_title_textColor">?attr/xui_actionbar_text_color</item>
+        <!--标题栏右边文字-->
+        <item name="picture_right_textColor">?attr/xui_actionbar_text_color</item>
+        <!--标题文字大小-->
+        <item name="picture_title_textSize">?attr/xui_actionbar_title_text_size</item>
+        <!--标题栏右边文字大小-->
+        <item name="picture_right_textSize">?attr/xui_actionbar_action_text_size</item>
+        <!--标题文字是否加粗-->
+        <item name="picture_title_text_bold">false</item>
+        <!--标题栏右边文字是否加粗-->
+        <item name="picture_right_text_bold">false</item>
+        <!--图片列表勾选样式-->
+        <item name="picture_checked_style">@drawable/xui_icon_checkbox</item>
+        <!--开启图片列表勾选数字模式,开启的话勾选样式要换-->
+        <item name="picture_style_checkNumMode">false</item>
+        <!--选择图片样式0/9-->
+        <item name="picture_style_numComplete">true</item>
+        <!--图片列表底部背景色-->
+        <item name="picture_bottom_bg">@color/color_f4</item>
+        <!--图片列表预览文字颜色-->
+        <item name="picture_preview_textColor">@color/picture_tab_color_false</item>
+        <!--图片列表已完成文字颜色-->
+        <item name="picture_complete_textColor">@color/picture_tab_color_false</item>
+        <!--图片已选数量圆点背景色-->
+        <item name="picture_num_style">@drawable/pic_num_oval</item>
+        <!--预览界面标题栏背景色-->
+        <item name="picture_ac_preview_title_bg">?attr/colorAccent</item>
+        <!--预览界面标题文字颜色-->
+        <item name="picture_ac_preview_title_textColor">?attr/xui_actionbar_text_color</item>
+        <!--预览界面标题文字大小-->
+        <item name="picture_ac_preview_title_textSize">?attr/xui_actionbar_title_text_size</item>
+        <!--预览界面标题文字是否加粗-->
+        <item name="picture_ac_preview_title_text_bold">false</item>
+        <!--预览界面已完成文字颜色-->
+        <item name="picture_ac_preview_complete_textColor">@color/picture_tab_color_false</item>
+        <!--预览界面底部背景色-->
+        <item name="picture_ac_preview_bottom_bg">@color/color_f4</item>
+        <!--预览界面返回箭头-->
+        <item name="picture_preview_leftBack_icon">@drawable/xui_ic_navigation_back_white</item>
+        <!--裁剪页面标题背景色-->
+        <item name="picture_crop_toolbar_bg">?attr/colorAccent</item>
+        <!--裁剪页面状态栏颜色-->
+        <item name="picture_crop_status_color">?attr/colorAccent</item>
+        <!--裁剪页面标题文字颜色-->
+        <item name="picture_crop_title_color">?attr/xui_actionbar_text_color</item>
+        <!--相册文件夹列表选中图标-->
+        <item name="picture_folder_checked_dot">@drawable/pic_orange_oval</item>
+    </style>
+
+</resources>
