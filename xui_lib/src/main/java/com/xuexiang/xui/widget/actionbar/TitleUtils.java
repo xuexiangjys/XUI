@@ -49,7 +49,7 @@ public final class TitleUtils {
     //=================================动态添加=======================================//
 
     /**
-     * 动态添加TitleBar
+     * 动态添加TitleBar【需要保证ViewGroup为LinearLayout，且android:orientation="vertical"】
      *
      * @param activity
      * @param title
@@ -66,7 +66,7 @@ public final class TitleUtils {
     }
 
     /**
-     * 动态添加TitleBar
+     * 动态添加TitleBar【需要保证ViewGroup为LinearLayout，且android:orientation="vertical"】
      *
      * @param viewGroup
      * @param title
@@ -96,7 +96,7 @@ public final class TitleUtils {
     }
 
     /**
-     * 动态添加TitleBar
+     * 动态添加TitleBar【需要保证ViewGroup为LinearLayout，且android:orientation="vertical"】
      *
      * @param fragment
      * @param viewGroup
