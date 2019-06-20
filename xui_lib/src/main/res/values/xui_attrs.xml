@@ -434,9 +434,9 @@
         <attr name="srb_rating" format="float" />
         <!--星星之间的间距，默认20px-->
         <attr name="srb_starPadding" format="dimension" />
-        <!--星星为空时的图案-->
+        <!--星星为空时的图案，默认R.drawable.srb_ic_empty-->
         <attr name="srb_drawableEmpty" format="reference" />
-        <!--星星填充时的图案-->
+        <!--星星填充时的图案，默认R.drawable.srb_ic_filled-->
         <attr name="srb_drawableFilled" format="reference" />
         <!--是否只是指示器，不可以评分？默认false-->
         <attr name="srb_isIndicator" format="boolean" />
