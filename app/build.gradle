@@ -81,9 +81,12 @@ dependencies {
     implementation deps.androidx.multidex
 
     //下拉刷新、CityPicker、XUI框架需要
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.recyclerview
-    implementation deps.androidx.design
+//    implementation deps.androidx.appcompat
+//    implementation deps.androidx.recyclerview
+//    implementation deps.androidx.design
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha07'
 
     //悬浮按钮
     implementation 'com.github.clans:fab:1.6.4'
@@ -183,6 +186,8 @@ dependencies {
 
     //Tinker热更新
     implementation 'com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.13'
+
+    implementation 'com.google.android.gms:play-services-ads:18.0.0'
 }
 
 apply from: 'tinkerpatch.gradle'

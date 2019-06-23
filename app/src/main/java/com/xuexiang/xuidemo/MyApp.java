@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import com.google.android.gms.ads.MobileAds;
 import com.luck.picture.lib.tools.PictureFileUtils;
 import com.xuexiang.xaop.XAOP;
 import com.xuexiang.xaop.util.PermissionUtils;
@@ -54,6 +55,8 @@ public class MyApp extends Application {
         UMengInit.init(this);
         BuglyInit.init(this);
         TinkerInit.init(this);
+
+        MobileAds.initialize(this, "ca-app-pub-2562950131264541~7554790969");
     }
 
     /**
