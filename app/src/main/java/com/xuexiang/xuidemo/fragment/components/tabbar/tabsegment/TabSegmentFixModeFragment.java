@@ -130,7 +130,9 @@ public class TabSegmentFixModeFragment extends BaseFragment {
         mTabSegment.addOnTabSelectedListener(new TabSegment.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int index) {
-                mTabSegment.hideSignCountView(index);
+                if (mTabSegment != null) {
+                    mTabSegment.hideSignCountView(index);
+                }
             }
 
             @Override
@@ -140,7 +142,9 @@ public class TabSegmentFixModeFragment extends BaseFragment {
 
             @Override
             public void onTabReselected(int index) {
-                mTabSegment.hideSignCountView(index);
+                if (mTabSegment != null) {
+                    mTabSegment.hideSignCountView(index);
+                }
             }
 
             @Override

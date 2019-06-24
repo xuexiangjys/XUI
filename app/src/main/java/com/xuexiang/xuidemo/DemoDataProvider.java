@@ -369,7 +369,7 @@ public class DemoDataProvider {
     @MemoryCache
     public static List<NewInfo> getEmptyNewInfo() {
         List<NewInfo> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             list.add(new NewInfo());
         }
         return list;

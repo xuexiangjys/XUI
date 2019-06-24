@@ -29,6 +29,7 @@ import android.widget.TextView;
 import androidx.annotation.Px;
 import androidx.annotation.RequiresApi;
 
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.widget.textview.badge.Badge;
 import com.xuexiang.xui.widget.textview.badge.BadgeView;
@@ -143,6 +144,7 @@ public class XTabView extends TabView {
         mTitle.setText(mTabTitle.getContent());
         mTitle.setGravity(Gravity.CENTER);
         mTitle.setEllipsize(TextUtils.TruncateAt.END);
+        mTitle.setTypeface(XUI.getDefaultTypeface());
         refreshDrawablePadding();
     }
 

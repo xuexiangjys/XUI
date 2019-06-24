@@ -21,9 +21,9 @@ public class BaseTextView extends LinearLayout implements HasTypeface {
 
     private Context mContext;
 
-    private TextView topTextView, centerTextView, bottomTextView;
+    private TextView mTopTextView, mCenterTextView, mBottomTextView;
 
-    private LayoutParams topTVParams, centerTVParams, bottomTVParams;
+    private LayoutParams mTopTVParams, mCenterTVParams, mBottomTVParams;
 
     public BaseTextView(Context context) {
         super(context);
@@ -55,29 +55,29 @@ public class BaseTextView extends LinearLayout implements HasTypeface {
     }
 
     private void initTopView() {
-        if (topTVParams == null) {
-            topTVParams = getParams(topTVParams);
+        if (mTopTVParams == null) {
+            mTopTVParams = getParams(mTopTVParams);
         }
-        if (topTextView == null) {
-            topTextView = initTextView(topTVParams, topTextView);
+        if (mTopTextView == null) {
+            mTopTextView = initTextView(mTopTVParams, mTopTextView);
         }
     }
 
     private void initCenterView() {
-        if (centerTVParams == null) {
-            centerTVParams = getParams(centerTVParams);
+        if (mCenterTVParams == null) {
+            mCenterTVParams = getParams(mCenterTVParams);
         }
-        if (centerTextView == null) {
-            centerTextView = initTextView(centerTVParams, centerTextView);
+        if (mCenterTextView == null) {
+            mCenterTextView = initTextView(mCenterTVParams, mCenterTextView);
         }
     }
 
     private void initBottomView() {
-        if (bottomTVParams == null) {
-            bottomTVParams = getParams(bottomTVParams);
+        if (mBottomTVParams == null) {
+            mBottomTVParams = getParams(mBottomTVParams);
         }
-        if (bottomTextView == null) {
-            bottomTextView = initTextView(bottomTVParams, bottomTextView);
+        if (mBottomTextView == null) {
+            mBottomTextView = initTextView(mBottomTVParams, mBottomTextView);
         }
     }
 
@@ -115,7 +115,6 @@ public class BaseTextView extends LinearLayout implements HasTypeface {
      */
     public LayoutParams getParams(LayoutParams params) {
         if (params == null) {
-            // TODO: 2017/7/21 问题记录 ：之前设置 MATCH_PARENT导致每次重新设置string的时候，textView的宽度都以第一次为准，在列表中使用的时候复用出现混乱，特此记录一下，以后处理好布局之间套用时候设置WRAP_CONTENT和MATCH_PARENT出现问题
             params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         }
         return params;
@@ -130,52 +129,58 @@ public class BaseTextView extends LinearLayout implements HasTypeface {
     }
 
     public void setTopTextString(CharSequence s) {
-        setTextString(topTextView, s);
+        setTextString(mTopTextView, s);
     }
 
 
     public void setCenterTextString(CharSequence s) {
-        setTextString(centerTextView, s);
+        setTextString(mCenterTextView, s);
     }
 
     public void setBottomTextString(CharSequence s) {
-        setTextString(bottomTextView, s);
+        setTextString(mBottomTextView, s);
     }
 
     public TextView getTopTextView() {
-        return topTextView;
+        return mTopTextView;
     }
 
     public TextView getCenterTextView() {
-        return centerTextView;
+        return mCenterTextView;
     }
 
     public TextView getBottomTextView() {
-        return bottomTextView;
+        return mBottomTextView;
     }
 
     public void setMaxEms(int topMaxEms, int centerMaxEms, int bottomMaxEms) {
 
-        topTextView.setEllipsize(TextUtils.TruncateAt.END);
-        centerTextView.setEllipsize(TextUtils.TruncateAt.END);
-        bottomTextView.setEllipsize(TextUtils.TruncateAt.END);
+        mTopTextView.setEllipsize(TextUtils.TruncateAt.END);
+        mCenterTextView.setEllipsize(TextUtils.TruncateAt.END);
+        mBottomTextView.setEllipsize(TextUtils.TruncateAt.END);
 
-        topTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(topMaxEms)});
-        centerTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(centerMaxEms)});
-        bottomTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(bottomMaxEms)});
+        mTopTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(topMaxEms)});
+        mCenterTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(centerMaxEms)});
+        mBottomTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(bottomMaxEms)});
     }
 
     public void setCenterSpaceHeight(int centerSpaceHeight) {
-        topTVParams.setMargins(0, 0, 0, centerSpaceHeight / 2);
-        centerTVParams.setMargins(0, centerSpaceHeight / 2, 0, centerSpaceHeight / 2);
-        bottomTVParams.setMargins(0, centerSpaceHeight / 2, 0, 0);
+        mTopTVParams.setMargins(0, 0, 0, centerSpaceHeight / 2);
+        mCenterTVParams.setMargins(0, centerSpaceHeight / 2, 0, centerSpaceHeight / 2);
+        mBottomTVParams.setMargins(0, centerSpaceHeight / 2, 0, 0);
     }
 
     @Override
     public void setTypeface(Typeface typeface) {
-        topTextView.setTypeface(typeface);
-        centerTextView.setTypeface(typeface);
-        bottomTextView.setTypeface(typeface);
+        if (mTopTextView != null) {
+            mTopTextView.setTypeface(typeface);
+        }
+        if (mCenterTextView != null) {
+            mCenterTextView.setTypeface(typeface);
+        }
+        if (mBottomTextView != null) {
+            mBottomTextView.setTypeface(typeface);
+        }
     }
 
 

@@ -48,8 +48,6 @@
     <color name="md_material_blue_600">#2196F3</color>
     <color name="md_material_blue_800">#1565C0</color>
 
-    <color name="md_edittext_error">@color/xui_config_color_red</color>
-
     <color name="cookie_bar_default_bg_color">#323232</color>
 
     <!--PickerView-->

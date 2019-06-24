@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.xuexiang.xaop' //引用xaop插件
 //apply plugin: 'img-optimizer'
+if (isNeedPackage.toBoolean()) {
+    apply plugin: 'com.didiglobal.booster'
+}
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -10,8 +13,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 6
-        versionName "1.0.5"
+        versionCode 7
+        versionName "1.0.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
@@ -43,16 +46,6 @@ android {
         }
     }
 
-    if (isNeedPackage.toBoolean()) {
-        applicationVariants.all { variant ->
-            variant.outputs.all {
-                if (variant.buildType.name.equals('release')) {
-                    outputFileName = "xuidemo_${defaultConfig.versionName}.apk"
-                }
-            }
-        }
-    }
-
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
@@ -60,6 +53,11 @@ android {
 
     packagingOptions {
         exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+
+    //recommend
+    dexOptions {
+        jumboMode = true
     }
 
     sourceSets {
@@ -83,16 +81,19 @@ dependencies {
     implementation deps.androidx.multidex
 
     //下拉刷新、CityPicker、XUI框架需要
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.recyclerview
-    implementation deps.androidx.design
+//    implementation deps.androidx.appcompat
+//    implementation deps.androidx.recyclerview
+//    implementation deps.androidx.design
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha07'
 
     //悬浮按钮
     implementation 'com.github.clans:fab:1.6.4'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.0.5'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.0.5'
     implementation deps.glide
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
@@ -123,8 +124,8 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
     implementation 'com.github.xuexiangjys:RxUtil2:1.1.5'
 
-    //PhotoPicker图片选择
-    implementation 'com.github.xuexiangjys:PhotoPicker:1.0.1'
+    //PictureSelector图片选择
+    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.3'
 
     //下拉刷新
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
@@ -174,12 +175,19 @@ dependencies {
     implementation 'com.zhy:okhttputils:2.6.2'
 
     //umeng统计
-    implementation  'com.umeng.umsdk:analytics:8.0.2'
-    implementation  'com.umeng.umsdk:common:2.0.2'
+    implementation 'com.umeng.umsdk:analytics:8.0.2'
+    implementation 'com.umeng.umsdk:common:2.0.2'
 
     //bugly统计
-    implementation 'com.tencent.bugly:crashreport:3.0.0' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
-    implementation 'com.tencent.bugly:nativecrashreport:3.7.1' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    implementation 'com.tencent.bugly:crashreport:3.0.0'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
 
+    //Tinker热更新
+    implementation 'com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.13'
 
+    implementation 'com.google.android.gms:play-services-ads:18.0.0'
 }
+
+apply from: 'tinkerpatch.gradle'

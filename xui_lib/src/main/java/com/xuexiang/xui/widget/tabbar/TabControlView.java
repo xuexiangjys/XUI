@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
@@ -31,6 +32,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
 
 import java.util.ArrayList;
@@ -38,6 +40,8 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import uk.co.chrisjenx.calligraphy.HasTypeface;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 
@@ -47,7 +51,7 @@ import static android.os.Build.VERSION_CODES.JELLY_BEAN;
  * @author xuexiang
  * @since 2019/1/14 下午10:03
  */
-public class TabControlView extends RadioGroup {
+public class TabControlView extends RadioGroup implements HasTypeface {
 
     private Context mContext;
 
@@ -222,6 +226,7 @@ public class TabControlView extends RadioGroup {
             rb.setMinWidth(mStrokeWidth * 10);
             rb.setGravity(Gravity.CENTER);
             rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
+            rb.setTypeface(XUI.getDefaultTypeface());
             rb.setText(item.getKey());
             textWidth = Math.max(rb.getPaint().measureText(item.getKey()), textWidth);
             mOptions.add(rb);
@@ -485,6 +490,15 @@ public class TabControlView extends RadioGroup {
         mStretch = stretch;
         update();
         return this;
+    }
+
+    @Override
+    public void setTypeface(Typeface typeface) {
+        if (mOptions != null) {
+            for (int i = 0; i < mOptions.size(); i++) {
+                mOptions.get(i).setTypeface(typeface);
+            }
+        }
     }
 
     /**

@@ -24,6 +24,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -48,13 +49,15 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import uk.co.chrisjenx.calligraphy.HasTypeface;
+
 /**
  * 3D滚轮控件
  *
  * @author xuexiang
  * @since 2019/1/1 下午5:12
  */
-public class WheelView extends View {
+public class WheelView extends View implements HasTypeface {
 
     public enum ACTION { // 点击，滑翔(滑到尽头)，拖拽事件
         CLICK, FLING, DAGGLE
@@ -64,7 +67,10 @@ public class WheelView extends View {
         FILL, WRAP
     }
 
-    private DividerType dividerType;//分隔线类型
+    /**
+     * 分隔线类型
+     */
+    private DividerType dividerType;
 
     private Context context;
     private Handler handler;
@@ -74,25 +80,33 @@ public class WheelView extends View {
     private boolean isOptions = false;
     private boolean isCenterLabel = true;
 
-    // Timer mTimer;
     private ScheduledExecutorService mExecutor = Executors.newSingleThreadScheduledExecutor();
     private ScheduledFuture<?> mFuture;
 
-    private Paint paintOuterText;
-    private Paint paintCenterText;
+    private TextPaint paintOuterText;
+    private TextPaint paintCenterText;
     private Paint paintIndicator;
 
     private WheelAdapter adapter;
 
-    private String label;//附加单位
-    private int textSize;//选项的文字大小
+    /**
+     * 附加单位
+     */
+    private String label;
+    /**
+     * 选项的文字大小
+     */
+    private int textSize;
     private int maxTextWidth;
     private int maxTextHeight;
     private int textXOffset;
     private float itemHeight;//每行高度
 
 
-    private Typeface typeface = Typeface.MONOSPACE;//字体样式，默认是等宽字体
+    /**
+     * 字体样式，默认是等宽字体
+     */
+    private Typeface typeface = Typeface.MONOSPACE;
     private int textColorOut;
     private int textColorCenter;
     private int dividerColor;
@@ -206,13 +220,13 @@ public class WheelView extends View {
     }
 
     private void initPaints() {
-        paintOuterText = new Paint();
+        paintOuterText = new TextPaint();
         paintOuterText.setColor(textColorOut);
         paintOuterText.setAntiAlias(true);
         paintOuterText.setTypeface(typeface);
         paintOuterText.setTextSize(textSize);
 
-        paintCenterText = new Paint();
+        paintCenterText = new TextPaint();
         paintCenterText.setColor(textColorCenter);
         paintCenterText.setAntiAlias(true);
         paintCenterText.setTextScaleX(1.1F);
@@ -314,6 +328,7 @@ public class WheelView extends View {
         isLoop = cyclic;
     }
 
+    @Override
     public final void setTypeface(Typeface font) {
         typeface = font;
         paintOuterText.setTypeface(typeface);
@@ -813,4 +828,5 @@ public class WheelView extends View {
     public Handler getHandler() {
         return handler;
     }
+
 }

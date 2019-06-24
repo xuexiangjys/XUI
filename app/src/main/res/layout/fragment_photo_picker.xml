@@ -18,6 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+    android:background="@color/xui_config_color_white"
     android:orientation="vertical">
 
     <Button
@@ -51,6 +52,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

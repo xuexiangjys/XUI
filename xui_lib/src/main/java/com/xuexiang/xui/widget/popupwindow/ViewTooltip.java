@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ThemeUtils;
 
 /**
@@ -365,6 +366,8 @@ public class ViewTooltip {
 
             mPaddingTop = mPaddingBottom = ThemeUtils.resolveDimension(getContext(), R.attr.xui_tip_popup_padding_top);
             mPaddingRight = mPaddingLeft = ThemeUtils.resolveDimension(getContext(), R.attr.xui_tip_popup_padding_left);
+
+            setTextTypeFace(XUI.getDefaultTypeface());
         }
 
         public void setCustomView(View customView) {
@@ -734,5 +737,6 @@ public class ViewTooltip {
         public void close() {
             remove();
         }
+
     }
 }

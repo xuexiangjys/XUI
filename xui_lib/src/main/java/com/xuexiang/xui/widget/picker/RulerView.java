@@ -9,6 +9,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -25,13 +27,15 @@ import com.xuexiang.xui.utils.ResUtils;
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
 
+import uk.co.chrisjenx.calligraphy.HasTypeface;
+
 /**
  * 刻度尺控件
  *
  * @author XUE
  * @since 2019/4/2 16:33
  */
-public class RulerView extends View {
+public class RulerView extends View implements HasTypeface {
     /**
      * 2个大刻度之间间距，默认为1
      */
@@ -153,9 +157,9 @@ public class RulerView extends View {
     private Paint smallScalePaint;
     private Paint midScalePaint;
     private Paint lagScalePaint;
-    private Paint scaleNumPaint;
-    private Paint resultNumPaint;
-    private Paint kgPaint;
+    private TextPaint scaleNumPaint;
+    private TextPaint resultNumPaint;
+    private TextPaint unitPaint;
     private Rect scaleNumRect;
     private Rect resultNumRect;
     private Rect kgRect;
@@ -235,9 +239,9 @@ public class RulerView extends View {
         smallScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         midScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         lagScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        scaleNumPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        resultNumPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        kgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        scaleNumPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        resultNumPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        unitPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
 
         bgPaint.setColor(bgColor);
         smallScalePaint.setColor(smallScaleColor);
@@ -245,10 +249,10 @@ public class RulerView extends View {
         lagScalePaint.setColor(largeScaleColor);
         scaleNumPaint.setColor(scaleNumColor);
         resultNumPaint.setColor(resultNumColor);
-        kgPaint.setColor(unitColor);
+        unitPaint.setColor(unitColor);
 
         resultNumPaint.setStyle(Paint.Style.FILL);
-        kgPaint.setStyle(Paint.Style.FILL);
+        unitPaint.setStyle(Paint.Style.FILL);
         bgPaint.setStyle(Paint.Style.FILL);
         smallScalePaint.setStyle(Paint.Style.FILL);
         midScalePaint.setStyle(Paint.Style.FILL);
@@ -263,7 +267,7 @@ public class RulerView extends View {
         lagScalePaint.setStrokeWidth(largeScaleStroke);
 
         resultNumPaint.setTextSize(resultNumTextSize);
-        kgPaint.setTextSize(unitTextSize);
+        unitPaint.setTextSize(unitTextSize);
         scaleNumPaint.setTextSize(scaleNumTextSize);
 
         bgRect = new RectF();
@@ -272,7 +276,7 @@ public class RulerView extends View {
         kgRect = new Rect();
 
         resultNumPaint.getTextBounds(resultText, 0, resultText.length(), resultNumRect);
-        kgPaint.getTextBounds(resultText, 0, 1, kgRect);
+        unitPaint.getTextBounds(resultText, 0, 1, kgRect);
 
         smallScaleHeight = rulerHeight / 4;
         midScaleHeight = rulerHeight / 2;
@@ -534,7 +538,7 @@ public class RulerView extends View {
         canvas.drawText(resultText, width / 2 - resultNumRect.width() / 2, resultNumRect.height(), //绘制当前刻度结果值
                 resultNumPaint);
         resultNumRight = width / 2 + resultNumRect.width() / 2 + 10;
-        canvas.drawText(unit, resultNumRight, kgRect.height() + 2, kgPaint);            //在当前刻度结果值的又面10px的位置绘制单位
+        canvas.drawText(unit, resultNumRight, kgRect.height() + 2, unitPaint);            //在当前刻度结果值的又面10px的位置绘制单位
     }
 
     private void drawBg(Canvas canvas) {
@@ -554,6 +558,19 @@ public class RulerView extends View {
         }
         computeScale = scale;
         invalidate();
+    }
+
+    @Override
+    public void setTypeface(Typeface typeface) {
+        if (resultNumPaint != null) {
+            resultNumPaint.setTypeface(typeface);
+        }
+        if (unitPaint != null) {
+            unitPaint.setTypeface(typeface);
+        }
+        if (scaleNumPaint != null) {
+            scaleNumPaint.setTypeface(typeface);
+        }
     }
 
     /**

@@ -44,6 +44,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
@@ -349,9 +350,10 @@ public class CircleProgressView extends View {
             mTextPaint.setTextSize(mProgressTextSize);
             mTextPaint.setColor(mProgressTextColor);
             mTextPaint.setTextAlign(Paint.Align.CENTER);
+            mTextPaint.setTypeface(XUI.getDefaultTypeface());
 
             String progressText = ((int) moveProgress) + "%";
-            float x = (getWidth() + getPaddingLeft() - getPaddingRight()) / 2;
+            float x = (getWidth() + getPaddingLeft() - getPaddingRight()) >> 1;
             float y = (getHeight() + getPaddingTop() - getPaddingBottom() - (mTextPaint.descent() + mTextPaint.ascent())) / 2;
             canvas.drawText(progressText, x, y, mTextPaint);
 

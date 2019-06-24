@@ -41,6 +41,16 @@
         <item name="colorPrimaryDark">@color/xui_config_color_main_theme</item>
         <item name="colorControlNormal">@color/xui_config_color_control_normal</item>
 
+        <!--**********************************************
+        *               通用颜色属性设置                *
+        ***********************************************-->
+        <item name="xui_config_color_error_text">@color/xui_config_color_red</item>
+        <item name="xui_config_color_input_text">@color/xui_config_color_edittext_input_text</item>
+        <item name="xui_config_color_hint_text">@color/xui_config_color_edittext_hint_text</item>
+        <item name="xui_config_color_stroke">@color/xui_config_color_edittext_stroke</item>
+        <item name="xui_config_color_disable">@color/xui_config_color_edittext_disable</item>
+        <item name="xui_config_color_pressed">@color/xui_config_color_background_pressed</item>
+
         <!--无Title-->
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
@@ -62,7 +72,6 @@
         <item name="xui_actionbar_immersive">false</item>
         <item name="xui_actionbar_ic_navigation_back">@drawable/xui_ic_navigation_back_white</item>
 
-
         <!-- 文字的style -->
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
         <item name="textFieldStyle">@style/TextField</item>
@@ -79,8 +88,8 @@
         <item name="buttonStyle">@style/Button</item>
 
         <!-- 输入框的style -->
-        <item name="android:editTextColor">@color/xui_config_color_edittext_input_text</item>
-        <item name="editTextColor">@color/xui_config_color_edittext_input_text</item>
+        <item name="android:editTextColor">?attr/xui_config_color_input_text</item>
+        <item name="editTextColor">?attr/xui_config_color_input_text</item>
         <item name="android:editTextStyle">@style/EditText</item>
         <item name="editTextStyle">@style/EditText</item>
 

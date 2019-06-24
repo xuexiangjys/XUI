@@ -216,6 +216,12 @@
     <public name="xui_config_color_background" type="attr" />
     <public name="xui_config_color_separator_light" type="attr" />
     <public name="xui_config_color_separator_dark" type="attr" />
+    <public name="xui_config_color_error_text" type="attr" />
+    <public name="xui_config_color_input_text" type="attr" />
+    <public name="xui_config_color_hint_text" type="attr" />
+    <public name="xui_config_color_stroke" type="attr" />
+    <public name="xui_config_color_disable" type="attr" />
+    <public name="xui_config_color_pressed" type="attr" />
 
     <!--drawable-->
     <public name="rb_bg_selector" type="drawable" />

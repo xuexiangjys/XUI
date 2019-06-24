@@ -20,6 +20,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.just.agentweb.core.AgentWeb;
+import com.luck.picture.lib.PictureSelectionModel;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
@@ -84,8 +88,29 @@ public final class Utils {
     public static void checkUpdate(Context context, boolean needErrorTip) {
         XUpdate.newBuild(context).updateUrl(mUpdateUrl).update();
         XUpdate.get().setOnUpdateFailureListener(new CustomUpdateFailureListener(needErrorTip));
-
     }
+
+
+    /**
+     * 获取图片选择的配置
+     *
+     * @param fragment
+     * @return
+     */
+    public static PictureSelectionModel getPictureSelector(Fragment fragment) {
+        return PictureSelector.create(fragment)
+                .openGallery(PictureMimeType.ofImage())
+                .theme(R.style.XUIPictureStyle)
+                .maxSelectNum(8)
+                .minSelectNum(1)
+                .selectionMode(PictureConfig.MULTIPLE)
+                .previewImage(true)
+                .isCamera(true)
+                .enableCrop(false)
+                .compress(true)
+                .previewEggs(true);
+    }
+
 
 
     /**

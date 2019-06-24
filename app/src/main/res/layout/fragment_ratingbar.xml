@@ -92,9 +92,7 @@
             app:srb_isIndicator="true"
             app:srb_starHeight="12dp"
             app:srb_starPadding="3dp"
-            app:srb_starWidth="12dp">
-
-        </com.xuexiang.xui.widget.progress.ratingbar.RotationRatingBar>
+            app:srb_starWidth="12dp"/>
 
         <Button
             android:id="@+id/btn_add_rating"

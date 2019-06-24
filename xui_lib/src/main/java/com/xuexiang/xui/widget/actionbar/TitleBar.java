@@ -23,6 +23,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -34,11 +35,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.content.res.AppCompatResources;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.widget.alpha.XUIAlphaImageView;
 import com.xuexiang.xui.widget.alpha.XUIAlphaTextView;
 import com.xuexiang.xui.widget.textview.AutoMoveTextView;
 
@@ -149,7 +153,14 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mSubTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_subTitleTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, DEFAULT_TEXT_COLOR));
         mActionTextColor = typedArray.getColor(R.styleable.TitleBar_tb_actionTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, DEFAULT_TEXT_COLOR));
 
-        mLeftImageResource = typedArray.getDrawable(R.styleable.TitleBar_tb_leftImageResource);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mLeftImageResource = typedArray.getDrawable(R.styleable.TitleBar_tb_leftImageResource);
+        } else {
+            int leftImageResourceId = typedArray.getResourceId(R.styleable.TitleBar_tb_leftImageResource, -1);
+            if (leftImageResourceId != -1) {
+                mLeftImageResource = AppCompatResources.getDrawable(context, leftImageResourceId);
+            }
+        }
         mLeftTextString = typedArray.getString(R.styleable.TitleBar_tb_leftText);
         mTitleTextString = typedArray.getString(R.styleable.TitleBar_tb_titleText);
         mSubTextString = typedArray.getString(R.styleable.TitleBar_tb_subTitleText);
@@ -666,7 +677,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     protected View inflateAction(Action action) {
         View view = null;
         if (TextUtils.isEmpty(action.getText())) {
-            ImageView img = new ImageView(getContext());
+            ImageView img = new XUIAlphaImageView(getContext());
             img.setImageResource(action.getDrawable());
             view = img;
         } else {
@@ -875,9 +886,15 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      */
     @Override
     public void setTypeface(Typeface tf) {
-        mLeftText.setTypeface(tf);
-        mCenterText.setTypeface(tf);
-        mSubTitleText.setTypeface(tf);
+        if (mLeftText != null) {
+            mLeftText.setTypeface(tf);
+        }
+        if (mCenterText != null) {
+            mCenterText.setTypeface(tf);
+        }
+        if (mSubTitleText != null) {
+            mSubTitleText.setTypeface(tf);
+        }
     }
 
     public XUIAlphaTextView getLeftText() {

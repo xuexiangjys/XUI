@@ -1360,15 +1360,33 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
 
     @Override
     public void setTypeface(Typeface typeface) {
-        leftTextView.setTypeface(typeface);
-        centerTextView.setTypeface(typeface);
-        rightTextView.setTypeface(typeface);
-        leftTopTextView.setTypeface(typeface);
-        centerTopTextView.setTypeface(typeface);
-        rightTopTextView.setTypeface(typeface);
-        leftBottomTextView.setTypeface(typeface);
-        centerBottomTextView.setTypeface(typeface);
-        rightBottomTextView.setTypeface(typeface);
+        if (leftTextView != null) {
+            leftTextView.setTypeface(typeface);
+        }
+        if (centerTextView != null) {
+            centerTextView.setTypeface(typeface);
+        }
+        if (rightTextView != null) {
+            rightTextView.setTypeface(typeface);
+        }
+        if (leftTopTextView != null) {
+            leftTopTextView.setTypeface(typeface);
+        }
+        if (centerTopTextView != null) {
+            centerTopTextView.setTypeface(typeface);
+        }
+        if (rightTopTextView != null) {
+            rightTopTextView.setTypeface(typeface);
+        }
+        if (leftBottomTextView != null) {
+            leftBottomTextView.setTypeface(typeface);
+        }
+        if (centerBottomTextView != null) {
+            centerBottomTextView.setTypeface(typeface);
+        }
+        if (rightBottomTextView != null) {
+            rightBottomTextView.setTypeface(typeface);
+        }
     }
 
     /**

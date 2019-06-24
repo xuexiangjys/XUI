@@ -53,13 +53,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import uk.co.chrisjenx.calligraphy.HasTypeface;
+
 /**
  * Material Design 输入框
  *
  * @author XUE
  * @since 2019/3/20 16:47
  */
-public class MaterialEditText extends AppCompatEditText {
+public class MaterialEditText extends AppCompatEditText implements HasTypeface {
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({FLOATING_LABEL_NONE, FLOATING_LABEL_NORMAL, FLOATING_LABEL_HIGHLIGHT})
@@ -373,7 +375,7 @@ public class MaterialEditText extends AppCompatEditText {
 
         primaryColor = typedArray.getColor(R.styleable.MaterialEditText_met_primaryColor, ThemeUtils.resolveColor(getContext(), R.attr.colorPrimary, baseColor));
         setFloatingLabelInternal(typedArray.getInt(R.styleable.MaterialEditText_met_floatingLabel, 0));
-        errorColor = typedArray.getColor(R.styleable.MaterialEditText_met_errorColor, ResUtils.getColor(R.color.xui_config_color_edittext_error_text));
+        errorColor = typedArray.getColor(R.styleable.MaterialEditText_met_errorColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_error_text));
 
         boolean allowEmpty = typedArray.getBoolean(R.styleable.MaterialEditText_met_allowEmpty, true);
         if (!allowEmpty) {
@@ -1753,6 +1755,11 @@ public class MaterialEditText extends AppCompatEditText {
         return lengthChecker.getLength(text);
     }
 
-
-
+    @Override
+    public void setTypeface(Typeface typeface) {
+        super.setTypeface(typeface);
+        if (textPaint != null) {
+            textPaint.setTypeface(typeface);
+        }
+    }
 }

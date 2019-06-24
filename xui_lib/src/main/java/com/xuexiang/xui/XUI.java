@@ -7,6 +7,8 @@ import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.text.TextUtils;
 
+import androidx.annotation.Nullable;
+
 import com.xuexiang.xui.logs.UILog;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -105,6 +107,7 @@ public class XUI {
     /**
      * @return 获取默认字体
      */
+    @Nullable
     public static Typeface getDefaultTypeface() {
         String fontPath = CalligraphyConfig.get().getFontPath();
         if (!TextUtils.isEmpty(fontPath)) {
@@ -117,6 +120,7 @@ public class XUI {
      * @param fontPath 字体路径
      * @return 获取默认字体
      */
+    @Nullable
     public static Typeface getDefaultTypeface(String fontPath) {
         if (TextUtils.isEmpty(fontPath)) {
             fontPath = CalligraphyConfig.get().getFontPath();

@@ -18,6 +18,6 @@
     <item android:drawable="?attr/xui_config_color_separator_dark" />
     <item
         android:bottom="?attr/xui_config_divider_height"
-        android:drawable="@color/xui_config_color_background_pressed"
+        android:drawable="?attr/xui_config_color_pressed"
         android:top="?attr/xui_config_divider_height" />
 </layer-list>

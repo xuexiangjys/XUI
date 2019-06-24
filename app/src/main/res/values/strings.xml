@@ -137,11 +137,12 @@
     <string name="tab3">活动</string>
     <string name="tab4">设置</string>
 
-    <!--PhotoPicker-->
+    <!--PictureSelector-->
     <string name="pick_photo">选择图片</string>
+    <string name="pick_video">选择视频</string>
+    <string name="pick_photo_gif">选择gif图片</string>
     <string name="pick_photo_without_camera">选择图片（不带拍照按钮且点击不预览图片）</string>
     <string name="pick_one_photo">选择单张图片</string>
-    <string name="pick_photo_gif">选择gif图片</string>
     <string name="multiple_pick_photo">多次进入PhotoPicker选择图片</string>
 
     <!--下拉刷新-->
@@ -374,4 +375,8 @@
     <!-- String related to app short cuts -->
     <string name="shortcut_label_setting">设置</string>
     <string name="shortcut_label_search">搜索</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-2562950131264541/2122910004</string>
+    <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
+
 </resources>

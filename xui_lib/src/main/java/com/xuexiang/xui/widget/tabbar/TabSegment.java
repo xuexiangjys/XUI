@@ -51,6 +51,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ColorUtils;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
@@ -1394,6 +1395,7 @@ public class TabSegment extends HorizontalScrollView {
             mTextView.setSingleLine(true);
             mTextView.setGravity(Gravity.CENTER);
             mTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+            mTextView.setTypeface(XUI.getDefaultTypeface());
             // 用于提供给customView布局用
             mTextView.setId(R.id.xui_tab_segment_item_id);
             RelativeLayout.LayoutParams tvLp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

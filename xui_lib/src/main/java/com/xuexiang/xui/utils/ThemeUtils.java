@@ -7,15 +7,17 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.TypedValue;
+import android.view.View;
+
 import androidx.annotation.ArrayRes;
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
-import android.util.TypedValue;
-import android.view.View;
 
 import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
 
@@ -167,15 +169,23 @@ public final class ThemeUtils {
             Context context,
             @AttrRes int attr,
             @SuppressWarnings("SameParameterValue") Drawable fallback) {
-        TypedArray a = context.getTheme().obtainStyledAttributes(new int[]{attr});
+        TypedArray array = context.getTheme().obtainStyledAttributes(new int[]{attr});
         try {
-            Drawable d = a.getDrawable(0);
-            if (d == null && fallback != null) {
-                d = fallback;
+            Drawable drawable = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                drawable = array.getDrawable(0);
+            } else {
+                int id = array.getResourceId(0, -1);
+                if (id != -1) {
+                    drawable = AppCompatResources.getDrawable(context, id);
+                }
             }
-            return d;
+            if (drawable == null && fallback != null) {
+                drawable = fallback;
+            }
+            return drawable;
         } finally {
-            a.recycle();
+            array.recycle();
         }
     }
 

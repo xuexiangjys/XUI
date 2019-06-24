@@ -11,6 +11,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabLayout;
 import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xui.utils.ResUtils;
@@ -54,6 +56,10 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
 
+    @BindView(R.id.ad_view)
+    AdView adView;
+
+
     private SlidingRootNav mSlidingRootNav;
     private LinearLayout mLLMenu;
     private String[] mMenuTitles;
@@ -80,6 +86,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         openPage(ComponentsFragment.class);
 
         initTab();
+
+        initAdd();
 
         //静默检查版本更新
         Utils.checkUpdate(this, false);
@@ -279,7 +287,38 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         return icons;
     }
 
+    private void initAdd() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
+    }
 
+    /** Called when leaving the activity */
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    /** Called when returning to the activity */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    /** Called before the activity is destroyed */
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
+    }
 
 
 }

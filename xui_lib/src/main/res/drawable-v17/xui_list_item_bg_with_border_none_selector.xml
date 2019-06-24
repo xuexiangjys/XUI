@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
-  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,18 +14,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<me.iwf.photopicker.widget.SquareItemLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/picker_bg_item_photo"
-    android:padding="1dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="+"
-        android:textSize="32dp" />
-
-</me.iwf.photopicker.widget.SquareItemLayout>
-
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/xui_config_color_background_pressed" android:state_pressed="true"/>
+    <item android:drawable="@color/xui_config_color_white"/>
+</selector>

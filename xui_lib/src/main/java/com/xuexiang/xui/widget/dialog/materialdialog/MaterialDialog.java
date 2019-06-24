@@ -2413,7 +2413,7 @@ public class MaterialDialog extends DialogBase
             this.inputMinLength = minLength;
             this.inputMaxLength = maxLength;
             if (errorColor == 0) {
-                this.inputRangeErrorColor = ThemeUtils.getColor(context, R.color.md_edittext_error);
+                this.inputRangeErrorColor = ThemeUtils.resolveColor(context, R.attr.xui_config_color_error_text);
             } else {
                 this.inputRangeErrorColor = errorColor;
             }

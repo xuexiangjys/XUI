@@ -28,6 +28,8 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager.widget.PagerAdapter;
+
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -38,8 +40,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+
+import uk.co.chrisjenx.calligraphy.HasTypeface;
 
 /**
  * 简单的索引器
@@ -47,7 +52,7 @@ import com.xuexiang.xui.utils.ThemeUtils;
  * @author xuexiang
  * @since 2018/12/20 上午12:32
  */
-public class EasyIndicator extends LinearLayout implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class EasyIndicator extends LinearLayout implements View.OnClickListener, ViewPager.OnPageChangeListener, HasTypeface {
     private View mIndicator;
     private int mPosition;
     private ViewPager mViewPager;
@@ -187,6 +192,7 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
             view = new TextView(getContext());
             view.setTag(i);
             view.setText(tabTitles[i]);
+            view.setTypeface(XUI.getDefaultTypeface());
 
             view.setGravity(Gravity.CENTER);
             LayoutParams lp = new LayoutParams(0, indicatorHeight, 1.0f);
@@ -342,6 +348,15 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void setTypeface(Typeface typeface) {
+        if (tvs != null) {
+            for (TextView tv : tvs) {
+                tv.setTypeface(typeface);
+            }
+        }
     }
 
 

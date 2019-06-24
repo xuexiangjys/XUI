@@ -187,6 +187,10 @@ public final class DrawableUtils {
      * @return 返回创建的 Bitmap。
      */
     public static Bitmap createBitmapSafely(int width, int height, Bitmap.Config config, int retryCount) {
+        //width and height must be > 0
+        if (width <= 0 || height <= 0) {
+            return null;
+        }
         try {
             return Bitmap.createBitmap(width, height, config);
         } catch (OutOfMemoryError e) {
@@ -322,12 +326,9 @@ public final class DrawableUtils {
         return layerDrawable;
     }
 
-
     /////////////// VectorDrawable /////////////////////
-
-    public static
     @Nullable
-    Drawable getVectorDrawable(Context context, @DrawableRes int resVector) {
+    public static Drawable getVectorDrawable(Context context, @DrawableRes int resVector) {
         try {
             return AppCompatResources.getDrawable(context, resVector);
         } catch (Exception e) {
