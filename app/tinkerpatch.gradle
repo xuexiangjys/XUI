@@ -26,7 +26,7 @@ apply plugin: 'tinkerpatch-support'
 def bakPath = file("${projectDir}/bakApk/")
 
 /** 每次在打补丁包的时候，需要更新这里的旧包的位置，注意：基准包需要备份**/
-def baseInfo = "app-1.0.6-0618-16-45-37"
+def baseInfo = "app-1.0.6-0625-00-32-24"
 def variantName = "release"
 def AppVersion = "1.0.6"
 

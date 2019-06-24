@@ -42,11 +42,25 @@ allprojects {
 dependencies {
   ...
   //1.0.5版本后只支持androidx
-  implementation 'com.github.xuexiangjys:XUI:1.0.5'
+  implementation 'com.github.xuexiangjys:XUI:1.0.6'
 
   implementation 'androidx.appcompat:appcompat:1.0.2'
   implementation 'androidx.recyclerview:recyclerview:1.0.0'
   implementation 'com.google.android.material:material:1.1.0-alpha07'
+  implementation 'com.github.bumptech.glide:glide:4.8.0'
+}
+```
+
+【注意】如果你的项目目前还未使用androidx，那你只能使用1.0.5之前的版本了。
+
+```
+dependencies {
+  ...
+  implementation 'com.github.xuexiangjys:XUI:1.0.4'
+
+  implementation 'com.android.support:appcompat-v7:28.0.0'
+  implementation 'com.android.support:recyclerview-v7:28.0.0'
+  implementation 'com.android.support:design:28.0.0'
   implementation 'com.github.bumptech.glide:glide:4.8.0'
 }
 ```
@@ -127,7 +141,7 @@ protected void onCreate(Bundle savedInstanceState) {
 * [AgentWeb](https://github.com/Justson/AgentWeb)
 * [CityPicker](https://github.com/xuexiangjys/CityPicker)
 * [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
-* [PhotoPicker](https://github.com/donglua/PhotoPicker)
+* [PictureSelector](https://github.com/LuckSiege/PictureSelector)
 * [Android-PickerView](https://github.com/Bigkoo/Android-PickerView)
 * [MaterialEditText](https://github.com/rengwuxian/MaterialEditText)
 * [MaterialSpinner](https://github.com/jaredrummler/MaterialSpinner)
@@ -139,7 +153,7 @@ protected void onCreate(Bundle savedInstanceState) {
 [![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
 
 
-[xuisvg]: https://img.shields.io/badge/XUI-v1.0.5-brightgreen.svg
+[xuisvg]: https://img.shields.io/badge/XUI-v1.0.6-brightgreen.svg
 [xui]: https://github.com/xuexiangjys/XUI
 [apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
 [api]: https://android-arsenal.com/api?level=17

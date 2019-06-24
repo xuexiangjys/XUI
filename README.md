@@ -48,7 +48,7 @@ allprojects {
 dependencies {
   ...
   //1.0.5版本后只支持androidx
-  implementation 'com.github.xuexiangjys:XUI:1.0.5'
+  implementation 'com.github.xuexiangjys:XUI:1.0.6'
 
   implementation 'androidx.appcompat:appcompat:1.0.2'
   implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -169,7 +169,7 @@ protected void attachBaseContext(Context newBase) {
 * [AgentWeb](https://github.com/Justson/AgentWeb)
 * [CityPicker](https://github.com/xuexiangjys/CityPicker)
 * [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
-* [PhotoPicker](https://github.com/donglua/PhotoPicker)
+* [PictureSelector](https://github.com/LuckSiege/PictureSelector)
 * [Android-PickerView](https://github.com/Bigkoo/Android-PickerView)
 * [MaterialEditText](https://github.com/rengwuxian/MaterialEditText)
 * [MaterialSpinner](https://github.com/jaredrummler/MaterialSpinner)
@@ -186,7 +186,7 @@ protected void attachBaseContext(Context newBase) {
 
 ![](https://github.com/xuexiangjys/XPage/blob/master/img/qq_group.jpg)
 
-[xuisvg]: https://img.shields.io/badge/XUI-v1.0.5-brightgreen.svg
+[xuisvg]: https://img.shields.io/badge/XUI-v1.0.6-brightgreen.svg
 [xui]: https://github.com/xuexiangjys/XUI
 [apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
 [api]: https://android-arsenal.com/api?level=17
