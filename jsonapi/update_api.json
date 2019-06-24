@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 6,
-  "VersionName": "1.0.5",
-  "UploadTime": "2019-06-14 12:45:55",
-  "ModifyContent": "\r\n1、最新支持androidx。\n2、增加了友盟统计和Bugly日志上报。\n3、去除XVideo的演示，缩小包的体积。",
+  "VersionCode": 7,
+  "VersionName": "1.0.6",
+  "UploadTime": "2019-06-24 23:55:23",
+  "ModifyContent": "\r\n1、优化部分组件和字体库。\n2、修复演示程序的部分bug。\n3、演示程序新增热更新功能。",
   "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo.apk",
-  "ApkSize": 10445
+  "ApkSize": 10342
 }
