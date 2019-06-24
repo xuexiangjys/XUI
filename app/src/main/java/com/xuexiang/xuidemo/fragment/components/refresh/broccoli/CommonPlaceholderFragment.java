@@ -105,6 +105,9 @@ public class CommonPlaceholderFragment extends BaseFragment {
                 Utils.goWeb(getContext(), mNewsListAdapter.getItem(position).getDetailUrl());
             }
         });
+        //设置刷新加载时禁止所有列表操作
+        refreshLayout.setDisableContentWhenRefresh(true);
+        refreshLayout.setDisableContentWhenLoading(true);
         refreshLayout.autoRefresh();
     }
 
