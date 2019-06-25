@@ -380,6 +380,18 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     /**
+     * 左侧文字的Padding
+     *
+     * @param paddingStart
+     * @param paddingEnd
+     * @return
+     */
+    public TitleBar setLeftTextPadding(int paddingStart, int paddingEnd) {
+        mLeftText.setPadding(paddingStart, 0, paddingEnd, 0);
+        return this;
+    }
+
+    /**
      * 左侧文字的颜色
      *
      * @param color
@@ -400,6 +412,19 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mLeftText.setVisibility(visible ? View.VISIBLE : View.GONE);
         return this;
     }
+
+    /**
+     * 禁用左侧控件
+     *
+     * @return
+     */
+    public TitleBar disableLeftView() {
+        setBackImageResource(0);
+        setLeftTextPadding(mActionPadding, 0);
+        setLeftVisible(false);
+        return this;
+    }
+
 
     /**
      * 设置标题文字
