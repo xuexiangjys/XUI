@@ -1,10 +1,8 @@
 package com.xuexiang.xui.widget.banner.transform;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 import android.view.View;
-
-import com.nineoldandroids.view.ViewHelper;
-
 /**
  * 向上旋转切换
  *
@@ -16,13 +14,13 @@ public class RotateUpTransformer implements ViewPager.PageTransformer {
 	private static final float ROT_MOD = -15f;
 
 	@Override
-	public void transformPage(View page, float position) {
+	public void transformPage(@NonNull View page, float position) {
 		final float width = page.getWidth();
 		final float rotation = ROT_MOD * position;
 
-		ViewHelper.setPivotX(page,width * 0.5f);
-        ViewHelper.setPivotY(page,0f);
-        ViewHelper.setTranslationX(page,0f);
-        ViewHelper.setRotation(page,rotation);
+		page.setPivotX(width * 0.5f);
+		page.setPivotY(0f);
+		page.setTranslationX(0f);
+		page.setRotation(rotation);
 	}
 }

@@ -25,8 +25,6 @@ dependencies {
     compileOnly deps.glide
 
     api 'uk.co.chrisjenx:calligraphy:2.3.0'
-    implementation 'com.nineoldandroids:library:2.4.0'
-
 }
 
 apply from: '../JitPackUpload.gradle'

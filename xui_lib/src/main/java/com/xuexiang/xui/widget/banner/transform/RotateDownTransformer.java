@@ -1,9 +1,8 @@
 package com.xuexiang.xui.widget.banner.transform;
 
-import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
-import com.nineoldandroids.view.ViewHelper;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * 向下旋转切换
@@ -21,8 +20,8 @@ public class RotateDownTransformer implements ViewPager.PageTransformer {
 		final float height = page.getHeight();
 		final float rotation = ROT_MOD * position * -1.25f;
 
-		ViewHelper.setPivotX(page,width * 0.5f);
-        ViewHelper.setPivotY(page,height);
-        ViewHelper.setRotation(page,rotation);
+		page.setPivotX(width * 0.5f);
+		page.setPivotY(height);
+		page.setRotation(rotation);
 	}
 }

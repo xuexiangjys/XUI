@@ -1,9 +1,9 @@
 package com.xuexiang.xui.widget.banner.transform;
 
-import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
-import com.nineoldandroids.view.ViewHelper;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * 3D旋转切换
@@ -15,7 +15,7 @@ public class DepthTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE_DEPTH = 0.75f;
 
     @Override
-    public void transformPage(View page, float position) {
+    public void transformPage(@NonNull View page, float position) {
         float alpha, scale, translationX;
         if (position > 0 && position < 1) {
             // moving to the right
@@ -29,9 +29,9 @@ public class DepthTransformer implements ViewPager.PageTransformer {
             translationX = 0;
         }
 
-        ViewHelper.setAlpha(page, alpha);
-        ViewHelper.setTranslationX(page, translationX);
-        ViewHelper.setScaleX(page, scale);
-        ViewHelper.setScaleY(page, scale);
+        page.setAlpha(alpha);
+        page.setTranslationX(translationX);
+        page.setScaleX(scale);
+        page.setScaleY(scale);
     }
 }
