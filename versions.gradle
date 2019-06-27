@@ -43,10 +43,10 @@ def deps = [:]
 
 def support = [:]
 support.annotations = "com.android.support:support-annotations:$versions.support"
-support.app_compat = 'androidx.appcompat:appcompat:1.0.0'
-support.recyclerview = 'androidx.recyclerview:recyclerview:1.0.0'
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
 support.cardview = "com.android.support:cardview-v7:$versions.support"
-support.design = 'com.google.android.material:material:1.0.0'
+support.design = "com.android.support:design:$versions.support"
 support.v4 = "com.android.support:support-v4:$versions.support"
 support.core_utils = "com.android.support:support-core-utils:$versions.support"
 deps.support = support
