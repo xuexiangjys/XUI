@@ -16,6 +16,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.xuexiang.xui.XUI;
 
@@ -74,6 +75,19 @@ public final class ResUtils {
             return context.getDrawable(resId);
         }
         return context.getResources().getDrawable(resId);
+    }
+
+    /**
+     * 获取svg资源图片
+     * @param context
+     * @param resId
+     * @return
+     */
+    public static Drawable getVectorDrawable(Context context, @DrawableRes int resId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return context.getDrawable(resId);
+        }
+        return AppCompatResources.getDrawable(context, resId);
     }
 
     /**

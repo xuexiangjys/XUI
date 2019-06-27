@@ -736,6 +736,8 @@
     <declare-styleable name="MaterialSpinner">
         <!--下拉框选择的内容-->
         <attr name="ms_entries" format="reference" />
+        <!--下拉框箭头的资源-->
+        <attr name="ms_arrow_image" format="reference" />
         <!--下拉框箭头的颜色， 默认和字体的颜色一样-->
         <attr name="ms_arrow_tint" format="color" />
         <!--下拉框是否有箭头， 默认是true-->

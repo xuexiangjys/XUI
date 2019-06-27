@@ -15,6 +15,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -96,6 +97,16 @@ public class MaterialSpinner extends AppCompatTextView {
             mBackgroundColor = ta.getColor(R.styleable.MaterialSpinner_ms_background_color, Color.WHITE);
             mBackgroundSelector = ta.getResourceId(R.styleable.MaterialSpinner_ms_background_selector, 0);
             mTextColor = ta.getColor(R.styleable.MaterialSpinner_ms_text_color, defaultColor);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mArrowDrawable = ta.getDrawable(R.styleable.MaterialSpinner_ms_arrow_image);
+            } else {
+                int arrowDrawableId = ta.getResourceId(R.styleable.MaterialSpinner_ms_arrow_image, -1);
+                if (arrowDrawableId != -1) {
+                    mArrowDrawable = AppCompatResources.getDrawable(context, arrowDrawableId);
+                }
+            }
+
             mArrowColor = ta.getColor(R.styleable.MaterialSpinner_ms_arrow_tint, mTextColor);
             mHideArrow = ta.getBoolean(R.styleable.MaterialSpinner_ms_hide_arrow, false);
             mPopupWindowMaxHeight = ta.getDimensionPixelSize(R.styleable.MaterialSpinner_ms_dropdown_max_height, 0);
@@ -129,7 +140,9 @@ public class MaterialSpinner extends AppCompatTextView {
         }
 
         if (!mHideArrow) {
-            mArrowDrawable = ResUtils.getDrawable(getContext(), R.drawable.ms_ic_arrow_up).mutate();
+            if (mArrowDrawable == null) {
+                mArrowDrawable = ResUtils.getVectorDrawable(getContext(), R.drawable.ms_ic_arrow_up).mutate();
+            }
             mArrowDrawable.setColorFilter(mArrowColor, PorterDuff.Mode.SRC_IN);
             int arrowSize = ThemeUtils.resolveDimension(getContext(), R.attr.ms_arrow_size);
             mArrowDrawable.setBounds(0, 0, arrowSize, arrowSize);

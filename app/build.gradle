@@ -55,11 +55,6 @@ android {
         exclude 'META-INF/proguard/androidx-annotations.pro'
     }
 
-    //recommend
-    dexOptions {
-        jumboMode = true
-    }
-
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
