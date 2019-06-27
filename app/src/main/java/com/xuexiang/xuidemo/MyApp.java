@@ -5,7 +5,6 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
-import com.google.android.gms.ads.MobileAds;
 import com.luck.picture.lib.tools.PictureFileUtils;
 import com.xuexiang.xaop.XAOP;
 import com.xuexiang.xaop.util.PermissionUtils;
@@ -17,7 +16,6 @@ import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.utils.LocationService;
 import com.xuexiang.xuidemo.utils.sdkinit.BuglyInit;
-import com.xuexiang.xuidemo.utils.sdkinit.TinkerInit;
 import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
 import com.xuexiang.xuidemo.utils.sdkinit.XUpdateInit;
 import com.xuexiang.xutil.XUtil;
@@ -54,9 +52,6 @@ public class MyApp extends Application {
         XUpdateInit.init(this);
         UMengInit.init(this);
         BuglyInit.init(this);
-        TinkerInit.init(this);
-
-        MobileAds.initialize(this, "ca-app-pub-2562950131264541~7554790969");
     }
 
     /**
