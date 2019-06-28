@@ -23,6 +23,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.calendar.ChineseCalendarFragment;
 import com.xuexiang.xuidemo.fragment.expands.calendar.DingDingCalendarFragment;
 import com.xuexiang.xuidemo.fragment.expands.calendar.MaterialDesignCalendarFragment;
+import com.xuexiang.xuidemo.fragment.expands.calendar.SimpleCalendarFragment;
 
 /**
  * @author xuexiang
@@ -38,6 +39,7 @@ public class CalendarFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[] {
+                SimpleCalendarFragment.class,
                 DingDingCalendarFragment.class,
                 MaterialDesignCalendarFragment.class,
                 ChineseCalendarFragment.class

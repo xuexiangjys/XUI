@@ -15,6 +15,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
+import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.widget.MaterialLoadMoreView;
@@ -75,7 +76,7 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
                 ToastUtils.toast("新建");
             }
         });
-        mAdapter.setOnItemClickListener(new SmartViewHolder.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
                 Utils.goWeb(getContext(), mAdapter.getItem(position).getDetailUrl());
