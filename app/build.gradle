@@ -164,6 +164,7 @@ dependencies {
     implementation 'com.github.xuexiangjys:JPTabBar:1.0.1'
     //日历控件
     implementation 'com.github.xuexiangjys:CalendarExaple:1.0.1'
+    implementation 'com.haibin:calendarview:3.6.3'
 
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.0.9'

@@ -182,6 +182,16 @@
         <item>塔塔尔族</item>
     </string-array>
 
+    <string-array name="chinese_week_string_array">
+        <item>周日</item>
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+    </string-array>
+
     <string-array name="query_suggestions">
         <item>A very very long suggestion that would span multiple lines.</item>
         <item>Android</item>
