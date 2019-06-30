@@ -238,8 +238,8 @@
     *;
 }
 -dontwarn com.just.agentweb.**
--keepclassmembers class com.just.agentweb.sample.common.AndroidInterface{ *; }
--keepclassmembers class com.just.agentweb.sample.common.SonicJavaScriptInterface{ *; }
+# Java 注入类不要混淆
+-keepclassmembers class com.xuexiang.xuidemo.fragment.expands.webview.AndroidInterface{ *; }
 
 #-libraryjars
 
