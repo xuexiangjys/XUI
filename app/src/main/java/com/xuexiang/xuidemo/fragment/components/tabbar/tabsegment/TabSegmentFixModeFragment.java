@@ -16,17 +16,14 @@
 
 package com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment;
 
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -35,10 +32,8 @@ import com.xuexiang.xui.widget.tabbar.TabSegment;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.ContentPage;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.SimpleListFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 
@@ -57,47 +52,6 @@ public class TabSegmentFixModeFragment extends BaseFragment {
     ViewPager mContentViewPager;
 
     String[] pages = ContentPage.getPageNames();
-
-    private Map<ContentPage, View> mPageMap = new HashMap<>();
-    private ContentPage mDestPage = ContentPage.教育;
-    private PagerAdapter mPagerAdapter = new PagerAdapter() {
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-
-        @Override
-        public int getCount() {
-            return ContentPage.size();
-        }
-
-        @Override
-        public Object instantiateItem(final ViewGroup container, int position) {
-            ContentPage page = ContentPage.getPage(position);
-            View view = getPageView(page);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            container.addView(view, params);
-            return view;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-        }
-    };
-
-    private View getPageView(ContentPage page) {
-        View view = mPageMap.get(page);
-        if (view == null) {
-            TextView textView = new TextView(getContext());
-            textView.setTextAppearance(getContext(), R.style.TextStyle_Content_Match);
-            textView.setGravity(Gravity.CENTER);
-            textView.setText(String.format("这个是%s页面的内容", page.name()));
-            view = textView;
-            mPageMap.put(page, view);
-        }
-        return view;
-    }
 
     @Override
     protected TitleBar initTitle() {
@@ -119,12 +73,13 @@ public class TabSegmentFixModeFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        mContentViewPager.setAdapter(mPagerAdapter);
-        mContentViewPager.setCurrentItem(mDestPage.getPosition(), false);
-
+        FragmentAdapter<BaseFragment> adapter = new FragmentAdapter<>(getChildFragmentManager());
         for (String page : pages) {
             mTabSegment.addTab(new TabSegment.Tab(page));
+            adapter.addFragment(new SimpleListFragment(), page);
         }
+        mContentViewPager.setAdapter(adapter);
+        mContentViewPager.setCurrentItem(0, false);
         mTabSegment.setupWithViewPager(mContentViewPager, false);
         mTabSegment.setMode(TabSegment.MODE_FIXED);
         mTabSegment.addOnTabSelectedListener(new TabSegment.OnTabSelectedListener() {
@@ -193,42 +148,42 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                         dialog.dismiss();
                         switch (position) {
                             case 0:
-                                mTabSegment.reset();
-                                mTabSegment.setHasIndicator(false);
+                                mTabSegment1.reset();
+                                mTabSegment1.setHasIndicator(false);
                                 for (String page : pages) {
-                                    mTabSegment.addTab(new TabSegment.Tab(page));
+                                    mTabSegment1.addTab(new TabSegment.Tab(page));
                                 }
                                 break;
                             case 1:
-                                mTabSegment.reset();
-                                mTabSegment.setHasIndicator(true);
-                                mTabSegment.setIndicatorPosition(false);
-                                mTabSegment.setIndicatorWidthAdjustContent(true);
+                                mTabSegment1.reset();
+                                mTabSegment1.setHasIndicator(true);
+                                mTabSegment1.setIndicatorPosition(false);
+                                mTabSegment1.setIndicatorWidthAdjustContent(true);
                                 for (String page : pages) {
-                                    mTabSegment.addTab(new TabSegment.Tab(page));
+                                    mTabSegment1.addTab(new TabSegment.Tab(page));
                                 }
                                 break;
                             case 2:
-                                mTabSegment.reset();
-                                mTabSegment.setHasIndicator(true);
-                                mTabSegment.setIndicatorPosition(true);
-                                mTabSegment.setIndicatorWidthAdjustContent(true);
+                                mTabSegment1.reset();
+                                mTabSegment1.setHasIndicator(true);
+                                mTabSegment1.setIndicatorPosition(true);
+                                mTabSegment1.setIndicatorWidthAdjustContent(true);
                                 for (String page : pages) {
-                                    mTabSegment.addTab(new TabSegment.Tab(page));
+                                    mTabSegment1.addTab(new TabSegment.Tab(page));
                                 }
                                 break;
                             case 3:
-                                mTabSegment.reset();
-                                mTabSegment.setHasIndicator(true);
-                                mTabSegment.setIndicatorPosition(false);
-                                mTabSegment.setIndicatorWidthAdjustContent(false);
+                                mTabSegment1.reset();
+                                mTabSegment1.setHasIndicator(true);
+                                mTabSegment1.setIndicatorPosition(false);
+                                mTabSegment1.setIndicatorWidthAdjustContent(false);
                                 for (String page : pages) {
-                                    mTabSegment.addTab(new TabSegment.Tab(page));
+                                    mTabSegment1.addTab(new TabSegment.Tab(page));
                                 }
                                 break;
                             case 4:
-                                mTabSegment.reset();
-                                mTabSegment.setHasIndicator(false);
+                                mTabSegment1.reset();
+                                mTabSegment1.setHasIndicator(false);
                                 TabSegment.Tab component = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_component),
                                         null,
@@ -239,17 +194,17 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                                         null,
                                         "工具", true
                                 );
-                                mTabSegment.addTab(component);
-                                mTabSegment.addTab(util);
+                                mTabSegment1.addTab(component);
+                                mTabSegment1.addTab(util);
                                 break;
                             case 5:
-                                TabSegment.Tab tab = mTabSegment.getTab(0);
+                                TabSegment.Tab tab = mTabSegment1.getTab(0);
                                 tab.setSignCountMargin(0, -DensityUtils.dp2px(getContext(), 4));
                                 tab.showSignCountView(getContext(), 1);
                                 break;
                             case 6:
-                                mTabSegment.reset();
-                                mTabSegment.setHasIndicator(false);
+                                mTabSegment1.reset();
+                                mTabSegment1.setHasIndicator(false);
                                 TabSegment.Tab component2 = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_component),
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_component_selected),
@@ -260,14 +215,14 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_util_selected),
                                         "工具", false
                                 );
-                                mTabSegment.addTab(component2);
-                                mTabSegment.addTab(util2);
+                                mTabSegment1.addTab(component2);
+                                mTabSegment1.addTab(util2);
                                 break;
                             case 7:
-                                mTabSegment.reset();
-                                mTabSegment.setHasIndicator(true);
-                                mTabSegment.setIndicatorWidthAdjustContent(true);
-                                mTabSegment.setIndicatorPosition(false);
+                                mTabSegment1.reset();
+                                mTabSegment1.setHasIndicator(true);
+                                mTabSegment1.setIndicatorWidthAdjustContent(true);
+                                mTabSegment1.setIndicatorPosition(false);
                                 TabSegment.Tab component3 = new TabSegment.Tab(
                                         ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_component),
                                         null,
@@ -282,11 +237,11 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                                 );
                                 util3.setTextColor(ContextCompat.getColor(getContext(), R.color.xui_config_color_gray_1),
                                         ContextCompat.getColor(getContext(), R.color.xui_config_color_red));
-                                mTabSegment.addTab(component3);
-                                mTabSegment.addTab(util3);
+                                mTabSegment1.addTab(component3);
+                                mTabSegment1.addTab(util3);
                                 break;
                             case 8:
-                                mTabSegment.updateTabText(0, "动态更新文案");
+                                mTabSegment1.updateTabText(0, "动态更新文案");
                                 break;
                             case 9:
                                 TabSegment.Tab component4 = new TabSegment.Tab(
@@ -294,13 +249,13 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                                         null,
                                         "动态更新", true
                                 );
-                                mTabSegment.replaceTab(0, component4);
+                                mTabSegment1.replaceTab(0, component4);
                                 break;
 
                             default:
                                 break;
                         }
-                        mTabSegment.notifyDataChanged();
+                        mTabSegment1.notifyDataChanged();
                     }
                 })
                 .build()
