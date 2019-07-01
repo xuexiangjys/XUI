@@ -204,7 +204,7 @@ public class PasswordEditText extends AppCompatEditText {
 
     private void showPasswordVisibilityIndicator(boolean shouldShowIcon) {
         if (shouldShowIcon) {
-            Drawable drawable = passwordVisible ? hidePwDrawable : showPwDrawable;
+            Drawable drawable = passwordVisible ? showPwDrawable : hidePwDrawable;
             showingIcon = true;
             setCompoundDrawablesWithIntrinsicBounds(isRTL ? drawable : null, null, isRTL ? null : drawable, null);
         } else {

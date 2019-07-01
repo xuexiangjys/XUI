@@ -419,8 +419,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         showClearButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_clearButton, false);
         clearButtonBitmaps = generateIconBitmaps(R.drawable.xui_ic_met_clear);
         showPasswordButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_passWordButton, false);
-        showPwIconBitmaps = generateIconBitmaps(R.drawable.pet_icon_visibility);
-        hidePwIconBitmaps = generateIconBitmaps(R.drawable.pet_icon_visibility_off);
+        showPwIconBitmaps = generateIconBitmaps(R.drawable.met_icon_visibility);
+        hidePwIconBitmaps = generateIconBitmaps(R.drawable.met_icon_visibility_off);
 
         String regexp = typedArray.getString(R.styleable.MaterialEditText_met_regexp);
         if (!TextUtils.isEmpty(regexp)) {
