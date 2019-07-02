@@ -174,6 +174,13 @@ public class VerifyCodeEditText extends RelativeLayout {
                 return false;
             }
         });
+        mEditText.setBackSpaceListener(new TInputConnection.BackspaceListener() {
+            @Override
+            public boolean onBackspace() {
+                onKeyDelete();
+                return true;
+            }
+        });
     }
 
     // 给TextView 设置文字
