@@ -55,8 +55,8 @@
         android:layout_marginTop="20dp"
         app:sDividerLineType="both"
         app:sLeftTextString="消息"
-        app:sRightViewMarginRight="0dp"
-        app:sRightIconRes="@drawable/icon_arrow_right_red" />
+        app:sRightIconRes="@drawable/icon_arrow_right_red"
+        app:sRightViewMarginRight="0dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,8 +68,8 @@
         <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
             android:id="@+id/stv_name"
             style="@style/EditInfoItem"
-            app:sEditTextHint="请输入姓名"
             app:sEditTextButtonType="none"
+            app:sEditTextHint="请输入姓名"
             app:sLeftTextString="姓名" />
 
         <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
@@ -86,6 +86,7 @@
             android:inputType="textPassword"
             app:sEditTextButtonType="password"
             app:sEditTextHint="请输入密码"
+            app:sEditTextIsAsteriskStyle="true"
             app:sLeftTextString="密码" />
 
     </LinearLayout>

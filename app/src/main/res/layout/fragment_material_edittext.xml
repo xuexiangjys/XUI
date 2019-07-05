@@ -447,6 +447,7 @@
                     android:layout_height="wrap_content"
                     android:hint="PassWord Button"
                     android:inputType="textPassword"
+                    app:met_isAsteriskStyle="true"
                     app:met_passWordButton="true" />
 
                 <TextView

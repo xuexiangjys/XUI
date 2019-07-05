@@ -7,9 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
+
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -244,6 +247,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private String mEditTextHint;
     private String mEditTextString;
     private int mEditTextInputType;
+    private boolean mIsAsteriskStyle = false;
 
     private static final int TYPE_NONE = 0;
     private static final int TYPE_CLEAR = 1;
@@ -492,6 +496,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mEditTextHint = typedArray.getString(R.styleable.SuperTextView_sEditTextHint);
         mEditTextInputType = typedArray.getInt(R.styleable.SuperTextView_android_inputType, -1);
         mEditTextButtonType = typedArray.getInt(R.styleable.SuperTextView_sEditTextButtonType, mEditTextButtonType);
+        mIsAsteriskStyle = typedArray.getBoolean(R.styleable.SuperTextView_sEditTextIsAsteriskStyle, mIsAsteriskStyle);
 
         //////////////////////////////////////////////
         mUseRipple = typedArray.getBoolean(R.styleable.SuperTextView_sUseRipple, true);
@@ -697,6 +702,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
                     mCenterEditText = new ClearEditText(mContext);
                 } else if (mEditTextButtonType == TYPE_PASSWORD) {
                     mCenterEditText = new PasswordEditText(mContext);
+                    ((PasswordEditText) mCenterEditText).setIsAsteriskStyle(mIsAsteriskStyle);
                 }
             }
             mCenterEditTextParams = new LayoutParams(mEditTextWidth, LayoutParams.WRAP_CONTENT);
@@ -1911,6 +1917,21 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             return mCenterEditText.getText().toString();
         }
         return "";
+    }
+
+    /**
+     * 设置输入框的密码显示样式
+     *
+     * @param transformationMethod
+     * @return
+     */
+    public SuperTextView setPasswordTransformationMethod(PasswordTransformationMethod transformationMethod) {
+        if (mCenterEditText != null) {
+            if (mCenterEditText instanceof PasswordEditText) {
+                ((PasswordEditText) mCenterEditText).setPasswordTransformationMethod(transformationMethod);
+            }
+        }
+        return this;
     }
 
     /**

@@ -59,7 +59,8 @@
                     android:hint="输入密码"
                     android:inputType="textPassword"
                     android:textAlignment="viewStart"
-                    app:pet_enableIconAlpha="true" />
+                    app:pet_enableIconAlpha="true"
+                    app:pet_isAsteriskStyle="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.xuexiang.xui.widget.edittext.PasswordEditText

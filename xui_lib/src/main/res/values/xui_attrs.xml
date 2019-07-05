@@ -936,6 +936,8 @@
         <attr name="met_clearButton" format="boolean" />
         <!-- 是否使用显示密码按钮 -->
         <attr name="met_passWordButton" format="boolean" />
+        <!--密码输入框文字的样式是否是“*”，默认是false-->
+        <attr name="met_isAsteriskStyle" format="boolean" />
         <!-- 悬浮提示文字的大小（默认12sp） -->
         <attr name="met_floatingLabelTextSize" format="dimension" />
         <!-- 悬浮提示文字的颜色 -->
@@ -999,6 +1001,8 @@
         <attr name="pet_nonMonospaceFont" format="boolean" />
         <!--图标是否设置透明度, 默认是true-->
         <attr name="pet_enableIconAlpha" format="boolean" />
+        <!--密码输入框文字的样式是否是“*”，默认是false-->
+        <attr name="pet_isAsteriskStyle" format="boolean" />
     </declare-styleable>
     <attr name="PasswordEditTextStyle" format="reference" />
 

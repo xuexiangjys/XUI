@@ -3,19 +3,19 @@ package com.xuexiang.xui.widget.edittext;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
@@ -52,6 +52,8 @@ public class PasswordEditText extends AppCompatEditText {
 
     private boolean handlingHoverEvent;
 
+    private PasswordTransformationMethod mTransformationMethod;
+
     public PasswordEditText(Context context) {
         this(context, null);
     }
@@ -79,6 +81,12 @@ public class PasswordEditText extends AppCompatEditText {
             hoverShowsPw = typedArray.getBoolean(R.styleable.PasswordEditText_pet_hoverShowsPw, false);
             useNonMonospaceFont = typedArray.getBoolean(R.styleable.PasswordEditText_pet_nonMonospaceFont, false);
             enableIconAlpha = typedArray.getBoolean(R.styleable.PasswordEditText_pet_enableIconAlpha, true);
+            boolean isAsteriskStyle = typedArray.getBoolean(R.styleable.PasswordEditText_pet_isAsteriskStyle, false);
+            if (isAsteriskStyle) {
+                mTransformationMethod = AsteriskPasswordTransformationMethod.getInstance();
+            } else {
+                mTransformationMethod = PasswordTransformationMethod.getInstance();
+            }
         } finally {
             typedArray.recycle();
         }
@@ -127,6 +135,34 @@ public class PasswordEditText extends AppCompatEditText {
 
             }
         });
+
+        handlePasswordInputVisibility();
+    }
+
+    /**
+     * 设置密码输入框的样式
+     *
+     * @param transformationMethod
+     * @return
+     */
+    public PasswordEditText setPasswordTransformationMethod(PasswordTransformationMethod transformationMethod) {
+        mTransformationMethod = transformationMethod;
+        return this;
+    }
+
+    /**
+     * 设置密码输入框的样式
+     *
+     * @param isAsteriskStyle
+     * @return
+     */
+    public PasswordEditText setIsAsteriskStyle(boolean isAsteriskStyle) {
+        if (isAsteriskStyle) {
+            mTransformationMethod = AsteriskPasswordTransformationMethod.getInstance();
+        } else {
+            mTransformationMethod = PasswordTransformationMethod.getInstance();
+        }
+        return this;
     }
 
     private boolean isRTLLanguage() {
@@ -235,8 +271,7 @@ public class PasswordEditText extends AppCompatEditText {
         if (passwordVisible) {
             setTransformationMethod(null);
         } else {
-            setTransformationMethod(PasswordTransformationMethod.getInstance());
-
+            setTransformationMethod(mTransformationMethod);
         }
         setSelection(selectionStart, selectionEnd);
 

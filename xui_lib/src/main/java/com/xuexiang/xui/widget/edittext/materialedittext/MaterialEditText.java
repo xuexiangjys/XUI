@@ -16,11 +16,6 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.StaticLayout;
@@ -33,12 +28,20 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
+import com.xuexiang.xui.widget.edittext.AsteriskPasswordTransformationMethod;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.METLengthChecker;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.METValidator;
 import com.xuexiang.xui.widget.edittext.materialedittext.validation.NotAllowEmptyValidator;
@@ -338,6 +341,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     OnFocusChangeListener outerFocusChangeListener;
     private List<METValidator> validators = new ArrayList<>();
     private METLengthChecker lengthChecker;
+    private PasswordTransformationMethod mTransformationMethod;
 
     public MaterialEditText(Context context) {
         this(context, null);
@@ -419,6 +423,16 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         showClearButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_clearButton, false);
         clearButtonBitmaps = generateIconBitmaps(R.drawable.xui_ic_met_clear);
         showPasswordButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_passWordButton, false);
+        boolean isAsteriskStyle = typedArray.getBoolean(R.styleable.MaterialEditText_met_isAsteriskStyle, false);
+        if (isAsteriskStyle) {
+            mTransformationMethod = AsteriskPasswordTransformationMethod.getInstance();
+        } else {
+            mTransformationMethod = PasswordTransformationMethod.getInstance();
+        }
+        if (showPasswordButton) {
+            handleSwitchPasswordInputVisibility();
+        }
+
         showPwIconBitmaps = generateIconBitmaps(R.drawable.met_icon_visibility);
         hidePwIconBitmaps = generateIconBitmaps(R.drawable.met_icon_visibility_off);
 
@@ -557,6 +571,17 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     public MaterialEditText setShowClearButton(boolean show) {
         showClearButton = show;
         correctPaddings();
+        return this;
+    }
+
+    /**
+     * 设置密码输入框的样式
+     *
+     * @param transformationMethod
+     * @return
+     */
+    public MaterialEditText setPasswordTransformationMethod(PasswordTransformationMethod transformationMethod) {
+        mTransformationMethod = transformationMethod;
         return this;
     }
 
@@ -1733,7 +1758,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         if (passwordVisible) {
             setTransformationMethod(null);
         } else {
-            setTransformationMethod(PasswordTransformationMethod.getInstance());
+            setTransformationMethod(mTransformationMethod);
 
         }
         setSelection(selectionStart, selectionEnd);

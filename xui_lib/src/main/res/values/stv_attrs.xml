@@ -186,6 +186,8 @@
             <enum name="password" value="2" />
         </attr>
         <attr name="android:inputType" />
+        <!--密码输入框文字的样式是否是“*”，默认是false-->
+        <attr name="sEditTextIsAsteriskStyle" format="boolean"/>
 
         <!--CheckBox-->
         <attr name="sRightCheckBoxRes" format="reference" />
