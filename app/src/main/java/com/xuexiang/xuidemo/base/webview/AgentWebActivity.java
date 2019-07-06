@@ -19,11 +19,16 @@ package com.xuexiang.xuidemo.base.webview;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.KeyEvent;
 
+import com.xuexiang.xrouter.facade.Postcard;
+import com.xuexiang.xrouter.facade.callback.NavCallback;
+import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xutil.tip.ToastUtils;
 
@@ -45,8 +50,14 @@ public class AgentWebActivity extends AppCompatActivity {
 
         Uri uri = getIntent().getData();
         if (uri != null) {
-            openFragment(uri.toString());
+            XRouter.getInstance().build(uri).navigation(this, new NavCallback() {
+                @Override
+                public void onArrival(Postcard postcard) {
+                    finish();
+                }
+            });
         } else {
+            setContentView(R.layout.activity_agent_web);
             String url = getIntent().getStringExtra(KEY_URL);
             if (url != null) {
                 openFragment(url);
@@ -56,7 +67,6 @@ public class AgentWebActivity extends AppCompatActivity {
             }
         }
     }
-
 
     private AgentWebFragment mAgentWebFragment;
 

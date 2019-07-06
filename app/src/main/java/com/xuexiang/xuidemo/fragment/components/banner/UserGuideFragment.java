@@ -1,9 +1,10 @@
 package com.xuexiang.xuidemo.fragment.components.banner;
 
-import android.os.Bundle;
 import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xrouter.annotation.AutoWired;
+import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.banner.anim.select.ZoomInEnter;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleGuideBanner;
@@ -14,12 +15,21 @@ import com.xuexiang.xuidemo.base.BaseFragment;
 import static com.xuexiang.xuidemo.fragment.components.banner.UserGuideFragment.POSITION;
 
 
-@Page(name = "启动引导页", params = {POSITION})
+/**
+ * 可使用Applink打开:https://xuexiangjys.club/xpage/transfer?pageName=UserGuide?position=2
+ *
+ * @author xuexiang
+ * @since 2019-07-06 10:21
+ */
+@Page(name = "UserGuide", params = {POSITION})
 public class UserGuideFragment extends BaseFragment {
 
     public final static String POSITION = "position";
 
     private Class<? extends ViewPager.PageTransformer> transformerClass;
+
+    @AutoWired
+    private int position;
 
     @Override
     protected int getLayoutId() {
@@ -28,10 +38,12 @@ public class UserGuideFragment extends BaseFragment {
 
     @Override
     protected void initArgs() {
-        Bundle args = getArguments();
-        if (args != null) {
-            int position = args.getInt(POSITION, -1);
-            transformerClass = position != -1 ? DemoDataProvider.transformers[position] : null;
+        XRouter.getInstance().inject(this);
+
+        if (position >= 0 && position <= DemoDataProvider.transformers.length - 1) {
+            transformerClass = DemoDataProvider.transformers[position];
+        } else {
+            transformerClass = DemoDataProvider.transformers[0];
         }
     }
 
@@ -44,7 +56,6 @@ public class UserGuideFragment extends BaseFragment {
     protected void initViews() {
         sgb();
     }
-
 
 
     @Override

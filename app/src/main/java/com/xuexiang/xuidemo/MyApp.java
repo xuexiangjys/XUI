@@ -6,23 +6,11 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 
 import com.luck.picture.lib.tools.PictureFileUtils;
-import com.xuexiang.xaop.XAOP;
-import com.xuexiang.xaop.util.PermissionUtils;
-import com.xuexiang.xpage.AppPageConfig;
-import com.xuexiang.xpage.PageConfig;
-import com.xuexiang.xpage.PageConfiguration;
-import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.XUI;
-import com.xuexiang.xuidemo.base.BaseActivity;
-import com.xuexiang.xuidemo.utils.LocationService;
 import com.xuexiang.xuidemo.utils.sdkinit.BuglyInit;
 import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
+import com.xuexiang.xuidemo.utils.sdkinit.XBasicLibInit;
 import com.xuexiang.xuidemo.utils.sdkinit.XUpdateInit;
-import com.xuexiang.xutil.XUtil;
-import com.xuexiang.xutil.common.StringUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
-
-import java.util.List;
 
 
 /**
@@ -43,11 +31,9 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        initBasicLibs();
-
         initUI();
-
+        //初始化基础库
+        XBasicLibInit.init(this);
         //三方SDK初始化
         XUpdateInit.init(this);
         UMengInit.init(this);
@@ -62,56 +48,9 @@ public class MyApp extends Application {
         XUI.debug(BuildConfig.DEBUG);
 //        //设置默认字体为华文行楷
 //        XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
-
         PictureFileUtils.setAppName("xui");
     }
 
-
-    /**
-     * 初始化基础库
-     */
-    private void initBasicLibs() {
-        XUtil.init(this);
-        XUtil.debug(BuildConfig.DEBUG);
-        //百度定位
-        LocationService.get().init(this);
-
-        //自动注册页面
-        PageConfig.getInstance()
-                .setPageConfiguration(new PageConfiguration() {
-                    @Override
-                    public List<PageInfo> registerPages(Context context) {
-                        //自动注册页面,是编译时自动生成的，build一下就出来了
-                        return AppPageConfig.getInstance().getPages();
-                    }
-                })
-                .debug("PageLog")
-                .setContainActivityClazz(BaseActivity.class)
-                .enableWatcher(false)
-                .init(this);
-
-        //初始化插件
-        XAOP.init(this);
-        //日志打印切片开启
-        XAOP.debug(BuildConfig.DEBUG);
-        //设置动态申请权限切片 申请权限被拒绝的事件响应监听
-        XAOP.setOnPermissionDeniedListener(new PermissionUtils.OnPermissionDeniedListener() {
-            @Override
-            public void onDenied(List<String> permissionsDenied) {
-                ToastUtils.toast("权限申请被拒绝:" + StringUtils.listToString(permissionsDenied, ","));
-            }
-
-        });
-    }
-
-//    /**
-//     * 初始化video的存放路径[xvideo项目太大，去除]
-//     */
-//    public static void initVideo() {
-//        XVideo.setVideoCachePath(PathUtils.getExtDcimPath() + "/xvideo/");
-//        // 初始化拍摄
-//        XVideo.initialize(false, null);
-//    }
 
 
 }

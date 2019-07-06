@@ -81,6 +81,7 @@
             android:hardwareAccelerated="true"
             android:label="XUI浏览器"
             android:theme="@style/AppTheme">
+            <!-- Scheme -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -91,6 +92,9 @@
                 <data android:scheme="https" />
                 <data android:scheme="about" />
                 <data android:scheme="javascript" />
+                <data
+                    android:host="xuexiangjys.club"
+                    android:scheme="xui"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -105,12 +109,23 @@
                 <data android:mimeType="text/plain" />
                 <data android:mimeType="application/xhtml+xml" />
                 <data android:mimeType="application/vnd.wap.xhtml+xml" />
+                <data
+                    android:host="xuexiangjys.club"
+                    android:scheme="http"/>
+                <data
+                    android:host="xuexiangjys.club"
+                    android:scheme="https"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".base.BaseActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".base.XPageTransferActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
         <activity android:name=".activity.TranslucentActivity" />
         <activity
             android:name=".activity.SettingsActivity"

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.xuexiang.xaop' //引用xaop插件
+apply plugin: 'com.xuexiang.xrouter' //引用xrouter-plugin插件实现自动注册
 //apply plugin: 'img-optimizer'
 if (isNeedPackage.toBoolean()) {
     apply plugin: 'com.didiglobal.booster'
@@ -19,6 +20,12 @@ android {
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
 
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
@@ -97,7 +104,9 @@ dependencies {
     implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.5'
     //切片
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:x1.0.3'
-
+    //页面路由
+    implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
+    annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
     //XPage页面框架
     implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.6'
     annotationProcessor project(':widget_compiler')
