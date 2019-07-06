@@ -26,7 +26,7 @@ import com.xuexiang.xutil.common.StringUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 /**
- * https://xuexiangjys.club/xpage/transfer?pageName=xxxxx
+ * https://xuexiangjys.club/xpage/transfer?pageName=xxxxx&....
  * applink的中转
  *
  * @author xuexiang

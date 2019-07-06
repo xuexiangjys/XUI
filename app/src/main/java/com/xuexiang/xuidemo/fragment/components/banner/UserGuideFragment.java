@@ -16,7 +16,7 @@ import static com.xuexiang.xuidemo.fragment.components.banner.UserGuideFragment.
 
 
 /**
- * 可使用Applink打开:https://xuexiangjys.club/xpage/transfer?pageName=UserGuide?position=2
+ * 可使用Applink打开:https://xuexiangjys.club/xpage/transfer?pageName=UserGuide&position=2
  *
  * @author xuexiang
  * @since 2019-07-06 10:21
@@ -29,7 +29,7 @@ public class UserGuideFragment extends BaseFragment {
     private Class<? extends ViewPager.PageTransformer> transformerClass;
 
     @AutoWired
-    private int position;
+    int position;
 
     @Override
     protected int getLayoutId() {
