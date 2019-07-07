@@ -126,6 +126,10 @@ public class WheelOptions<T> implements HasTypeface {
                         optionsSelectChangeListener.onOptionsSelectChanged(wv_option1.getCurrentItem(), 0, 0);
                     }
                 } else {
+                    //检查数组越界
+                    if (index >= mOptions2Items.size()) {
+                        return;
+                    }
                     if (!isRestoreItem) {
                         opt2Select = wv_option2.getCurrentItem();//上一个opt2的选中位置
                         //新opt2的位置，判断如果旧位置没有超过数据范围，则沿用旧位置，否则选中最后一项
@@ -151,6 +155,10 @@ public class WheelOptions<T> implements HasTypeface {
             public void onItemSelected(int index) {
                 if (mOptions3Items != null) {
                     int opt1Select = wv_option1.getCurrentItem();
+                    //检查数组越界
+                    if (opt1Select >= mOptions2Items.size()) {
+                        return;
+                    }
                     opt1Select = opt1Select >= mOptions3Items.size() - 1 ? mOptions3Items.size() - 1 : opt1Select;
                     index = index >= mOptions2Items.get(opt1Select).size() - 1 ? mOptions2Items.get(opt1Select).size() - 1 : index;
                     int opt3 = 0;
