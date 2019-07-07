@@ -8,6 +8,9 @@
     <public name="xui_tip_empty_message" type="string" />
     <public name="xui_tip_no_network" type="string" />
     <public name="xui_tip_retry" type="string" />
+    <public name="xui_float_behavior" type="string" />
+    <public name="xui_bottom_behavior" type="string" />
+    <public name="xui_title_behavior" type="string" />
 
     <!--dimen-->
     <public name="xui_list_divider_height_table" type="dimen" />
@@ -172,13 +175,22 @@
     <public name="xui_config_separator_height" type="attr" />
     <public name="xui_config_divider_height" type="attr" />
 
+    <public name="xui_config_color_splash_bg" type="attr" />
+    <public name="xui_config_splash_app_logo" type="attr" />
+    <public name="xui_config_app_logo_bottom" type="attr" />
+    <public name="xui_config_splash_company_logo" type="attr" />
+    <public name="xui_config_company_logo_bottom" type="attr" />
+
     <public name="xui_actionbar_color" type="attr" />
+    <public name="xui_actionbar_text_color" type="attr" />
+    <public name="xui_actionbar_immersive" type="attr" />
+    <public name="xui_actionbar_ic_navigation_back" type="attr" />
     <public name="xui_actionbar_height" type="attr" />
     <public name="xui_actionbar_title_text_size" type="attr" />
-    <public name="xui_actionbar_action_text_size" type="attr" />
     <public name="xui_actionbar_sub_text_size" type="attr" />
+    <public name="xui_actionbar_action_text_size" type="attr" />
     <public name="xui_actionbar_action_padding" type="attr" />
-    <public name="xui_actionbar_sidetext_padding" type="attr" />
+    <public name="xui_actionbar_side_text_padding" type="attr" />
 
     <public name="xui_btn_view_radius" type="attr" />
     <public name="xui_btn_view_width" type="attr" />
