@@ -27,6 +27,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xqrcode.XQRCode;
+import com.xuexiang.xqrcode.camera.CameraManager;
 import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xqrcode.ui.CaptureFragment;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
@@ -126,5 +127,12 @@ public class CustomCaptureFragment extends XPageFragment {
             e.printStackTrace();
             ToastUtils.toast("设备不支持闪光灯!");
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        //恢复设置
+        CameraManager.FRAME_MARGIN_TOP = -1;
+        super.onDestroyView();
     }
 }

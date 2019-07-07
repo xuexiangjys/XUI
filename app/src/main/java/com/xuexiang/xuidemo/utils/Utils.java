@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.just.agentweb.core.AgentWeb;
+import com.just.agentweb.core.client.DefaultWebClient;
 import com.luck.picture.lib.PictureSelectionModel;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -28,6 +29,8 @@ import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
+import com.xuexiang.xuidemo.base.webview.MiddlewareChromeClient;
+import com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
 
@@ -69,6 +72,8 @@ public final class Utils {
         return AgentWeb.with(fragment)
                 .setAgentWebParent(viewGroup, -1, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
                 .useDefaultIndicator(-1, 3)
+                .useMiddlewareWebClient(new MiddlewareWebViewClient())
+                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.ASK)
                 .createAgentWeb()
                 .ready()
                 .go(url);

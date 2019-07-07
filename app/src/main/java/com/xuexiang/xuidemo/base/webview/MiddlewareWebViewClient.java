@@ -16,14 +16,17 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import android.util.Log;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
+
+import androidx.annotation.RequiresApi;
 
 import com.just.agentweb.core.client.MiddlewareWebClientBase;
 import com.xuexiang.xui.utils.ResUtils;
@@ -128,14 +131,23 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
         return false;
     }
 
+    public static final String APP_LINK_HOST = "xuexiangjys.club";
+    public static final String APP_LINK_ACTION = "com.xuexiang.xui.applink";
+
 
     /**
      * 根据url的scheme处理跳转第三方app的业务
      */
     private boolean shouldOverrideUrlLoadingByApp(WebView webView, final String url) {
+
         if (url.startsWith("http") || url.startsWith("https") || url.startsWith("ftp")) {
-            //不处理http, https, ftp的请求
-            return false;
+            //不处理http, https, ftp的请求,除了host = xuexiangjys.club的情况，主要是用于处理AppLink
+            Uri uri = Uri.parse(url);
+            if (uri != null && !(APP_LINK_HOST.equals(uri.getHost())
+                    //防止xui官网被拦截
+                    && url.contains("xpage"))) {
+                return false;
+            }
         }
 
         DialogLoader.getInstance().showConfirmDialog(
@@ -146,7 +158,11 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        openApp(url);
+                        if (isAppLink(url)) {
+                            openAppLink(webView.getContext(), url);
+                        } else {
+                            openApp(url);
+                        }
                     }
                 },
                 ResUtils.getString(R.string.lab_no),
@@ -179,12 +195,30 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
         return "";
     }
 
+    private boolean isAppLink(String url) {
+        Uri uri = Uri.parse(url);
+        return uri != null
+                && APP_LINK_HOST.equals(uri.getHost())
+                && (url.startsWith("http") || url.startsWith("https"));
+    }
+
+
     private void openApp(String url) {
         Intent intent;
         try {
             intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             XUtil.getContext().startActivity(intent);
+        } catch (Exception e) {
+            ToastUtils.toast("您所打开的第三方App未安装！");
+        }
+    }
+
+    private void openAppLink(Context context, String url) {
+        try {
+            Intent intent = new Intent(APP_LINK_ACTION);
+            intent.setData(Uri.parse(url));
+            context.startActivity(intent);
         } catch (Exception e) {
             ToastUtils.toast("您所打开的第三方App未安装！");
         }

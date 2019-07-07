@@ -96,5 +96,18 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <!-- 自定义默认二维码扫描界面的主题. -->
+    <style name="XQRCodeTheme.Custom">
+        <item name="ViewfinderViewStyle">@style/ViewfinderView.Custom</item>
+    </style>
+
+    <style name="ViewfinderView.Custom">
+        <item name="inner_corner_color">#FF9900</item>
+        <!--<item name="inner_scan_bitmap">@drawable/ic_qrcode_scanning</item>-->
+        <item name="inner_corner_width">6dp</item>
+        <item name="inner_scan_bitmap_tint">#FF9900</item>
+        <item name="inner_scan_animation_interval">25</item>
+    </style>
+
 
 </resources>

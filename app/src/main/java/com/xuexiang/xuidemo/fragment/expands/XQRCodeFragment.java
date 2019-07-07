@@ -34,6 +34,7 @@ import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
+import com.xuexiang.xuidemo.fragment.expands.qrcode.CustomCaptureActivity;
 import com.xuexiang.xuidemo.fragment.expands.qrcode.CustomCaptureFragment;
 import com.xuexiang.xuidemo.fragment.expands.qrcode.QRCodeProduceFragment;
 import com.xuexiang.xuidemo.utils.Utils;
@@ -83,6 +84,7 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
     @Override
     protected List<String> initSimpleData(List<String> lists) {
         lists.add("默认扫描界面");
+        lists.add("默认扫描界面(自定义主题)");
         lists.add("定制化扫描界面");
         lists.add("远程扫描界面");
         lists.add("生成二维码图片");
@@ -102,15 +104,18 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
                 startScan(ScanType.DEFAULT);
                 break;
             case 1:
-                startScan(ScanType.CUSTOM);
+                startScan(ScanType.DEFAULT_Custom);
                 break;
             case 2:
-                startScan(ScanType.REMOTE);
+                startScan(ScanType.CUSTOM);
                 break;
             case 3:
-                openPage(QRCodeProduceFragment.class);
+                startScan(ScanType.REMOTE);
                 break;
             case 4:
+                openPage(QRCodeProduceFragment.class);
+                break;
+            case 5:
                 selectQRCode();
                 break;
             default:
@@ -138,6 +143,9 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
                 break;
             case DEFAULT:
                 XQRCode.startScan(this, REQUEST_CODE);
+                break;
+            case DEFAULT_Custom:
+                CustomCaptureActivity.start(this, REQUEST_CODE, R.style.XQRCodeTheme_Custom);
                 break;
             case REMOTE:
                 Intent intent = new Intent(XQRCode.ACTION_DEFAULT_CAPTURE);
@@ -222,6 +230,10 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
          * 默认
          */
         DEFAULT,
+        /**
+         * 默认(修改主题）
+         */
+        DEFAULT_Custom,
         /**
          * 远程
          */

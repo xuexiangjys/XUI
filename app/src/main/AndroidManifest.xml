@@ -84,7 +84,7 @@
             <!-- Scheme -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
+                <action android:name="com.xuexiang.xui.applink"/>
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -96,9 +96,10 @@
                     android:host="xuexiangjys.club"
                     android:scheme="xui"/>
             </intent-filter>
-            <intent-filter>
+            <!-- AppLink -->
+            <intent-filter android:autoVerify="true"
+                tools:targetApi="m">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -127,6 +128,14 @@
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity android:name=".activity.TranslucentActivity" />
+
+        <activity
+            android:name=".fragment.expands.qrcode.CustomCaptureActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:screenOrientation="portrait"
+            android:theme="@style/XQRCodeTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
