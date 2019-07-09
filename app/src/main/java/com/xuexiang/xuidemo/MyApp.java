@@ -36,8 +36,11 @@ public class MyApp extends Application {
         XBasicLibInit.init(this);
         //三方SDK初始化
         XUpdateInit.init(this);
-        UMengInit.init(this);
-        BuglyInit.init(this);
+        //运营统计数据运行时不初始化
+        if (!BuildConfig.DEBUG) {
+            UMengInit.init(this);
+            BuglyInit.init(this);
+        }
     }
 
     /**

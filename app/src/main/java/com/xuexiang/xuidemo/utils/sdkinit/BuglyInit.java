@@ -21,6 +21,7 @@ import android.app.Application;
 
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.BuglyStrategy;
+import com.xuexiang.xuidemo.BuildConfig;
 import com.xuexiang.xutil.system.DeviceUtils;
 
 /**
@@ -30,8 +31,6 @@ import com.xuexiang.xutil.system.DeviceUtils;
  * @since 2019-06-18 15:44
  */
 public final class BuglyInit {
-
-    private static final String APP_ID_BUGLY = "813d00d577";
 
     private BuglyInit() {
         throw new UnsupportedOperationException("u can't instantiate me...");
@@ -48,7 +47,8 @@ public final class BuglyInit {
                 .setDeviceID(DeviceUtils.getAndroidID())
                 .setRecordUserInfoOnceADay(true);
         // 这里实现SDK初始化，appId替换成你的在Bugly平台申请的appId,调试时将第三个参数设置为true
-        Bugly.init(application, APP_ID_BUGLY, true, strategy);
+        //这里BuildConfig.APP_ID_BUGLY是根据local.properties中定义的APP_ID_BUGLY生成的，只是运行看效果的话，可以不初始化该SDK
+        Bugly.init(application, BuildConfig.APP_ID_BUGLY, true, strategy);
     }
 
 }

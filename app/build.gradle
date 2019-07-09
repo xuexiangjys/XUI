@@ -49,7 +49,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             if (isNeedPackage.toBoolean()) {
                 signingConfig signingConfigs.release
+
+                Properties properties = new Properties()
+                properties.load(project.rootProject.file('local.properties').newDataInputStream())
+                buildConfigField "String", "APP_ID_BUGLY", properties.getProperty("APP_ID_BUGLY")
+                buildConfigField "String", "APP_ID_UMENG", properties.getProperty("APP_ID_UMENG")
             }
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+
+            buildConfigField "String", "APP_ID_BUGLY", '""'
+            buildConfigField "String", "APP_ID_UMENG", '""'
         }
     }
 
