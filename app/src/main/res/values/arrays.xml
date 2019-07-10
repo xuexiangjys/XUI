@@ -294,6 +294,13 @@
         <item>梨子</item>
         <item>香蕉</item>
     </string-array>
+
+    <string-array name="settings_multi_select_list_preference_values_default">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
     <string-array name="settings_multi_select_list_preference_values">
         <item>1</item>
         <item>2</item>

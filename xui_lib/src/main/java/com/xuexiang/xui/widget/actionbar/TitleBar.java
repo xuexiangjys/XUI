@@ -23,7 +23,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -34,8 +33,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.appcompat.content.res.AppCompatResources;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
@@ -153,14 +150,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mSubTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_subTitleTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, DEFAULT_TEXT_COLOR));
         mActionTextColor = typedArray.getColor(R.styleable.TitleBar_tb_actionTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, DEFAULT_TEXT_COLOR));
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mLeftImageResource = typedArray.getDrawable(R.styleable.TitleBar_tb_leftImageResource);
-        } else {
-            int leftImageResourceId = typedArray.getResourceId(R.styleable.TitleBar_tb_leftImageResource, -1);
-            if (leftImageResourceId != -1) {
-                mLeftImageResource = AppCompatResources.getDrawable(context, leftImageResourceId);
-            }
-        }
+        mLeftImageResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.TitleBar_tb_leftImageResource);
         mLeftTextString = typedArray.getString(R.styleable.TitleBar_tb_leftText);
         mTitleTextString = typedArray.getString(R.styleable.TitleBar_tb_titleText);
         mSubTextString = typedArray.getString(R.styleable.TitleBar_tb_subTitleText);

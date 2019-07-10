@@ -11,12 +11,6 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -26,6 +20,12 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.logs.UILog;
@@ -98,15 +98,7 @@ public class MaterialSpinner extends AppCompatTextView {
             mBackgroundSelector = ta.getResourceId(R.styleable.MaterialSpinner_ms_background_selector, 0);
             mTextColor = ta.getColor(R.styleable.MaterialSpinner_ms_text_color, defaultColor);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                mArrowDrawable = ta.getDrawable(R.styleable.MaterialSpinner_ms_arrow_image);
-            } else {
-                int arrowDrawableId = ta.getResourceId(R.styleable.MaterialSpinner_ms_arrow_image, -1);
-                if (arrowDrawableId != -1) {
-                    mArrowDrawable = AppCompatResources.getDrawable(context, arrowDrawableId);
-                }
-            }
-
+            mArrowDrawable = ResUtils.getDrawableAttrRes(getContext(), ta, R.styleable.MaterialSpinner_ms_arrow_image);
             mArrowColor = ta.getColor(R.styleable.MaterialSpinner_ms_arrow_tint, mTextColor);
             mHideArrow = ta.getBoolean(R.styleable.MaterialSpinner_ms_hide_arrow, false);
             mPopupWindowMaxHeight = ta.getDimensionPixelSize(R.styleable.MaterialSpinner_ms_dropdown_max_height, 0);

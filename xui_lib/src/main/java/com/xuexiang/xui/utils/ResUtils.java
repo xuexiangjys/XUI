@@ -3,6 +3,7 @@ package com.xuexiang.xui.utils;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -16,6 +17,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
+import androidx.annotation.StyleableRes;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.xuexiang.xui.XUI;
@@ -88,6 +90,25 @@ public final class ResUtils {
             return context.getDrawable(resId);
         }
         return AppCompatResources.getDrawable(context, resId);
+    }
+
+    /**
+     * 获取Drawable属性（兼容VectorDrawable）
+     * @param context
+     * @param typedArray
+     * @param index
+     * @return
+     */
+    public static Drawable getDrawableAttrRes(Context context, TypedArray typedArray, @StyleableRes int index) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return typedArray.getDrawable(index);
+        } else {
+            int resourceId = typedArray.getResourceId(index, -1);
+            if (resourceId != -1) {
+                return AppCompatResources.getDrawable(context, resourceId);
+            }
+        }
+        return null;
     }
 
     /**

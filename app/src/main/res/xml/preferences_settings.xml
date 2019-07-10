@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,6 +54,7 @@
             android:title="@string/settings_list_preference_title" />
 
         <MultiSelectListPreference
+            android:defaultValue="@array/settings_multi_select_list_preference_values_default"
             android:dialogTitle="@string/settings_multi_select_list_preference_dialog_title"
             android:entries="@array/settings_multi_select_list_preference_titles"
             android:entryValues="@array/settings_multi_select_list_preference_values"

@@ -70,13 +70,13 @@ public class PasswordEditText extends AppCompatEditText {
     public void initAttrs(AttributeSet attrs, int defStyleAttr) {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.PasswordEditText, defStyleAttr, 0);
         try {
-            showPwDrawable = typedArray.getDrawable(R.styleable.PasswordEditText_pet_iconShow);
+            showPwDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.PasswordEditText_pet_iconShow);
             if (showPwDrawable == null) {
-                showPwDrawable = ResUtils.getDrawable(getContext(), R.drawable.pet_icon_visibility_24dp);
+                showPwDrawable = ResUtils.getVectorDrawable(getContext(), R.drawable.pet_icon_visibility_24dp);
             }
-            hidePwDrawable = typedArray.getDrawable(R.styleable.PasswordEditText_pet_iconHide);
+            hidePwDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.PasswordEditText_pet_iconHide);
             if (hidePwDrawable == null) {
-                hidePwDrawable = ResUtils.getDrawable(getContext(), R.drawable.pet_icon_visibility_off_24dp);
+                hidePwDrawable = ResUtils.getVectorDrawable(getContext(), R.drawable.pet_icon_visibility_off_24dp);
             }
             hoverShowsPw = typedArray.getBoolean(R.styleable.PasswordEditText_pet_hoverShowsPw, false);
             useNonMonospaceFont = typedArray.getBoolean(R.styleable.PasswordEditText_pet_nonMonospaceFont, false);
