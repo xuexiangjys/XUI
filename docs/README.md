@@ -53,7 +53,7 @@ allprojects {
 dependencies {
   ...
   //1.0.5版本后只支持androidx
-  implementation 'com.github.xuexiangjys:XUI:1.0.6'
+  implementation 'com.github.xuexiangjys:XUI:1.0.7'
 
   implementation 'androidx.appcompat:appcompat:1.0.2'
   implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -168,7 +168,5 @@ protected void attachBaseContext(Context newBase) {
 [![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
 
 
-[xuisvg]: https://img.shields.io/badge/XUI-v1.0.6-brightgreen.svg
-[xui]: https://github.com/xuexiangjys/XUI
 [apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
 [api]: https://android-arsenal.com/api?level=17

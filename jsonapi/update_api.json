@@ -2,10 +2,10 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 7,
-  "VersionName": "1.0.6",
-  "UploadTime": "2019-06-24 23:55:23",
-  "ModifyContent": "\r\n1、优化部分组件和字体库。\n2、修复演示程序的部分bug。\n3、演示程序新增热更新功能。",
+  "VersionCode": 8,
+  "VersionName": "1.0.7",
+  "UploadTime": "2019-07-14 17:40:54",
+  "ModifyContent": "\r\n1、修复部分组件在低版本下的崩溃的问题。\n2、修复线上收集的已知bug。\n3、新增更多功能演示。",
   "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo.apk",
-  "ApkSize": 10342
+  "ApkSize": 9114
 }
