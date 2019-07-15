@@ -2,12 +2,12 @@ package com.xuexiang.xuidemo.adapter.base;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     /**
      * 当前点击的条目
      */
-    private int mLastPosition = -1;
+    private int mSelectPosition = -1;
 
     public BaseRecyclerAdapter() {
         this(null);
@@ -37,6 +37,14 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
             mData.addAll(list);
         }
     }
+
+    /**
+     * 适配的布局
+     *
+     * @param viewType
+     * @return
+     */
+    abstract public int getItemLayoutId(int viewType);
 
     @NonNull
     @Override
@@ -93,7 +101,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
             mData.clear();
             mData.addAll(collection);
             notifyDataSetChanged();
-            mLastPosition = -1;
+            mSelectPosition = -1;
         }
         return this;
     }
@@ -125,19 +133,21 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     }
 
     /**
-     * 适配的布局
-     *
-     * @param viewType
-     * @return
+     * @return 当前列表的选中项
      */
-    abstract public int getItemLayoutId(int viewType);
-
-    public int getLastPosition() {
-        return mLastPosition;
+    public int getSelectPosition() {
+        return mSelectPosition;
     }
 
-    public BaseRecyclerAdapter<T> setLastPosition(int lastPosition) {
-        mLastPosition = lastPosition;
+    /**
+     * 设置当前列表的选中项
+     *
+     * @param selectPosition
+     * @return
+     */
+    public BaseRecyclerAdapter<T> setSelectPosition(int selectPosition) {
+        mSelectPosition = selectPosition;
+        notifyDataSetChanged();
         return this;
     }
 
@@ -150,6 +160,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
      */
     abstract public void bindData(RecyclerViewHolder holder, int position, T item);
 
+    /**
+     * 列表条目点击监听
+     */
     public interface OnItemClickListener {
         /**
          * 条目点击
@@ -160,6 +173,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         void onItemClick(View itemView, int pos);
     }
 
+    /**
+     * 列表条目长按监听
+     */
     public interface OnItemLongClickListener {
         /**
          * 条目长按
