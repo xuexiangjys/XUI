@@ -421,7 +421,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         iconRightBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconRight, -1));
 
         showClearButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_clearButton, false);
-        clearButtonBitmaps = generateIconBitmaps(R.drawable.xui_ic_met_clear);
+        clearButtonBitmaps = generateIconBitmaps(R.drawable.met_icon_clear);
         showPasswordButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_passWordButton, false);
         boolean isAsteriskStyle = typedArray.getBoolean(R.styleable.MaterialEditText_met_isAsteriskStyle, false);
         if (isAsteriskStyle) {
