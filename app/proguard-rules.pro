@@ -276,3 +276,7 @@
 # bugly日志上报
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}
+
+# MPAndroidChart
+-dontwarn com.github.mikephil.**
+-keep class com.github.mikephil.**{ *; }
