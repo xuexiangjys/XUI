@@ -23,6 +23,8 @@ import com.just.agentweb.core.AgentWeb;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
 /**
+ * 基础web
+ *
  * @author xuexiang
  * @since 2019/5/28 10:22
  */
@@ -33,24 +35,30 @@ public abstract class BaseWebViewFragment extends BaseFragment {
     //===================生命周期管理===========================//
     @Override
     public void onResume() {
-        mAgentWeb.getWebLifeCycle().onResume();//恢复
+        if (mAgentWeb != null) {
+            mAgentWeb.getWebLifeCycle().onResume();//恢复
+        }
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        mAgentWeb.getWebLifeCycle().onPause(); //暂停应用内所有WebView ， 调用mWebView.resumeTimers();/mAgentWeb.getWebLifeCycle().onResume(); 恢复。
+        if (mAgentWeb != null) {
+            mAgentWeb.getWebLifeCycle().onPause(); //暂停应用内所有WebView ， 调用mWebView.resumeTimers();/mAgentWeb.getWebLifeCycle().onResume(); 恢复。
+        }
         super.onPause();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return mAgentWeb.handleKeyEvent(keyCode, event);
+        return mAgentWeb != null && mAgentWeb.handleKeyEvent(keyCode, event);
     }
 
     @Override
     public void onDestroyView() {
-        mAgentWeb.destroy();
+        if (mAgentWeb != null) {
+            mAgentWeb.destroy();
+        }
         super.onDestroyView();
     }
 }

@@ -16,19 +16,26 @@
 
 package com.xuexiang.xuidemo.fragment.expands;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
+import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.base.webview.XPageWebViewFragment;
 import com.xuexiang.xuidemo.fragment.expands.webview.JsWebViewFragment;
+import com.xuexiang.xuidemo.fragment.expands.webview.TbsWebFileReaderFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xutil.app.IntentUtils;
+import com.xuexiang.xutil.app.PathUtils;
 
 import java.util.List;
+
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
 /**
  * @author xuexiang
@@ -36,6 +43,9 @@ import java.util.List;
  */
 @Page(name = "web浏览器", extra = R.drawable.ic_expand_web)
 public class WebViewFragment extends BaseSimpleListFragment {
+
+    public static final int REQUEST_SELECT_FILE = 1000;
+
     @Override
     protected List<String> initSimpleData(List<String> lists) {
         lists.add("使用系统默认API调用");
@@ -46,6 +56,7 @@ public class WebViewFragment extends BaseSimpleListFragment {
         lists.add("地图定位");
         lists.add("视频播放");
         lists.add("简单的JS通信");
+        lists.add("腾讯X5文件浏览器（点击选择文件）");
         return lists;
     }
 
@@ -76,10 +87,33 @@ public class WebViewFragment extends BaseSimpleListFragment {
             case 7:
                 openPage(JsWebViewFragment.class);
                 break;
+            case 8:
+                chooseFile();
+                break;
             default:
                 break;
         }
     }
+
+
+    @Permission(STORAGE)
+    private void chooseFile() {
+        startActivityForResult(IntentUtils.getDocumentPickerIntent(IntentUtils.DocumentType.ANY), REQUEST_SELECT_FILE);
+    }
+
+    @SuppressLint("MissingPermission")
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //选择系统图片并解析
+        if (requestCode == REQUEST_SELECT_FILE) {
+            if (data != null) {
+                Uri uri = data.getData();
+                TbsWebFileReaderFragment.show(this, PathUtils.getFilePathByUri(uri));
+            }
+        }
+    }
+
 
     /**
      * 以系统API的方式请求浏览器
@@ -102,6 +136,7 @@ public class WebViewFragment extends BaseSimpleListFragment {
         });
         return titleBar;
     }
+
 
 
 }
