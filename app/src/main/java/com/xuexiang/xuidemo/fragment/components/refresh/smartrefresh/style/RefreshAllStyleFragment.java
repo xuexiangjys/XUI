@@ -59,7 +59,9 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
      */
     @Override
     public void onItemClick(View itemView, int position) {
-        if (!RefreshState.None.equals(mRefreshLayout.getState())) return;
+        if (!RefreshState.None.equals(mRefreshLayout.getState())) {
+            return;
+        }
 
         Item item = Item.values()[position];
         RefreshHeader header = getRefreshHeader(item);
@@ -74,7 +76,7 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
             Class<?> headerClass = Class.forName("com.scwang.smartrefresh.header." + item.name());
             Constructor<?> constructor = headerClass.getConstructor(Context.class);
             return (RefreshHeader) constructor.newInstance(getContext());
-        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | java.lang.InstantiationException | InvocationTargetException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

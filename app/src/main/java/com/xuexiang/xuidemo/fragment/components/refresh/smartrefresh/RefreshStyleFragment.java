@@ -20,6 +20,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style.RefreshAllStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style.RefreshClassicsStyleFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style.RefreshCustomStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style.RefreshMaterialStyleFragment;
 
 /**
@@ -39,6 +40,7 @@ public class RefreshStyleFragment extends ComponentContainerFragment {
                 RefreshClassicsStyleFragment.class,
                 RefreshMaterialStyleFragment.class,
                 RefreshAllStyleFragment.class,
+                RefreshCustomStyleFragment.class
         };
     }
 }
