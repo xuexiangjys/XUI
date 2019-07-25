@@ -1,12 +1,13 @@
 package com.xuexiang.xuidemo.adapter.swipe;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
-import com.xuexiang.xuidemo.adapter.base.RecyclerViewHolder;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
 import java.util.Collections;

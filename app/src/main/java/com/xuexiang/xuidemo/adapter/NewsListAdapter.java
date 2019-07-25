@@ -1,8 +1,8 @@
 package com.xuexiang.xuidemo.adapter;
 
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
+import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
-import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.base.BroccoliRecyclerAdapter;
@@ -44,7 +44,7 @@ public class NewsListAdapter extends BroccoliRecyclerAdapter<NewInfo> {
         holder.text(R.id.tv_read, "阅读量 " + model.getRead());
 
         RadiusImageView imageView = holder.findViewById(R.id.iv_image);
-        MediaLoader.getInstance().getImageLoader().displayImage(imageView.getContext(), model.getImageUrl(), imageView);
+        ImageLoader.get().loadImage(imageView, model.getImageUrl());
     }
 
     /**

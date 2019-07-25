@@ -1,10 +1,22 @@
-package com.xuexiang.xuidemo.adapter.base;
+/*
+ * Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 
-import androidx.annotation.ColorRes;
-import androidx.annotation.IdRes;
-import androidx.annotation.StringRes;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
+package com.xuexiang.xui.adapter.recyclerview;
+
 import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.View;
@@ -16,7 +28,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.xuexiang.xui.widget.imageview.ImageLoader;
+import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
 
 /**
  * 通用的ViewHolder
@@ -128,10 +148,25 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * @param imageId
      * @return
      */
-    public RecyclerViewHolder image(@IdRes int id, int imageId) {
+    public RecyclerViewHolder image(@IdRes int id, @DrawableRes int imageId) {
         View view = findView(id);
         if (view instanceof ImageView) {
             ((ImageView) view).setImageResource(imageId);
+        }
+        return this;
+    }
+
+    /**
+     * 设置图片
+     *
+     * @param id
+     * @param uri 图片资源
+     * @return
+     */
+    public RecyclerViewHolder image(@IdRes int id, Object uri) {
+        View view = findView(id);
+        if (view instanceof ImageView) {
+            ImageLoader.get().loadImage((ImageView) view, uri);
         }
         return this;
     }
@@ -144,7 +179,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * @param position
      * @return
      */
-    public RecyclerViewHolder viewClick(@IdRes int id, final SmartViewHolder.OnViewItemClickListener listener, final int position) {
+    public RecyclerViewHolder viewClick(@IdRes int id, final OnViewItemClickListener listener, final int position) {
         View view = findView(id);
         if (listener != null) {
             view.setOnClickListener(new View.OnClickListener() {
@@ -254,7 +289,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * @param resId
      * @return
      */
-    public RecyclerViewHolder backgroundResId(int viewId, int resId) {
+    public RecyclerViewHolder backgroundResId(int viewId, @DrawableRes int resId) {
         View view = findView(viewId);
         view.setBackgroundResource(resId);
         return this;
@@ -267,5 +302,45 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         if (mViews != null) {
             mViews.clear();
         }
+    }
+
+    /**
+     * 列表条目点击监听
+     */
+    public interface OnItemClickListener {
+        /**
+         * 条目点击
+         *
+         * @param itemView 条目
+         * @param position 索引
+         */
+        void onItemClick(View itemView, int position);
+    }
+
+    /**
+     * 列表条目长按监听
+     */
+    public interface OnItemLongClickListener {
+        /**
+         * 条目长按
+         *
+         * @param itemView 条目
+         * @param position 索引
+         */
+        void onItemLongClick(View itemView, int position);
+    }
+
+
+    /**
+     * 布局内控件点击事件
+     */
+    public interface OnViewItemClickListener {
+        /**
+         * 控件被点击
+         *
+         * @param view     被点击的控件
+         * @param position 索引
+         */
+        void onViewItemClick(View view, int position);
     }
 }

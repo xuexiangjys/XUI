@@ -3,12 +3,9 @@ package com.xuexiang.xui.adapter.simple;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.xuexiang.xui.R;
-import com.xuexiang.xui.adapter.BaseListAdapter;
+import com.xuexiang.xui.adapter.listview.BaseListAdapter;
 import com.xuexiang.xui.utils.DensityUtils;
 
 import java.util.ArrayList;

@@ -13,9 +13,28 @@
         android:id="@+id/tv_jump"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/xui_config_bg_button_corner_black"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="12dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="6dp"
+        android:text="@string/xui_jump"
+        android:textColor="@color/xui_config_color_white"
+        android:textSize="12sp" />
+
+    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+        android:id="@+id/tv_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="?attr/xui_guide_btn_margin_bottom"
+        android:background="@drawable/xui_config_bg_button_corner_white"
         android:clickable="true"
         android:focusable="true"
         android:paddingLeft="?attr/xui_guide_btn_padding_horizontal"
@@ -24,7 +43,6 @@
         android:paddingBottom="?attr/xui_guide_btn_padding_vertical"
         android:text="@string/xui_try_immediately"
         android:textColor="@color/xui_config_color_white"
-        android:textSize="?attr/xui_btn_view_text_size"
-        android:background="@drawable/xui_config_bg_button_corner_white" />
+        android:textSize="?attr/xui_btn_view_text_size" />
 
 </RelativeLayout>

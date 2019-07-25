@@ -35,6 +35,7 @@
     <string name="xui_preview_count_string">%1$d/%2$d</string>
 
     <string name="xui_try_immediately">立即体验</string>
+    <string name="xui_jump">跳过</string>
 
     <!--PickerView-->
     <string name="xui_picker_view_cancel">取消</string>

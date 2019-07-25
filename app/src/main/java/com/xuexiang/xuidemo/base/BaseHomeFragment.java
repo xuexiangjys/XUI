@@ -25,10 +25,10 @@ import android.view.ViewGroup;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.model.PageInfo;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
-import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
 import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
 import com.xuexiang.xuidemo.fragment.AboutFragment;
@@ -46,7 +46,7 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2018/12/29 上午11:18
  */
-public abstract class BaseHomeFragment extends BaseFragment implements BaseRecyclerAdapter.OnItemClickListener {
+public abstract class BaseHomeFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener {
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;

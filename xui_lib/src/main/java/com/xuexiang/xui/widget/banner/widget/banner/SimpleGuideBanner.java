@@ -6,11 +6,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseIndicatorBanner;
-import com.xuexiang.xui.widget.banner.widget.banner.base.GlideImageLoader;
-import com.xuexiang.xui.widget.banner.widget.banner.base.ImageLoader;
+import com.xuexiang.xui.widget.imageview.ImageLoader;
 
 /**
  * 简单的引导页
@@ -19,8 +17,6 @@ import com.xuexiang.xui.widget.banner.widget.banner.base.ImageLoader;
  * @since 2018/12/6 下午4:32
  */
 public class SimpleGuideBanner extends BaseIndicatorBanner<Object, SimpleGuideBanner> {
-
-    private ImageLoader mImageLoader;
 
     public SimpleGuideBanner(Context context) {
         super(context);
@@ -43,23 +39,17 @@ public class SimpleGuideBanner extends BaseIndicatorBanner<Object, SimpleGuideBa
         setAutoScrollEnable(false);
     }
 
-    private ImageLoader getImageLoader() {
-        if (mImageLoader == null) {
-            mImageLoader = new GlideImageLoader();
-        }
-        return mImageLoader;
-    }
-
     @Override
     public View onCreateItemView(int position) {
         View inflate = View.inflate(mContext, R.layout.xui_adapter_simple_guide, null);
         ImageView iv = inflate.findViewById(R.id.iv);
         TextView tvJump = inflate.findViewById(R.id.tv_jump);
+        TextView tvStart = inflate.findViewById(R.id.tv_start);
 
         final Object resId = mDatas.get(position);
-        tvJump.setVisibility(position == mDatas.size() - 1 ? VISIBLE : GONE);
-
-        getImageLoader().displayImage(mContext, resId, iv);
+        tvJump.setVisibility(position == 0 ? VISIBLE : GONE);
+        tvStart.setVisibility(position == mDatas.size() - 1 ? VISIBLE : GONE);
+        ImageLoader.get().loadImage(iv, resId);
 
         tvJump.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,13 +59,26 @@ public class SimpleGuideBanner extends BaseIndicatorBanner<Object, SimpleGuideBa
                 }
             }
         });
-
+        tvStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onJumpClickListener != null) {
+                    onJumpClickListener.onJumpClick();
+                }
+            }
+        });
         return inflate;
     }
 
     private OnJumpClickListener onJumpClickListener;
 
+    /**
+     * 点击跳过或者立即体验的监听
+     */
     public interface OnJumpClickListener {
+        /**
+         * 跳过监听
+         */
         void onJumpClick();
     }
 
@@ -83,8 +86,4 @@ public class SimpleGuideBanner extends BaseIndicatorBanner<Object, SimpleGuideBa
         this.onJumpClickListener = onJumpClickListener;
     }
 
-    public SimpleGuideBanner setImageLoader(ImageLoader imageLoader) {
-        mImageLoader = imageLoader;
-        return this;
-    }
 }

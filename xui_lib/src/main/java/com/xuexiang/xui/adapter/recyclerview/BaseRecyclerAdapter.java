@@ -1,11 +1,28 @@
-package com.xuexiang.xuidemo.adapter.base;
+/*
+ * Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+package com.xuexiang.xui.adapter.recyclerview;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,8 +37,8 @@ import java.util.List;
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     protected final List<T> mData = new ArrayList<>();
-    private OnItemClickListener mClickListener;
-    private OnItemLongClickListener mLongClickListener;
+    private RecyclerViewHolder.OnItemClickListener mClickListener;
+    private RecyclerViewHolder.OnItemLongClickListener mLongClickListener;
 
     /**
      * 当前点击的条目
@@ -122,12 +139,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
         return this;
     }
 
-    public BaseRecyclerAdapter setOnItemClickListener(OnItemClickListener listener) {
+    public BaseRecyclerAdapter setOnItemClickListener(RecyclerViewHolder.OnItemClickListener listener) {
         mClickListener = listener;
         return this;
     }
 
-    public BaseRecyclerAdapter setOnItemLongClickListener(OnItemLongClickListener listener) {
+    public BaseRecyclerAdapter setOnItemLongClickListener(RecyclerViewHolder.OnItemLongClickListener listener) {
         mLongClickListener = listener;
         return this;
     }
@@ -160,29 +177,5 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
      */
     abstract public void bindData(RecyclerViewHolder holder, int position, T item);
 
-    /**
-     * 列表条目点击监听
-     */
-    public interface OnItemClickListener {
-        /**
-         * 条目点击
-         *
-         * @param itemView
-         * @param pos
-         */
-        void onItemClick(View itemView, int pos);
-    }
 
-    /**
-     * 列表条目长按监听
-     */
-    public interface OnItemLongClickListener {
-        /**
-         * 条目长按
-         *
-         * @param itemView
-         * @param pos
-         */
-        void onItemLongClick(View itemView, int pos);
-    }
 }

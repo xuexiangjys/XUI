@@ -126,11 +126,11 @@ public class GlideMediaLoader implements IMediaLoader {
     /**
      * 停止
      *
-     * @param c 容器
+     * @param context 容器
      **/
     @Override
-    public void clearMemory(@NonNull Context c) {
-        Glide.get(c).clearMemory();
+    public void clearMemory(@NonNull Context context) {
+        Glide.get(context).clearMemory();
     }
 
 

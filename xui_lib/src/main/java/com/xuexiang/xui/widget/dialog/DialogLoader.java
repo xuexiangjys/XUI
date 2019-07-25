@@ -21,6 +21,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xui.widget.dialog.strategy.IDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.InputCallback;
 import com.xuexiang.xui.widget.dialog.strategy.InputInfo;
@@ -47,11 +49,11 @@ public class DialogLoader implements IDialogStrategy {
     }
 
     /**
-     * 设置图片加载的策略
+     * 设置弹窗加载的策略
      *
      * @param strategy
      */
-    public DialogLoader setIDialogStrategy(IDialogStrategy strategy) {
+    public DialogLoader setIDialogStrategy(@NonNull IDialogStrategy strategy) {
         mStrategy = strategy;
         return this;
     }

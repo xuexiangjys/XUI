@@ -24,12 +24,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.banner.recycler.BannerLayout;
-import com.xuexiang.xui.widget.banner.widget.banner.base.GlideImageLoader;
-import com.xuexiang.xui.widget.banner.widget.banner.base.ImageLoader;
+import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
-import com.xuexiang.xuidemo.adapter.base.RecyclerViewHolder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -50,8 +49,6 @@ public class RecyclerViewBannerAdapter extends BaseRecyclerAdapter<String> {
      */
     private boolean mEnableCache = true;
 
-    private ImageLoader mImageLoader;
-
     private BannerLayout.OnBannerItemClickListener mOnBannerItemClickListener;
 
 
@@ -69,6 +66,7 @@ public class RecyclerViewBannerAdapter extends BaseRecyclerAdapter<String> {
         super(Arrays.asList(list));
         mColorDrawable = new ColorDrawable(Color.parseColor("#555555"));
     }
+
     /**
      * 适配的布局
      *
@@ -92,7 +90,7 @@ public class RecyclerViewBannerAdapter extends BaseRecyclerAdapter<String> {
         ImageView imageView = holder.findViewById(R.id.iv_item);
 
         if (!TextUtils.isEmpty(imgUrl)) {
-            getImageLoader().displayImage(imageView.getContext(), imgUrl, imageView, mColorDrawable,
+            ImageLoader.get().loadImage(imageView, imgUrl, mColorDrawable,
                     mEnableCache ? DiskCacheStrategy.RESOURCE : DiskCacheStrategy.NONE);
         } else {
             imageView.setImageDrawable(mColorDrawable);
@@ -107,14 +105,6 @@ public class RecyclerViewBannerAdapter extends BaseRecyclerAdapter<String> {
             }
         });
     }
-
-    private ImageLoader getImageLoader() {
-        if (mImageLoader == null) {
-            mImageLoader = new GlideImageLoader();
-        }
-        return  mImageLoader;
-    }
-
 
     /**
      * 设置是否允许缓存
@@ -142,11 +132,6 @@ public class RecyclerViewBannerAdapter extends BaseRecyclerAdapter<String> {
 
     public RecyclerViewBannerAdapter setColorDrawable(ColorDrawable colorDrawable) {
         mColorDrawable = colorDrawable;
-        return this;
-    }
-
-    public RecyclerViewBannerAdapter setImageLoader(ImageLoader imageLoader) {
-        mImageLoader = imageLoader;
         return this;
     }
 

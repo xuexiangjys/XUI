@@ -29,11 +29,11 @@ import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
-import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
@@ -107,7 +107,7 @@ public class ComplexCalendarFragment extends BaseFragment implements CalendarVie
 
         recyclerView.setAdapter(mAdapter = new NewsCardViewListAdapter());
         mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
-        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
                 Utils.goWeb(getContext(), mAdapter.getItem(position).getDetailUrl());

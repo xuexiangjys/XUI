@@ -59,7 +59,7 @@ public interface IMediaLoader {
     /**
      * 停止
      *
-     * @param c 容器
+     * @param context 容器
      **/
-    void clearMemory(@NonNull Context c);
+    void clearMemory(@NonNull Context context);
 }
