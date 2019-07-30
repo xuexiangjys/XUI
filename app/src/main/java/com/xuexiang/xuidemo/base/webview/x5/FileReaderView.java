@@ -27,6 +27,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.tencent.smtt.sdk.TbsReaderView;
+import com.xuexiang.xutil.app.PathUtils;
+import com.xuexiang.xutil.security.EncryptUtils;
 
 import static com.tencent.smtt.sdk.TbsReaderView.KEY_FILE_PATH;
 import static com.tencent.smtt.sdk.TbsReaderView.KEY_TEMP_PATH;
@@ -41,6 +43,8 @@ public class FileReaderView extends FrameLayout implements TbsReaderView.ReaderC
 
     private TbsReaderView mTbsReaderView;
     private Context mContext;
+
+    private String mLoadFilePath;
 
     public FileReaderView(Context context) {
         this(context, null, 0);
@@ -78,6 +82,7 @@ public class FileReaderView extends FrameLayout implements TbsReaderView.ReaderC
             }
             boolean bool = mTbsReaderView.preOpen(getFileType(filePath), false);
             if (bool) {
+                mLoadFilePath = filePath;
                 mTbsReaderView.openFile(localBundle);
             }
         } else {
@@ -96,6 +101,32 @@ public class FileReaderView extends FrameLayout implements TbsReaderView.ReaderC
         if (mTbsReaderView != null) {
             mTbsReaderView.onStop();
         }
+    }
+
+    /**
+     * @return 加载文件的路径
+     */
+    public String getLoadFilePath() {
+        return mLoadFilePath;
+    }
+
+    /**
+     * 文件下载保存的目录
+     *
+     * @return
+     */
+    public String getCacheFileDir() {
+        return PathUtils.getExtDownloadsPath() + "/x5/";
+    }
+
+    /**
+     * 根据下载地址获取文件名
+     *
+     * @param url
+     * @return
+     */
+    public String getFileNameByUrl(String url) {
+        return EncryptUtils.encryptMD5ToString(url) + "." + getFileType(url);
     }
 
     /***

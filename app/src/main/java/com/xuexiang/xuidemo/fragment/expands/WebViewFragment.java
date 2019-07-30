@@ -57,6 +57,9 @@ public class WebViewFragment extends BaseSimpleListFragment {
         lists.add("视频播放");
         lists.add("简单的JS通信");
         lists.add("腾讯X5文件浏览器（点击选择文件）");
+        lists.add("腾讯X5文件浏览器（加载在线pdf文档）");
+        lists.add("腾讯X5文件浏览器（加载在线word文档）");
+        lists.add("腾讯X5文件浏览器（加载在线excel文档）");
         return lists;
     }
 
@@ -89,6 +92,15 @@ public class WebViewFragment extends BaseSimpleListFragment {
                 break;
             case 8:
                 chooseFile();
+                break;
+            case 9:
+                TbsWebFileReaderFragment.show(this, "https://gitee.com/xuexiangjys/Resource/raw/master/file/test.pdf");
+                break;
+            case 10:
+                TbsWebFileReaderFragment.show(this, "https://gitee.com/xuexiangjys/Resource/raw/master/file/test.docx");
+                break;
+            case 11:
+                TbsWebFileReaderFragment.show(this, "https://gitee.com/xuexiangjys/Resource/raw/master/file/test.xlsx");
                 break;
             default:
                 break;
