@@ -19,9 +19,6 @@ package com.xuexiang.xuidemo.utils.sdkinit;
 
 import android.app.Application;
 
-import com.tencent.smtt.sdk.QbSdk;
-import com.xuexiang.xutil.common.logger.Logger;
-
 /**
  * 腾讯X5 SDK初始化
  *
@@ -35,18 +32,6 @@ public final class TbsInit {
     }
 
     public static void init(Application application) {
-        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
-            @Override
-            public void onViewInitFinished(boolean arg0) {
-                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
-                Logger.dTag("TbsInit", " onViewInitFinished is " + arg0);
-            }
-
-            @Override
-            public void onCoreInitFinished() {
-            }
-        };
-        //x5内核初始化接口
-        QbSdk.initX5Environment(application, cb);
+        PreLoadX5Service.start(application);
     }
 }

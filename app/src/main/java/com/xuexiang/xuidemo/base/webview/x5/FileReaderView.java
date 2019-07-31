@@ -18,6 +18,7 @@
 package com.xuexiang.xuidemo.base.webview.x5;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -28,6 +29,7 @@ import android.widget.LinearLayout;
 
 import com.tencent.smtt.sdk.TbsReaderView;
 import com.xuexiang.xutil.app.PathUtils;
+import com.xuexiang.xutil.file.FileUtils;
 import com.xuexiang.xutil.security.EncryptUtils;
 
 import static com.tencent.smtt.sdk.TbsReaderView.KEY_FILE_PATH;
@@ -111,12 +113,19 @@ public class FileReaderView extends FrameLayout implements TbsReaderView.ReaderC
     }
 
     /**
+     * @return 加载文件的路径
+     */
+    public Uri getLoadFileUri() {
+        return PathUtils.getUriForFile(FileUtils.getFileByPath(mLoadFilePath));
+    }
+
+    /**
      * 文件下载保存的目录
      *
      * @return
      */
     public String getCacheFileDir() {
-        return PathUtils.getExtDownloadsPath() + "/x5/";
+        return FileUtils.getDiskCacheDir("x5");
     }
 
     /**

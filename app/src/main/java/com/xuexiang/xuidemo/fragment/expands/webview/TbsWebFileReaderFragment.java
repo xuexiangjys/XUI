@@ -17,9 +17,13 @@
 
 package com.xuexiang.xuidemo.fragment.expands.webview;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.xuexiang.xaop.annotation.Permission;
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xaop.cache.XDiskCache;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.base.XPageActivity;
@@ -27,9 +31,11 @@ import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xrouter.annotation.AutoWired;
 import com.xuexiang.xrouter.launcher.XRouter;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.webview.x5.FileReaderView;
+import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.file.FileUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -71,6 +77,33 @@ public class TbsWebFileReaderFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_tbs_web_file_reader;
+    }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.ImageAction(R.drawable.ic_share_white_24dp) {
+            @SingleClick
+            @Override
+            public void performAction(View view) {
+                shareFile(fileReaderView.getLoadFileUri());
+            }
+        });
+        return titleBar;
+    }
+
+    /**
+     * 分享文件
+     *
+     * @param uri 文件资源
+     */
+    private void shareFile(Uri uri) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.setType(IntentUtils.DocumentType.ANY);
+        //设置分享列表的标题，并且每次都显示分享列表
+        startActivity(Intent.createChooser(intent, "分享到"));
     }
 
     @Override
@@ -122,7 +155,7 @@ public class TbsWebFileReaderFragment extends BaseFragment {
 
                     @Override
                     public void inProgress(float progress, long total, int id) {
-                        getMessageLoader().updateMessage("文件下载中(" + ((int)(progress * 100)) + "%)");
+                        getMessageLoader().updateMessage("文件下载中(" + ((int) (progress * 100)) + "%)");
                     }
 
                     @Override
