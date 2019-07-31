@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.edittext.ClearEditText;
 import com.xuexiang.xui.widget.edittext.PasswordEditText;
 
@@ -59,11 +60,10 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private Drawable mLeftIconRes;//左边图标资源
     private Drawable mRightIconRes;//右边图标资源
 
-
-    private int mDefaultColor = 0xFF373737;//文字默认颜色
-    private int mDefaultSize = 15;//默认字体大小
-    private int mDefaultMaxEms = 15;
-
+    private int mDefaultTextColor;//文字默认颜色
+    private int mDefaultTextSize;//默认字体大小
+    private int mDefaultMaxEms; //默认文字的最大字符数
+    private int mDefaultMargin; //默认间距
 
     private String mLeftTextString;
     private String mLeftTopTextString;
@@ -201,8 +201,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private static final int BOTH = 3;
     private static final int DEFAULT_DIVIDER = BOTTOM;
 
-    private int mDefaultMargin = 10;
-
     private int mLeftViewMarginLeft;
     private int mLeftViewMarginRight;
 
@@ -332,8 +330,11 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         mContext = context;
-        mDefaultSize = sp2px(context, mDefaultSize);
-        mDefaultMargin = dip2px(context, mDefaultMargin);
+
+        mDefaultTextColor = ThemeUtils.resolveColor(context, R.attr.stv_color_common_text, ResUtils.getColor(R.color.stv_color_common_text));
+        mDefaultTextSize = ThemeUtils.resolveDimension(context, R.attr.stv_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_stv_text_size));
+        mDefaultMaxEms = ThemeUtils.resolveInt(context, R.attr.stv_max_ems, 20);
+        mDefaultMargin = ThemeUtils.resolveDimension(context, R.attr.stv_margin, ResUtils.getDimensionPixelSize(R.dimen.default_stv_margin));
 
         getAttr(attrs);
         initView();
@@ -357,32 +358,32 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
 
         //////////////////////////////////////////////////
 
-        mLeftTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTextColor, mDefaultColor);
-        mLeftTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTopTextColor, mDefaultColor);
-        mLeftBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextColor, mDefaultColor);
+        mLeftTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTextColor, mDefaultTextColor);
+        mLeftTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTopTextColor, mDefaultTextColor);
+        mLeftBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextColor, mDefaultTextColor);
 
-        mCenterTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTextColor, mDefaultColor);
-        mCenterTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTopTextColor, mDefaultColor);
-        mCenterBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterBottomTextColor, mDefaultColor);
+        mCenterTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTextColor, mDefaultTextColor);
+        mCenterTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTopTextColor, mDefaultTextColor);
+        mCenterBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterBottomTextColor, mDefaultTextColor);
 
-        mRightTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightTextColor, mDefaultColor);
-        mRightTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightTopTextColor, mDefaultColor);
-        mRightBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightBottomTextColor, mDefaultColor);
+        mRightTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightTextColor, mDefaultTextColor);
+        mRightTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightTopTextColor, mDefaultTextColor);
+        mRightBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightBottomTextColor, mDefaultTextColor);
 
         //////////////////////////////////////////////////
 
 
-        mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTextSize, mDefaultSize);
-        mLeftTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTopTextSize, mDefaultSize);
-        mLeftBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftBottomTextSize, mDefaultSize);
+        mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTextSize, mDefaultTextSize);
+        mLeftTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTopTextSize, mDefaultTextSize);
+        mLeftBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftBottomTextSize, mDefaultTextSize);
 
-        mCenterTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTextSize, mDefaultSize);
-        mCenterTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTopTextSize, mDefaultSize);
-        mCenterBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterBottomTextSize, mDefaultSize);
+        mCenterTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTextSize, mDefaultTextSize);
+        mCenterTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTopTextSize, mDefaultTextSize);
+        mCenterBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterBottomTextSize, mDefaultTextSize);
 
-        mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextSize, mDefaultSize);
-        mRightTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTopTextSize, mDefaultSize);
-        mRightBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightBottomTextSize, mDefaultSize);
+        mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextSize, mDefaultTextSize);
+        mRightTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTopTextSize, mDefaultTextSize);
+        mRightBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightBottomTextSize, mDefaultTextSize);
 
         //////////////////////////////////////////////////
         mLeftTopLines = typedArray.getInt(R.styleable.SuperTextView_sLeftTopLines, 1);

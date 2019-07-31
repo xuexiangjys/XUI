@@ -111,6 +111,10 @@
     <dimen name="default_aftv_min_textsize">10sp</dimen>
     <dimen name="default_aftv_max_textsize">14sp</dimen>
 
+    <!-- SuperTextView-->
+    <dimen name="default_stv_text_size">15sp</dimen>
+    <dimen name="default_stv_margin">10dp</dimen>
+
     <!-- Button-->
     <dimen name="default_btn_view_radius_tablet_big">7dp</dimen>
     <dimen name="default_btn_view_width_tablet_big">148dp</dimen>
