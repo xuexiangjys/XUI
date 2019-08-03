@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xuexiang.rxutil2.rxjava.DisposablePool;
 import com.xuexiang.rxutil2.rxjava.RxJavaUtils;
@@ -32,6 +33,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.widget.CustomRefreshFooter;
 import com.xuexiang.xuidemo.widget.CustomRefreshHeader;
 
 import java.util.concurrent.TimeUnit;
@@ -67,6 +69,8 @@ public class RefreshCustomStyleFragment extends BaseFragment {
         mRecyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         mRefreshLayout.setRefreshHeader(mRefreshHeader = new CustomRefreshHeader(getContext()));
+
+        mRefreshLayout.setRefreshFooter(new CustomRefreshFooter(getContext()));
     }
 
 
@@ -78,7 +82,21 @@ public class RefreshCustomStyleFragment extends BaseFragment {
                 handleRefresh();
             }
         });
+        mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.loadMore(DemoDataProvider.getDemoData());
+                        refreshLayout.finishLoadMore();
+                    }
+                }, 2000);
+            }
+        });
         mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
+
+
     }
 
 

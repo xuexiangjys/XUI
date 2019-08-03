@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+import com.scwang.smartrefresh.layout.util.DensityUtil;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
 /**
@@ -22,7 +23,7 @@ public class MaterialLoadMoreView extends ProgressBar implements SwipeRecyclerVi
     private void initView() {
         setVisibility(GONE);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(10, 10, 10, 10);
+        setPadding(0, DensityUtil.dp2px(10), 0, DensityUtil.dp2px(10));
         setLayoutParams(params);
     }
 
