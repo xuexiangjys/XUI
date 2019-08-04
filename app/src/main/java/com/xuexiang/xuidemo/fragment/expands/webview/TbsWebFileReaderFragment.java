@@ -98,6 +98,11 @@ public class TbsWebFileReaderFragment extends BaseFragment {
      * @param uri 文件资源
      */
     private void shareFile(Uri uri) {
+        if (uri == null) {
+            ToastUtils.toast("文件加载失败！");
+            return;
+        }
+
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_STREAM, uri);

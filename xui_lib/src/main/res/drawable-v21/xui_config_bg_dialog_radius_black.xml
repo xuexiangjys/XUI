@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <corners android:radius="?attr/xui_dialog_radius_size" />
+
+    <solid android:color="@color/xui_config_color_60_pure_black" />
+
+</shape>

@@ -27,6 +27,8 @@ import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Nullable;
+
 import com.tencent.smtt.sdk.TbsReaderView;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.file.FileUtils;
@@ -115,6 +117,7 @@ public class FileReaderView extends FrameLayout implements TbsReaderView.ReaderC
     /**
      * @return 加载文件的路径
      */
+    @Nullable
     public Uri getLoadFileUri() {
         return PathUtils.getUriForFile(FileUtils.getFileByPath(mLoadFilePath));
     }
