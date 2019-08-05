@@ -24,7 +24,7 @@ public class WidgetItemAdapter extends BaseRecyclerAdapter<PageInfo> {
 
     @Override
     public void bindData(RecyclerViewHolder holder, int position, PageInfo item) {
-        holder.getTextView(R.id.item_name).setText(item.getName());
+        holder.text(R.id.item_name, item.getName());
         if (item.getExtra() != 0) {
             holder.image(R.id.item_icon, item.getExtra());
         }

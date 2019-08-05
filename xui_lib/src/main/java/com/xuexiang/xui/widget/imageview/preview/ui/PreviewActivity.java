@@ -18,16 +18,17 @@ package com.xuexiang.xui.widget.imageview.preview.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.TextView;
+
 import androidx.annotation.CallSuper;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
@@ -41,6 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_DRAG;
+import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_PROGRESS_COLOR;
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SENSITIVITY;
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SING_FILING;
 
@@ -150,7 +152,8 @@ public class PreviewActivity extends FragmentActivity {
                                 currentIndex == i,
                                 getIntent().getBooleanExtra(KEY_SING_FILING, false),
                                 getIntent().getBooleanExtra(KEY_DRAG, false),
-                                getIntent().getFloatExtra(KEY_SENSITIVITY, 0.5f))
+                                getIntent().getFloatExtra(KEY_SENSITIVITY, 0.5f),
+                                getIntent().getIntExtra(KEY_PROGRESS_COLOR, R.color.xui_config_color_main_theme))
                 );
             }
         } else {

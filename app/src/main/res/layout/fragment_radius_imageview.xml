@@ -17,71 +17,71 @@
 
             <TextView
                 style="@style/TextStyle.Title"
-                android:text="@string/circularImageView_item_xml_circle_title"/>
+                android:text="@string/circularImageView_item_xml_circle_title" />
 
             <com.xuexiang.xui.widget.imageview.RadiusImageView
-                android:clickable="true"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:src="@drawable/img_beautiful_scenery"
                 app:riv_border_color="@color/xui_config_color_gray_6"
                 app:riv_border_width="1px"
                 app:riv_is_circle="true"
                 app:riv_selected_border_color="@color/xui_config_color_gray_4"
                 app:riv_selected_border_width="1px"
-                app:riv_selected_mask_color="@color/xui_config_color_gray_8"/>
+                app:riv_selected_mask_color="@color/xui_config_color_gray_8" />
 
             <TextView
                 style="@style/TextStyle.Title"
                 android:layout_marginTop="50dp"
-                android:text="@string/circularImageView_item_xml_oval_title"/>
+                android:text="@string/circularImageView_item_xml_oval_title" />
 
             <com.xuexiang.xui.widget.imageview.RadiusImageView
-                android:clickable="true"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:src="@drawable/img_beautiful_scenery"
                 app:riv_border_color="@color/xui_config_color_gray_6"
                 app:riv_border_width="1px"
                 app:riv_is_oval="true"
                 app:riv_selected_border_color="@color/xui_config_color_gray_4"
                 app:riv_selected_border_width="1px"
-                app:riv_selected_mask_color="@color/xui_config_color_gray_8"/>
+                app:riv_selected_mask_color="@color/xui_config_color_gray_8" />
 
             <TextView
                 style="@style/TextStyle.Title"
                 android:layout_marginTop="50dp"
-                android:text="@string/circularImageView_item_xml_round_rect_title"/>
+                android:text="@string/circularImageView_item_xml_round_rect_title" />
 
             <com.xuexiang.xui.widget.imageview.RadiusImageView
-                android:clickable="true"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:src="@drawable/img_beautiful_scenery"
                 app:riv_border_color="@color/xui_config_color_gray_6"
                 app:riv_border_width="1px"
                 app:riv_corner_radius="15dp"
                 app:riv_selected_border_color="@color/xui_config_color_gray_4"
                 app:riv_selected_border_width="1px"
-                app:riv_selected_mask_color="@color/xui_config_color_gray_8"/>
+                app:riv_selected_mask_color="@color/xui_config_color_gray_8" />
 
             <TextView
                 style="@style/TextStyle.Title"
                 android:layout_marginTop="50dp"
-                android:text="@string/circularImageView_modify_tip"/>
+                android:text="@string/circularImageView_modify_tip" />
 
             <com.xuexiang.xui.widget.imageview.RadiusImageView
-                android:clickable="true"
                 android:id="@+id/radiusImageView"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:src="@drawable/img_beautiful_scenery"
                 app:riv_border_color="@color/xui_config_color_gray_6"
                 app:riv_border_width="1px"
                 app:riv_corner_radius="15dp"
                 app:riv_selected_border_color="@color/xui_config_color_gray_4"
                 app:riv_selected_border_width="1px"
-                app:riv_selected_mask_color="@color/xui_config_color_gray_8"/>
+                app:riv_selected_mask_color="@color/xui_config_color_gray_8" />
 
         </LinearLayout>
 
