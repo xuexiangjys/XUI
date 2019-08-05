@@ -23,7 +23,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
 
@@ -142,7 +142,7 @@ dependencies {
     implementation 'com.github.xuexiangjys:RxUtil2:1.1.5'
 
     //PictureSelector图片选择
-    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.3'
+    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.4'
 
     //下拉刷新
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'

@@ -31,6 +31,7 @@
     <string name="stfLocationOffMessage">请打开定位</string>
     <string name="stf_retry">轻触屏幕重试</string>
 
+    <string name="xui_preview_video_path_error">资源加载失败</string>
     <string name="xui_preview_play_failed">播放失败</string>
     <string name="xui_preview_count_string">%1$d/%2$d</string>
 

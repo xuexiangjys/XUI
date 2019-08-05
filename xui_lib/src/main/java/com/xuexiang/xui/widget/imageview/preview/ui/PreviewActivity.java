@@ -127,9 +127,9 @@ public class PreviewActivity extends FragmentActivity {
             SmoothImageView.setDuration(duration);
             Class<? extends BasePhotoFragment> clazz;
             clazz = (Class<? extends BasePhotoFragment>) getIntent().getSerializableExtra(KEY_CLASSNAME);
-            iniFragment(mImgUrls, mCurrentIndex, clazz);
+            initFragment(mImgUrls, mCurrentIndex, clazz);
         } catch (Exception e) {
-            iniFragment(mImgUrls, mCurrentIndex, BasePhotoFragment.class);
+            initFragment(mImgUrls, mCurrentIndex, BasePhotoFragment.class);
         }
 
     }
@@ -141,7 +141,7 @@ public class PreviewActivity extends FragmentActivity {
      * @param currentIndex 选中索引
      * @param className    显示Fragment
      **/
-    protected void iniFragment(List<IPreviewInfo> imgUrls, int currentIndex, Class<? extends BasePhotoFragment> className) {
+    protected void initFragment(List<IPreviewInfo> imgUrls, int currentIndex, Class<? extends BasePhotoFragment> className) {
         if (imgUrls != null) {
             int size = imgUrls.size();
             for (int i = 0; i < size; i++) {
@@ -175,7 +175,7 @@ public class PreviewActivity extends FragmentActivity {
             mBezierBannerView.attachToViewpager(mViewPager);
         } else {
             mTvIndex.setVisibility(View.VISIBLE);
-            mTvIndex.setText(getString(R.string.xui_preview_count_string, (mCurrentIndex + 1), mImgUrls.size()));
+            mTvIndex.setText(getString(R.string.xui_preview_count_string, (mCurrentIndex + 1), getImgSize()));
             mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -186,7 +186,7 @@ public class PreviewActivity extends FragmentActivity {
                 public void onPageSelected(int position) {
                     //当被选中的时候设置小圆点和当前位置
                     if (mTvIndex != null) {
-                        mTvIndex.setText(getString(R.string.xui_preview_count_string, (position + 1), mImgUrls.size()));
+                        mTvIndex.setText(getString(R.string.xui_preview_count_string, (position + 1), getImgSize()));
                     }
                     mCurrentIndex = position;
                     mViewPager.setCurrentItem(mCurrentIndex, true);
@@ -213,7 +213,10 @@ public class PreviewActivity extends FragmentActivity {
             }
         });
 
+    }
 
+    private int getImgSize() {
+        return mImgUrls != null ? mImgUrls.size() : 0;
     }
 
     /***退出预览的动画***/
@@ -223,7 +226,7 @@ public class PreviewActivity extends FragmentActivity {
         }
         mIsTransformOut = true;
         int currentItem = mViewPager.getCurrentItem();
-        if (currentItem < mImgUrls.size()) {
+        if (currentItem < getImgSize()) {
             BasePhotoFragment fragment = fragments.get(currentItem);
             if (mTvIndex != null) {
                 mTvIndex.setVisibility(View.GONE);

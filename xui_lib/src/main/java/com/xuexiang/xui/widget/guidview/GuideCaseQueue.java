@@ -76,7 +76,8 @@ public class GuideCaseQueue implements DismissListener {
         show();
     }
 
-    public void setCompleteListener(OnCompleteListener completeListener) {
+    public GuideCaseQueue setCompleteListener(OnCompleteListener completeListener) {
         mCompleteListener = completeListener;
+        return this;
     }
 }
