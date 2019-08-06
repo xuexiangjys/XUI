@@ -21,47 +21,56 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.haibin.calendarview.CalendarLayout
-        android:id="@+id/calendarLayout"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/xui_config_color_white"
-        android:orientation="vertical"
-        app:calendar_content_view_id="@+id/recycler_view"
-        app:default_status="shrink">
+        app:srlEnableAutoLoadMore="false"
+        app:srlEnableLoadMore="true"
+        app:srlEnableNestedScrolling="true">
 
-        <com.haibin.calendarview.CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/xui_config_color_white"
-            app:calendar_height="35dp"
-            app:calendar_padding="5dp"
-            app:current_month_lunar_text_color="#CFCFCF"
-            app:current_month_text_color="@color/xui_config_color_primary_text"
-            app:day_text_size="14sp"
-            app:min_year="2016"
-            app:month_view="com.xuexiang.xuidemo.widget.calendar.SimpleMonthView"
-            app:other_month_text_color="#e1e1e1"
-            app:scheme_text_color="@color/xui_config_color_primary_text"
-            app:scheme_theme_color="@color/xui_config_color_primary_text"
-            app:selected_text_color="@color/xui_config_color_white"
-            app:selected_theme_color="@color/xui_config_color_main_theme"
-            app:week_background="@color/xui_config_color_white"
-            app:week_bar_height="26dp"
-            app:week_text_color="@color/xui_config_color_primary_text"
-            app:week_text_size="14sp"
-            app:week_view="com.xuexiang.xuidemo.widget.calendar.SimpleWeekView" />
+        <include layout="@layout/include_refresh_head" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <com.haibin.calendarview.CalendarLayout
+            android:id="@+id/calendarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F2F2F2"
-            android:overScrollMode="never" />
+            android:background="@color/xui_config_color_white"
+            android:orientation="vertical"
+            app:calendar_content_view_id="@+id/recycler_view"
+            app:default_status="shrink">
 
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xui_config_color_white"
+                app:calendar_height="35dp"
+                app:calendar_padding="5dp"
+                app:current_month_lunar_text_color="#CFCFCF"
+                app:current_month_text_color="@color/xui_config_color_primary_text"
+                app:day_text_size="14sp"
+                app:min_year="2016"
+                app:month_view="com.xuexiang.xuidemo.widget.calendar.SimpleMonthView"
+                app:other_month_text_color="#e1e1e1"
+                app:scheme_text_color="@color/xui_config_color_primary_text"
+                app:scheme_theme_color="@color/xui_config_color_primary_text"
+                app:selected_text_color="@color/xui_config_color_white"
+                app:selected_theme_color="@color/xui_config_color_main_theme"
+                app:week_background="@color/xui_config_color_white"
+                app:week_bar_height="26dp"
+                app:week_text_color="@color/xui_config_color_primary_text"
+                app:week_text_size="14sp"
+                app:week_view="com.xuexiang.xuidemo.widget.calendar.SimpleWeekView" />
 
-    </com.haibin.calendarview.CalendarLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F2F2F2"
+                android:overScrollMode="never" />
 
+        </com.haibin.calendarview.CalendarLayout>
 
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>
