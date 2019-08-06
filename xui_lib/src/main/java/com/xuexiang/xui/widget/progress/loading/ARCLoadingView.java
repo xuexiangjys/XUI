@@ -35,6 +35,7 @@ import androidx.annotation.NonNull;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConfig;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.Utils;
 
 /**
@@ -146,7 +147,7 @@ public class ARCLoadingView extends View {
 
             boolean hasIcon = typedArray.getBoolean(R.styleable.LoadingView_lv_has_icon, true);
             if (hasIcon) {
-                Drawable icon = typedArray.getDrawable(R.styleable.LoadingView_lv_icon);
+                Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.LoadingView_lv_icon);
                 if (icon != null) {
                     mIconBitmap = Utils.getBitmapFromDrawable(icon);
                 } else {

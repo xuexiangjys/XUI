@@ -78,11 +78,11 @@ public class VerifyCodeEditText extends RelativeLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.VerifyCodeEditText, defStyleAttr, 0);
         mEtNumber = typedArray.getInteger(R.styleable.VerifyCodeEditText_vcet_number, 4);
         mEtWidth = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_width,  ResUtils.getDimensionPixelSize(R.dimen.default_vcet_width));
-        mEtDivider = typedArray.getDrawable(R.styleable.VerifyCodeEditText_vcet_divider);
+        mEtDivider = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.VerifyCodeEditText_vcet_divider);
         mEtTextSize = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_text_size));
         mEtTextColor = typedArray.getColor(R.styleable.VerifyCodeEditText_vcet_text_color, Color.BLACK);
-        mBackgroundFocus = typedArray.getDrawable(R.styleable.VerifyCodeEditText_vcet_bg_focus);
-        mBackgroundNormal = typedArray.getDrawable(R.styleable.VerifyCodeEditText_vcet_bg_normal);
+        mBackgroundFocus = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.VerifyCodeEditText_vcet_bg_focus);
+        mBackgroundNormal = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.VerifyCodeEditText_vcet_bg_normal);
         mIsPwd = typedArray.getBoolean(R.styleable.VerifyCodeEditText_vcet_is_pwd, false);
         mPwdRadius = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_pwd_radius, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_pwd_radius));
         //释放资源

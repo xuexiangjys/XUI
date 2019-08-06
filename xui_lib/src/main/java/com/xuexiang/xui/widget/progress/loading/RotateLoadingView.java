@@ -30,8 +30,8 @@ import android.view.View;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConfig;
-import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.Utils;
 
 /**
@@ -151,7 +151,7 @@ public class RotateLoadingView extends View {
             mMaxArcDegree = mIsSingleArc ? 280 : 160;
             boolean hasIcon = typedArray.getBoolean(R.styleable.LoadingView_lv_has_icon, true);
             if (hasIcon) {
-                Drawable icon = typedArray.getDrawable(R.styleable.LoadingView_lv_icon);
+                Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.LoadingView_lv_icon);
                 if (icon != null) {
                     mIconBitmap = Utils.getBitmapFromDrawable(icon);
                 } else {
@@ -210,6 +210,7 @@ public class RotateLoadingView extends View {
 
     /**
      * 画圆弧
+     *
      * @param canvas
      */
     private void drawArc(Canvas canvas) {
@@ -226,6 +227,7 @@ public class RotateLoadingView extends View {
 
     /**
      * 画上弧
+     *
      * @param canvas
      */
     private void drawTopArc(Canvas canvas) {
@@ -238,6 +240,7 @@ public class RotateLoadingView extends View {
 
     /**
      * 画下弧
+     *
      * @param canvas
      */
     private void drawBottomArc(Canvas canvas) {
@@ -269,6 +272,7 @@ public class RotateLoadingView extends View {
 
     /**
      * 获取中心图标所在的区域
+     *
      * @return
      */
     public RectF getIconBitmapRectF(Bitmap bitmap) {
@@ -289,6 +293,7 @@ public class RotateLoadingView extends View {
 
     /**
      * 设置loading的图标
+     *
      * @param icon
      * @return
      */
@@ -301,6 +306,7 @@ public class RotateLoadingView extends View {
 
     /**
      * 设置loading的图标
+     *
      * @param iconBitmap
      * @return
      */

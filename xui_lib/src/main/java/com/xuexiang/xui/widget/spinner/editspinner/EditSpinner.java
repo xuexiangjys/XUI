@@ -85,47 +85,47 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     }
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.EditSpinner, defStyleAttr, 0);
-        if (tArray != null) {
-            mIsShowFilterData = tArray.getBoolean(R.styleable.EditSpinner_es_isShowFilterData, true);
-            mIsFilterKey = tArray.getBoolean(R.styleable.EditSpinner_es_isFilterKey, false);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EditSpinner, defStyleAttr, 0);
+        if (typedArray != null) {
+            mIsShowFilterData = typedArray.getBoolean(R.styleable.EditSpinner_es_isShowFilterData, true);
+            mIsFilterKey = typedArray.getBoolean(R.styleable.EditSpinner_es_isFilterKey, false);
 
-            int imageId = tArray.getResourceId(R.styleable.EditSpinner_es_arrowImage, 0);
+            int imageId = typedArray.getResourceId(R.styleable.EditSpinner_es_arrowImage, 0);
             if (imageId != 0) {
                 mIvArrow.setImageResource(imageId);
             }
-            int arrowMargin = tArray.getDimensionPixelSize(R.styleable.EditSpinner_es_arrowMargin, -1);
+            int arrowMargin = typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_arrowMargin, -1);
             if (arrowMargin != -1) {
                 FrameLayout.LayoutParams params = (LayoutParams) mIvArrow.getLayoutParams();
                 params.setMargins(arrowMargin, 0, arrowMargin, 0);
                 mIvArrow.setLayoutParams(params);
             }
-            mEditText.setHint(tArray.getString(R.styleable.EditSpinner_es_hint));
-            int bg = tArray.getResourceId(R.styleable.EditSpinner_es_background, 0);
+            mEditText.setHint(typedArray.getString(R.styleable.EditSpinner_es_hint));
+            int bg = typedArray.getResourceId(R.styleable.EditSpinner_es_background, 0);
             if (bg != 0) {
                 mEditText.setBackgroundResource(bg);
             }
-            mMaxLine = tArray.getInt(R.styleable.EditSpinner_es_maxLine, DEFAULT_MAX_LINE);
+            mMaxLine = typedArray.getInt(R.styleable.EditSpinner_es_maxLine, DEFAULT_MAX_LINE);
             mEditText.setMaxLines(mMaxLine);
-            int height = tArray.getDimensionPixelSize(R.styleable.EditSpinner_es_height, ThemeUtils.resolveDimension(getContext(), R.attr.ms_item_height_size));
+            int height = typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_height, ThemeUtils.resolveDimension(getContext(), R.attr.ms_item_height_size));
             mEditText.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
-            setTextColors(tArray.getColorStateList(R.styleable.EditSpinner_es_textColor));
-            setTextSize(tArray.getDimensionPixelSize(R.styleable.EditSpinner_es_textSize, ThemeUtils.resolveDimension(getContext(), R.attr.xui_config_size_spinner_text)));
-            int entriesID = tArray.getResourceId(R.styleable.EditSpinner_es_entries, 0);
+            setTextColors(typedArray.getColorStateList(R.styleable.EditSpinner_es_textColor));
+            setTextSize(typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_textSize, ThemeUtils.resolveDimension(getContext(), R.attr.xui_config_size_spinner_text)));
+            int entriesID = typedArray.getResourceId(R.styleable.EditSpinner_es_entries, 0);
             if (entriesID != 0) {
                 setItems(ResUtils.getStringArray(entriesID));
             }
-            mDropDownBg = tArray.getDrawable(R.styleable.EditSpinner_es_dropdown_bg);
-            boolean enable = tArray.getBoolean(R.styleable.EditSpinner_es_enable, true);
+            mDropDownBg = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.EditSpinner_es_dropdown_bg);
+            boolean enable = typedArray.getBoolean(R.styleable.EditSpinner_es_enable, true);
             setEnabled(enable);
 
-            int maxLength = tArray.getInteger(R.styleable.EditSpinner_es_maxLength, -1);
+            int maxLength = typedArray.getInteger(R.styleable.EditSpinner_es_maxLength, -1);
             setMaxLength(maxLength);
 
-            int maxEms = tArray.getInteger(R.styleable.EditSpinner_es_maxEms, -1);
+            int maxEms = typedArray.getInteger(R.styleable.EditSpinner_es_maxEms, -1);
             setMaxEms(maxEms);
 
-            tArray.recycle();
+            typedArray.recycle();
         }
     }
 

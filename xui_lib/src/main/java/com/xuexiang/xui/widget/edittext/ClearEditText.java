@@ -64,7 +64,7 @@ public class ClearEditText extends AppCompatEditText implements
         }
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClearEditText, defStyleAttr, 0);
-        mClearDrawable = typedArray.getDrawable(R.styleable.ClearEditText_cet_clearIcon);
+        mClearDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ClearEditText_cet_clearIcon);
         mIconSize = typedArray.getDimensionPixelSize(R.styleable.ClearEditText_cet_clearIconSize, 0);
         typedArray.recycle();
 

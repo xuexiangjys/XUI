@@ -50,6 +50,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -119,7 +120,7 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
 
         if (a != null) {
             if (a.hasValue(R.styleable.MaterialSearchView_msv_searchBackground)) {
-                setBackground(a.getDrawable(R.styleable.MaterialSearchView_msv_searchBackground));
+                setBackground(ResUtils.getDrawableAttrRes(getContext(), a, R.styleable.MaterialSearchView_msv_searchBackground));
             }
 
             if (a.hasValue(R.styleable.MaterialSearchView_android_textColor)) {
@@ -135,23 +136,23 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
             }
 
             if (a.hasValue(R.styleable.MaterialSearchView_msv_searchVoiceIcon)) {
-                setVoiceIcon(a.getDrawable(R.styleable.MaterialSearchView_msv_searchVoiceIcon));
+                setVoiceIcon(ResUtils.getDrawableAttrRes(getContext(), a, R.styleable.MaterialSearchView_msv_searchVoiceIcon));
             }
 
             if (a.hasValue(R.styleable.MaterialSearchView_msv_searchClearIcon)) {
-                setCloseIcon(a.getDrawable(R.styleable.MaterialSearchView_msv_searchClearIcon));
+                setCloseIcon(ResUtils.getDrawableAttrRes(getContext(), a, R.styleable.MaterialSearchView_msv_searchClearIcon));
             }
 
             if (a.hasValue(R.styleable.MaterialSearchView_msv_searchBackIcon)) {
-                setBackIcon(a.getDrawable(R.styleable.MaterialSearchView_msv_searchBackIcon));
+                setBackIcon(ResUtils.getDrawableAttrRes(getContext(), a, R.styleable.MaterialSearchView_msv_searchBackIcon));
             }
 
             if (a.hasValue(R.styleable.MaterialSearchView_msv_searchSuggestionBackground)) {
-                setSuggestionBackground(a.getDrawable(R.styleable.MaterialSearchView_msv_searchSuggestionBackground));
+                setSuggestionBackground(ResUtils.getDrawableAttrRes(getContext(), a, R.styleable.MaterialSearchView_msv_searchSuggestionBackground));
             }
 
             if (a.hasValue(R.styleable.MaterialSearchView_msv_searchSuggestionIcon)) {
-                setSuggestionIcon(a.getDrawable(R.styleable.MaterialSearchView_msv_searchSuggestionIcon));
+                setSuggestionIcon(ResUtils.getDrawableAttrRes(getContext(), a, R.styleable.MaterialSearchView_msv_searchSuggestionIcon));
             }
 
             if (a.hasValue(R.styleable.MaterialSearchView_android_inputType)) {
@@ -384,6 +385,7 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
 
     /**
      * 设置是否允许语音搜索
+     *
      * @param voiceSearch
      */
     public void setVoiceSearch(boolean voiceSearch) {

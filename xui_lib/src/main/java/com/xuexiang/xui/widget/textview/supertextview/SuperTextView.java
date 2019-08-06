@@ -420,12 +420,12 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
 
         ////////////////////////////////////////////////
 
-        mLeftTvDrawableLeft = typedArray.getDrawable(R.styleable.SuperTextView_sLeftTvDrawableLeft);
-        mLeftTvDrawableRight = typedArray.getDrawable(R.styleable.SuperTextView_sLeftTvDrawableRight);
-        mCenterTvDrawableLeft = typedArray.getDrawable(R.styleable.SuperTextView_sCenterTvDrawableLeft);
-        mCenterTvDrawableRight = typedArray.getDrawable(R.styleable.SuperTextView_sCenterTvDrawableRight);
-        mRightTvDrawableLeft = typedArray.getDrawable(R.styleable.SuperTextView_sRightTvDrawableLeft);
-        mRightTvDrawableRight = typedArray.getDrawable(R.styleable.SuperTextView_sRightTvDrawableRight);
+        mLeftTvDrawableLeft = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sLeftTvDrawableLeft);
+        mLeftTvDrawableRight = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sLeftTvDrawableRight);
+        mCenterTvDrawableLeft = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sCenterTvDrawableLeft);
+        mCenterTvDrawableRight = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sCenterTvDrawableRight);
+        mRightTvDrawableLeft = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sRightTvDrawableLeft);
+        mRightTvDrawableRight = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sRightTvDrawableRight);
 
         mTextViewDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTextViewDrawablePadding, mDefaultMargin);
         ////////////////////////////////////////////////
@@ -470,8 +470,9 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mLeftIconMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconMarginLeft, mDefaultMargin);
         mRightIconMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconMarginRight, mDefaultMargin);
 
-        mLeftIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sLeftIconRes);
-        mRightIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sRightIconRes);
+        mLeftIconRes = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sLeftIconRes);
+        mRightIconRes = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sRightIconRes);
+
         //////////////////////////////////////////////
         mLeftTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTopTextIsBold, false);
         mLeftTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTextIsBold, false);
@@ -485,13 +486,15 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mRightTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTextIsBold, false);
         mRightBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightBottomTextIsBold, false);
 
-        mLeftTextBackground = typedArray.getDrawable(R.styleable.SuperTextView_sLeftTextBackground);
-        mCenterTextBackground = typedArray.getDrawable(R.styleable.SuperTextView_sCenterTextBackground);
-        mRightTextBackground = typedArray.getDrawable(R.styleable.SuperTextView_sRightTextBackground);
+        mLeftTextBackground = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sLeftTextBackground);
+        mCenterTextBackground = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sCenterTextBackground);
+        mRightTextBackground = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sRightTextBackground);
+
         ////////////////////////////////////////////////////
 
         mEnableEdit = typedArray.getBoolean(R.styleable.SuperTextView_sEnableEdit, mEnableEdit);
-        mEditBackground = typedArray.getDrawable(R.styleable.SuperTextView_sEditBackGround);
+        mEditBackground = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sEditBackGround);
+
         mEditTextWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditTextWidth, mEditTextWidth);
         mEditTextString = typedArray.getString(R.styleable.SuperTextView_sEditTextString);
         mEditTextHint = typedArray.getString(R.styleable.SuperTextView_sEditTextHint);
@@ -501,13 +504,13 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
 
         //////////////////////////////////////////////
         mUseRipple = typedArray.getBoolean(R.styleable.SuperTextView_sUseRipple, true);
-        mBackgroundDrawable = typedArray.getDrawable(R.styleable.SuperTextView_sBackgroundDrawableRes);
+        mBackgroundDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sBackgroundDrawableRes);
         ///////////////////////////////////////////////
         mRightViewType = typedArray.getInt(R.styleable.SuperTextView_sRightViewType, -1);
         ////////////////////////////////////////////////
         mIsChecked = typedArray.getBoolean(R.styleable.SuperTextView_sIsChecked, false);
         mRightCheckBoxMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightCheckBoxMarginRight, mDefaultMargin);
-        mRightCheckBoxBg = typedArray.getDrawable(R.styleable.SuperTextView_sRightCheckBoxRes);
+        mRightCheckBoxBg = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sRightCheckBoxRes);
         //////////////////////////////////////////////////
         mRightSwitchMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightSwitchMarginRight, mDefaultMargin);
         mSwitchIsChecked = typedArray.getBoolean(R.styleable.SuperTextView_sSwitchIsChecked, false);
@@ -518,8 +521,8 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mSwitchPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchPadding, 0);
         mThumbTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sThumbTextPadding, 0);
 
-        mThumbResource = typedArray.getDrawable(R.styleable.SuperTextView_sThumbResource);
-        mTrackResource = typedArray.getDrawable(R.styleable.SuperTextView_sTrackResource);
+        mThumbResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sThumbResource);
+        mTrackResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sTrackResource);
 
         mCenterSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
         ////////////////////////////////////////////////////

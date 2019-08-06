@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 
 /**
  * 可伸缩折叠的TextView
@@ -263,8 +264,9 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
         mMaxCollapsedLines = typedArray.getInt(R.styleable.ExpandableTextView_etv_maxCollapsedLines, MAX_COLLAPSED_LINES);
         mAnimationDuration = typedArray.getInt(R.styleable.ExpandableTextView_etv_animDuration, DEFAULT_ANIM_DURATION);
         mAnimAlphaStart = typedArray.getFloat(R.styleable.ExpandableTextView_etv_animAlphaStart, DEFAULT_ANIM_ALPHA_START);
-        mExpandDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_etv_expandDrawable);
-        mCollapseDrawable = typedArray.getDrawable(R.styleable.ExpandableTextView_etv_collapseDrawable);
+
+        mExpandDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ExpandableTextView_etv_expandDrawable);
+        mCollapseDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ExpandableTextView_etv_collapseDrawable);
 
         if (mExpandDrawable == null) {
             mExpandDrawable = getDrawable(getContext(), R.drawable.xui_ic_expand_more_black_12dp);

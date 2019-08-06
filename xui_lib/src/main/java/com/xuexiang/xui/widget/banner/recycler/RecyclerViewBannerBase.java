@@ -97,15 +97,15 @@ public abstract class RecyclerViewBannerBase<L extends RecyclerView.LayoutManage
     }
 
     protected void initView(Context context, AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RecyclerViewBannerBase);
-        mShowIndicator = a.getBoolean(R.styleable.RecyclerViewBannerBase_rvbb_showIndicator, true);
-        mAutoPlayDuration = a.getInt(R.styleable.RecyclerViewBannerBase_rvbb_interval, 4000);
-        mIsAutoPlaying = a.getBoolean(R.styleable.RecyclerViewBannerBase_rvbb_autoPlaying, true);
-        mSelectedDrawable = a.getDrawable(R.styleable.RecyclerViewBannerBase_rvbb_indicatorSelectedSrc);
-        mUnselectedDrawable = a.getDrawable(R.styleable.RecyclerViewBannerBase_rvbb_indicatorUnselectedSrc);
-        int indicatorSize = a.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorSize, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSize));
-        int indicatorSelectedColor = a.getColor(R.styleable.RecyclerViewBannerBase_rvbb_indicatorSelectedColor, Color.RED);
-        int indicatorUnselectedColor = a.getColor(R.styleable.RecyclerViewBannerBase_rvbb_indicatorUnselectedColor, Color.GRAY);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RecyclerViewBannerBase);
+        mShowIndicator = typedArray.getBoolean(R.styleable.RecyclerViewBannerBase_rvbb_showIndicator, true);
+        mAutoPlayDuration = typedArray.getInt(R.styleable.RecyclerViewBannerBase_rvbb_interval, 4000);
+        mIsAutoPlaying = typedArray.getBoolean(R.styleable.RecyclerViewBannerBase_rvbb_autoPlaying, true);
+        mSelectedDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.RecyclerViewBannerBase_rvbb_indicatorSelectedSrc);
+        mUnselectedDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.RecyclerViewBannerBase_rvbb_indicatorUnselectedSrc);
+        int indicatorSize = typedArray.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorSize, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSize));
+        int indicatorSelectedColor = typedArray.getColor(R.styleable.RecyclerViewBannerBase_rvbb_indicatorSelectedColor, Color.RED);
+        int indicatorUnselectedColor = typedArray.getColor(R.styleable.RecyclerViewBannerBase_rvbb_indicatorUnselectedColor, Color.GRAY);
 
         if (mSelectedDrawable == null) {
             //绘制默认选中状态图形
@@ -126,11 +126,11 @@ public abstract class RecyclerViewBannerBase<L extends RecyclerView.LayoutManage
             mUnselectedDrawable = new LayerDrawable(new Drawable[]{unSelectedGradientDrawable});
         }
 
-        mIndicatorMargin = a.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorSpace, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSpace));
-        int marginLeft = a.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorMarginLeft, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginLeft));
-        int marginRight = a.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorMarginRight, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginRight));
-        int marginBottom = a.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorMarginBottom, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginBottom));
-        int g = a.getInt(R.styleable.RecyclerViewBannerBase_rvbb_indicatorGravity, 0);
+        mIndicatorMargin = typedArray.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorSpace, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSpace));
+        int marginLeft = typedArray.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorMarginLeft, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginLeft));
+        int marginRight = typedArray.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorMarginRight, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginRight));
+        int marginBottom = typedArray.getDimensionPixelSize(R.styleable.RecyclerViewBannerBase_rvbb_indicatorMarginBottom, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginBottom));
+        int g = typedArray.getInt(R.styleable.RecyclerViewBannerBase_rvbb_indicatorGravity, 0);
         int gravity;
         if (g == 0) {
             gravity = GravityCompat.START;
@@ -139,8 +139,8 @@ public abstract class RecyclerViewBannerBase<L extends RecyclerView.LayoutManage
         } else {
             gravity = Gravity.CENTER;
         }
-        int orientation = a.getInt(R.styleable.RecyclerViewBannerBase_rvbb_orientation, LinearLayoutManager.HORIZONTAL);
-        a.recycle();
+        int orientation = typedArray.getInt(R.styleable.RecyclerViewBannerBase_rvbb_orientation, LinearLayoutManager.HORIZONTAL);
+        typedArray.recycle();
 
         //recyclerView部分
         mRecyclerView = new RecyclerView(context);
