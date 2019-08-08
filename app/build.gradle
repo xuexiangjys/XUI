@@ -155,7 +155,7 @@ dependencies {
     implementation 'me.samlss:broccoli:1.0.0'
 
     //XQRCode二维码扫描
-    implementation 'com.github.xuexiangjys:XQRCode:1.0.5'
+    implementation 'com.github.xuexiangjys:XQRCode:1.0.6'
     //CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.1"
 

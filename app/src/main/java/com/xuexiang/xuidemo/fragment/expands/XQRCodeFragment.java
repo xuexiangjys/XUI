@@ -220,6 +220,7 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
     @Permission(CAMERA)
     private void initPermission() {
         ToastUtils.toast("相机权限已获取！");
+        XQRCode.setAutoFocusInterval(800);
     }
 
     /**
