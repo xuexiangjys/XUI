@@ -113,8 +113,8 @@ dependencies {
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
-    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.5'
-    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.5'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.6'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.6'
     //切片
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:x1.0.3'
     //页面路由
