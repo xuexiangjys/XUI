@@ -17,9 +17,10 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 
 import android.content.Context;
+import android.view.View;
+
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
@@ -27,12 +28,11 @@ import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.Utils;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 import butterknife.BindView;
@@ -59,7 +59,9 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
      */
     @Override
     public void onItemClick(View itemView, int position) {
-        if (!RefreshState.None.equals(mRefreshLayout.getState())) return;
+        if (!RefreshState.None.equals(mRefreshLayout.getState())) {
+            return;
+        }
 
         Item item = Item.values()[position];
         RefreshHeader header = getRefreshHeader(item);
@@ -74,7 +76,7 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
             Class<?> headerClass = Class.forName("com.scwang.smartrefresh.header." + item.name());
             Constructor<?> constructor = headerClass.getConstructor(Context.class);
             return (RefreshHeader) constructor.newInstance(getContext());
-        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | java.lang.InstantiationException | InvocationTargetException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -114,7 +116,7 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
      */
     @Override
     protected void initViews() {
-        Utils.initRecyclerView(mRecyclerView);
+        WidgetUtils.initRecyclerView(mRecyclerView);
 
         mRecyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
             @Override

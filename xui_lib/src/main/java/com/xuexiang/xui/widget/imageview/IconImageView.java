@@ -29,6 +29,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.Utils;
 
 /**
@@ -80,7 +81,7 @@ public class IconImageView extends AppCompatImageView {
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconImageView);
 
-            Drawable icon = typedArray.getDrawable(R.styleable.IconImageView_iiv_icon);
+            Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.IconImageView_iiv_icon);
             if (icon != null) {
                 mIconBitmap = Utils.getBitmapFromDrawable(icon);
             }

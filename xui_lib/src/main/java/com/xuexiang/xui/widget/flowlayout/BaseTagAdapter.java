@@ -2,7 +2,7 @@ package com.xuexiang.xui.widget.flowlayout;
 
 import android.content.Context;
 
-import com.xuexiang.xui.adapter.BaseListAdapter;
+import com.xuexiang.xui.adapter.listview.BaseListAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

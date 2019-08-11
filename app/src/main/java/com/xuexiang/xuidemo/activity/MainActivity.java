@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -29,6 +30,7 @@ import com.xuexiang.xuidemo.fragment.QRCodeFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.XUtil;
+import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.system.DeviceUtils;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
@@ -78,8 +80,6 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     }
 
     private void initViews() {
-        openPage(ComponentsFragment.class);
-
         initTab();
 
         //静默检查版本更新
@@ -104,6 +104,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         expand.setText("拓展");
         expand.setIcon(R.drawable.selector_icon_tabbar_expand);
         mTabLayout.addTab(expand);
+
+        switchPage(ComponentsFragment.class);
 
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -135,13 +137,6 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         });
     }
 
-//    public void switchTab(final boolean isShow) {
-//        if (isShow) {
-//            ViewUtils.slideIn(mTabLayout,300, null, ViewUtils.Direction.BOTTOM_TO_TOP);
-//        } else {
-//            ViewUtils.slideOut(mTabLayout,300, null, ViewUtils.Direction.TOP_TO_BOTTOM);
-//        }
-//    }
 
     public void openMenu() {
         if (mSlidingRootNav != null) {
@@ -178,7 +173,6 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
             @Override
             public void onClick(View v) {
                 openNewPage(QRCodeFragment.class);
-//                mSlidingRootNav.closeMenu();
             }
         });
 
@@ -203,6 +197,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
             public void onDragStart() {
 
             }
+
             @Override
             public void onDragEnd(boolean isMenuOpened) {
 
@@ -212,7 +207,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
 
     @Override
     public void onItemSelected(int position) {
-        switch(position) {
+        switch (position) {
             case POS_COMPONENTS:
             case POS_UTILITYS:
             case POS_EXPANDS:
@@ -226,7 +221,6 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                 break;
             case POS_ABOUT:
                 openNewPage(AboutFragment.class);
-//                mSlidingRootNav.closeMenu();
                 break;
             case POS_LOGOUT:
                 DialogLoader.getInstance().showConfirmDialog(
@@ -278,6 +272,21 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         }
         ta.recycle();
         return icons;
+    }
+
+    /**
+     * 菜单、返回键响应
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (isMenuOpen()) {
+                closeMenu();
+            } else {
+                ClickUtils.exitBy2Click();
+            }
+        }
+        return true;
     }
 
 }

@@ -104,7 +104,7 @@ public class LoadingViewLayout extends LinearLayout implements IMessageLoader {
             if (!TextUtils.isEmpty(message)) {
                 updateMessage(message);
             }
-            setLoadingIcon(typedArray.getDrawable(R.styleable.LoadingViewLayout_lvl_icon));
+            setLoadingIcon(ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.LoadingViewLayout_lvl_icon));
             typedArray.recycle();
         }
     }

@@ -47,7 +47,9 @@ import static android.app.Activity.RESULT_OK;
  */
 @Page(name = "自定义二维码扫描", anim = CoreAnim.none)
 public class CustomCaptureFragment extends XPageFragment {
-    public static boolean isOpen = false;
+
+    private boolean mIsOpen;
+
     /**
      * 布局的资源id
      *
@@ -76,6 +78,8 @@ public class CustomCaptureFragment extends XPageFragment {
                             popToBack();
                         }
                     });
+                } else {
+                    mIsOpen = XQRCode.isFlashLightOpen();
                 }
             }
         });
@@ -120,9 +124,9 @@ public class CustomCaptureFragment extends XPageFragment {
     @OnClick(R.id.ll_flash_light)
     @SingleClick
     void onClickFlashLight(View v) {
-        isOpen = !isOpen;
+        mIsOpen = !mIsOpen;
         try {
-            XQRCode.enableFlashLight(isOpen);
+            XQRCode.switchFlashLight(mIsOpen);
         } catch (RuntimeException e) {
             e.printStackTrace();
             ToastUtils.toast("设备不支持闪光灯!");

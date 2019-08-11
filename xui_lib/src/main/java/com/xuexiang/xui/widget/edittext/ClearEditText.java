@@ -64,7 +64,7 @@ public class ClearEditText extends AppCompatEditText implements
         }
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClearEditText, defStyleAttr, 0);
-        mClearDrawable = typedArray.getDrawable(R.styleable.ClearEditText_cet_clearIcon);
+        mClearDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ClearEditText_cet_clearIcon);
         mIconSize = typedArray.getDimensionPixelSize(R.styleable.ClearEditText_cet_clearIconSize, 0);
         typedArray.recycle();
 
@@ -72,7 +72,7 @@ public class ClearEditText extends AppCompatEditText implements
             //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
             mClearDrawable = getCompoundDrawables()[2];
             if (mClearDrawable == null) {
-                mClearDrawable = ResUtils.getDrawable(R.drawable.xui_ic_default_clear_btn);
+                mClearDrawable = ResUtils.getVectorDrawable(context, R.drawable.xui_ic_default_clear_btn);
             }
         }
         if (mIconSize != 0) {

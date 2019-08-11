@@ -10,8 +10,10 @@ import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xpage.enums.CoreAnim;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.actionbar.TitleUtils;
+import com.xuexiang.xui.widget.progress.loading.IMessageLoader;
 import com.xuexiang.xutil.net.JsonUtil;
 
 /**
@@ -19,6 +21,8 @@ import com.xuexiang.xutil.net.JsonUtil;
  * @since 2018/5/25 下午3:44
  */
 public abstract class BaseFragment extends XPageFragment {
+
+    private IMessageLoader mIMessageLoader;
 
     @Override
     protected void initPage() {
@@ -34,6 +38,22 @@ public abstract class BaseFragment extends XPageFragment {
                 popToBack();
             }
         });
+    }
+
+    public IMessageLoader getMessageLoader() {
+        if (mIMessageLoader == null) {
+            mIMessageLoader = WidgetUtils.getMiniLoadingDialog(getContext());
+        }
+        return mIMessageLoader;
+    }
+
+    public IMessageLoader getMessageLoader(String message) {
+        if (mIMessageLoader == null) {
+            mIMessageLoader = WidgetUtils.getMiniLoadingDialog(getContext(), message);
+        } else {
+            mIMessageLoader.updateMessage(message);
+        }
+        return mIMessageLoader;
     }
 
     @Override

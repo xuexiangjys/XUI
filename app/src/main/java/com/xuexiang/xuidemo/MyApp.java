@@ -8,6 +8,7 @@ import androidx.multidex.MultiDex;
 import com.luck.picture.lib.tools.PictureFileUtils;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.utils.sdkinit.BuglyInit;
+import com.xuexiang.xuidemo.utils.sdkinit.TbsInit;
 import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
 import com.xuexiang.xuidemo.utils.sdkinit.XBasicLibInit;
 import com.xuexiang.xuidemo.utils.sdkinit.XUpdateInit;
@@ -36,6 +37,7 @@ public class MyApp extends Application {
         XBasicLibInit.init(this);
         //三方SDK初始化
         XUpdateInit.init(this);
+        TbsInit.init(this);
         //运营统计数据运行时不初始化
         if (!BuildConfig.DEBUG) {
             UMengInit.init(this);

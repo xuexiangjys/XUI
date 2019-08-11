@@ -20,17 +20,27 @@ package com.xuexiang.xui.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.adapter.recyclerview.DividerItemDecoration;
+import com.xuexiang.xui.adapter.recyclerview.GridDividerItemDecoration;
 import com.xuexiang.xui.widget.dialog.LoadingDialog;
 import com.xuexiang.xui.widget.dialog.MiniLoadingDialog;
 import com.xuexiang.xui.widget.progress.loading.IMessageLoader;
 import com.xuexiang.xui.widget.progress.loading.LoadingViewLayout;
+
+import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
 
 /**
  * 组件工具类
@@ -54,6 +64,8 @@ public final class WidgetUtils {
         activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
+
+    //===============Spinner=============//
 
     /**
      * Spinner统一风格
@@ -82,6 +94,65 @@ public final class WidgetUtils {
             spinner.setDropDownVerticalOffset(itemHeight + dropdownOffset);
         }
     }
+
+    //===============recyclerView=============//
+
+    /**
+     * 初始化Grid网格RecyclerView
+     *
+     * @param recyclerView
+     * @param spanCount     一行的数量
+     * @param dividerWidth 分割线的宽度
+     */
+    public static void initGridRecyclerView(@NonNull RecyclerView recyclerView, int spanCount, int dividerWidth) {
+        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), spanCount));
+        recyclerView.addItemDecoration(new GridDividerItemDecoration(recyclerView.getContext(), spanCount, dividerWidth));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+    /**
+     * @param recyclerView
+     */
+    public static void initGridRecyclerView(@NonNull RecyclerView recyclerView, int spanCount, int dividerWidth, int dividerColor) {
+        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), spanCount));
+        recyclerView.addItemDecoration(new GridDividerItemDecoration(recyclerView.getContext(), spanCount, dividerWidth, dividerColor));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+    /**
+     * 初始化RecyclerView
+     *
+     * @param recyclerView
+     */
+    public static void initRecyclerView(@NonNull RecyclerView recyclerView) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+    /**
+     * 初始化RecyclerView
+     *
+     * @param recyclerView
+     */
+    public static void initRecyclerView(@NonNull RecyclerView recyclerView, int dividerHeight) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL, dividerHeight));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+    /**
+     * 初始化RecyclerView
+     *
+     * @param recyclerView
+     */
+    public static void initRecyclerView(@NonNull RecyclerView recyclerView, int dividerHeight, int dividerColor) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL, dividerHeight, dividerColor));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+    //===============Loading=============//
 
     /**
      * 获取loading加载框

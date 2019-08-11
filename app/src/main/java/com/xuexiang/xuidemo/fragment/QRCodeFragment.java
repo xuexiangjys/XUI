@@ -122,7 +122,7 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
                         switch (position) {
                             case 0:
                                 if (result) {
-                                    SocialShareUtils.sharePicture(PathUtils.getUriForFile(FileUtils.getFileByPath(imgPath)));
+                                    SocialShareUtils.sharePicture(getActivity(), PathUtils.getUriForFile(FileUtils.getFileByPath(imgPath)));
                                 } else {
                                     ToastUtils.toast("图片发送失败!");
                                 }

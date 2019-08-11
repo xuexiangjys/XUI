@@ -30,12 +30,14 @@ import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.imageview.photoview.PhotoViewAttacher;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
 import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
 import com.xuexiang.xui.widget.imageview.preview.loader.ISimpleTarget;
 import com.xuexiang.xui.widget.imageview.preview.loader.OnVideoClickListener;
 import com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView;
+import com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar;
 
 
 /**
@@ -53,11 +55,12 @@ public class BasePhotoFragment extends Fragment {
     public static final String KEY_PREVIEW_ITEM = "com.xuexiang.xui.widget.preview.KEY_PREVIEW_ITEM";
     public static final String KEY_DRAG = "com.xuexiang.xui.widget.preview.KEY_DRAG";
     public static final String KEY_SENSITIVITY = "com.xuexiang.xui.widget.preview.KEY_SENSITIVITY";
+    public static final String KEY_PROGRESS_COLOR = "com.xuexiang.xui.widget.preview.KEY_PROGRESS_COLOR";
     private IPreviewInfo mPreviewInfo;
     private boolean isTransPhoto = false;
     protected SmoothImageView mImageView;
     protected View mRootView;
-    protected View mLoadingView;
+    protected MaterialProgressBar mLoadingView;
     protected ISimpleTarget mISimpleTarget;
     protected ImageView mBtnVideo;
     public static OnVideoClickListener listener;
@@ -72,7 +75,8 @@ public class BasePhotoFragment extends Fragment {
                                                 IPreviewInfo item, boolean currentIndex,
                                                 boolean isSingleFling,
                                                 boolean isDrag,
-                                                float sensitivity) {
+                                                float sensitivity,
+                                                int progressColorId) {
         BasePhotoFragment fragment;
         try {
             fragment = fragmentClass.newInstance();
@@ -85,6 +89,7 @@ public class BasePhotoFragment extends Fragment {
         bundle.putBoolean(KEY_SING_FILING, isSingleFling);
         bundle.putBoolean(KEY_DRAG, isDrag);
         bundle.putFloat(KEY_SENSITIVITY, sensitivity);
+        bundle.putInt(KEY_PROGRESS_COLOR, progressColorId);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -167,6 +172,7 @@ public class BasePhotoFragment extends Fragment {
 
             }
         });
+
         mISimpleTarget = new ISimpleTarget() {
 
             @Override
@@ -200,6 +206,8 @@ public class BasePhotoFragment extends Fragment {
         boolean isSingleFling = true;
         // 非动画进入的Fragment，默认背景为黑色
         if (bundle != null) {
+            int colorId = bundle.getInt(KEY_PROGRESS_COLOR, R.color.xui_config_color_main_theme);
+            mLoadingView.setSupportIndeterminateTintList(ResUtils.getColors(colorId));
             isSingleFling = bundle.getBoolean(KEY_SING_FILING);
             //地址
             mPreviewInfo = bundle.getParcelable(KEY_PREVIEW_ITEM);

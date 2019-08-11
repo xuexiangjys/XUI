@@ -18,16 +18,17 @@ package com.xuexiang.xui.widget.imageview.preview.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.TextView;
+
 import androidx.annotation.CallSuper;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
@@ -41,6 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_DRAG;
+import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_PROGRESS_COLOR;
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SENSITIVITY;
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SING_FILING;
 
@@ -127,9 +129,9 @@ public class PreviewActivity extends FragmentActivity {
             SmoothImageView.setDuration(duration);
             Class<? extends BasePhotoFragment> clazz;
             clazz = (Class<? extends BasePhotoFragment>) getIntent().getSerializableExtra(KEY_CLASSNAME);
-            iniFragment(mImgUrls, mCurrentIndex, clazz);
+            initFragment(mImgUrls, mCurrentIndex, clazz);
         } catch (Exception e) {
-            iniFragment(mImgUrls, mCurrentIndex, BasePhotoFragment.class);
+            initFragment(mImgUrls, mCurrentIndex, BasePhotoFragment.class);
         }
 
     }
@@ -141,7 +143,7 @@ public class PreviewActivity extends FragmentActivity {
      * @param currentIndex 选中索引
      * @param className    显示Fragment
      **/
-    protected void iniFragment(List<IPreviewInfo> imgUrls, int currentIndex, Class<? extends BasePhotoFragment> className) {
+    protected void initFragment(List<IPreviewInfo> imgUrls, int currentIndex, Class<? extends BasePhotoFragment> className) {
         if (imgUrls != null) {
             int size = imgUrls.size();
             for (int i = 0; i < size; i++) {
@@ -150,7 +152,8 @@ public class PreviewActivity extends FragmentActivity {
                                 currentIndex == i,
                                 getIntent().getBooleanExtra(KEY_SING_FILING, false),
                                 getIntent().getBooleanExtra(KEY_DRAG, false),
-                                getIntent().getFloatExtra(KEY_SENSITIVITY, 0.5f))
+                                getIntent().getFloatExtra(KEY_SENSITIVITY, 0.5f),
+                                getIntent().getIntExtra(KEY_PROGRESS_COLOR, R.color.xui_config_color_main_theme))
                 );
             }
         } else {
@@ -175,7 +178,7 @@ public class PreviewActivity extends FragmentActivity {
             mBezierBannerView.attachToViewpager(mViewPager);
         } else {
             mTvIndex.setVisibility(View.VISIBLE);
-            mTvIndex.setText(getString(R.string.xui_preview_count_string, (mCurrentIndex + 1), mImgUrls.size()));
+            mTvIndex.setText(getString(R.string.xui_preview_count_string, (mCurrentIndex + 1), getImgSize()));
             mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -186,7 +189,7 @@ public class PreviewActivity extends FragmentActivity {
                 public void onPageSelected(int position) {
                     //当被选中的时候设置小圆点和当前位置
                     if (mTvIndex != null) {
-                        mTvIndex.setText(getString(R.string.xui_preview_count_string, (position + 1), mImgUrls.size()));
+                        mTvIndex.setText(getString(R.string.xui_preview_count_string, (position + 1), getImgSize()));
                     }
                     mCurrentIndex = position;
                     mViewPager.setCurrentItem(mCurrentIndex, true);
@@ -213,7 +216,10 @@ public class PreviewActivity extends FragmentActivity {
             }
         });
 
+    }
 
+    private int getImgSize() {
+        return mImgUrls != null ? mImgUrls.size() : 0;
     }
 
     /***退出预览的动画***/
@@ -223,7 +229,7 @@ public class PreviewActivity extends FragmentActivity {
         }
         mIsTransformOut = true;
         int currentItem = mViewPager.getCurrentItem();
-        if (currentItem < mImgUrls.size()) {
+        if (currentItem < getImgSize()) {
             BasePhotoFragment fragment = fragments.get(currentItem);
             if (mTvIndex != null) {
                 mTvIndex.setVisibility(View.GONE);

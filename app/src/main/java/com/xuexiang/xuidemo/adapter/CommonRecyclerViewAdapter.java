@@ -44,7 +44,7 @@ public class CommonRecyclerViewAdapter extends RecyclerView.Adapter<CommonRecycl
     }
 
     public static List<Data> generateDatas(int count) {
-        ArrayList<Data> mDatas = new ArrayList<>();
+        List<Data> mDatas = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             mDatas.add(new Data(String.valueOf(i)));
         }
@@ -52,15 +52,18 @@ public class CommonRecyclerViewAdapter extends RecyclerView.Adapter<CommonRecycl
     }
 
     public void addItem(int position) {
-        if (position > mItems.size()) return;
+        if (position > mItems.size()) {
+            return;
+        }
 
         mItems.add(position, new Data(String.valueOf(position)));
         notifyItemInserted(position);
     }
 
     public void removeItem(int position) {
-        if (position >= mItems.size()) return;
-
+        if (position >= mItems.size()) {
+            return;
+        }
         mItems.remove(position);
         notifyItemRemoved(position);
     }

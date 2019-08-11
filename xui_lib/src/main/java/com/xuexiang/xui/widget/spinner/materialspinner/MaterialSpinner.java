@@ -89,27 +89,27 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param defStyleAttr
      */
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MaterialSpinner, defStyleAttr, 0);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MaterialSpinner, defStyleAttr, 0);
         int defaultColor = getTextColors().getDefaultColor();
         boolean rtl = ResUtils.isRtl();
 
         try {
-            mBackgroundColor = ta.getColor(R.styleable.MaterialSpinner_ms_background_color, Color.WHITE);
-            mBackgroundSelector = ta.getResourceId(R.styleable.MaterialSpinner_ms_background_selector, 0);
-            mTextColor = ta.getColor(R.styleable.MaterialSpinner_ms_text_color, defaultColor);
+            mBackgroundColor = typedArray.getColor(R.styleable.MaterialSpinner_ms_background_color, Color.WHITE);
+            mBackgroundSelector = typedArray.getResourceId(R.styleable.MaterialSpinner_ms_background_selector, 0);
+            mTextColor = typedArray.getColor(R.styleable.MaterialSpinner_ms_text_color, defaultColor);
 
-            mArrowDrawable = ResUtils.getDrawableAttrRes(getContext(), ta, R.styleable.MaterialSpinner_ms_arrow_image);
-            mArrowColor = ta.getColor(R.styleable.MaterialSpinner_ms_arrow_tint, mTextColor);
-            mHideArrow = ta.getBoolean(R.styleable.MaterialSpinner_ms_hide_arrow, false);
-            mPopupWindowMaxHeight = ta.getDimensionPixelSize(R.styleable.MaterialSpinner_ms_dropdown_max_height, 0);
-            mPopupWindowHeight = ta.getLayoutDimension(R.styleable.MaterialSpinner_ms_dropdown_height, WindowManager.LayoutParams.WRAP_CONTENT);
+            mArrowDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.MaterialSpinner_ms_arrow_image);
+            mArrowColor = typedArray.getColor(R.styleable.MaterialSpinner_ms_arrow_tint, mTextColor);
+            mHideArrow = typedArray.getBoolean(R.styleable.MaterialSpinner_ms_hide_arrow, false);
+            mPopupWindowMaxHeight = typedArray.getDimensionPixelSize(R.styleable.MaterialSpinner_ms_dropdown_max_height, 0);
+            mPopupWindowHeight = typedArray.getLayoutDimension(R.styleable.MaterialSpinner_ms_dropdown_height, WindowManager.LayoutParams.WRAP_CONTENT);
             mArrowColorDisabled = ResUtils.lighter(mArrowColor, 0.8f);
-            mEntriesID = ta.getResourceId(R.styleable.MaterialSpinner_ms_entries, 0);
-            mDropDownBg = ta.getDrawable(R.styleable.MaterialSpinner_ms_dropdown_bg);
-            mIsInDialog = ta.getBoolean(R.styleable.MaterialSpinner_ms_in_dialog, false);
+            mEntriesID = typedArray.getResourceId(R.styleable.MaterialSpinner_ms_entries, 0);
+            mDropDownBg = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.MaterialSpinner_ms_dropdown_bg);
+            mIsInDialog = typedArray.getBoolean(R.styleable.MaterialSpinner_ms_in_dialog, false);
 
         } finally {
-            ta.recycle();
+            typedArray.recycle();
         }
 
         int left, right, bottom, top;

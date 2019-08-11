@@ -39,9 +39,9 @@ public class SimpleTextBanner extends BaseIndicatorBanner<String, SimpleTextBann
         return inflate;
     }
 
-    //解决内存泄漏的问题
     @Override
     protected void onDetachedFromWindow() {
+        //解决内存泄漏的问题
         pauseScroll();
         super.onDetachedFromWindow();
     }

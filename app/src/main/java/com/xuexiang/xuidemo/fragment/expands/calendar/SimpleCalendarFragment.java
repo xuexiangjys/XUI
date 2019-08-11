@@ -20,6 +20,7 @@ package com.xuexiang.xuidemo.fragment.expands.calendar;
 import android.graphics.Color;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,15 +28,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
-import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
+import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.widget.CustomRefreshFooter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,12 +55,15 @@ import butterknife.BindView;
 @Page(name = "简单的日历控件\n支持自定义样式")
 public class SimpleCalendarFragment extends BaseFragment implements CalendarView.OnCalendarSelectListener {
 
+    @BindView(R.id.refreshLayout)
+    SmartRefreshLayout refreshLayout;
     @BindView(R.id.calendarView)
     CalendarView calendarView;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.calendarLayout)
     CalendarLayout calendarLayout;
+
 
     private NewsCardViewListAdapter mAdapter;
 
@@ -86,7 +95,7 @@ public class SimpleCalendarFragment extends BaseFragment implements CalendarView
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.setAdapter(mAdapter = new NewsCardViewListAdapter());
-        mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+        refreshLayout.setRefreshFooter(new CustomRefreshFooter(getContext()));
 
         initCalendarView();
     }
@@ -115,14 +124,41 @@ public class SimpleCalendarFragment extends BaseFragment implements CalendarView
 
     @Override
     protected void initListeners() {
-        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
             @Override
-            public void onItemClick(View itemView, int position) {
-                Utils.goWeb(getContext(), mAdapter.getItem(position).getDetailUrl());
+            public void onItemClick(View itemView, NewInfo item, int position) {
+                Utils.goWeb(getContext(), item.getDetailUrl());
             }
         });
 
         calendarView.setOnCalendarSelectListener(this);
+
+        refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+                        refreshLayout.finishRefresh();
+                    }
+                }, 1000);
+
+            }
+
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
+                        refreshLayout.finishLoadMore();
+                    }
+                }, 1000);
+
+            }
+        });
+        refreshLayout.autoRefresh();
     }
 
     @Override

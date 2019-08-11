@@ -19,6 +19,8 @@ package com.xuexiang.xui.widget.imageview.preview;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcelable;
+
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
@@ -31,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_DRAG;
+import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_PROGRESS_COLOR;
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SENSITIVITY;
 import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SING_FILING;
 import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_CLASSNAME;
@@ -141,6 +144,16 @@ public final class PreviewBuilder {
      */
     public PreviewBuilder setType(@NonNull IndicatorType indicatorType) {
         intent.putExtra(KEY_TYPE, indicatorType);
+        return this;
+    }
+
+    /***
+     * 设置图片预加载的进度条颜色
+     * @param progressColorId   进度条的颜色资源ID
+     * @return PreviewBuilder
+     */
+    public PreviewBuilder setProgressColor(@ColorRes int progressColorId) {
+        intent.putExtra(KEY_PROGRESS_COLOR, progressColorId);
         return this;
     }
 

@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
 import static com.xuexiang.xui.utils.DensityUtils.dp2px;
@@ -106,7 +107,7 @@ public class MultiLineEditText extends LinearLayout {
         mHintText = typedArray.getString(R.styleable.MultiLineEditText_mlet_hintText);
         mHintTextColor = typedArray.getColor(R.styleable.MultiLineEditText_mlet_hintTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_hint_text));
         mContentPadding = typedArray.getDimensionPixelSize(R.styleable.MultiLineEditText_mlet_contentPadding, dp2px(context, 10));
-        mContentBackground = typedArray.getDrawable(R.styleable.MultiLineEditText_mlet_contentBackground);
+        mContentBackground = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.MultiLineEditText_mlet_contentBackground);
         mContentText = typedArray.getString(R.styleable.MultiLineEditText_mlet_contentText);
         mContentTextColor = typedArray.getColor(R.styleable.MultiLineEditText_mlet_contentTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_input_text));
         mContentTextSize = typedArray.getDimensionPixelSize(R.styleable.MultiLineEditText_mlet_contentTextSize, sp2px(context, 14));

@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 
 import uk.co.chrisjenx.calligraphy.HasTypeface;
 
@@ -220,22 +221,22 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.CommonTextView);
 
         ////////设置文字或者图片资源////////
-        mLeft_drawableLeft = typedArray.getDrawable(R.styleable.CommonTextView_cLeftIconResForDrawableLeft);
-        mLeft_drawableTop = typedArray.getDrawable(R.styleable.CommonTextView_cLeftIconResForDrawableTop);
-        mLeft_drawableRight = typedArray.getDrawable(R.styleable.CommonTextView_cLeftIconResForDrawableRight);
-        mLeft_drawableBottom = typedArray.getDrawable(R.styleable.CommonTextView_cLeftIconResForDrawableBottom);
+        mLeft_drawableLeft = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cLeftIconResForDrawableLeft);
+        mLeft_drawableTop = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cLeftIconResForDrawableTop);
+        mLeft_drawableRight = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cLeftIconResForDrawableRight);
+        mLeft_drawableBottom = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cLeftIconResForDrawableBottom);
 
-        mCenter_drawableLeft = typedArray.getDrawable(R.styleable.CommonTextView_cCenterIconResForDrawableLeft);
-        mCenter_drawableTop = typedArray.getDrawable(R.styleable.CommonTextView_cCenterIconResForDrawableTop);
-        mCenter_drawableRight = typedArray.getDrawable(R.styleable.CommonTextView_cCenterIconResForDrawableRight);
-        mCenter_drawableBottom = typedArray.getDrawable(R.styleable.CommonTextView_cCenterIconResForDrawableBottom);
+        mCenter_drawableLeft = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cCenterIconResForDrawableLeft);
+        mCenter_drawableTop = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cCenterIconResForDrawableTop);
+        mCenter_drawableRight = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cCenterIconResForDrawableRight);
+        mCenter_drawableBottom = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cCenterIconResForDrawableBottom);
 
-        mRight_drawableLeft = typedArray.getDrawable(R.styleable.CommonTextView_cRightIconResForDrawableLeft);
-        mRight_drawableTop = typedArray.getDrawable(R.styleable.CommonTextView_cRightIconResForDrawableTop);
-        mRight_drawableRight = typedArray.getDrawable(R.styleable.CommonTextView_cRightIconResForDrawableRight);
-        mRight_drawableBottom = typedArray.getDrawable(R.styleable.CommonTextView_cRightIconResForDrawableBottom);
+        mRight_drawableLeft = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cRightIconResForDrawableLeft);
+        mRight_drawableTop = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cRightIconResForDrawableTop);
+        mRight_drawableRight = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cRightIconResForDrawableRight);
+        mRight_drawableBottom = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cRightIconResForDrawableBottom);
 
-        mLeft_IV_drawable = typedArray.getDrawable(R.styleable.CommonTextView_cLeftImageViewDrawableRes);
+        mLeft_IV_drawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cLeftImageViewDrawableRes);
 //        mRight_IV_drawable = typedArray.getDrawable(R.styleable.CommonTextView_cRightImageViewDrawableRes);
         /////////////////////
 
@@ -328,7 +329,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         mCenterViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cCenterViewIsClickable, false);
         mRightViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cRightViewIsClickable, false);
 
-        mBackground_drawable = typedArray.getDrawable(R.styleable.CommonTextView_cBackgroundDrawableRes);
+        mBackground_drawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.CommonTextView_cBackgroundDrawableRes);
 
         mIsCenterAlignLeft = typedArray.getBoolean(R.styleable.CommonTextView_cIsCenterAlignLeft, false);
         mCenterViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterViewMarginLeft, dip2px(mContext, 200));

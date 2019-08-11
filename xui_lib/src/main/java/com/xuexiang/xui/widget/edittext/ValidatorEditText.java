@@ -77,21 +77,21 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         if (attrs != null) {
-            TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.ValidatorEditText, defStyleAttr, 0);
+            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ValidatorEditText, defStyleAttr, 0);
             try {
-                String regexp = tArray.getString(R.styleable.ValidatorEditText_vet_regexp);
+                String regexp = typedArray.getString(R.styleable.ValidatorEditText_vet_regexp);
                 if (!TextUtils.isEmpty(regexp)) {
                     mValidators = new ArrayList<>();
-                    String errorMessage = tArray.getString(R.styleable.ValidatorEditText_vet_errorMessage);
+                    String errorMessage = typedArray.getString(R.styleable.ValidatorEditText_vet_errorMessage);
                     if (!TextUtils.isEmpty(errorMessage)) {
                         mValidators.add(new RegexpValidator(errorMessage, regexp));
                     } else {
                         mValidators.add(new RegexpValidator(ResUtils.getString(R.string.xui_met_input_error), regexp));
                     }
                 }
-                mIsAutoValidate = tArray.getBoolean(R.styleable.ValidatorEditText_vet_autoValidate, true);
-                mIsShowErrorIcon = tArray.getBoolean(R.styleable.ValidatorEditText_vet_show_errorIcon, true);
-                mErrorDrawable = tArray.getDrawable(R.styleable.ValidatorEditText_vet_errorIcon);
+                mIsAutoValidate = typedArray.getBoolean(R.styleable.ValidatorEditText_vet_autoValidate, true);
+                mIsShowErrorIcon = typedArray.getBoolean(R.styleable.ValidatorEditText_vet_show_errorIcon, true);
+                mErrorDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ValidatorEditText_vet_errorIcon);
                 if (mErrorDrawable == null) {
                     //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
                     mErrorDrawable = getCompoundDrawables()[2];
@@ -99,16 +99,16 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
                         mErrorDrawable = ResUtils.getDrawable(R.drawable.xui_ic_default_tip_btn);
                     }
                 }
-                mIconSize = tArray.getDimensionPixelSize(R.styleable.ValidatorEditText_vet_errorIconSize, 0);
+                mIconSize = typedArray.getDimensionPixelSize(R.styleable.ValidatorEditText_vet_errorIconSize, 0);
                 if (mIconSize != 0) {
                     mErrorDrawable.setBounds(0, 0, mIconSize, mIconSize);
                 } else {
                     mErrorDrawable.setBounds(0, 0, mErrorDrawable.getIntrinsicWidth(), mErrorDrawable.getIntrinsicHeight());
                 }
-                mPosition = tArray.getInt(R.styleable.ValidatorEditText_vet_tipPosition, 2);
+                mPosition = typedArray.getInt(R.styleable.ValidatorEditText_vet_tipPosition, 2);
 
             } finally {
-                tArray.recycle();
+                typedArray.recycle();
             }
         }
     }

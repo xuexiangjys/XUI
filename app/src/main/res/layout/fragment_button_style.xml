@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipChildren="false"
@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -35,16 +35,16 @@
 
                     <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                         style="@style/SuperButton.Gray"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
 
                     <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                         style="@style/SuperButton.Blue"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
                     <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                         style="@style/SuperButton.Green"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
 
                 </LinearLayout>
@@ -58,15 +58,15 @@
 
                     <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                         style="@style/SuperButton.Green"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:enabled="false" />
 
                     <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                         style="@style/SuperButton.Blue.Icon"
-                        android:layout_marginLeft="20dp"
-                        android:drawableLeft="@drawable/icon_mark"
-                        android:paddingLeft="20dp"
-                        android:text="收藏"/>
+                        android:layout_marginStart="20dp"
+                        android:drawableStart="@drawable/icon_mark"
+                        android:paddingStart="20dp"
+                        android:text="收藏" />
 
                 </LinearLayout>
 
@@ -90,15 +90,15 @@
 
                     <com.xuexiang.xui.widget.button.ButtonView
                         style="@style/ButtonView.Gray"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
                     <com.xuexiang.xui.widget.button.ButtonView
                         style="@style/ButtonView.Blue"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
                     <com.xuexiang.xui.widget.button.ButtonView
                         style="@style/ButtonView.Green"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
                 </LinearLayout>
 
@@ -112,17 +112,17 @@
 
                     <com.xuexiang.xui.widget.button.ButtonView
                         style="@style/ButtonView.Blue"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:text="收藏"
                         app:textDrawable="@drawable/icon_mark" />
 
                     <Button
                         style="@style/Button.Blue"
-                        android:layout_marginLeft="20dp"
-                        android:paddingLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:drawableStart="@drawable/icon_mark"
                         android:drawablePadding="10dp"
                         android:gravity="center_vertical"
-                        android:drawableLeft="@drawable/icon_mark"
+                        android:paddingStart="20dp"
                         android:text="收藏" />
 
 
@@ -150,16 +150,16 @@
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         style="@style/RoundButton.Gray"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         style="@style/RoundButton.Blue"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         style="@style/RoundButton.Green"
-                        android:layout_marginLeft="20dp" />
+                        android:layout_marginStart="20dp" />
 
 
                 </LinearLayout>
@@ -173,18 +173,18 @@
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         style="@style/RoundButton.Green"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:enabled="false" />
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         style="@style/RoundButton.Auto"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:text="自适应按钮" />
 
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         style="@style/RoundButton.Auto"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:enabled="false"
                         android:text="不可点击" />
 
@@ -211,13 +211,13 @@
 
                     <Button
                         style="@style/Button.Style"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:background="@drawable/xui_config_bg_blue_btn"
                         android:text="重 置" />
 
                     <Button
                         style="@style/Button.Style"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:background="@drawable/xui_config_bg_blue_btn"
                         android:enabled="false"
                         android:text="重 置" />
@@ -228,6 +228,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -242,14 +243,14 @@
                     <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                         android:id="@+id/bt_countdown1"
                         style="@style/SuperButton.Blue"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:text="获取验证码" />
 
                     <com.xuexiang.xui.widget.button.ButtonView
                         android:id="@+id/bt_countdown2"
                         style="@style/ButtonView.Blue"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:text="获取验证码" />
 
@@ -257,14 +258,14 @@
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/bt_countdown3"
                         style="@style/RoundButton.Blue"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:text="获取验证码" />
 
                     <com.xuexiang.xui.widget.button.CountDownButton
                         android:id="@+id/bt_countdown4"
                         style="@style/Button.Blue"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:text="获取验证码" />
 
@@ -272,5 +273,5 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

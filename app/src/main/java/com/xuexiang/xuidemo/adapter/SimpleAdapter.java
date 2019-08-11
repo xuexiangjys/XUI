@@ -20,7 +20,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.xuexiang.xui.adapter.BaseListAdapter;
+import com.xuexiang.xui.adapter.listview.BaseListAdapter;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xutil.common.StringUtils;
 

@@ -23,7 +23,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
 
@@ -107,14 +107,14 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.4'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.0.7'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.0.7'
     implementation deps.glide
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
-    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.5'
-    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.5'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.6'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.6'
     //切片
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:x1.0.3'
     //页面路由
@@ -142,7 +142,7 @@ dependencies {
     implementation 'com.github.xuexiangjys:RxUtil2:1.1.5'
 
     //PictureSelector图片选择
-    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.3'
+    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.4'
 
     //下拉刷新
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
@@ -155,7 +155,7 @@ dependencies {
     implementation 'me.samlss:broccoli:1.0.0'
 
     //XQRCode二维码扫描
-    implementation 'com.github.xuexiangjys:XQRCode:1.0.5'
+    implementation 'com.github.xuexiangjys:XQRCode:1.0.6'
     //CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.1"
 

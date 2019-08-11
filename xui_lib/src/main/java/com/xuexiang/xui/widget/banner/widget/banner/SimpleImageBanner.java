@@ -13,8 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseIndicatorBanner;
-import com.xuexiang.xui.widget.banner.widget.banner.base.GlideImageLoader;
-import com.xuexiang.xui.widget.banner.widget.banner.base.ImageLoader;
+import com.xuexiang.xui.widget.imageview.ImageLoader;
 
 import java.lang.ref.WeakReference;
 
@@ -37,8 +36,6 @@ public class SimpleImageBanner extends BaseIndicatorBanner<BannerItem, SimpleIma
      * 高／宽比率
      */
     private double mScale = 0.5625D;
-
-    private ImageLoader mImageLoader;
 
     public SimpleImageBanner(Context context) {
         super(context);
@@ -79,13 +76,6 @@ public class SimpleImageBanner extends BaseIndicatorBanner<BannerItem, SimpleIma
         return inflate;
     }
 
-    private ImageLoader getImageLoader() {
-        if (mImageLoader == null) {
-            mImageLoader = new GlideImageLoader();
-        }
-        return  mImageLoader;
-    }
-
     /**
      * 加载图片
      *
@@ -101,7 +91,7 @@ public class SimpleImageBanner extends BaseIndicatorBanner<BannerItem, SimpleIma
         String imgUrl = item.imgUrl;
 
         if (!TextUtils.isEmpty(imgUrl)) {
-            getImageLoader().displayImage(mContext, imgUrl, iv,
+            ImageLoader.get().loadImage(iv, imgUrl,
                     itemWidth, itemHeight, mColorDrawable,
                     mEnableCache ? DiskCacheStrategy.RESOURCE : DiskCacheStrategy.NONE);
         } else {
@@ -147,14 +137,9 @@ public class SimpleImageBanner extends BaseIndicatorBanner<BannerItem, SimpleIma
         return this;
     }
 
-    public SimpleImageBanner setImageLoader(ImageLoader imageLoader) {
-        mImageLoader = imageLoader;
-        return this;
-    }
-
-    //解决内存泄漏的问题
     @Override
     protected void onDetachedFromWindow() {
+        //解决内存泄漏的问题
         pauseScroll();
         super.onDetachedFromWindow();
     }

@@ -104,18 +104,18 @@ public class BannerLayout extends FrameLayout {
     }
 
     protected void initView(Context context, AttributeSet attrs, int defStyleAttr) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BannerLayout, defStyleAttr, 0);
-        mShowIndicator = a.getBoolean(R.styleable.BannerLayout_bl_showIndicator, true);
-        mAutoPlayDuration = a.getInt(R.styleable.BannerLayout_bl_interval, 4000);
-        mIsAutoPlaying = a.getBoolean(R.styleable.BannerLayout_bl_autoPlaying, true);
-        mItemSpace = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_itemSpace, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_itemSpace));
-        mCenterScale = a.getFloat(R.styleable.BannerLayout_bl_centerScale, 1.2F);
-        mMoveSpeed = a.getFloat(R.styleable.BannerLayout_bl_moveSpeed, 1.0F);
-        mSelectedDrawable = a.getDrawable(R.styleable.BannerLayout_bl_indicatorSelectedSrc);
-        mUnselectedDrawable = a.getDrawable(R.styleable.BannerLayout_bl_indicatorUnselectedSrc);
-        int indicatorSize = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorSize, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSize));
-        int indicatorSelectedColor = a.getColor(R.styleable.BannerLayout_bl_indicatorSelectedColor, ResUtils.getColor(R.color.xui_config_color_red));
-        int indicatorUnselectedColor = a.getColor(R.styleable.BannerLayout_bl_indicatorUnselectedColor, ResUtils.getColor(R.color.xui_config_color_gray_2));
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BannerLayout, defStyleAttr, 0);
+        mShowIndicator = typedArray.getBoolean(R.styleable.BannerLayout_bl_showIndicator, true);
+        mAutoPlayDuration = typedArray.getInt(R.styleable.BannerLayout_bl_interval, 4000);
+        mIsAutoPlaying = typedArray.getBoolean(R.styleable.BannerLayout_bl_autoPlaying, true);
+        mItemSpace = typedArray.getDimensionPixelSize(R.styleable.BannerLayout_bl_itemSpace, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_itemSpace));
+        mCenterScale = typedArray.getFloat(R.styleable.BannerLayout_bl_centerScale, 1.2F);
+        mMoveSpeed = typedArray.getFloat(R.styleable.BannerLayout_bl_moveSpeed, 1.0F);
+        mSelectedDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.BannerLayout_bl_indicatorSelectedSrc);
+        mUnselectedDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.BannerLayout_bl_indicatorUnselectedSrc);
+        int indicatorSize = typedArray.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorSize, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSize));
+        int indicatorSelectedColor = typedArray.getColor(R.styleable.BannerLayout_bl_indicatorSelectedColor, ResUtils.getColor(R.color.xui_config_color_red));
+        int indicatorUnselectedColor = typedArray.getColor(R.styleable.BannerLayout_bl_indicatorUnselectedColor, ResUtils.getColor(R.color.xui_config_color_gray_2));
         if (mSelectedDrawable == null) {
             //绘制默认选中状态图形
             GradientDrawable selectedGradientDrawable = new GradientDrawable();
@@ -135,11 +135,11 @@ public class BannerLayout extends FrameLayout {
             mUnselectedDrawable = new LayerDrawable(new Drawable[]{unSelectedGradientDrawable});
         }
 
-        mIndicatorMargin = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorSpace, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSpace));
-        int marginLeft = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginLeft, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginLeft));
-        int marginRight = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginRight, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginRight));
-        int marginBottom = a.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginBottom, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginBottom));
-        int g = a.getInt(R.styleable.BannerLayout_bl_indicatorGravity, 0);
+        mIndicatorMargin = typedArray.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorSpace, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorSpace));
+        int marginLeft = typedArray.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginLeft, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginLeft));
+        int marginRight = typedArray.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginRight, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginRight));
+        int marginBottom = typedArray.getDimensionPixelSize(R.styleable.BannerLayout_bl_indicatorMarginBottom, ResUtils.getDimensionPixelSize(R.dimen.default_recycler_banner_indicatorMarginBottom));
+        int g = typedArray.getInt(R.styleable.BannerLayout_bl_indicatorGravity, 0);
         int gravity;
         if (g == 0) {
             gravity = GravityCompat.START;
@@ -148,8 +148,8 @@ public class BannerLayout extends FrameLayout {
         } else {
             gravity = Gravity.CENTER;
         }
-        int orientation = a.getInt(R.styleable.BannerLayout_bl_orientation, OrientationHelper.HORIZONTAL);
-        a.recycle();
+        int orientation = typedArray.getInt(R.styleable.BannerLayout_bl_orientation, OrientationHelper.HORIZONTAL);
+        typedArray.recycle();
 
         //轮播图部分
         mRecyclerView = new RecyclerView(context);

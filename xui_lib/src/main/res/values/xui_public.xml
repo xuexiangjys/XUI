@@ -216,6 +216,7 @@
     <public name="xui_popup_width" type="attr" />
     <public name="xui_tip_popup_padding_top" type="attr" />
     <public name="xui_tip_popup_padding_left" type="attr" />
+    <public name="ms_item_height_size" type="attr" />
 
     <public name="stf_progressbar_size" type="attr" />
     <public name="stf_tip_img_size" type="attr" />

@@ -16,21 +16,22 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.statelayout.StatefulLayout;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
@@ -64,7 +65,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        Utils.initRecyclerView(mRecyclerView);
+        WidgetUtils.initRecyclerView(mRecyclerView);
 
         mRecyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 

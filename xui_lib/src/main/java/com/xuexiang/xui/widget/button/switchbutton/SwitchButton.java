@@ -30,6 +30,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CompoundButton;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 
 /**
  * switch切换按钮
@@ -159,43 +160,43 @@ public class SwitchButton extends CompoundButton {
         int textExtra = 0;
         int textAdjust = 0;
 
-        TypedArray ta = attrs == null ? null : getContext().obtainStyledAttributes(attrs, R.styleable.SwitchButton);
-        if (ta != null) {
-            thumbDrawable = ta.getDrawable(R.styleable.SwitchButton_swb_thumbDrawable);
-            thumbColor = ta.getColorStateList(R.styleable.SwitchButton_swb_thumbColor);
-            margin = ta.getDimension(R.styleable.SwitchButton_swb_thumbMargin, margin);
-            marginLeft = ta.getDimension(R.styleable.SwitchButton_swb_thumbMarginLeft, margin);
-            marginRight = ta.getDimension(R.styleable.SwitchButton_swb_thumbMarginRight, margin);
-            marginTop = ta.getDimension(R.styleable.SwitchButton_swb_thumbMarginTop, margin);
-            marginBottom = ta.getDimension(R.styleable.SwitchButton_swb_thumbMarginBottom, margin);
-            thumbWidth = ta.getDimension(R.styleable.SwitchButton_swb_thumbWidth, thumbWidth);
-            thumbHeight = ta.getDimension(R.styleable.SwitchButton_swb_thumbHeight, thumbHeight);
-            thumbRadius = ta.getDimension(R.styleable.SwitchButton_swb_thumbRadius, thumbRadius);
-            backRadius = ta.getDimension(R.styleable.SwitchButton_swb_backRadius, backRadius);
-            backDrawable = ta.getDrawable(R.styleable.SwitchButton_swb_backDrawable);
-            backColor = ta.getColorStateList(R.styleable.SwitchButton_swb_backColor);
-            thumbRangeRatio = ta.getFloat(R.styleable.SwitchButton_swb_thumbRangeRatio, thumbRangeRatio);
-            animationDuration = ta.getInteger(R.styleable.SwitchButton_swb_animationDuration, animationDuration);
-            fadeBack = ta.getBoolean(R.styleable.SwitchButton_swb_fadeBack, true);
-            tintColor = ta.getColor(R.styleable.SwitchButton_swb_tintColor, tintColor);
-            textOn = ta.getString(R.styleable.SwitchButton_swb_textOn);
-            textOff = ta.getString(R.styleable.SwitchButton_swb_textOff);
-            textThumbInset = ta.getDimensionPixelSize(R.styleable.SwitchButton_swb_textThumbInset, 0);
-            textExtra = ta.getDimensionPixelSize(R.styleable.SwitchButton_swb_textExtra, 0);
-            textAdjust = ta.getDimensionPixelSize(R.styleable.SwitchButton_swb_textAdjust, 0);
-            ta.recycle();
+        TypedArray typedArray = attrs == null ? null : getContext().obtainStyledAttributes(attrs, R.styleable.SwitchButton);
+        if (typedArray != null) {
+            thumbDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SwitchButton_swb_thumbDrawable);
+            thumbColor = typedArray.getColorStateList(R.styleable.SwitchButton_swb_thumbColor);
+            margin = typedArray.getDimension(R.styleable.SwitchButton_swb_thumbMargin, margin);
+            marginLeft = typedArray.getDimension(R.styleable.SwitchButton_swb_thumbMarginLeft, margin);
+            marginRight = typedArray.getDimension(R.styleable.SwitchButton_swb_thumbMarginRight, margin);
+            marginTop = typedArray.getDimension(R.styleable.SwitchButton_swb_thumbMarginTop, margin);
+            marginBottom = typedArray.getDimension(R.styleable.SwitchButton_swb_thumbMarginBottom, margin);
+            thumbWidth = typedArray.getDimension(R.styleable.SwitchButton_swb_thumbWidth, thumbWidth);
+            thumbHeight = typedArray.getDimension(R.styleable.SwitchButton_swb_thumbHeight, thumbHeight);
+            thumbRadius = typedArray.getDimension(R.styleable.SwitchButton_swb_thumbRadius, thumbRadius);
+            backRadius = typedArray.getDimension(R.styleable.SwitchButton_swb_backRadius, backRadius);
+            backDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SwitchButton_swb_backDrawable);
+            backColor = typedArray.getColorStateList(R.styleable.SwitchButton_swb_backColor);
+            thumbRangeRatio = typedArray.getFloat(R.styleable.SwitchButton_swb_thumbRangeRatio, thumbRangeRatio);
+            animationDuration = typedArray.getInteger(R.styleable.SwitchButton_swb_animationDuration, animationDuration);
+            fadeBack = typedArray.getBoolean(R.styleable.SwitchButton_swb_fadeBack, true);
+            tintColor = typedArray.getColor(R.styleable.SwitchButton_swb_tintColor, tintColor);
+            textOn = typedArray.getString(R.styleable.SwitchButton_swb_textOn);
+            textOff = typedArray.getString(R.styleable.SwitchButton_swb_textOff);
+            textThumbInset = typedArray.getDimensionPixelSize(R.styleable.SwitchButton_swb_textThumbInset, 0);
+            textExtra = typedArray.getDimensionPixelSize(R.styleable.SwitchButton_swb_textExtra, 0);
+            textAdjust = typedArray.getDimensionPixelSize(R.styleable.SwitchButton_swb_textAdjust, 0);
+            typedArray.recycle();
         }
 
         // click
-        ta = attrs == null ? null : getContext().obtainStyledAttributes(attrs, new int[]{android.R.attr.focusable, android.R.attr.clickable});
-        if (ta != null) {
-            boolean focusable = ta.getBoolean(0, true);
+        typedArray = attrs == null ? null : getContext().obtainStyledAttributes(attrs, new int[]{android.R.attr.focusable, android.R.attr.clickable});
+        if (typedArray != null) {
+            boolean focusable = typedArray.getBoolean(0, true);
             //noinspection ResourceType
             @SuppressLint("ResourceType")
-            boolean clickable = ta.getBoolean(1, focusable);
+            boolean clickable = typedArray.getBoolean(1, focusable);
             setFocusable(focusable);
             setClickable(clickable);
-            ta.recycle();
+            typedArray.recycle();
         } else {
             setFocusable(true);
             setClickable(true);

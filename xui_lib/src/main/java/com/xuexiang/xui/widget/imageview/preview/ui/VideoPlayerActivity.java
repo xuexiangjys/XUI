@@ -19,8 +19,11 @@ package com.xuexiang.xui.widget.imageview.preview.ui;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+
+import android.text.TextUtils;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -43,7 +46,15 @@ public class VideoPlayerActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preview_activity_video_player);
         mVideoView = findViewById(R.id.video);
-        mVideoView.setVideoPath(getIntent().getStringExtra(KEY_URL));
+
+        String videoPath = getIntent().getStringExtra(KEY_URL);
+        if (TextUtils.isEmpty(videoPath)) {
+            Toast.makeText(VideoPlayerActivity.this, R.string.xui_preview_video_path_error, Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        mVideoView.setVideoPath(videoPath);
         mVideoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
@@ -52,7 +63,6 @@ public class VideoPlayerActivity extends FragmentActivity {
             }
         });
         mVideoView.start();
-
     }
 
     @Override

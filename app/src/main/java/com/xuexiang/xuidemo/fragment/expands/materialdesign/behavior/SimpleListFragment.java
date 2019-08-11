@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
-import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
+import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
@@ -30,6 +30,7 @@ public class SimpleListFragment extends BaseFragment {
     SwipeRefreshLayout swipeRefreshLayout;
 
     private NewsCardViewListAdapter mAdapter;
+
     @Override
     protected TitleBar initTitle() {
         return null;
@@ -53,10 +54,10 @@ public class SimpleListFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
             @Override
-            public void onItemClick(View itemView, int position) {
-                Utils.goWeb(getContext(), mAdapter.getItem(position).getDetailUrl());
+            public void onItemClick(View itemView, NewInfo item, int position) {
+                Utils.goWeb(getContext(), item.getDetailUrl());
             }
         });
     }

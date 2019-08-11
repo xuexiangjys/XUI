@@ -32,8 +32,6 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 
 /**
- *
- *
  * @author xuexiang
  * @since 2018/11/29 上午12:47
  */
@@ -62,6 +60,29 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
     private static final String PREF_NAME = "PrefShowCaseView";
 
     /**
+     * 设置已经显示
+     *
+     * @param context
+     * @param id
+     */
+    public static void setShowOnce(Context context, String id) {
+        SharedPreferences sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        sharedPrefs.edit().putBoolean(id, true).apply();
+    }
+
+    /**
+     * 是否已显示
+     *
+     * @param context
+     * @param id
+     * @return
+     */
+    public static boolean isShowOnce(Context context, String id) {
+        SharedPreferences sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPrefs.getBoolean(id, false);
+    }
+
+    /**
      * Resets the show once flag
      *
      * @param context context that should be used to create the shared preference instance
@@ -69,7 +90,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
      */
     public static void resetShowOnce(Context context, String id) {
         SharedPreferences sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        sharedPrefs.edit().remove(id).commit();
+        sharedPrefs.edit().remove(id).apply();
     }
 
     /**
@@ -79,7 +100,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
      */
     public static void resetAllShowOnce(Context context) {
         SharedPreferences sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        sharedPrefs.edit().clear().commit();
+        sharedPrefs.edit().clear().apply();
     }
 
     /**
@@ -428,9 +449,9 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
         });
     }
 
-        /**
-         * Inflates picture view layout
-         */
+    /**
+     * Inflates picture view layout
+     */
     private void inflatePicture() {
         inflateCustomView(R.layout.gcv_layout_image, new OnViewInflateListener() {
             @Override
@@ -621,6 +642,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置标题文字
+         *
          * @param title title text
          * @return Builder
          */
@@ -642,6 +664,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置图片资源
+         *
          * @param pictureResId 图片资源Id
          * @return Builder
          */
@@ -652,8 +675,8 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * @param pictureResId 图片资源Id
-         * @param width 图片资源Id
-         * @param height 图片资源Id
+         * @param width        图片资源Id
+         * @param height       图片资源Id
          * @return Builder
          */
         public Builder picture(int pictureResId, int width, int height) {
@@ -676,6 +699,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置聚焦边框的颜色
+         *
          * @param focusBorderColor Border color for focus shape
          * @return Builder
          */
@@ -686,6 +710,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置聚焦边框的粗细
+         *
          * @param focusBorderSize Border size for focus shape
          * @return Builder
          */
@@ -727,6 +752,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置聚焦的控件
+         *
          * @param view view to focus
          * @return Builder
          */
@@ -737,6 +763,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置引导朦层的背景颜色
+         *
          * @param backgroundColor background color of GuideCaseView
          * @return Builder
          */
@@ -756,6 +783,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置自定义引导朦层布局
+         *
          * @param layoutResource custom view layout resource
          * @param listener       inflate listener for custom view
          * @return Builder
@@ -768,6 +796,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置进入动画
+         *
          * @param enterAnimation enter animation for GuideCaseView
          * @return Builder
          */
@@ -778,6 +807,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置退出动画
+         *
          * @param exitAnimation exit animation for GuideCaseView
          * @return Builder
          */
@@ -808,6 +838,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 自动适应屏幕高度
+         *
          * @return
          */
         public Builder fitWindowsAuto() {
@@ -821,6 +852,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 调整的高度
+         *
          * @param adjustHeight
          * @return
          */
@@ -831,6 +863,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置聚焦的形状，默认是圆形
+         *
          * @param focusShape
          * @return
          */
@@ -877,6 +910,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置引导朦层消失的监听
+         *
          * @param dismissListener the dismiss listener
          * @return Builder
          */

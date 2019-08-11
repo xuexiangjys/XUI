@@ -400,6 +400,9 @@ public class XPageWebViewFragment extends BaseFragment {
         return target;
     }
 
+    /**
+     * 和浏览器相关，包括和JS的交互
+     */
     protected WebChromeClient mWebChromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
@@ -420,6 +423,9 @@ public class XPageWebViewFragment extends BaseFragment {
         }
     };
 
+    /**
+     * 和网页url加载相关
+     */
     protected WebViewClient mWebViewClient = new WebViewClient() {
 
         private HashMap<String, Long> mTimer = new HashMap<>();
@@ -587,15 +593,6 @@ public class XPageWebViewFragment extends BaseFragment {
     }
 
     /**
-     * 测试错误页的显示
-     */
-    private void loadErrorWebSite() {
-        if (mAgentWeb != null) {
-            mAgentWeb.getUrlLoader().loadUrl("http://www.unkownwebsiteblog.me");
-        }
-    }
-
-    /**
      * 清除 WebView 缓存
      */
     private void toCleanWebCache() {
@@ -627,24 +624,30 @@ public class XPageWebViewFragment extends BaseFragment {
     //===================生命周期管理===========================//
     @Override
     public void onResume() {
-        mAgentWeb.getWebLifeCycle().onResume();//恢复
+        if (mAgentWeb != null) {
+            mAgentWeb.getWebLifeCycle().onResume();//恢复
+        }
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        mAgentWeb.getWebLifeCycle().onPause(); //暂停应用内所有WebView ， 调用mWebView.resumeTimers();/mAgentWeb.getWebLifeCycle().onResume(); 恢复。
+        if (mAgentWeb != null) {
+            mAgentWeb.getWebLifeCycle().onPause(); //暂停应用内所有WebView ， 调用mWebView.resumeTimers();/mAgentWeb.getWebLifeCycle().onResume(); 恢复。
+        }
         super.onPause();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return mAgentWeb.handleKeyEvent(keyCode, event);
+        return mAgentWeb != null && mAgentWeb.handleKeyEvent(keyCode, event);
     }
 
     @Override
     public void onDestroyView() {
-        mAgentWeb.destroy();
+        if (mAgentWeb != null) {
+            mAgentWeb.destroy();
+        }
         super.onDestroyView();
     }
 

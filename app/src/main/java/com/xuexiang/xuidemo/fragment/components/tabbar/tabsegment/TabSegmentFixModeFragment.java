@@ -82,31 +82,6 @@ public class TabSegmentFixModeFragment extends BaseFragment {
         mContentViewPager.setCurrentItem(0, false);
         mTabSegment.setupWithViewPager(mContentViewPager, false);
         mTabSegment.setMode(TabSegment.MODE_FIXED);
-        mTabSegment.addOnTabSelectedListener(new TabSegment.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(int index) {
-                if (mTabSegment != null) {
-                    mTabSegment.hideSignCountView(index);
-                }
-            }
-
-            @Override
-            public void onTabUnselected(int index) {
-
-            }
-
-            @Override
-            public void onTabReselected(int index) {
-                if (mTabSegment != null) {
-                    mTabSegment.hideSignCountView(index);
-                }
-            }
-
-            @Override
-            public void onDoubleTap(int index) {
-
-            }
-        });
 
         initNoViewPagerTabSegment();
     }
@@ -125,8 +100,34 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                 ToastUtils.toast("点击了" + index);
             }
         });
+        //不使用ViewPager的话，必须notifyDataChanged，否则不能正常显示
         mTabSegment1.notifyDataChanged();
         mTabSegment1.selectTab(0);
+        mTabSegment1.addOnTabSelectedListener(new TabSegment.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int index) {
+                if (mTabSegment1 != null) {
+                    mTabSegment1.hideSignCountView(index);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(int index) {
+
+            }
+
+            @Override
+            public void onTabReselected(int index) {
+                if (mTabSegment1 != null) {
+                    mTabSegment1.hideSignCountView(index);
+                }
+            }
+
+            @Override
+            public void onDoubleTap(int index) {
+
+            }
+        });
 
     }
 

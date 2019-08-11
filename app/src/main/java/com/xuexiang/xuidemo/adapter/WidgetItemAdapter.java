@@ -1,9 +1,11 @@
 package com.xuexiang.xuidemo.adapter;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xpage.model.PageInfo;
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.base.BaseRecyclerAdapter;
-import com.xuexiang.xuidemo.adapter.base.RecyclerViewHolder;
 
 import java.util.List;
 
@@ -23,10 +25,10 @@ public class WidgetItemAdapter extends BaseRecyclerAdapter<PageInfo> {
     }
 
     @Override
-    public void bindData(RecyclerViewHolder holder, int position, PageInfo item) {
-        holder.getTextView(R.id.item_name).setText(item.getName());
+    public void bindData(@NonNull RecyclerViewHolder holder, int position, PageInfo item) {
+        holder.text(R.id.item_name, item.getName());
         if (item.getExtra() != 0) {
-            holder.getImageView(R.id.item_icon).setImageResource(item.getExtra());
+            holder.image(R.id.item_icon, item.getExtra());
         }
     }
 

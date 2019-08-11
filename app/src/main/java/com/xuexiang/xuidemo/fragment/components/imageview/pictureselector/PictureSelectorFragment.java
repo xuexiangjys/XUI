@@ -68,10 +68,9 @@ public class PictureSelectorFragment extends BaseFragment implements ImageSelect
     protected void initViews() {
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 4, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        mAdapter = new ImageSelectGridAdapter(getActivity(), this);
+        recyclerView.setAdapter(mAdapter = new ImageSelectGridAdapter(getActivity(), this));
         mAdapter.setSelectList(mSelectList);
         mAdapter.setSelectMax(8);
-        recyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new ImageSelectGridAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View v) {
@@ -108,6 +107,8 @@ public class PictureSelectorFragment extends BaseFragment implements ImageSelect
                         .isGif(true)
                         .forResult(PictureConfig.CHOOSE_REQUEST);
                 break;
+            default:
+                break;
         }
     }
 
@@ -120,6 +121,8 @@ public class PictureSelectorFragment extends BaseFragment implements ImageSelect
                     mSelectList = PictureSelector.obtainMultipleResult(data);
                     mAdapter.setSelectList(mSelectList);
                     mAdapter.notifyDataSetChanged();
+                    break;
+                default:
                     break;
             }
         }

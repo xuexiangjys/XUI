@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <attr name="stv_color_common_text" format="color" />
+    <attr name="stv_text_size" format="dimension" />
+    <attr name="stv_max_ems" format="integer" />
+    <attr name="stv_margin" format="dimension" />
+
     <!--SuperTextView-->
     <declare-styleable name="SuperTextView">
-
         <!-- 文字字符串 -->
         <attr name="sLeftTextString" format="string" />
         <attr name="sLeftTopTextString" format="string" />

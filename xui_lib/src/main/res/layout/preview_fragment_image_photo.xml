@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,21 +12,22 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent" />
 
-    <ProgressBar
+    <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
         android:id="@+id/loading"
-        style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_centerInParent="true"
-        android:visibility="visible" />
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:mpb_indeterminateTint="@color/xui_config_color_main_theme" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btnVideo"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_centerInParent="true"
-        android:visibility="gone"
         android:alpha="0"
-        android:src="@drawable/xui_icon_video" />
+        android:src="@drawable/xui_icon_video"
+        android:visibility="gone" />
 
 </RelativeLayout>

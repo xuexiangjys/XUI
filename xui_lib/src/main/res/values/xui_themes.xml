@@ -26,7 +26,7 @@
   如果在项目中要对特定项目配置业务相关的 Theme，在 values 目录下修改 themes.xml 的 AppTheme。
    -->
 
-    <style name="XUIRootTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="XUIRootTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <style name="XUIBaseTheme" parent="XUIRootTheme">
 
@@ -103,6 +103,14 @@
         <item name="android:listDivider">@drawable/xui_config_list_divider</item>
 
         <!--**********************************************
+        *                   SuperTextView                *
+        ***********************************************-->
+        <item name="stv_color_common_text">@color/stv_color_common_text</item>
+        <item name="stv_text_size">@dimen/default_stv_text_size</item>
+        <item name="stv_max_ems">20</item>
+        <item name="stv_margin">@dimen/default_stv_margin</item>
+
+        <!--**********************************************
         *                   xui_round_btn                *
         ***********************************************-->
         <item name="xui_round_btn_bg_color">@color/xui_transparent</item>
@@ -149,17 +157,36 @@
         <item name="xui_common_list_item_detail_v_text_size">13sp</item>
         <item name="xui_common_list_item_detail_h_text_size">14sp</item>
         <item name="xui_common_list_item_detail_line_space">5dp</item>
-        
-        <item name="xui_list_item_bg_with_border_bottom">@drawable/xui_list_item_bg_with_border_bottom</item>
-        <item name="xui_list_item_bg_with_border_bottom_pressed">@drawable/xui_list_item_bg_with_border_bottom_pressed</item>
-        <item name="xui_list_item_bg_with_border_bottom_selector">@drawable/xui_list_item_bg_with_border_bottom_selector</item>
-        <item name="xui_list_item_bg_with_border_double">@drawable/xui_list_item_bg_with_border_double</item>
-        <item name="xui_list_item_bg_with_border_double_pressed">@drawable/xui_list_item_bg_with_border_double_pressed</item>
-        <item name="xui_list_item_bg_with_border_double_selector">@drawable/xui_list_item_bg_with_border_double_selector</item>
-        <item name="xui_list_item_bg_with_border_none_selector">@drawable/xui_list_item_bg_with_border_none_selector</item>
-        <item name="xui_list_item_bg_with_border_top">@drawable/xui_list_item_bg_with_border_top</item>
-        <item name="xui_list_item_bg_with_border_top_pressed">@drawable/xui_list_item_bg_with_border_top_pressed</item>
-        <item name="xui_list_item_bg_with_border_top_selector">@drawable/xui_list_item_bg_with_border_top_selector</item>
+
+        <item name="xui_list_item_bg_with_border_bottom">
+            @drawable/xui_list_item_bg_with_border_bottom
+        </item>
+        <item name="xui_list_item_bg_with_border_bottom_pressed">
+            @drawable/xui_list_item_bg_with_border_bottom_pressed
+        </item>
+        <item name="xui_list_item_bg_with_border_bottom_selector">
+            @drawable/xui_list_item_bg_with_border_bottom_selector
+        </item>
+        <item name="xui_list_item_bg_with_border_double">
+            @drawable/xui_list_item_bg_with_border_double
+        </item>
+        <item name="xui_list_item_bg_with_border_double_pressed">
+            @drawable/xui_list_item_bg_with_border_double_pressed
+        </item>
+        <item name="xui_list_item_bg_with_border_double_selector">
+            @drawable/xui_list_item_bg_with_border_double_selector
+        </item>
+        <item name="xui_list_item_bg_with_border_none_selector">
+            @drawable/xui_list_item_bg_with_border_none_selector
+        </item>
+        <item name="xui_list_item_bg_with_border_top">@drawable/xui_list_item_bg_with_border_top
+        </item>
+        <item name="xui_list_item_bg_with_border_top_pressed">
+            @drawable/xui_list_item_bg_with_border_top_pressed
+        </item>
+        <item name="xui_list_item_bg_with_border_top_selector">
+            @drawable/xui_list_item_bg_with_border_top_selector
+        </item>
 
         <item name="xui_list_item_height">@dimen/xui_list_item_height</item>
         <item name="xui_list_item_height_higher">@dimen/xui_list_item_height_higher</item>
@@ -168,12 +195,18 @@
         ***********************************************-->
         <item name="xui_bottom_sheet_title_style">@style/BottomSheetTitleStyle</item>
         <item name="xui_bottom_sheet_title_appearance">@style/TextStyle.Title</item>
-        <item name="xui_bottom_sheet_title_bg">?attr/xui_list_item_bg_with_border_bottom_selector</item>
+        <item name="xui_bottom_sheet_title_bg">?attr/xui_list_item_bg_with_border_bottom_selector
+        </item>
 
-        <item name="xui_bottom_sheet_list_item_padding_horizontal">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="xui_bottom_sheet_list_item_text_style">@style/BottomSheetListItemTextStyle</item>
+        <item name="xui_bottom_sheet_list_item_padding_horizontal">
+            ?attr/xui_config_content_spacing_horizontal
+        </item>
+        <item name="xui_bottom_sheet_list_item_text_style">@style/BottomSheetListItemTextStyle
+        </item>
         <item name="xui_bottom_sheet_list_item_text_appearance">@style/TextStyle.Content</item>
-        <item name="xui_bottom_sheet_list_item_bg">?attr/xui_list_item_bg_with_border_bottom_selector</item>
+        <item name="xui_bottom_sheet_list_item_bg">
+            ?attr/xui_list_item_bg_with_border_bottom_selector
+        </item>
         <item name="xui_bottom_sheet_grid_item_text_appearance">@style/TextStyle.Explain</item>
 
         <item name="xui_bottom_sheet_button_text_color">@color/xui_config_color_gray_2</item>
@@ -184,7 +217,9 @@
         ***********************************************-->
         <item name="xui_tab_sign_count_view">@style/TabSegment_CountView</item>
         <item name="xui_tab_sign_count_view_minSize">@dimen/xui_tab_sign_count_view_minSize</item>
-        <item name="xui_tab_sign_count_view_minSize_with_text">@dimen/xui_tab_sign_count_view_minSize_with_text</item>
+        <item name="xui_tab_sign_count_view_minSize_with_text">
+            @dimen/xui_tab_sign_count_view_minSize_with_text
+        </item>
         <item name="xui_tab_sign_count_view_bg">@drawable/xui_sign_count_view_bg</item>
         <item name="xui_tab_sign_count_view_padding_horizontal">4dp</item>
 
@@ -251,8 +286,11 @@
         <item name="xui_config_color_background">@color/xui_config_color_background_tablet</item>
         <item name="android:windowBackground">?attr/xui_config_color_background</item>
 
-        <item name="xui_config_color_separator_light">@color/xui_config_color_separator_light_tablet</item>
-        <item name="xui_config_color_separator_dark">@color/xui_config_color_separator_dark_tablet</item>
+        <item name="xui_config_color_separator_light">
+            @color/xui_config_color_separator_light_tablet
+        </item>
+        <item name="xui_config_color_separator_dark">@color/xui_config_color_separator_dark_tablet
+        </item>
 
         <item name="xui_config_divider_height">@dimen/xui_list_divider_height_table</item>
         <item name="android:listViewStyle">@style/ListView.Tablet</item>
@@ -262,48 +300,91 @@
     <!--大平板主题-->
     <style name="XUITheme.Tablet.Big">
         <!--全局样式-->
-        <item name="xui_config_content_spacing_horizontal">@dimen/xui_config_content_spacing_horizontal_tablet_big</item>
-        <item name="xui_config_content_spacing_vertical">@dimen/xui_config_content_spacing_vertical_tablet_big</item>
-        <item name="xui_config_simple_list_item_height">@dimen/xui_config_simple_list_item_height_tablet_big</item>
-        <item name="xui_config_simple_list_icon_size">@dimen/xui_config_simple_list_icon_size_tablet_big</item>
-        <item name="xui_config_separator_height">@dimen/xui_config_separator_height_tablet_big</item>
+        <item name="xui_config_content_spacing_horizontal">
+            @dimen/xui_config_content_spacing_horizontal_tablet_big
+        </item>
+        <item name="xui_config_content_spacing_vertical">
+            @dimen/xui_config_content_spacing_vertical_tablet_big
+        </item>
+        <item name="xui_config_simple_list_item_height">
+            @dimen/xui_config_simple_list_item_height_tablet_big
+        </item>
+        <item name="xui_config_simple_list_icon_size">
+            @dimen/xui_config_simple_list_icon_size_tablet_big
+        </item>
+        <item name="xui_config_separator_height">@dimen/xui_config_separator_height_tablet_big
+        </item>
         <!--文字字号样式-->
         <item name="xui_config_size_title_text">@dimen/xui_config_size_title_text_tablet_big</item>
-        <item name="xui_config_size_content_text">@dimen/xui_config_size_content_text_tablet_big</item>
-        <item name="xui_config_size_explain_text">@dimen/xui_config_size_explain_text_tablet_big</item>
-        <item name="xui_config_size_spinner_text">@dimen/xui_config_size_spinner_text_tablet_big</item>
+        <item name="xui_config_size_content_text">@dimen/xui_config_size_content_text_tablet_big
+        </item>
+        <item name="xui_config_size_explain_text">@dimen/xui_config_size_explain_text_tablet_big
+        </item>
+        <item name="xui_config_size_spinner_text">@dimen/xui_config_size_spinner_text_tablet_big
+        </item>
         <!--按钮样式-->
         <item name="xui_btn_view_radius">@dimen/default_btn_view_radius_tablet_big</item>
         <item name="xui_btn_view_width">@dimen/default_btn_view_width_tablet_big</item>
         <item name="xui_btn_view_height">@dimen/default_btn_view_height_tablet_big</item>
         <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_tablet_big</item>
-        <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_tablet_big</item>
-        <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_tablet_big</item>
-        <item name="xui_guide_btn_padding_horizontal">@dimen/xui_guide_btn_padding_horizontal_table_big</item>
-        <item name="xui_guide_btn_padding_vertical">@dimen/xui_guide_btn_padding_vertical_table_big</item>
+        <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_tablet_big
+        </item>
+        <item name="xui_config_icon_drawable_padding">
+            @dimen/xui_config_icon_drawable_padding_tablet_big
+        </item>
+        <item name="xui_guide_btn_padding_horizontal">
+            @dimen/xui_guide_btn_padding_horizontal_table_big
+        </item>
+        <item name="xui_guide_btn_padding_vertical">
+            @dimen/xui_guide_btn_padding_vertical_table_big
+        </item>
         <item name="xui_guide_btn_margin_bottom">@dimen/xui_guide_btn_margin_bottom_table_big</item>
         <!--输入框样式-->
-        <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_tablet_big</item>
-        <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_tablet_big</item>
-        <item name="xui_config_size_edittext_components_spacing">@dimen/xui_config_size_edittext_components_spacing_tablet_big</item>
-        <item name="xui_config_size_edittext_left_padding">@dimen/xui_config_size_edittext_left_padding_tablet_big</item>
-        <item name="xui_config_size_edittext_radius">@dimen/xui_config_size_edittext_radius_tablet_big</item>
-        <item name="xui_config_size_edittext_height">@dimen/xui_config_size_edittext_height_tablet_big</item>
+        <item name="xui_config_size_edittext_input_text">
+            @dimen/xui_config_size_edittext_input_text_tablet_big
+        </item>
+        <item name="xui_config_size_edittext_helper_text">
+            @dimen/xui_config_size_edittext_helper_text_tablet_big
+        </item>
+        <item name="xui_config_size_edittext_components_spacing">
+            @dimen/xui_config_size_edittext_components_spacing_tablet_big
+        </item>
+        <item name="xui_config_size_edittext_left_padding">
+            @dimen/xui_config_size_edittext_left_padding_tablet_big
+        </item>
+        <item name="xui_config_size_edittext_radius">
+            @dimen/xui_config_size_edittext_radius_tablet_big
+        </item>
+        <item name="xui_config_size_edittext_height">
+            @dimen/xui_config_size_edittext_height_tablet_big
+        </item>
         <!--actionbar-->
         <item name="xui_actionbar_height">@dimen/xui_actionbar_height_tablet_big</item>
-        <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_tablet_big</item>
-        <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_tablet_big</item>
-        <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_tablet_big</item>
-        <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_tablet_big</item>
-        <item name="xui_actionbar_side_text_padding">@dimen/xui_actionbar_side_text_padding_tablet_big</item>
+        <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_tablet_big
+        </item>
+        <item name="xui_actionbar_action_text_size">
+            @dimen/xui_actionbar_action_text_size_tablet_big
+        </item>
+        <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_tablet_big
+        </item>
+        <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_tablet_big
+        </item>
+        <item name="xui_actionbar_side_text_padding">
+            @dimen/xui_actionbar_side_text_padding_tablet_big
+        </item>
         <!--*********************************************
         *                  MaterialDialog               *
         **********************************************-->
         <item name="md_dialog_max_width">@dimen/default_md_dialog_max_width_tablet_big</item>
-        <item name="md_dialog_vertical_margin">@dimen/default_md_dialog_vertical_margin_tablet_big</item>
-        <item name="md_dialog_horizontal_margin">@dimen/default_md_dialog_horizontal_margin_tablet_big</item>
+        <item name="md_dialog_vertical_margin">@dimen/default_md_dialog_vertical_margin_tablet_big
+        </item>
+        <item name="md_dialog_horizontal_margin">
+            @dimen/default_md_dialog_horizontal_margin_tablet_big
+        </item>
         <item name="md_button_height">@dimen/default_md_button_height_tablet_big</item>
-        <item name="md_button_padding_horizontal">@dimen/default_md_button_padding_horizontal_tablet_big</item>
+        <item name="md_button_padding_horizontal">
+            @dimen/default_md_button_padding_horizontal_tablet_big
+        </item>
         <item name="md_title_textsize">@dimen/default_md_title_textsize_tablet_big</item>
         <item name="md_dialog_frame_margin">@dimen/default_md_dialog_frame_margin_tablet_big</item>
         <item name="md_button_textsize">@dimen/default_md_button_textsize_tablet_big</item>
@@ -315,10 +396,15 @@
 
         <item name="md_simpleitem_height">@dimen/default_md_simpleitem_height_tablet_big</item>
         <item name="md_simplelist_icon">@dimen/default_md_simplelist_icon_tablet_big</item>
-        <item name="md_simplelist_icon_margin">@dimen/default_md_simplelist_icon_margin_tablet_big</item>
-        <item name="md_simplelist_icon_padding">@dimen/default_md_simplelist_icon_padding_tablet_big</item>
+        <item name="md_simplelist_icon_margin">@dimen/default_md_simplelist_icon_margin_tablet_big
+        </item>
+        <item name="md_simplelist_icon_padding">
+            @dimen/default_md_simplelist_icon_padding_tablet_big
+        </item>
 
-        <item name="md_preference_content_inset">@dimen/default_md_preference_content_inset_tablet_big</item>
+        <item name="md_preference_content_inset">
+            @dimen/default_md_preference_content_inset_tablet_big
+        </item>
         <!--popup-->
         <item name="xui_popup_width">@dimen/xui_popup_width_tablet_big</item>
         <item name="xui_tip_popup_padding_top">@dimen/xui_tip_popup_padding_top_tablet_big</item>
@@ -336,16 +422,24 @@
         *                  Dialog                       *
         **********************************************-->
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_big</item>
-        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_big</item>
-        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_big</item>
-        <item name="xui_dialog_mini_loading_padding_size">@dimen/xui_dialog_mini_loading_padding_size_tablet_big</item>
-        <item name="xui_dialog_mini_loading_min_size">@dimen/xui_dialog_mini_loading_min_size_tablet_big</item>
+        <item name="xui_dialog_loading_padding_size">
+            @dimen/xui_dialog_loading_padding_size_tablet_big
+        </item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_big
+        </item>
+        <item name="xui_dialog_mini_loading_padding_size">
+            @dimen/xui_dialog_mini_loading_padding_size_tablet_big
+        </item>
+        <item name="xui_dialog_mini_loading_min_size">
+            @dimen/xui_dialog_mini_loading_min_size_tablet_big
+        </item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_big</item>
         <item name="xui_mini_loading_view_size">@dimen/xui_mini_loading_view_size_tablet_big</item>
         <item name="xui_loading_text_size">@dimen/xui_loading_text_size_tablet_big</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_big</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_big</item>
-        <item name="xui_mini_loading_margin_size">@dimen/xui_mini_loading_margin_size_tablet_big</item>
+        <item name="xui_mini_loading_margin_size">@dimen/xui_mini_loading_margin_size_tablet_big
+        </item>
         <item name="mini_loading_view_size">@dimen/mini_loading_view_size_tablet_big</item>
 
         <!--**********************************************
@@ -377,50 +471,98 @@
     <!--小平板主题-->
     <style name="XUITheme.Tablet.Small">
         <!--全局样式-->
-        <item name="xui_config_content_spacing_horizontal">@dimen/xui_config_content_spacing_horizontal_tablet_small</item>
-        <item name="xui_config_content_spacing_vertical">@dimen/xui_config_content_spacing_vertical_tablet_small</item>
-        <item name="xui_config_simple_list_item_height">@dimen/xui_config_simple_list_item_height_tablet_small</item>
-        <item name="xui_config_simple_list_icon_size">@dimen/xui_config_simple_list_icon_size_tablet_small</item>
-        <item name="xui_config_separator_height">@dimen/xui_config_separator_height_tablet_small</item>
+        <item name="xui_config_content_spacing_horizontal">
+            @dimen/xui_config_content_spacing_horizontal_tablet_small
+        </item>
+        <item name="xui_config_content_spacing_vertical">
+            @dimen/xui_config_content_spacing_vertical_tablet_small
+        </item>
+        <item name="xui_config_simple_list_item_height">
+            @dimen/xui_config_simple_list_item_height_tablet_small
+        </item>
+        <item name="xui_config_simple_list_icon_size">
+            @dimen/xui_config_simple_list_icon_size_tablet_small
+        </item>
+        <item name="xui_config_separator_height">@dimen/xui_config_separator_height_tablet_small
+        </item>
         <!--文字字号样式-->
-        <item name="xui_config_size_title_text">@dimen/xui_config_size_title_text_tablet_small</item>
-        <item name="xui_config_size_content_text">@dimen/xui_config_size_content_text_tablet_small</item>
-        <item name="xui_config_size_explain_text">@dimen/xui_config_size_explain_text_tablet_small</item>
-        <item name="xui_config_size_spinner_text">@dimen/xui_config_size_spinner_text_tablet_small</item>
+        <item name="xui_config_size_title_text">@dimen/xui_config_size_title_text_tablet_small
+        </item>
+        <item name="xui_config_size_content_text">@dimen/xui_config_size_content_text_tablet_small
+        </item>
+        <item name="xui_config_size_explain_text">@dimen/xui_config_size_explain_text_tablet_small
+        </item>
+        <item name="xui_config_size_spinner_text">@dimen/xui_config_size_spinner_text_tablet_small
+        </item>
         <!--按钮样式-->
         <item name="xui_btn_view_radius">@dimen/default_btn_view_radius_tablet_small</item>
         <item name="xui_btn_view_width">@dimen/default_btn_view_width_tablet_small</item>
         <item name="xui_btn_view_height">@dimen/default_btn_view_height_tablet_small</item>
         <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_tablet_small</item>
-        <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_tablet_small</item>
-        <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_tablet_small</item>
-        <item name="xui_guide_btn_padding_horizontal">@dimen/xui_guide_btn_padding_horizontal_table_small</item>
-        <item name="xui_guide_btn_padding_vertical">@dimen/xui_guide_btn_padding_vertical_table_small</item>
-        <item name="xui_guide_btn_margin_bottom">@dimen/xui_guide_btn_margin_bottom_table_small</item>
+        <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_tablet_small
+        </item>
+        <item name="xui_config_icon_drawable_padding">
+            @dimen/xui_config_icon_drawable_padding_tablet_small
+        </item>
+        <item name="xui_guide_btn_padding_horizontal">
+            @dimen/xui_guide_btn_padding_horizontal_table_small
+        </item>
+        <item name="xui_guide_btn_padding_vertical">
+            @dimen/xui_guide_btn_padding_vertical_table_small
+        </item>
+        <item name="xui_guide_btn_margin_bottom">@dimen/xui_guide_btn_margin_bottom_table_small
+        </item>
         <!--输入框样式-->
-        <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_tablet_small</item>
-        <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_tablet_small</item>
-        <item name="xui_config_size_edittext_components_spacing">@dimen/xui_config_size_edittext_components_spacing_tablet_small</item>
-        <item name="xui_config_size_edittext_left_padding">@dimen/xui_config_size_edittext_left_padding_tablet_small</item>
-        <item name="xui_config_size_edittext_radius">@dimen/xui_config_size_edittext_radius_tablet_small</item>
-        <item name="xui_config_size_edittext_height">@dimen/xui_config_size_edittext_height_tablet_small</item>
+        <item name="xui_config_size_edittext_input_text">
+            @dimen/xui_config_size_edittext_input_text_tablet_small
+        </item>
+        <item name="xui_config_size_edittext_helper_text">
+            @dimen/xui_config_size_edittext_helper_text_tablet_small
+        </item>
+        <item name="xui_config_size_edittext_components_spacing">
+            @dimen/xui_config_size_edittext_components_spacing_tablet_small
+        </item>
+        <item name="xui_config_size_edittext_left_padding">
+            @dimen/xui_config_size_edittext_left_padding_tablet_small
+        </item>
+        <item name="xui_config_size_edittext_radius">
+            @dimen/xui_config_size_edittext_radius_tablet_small
+        </item>
+        <item name="xui_config_size_edittext_height">
+            @dimen/xui_config_size_edittext_height_tablet_small
+        </item>
         <!--actionbar-->
         <item name="xui_actionbar_height">@dimen/xui_actionbar_height_tablet_small</item>
-        <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_tablet_small</item>
-        <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_tablet_small</item>
-        <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_tablet_small</item>
-        <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_tablet_small</item>
-        <item name="xui_actionbar_side_text_padding">@dimen/xui_actionbar_side_text_padding_tablet_small</item>
+        <item name="xui_actionbar_title_text_size">
+            @dimen/xui_actionbar_title_text_size_tablet_small
+        </item>
+        <item name="xui_actionbar_action_text_size">
+            @dimen/xui_actionbar_action_text_size_tablet_small
+        </item>
+        <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_tablet_small
+        </item>
+        <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_tablet_small
+        </item>
+        <item name="xui_actionbar_side_text_padding">
+            @dimen/xui_actionbar_side_text_padding_tablet_small
+        </item>
         <!--*********************************************
         *                  MaterialDialog               *
         **********************************************-->
         <item name="md_dialog_max_width">@dimen/default_md_dialog_max_width_tablet_small</item>
-        <item name="md_dialog_vertical_margin">@dimen/default_md_dialog_vertical_margin_tablet_small</item>
-        <item name="md_dialog_horizontal_margin">@dimen/default_md_dialog_horizontal_margin_tablet_small</item>
+        <item name="md_dialog_vertical_margin">
+            @dimen/default_md_dialog_vertical_margin_tablet_small
+        </item>
+        <item name="md_dialog_horizontal_margin">
+            @dimen/default_md_dialog_horizontal_margin_tablet_small
+        </item>
         <item name="md_button_height">@dimen/default_md_button_height_tablet_small</item>
-        <item name="md_button_padding_horizontal">@dimen/default_md_button_padding_horizontal_tablet_small</item>
+        <item name="md_button_padding_horizontal">
+            @dimen/default_md_button_padding_horizontal_tablet_small
+        </item>
         <item name="md_title_textsize">@dimen/default_md_title_textsize_tablet_small</item>
-        <item name="md_dialog_frame_margin">@dimen/default_md_dialog_frame_margin_tablet_small</item>
+        <item name="md_dialog_frame_margin">@dimen/default_md_dialog_frame_margin_tablet_small
+        </item>
         <item name="md_button_textsize">@dimen/default_md_button_textsize_tablet_small</item>
         <item name="md_content_textsize">@dimen/default_md_content_textsize_tablet_small</item>
         <item name="md_explain_textsize">@dimen/default_md_explain_textsize_tablet_small</item>
@@ -430,14 +572,21 @@
 
         <item name="md_simpleitem_height">@dimen/default_md_simpleitem_height_tablet_small</item>
         <item name="md_simplelist_icon">@dimen/default_md_simplelist_icon_tablet_small</item>
-        <item name="md_simplelist_icon_margin">@dimen/default_md_simplelist_icon_margin_tablet_small</item>
-        <item name="md_simplelist_icon_padding">@dimen/default_md_simplelist_icon_padding_tablet_small</item>
+        <item name="md_simplelist_icon_margin">
+            @dimen/default_md_simplelist_icon_margin_tablet_small
+        </item>
+        <item name="md_simplelist_icon_padding">
+            @dimen/default_md_simplelist_icon_padding_tablet_small
+        </item>
 
-        <item name="md_preference_content_inset">@dimen/default_md_preference_content_inset_tablet_small</item>
+        <item name="md_preference_content_inset">
+            @dimen/default_md_preference_content_inset_tablet_small
+        </item>
         <!--popup-->
         <item name="xui_popup_width">@dimen/xui_popup_width_tablet_small</item>
         <item name="xui_tip_popup_padding_top">@dimen/xui_tip_popup_padding_top_tablet_small</item>
-        <item name="xui_tip_popup_padding_left">@dimen/xui_tip_popup_padding_left_tablet_small</item>
+        <item name="xui_tip_popup_padding_left">@dimen/xui_tip_popup_padding_left_tablet_small
+        </item>
         <!--spinner-->
         <item name="ms_padding_left_size">@dimen/default_ms_padding_left_size_tablet_small</item>
         <item name="ms_padding_top_size">@dimen/default_ms_padding_top_size_tablet_small</item>
@@ -451,16 +600,25 @@
         *                  Dialog                       *
         **********************************************-->
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_small</item>
-        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_small</item>
-        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_small</item>
-        <item name="xui_dialog_mini_loading_padding_size">@dimen/xui_dialog_mini_loading_padding_size_tablet_small</item>
-        <item name="xui_dialog_mini_loading_min_size">@dimen/xui_dialog_mini_loading_min_size_tablet_small</item>
+        <item name="xui_dialog_loading_padding_size">
+            @dimen/xui_dialog_loading_padding_size_tablet_small
+        </item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_small
+        </item>
+        <item name="xui_dialog_mini_loading_padding_size">
+            @dimen/xui_dialog_mini_loading_padding_size_tablet_small
+        </item>
+        <item name="xui_dialog_mini_loading_min_size">
+            @dimen/xui_dialog_mini_loading_min_size_tablet_small
+        </item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_small</item>
-        <item name="xui_mini_loading_view_size">@dimen/xui_mini_loading_view_size_tablet_small</item>
+        <item name="xui_mini_loading_view_size">@dimen/xui_mini_loading_view_size_tablet_small
+        </item>
         <item name="xui_loading_text_size">@dimen/xui_loading_text_size_tablet_small</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_small</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_small</item>
-        <item name="xui_mini_loading_margin_size">@dimen/xui_mini_loading_margin_size_tablet_small</item>
+        <item name="xui_mini_loading_margin_size">@dimen/xui_mini_loading_margin_size_tablet_small
+        </item>
         <item name="mini_loading_view_size">@dimen/mini_loading_view_size_tablet_small</item>
 
         <!--**********************************************
@@ -492,17 +650,28 @@
     <!--手机主题-->
     <style name="XUITheme.Phone">
         <!--全局样式-->
-        <item name="xui_config_content_spacing_horizontal">@dimen/xui_config_content_spacing_horizontal_phone</item>
-        <item name="xui_config_content_spacing_vertical">@dimen/xui_config_content_spacing_vertical_phone</item>
-        <item name="xui_config_simple_list_item_height">@dimen/xui_config_simple_list_item_height_phone</item>
-        <item name="xui_config_simple_list_icon_size">@dimen/xui_config_simple_list_icon_size_phone</item>
+        <item name="xui_config_content_spacing_horizontal">
+            @dimen/xui_config_content_spacing_horizontal_phone
+        </item>
+        <item name="xui_config_content_spacing_vertical">
+            @dimen/xui_config_content_spacing_vertical_phone
+        </item>
+        <item name="xui_config_simple_list_item_height">
+            @dimen/xui_config_simple_list_item_height_phone
+        </item>
+        <item name="xui_config_simple_list_icon_size">
+            @dimen/xui_config_simple_list_icon_size_phone
+        </item>
         <item name="xui_config_separator_height">@dimen/xui_config_separator_height_phone</item>
 
         <item name="xui_config_color_background">@color/xui_config_color_background_phone</item>
         <item name="android:windowBackground">?attr/xui_config_color_background</item>
 
-        <item name="xui_config_color_separator_light">@color/xui_config_color_separator_light_phone</item>
-        <item name="xui_config_color_separator_dark">@color/xui_config_color_separator_dark_phone</item>
+        <item name="xui_config_color_separator_light">
+            @color/xui_config_color_separator_light_phone
+        </item>
+        <item name="xui_config_color_separator_dark">@color/xui_config_color_separator_dark_phone
+        </item>
         <item name="xui_config_divider_height">@dimen/xui_list_divider_height_phone</item>
         <item name="android:listViewStyle">@style/ListView.Phone</item>
 
@@ -517,32 +686,52 @@
         <item name="xui_btn_view_height">@dimen/default_btn_view_height_phone</item>
         <item name="xui_btn_view_text_size">@dimen/default_btn_view_text_size_phone</item>
         <item name="xui_btn_view_border_width">@dimen/default_btn_view_border_width_phone</item>
-        <item name="xui_config_icon_drawable_padding">@dimen/xui_config_icon_drawable_padding_phone</item>
-        <item name="xui_guide_btn_padding_horizontal">@dimen/xui_guide_btn_padding_horizontal_phone</item>
-        <item name="xui_guide_btn_padding_vertical">@dimen/xui_guide_btn_padding_vertical_phone</item>
+        <item name="xui_config_icon_drawable_padding">
+            @dimen/xui_config_icon_drawable_padding_phone
+        </item>
+        <item name="xui_guide_btn_padding_horizontal">
+            @dimen/xui_guide_btn_padding_horizontal_phone
+        </item>
+        <item name="xui_guide_btn_padding_vertical">@dimen/xui_guide_btn_padding_vertical_phone
+        </item>
         <item name="xui_guide_btn_margin_bottom">@dimen/xui_guide_btn_margin_bottom_phone</item>
         <!--输入框样式-->
-        <item name="xui_config_size_edittext_input_text">@dimen/xui_config_size_edittext_input_text_phone</item>
-        <item name="xui_config_size_edittext_helper_text">@dimen/xui_config_size_edittext_helper_text_phone</item>
-        <item name="xui_config_size_edittext_components_spacing">@dimen/xui_config_size_edittext_components_spacing_phone</item>
-        <item name="xui_config_size_edittext_left_padding">@dimen/xui_config_size_edittext_left_padding_phone</item>
-        <item name="xui_config_size_edittext_radius">@dimen/xui_config_size_edittext_radius_phone</item>
-        <item name="xui_config_size_edittext_height">@dimen/xui_config_size_edittext_height_phone</item>
+        <item name="xui_config_size_edittext_input_text">
+            @dimen/xui_config_size_edittext_input_text_phone
+        </item>
+        <item name="xui_config_size_edittext_helper_text">
+            @dimen/xui_config_size_edittext_helper_text_phone
+        </item>
+        <item name="xui_config_size_edittext_components_spacing">
+            @dimen/xui_config_size_edittext_components_spacing_phone
+        </item>
+        <item name="xui_config_size_edittext_left_padding">
+            @dimen/xui_config_size_edittext_left_padding_phone
+        </item>
+        <item name="xui_config_size_edittext_radius">@dimen/xui_config_size_edittext_radius_phone
+        </item>
+        <item name="xui_config_size_edittext_height">@dimen/xui_config_size_edittext_height_phone
+        </item>
         <!--actionbar-->
         <item name="xui_actionbar_height">@dimen/xui_actionbar_height_phone</item>
         <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_phone</item>
-        <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_phone</item>
+        <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_phone
+        </item>
         <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_phone</item>
         <item name="xui_actionbar_action_padding">@dimen/xui_actionbar_action_padding_phone</item>
-        <item name="xui_actionbar_side_text_padding">@dimen/xui_actionbar_side_text_padding_phone</item>
+        <item name="xui_actionbar_side_text_padding">@dimen/xui_actionbar_side_text_padding_phone
+        </item>
         <!--*********************************************
         *                  MaterialDialog               *
         **********************************************-->
         <item name="md_dialog_max_width">@dimen/default_md_dialog_max_width_phone</item>
         <item name="md_dialog_vertical_margin">@dimen/default_md_dialog_vertical_margin_phone</item>
-        <item name="md_dialog_horizontal_margin">@dimen/default_md_dialog_horizontal_margin_phone</item>
+        <item name="md_dialog_horizontal_margin">@dimen/default_md_dialog_horizontal_margin_phone
+        </item>
         <item name="md_button_height">@dimen/default_md_button_height_phone</item>
-        <item name="md_button_padding_horizontal">@dimen/default_md_button_padding_horizontal_phone</item>
+        <item name="md_button_padding_horizontal">
+            @dimen/default_md_button_padding_horizontal_phone
+        </item>
         <item name="md_title_textsize">@dimen/default_md_title_textsize_phone</item>
         <item name="md_dialog_frame_margin">@dimen/default_md_dialog_frame_margin_phone</item>
         <item name="md_button_textsize">@dimen/default_md_button_textsize_phone</item>
@@ -555,9 +744,11 @@
         <item name="md_simpleitem_height">@dimen/default_md_simpleitem_height_phone</item>
         <item name="md_simplelist_icon">@dimen/default_md_simplelist_icon_phone</item>
         <item name="md_simplelist_icon_margin">@dimen/default_md_simplelist_icon_margin_phone</item>
-        <item name="md_simplelist_icon_padding">@dimen/default_md_simplelist_icon_padding_phone</item>
+        <item name="md_simplelist_icon_padding">@dimen/default_md_simplelist_icon_padding_phone
+        </item>
 
-        <item name="md_preference_content_inset">@dimen/default_md_preference_content_inset_phone</item>
+        <item name="md_preference_content_inset">@dimen/default_md_preference_content_inset_phone
+        </item>
         <!--popup-->
         <item name="xui_popup_width">@dimen/xui_popup_width_phone</item>
         <item name="xui_tip_popup_padding_top">@dimen/xui_tip_popup_padding_top_phone</item>
@@ -575,10 +766,15 @@
         *                  Dialog                       *
         **********************************************-->
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_phone</item>
-        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_phone</item>
+        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_phone
+        </item>
         <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_phone</item>
-        <item name="xui_dialog_mini_loading_padding_size">@dimen/xui_dialog_mini_loading_padding_size_phone</item>
-        <item name="xui_dialog_mini_loading_min_size">@dimen/xui_dialog_mini_loading_min_size_phone</item>
+        <item name="xui_dialog_mini_loading_padding_size">
+            @dimen/xui_dialog_mini_loading_padding_size_phone
+        </item>
+        <item name="xui_dialog_mini_loading_min_size">
+            @dimen/xui_dialog_mini_loading_min_size_phone
+        </item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_phone</item>
         <item name="xui_mini_loading_view_size">@dimen/xui_mini_loading_view_size_phone</item>
         <item name="xui_loading_text_size">@dimen/xui_loading_text_size_phone</item>
@@ -647,17 +843,26 @@
     *                  BaseStyle                    *
     **********************************************-->
     <style name="ActionBarBase" parent="android:Widget.Holo.Light.ActionBar" />
+
     <style name="ActionBarTitleTextBase" parent="android:TextAppearance.Holo.Widget.ActionBar.Title" />
+
     <style name="ListViewBase" parent="android:Widget.Holo.Light.ListView">
         <item name="android:background">@color/xui_config_color_transparent</item>
         <item name="android:listSelector">@drawable/xui_config_selectable_item_selector</item>
     </style>
+
     <style name="GridViewBase" parent="android:Widget.Holo.Light.GridView" />
+
     <style name="ImageButtonBase" parent="android:Widget.Holo.Light.ImageButton" />
-    <style name="ButtonBase" parent="android:Widget.Holo.Light.Button"/>
+
+    <style name="ButtonBase" parent="android:Widget.Holo.Light.Button" />
+
     <style name="EditTextBase" parent="android:Widget.Holo.Light.EditText" />
+
     <style name="AutoCompleteTextViewBase" parent="android:Widget.Holo.Light.AutoCompleteTextView" />
+
     <style name="DropDownListViewBase" parent="android:Widget.Holo.Light.ListView.DropDown" />
-    <style name="TextAppearanceBase" parent="android:TextAppearance.Holo"/>
+
+    <style name="TextAppearanceBase" parent="android:TextAppearance.Holo" />
 
 </resources>

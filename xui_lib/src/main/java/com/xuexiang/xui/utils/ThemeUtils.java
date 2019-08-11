@@ -80,7 +80,20 @@ public final class ThemeUtils {
         return typedValue.getFloat();
     }
 
-    public static float resolveFloat(Context context, int attrRes, float defaultValue){
+    public static int resolveInt(Context context, int attrRes) {
+        return resolveInt(context, attrRes, 0);
+    }
+
+    public static int resolveInt(Context context, int attrRes, int defaultValue) {
+        TypedArray a = context.obtainStyledAttributes(new int[]{attrRes});
+        try {
+            return a.getInt(0, defaultValue);
+        } finally {
+            a.recycle();
+        }
+    }
+
+    public static float resolveFloat(Context context, int attrRes, float defaultValue) {
         TypedArray a = context.obtainStyledAttributes(new int[]{attrRes});
         try {
             return a.getFloat(0, defaultValue);
