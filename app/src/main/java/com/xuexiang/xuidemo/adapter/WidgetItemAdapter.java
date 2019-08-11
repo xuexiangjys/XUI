@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.adapter;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
@@ -23,7 +25,7 @@ public class WidgetItemAdapter extends BaseRecyclerAdapter<PageInfo> {
     }
 
     @Override
-    public void bindData(RecyclerViewHolder holder, int position, PageInfo item) {
+    public void bindData(@NonNull RecyclerViewHolder holder, int position, PageInfo item) {
         holder.text(R.id.item_name, item.getName());
         if (item.getExtra() != 0) {
             holder.image(R.id.item_icon, item.getExtra());

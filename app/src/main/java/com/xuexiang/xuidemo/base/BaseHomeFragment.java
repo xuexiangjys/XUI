@@ -17,8 +17,10 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +48,7 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2018/12/29 上午11:18
  */
-public abstract class BaseHomeFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener {
+public abstract class BaseHomeFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener<PageInfo> {
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -101,6 +103,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
 
     /**
      * 进行排序
+     *
      * @param pageInfoList
      * @return
      */
@@ -116,8 +119,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
 
     @Override
     @SingleClick
-    public void onItemClick(View itemView, int pos) {
-        PageInfo widgetInfo = mWidgetItemAdapter.getItem(pos);
+    public void onItemClick(View itemView, PageInfo widgetInfo, int pos) {
         if (widgetInfo != null) {
             openNewPage(widgetInfo.getName());
         }

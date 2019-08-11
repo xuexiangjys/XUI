@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.adapter;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xuidemo.R;
@@ -17,7 +19,7 @@ public class NewsCardViewListAdapter extends BaseRecyclerAdapter<NewInfo> {
     }
 
     @Override
-    public void bindData(RecyclerViewHolder holder, int position, NewInfo model) {
+    public void bindData(@NonNull RecyclerViewHolder holder, int position, NewInfo model) {
         if (model != null) {
             holder.text(R.id.tv_user_name, model.getUserName());
             holder.text(R.id.tv_tag, model.getTag());

@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.adapter.swipe;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
@@ -47,7 +48,7 @@ public class SwipeDragTouchListAdapter extends BaseRecyclerAdapter<String> {
      * @param item
      */
     @Override
-    public void bindData(final RecyclerViewHolder holder, int position, String item) {
+    public void bindData(@NonNull final RecyclerViewHolder holder, int position, String item) {
         holder.text(R.id.tv_title, item);
 
         holder.findViewById(R.id.iv_touch).setOnTouchListener(new View.OnTouchListener() {

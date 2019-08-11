@@ -23,6 +23,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
@@ -86,7 +88,7 @@ public class RecyclerViewBannerAdapter extends BaseRecyclerAdapter<String> {
      * @param imgUrl
      */
     @Override
-    public void bindData(RecyclerViewHolder holder, final int position, String imgUrl) {
+    public void bindData(@NonNull RecyclerViewHolder holder, final int position, String imgUrl) {
         ImageView imageView = holder.findViewById(R.id.iv_item);
 
         if (!TextUtils.isEmpty(imgUrl)) {

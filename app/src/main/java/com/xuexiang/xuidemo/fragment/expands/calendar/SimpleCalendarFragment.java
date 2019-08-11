@@ -38,6 +38,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
+import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.widget.CustomRefreshFooter;
@@ -123,10 +124,10 @@ public class SimpleCalendarFragment extends BaseFragment implements CalendarView
 
     @Override
     protected void initListeners() {
-        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
             @Override
-            public void onItemClick(View itemView, int position) {
-                Utils.goWeb(getContext(), mAdapter.getItem(position).getDetailUrl());
+            public void onItemClick(View itemView, NewInfo item, int position) {
+                Utils.goWeb(getContext(), item.getDetailUrl());
             }
         });
 

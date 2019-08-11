@@ -36,7 +36,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xui.widget.imageview.ImageLoader;
-import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
 
 /**
  * 通用的ViewHolder
@@ -179,13 +178,13 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * @param position
      * @return
      */
-    public RecyclerViewHolder viewClick(@IdRes int id, final OnViewItemClickListener listener, final int position) {
+    public <T> RecyclerViewHolder viewClick(@IdRes int id, final OnViewItemClickListener<T> listener, final T item, final int position) {
         View view = findView(id);
         if (listener != null) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onViewItemClick(v, position);
+                    listener.onViewItemClick(v, item, position);
                 }
             });
         }
@@ -307,40 +306,43 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     /**
      * 列表条目点击监听
      */
-    public interface OnItemClickListener {
+    public interface OnItemClickListener<T> {
         /**
          * 条目点击
          *
          * @param itemView 条目
+         * @param item     数据
          * @param position 索引
          */
-        void onItemClick(View itemView, int position);
+        void onItemClick(View itemView, T item, int position);
     }
 
     /**
      * 列表条目长按监听
      */
-    public interface OnItemLongClickListener {
+    public interface OnItemLongClickListener<T> {
         /**
          * 条目长按
          *
          * @param itemView 条目
+         * @param item     数据
          * @param position 索引
          */
-        void onItemLongClick(View itemView, int position);
+        void onItemLongClick(View itemView, T item, int position);
     }
 
 
     /**
      * 布局内控件点击事件
      */
-    public interface OnViewItemClickListener {
+    public interface OnViewItemClickListener<T> {
         /**
          * 控件被点击
          *
          * @param view     被点击的控件
+         * @param item     数据
          * @param position 索引
          */
-        void onViewItemClick(View view, int position);
+        void onViewItemClick(View view, T item, int position);
     }
 }

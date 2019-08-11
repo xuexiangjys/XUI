@@ -28,7 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.scwang.smartrefresh.layout.adapter.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.XRecyclerAdapter;
 import com.xuexiang.xui.widget.imageview.nine.ItemImageClickListener;
 import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
 import com.xuexiang.xui.widget.imageview.nine.NineGridImageViewAdapter;
@@ -46,26 +46,26 @@ import java.util.List;
  * @author xuexiang
  * @since 2018/12/9 下午11:51
  */
-public class NineGridRecycleAdapter extends BaseRecyclerAdapter<NineGridInfo, NineGridRecycleAdapter.NineGridHolder> {
+public class NineGridRecycleAdapter extends XRecyclerAdapter<NineGridInfo, NineGridRecycleAdapter.NineGridHolder> {
 
     @NonNull
     @Override
-    public NineGridHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    protected NineGridHolder getViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == NineGridImageView.STYLE_GRID) {
-            return new NineGridHolder(getInflate(parent, R.layout.adapter_item_nine_grid_grid_style));
+            return new NineGridHolder(inflateView(parent, R.layout.adapter_item_nine_grid_grid_style));
         } else {
-            return new NineGridHolder(getInflate(parent, R.layout.adapter_item_nine_grid_fill_style));
+            return new NineGridHolder(inflateView(parent, R.layout.adapter_item_nine_grid_fill_style));
         }
+    }
+
+    @Override
+    protected void bindData(@NonNull NineGridHolder holder, int position, NineGridInfo item) {
+        holder.bind(item);
     }
 
     @Override
     public int getItemViewType(int position) {
         return getItem(position).getShowType();
-    }
-
-    @Override
-    protected void onBindViewHolder(NineGridHolder holder, NineGridInfo model, int position) {
-        holder.bind(model);
     }
 
 
