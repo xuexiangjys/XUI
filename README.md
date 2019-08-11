@@ -59,7 +59,7 @@ allprojects {
 dependencies {
   ...
   //1.0.5版本后只支持androidx
-  implementation 'com.github.xuexiangjys:XUI:1.0.7'
+  implementation 'com.github.xuexiangjys:XUI:1.0.8'
 
   implementation 'androidx.appcompat:appcompat:1.0.2'
   implementation 'androidx.recyclerview:recyclerview:1.0.0'
