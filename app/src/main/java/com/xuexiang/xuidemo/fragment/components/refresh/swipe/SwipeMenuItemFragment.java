@@ -2,15 +2,16 @@ package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
 import android.graphics.Color;
 import android.os.Handler;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.ViewGroup;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
 import com.yanzhenjie.recyclerview.OnItemMenuClickListener;
 import com.yanzhenjie.recyclerview.SwipeMenu;
@@ -49,7 +50,7 @@ public class SwipeMenuItemFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        Utils.initRecyclerView(recyclerView);
+        WidgetUtils.initRecyclerView(recyclerView);
 
         //必须在setAdapter之前调用
         recyclerView.setSwipeMenuCreator(swipeMenuCreator);

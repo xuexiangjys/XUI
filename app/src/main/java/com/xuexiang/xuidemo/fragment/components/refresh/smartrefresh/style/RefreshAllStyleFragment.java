@@ -17,9 +17,10 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 
 import android.content.Context;
+import android.view.View;
+
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
@@ -27,12 +28,11 @@ import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.Utils;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 import butterknife.BindView;
@@ -116,7 +116,7 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
      */
     @Override
     protected void initViews() {
-        Utils.initRecyclerView(mRecyclerView);
+        WidgetUtils.initRecyclerView(mRecyclerView);
 
         mRecyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
             @Override

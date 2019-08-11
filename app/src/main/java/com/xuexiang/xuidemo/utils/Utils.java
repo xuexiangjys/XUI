@@ -14,9 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.just.agentweb.core.AgentWeb;
@@ -29,12 +26,10 @@ import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
-import com.xuexiang.xuidemo.base.webview.MiddlewareChromeClient;
 import com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
 
-import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
 /**
@@ -77,12 +72,6 @@ public final class Utils {
                 .createAgentWeb()
                 .ready()
                 .go(url);
-    }
-
-    public static void initRecyclerView(RecyclerView recyclerView) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     /**

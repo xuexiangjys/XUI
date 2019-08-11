@@ -28,11 +28,11 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xuexiang.rxutil2.rxjava.DisposablePool;
 import com.xuexiang.rxutil2.rxjava.RxJavaUtils;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.widget.CustomRefreshFooter;
 import com.xuexiang.xuidemo.widget.CustomRefreshHeader;
 
@@ -65,7 +65,7 @@ public class RefreshCustomStyleFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        Utils.initRecyclerView(mRecyclerView);
+        WidgetUtils.initRecyclerView(mRecyclerView);
         mRecyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         mRefreshLayout.setRefreshHeader(mRefreshHeader = new CustomRefreshHeader(getContext()));

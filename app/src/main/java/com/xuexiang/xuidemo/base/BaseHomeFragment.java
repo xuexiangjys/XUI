@@ -17,24 +17,21 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
+import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
-import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
 import com.xuexiang.xuidemo.fragment.AboutFragment;
-import com.xuexiang.xutil.common.ClickUtils;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -87,9 +84,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
     }
 
     private void initRecyclerView() {
-        int spanCount = 3;
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
-        mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), spanCount));
+        WidgetUtils.initGridRecyclerView(mRecyclerView, 3, DensityUtils.dp2px(2));
 
         mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
         mWidgetItemAdapter.setOnItemClickListener(this);
@@ -97,7 +92,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
     }
 
     /**
-     * @return
+     * @return 页面内容
      */
     protected abstract List<PageInfo> getPageContents();
 
@@ -127,21 +122,6 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
 
     public MainActivity getContainer() {
         return (MainActivity) getActivity();
-    }
-
-    /**
-     * 菜单、返回键响应
-     */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (getContainer().isMenuOpen()) {
-                getContainer().closeMenu();
-            } else {
-                ClickUtils.exitBy2Click();
-            }
-        }
-        return true;
     }
 
     @Override

@@ -1,10 +1,9 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.broccoli;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
@@ -14,17 +13,15 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsListAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.base.decorator.DividerItemDecoration;
 import com.xuexiang.xuidemo.utils.Utils;
 
 import butterknife.BindView;
-
-import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
 
 /**
  * @author xuexiang
@@ -66,9 +63,7 @@ public class CommonPlaceholderFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL, DensityUtils.dp2px(5), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_background)));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        WidgetUtils.initRecyclerView(recyclerView, DensityUtils.dp2px(5), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_background));
 
         recyclerView.setAdapter(mNewsListAdapter = new NewsListAdapter(false));
     }

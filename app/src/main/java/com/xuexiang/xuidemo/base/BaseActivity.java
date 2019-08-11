@@ -79,8 +79,7 @@ public class BaseActivity extends XPageActivity {
      * @return 打开的fragment对象
      */
     public <T extends XPageFragment> T switchPage(Class<T> clazz) {
-//        changePage(clazz);
-        return openPage(clazz, false);
+        return changePage(clazz);
     }
 
     @Override

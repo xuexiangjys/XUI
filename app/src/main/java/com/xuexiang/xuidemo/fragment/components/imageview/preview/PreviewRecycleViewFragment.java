@@ -17,11 +17,12 @@
 package com.xuexiang.xuidemo.fragment.components.imageview.preview;
 
 import android.graphics.Rect;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
@@ -29,13 +30,14 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.recyclerview.GridDividerItemDecoration;
+import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.PreviewRecycleAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.List;
@@ -96,7 +98,8 @@ public class PreviewRecycleViewFragment extends BaseFragment {
     @Override
     protected void initViews() {
         mRecyclerView.setLayoutManager(mGridLayoutManager = new GridLayoutManager(getContext(), 2));
-        mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), 2));
+        mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), 2, DensityUtils.dp2px(3)));
+
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter = new PreviewRecycleAdapter());
         mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果

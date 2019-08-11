@@ -20,7 +20,6 @@ package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,12 +27,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.model.PageInfo;
+import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
-import com.xuexiang.xuidemo.base.decorator.GridDividerItemDecoration;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -104,9 +104,8 @@ public class BottomSheetDialogFragment extends BaseSimpleListFragment {
     }
 
     private void initDialogGrid(RecyclerView recyclerView) {
-        int spanCount = 3;
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
-        recyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), spanCount));
+        WidgetUtils.initGridRecyclerView(recyclerView, 3, DensityUtils.dp2px(2));
+
         WidgetItemAdapter widgetItemAdapter = new WidgetItemAdapter(sortPageInfo(AppPageConfig.getInstance().getComponents()));
         recyclerView.setAdapter(widgetItemAdapter);
     }
