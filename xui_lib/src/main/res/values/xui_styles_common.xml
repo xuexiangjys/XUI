@@ -311,6 +311,8 @@
         <item name="android:textColor">?attr/xui_config_color_input_text</item>
         <item name="android:textColorHint">?attr/xui_config_color_hint_text</item>
         <item name="android:singleLine">true</item>
+        <!--华为手机光标问题解决-->
+        <item name="android:imeOptions">normal</item>
     </style>
 
     <style name="EditText.Normal">
