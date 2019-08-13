@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 9
-        versionName "1.0.8"
+        versionCode 10
+        versionName "1.0.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
@@ -107,8 +107,8 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.4'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.0.8'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.0.8'
     implementation deps.glide
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 

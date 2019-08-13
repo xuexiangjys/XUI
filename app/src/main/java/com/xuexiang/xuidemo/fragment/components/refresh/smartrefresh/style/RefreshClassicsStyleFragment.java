@@ -24,9 +24,6 @@ import android.widget.ImageView;
 
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -36,6 +33,7 @@ import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -50,7 +48,6 @@ import java.util.Random;
 import butterknife.BindView;
 
 import static android.R.layout.simple_list_item_2;
-import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
 
 /**
  * @author xuexiang
@@ -198,9 +195,8 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
         View view = findViewById(R.id.recyclerView);
         if (view instanceof RecyclerView) {
             RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            WidgetUtils.initRecyclerView(recyclerView);
+
             recyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
                 @Override
                 protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {
