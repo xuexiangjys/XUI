@@ -52,15 +52,15 @@
         <!--开启图片列表勾选数字模式,开启的话勾选样式要换-->
         <item name="picture_style_checkNumMode">false</item>
         <!--选择图片样式0/9-->
-        <item name="picture_style_numComplete">true</item>
+        <item name="picture_style_numComplete">false</item>
         <!--图片列表底部背景色-->
         <item name="picture_bottom_bg">@color/color_f4</item>
         <!--图片列表预览文字颜色-->
-        <item name="picture_preview_textColor">@color/picture_tab_color_false</item>
+        <item name="picture_preview_textColor">@color/picture_tab_text_color</item>
         <!--图片列表已完成文字颜色-->
-        <item name="picture_complete_textColor">@color/picture_tab_color_false</item>
+        <item name="picture_complete_textColor">@color/picture_tab_text_color</item>
         <!--图片已选数量圆点背景色-->
-        <item name="picture_num_style">@drawable/pic_num_oval</item>
+        <item name="picture_num_style">@drawable/picture_num_oval</item>
         <!--预览界面标题栏背景色-->
         <item name="picture_ac_preview_title_bg">?attr/colorAccent</item>
         <!--预览界面标题文字颜色-->
@@ -70,7 +70,7 @@
         <!--预览界面标题文字是否加粗-->
         <item name="picture_ac_preview_title_text_bold">false</item>
         <!--预览界面已完成文字颜色-->
-        <item name="picture_ac_preview_complete_textColor">@color/picture_tab_color_false</item>
+        <item name="picture_ac_preview_complete_textColor">@color/picture_tab_text_color</item>
         <!--预览界面底部背景色-->
         <item name="picture_ac_preview_bottom_bg">@color/color_f4</item>
         <!--预览界面返回箭头-->
