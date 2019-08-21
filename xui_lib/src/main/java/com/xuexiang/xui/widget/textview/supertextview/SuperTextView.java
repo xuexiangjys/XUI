@@ -271,14 +271,15 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     //中间空间的高度
     private int mCenterSpaceHeight;
 
-
     private Switch mSwitch;
     //右边switch
     private LayoutParams mSwitchParams;
     private int mRightSwitchMarginRight;
     private boolean mSwitchIsChecked = true;
 
+    //Switch开关关闭的文字提示
     private String mTextOff;
+    //Switch开关打开的文字提示
     private String mTextOn;
 
     private int mSwitchMinWidth;
@@ -286,11 +287,13 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
 
     private int mThumbTextPadding;
 
+    //Switch开关的滑块样式
     private Drawable mThumbResource;
+    //Switch开关的底层样式
     private Drawable mTrackResource;
 
     /////////////////////一下是shape相关属性
-    private int mDefaultShapeColor = 0xffffffff;
+    private int mDefaultShapeColor;
 
     private int mSelectorPressedColor;
     private int mSelectorNormalColor;
@@ -335,6 +338,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mDefaultTextSize = ThemeUtils.resolveDimension(context, R.attr.stv_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_stv_text_size));
         mDefaultMaxEms = ThemeUtils.resolveInt(context, R.attr.stv_max_ems, 20);
         mDefaultMargin = ThemeUtils.resolveDimension(context, R.attr.stv_margin, ResUtils.getDimensionPixelSize(R.dimen.default_stv_margin));
+        mDefaultShapeColor = ThemeUtils.resolveColor(context, R.attr.stv_color_shape, ResUtils.getColor(R.color.xui_config_color_white));
 
         getAttr(attrs);
         initView();

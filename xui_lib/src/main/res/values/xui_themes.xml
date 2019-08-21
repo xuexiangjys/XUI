@@ -106,6 +106,7 @@
         *                   SuperTextView                *
         ***********************************************-->
         <item name="stv_color_common_text">@color/stv_color_common_text</item>
+        <item name="stv_color_shape">@color/xui_config_color_white</item>
         <item name="stv_text_size">@dimen/default_stv_text_size</item>
         <item name="stv_max_ems">20</item>
         <item name="stv_margin">@dimen/default_stv_margin</item>
