@@ -190,8 +190,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private int mDividerLineColor;
     private int mDividerLineHeight;
 
-    private int mDefaultDividerLineColor = 0xFFE8E8E8;//分割线默认颜色
-
     /**
      * 分割线的类型
      */
@@ -245,7 +243,8 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private String mEditTextHint;
     private String mEditTextString;
     private int mEditTextInputType;
-    private boolean mIsAsteriskStyle = false;
+    //密码输入框文字的样式是否是“*”
+    private boolean mIsAsteriskStyle;
 
     private static final int TYPE_NONE = 0;
     private static final int TYPE_CLEAR = 1;
@@ -275,7 +274,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     //右边switch
     private LayoutParams mSwitchParams;
     private int mRightSwitchMarginRight;
-    private boolean mSwitchIsChecked = true;
+    private boolean mSwitchIsChecked;
 
     //Switch开关关闭的文字提示
     private String mTextOff;
@@ -454,7 +453,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mBottomDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomDividerLineMarginRight, 0);
         ///////////////////////////////////////////////
         mDividerLineType = typedArray.getInt(R.styleable.SuperTextView_sDividerLineType, DEFAULT_DIVIDER);
-        mDividerLineColor = typedArray.getColor(R.styleable.SuperTextView_sDividerLineColor, mDefaultDividerLineColor);
+        mDividerLineColor = typedArray.getColor(R.styleable.SuperTextView_sDividerLineColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_light));
 
         mDividerLineHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sDividerLineHeight, dip2px(mContext, 0.5f));
         ////////////////////////////////////////////////
