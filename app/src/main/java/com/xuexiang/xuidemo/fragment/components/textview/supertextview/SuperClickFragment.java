@@ -118,9 +118,9 @@ public class SuperClickFragment extends BaseFragment {
         superTextView_cb.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
             public void onClickListener(SuperTextView superTextView) {
-                superTextView.setCbChecked(!superTextView.getCbisChecked());
+                superTextView.setCheckBoxChecked(!superTextView.getCheckBoxIsChecked());
             }
-        }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
+        }).setCheckBoxCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 ToastUtils.toast("isChecked : " + isChecked);
@@ -132,7 +132,7 @@ public class SuperClickFragment extends BaseFragment {
             public void onClickListener(SuperTextView superTextView) {
                 superTextView.setSwitchIsChecked(!superTextView.getSwitchIsChecked());
             }
-        }).setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
+        }).setSwitchCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 ToastUtils.toast("isChecked : " + isChecked);
@@ -159,8 +159,6 @@ public class SuperClickFragment extends BaseFragment {
                 ToastUtils.toast("点击监听");
             }
         });
-
-
     }
 
 }
