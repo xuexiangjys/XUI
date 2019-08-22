@@ -1628,17 +1628,34 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         return mRightIconIV;
     }
 
-
     /**
-     * @param checked 是否选中
+     * 设置CheckBox是否选中
+     *
+     * @param isChecked 是否选中
      * @return 返回值
      */
-    public SuperTextView setCheckBoxChecked(boolean checked) {
-        mIsChecked = checked;
+    public SuperTextView setCheckBoxChecked(boolean isChecked) {
+        setCheckBoxChecked(isChecked, true);
+        return this;
+    }
+
+    /**
+     * 设置CheckBox是否选中
+     *
+     * @param isChecked 是否选中
+     * @param isSilent  是否不触发回调
+     * @return 返回值
+     */
+    public SuperTextView setCheckBoxChecked(boolean isChecked, boolean isSilent) {
+        mIsChecked = isChecked;
         if (mRightCheckBox != null) {
-            mRightCheckBox.setOnCheckedChangeListener(null);
-            mRightCheckBox.setChecked(checked);
-            mRightCheckBox.setOnCheckedChangeListener(mCheckBoxCheckedChangeListener);
+            if (isSilent) {
+                mRightCheckBox.setOnCheckedChangeListener(null);
+                mRightCheckBox.setChecked(isChecked);
+                mRightCheckBox.setOnCheckedChangeListener(mCheckBoxCheckedChangeListener);
+            } else {
+                mRightCheckBox.setChecked(isChecked);
+            }
         }
         return this;
     }
@@ -1671,15 +1688,33 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     }
 
     /**
-     * @param checked Switch是否选中
+     * 设置Switch是否选中
+     *
+     * @param isChecked Switch是否选中
      * @return 返回值
      */
-    public SuperTextView setSwitchIsChecked(boolean checked) {
-        mSwitchIsChecked = checked;
+    public SuperTextView setSwitchIsChecked(boolean isChecked) {
+        setSwitchIsChecked(isChecked, true);
+        return this;
+    }
+
+    /**
+     * 设置Switch是否选中
+     *
+     * @param isChecked Switch是否选中
+     * @param isSilent  是否不触发回调
+     * @return 返回值
+     */
+    public SuperTextView setSwitchIsChecked(boolean isChecked, boolean isSilent) {
+        mSwitchIsChecked = isChecked;
         if (mRightSwitch != null) {
-            mRightSwitch.setOnCheckedChangeListener(null);
-            mRightSwitch.setChecked(checked);
-            mRightSwitch.setOnCheckedChangeListener(mSwitchCheckedChangeListener);
+            if (isSilent) {
+                mRightSwitch.setOnCheckedChangeListener(null);
+                mRightSwitch.setChecked(isChecked);
+                mRightSwitch.setOnCheckedChangeListener(mSwitchCheckedChangeListener);
+            } else {
+                mRightSwitch.setChecked(isChecked);
+            }
         }
         return this;
     }

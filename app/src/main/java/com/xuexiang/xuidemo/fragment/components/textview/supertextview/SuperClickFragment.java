@@ -130,7 +130,7 @@ public class SuperClickFragment extends BaseFragment {
         superTextView_switch.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
             public void onClickListener(SuperTextView superTextView) {
-                superTextView.setSwitchIsChecked(!superTextView.getSwitchIsChecked());
+                superTextView.setSwitchIsChecked(!superTextView.getSwitchIsChecked(), false);
             }
         }).setSwitchCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
