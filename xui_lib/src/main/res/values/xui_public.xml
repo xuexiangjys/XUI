@@ -182,6 +182,7 @@
     <public name="xui_config_company_logo_bottom" type="attr" />
 
     <public name="xui_actionbar_color" type="attr" />
+    <public name="xui_actionbar_background" type="attr" />
     <public name="xui_actionbar_text_color" type="attr" />
     <public name="xui_actionbar_immersive" type="attr" />
     <public name="xui_actionbar_ic_navigation_back" type="attr" />

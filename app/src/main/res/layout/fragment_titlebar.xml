@@ -9,13 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/xui_config_color_titlebar"
+        app:tb_actionPadding="20dp"
         app:tb_barHeight="65dp"
         app:tb_dividerColor="@color/xui_config_color_red"
         app:tb_leftImageResource="@drawable/icon_back_white"
         app:tb_leftText="回退"
         app:tb_sideTextPadding="20dp"
-        app:tb_actionPadding="20dp"
         app:tb_subTitleText="这是副标题"
         app:tb_titleText="这是一个Title" />
 
@@ -25,10 +24,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/xui_config_color_titlebar"
         app:tb_leftImageResource="@drawable/icon_back_white"
         app:tb_leftText="返回"
-        app:tb_titleText="这是一个Title" />
+        app:tb_titleText="这是一个Title"
+        app:tb_useThemeColor="false"
+        android:background="@drawable/shape_gradient_titlebar_background"/>
 
 
     <com.xuexiang.xui.widget.actionbar.TitleBar
@@ -36,11 +36,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/xui_config_color_titlebar"
+        app:tb_actionPadding="20dp"
         app:tb_centerGravity="left"
         app:tb_leftImageResource="@drawable/ic_navigation_back_white"
+        app:tb_titleText="这是一个Title"
+        app:tb_useThemeColor="false"
+        android:background="@color/app_color_theme_1"/>
+
+
+    <com.xuexiang.xui.widget.actionbar.TitleBar
+        android:id="@+id/titlebar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:tb_actionPadding="20dp"
-        app:tb_titleText="这是一个Title" />
+        app:tb_centerGravity="left"
+        app:tb_titleText="这是一个Title"
+        app:tb_useThemeColor="false"
+        android:background="@color/app_color_theme_5"/>
 
 
 </LinearLayout>

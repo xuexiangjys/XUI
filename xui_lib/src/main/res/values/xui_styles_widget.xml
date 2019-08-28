@@ -472,6 +472,7 @@
         <item name="tb_leftImageResource">?attr/xui_actionbar_ic_navigation_back</item>
         <item name="tb_dividerColor">@color/xui_config_color_transparent</item>
         <item name="tb_dividerHeight">1dp</item>
+        <item name="tb_useThemeColor">true</item>
     </style>
 
     <style name="CountDownButton">
