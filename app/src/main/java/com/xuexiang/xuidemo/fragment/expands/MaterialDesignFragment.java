@@ -15,6 +15,8 @@ import com.xuexiang.xutil.app.ActivityUtils;
 
 import java.util.List;
 
+import static com.xuexiang.xuidemo.base.BaseActivity.KEY_SUPPORT_SLIDE_BACK;
+
 /**
  * @author xuexiang
  * @since 2019-05-07 23:30
@@ -52,7 +54,7 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
                 openPage(BehaviorFragment.class);
                 break;
             case 2:
-                openPage(DrawerLayoutFragment.class);
+                openNewPage(DrawerLayoutFragment.class, KEY_SUPPORT_SLIDE_BACK, false);
                 break;
             case 3:
                 openPage(BottomSheetDialogFragment.class);

@@ -186,6 +186,7 @@ protected void attachBaseContext(Context newBase) {
 * [MaterialSpinner](https://github.com/jaredrummler/MaterialSpinner)
 * [FlycoBanner_Master](https://github.com/H07000223/FlycoBanner_Master)
 * [MaterialProgressBar](https://github.com/DreaminginCodeZH/MaterialProgressBar)
+* [SlideBack](https://github.com/ParfoisMeng/SlideBack)
 
 ## 如果觉得项目还不错，可以考虑打赏一波
 

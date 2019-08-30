@@ -79,6 +79,11 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         initViews();
     }
 
+    @Override
+    protected boolean isSupportSlideBack() {
+        return false;
+    }
+
     private void initViews() {
         initTab();
 

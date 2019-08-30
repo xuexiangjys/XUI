@@ -31,6 +31,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
+import com.xuexiang.xui.widget.slideback.SlideBack;
+
 /**
  * A {@link PreferenceActivity} which implements and proxies the necessary calls
  * to be used with AppCompat.
@@ -44,6 +46,11 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         getDelegate().installViewFactory();
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
+
+        SlideBack.with(this)
+                .haveScroll(true)
+                .callBack(this::finish)
+                .register();
     }
 
     @Override
@@ -112,8 +119,10 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
     @Override
     protected void onDestroy() {
+        SlideBack.unregister(this);
         super.onDestroy();
         getDelegate().onDestroy();
+
     }
 
     @Override
