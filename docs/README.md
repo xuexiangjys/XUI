@@ -1,6 +1,6 @@
 # XUI
 [![](https://jitpack.io/v/xuexiangjys/XUI.svg)](https://jitpack.io/#xuexiangjys/XUI)
-[![api][apisvg]][api]
+[![api](https://img.shields.io/badge/API-17+-brightgreen.svg)](https://android-arsenal.com/api?level=17)
 [![I](https://img.shields.io/github/issues/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI/issues)
 [![Star](https://img.shields.io/github/stars/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI)
 
@@ -165,8 +165,4 @@ protected void attachBaseContext(Context newBase) {
 
 ## 联系方式
 
-[![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
-
-
-[apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
-[api]: https://android-arsenal.com/api?level=17
+[![](https://img.shields.io/badge/点击一键加入QQ交流群-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
