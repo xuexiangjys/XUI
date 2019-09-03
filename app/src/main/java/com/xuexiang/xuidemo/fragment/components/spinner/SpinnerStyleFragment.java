@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Spinner;
 
+import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.simple.AdapterItem;
 import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.SnackbarUtils;
@@ -17,6 +19,9 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.widget.EditSpinnerDialog;
 import com.xuexiang.xutil.tip.ToastUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,6 +40,9 @@ public class SpinnerStyleFragment extends BaseFragment {
 
     @BindView(R.id.spinner)
     MaterialSpinner mMaterialSpinner;
+
+    @BindView(R.id.ms_custom)
+    MaterialSpinner mMaterialSpinnerCustom;
 
     @BindView(R.id.spinner_one)
     MaterialSpinner mMaterialSpinnerOne;
@@ -78,8 +86,12 @@ public class SpinnerStyleFragment extends BaseFragment {
             }
         });
 //        mMaterialSpinner.setSelectedIndex(1);
+        mMaterialSpinner.setSelectedItem("综合排序");
 
-        mMaterialSpinner.setSelectedItem("根据床号降序排序");
+        //注意自定义实体，需要重写对象的toString方法
+        List<AdapterItem> list = getAdapterItems();
+        mMaterialSpinnerCustom.setItems(list);
+        mMaterialSpinnerCustom.setSelectedItem(list.get(1));
 
         mMaterialSpinnerOne.setOnNoMoreChoiceListener(new MaterialSpinner.OnNoMoreChoiceListener() {
             @Override
@@ -94,6 +106,16 @@ public class SpinnerStyleFragment extends BaseFragment {
                 .setBackgroundSelector(R.drawable.selector_custom_spinner_bg)
         );
 
+    }
+
+    @MemoryCache
+    public List<AdapterItem> getAdapterItems() {
+        List<AdapterItem> list = new ArrayList<>();
+        String[] array = ResUtils.getStringArray(R.array.sort_mode_entry);
+        for (String s : array) {
+            list.add(new AdapterItem(s));
+        }
+        return list;
     }
 
     @Override
@@ -143,4 +165,5 @@ public class SpinnerStyleFragment extends BaseFragment {
         KeyboardUtils.setSoftInputAdjustPan(getActivity());
         super.onDestroyView();
     }
+
 }
