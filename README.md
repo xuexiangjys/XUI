@@ -192,6 +192,15 @@ protected void attachBaseContext(Context newBase) {
 
 ![](./art/alipay.jpeg) &emsp; ![](./art/weixinpay.jpeg)
 
+感谢下面小伙伴的赞赏：
+
+姓名 | 金额
+:-|:-
+C*y | 1￥
+*流 | 1￥
+*声 | 50￥
+
+
 ## 联系方式
 
 [![](https://img.shields.io/badge/点击一键加入QQ交流群-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
