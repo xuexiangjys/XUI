@@ -2,10 +2,11 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 9,
-  "VersionName": "1.0.8",
-  "UploadTime": "2019-08-12 00:08:12",
-  "ModifyContent": "\r\n1、增强组件的兼容性和功能。\n2、优化了组件的样式。\n3、新增更多功能的演示。",
+  "VersionCode": 10,
+  "VersionName": "1.0.9",
+  "UploadTime": "2019-09-12 00:00:00",
+  "ModifyContent": "\r\n1、新增侧滑返回组件。\n2、优化了部分组件功能。\n3、新增更多功能的演示。",
   "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo.apk",
-  "ApkSize": 9420
+  "ApkSize": 9420,
+  "ApkMd5": "64CE583B08394E9088A95FE8D33636F2"
 }
