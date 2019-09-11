@@ -53,9 +53,9 @@ deps.support = support
 
 def androidx = [:]
 androidx.annotations = "androidx.annotation:annotation:1.1.0"
-androidx.appcompat = 'androidx.appcompat:appcompat:1.0.2'
+androidx.appcompat = 'androidx.appcompat:appcompat:1.1.0'
 androidx.recyclerview = 'androidx.recyclerview:recyclerview:1.0.0'
-androidx.design = 'com.google.android.material:material:1.1.0-alpha07'
+androidx.design = 'com.google.android.material:material:1.1.0-alpha10'
 androidx.multidex = 'androidx.multidex:multidex:2.0.1'
 deps.androidx = androidx
 
