@@ -15,8 +15,9 @@
     <string name="common_example">示例图片</string>
 
     <string name="about_item_homepage">访问官网</string>
+    <string name="about_item_wiki">说明文档</string>
     <string name="about_item_update">版本更新</string>
-    <string name="about_item_github">GitHub</string>
+    <string name="about_item_github">GitHub主页</string>
     <string name="about_copyright">© %1$s xuexiangjys All rights reserved.</string>
 
     <!--ExpandableTextView-->

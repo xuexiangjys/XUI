@@ -42,7 +42,7 @@
         android:textSize="?attr/xui_config_size_title_text" />
 
     <Button
-        android:id="@id/btnSubmit"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"

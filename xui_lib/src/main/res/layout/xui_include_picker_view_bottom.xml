@@ -34,7 +34,7 @@
         android:textSize="?attr/md_button_textsize" />
 
     <Button
-        android:id="@id/btnSubmit"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"

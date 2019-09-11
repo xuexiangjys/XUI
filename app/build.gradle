@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.xuexiang.xaop' //引用xaop插件
 apply plugin: 'com.xuexiang.xrouter' //引用xrouter-plugin插件实现自动注册
-//apply plugin: 'img-optimizer'
+apply plugin: 'img-optimizer'
 if (isNeedPackage.toBoolean()) {
     apply plugin: 'com.didiglobal.booster'
 }

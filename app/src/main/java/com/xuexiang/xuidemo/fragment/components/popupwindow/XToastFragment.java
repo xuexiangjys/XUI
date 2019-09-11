@@ -6,6 +6,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.toast.XToast;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class XToastFragment extends BaseSimpleListFragment {
     protected void initArgs() {
         super.initArgs();
         XToast.Config.get()
-                .setGravity(Gravity.CENTER)
-                .setAlpha(150); //背景透明度
+                //位置设置为居中
+                .setGravity(Gravity.CENTER);
     }
 
     /**
@@ -49,19 +50,19 @@ public class XToastFragment extends BaseSimpleListFragment {
     protected void onItemClick(int position) {
         switch (position) {
             case 0:
-                XToast.error(getContext(), R.string.error_message).show();
+                XToastUtils.error(R.string.error_message);
                 break;
             case 1:
-                XToast.success(getContext(), R.string.success_message).show();
+                XToastUtils.success(R.string.success_message);
                 break;
             case 2:
-                XToast.info(getContext(), R.string.info_message).show();
+                XToastUtils.info(R.string.info_message);
                 break;
             case 3:
-                XToast.warning(getContext(), R.string.warning_message).show();
+                XToastUtils.warning(R.string.warning_message);
                 break;
             case 4:
-                XToast.normal(getContext(), R.string.normal_message_without_icon).show();
+                XToastUtils.toast(R.string.normal_message_without_icon);
                 break;
             default:
                 break;
