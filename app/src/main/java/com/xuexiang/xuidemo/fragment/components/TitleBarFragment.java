@@ -40,6 +40,8 @@ public class TitleBarFragment extends BaseFragment {
 
     @BindView(R.id.titlebar1)
     TitleBar mTitleBar1;
+    @BindView(R.id.titlebar2)
+    TitleBar mTitleBar2;
 
     @Override
     protected int getLayoutId() {
@@ -66,17 +68,26 @@ public class TitleBarFragment extends BaseFragment {
         });
 
         mTitleBar1.setLeftClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ToastUtils.toast("点击返回");
-                    }
-                })
-                .addAction(new TitleBar.TextAction("更多") {
             @Override
-            public void performAction(View view) {
-                ToastUtils.toast("点击更多！");
+            public void onClick(View v) {
+                ToastUtils.toast("点击返回");
             }
-        });
+        })
+                .addAction(new TitleBar.TextAction("更多") {
+                    @Override
+                    public void performAction(View view) {
+                        ToastUtils.toast("点击更多！");
+                    }
+                });
+
+        //禁用左侧的图标及文字
+        mTitleBar2.disableLeftView()
+                .addAction(new TitleBar.ImageAction(R.drawable.ic_navigation_more) {
+                    @Override
+                    public void performAction(View view) {
+                        ToastUtils.toast("点击菜单！");
+                    }
+                });
     }
 
 }

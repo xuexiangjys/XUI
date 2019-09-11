@@ -32,6 +32,7 @@ import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.system.DeviceUtils;
+import com.xuexiang.xutil.tip.ToastUtils;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
@@ -46,7 +47,7 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2018/11/13 下午5:20
  */
-public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSelectedListener {
+public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSelectedListener, ClickUtils.OnClick2ExitListener {
     private static final int POS_COMPONENTS = 0;
     private static final int POS_UTILITYS = 1;
     private static final int POS_EXPANDS = 2;
@@ -77,6 +78,11 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         initSlidingMenu(savedInstanceState);
 
         initViews();
+    }
+
+    @Override
+    protected boolean isSupportSlideBack() {
+        return false;
     }
 
     private void initViews() {
@@ -283,10 +289,25 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
             if (isMenuOpen()) {
                 closeMenu();
             } else {
-                ClickUtils.exitBy2Click();
+                ClickUtils.exitBy2Click(2000, this);
             }
         }
         return true;
     }
 
+    /**
+     * 再点击一次
+     */
+    @Override
+    public void onRetry() {
+        ToastUtils.toast("再按一次退出程序");
+    }
+
+    /**
+     * 退出
+     */
+    @Override
+    public void onExit() {
+        moveTaskToBack(true);
+    }
 }

@@ -29,6 +29,7 @@ import android.view.KeyEvent;
 import com.xuexiang.xrouter.facade.Postcard;
 import com.xuexiang.xrouter.facade.callback.NavCallback;
 import com.xuexiang.xrouter.launcher.XRouter;
+import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xutil.tip.ToastUtils;
 
@@ -45,8 +46,12 @@ public class AgentWebActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_agent_web);
+
+        SlideBack.with(this)
+                .haveScroll(true)
+                .callBack(this::finish)
+                .register();
 
         Uri uri = getIntent().getData();
         if (uri != null) {
@@ -101,7 +106,7 @@ public class AgentWebActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        SlideBack.unregister(this);
         super.onDestroy();
-
     }
 }

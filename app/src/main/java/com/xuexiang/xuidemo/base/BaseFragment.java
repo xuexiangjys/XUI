@@ -1,20 +1,26 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.umeng.analytics.MobclickAgent;
+import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xpage.enums.CoreAnim;
+import com.xuexiang.xrouter.facade.service.SerializationService;
+import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.actionbar.TitleUtils;
 import com.xuexiang.xui.widget.progress.loading.IMessageLoader;
-import com.xuexiang.xutil.net.JsonUtil;
+
+import java.io.Serializable;
 
 /**
  * @author xuexiang
@@ -61,61 +67,6 @@ public abstract class BaseFragment extends XPageFragment {
 
     }
 
-    /**
-     * 打开一个新的页面
-     *
-     * @param clazz
-     * @param <T>
-     * @return
-     */
-    public <T extends XPageFragment> Fragment openNewPage(Class<T> clazz) {
-        return new PageOption(clazz)
-                .setNewActivity(true)
-                .open(this);
-    }
-
-    /**
-     * 打开一个新的页面
-     *
-     * @param name
-     * @param <T>
-     * @return
-     */
-    public <T extends XPageFragment> Fragment openNewPage(String name) {
-        return new PageOption(name)
-                .setAnim(CoreAnim.slide)
-                .setNewActivity(true)
-                .open(this);
-    }
-
-    /**
-     * 打开一个新的页面
-     *
-     * @param clazz
-     * @param <T>
-     * @return
-     */
-    public <T extends XPageFragment> Fragment openNewPage(Class<T> clazz, String key, Object value) {
-        return new PageOption(clazz)
-                .setNewActivity(true)
-                .putString(key, JsonUtil.toJson(value))
-                .open(this);
-    }
-
-    /**
-     * 打开页面,需要结果返回
-     *
-     * @param clazz
-     * @param <T>
-     * @return
-     */
-    public <T extends XPageFragment> Fragment openPageForResult(Class<T> clazz, String key, Object value, int requestCode) {
-        return new PageOption(clazz)
-                .setRequestCode(requestCode)
-                .putString(key, JsonUtil.toJson(value))
-                .open(this);
-    }
-
     @Override
     public void onDestroyView() {
 //        KeyboardUtils.fixSoftInputLeaks(getContext());
@@ -143,5 +94,179 @@ public abstract class BaseFragment extends XPageFragment {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getPageName());
+    }
+
+    /**
+     * 打开一个新的页面
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openNewPage(Class<T> clazz) {
+        return new PageOption(clazz)
+                .setNewActivity(true)
+                .open(this);
+    }
+
+    /**
+     * 打开一个新的页面
+     *
+     * @param clazzName
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openNewPage(String clazzName) {
+        return new PageOption(clazzName)
+                .setAnim(CoreAnim.slide)
+                .setNewActivity(true)
+                .open(this);
+    }
+
+    /**
+     * 打开一个新的页面
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openNewPage(Class<T> clazz, @NonNull Class<? extends XPageActivity> containActivityClazz) {
+        return new PageOption(clazz)
+                .setNewActivity(true)
+                .setContainActivityClazz(containActivityClazz)
+                .open(this);
+    }
+
+    /**
+     * 打开一个新的页面
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openNewPage(Class<T> clazz, String key, Object value) {
+        PageOption option = new PageOption(clazz).setNewActivity(true);
+        return openPage(option, key, value);
+    }
+
+    public Fragment openPage(PageOption option, String key, Object value) {
+        if (value instanceof Integer) {
+            option.putInt(key, (Integer) value);
+        } else if (value instanceof String) {
+            option.putString(key, (String) value);
+        } else if (value instanceof Float) {
+            option.putFloat(key, (Float) value);
+        } else if (value instanceof Parcelable) {
+            option.putParcelable(key, (Parcelable) value);
+        } else if (value instanceof Serializable) {
+            option.putSerializable(key, (Serializable) value);
+        } else {
+            option.putString(key, XRouter.getInstance().navigation(SerializationService.class).object2Json(value));
+        }
+        return option.open(this);
+    }
+
+    /**
+     * 打开一个新的页面
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openPage(Class<T> clazz, boolean addToBackStack, String key, String value) {
+        return new PageOption(clazz)
+                .setAddToBackStack(addToBackStack)
+                .putString(key, value)
+                .open(this);
+    }
+
+    /**
+     * 打开一个新的页面
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openPage(Class<T> clazz, String key, Object value) {
+        return openPage(clazz, true, key, value);
+    }
+
+    /**
+     * 打开一个新的页面
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openPage(Class<T> clazz, boolean addToBackStack, String key, Object value) {
+        PageOption option = new PageOption(clazz).setAddToBackStack(addToBackStack);
+        return openPage(option, key, value);
+    }
+
+    /**
+     * 打开一个新的页面
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openPage(Class<T> clazz, String key, String value) {
+        return new PageOption(clazz)
+                .putString(key, value)
+                .open(this);
+    }
+
+    /**
+     * 打开页面,需要结果返回
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openPageForResult(Class<T> clazz, String key, Object value, int requestCode) {
+        PageOption option = new PageOption(clazz).setRequestCode(requestCode);
+        return openPage(option, key, value);
+    }
+
+    /**
+     * 打开页面,需要结果返回
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openPageForResult(Class<T> clazz, String key, String value, int requestCode) {
+        return new PageOption(clazz)
+                .setRequestCode(requestCode)
+                .putString(key, value)
+                .open(this);
+    }
+
+    /**
+     * 打开页面,需要结果返回
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openNewPageForResult(Class<T> clazz, String key, String value, int requestCode) {
+        return new PageOption(clazz)
+                .setNewActivity(true)
+                .setRequestCode(requestCode)
+                .putString(key, value)
+                .open(this);
+    }
+
+    /**
+     * 打开页面,需要结果返回
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T extends XPageFragment> Fragment openPageForResult(Class<T> clazz, int requestCode) {
+        return new PageOption(clazz)
+                .setRequestCode(requestCode)
+                .open(this);
     }
 }

@@ -2,6 +2,7 @@
 <resources>
 
     <attr name="stv_color_common_text" format="color" />
+    <attr name="stv_color_shape" format="color" />
     <attr name="stv_text_size" format="dimension" />
     <attr name="stv_max_ems" format="integer" />
     <attr name="stv_margin" format="dimension" />
@@ -60,8 +61,8 @@
         <attr name="sRightTopLines" format="integer" />
         <attr name="sRightLines" format="integer" />
         <attr name="sRightBottomLines" format="integer" />
-        <!-- 文字显示个数 -->
 
+        <!-- 文字显示个数 -->
         <attr name="sLeftTopMaxEms" format="integer" />
         <attr name="sLeftMaxEms" format="integer" />
         <attr name="sLeftBottomMaxEms" format="integer" />
@@ -73,6 +74,7 @@
         <attr name="sRightTopMaxEms" format="integer" />
         <attr name="sRightMaxEms" format="integer" />
         <attr name="sRightBottomMaxEms" format="integer" />
+
         <!-- 文字对齐方式 -->
         <attr name="sLeftViewGravity" format="enum">
             <enum name="left_center" value="0" />
@@ -89,6 +91,7 @@
             <enum name="center" value="1" />
             <enum name="right_center" value="2" />
         </attr>
+
         <!-- drawable资源 -->
         <attr name="sLeftTvDrawableLeft" format="reference" />
         <attr name="sLeftTvDrawableRight" format="reference" />
@@ -113,6 +116,7 @@
         <attr name="sTextViewDrawablePadding" format="dimension" />
         <!-- 左边textView的宽度 为了中间文字左对齐的时候使用 -->
         <attr name="sLeftViewWidth" format="dimension" />
+
         <!-- 分割线的Margin -->
         <attr name="sTopDividerLineMarginLR" format="dimension" />
         <attr name="sTopDividerLineMarginLeft" format="dimension" />
@@ -130,13 +134,15 @@
             <enum name="bottom" value="2" />
             <enum name="both" value="3" />
         </attr>
-        <!-- view的Margin -->
+
+        <!-- View的Margin， 默认为10dp-->
         <attr name="sLeftViewMarginLeft" format="dimension" />
         <attr name="sLeftViewMarginRight" format="dimension" />
         <attr name="sCenterViewMarginLeft" format="dimension" />
         <attr name="sCenterViewMarginRight" format="dimension" />
         <attr name="sRightViewMarginLeft" format="dimension" />
         <attr name="sRightViewMarginRight" format="dimension" />
+
         <!-- 文字是否加粗 -->
         <attr name="sLeftTopTextIsBold" format="boolean" />
         <attr name="sLeftTextIsBold" format="boolean" />
@@ -155,7 +161,6 @@
         <attr name="sRightTextBackground" format="reference" />
 
         <!-- 图片资源 -->
-
         <attr name="sLeftIconRes" format="reference" />
         <attr name="sRightIconRes" format="reference" />
 
@@ -177,13 +182,13 @@
         </attr>
 
         <!--中间是否可编辑，默认false-->
-        <attr name="sEnableEdit" format="boolean"/>
-        <attr name="sEditBackGround" format="reference"/>
+        <attr name="sEnableEdit" format="boolean" />
+        <attr name="sEditBackGround" format="reference" />
         <!--MATCH_PARENT=-1(默认), WRAP_CONTENT=-2-->
-        <attr name="sEditTextWidth" format="dimension"/>
-        <attr name="sEditTextString" format="string"/>
+        <attr name="sEditTextWidth" format="dimension" />
+        <attr name="sEditTextString" format="string" />
         <!--输入框的提示信息-->
-        <attr name="sEditTextHint" format="string"/>
+        <attr name="sEditTextHint" format="string" />
         <!--输入框的按钮类型,默认是clear-->
         <attr name="sEditTextButtonType" format="enum">
             <enum name="none" value="0" />
@@ -192,24 +197,26 @@
         </attr>
         <attr name="android:inputType" />
         <!--密码输入框文字的样式是否是“*”，默认是false-->
-        <attr name="sEditTextIsAsteriskStyle" format="boolean"/>
+        <attr name="sEditTextIsAsteriskStyle" format="boolean" />
 
         <!--CheckBox-->
         <attr name="sRightCheckBoxRes" format="reference" />
         <attr name="sRightCheckBoxMarginRight" format="dimension" />
         <attr name="sIsChecked" format="boolean" />
 
+        <!--Switch-->
         <attr name="sRightSwitchMarginRight" format="dimension" />
-        <attr name="sSwitchIsChecked" format="boolean" />
-
         <attr name="sTextOff" format="string" />
         <attr name="sTextOn" format="string" />
 
+        <attr name="sSwitchIsChecked" format="boolean" />
         <attr name="sSwitchMinWidth" format="dimension" />
         <attr name="sSwitchPadding" format="dimension" />
         <attr name="sThumbTextPadding" format="dimension" />
 
+        <!--Switch开关的滑块样式-->
         <attr name="sThumbResource" format="reference" />
+        <!--Switch开关的底层样式-->
         <attr name="sTrackResource" format="reference" />
 
         <!--是否开启点击出现水波效果-->

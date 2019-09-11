@@ -83,7 +83,7 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
         Bundle bundle = new Bundle();
         switch (v.getId()) {
             case R.id.iv_qq_group:
-                bundle.putInt(DRAWABLE_ID, R.drawable.img_qq_group);
+                bundle.putInt(DRAWABLE_ID, R.drawable.img_xui_qq);
                 openPage(DrawablePreviewFragment.class, bundle);
                 break;
             case R.id.iv_win_xin:

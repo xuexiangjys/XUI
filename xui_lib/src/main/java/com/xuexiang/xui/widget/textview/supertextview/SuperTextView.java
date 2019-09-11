@@ -190,8 +190,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private int mDividerLineColor;
     private int mDividerLineHeight;
 
-    private int mDefaultDividerLineColor = 0xFFE8E8E8;//分割线默认颜色
-
     /**
      * 分割线的类型
      */
@@ -228,8 +226,8 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private OnRightTvClickListener mRightTvClickListener;
     private OnRightBottomTvClickListener mRightBottomTvClickListener;
 
-    private OnSwitchCheckedChangeListener mSwitchCheckedChangeListener;
-    private OnCheckBoxCheckedChangeListener mCheckBoxCheckedChangeListener;
+    private CompoundButton.OnCheckedChangeListener mSwitchCheckedChangeListener;
+    private CompoundButton.OnCheckedChangeListener mCheckBoxCheckedChangeListener;
 
     private OnLeftImageViewClickListener mLeftImageViewClickListener;
     private OnRightImageViewClickListener mRightImageViewClickListener;
@@ -245,7 +243,8 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private String mEditTextHint;
     private String mEditTextString;
     private int mEditTextInputType;
-    private boolean mIsAsteriskStyle = false;
+    //密码输入框文字的样式是否是“*”
+    private boolean mIsAsteriskStyle;
 
     private static final int TYPE_NONE = 0;
     private static final int TYPE_CLEAR = 1;
@@ -271,26 +270,29 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     //中间空间的高度
     private int mCenterSpaceHeight;
 
-
-    private Switch mSwitch;
     //右边switch
-    private LayoutParams mSwitchParams;
+    private Switch mRightSwitch;
+    private LayoutParams mRightSwitchParams;
     private int mRightSwitchMarginRight;
-    private boolean mSwitchIsChecked = true;
+    private boolean mSwitchIsChecked;
 
-    private String mTextOff;
-    private String mTextOn;
+    //Switch开关关闭的文字提示
+    private String mSwitchTextOff;
+    //Switch开关打开的文字提示
+    private String mSwitchTextOn;
 
     private int mSwitchMinWidth;
     private int mSwitchPadding;
 
     private int mThumbTextPadding;
 
-    private Drawable mThumbResource;
-    private Drawable mTrackResource;
+    //Switch开关的滑块样式
+    private Drawable mSwitchThumbResource;
+    //Switch开关的底层样式
+    private Drawable mSwitchTrackResource;
 
     /////////////////////一下是shape相关属性
-    private int mDefaultShapeColor = 0xffffffff;
+    private int mDefaultShapeColor;
 
     private int mSelectorPressedColor;
     private int mSelectorNormalColor;
@@ -335,6 +337,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mDefaultTextSize = ThemeUtils.resolveDimension(context, R.attr.stv_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_stv_text_size));
         mDefaultMaxEms = ThemeUtils.resolveInt(context, R.attr.stv_max_ems, 20);
         mDefaultMargin = ThemeUtils.resolveDimension(context, R.attr.stv_margin, ResUtils.getDimensionPixelSize(R.dimen.default_stv_margin));
+        mDefaultShapeColor = ThemeUtils.resolveColor(context, R.attr.stv_color_shape, ResUtils.getColor(R.color.xui_config_color_white));
 
         getAttr(attrs);
         initView();
@@ -450,7 +453,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mBottomDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomDividerLineMarginRight, 0);
         ///////////////////////////////////////////////
         mDividerLineType = typedArray.getInt(R.styleable.SuperTextView_sDividerLineType, DEFAULT_DIVIDER);
-        mDividerLineColor = typedArray.getColor(R.styleable.SuperTextView_sDividerLineColor, mDefaultDividerLineColor);
+        mDividerLineColor = typedArray.getColor(R.styleable.SuperTextView_sDividerLineColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_light));
 
         mDividerLineHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sDividerLineHeight, dip2px(mContext, 0.5f));
         ////////////////////////////////////////////////
@@ -514,15 +517,15 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         //////////////////////////////////////////////////
         mRightSwitchMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightSwitchMarginRight, mDefaultMargin);
         mSwitchIsChecked = typedArray.getBoolean(R.styleable.SuperTextView_sSwitchIsChecked, false);
-        mTextOff = typedArray.getString(R.styleable.SuperTextView_sTextOff);
-        mTextOn = typedArray.getString(R.styleable.SuperTextView_sTextOn);
+        mSwitchTextOff = typedArray.getString(R.styleable.SuperTextView_sTextOff);
+        mSwitchTextOn = typedArray.getString(R.styleable.SuperTextView_sTextOn);
 
         mSwitchMinWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchMinWidth, 0);
         mSwitchPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchPadding, 0);
         mThumbTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sThumbTextPadding, 0);
 
-        mThumbResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sThumbResource);
-        mTrackResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sTrackResource);
+        mSwitchThumbResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sThumbResource);
+        mSwitchTrackResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sTrackResource);
 
         mCenterSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
         ////////////////////////////////////////////////////
@@ -833,14 +836,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             mRightCheckBox.setButtonDrawable(mRightCheckBoxBg);
         }
         mRightCheckBox.setChecked(mIsChecked);
-        mRightCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mCheckBoxCheckedChangeListener != null) {
-                    mCheckBoxCheckedChangeListener.onCheckedChanged(buttonView, isChecked);
-                }
-            }
-        });
+        mRightCheckBox.setOnCheckedChangeListener(mCheckBoxCheckedChangeListener);
         addView(mRightCheckBox);
     }
 
@@ -848,53 +844,46 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * 初始化RightSwitch
      */
     private void initRightSwitch() {
-        if (mSwitch == null) {
-            mSwitch = new Switch(mContext);
+        if (mRightSwitch == null) {
+            mRightSwitch = new Switch(mContext);
         }
-        mSwitchParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        mRightSwitchParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
-        mSwitchParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
-        mSwitchParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        mSwitchParams.setMargins(0, 0, mRightSwitchMarginRight, 0);
-        mSwitch.setId(R.id.sRightSwitchId);
-        mSwitch.setLayoutParams(mSwitchParams);
+        mRightSwitchParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
+        mRightSwitchParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        mRightSwitchParams.setMargins(0, 0, mRightSwitchMarginRight, 0);
+        mRightSwitch.setId(R.id.sRightSwitchId);
+        mRightSwitch.setLayoutParams(mRightSwitchParams);
 
-        mSwitch.setChecked(mSwitchIsChecked);
-        if (!TextUtils.isEmpty(mTextOff)) {
-            mSwitch.setTextOff(mTextOff);
+        mRightSwitch.setChecked(mSwitchIsChecked);
+        if (!TextUtils.isEmpty(mSwitchTextOff)) {
+            mRightSwitch.setTextOff(mSwitchTextOff);
         }
-        if (!TextUtils.isEmpty(mTextOn)) {
-            mSwitch.setTextOn(mTextOn);
+        if (!TextUtils.isEmpty(mSwitchTextOn)) {
+            mRightSwitch.setTextOn(mSwitchTextOn);
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             if (mSwitchMinWidth != 0) {
-                mSwitch.setSwitchMinWidth(mSwitchMinWidth);
+                mRightSwitch.setSwitchMinWidth(mSwitchMinWidth);
             }
             if (mSwitchPadding != 0) {
-                mSwitch.setSwitchPadding(mSwitchPadding);
+                mRightSwitch.setSwitchPadding(mSwitchPadding);
             }
-            if (mThumbResource != null) {
-                mSwitch.setThumbDrawable(mThumbResource);
+            if (mSwitchThumbResource != null) {
+                mRightSwitch.setThumbDrawable(mSwitchThumbResource);
             }
-            if (mThumbResource != null) {
-                mSwitch.setTrackDrawable(mTrackResource);
+            if (mSwitchThumbResource != null) {
+                mRightSwitch.setTrackDrawable(mSwitchTrackResource);
             }
             if (mThumbTextPadding != 0) {
-                mSwitch.setThumbTextPadding(mThumbTextPadding);
+                mRightSwitch.setThumbTextPadding(mThumbTextPadding);
             }
 
         }
-        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (mSwitchCheckedChangeListener != null) {
-                    mSwitchCheckedChangeListener.onCheckedChanged(buttonView, isChecked);
-                }
-            }
-        });
+        mRightSwitch.setOnCheckedChangeListener(mSwitchCheckedChangeListener);
 
-        addView(mSwitch);
+        addView(mRightSwitch);
     }
 
     /////////////////////////////////////默认属性设置----begin/////////////////////////////////
@@ -1639,15 +1628,34 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         return mRightIconIV;
     }
 
-
     /**
-     * @param checked 是否选中
+     * 设置CheckBox是否选中
+     *
+     * @param isChecked 是否选中
      * @return 返回值
      */
-    public SuperTextView setCbChecked(boolean checked) {
-        mIsChecked = checked;
+    public SuperTextView setCheckBoxChecked(boolean isChecked) {
+        setCheckBoxChecked(isChecked, true);
+        return this;
+    }
+
+    /**
+     * 设置CheckBox是否选中
+     *
+     * @param isChecked 是否选中
+     * @param isSilent  是否不触发回调
+     * @return 返回值
+     */
+    public SuperTextView setCheckBoxChecked(boolean isChecked, boolean isSilent) {
+        mIsChecked = isChecked;
         if (mRightCheckBox != null) {
-            mRightCheckBox.setChecked(checked);
+            if (isSilent) {
+                mRightCheckBox.setOnCheckedChangeListener(null);
+                mRightCheckBox.setChecked(isChecked);
+                mRightCheckBox.setOnCheckedChangeListener(mCheckBoxCheckedChangeListener);
+            } else {
+                mRightCheckBox.setChecked(isChecked);
+            }
         }
         return this;
     }
@@ -1658,7 +1666,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @param drawable drawable对象
      * @return 返回对象
      */
-    public SuperTextView setCbBackground(Drawable drawable) {
+    public SuperTextView setCheckBoxBackground(Drawable drawable) {
         mRightCheckBoxBg = drawable;
         if (mRightCheckBox != null) {
             mRightCheckBox.setBackgroundDrawable(drawable);
@@ -1671,7 +1679,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      *
      * @return 返回选择框当前选中状态
      */
-    public boolean getCbisChecked() {
+    public boolean getCheckBoxIsChecked() {
         boolean isChecked = false;
         if (mRightCheckBox != null) {
             isChecked = mRightCheckBox.isChecked();
@@ -1680,13 +1688,33 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     }
 
     /**
-     * @param checked Switch是否选中
+     * 设置Switch是否选中
+     *
+     * @param isChecked Switch是否选中
      * @return 返回值
      */
-    public SuperTextView setSwitchIsChecked(boolean checked) {
-        mSwitchIsChecked = checked;
-        if (mSwitch != null) {
-            mSwitch.setChecked(checked);
+    public SuperTextView setSwitchIsChecked(boolean isChecked) {
+        setSwitchIsChecked(isChecked, true);
+        return this;
+    }
+
+    /**
+     * 设置Switch是否选中
+     *
+     * @param isChecked Switch是否选中
+     * @param isSilent  是否不触发回调
+     * @return 返回值
+     */
+    public SuperTextView setSwitchIsChecked(boolean isChecked, boolean isSilent) {
+        mSwitchIsChecked = isChecked;
+        if (mRightSwitch != null) {
+            if (isSilent) {
+                mRightSwitch.setOnCheckedChangeListener(null);
+                mRightSwitch.setChecked(isChecked);
+                mRightSwitch.setOnCheckedChangeListener(mSwitchCheckedChangeListener);
+            } else {
+                mRightSwitch.setChecked(isChecked);
+            }
         }
         return this;
     }
@@ -1698,8 +1726,8 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      */
     public boolean getSwitchIsChecked() {
         boolean isChecked = false;
-        if (mSwitch != null) {
-            isChecked = mSwitch.isChecked();
+        if (mRightSwitch != null) {
+            isChecked = mRightSwitch.isChecked();
         }
         return isChecked;
     }
@@ -2216,13 +2244,19 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         return this;
     }
 
-    public SuperTextView setSwitchCheckedChangeListener(OnSwitchCheckedChangeListener switchCheckedChangeListener) {
-        this.mSwitchCheckedChangeListener = switchCheckedChangeListener;
+    public SuperTextView setSwitchCheckedChangeListener(CompoundButton.OnCheckedChangeListener switchCheckedChangeListener) {
+        mSwitchCheckedChangeListener = switchCheckedChangeListener;
+        if (mRightSwitch != null) {
+            mRightSwitch.setOnCheckedChangeListener(mSwitchCheckedChangeListener);
+        }
         return this;
     }
 
-    public SuperTextView setCheckBoxCheckedChangeListener(OnCheckBoxCheckedChangeListener checkBoxCheckedChangeListener) {
-        this.mCheckBoxCheckedChangeListener = checkBoxCheckedChangeListener;
+    public SuperTextView setCheckBoxCheckedChangeListener(CompoundButton.OnCheckedChangeListener checkBoxCheckedChangeListener) {
+        mCheckBoxCheckedChangeListener = checkBoxCheckedChangeListener;
+        if (mRightCheckBox != null) {
+            mRightCheckBox.setOnCheckedChangeListener(mCheckBoxCheckedChangeListener);
+        }
         return this;
     }
 
@@ -2297,15 +2331,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     public interface OnRightImageViewClickListener {
         void onClickListener(ImageView imageView);
     }
-
-    public interface OnSwitchCheckedChangeListener {
-        void onCheckedChanged(CompoundButton buttonView, boolean isChecked);
-    }
-
-    public interface OnCheckBoxCheckedChangeListener {
-        void onCheckedChanged(CompoundButton buttonView, boolean isChecked);
-    }
-
 
     // TODO: 2017/7/10 一下是shape相关属性方法
 

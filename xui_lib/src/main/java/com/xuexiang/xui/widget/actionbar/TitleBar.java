@@ -58,10 +58,6 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     public static final int CENTER_CENTER = 0;
     public static final int CENTER_LEFT = 1;
     public static final int CENTER_RIGHT = 2;
-    /**
-     * 文字默认白色
-     */
-    private static int DEFAULT_TEXT_COLOR = Color.WHITE;
 
     private XUIAlphaTextView mLeftText;
     private LinearLayout mRightLayout;
@@ -113,6 +109,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     private String mSubTextString;
     private int mDividerColor;
     private int mDivideHeight;
+    private boolean mIsUseThemeColor;
 
     public TitleBar(Context context) {
         this(context, null);
@@ -145,10 +142,10 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mSubTitleTextSize = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_subTitleTextSize, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_sub_text_size));
         mActionTextSize = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_actionTextSize, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_action_text_size));
 
-        mSideTextColor = typedArray.getColor(R.styleable.TitleBar_tb_sideTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, DEFAULT_TEXT_COLOR));
-        mTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_titleTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, DEFAULT_TEXT_COLOR));
-        mSubTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_subTitleTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, DEFAULT_TEXT_COLOR));
-        mActionTextColor = typedArray.getColor(R.styleable.TitleBar_tb_actionTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, DEFAULT_TEXT_COLOR));
+        mSideTextColor = typedArray.getColor(R.styleable.TitleBar_tb_sideTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, Color.WHITE));
+        mTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_titleTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, Color.WHITE));
+        mSubTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_subTitleTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, Color.WHITE));
+        mActionTextColor = typedArray.getColor(R.styleable.TitleBar_tb_actionTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, Color.WHITE));
 
         mLeftImageResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.TitleBar_tb_leftImageResource);
         mLeftTextString = typedArray.getString(R.styleable.TitleBar_tb_leftText);
@@ -156,6 +153,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mSubTextString = typedArray.getString(R.styleable.TitleBar_tb_subTitleText);
         mDividerColor = typedArray.getColor(R.styleable.TitleBar_tb_dividerColor, Color.TRANSPARENT);
         mDivideHeight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_dividerHeight, DensityUtils.dp2px(1));
+        mIsUseThemeColor = typedArray.getBoolean(R.styleable.TitleBar_tb_useThemeColor, true);
 
         typedArray.recycle();
     }
@@ -227,7 +225,14 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         addView(mRightLayout, layoutParams);
         addView(mDividerView, new LayoutParams(LayoutParams.MATCH_PARENT, mDivideHeight));
 
-        setBackgroundColor(ThemeUtils.resolveColor(context, R.attr.xui_actionbar_color));
+        if (mIsUseThemeColor) {
+            Drawable backgroundDrawable = ThemeUtils.resolveDrawable(getContext(), R.attr.xui_actionbar_background);
+            if (backgroundDrawable != null) {
+                setBackground(backgroundDrawable);
+            } else {
+                setBackgroundColor(ThemeUtils.resolveColor(context, R.attr.xui_actionbar_color));
+            }
+        }
     }
 
     public TitleBar setImmersive(boolean immersive) {

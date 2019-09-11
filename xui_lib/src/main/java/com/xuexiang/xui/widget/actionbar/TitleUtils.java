@@ -86,13 +86,14 @@ public final class TitleUtils {
      * @return
      */
     public static TitleBar initTitleBarDynamic(final Fragment fragment, String title) {
-        TitleBar titleBar = initTitleBarDynamic(fragment.getContext(), title, new View.OnClickListener() {
+        return initTitleBarDynamic(fragment.getContext(), title, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragment.getActivity().finish();
+                if (fragment.getActivity() != null && !fragment.getActivity().isFinishing()) {
+                    fragment.getActivity().finish();
+                }
             }
         });
-        return titleBar;
     }
 
     /**
@@ -158,8 +159,7 @@ public final class TitleUtils {
      */
     public static TitleBar initTitleBarStyle(TitleBar titleBar, String title) {
         titleBar.setLeftImageDrawable(ThemeUtils.resolveDrawable(titleBar.getContext(), R.attr.xui_actionbar_ic_navigation_back))
-                .setTitle(title)
-                .setBackgroundColor(ThemeUtils.resolveColor(titleBar.getContext(), R.attr.xui_actionbar_color));
+                .setTitle(title);
         return titleBar;
     }
 }

@@ -10,6 +10,7 @@ import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.R;
 
 import butterknife.ButterKnife;
@@ -32,6 +33,12 @@ public class BaseActivity extends XPageActivity {
     @NorIcons
     private static final int[] mNormalIcons = {R.drawable.nav_01_nor, R.drawable.nav_02_nor, R.drawable.nav_04_nor, R.drawable.nav_05_nor};
 
+    //============================================================================================================================================================//
+    /**
+     * 是否支持侧滑返回
+     */
+    public static final String KEY_SUPPORT_SLIDE_BACK = "key_support_slide_back";
+
     Unbinder mUnbinder;
 
     @Override
@@ -45,7 +52,24 @@ public class BaseActivity extends XPageActivity {
         XUI.initTheme(this);
         super.onCreate(savedInstanceState);
         mUnbinder = ButterKnife.bind(this);
+
+        // 侧滑回调
+        if (isSupportSlideBack()) {
+            SlideBack.with(this)
+                    .haveScroll(true)
+                    .callBack(this::popPage)
+                    .register();
+        }
     }
+
+    /**
+     * @return 是否支持侧滑返回
+     */
+    protected boolean isSupportSlideBack() {
+        CoreSwitchBean page = getIntent().getParcelableExtra(CoreSwitchBean.KEY_SWITCH_BEAN);
+        return page == null || page.getBundle() == null || page.getBundle().getBoolean(KEY_SUPPORT_SLIDE_BACK, true);
+    }
+
 
     /**
      * 打开fragment
@@ -85,6 +109,9 @@ public class BaseActivity extends XPageActivity {
     @Override
     protected void onRelease() {
         mUnbinder.unbind();
+        if (isSupportSlideBack()) {
+            SlideBack.unregister(this);
+        }
         super.onRelease();
     }
 

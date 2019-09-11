@@ -372,16 +372,14 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return
      */
     public <T> int getSpinnerPosition(T item, List<T> items) {
-        int position = 0;
         if (item != null && items != null && items.size() > 0) {
             for (int i = 0; i < items.size(); i++) {
                 if (item.equals(items.get(i))) {
-                    position = i;
-                    break;
+                    return i;
                 }
             }
         }
-        return position;
+        return 0;
     }
 
     /**

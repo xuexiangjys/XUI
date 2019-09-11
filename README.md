@@ -4,8 +4,8 @@
 
 # XUI
 [![](https://jitpack.io/v/xuexiangjys/XUI.svg)](https://jitpack.io/#xuexiangjys/XUI)
-[![api][apisvg]][api]
-[![I](https://img.shields.io/github/issues/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI/issues)
+[![api](https://img.shields.io/badge/API-17+-brightgreen.svg)](https://android-arsenal.com/api?level=17)
+[![Issue](https://img.shields.io/github/issues/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI/issues)
 [![Star](https://img.shields.io/github/stars/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI)
 
 一个简洁而又优雅的Android原生UI框架，解放你的双手！还不赶紧点击[使用说明文档](https://github.com/xuexiangjys/XUI/wiki)，体验一下吧！
@@ -22,7 +22,11 @@
 
 ## 关于我
 
-[![github](https://img.shields.io/badge/GitHub-xuexiangjys-blue.svg)](https://github.com/xuexiangjys)   [![csdn](https://img.shields.io/badge/CSDN-xuexiangjys-green.svg)](http://blog.csdn.net/xuexiangjys)
+[![github](https://img.shields.io/badge/GitHub-xuexiangjys-blue.svg)](https://github.com/xuexiangjys)   [![csdn](https://img.shields.io/badge/CSDN-xuexiangjys-green.svg)](http://blog.csdn.net/xuexiangjys)   [![简书](https://img.shields.io/badge/简书-xuexiangjys-red.svg)](https://www.jianshu.com/u/6bf605575337)   [![掘金](https://img.shields.io/badge/掘金-xuexiangjys-brightgreen.svg)](https://juejin.im/user/598feef55188257d592e56ed)   [![知乎](https://img.shields.io/badge/知乎-xuexiangjys-violet.svg)](https://www.zhihu.com/people/xuexiangjys) 
+
+## X系列库快速集成
+
+为了方便大家快速集成X系列框架库，我提供了一个空壳模版供大家参考使用: https://github.com/xuexiangjys/TemplateAppProject
 
 ----
 
@@ -59,11 +63,11 @@ allprojects {
 dependencies {
   ...
   //1.0.5版本后只支持androidx
-  implementation 'com.github.xuexiangjys:XUI:1.0.8'
+  implementation 'com.github.xuexiangjys:XUI:1.0.9'
 
-  implementation 'androidx.appcompat:appcompat:1.0.2'
+  implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.0.0'
-  implementation 'com.google.android.material:material:1.1.0-alpha07'
+  implementation 'com.google.android.material:material:1.1.0-alpha10'
   implementation 'com.github.bumptech.glide:glide:4.8.0'
 }
 ```
@@ -186,16 +190,24 @@ protected void attachBaseContext(Context newBase) {
 * [MaterialSpinner](https://github.com/jaredrummler/MaterialSpinner)
 * [FlycoBanner_Master](https://github.com/H07000223/FlycoBanner_Master)
 * [MaterialProgressBar](https://github.com/DreaminginCodeZH/MaterialProgressBar)
+* [SlideBack](https://github.com/ParfoisMeng/SlideBack)
 
 ## 如果觉得项目还不错，可以考虑打赏一波
 
+> 你的打赏是我维护的动力，我将会列出所有打赏人员的清单在下方作为凭证，打赏前请留下打赏项目的备注！
+
 ![](./art/alipay.jpeg) &emsp; ![](./art/weixinpay.jpeg)
+
+感谢下面小伙伴的打赏：
+
+姓名 | 金额
+:-|:-
+C*y | 1￥
+*流 | 1￥
+*声 | 50￥
 
 ## 联系方式
 
-[![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
+[![](https://img.shields.io/badge/点击一键加入QQ交流群-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
 
-![](https://github.com/xuexiangjys/XPage/blob/master/img/qq_group.jpg)
-
-[apisvg]: https://img.shields.io/badge/API-17+-brightgreen.svg
-[api]: https://android-arsenal.com/api?level=17
+![](https://github.com/xuexiangjys/XUI/blob/master/img/xui_qq.jpg)

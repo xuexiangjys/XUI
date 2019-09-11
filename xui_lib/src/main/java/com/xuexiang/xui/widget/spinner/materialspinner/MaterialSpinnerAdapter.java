@@ -24,6 +24,12 @@ public class MaterialSpinnerAdapter<T> extends MaterialSpinnerBaseAdapter {
         return mItems != null ? mItems.size() - 1 : 0;
     }
 
+    /**
+     * 获取列表项
+     *
+     * @param position
+     * @return
+     */
     @Override
     public T getItem(int position) {
         if (position >= getSelectedIndex()) {

@@ -62,4 +62,9 @@ public class AdapterItem {
         mIcon = icon;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return mTitle.toString();
+    }
 }

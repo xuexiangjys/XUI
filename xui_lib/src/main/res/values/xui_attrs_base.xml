@@ -110,6 +110,8 @@
     ***********************************************-->
     <!--标题栏的背景颜色-->
     <attr name="xui_actionbar_color" format="color" />
+    <!--标题栏的背景图片，优先使用背景图片，没有背景图片才使用背景颜色，可选-->
+    <attr name="xui_actionbar_background" format="reference" />
     <!--标题栏文字的颜色-->
     <attr name="xui_actionbar_text_color" format="color" />
     <!--是否支持沉浸式标题栏-->

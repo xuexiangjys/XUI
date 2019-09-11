@@ -40,7 +40,7 @@
                 android:layout_height="274dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
-                android:src="@drawable/img_qq_group" />
+                android:src="@drawable/img_xui_qq" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_win_xin"

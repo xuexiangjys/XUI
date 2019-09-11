@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 
 import uk.co.chrisjenx.calligraphy.HasTypeface;
 
@@ -28,13 +29,11 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
 
     private Context mContext;
 
-    private int defaultColor = 0xFF373737;//文字默认颜色
-    private int defaultDividerLineColor = 0xFFE8E8E8;//分割线默认颜色
-    private int defaultSize;//默认字体大小
-    private int defaultPadding;//默认边距
+    private int mDefaultTextColor;//文字默认颜色
+    private int mDefaultTextSize;//默认字体大小
+    private int mDefaultPadding;//默认边距
 
     private int mBackgroundColor = 0xffffffff;//背景颜色
-
 
     private Drawable mLeft_drawableLeft;
     private Drawable mLeft_drawableTop;
@@ -142,7 +141,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
     /**
      * 是否使用点击出现波纹效果
      */
-    private boolean useRipple;
+    private boolean mIsUseRipple;
 
     private boolean mSetSingleLine = true;
     private int mSetMaxEms = 10;
@@ -151,41 +150,41 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
     /**
      * TextView的Gravity
      */
-    private static final int Gravity_Left_Center = 0;
-    private static final int Gravity_Center = 1;
-    private static final int Gravity_Right_Center = 2;
+    private static final int GRAVITY_LEFT_CENTER = 0;
+    private static final int GRAVITY_CENTER = 1;
+    private static final int GRAVITY_RIGHT_CENTER = 2;
 
-    private static final int DEFAULT_Gravity = 1;
+    private static final int DEFAULT_GRAVITY = GRAVITY_CENTER;
 
     private int mLeftTextViewGravity;
     private int mCenterTextViewGravity;
     private int mRightTextViewGravity;
 
-    private TextView leftTextView, centerTextView, rightTextView;
-    private TextView leftTopTextView, centerTopTextView, rightTopTextView;
-    private TextView leftBottomTextView, centerBottomTextView, rightBottomTextView;
+    private TextView mLeftTextView, mCenterTextView, mRightTextView;
+    private TextView mLeftTopTextView, mCenterTopTextView, mRightTopTextView;
+    private TextView mLeftBottomTextView, mCenterBottomTextView, mRightBottomTextView;
 
-    private ImageView leftImageView;
+    private ImageView mLeftImageView;
     //    private ImageView rightImageView;
-    private View topLineView, bottomLineView;
-    private View centerBaseLineView;
+    private View mTopLineView, mBottomLineView;
+    private View mCenterBaseLineView;
 
-    private boolean mLeftViewIsClickable = false;
-    private boolean mCenterViewIsClickable = false;
-    private boolean mRightViewIsClickable = false;
+    private boolean mLeftViewIsClickable;
+    private boolean mCenterViewIsClickable;
+    private boolean mRightViewIsClickable;
 
 
-    private LayoutParams leftTVParams, centerTVParams, rightTVParams, topLineParams, bottomLineParams;
-    private LayoutParams leftTopTVParams, centerTopTVParams, rightTopTVParams;
-    private LayoutParams leftBottomTVParams, centerBottomTVParams, rightBottomTVParams;
-    private LayoutParams centerBaseLineParams;
-    private LayoutParams leftIVParams;
+    private LayoutParams mLeftTVParams, mCenterTVParams, mRightTVParams, mTopLineParams, mBottomLineParams;
+    private LayoutParams mLeftTopTVParams, mCenterTopTVParams, mRightTopTVParams;
+    private LayoutParams mLeftBottomTVParams, mCenterBottomTVParams, mRightBottomTVParams;
+    private LayoutParams mCenterBaseLineParams;
+    private LayoutParams mLeftIVParams;
 //    private RelativeLayout.LayoutParams rightIVParams;
 
-    private OnCommonTextViewClickListener onCommonTextViewClickListener;
+    private OnCommonTextViewClickListener mOnCommonTextViewClickListener;
 
     private Drawable mBackground_drawable;
-    private boolean mIsCenterAlignLeft = false;
+    private boolean mIsCenterAlignLeft;
     private int mCenterViewMarginLeft;
 
     public CommonTextView(Context context) {
@@ -205,8 +204,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         mContext = context;
-        defaultSize = dip2px(context, 13);
-        defaultPadding = dip2px(context, 10);
+
+        mDefaultTextColor = ThemeUtils.resolveColor(context, R.attr.stv_color_common_text, ResUtils.getColor(R.color.stv_color_common_text));
+        mDefaultTextSize = ThemeUtils.resolveDimension(context, R.attr.stv_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_stv_text_size));
+        mDefaultPadding = ThemeUtils.resolveDimension(context, R.attr.stv_margin, ResUtils.getDimensionPixelSize(R.dimen.default_stv_margin));
         mCenterSpaceHeight = dip2px(context, 5);
         getAttr(attrs);
         init();
@@ -252,40 +253,40 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         mRightTopTextString = typedArray.getString(R.styleable.CommonTextView_cRightTopTextString);
         mRightBottomTextString = typedArray.getString(R.styleable.CommonTextView_cRightBottomTextString);
 
-        mLeftTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftTextColor, defaultColor);
-        mLeftTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftTopTextColor, defaultColor);
-        mLeftBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftBottomTextColor, defaultColor);
+        mLeftTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftTextColor, mDefaultTextColor);
+        mLeftTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftTopTextColor, mDefaultTextColor);
+        mLeftBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftBottomTextColor, mDefaultTextColor);
 
-        mCenterTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterTextColor, defaultColor);
-        mCenterTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterTopTextColor, defaultColor);
-        mCenterBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterBottomTextColor, defaultColor);
+        mCenterTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterTextColor, mDefaultTextColor);
+        mCenterTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterTopTextColor, mDefaultTextColor);
+        mCenterBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterBottomTextColor, mDefaultTextColor);
 
-        mRightTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightTextColor, defaultColor);
-        mRightTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightTopTextColor, defaultColor);
-        mRightBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightBottomTextColor, defaultColor);
+        mRightTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightTextColor, mDefaultTextColor);
+        mRightTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightTopTextColor, mDefaultTextColor);
+        mRightBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightBottomTextColor, mDefaultTextColor);
 
-        mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftTextSize, defaultSize);
-        mLeftTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftTopTextSize, defaultSize);
-        mLeftBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftBottomTextSize, defaultSize);
+        mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftTextSize, mDefaultTextSize);
+        mLeftTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftTopTextSize, mDefaultTextSize);
+        mLeftBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftBottomTextSize, mDefaultTextSize);
 
-        mCenterTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterTextSize, defaultSize);
-        mCenterTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterTopTextSize, defaultSize);
-        mCenterBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterBottomTextSize, defaultSize);
+        mCenterTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterTextSize, mDefaultTextSize);
+        mCenterTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterTopTextSize, mDefaultTextSize);
+        mCenterBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterBottomTextSize, mDefaultTextSize);
 
-        mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightTextSize, defaultSize);
-        mRightTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightTopTextSize, defaultSize);
-        mRightBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightBottomTextSize, defaultSize);
+        mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightTextSize, mDefaultTextSize);
+        mRightTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightTopTextSize, mDefaultTextSize);
+        mRightBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightBottomTextSize, mDefaultTextSize);
 
-        mLeftIconDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftIconDrawablePadding, defaultPadding);
-        mCenterIconDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterIconDrawablePadding, defaultPadding);
-        mRightIconDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightIconDrawablePadding, defaultPadding);
+        mLeftIconDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftIconDrawablePadding, mDefaultPadding);
+        mCenterIconDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterIconDrawablePadding, mDefaultPadding);
+        mRightIconDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightIconDrawablePadding, mDefaultPadding);
 
-        mLeftViewPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftViewPaddingLeft, defaultPadding);
-        mLeftViewPaddingRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftViewPaddingRight, defaultPadding);
-        mCenterViewPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterViewPaddingLeft, defaultPadding);
-        mCenterViewPaddingRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterViewPaddingRight, defaultPadding);
-        mRightViewPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightViewPaddingLeft, defaultPadding);
-        mRightViewPaddingRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightViewPaddingRight, defaultPadding);
+        mLeftViewPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftViewPaddingLeft, mDefaultPadding);
+        mLeftViewPaddingRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftViewPaddingRight, mDefaultPadding);
+        mCenterViewPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterViewPaddingLeft, mDefaultPadding);
+        mCenterViewPaddingRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterViewPaddingRight, mDefaultPadding);
+        mRightViewPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightViewPaddingLeft, mDefaultPadding);
+        mRightViewPaddingRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightViewPaddingRight, mDefaultPadding);
 
         mBothDividerLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBothDividerLineMarginLeft, 0);
         mBothDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBothDividerLineMarginRight, 0);
@@ -298,8 +299,8 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         mBottomDividerLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBottomDividerLineMarginLeft, 0);
         mBottomDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBottomDividerLineMarginRight, 0);
 
-        mLeftImageViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftImageViewMarginLeft, defaultPadding);
-//        mRightImageViewMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightImageViewMarginRight, defaultPadding);
+        mLeftImageViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftImageViewMarginLeft, mDefaultPadding);
+//        mRightImageViewMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightImageViewMarginRight, mDefaultPadding);
 
         mCenterSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterSpaceHeight, mCenterSpaceHeight);
 
@@ -309,11 +310,11 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         mRightTextViewLineSpacingExtra = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightTextViewLineSpacingExtra, 0);
 
         mDividerLineType = typedArray.getInt(R.styleable.CommonTextView_cShowDividerLineType, DEFAULT);
-        mDividerLineColor = typedArray.getColor(R.styleable.CommonTextView_cDividerLineColor, defaultDividerLineColor);
+        mDividerLineColor = typedArray.getColor(R.styleable.CommonTextView_cDividerLineColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_light));
 
         mDividerLineHeight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cDividerLineHeight, dip2px(mContext, 0.5f));
 
-        useRipple = typedArray.getBoolean(R.styleable.CommonTextView_cUseRipple, false);
+        mIsUseRipple = typedArray.getBoolean(R.styleable.CommonTextView_cUseRipple, false);
 
         mBackgroundColor = typedArray.getColor(R.styleable.CommonTextView_cBackgroundColor, mBackgroundColor);
 
@@ -321,9 +322,9 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         mSetMaxEms = typedArray.getInt(R.styleable.CommonTextView_cSetMaxEms, mSetMaxEms);
         mSetLines = typedArray.getInt(R.styleable.CommonTextView_cSetLines, 1);
 
-        mLeftTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cLeftTextViewGravity, DEFAULT_Gravity);
-        mCenterTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cCenterTextViewGravity, DEFAULT_Gravity);
-        mRightTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cRightTextViewGravity, DEFAULT_Gravity);
+        mLeftTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cLeftTextViewGravity, DEFAULT_GRAVITY);
+        mCenterTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cCenterTextViewGravity, DEFAULT_GRAVITY);
+        mRightTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cRightTextViewGravity, DEFAULT_GRAVITY);
 
         mLeftViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cLeftViewIsClickable, false);
         mCenterViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cCenterViewIsClickable, false);
@@ -387,14 +388,14 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      */
     private void initCommonTextView() {
         this.setBackgroundColor(mBackgroundColor);
-        if (useRipple) {
+        if (mIsUseRipple) {
             this.setBackgroundResource(R.drawable.stv_btn_selector_white);
         }
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onCommonTextViewClickListener != null) {
-                    onCommonTextViewClickListener.onCommonTextViewClick();
+                if (mOnCommonTextViewClickListener != null) {
+                    mOnCommonTextViewClickListener.onCommonTextViewClick();
                 }
             }
         });
@@ -407,17 +408,17 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 为了设置上下两排文字居中对齐显示而需要设置的基准线
      */
     private void initCenterBaseLine() {
-        if (centerBaseLineView == null) {
-            if (centerBaseLineParams == null) {
-                centerBaseLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mCenterSpaceHeight);
-                centerBaseLineParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        if (mCenterBaseLineView == null) {
+            if (mCenterBaseLineParams == null) {
+                mCenterBaseLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mCenterSpaceHeight);
+                mCenterBaseLineParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
             }
-            centerBaseLineView = new View(mContext);
+            mCenterBaseLineView = new View(mContext);
 
-            centerBaseLineView.setId(R.id.cCenterBaseLineId);
-            centerBaseLineView.setLayoutParams(centerBaseLineParams);
+            mCenterBaseLineView.setId(R.id.cCenterBaseLineId);
+            mCenterBaseLineView.setLayoutParams(mCenterBaseLineParams);
         }
-        addView(centerBaseLineView);
+        addView(mCenterBaseLineView);
     }
 
     /**
@@ -475,17 +476,17 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @param marginRight 右间距
      */
     private void initTopLineView(int marginLeft, int marginRight) {
-        if (topLineView == null) {
-            if (topLineParams == null) {
-                topLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
+        if (mTopLineView == null) {
+            if (mTopLineParams == null) {
+                mTopLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
-            topLineParams.addRule(ALIGN_PARENT_TOP, TRUE);
-            topLineParams.setMargins(marginLeft, 0, marginRight, 0);
-            topLineView = new View(mContext);
-            topLineView.setLayoutParams(topLineParams);
-            topLineView.setBackgroundColor(mDividerLineColor);
+            mTopLineParams.addRule(ALIGN_PARENT_TOP, TRUE);
+            mTopLineParams.setMargins(marginLeft, 0, marginRight, 0);
+            mTopLineView = new View(mContext);
+            mTopLineView.setLayoutParams(mTopLineParams);
+            mTopLineView.setBackgroundColor(mDividerLineColor);
         }
-        addView(topLineView);
+        addView(mTopLineView);
     }
 
     /**
@@ -495,18 +496,18 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @param marginRight 右间距
      */
     private void initBottomLineView(int marginLeft, int marginRight) {
-        if (bottomLineView == null) {
-            if (bottomLineParams == null) {
-                bottomLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
+        if (mBottomLineView == null) {
+            if (mBottomLineParams == null) {
+                mBottomLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
-            bottomLineParams.addRule(ALIGN_PARENT_BOTTOM, TRUE);
-            bottomLineParams.setMargins(marginLeft, 0, marginRight, 0);
+            mBottomLineParams.addRule(ALIGN_PARENT_BOTTOM, TRUE);
+            mBottomLineParams.setMargins(marginLeft, 0, marginRight, 0);
 
-            bottomLineView = new View(mContext);
-            bottomLineView.setLayoutParams(bottomLineParams);
-            bottomLineView.setBackgroundColor(mDividerLineColor);
+            mBottomLineView = new View(mContext);
+            mBottomLineView.setLayoutParams(mBottomLineParams);
+            mBottomLineView.setBackgroundColor(mDividerLineColor);
         }
-        addView(bottomLineView);
+        addView(mBottomLineView);
     }
 
     /**
@@ -514,18 +515,18 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 主要是为了便于使用第三方图片框架获取网络图片使用
      */
     private void initLeftImageView() {
-        leftImageView = new ImageView(mContext);
-        leftIVParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftIVParams.addRule(ALIGN_PARENT_LEFT, TRUE);
-        leftIVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        leftIVParams.setMargins(mLeftImageViewMarginLeft, 0, 0, 0);
-        leftImageView.setScaleType(ImageView.ScaleType.CENTER);
-        leftImageView.setId(R.id.cLeftImageViewId);
-        leftImageView.setLayoutParams(leftIVParams);
+        mLeftImageView = new ImageView(mContext);
+        mLeftIVParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        mLeftIVParams.addRule(ALIGN_PARENT_LEFT, TRUE);
+        mLeftIVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        mLeftIVParams.setMargins(mLeftImageViewMarginLeft, 0, 0, 0);
+        mLeftImageView.setScaleType(ImageView.ScaleType.CENTER);
+        mLeftImageView.setId(R.id.cLeftImageViewId);
+        mLeftImageView.setLayoutParams(mLeftIVParams);
         if (mLeft_IV_drawable != null) {
-            leftImageView.setImageDrawable(mLeft_IV_drawable);
+            mLeftImageView.setImageDrawable(mLeft_IV_drawable);
         }
-        addView(leftImageView);
+        addView(mLeftImageView);
     }
 
     /**
@@ -551,30 +552,30 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化左边textView
      */
     private void initLeftText() {
-        if (leftTextView == null) {
-            if (leftTVParams == null) {
-                leftTVParams = getParams(leftTVParams);
+        if (mLeftTextView == null) {
+            if (mLeftTVParams == null) {
+                mLeftTVParams = getParams(mLeftTVParams);
             }
-            leftTVParams.addRule(CENTER_VERTICAL, TRUE);
-            leftTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
-            leftTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
-            leftTextView = initText(leftTextView, leftTVParams, R.id.cLeftTextId, mLeftTextColor, mLeftTextSize);
-            leftTextView.setText(mLeftTextString);
-            leftTextView.setLineSpacing(mLeftTextViewLineSpacingExtra, 1.0f);
-            setTextViewGravity(leftTextView, mLeftTextViewGravity);
+            mLeftTVParams.addRule(CENTER_VERTICAL, TRUE);
+            mLeftTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
+            mLeftTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
+            mLeftTextView = initText(mLeftTextView, mLeftTVParams, R.id.cLeftTextId, mLeftTextColor, mLeftTextSize);
+            mLeftTextView.setText(mLeftTextString);
+            mLeftTextView.setLineSpacing(mLeftTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(mLeftTextView, mLeftTextViewGravity);
             if (mLeftViewIsClickable) {
-                leftTextView.setOnClickListener(new OnClickListener() {
+                mLeftTextView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (onCommonTextViewClickListener != null) {
-                            onCommonTextViewClickListener.onLeftViewClick();
+                        if (mOnCommonTextViewClickListener != null) {
+                            mOnCommonTextViewClickListener.onLeftViewClick();
                         }
                     }
                 });
             }
         }
 
-        setDrawable(leftTextView, mLeft_drawableLeft, mLeft_drawableTop, mLeft_drawableRight, mLeft_drawableBottom, mLeftIconDrawablePadding);
+        setDrawable(mLeftTextView, mLeft_drawableLeft, mLeft_drawableTop, mLeft_drawableRight, mLeft_drawableBottom, mLeftIconDrawablePadding);
 
     }
 
@@ -582,17 +583,17 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化左上textView
      */
     private void initLeftTopText() {
-        if (leftTopTextView == null) {
-            if (leftTopTVParams == null) {
-                leftTopTVParams = getParams(leftTopTVParams);
+        if (mLeftTopTextView == null) {
+            if (mLeftTopTVParams == null) {
+                mLeftTopTVParams = getParams(mLeftTopTVParams);
             }
-            leftTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            leftTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
-            leftTopTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
-            leftTopTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
-            leftTopTextView = initText(leftTopTextView, leftTopTVParams, R.id.cLeftTopTextId, mLeftTopTextColor, mLeftTopTextSize);
-            leftTopTextView.setText(mLeftTopTextString);
-            setTextViewGravity(leftTopTextView, mLeftTextViewGravity);
+            mLeftTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            mLeftTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
+            mLeftTopTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
+            mLeftTopTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
+            mLeftTopTextView = initText(mLeftTopTextView, mLeftTopTVParams, R.id.cLeftTopTextId, mLeftTopTextColor, mLeftTopTextSize);
+            mLeftTopTextView.setText(mLeftTopTextString);
+            setTextViewGravity(mLeftTopTextView, mLeftTextViewGravity);
 
         }
 
@@ -602,17 +603,17 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化左下textView
      */
     private void initLeftBottomText() {
-        if (leftBottomTextView == null) {
-            if (leftBottomTVParams == null) {
-                leftBottomTVParams = getParams(leftBottomTVParams);
+        if (mLeftBottomTextView == null) {
+            if (mLeftBottomTVParams == null) {
+                mLeftBottomTVParams = getParams(mLeftBottomTVParams);
             }
-            leftBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            leftBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
-            leftBottomTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
-            leftBottomTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
-            leftBottomTextView = initText(leftBottomTextView, leftBottomTVParams, R.id.cLeftBottomTextId, mLeftBottomTextColor, mLeftBottomTextSize);
-            leftBottomTextView.setText(mLeftBottomTextString);
-            setTextViewGravity(leftBottomTextView, mLeftTextViewGravity);
+            mLeftBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            mLeftBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
+            mLeftBottomTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
+            mLeftBottomTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
+            mLeftBottomTextView = initText(mLeftBottomTextView, mLeftBottomTVParams, R.id.cLeftBottomTextId, mLeftBottomTextColor, mLeftBottomTextSize);
+            mLeftBottomTextView.setText(mLeftBottomTextString);
+            setTextViewGravity(mLeftBottomTextView, mLeftTextViewGravity);
 
         }
 
@@ -622,44 +623,44 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化中间textView
      */
     private void initCenterText() {
-        if (centerTextView == null) {
-            if (centerTVParams == null) {
+        if (mCenterTextView == null) {
+            if (mCenterTVParams == null) {
                 if (mIsCenterAlignLeft) {
-                    centerTVParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+                    mCenterTVParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
                 } else {
-                    centerTVParams = getParams(centerTVParams);
+                    mCenterTVParams = getParams(mCenterTVParams);
                 }
             }
 
-            centerTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            centerTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
+            mCenterTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            mCenterTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
 
             if (mIsCenterAlignLeft) {
-                centerTextView = initText(centerTextView, centerTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
-                centerTVParams.setMargins(mCenterViewMarginLeft, 0, mCenterViewPaddingRight, 0);
-                setTextViewGravity(centerTextView, Gravity_Left_Center);
+                mCenterTextView = initText(mCenterTextView, mCenterTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
+                mCenterTVParams.setMargins(mCenterViewMarginLeft, 0, mCenterViewPaddingRight, 0);
+                setTextViewGravity(mCenterTextView, GRAVITY_LEFT_CENTER);
             } else {
-                centerTextView = initText(centerTextView, centerTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
-                centerTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
-                setTextViewGravity(centerTextView, mCenterTextViewGravity);
+                mCenterTextView = initText(mCenterTextView, mCenterTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
+                mCenterTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
+                setTextViewGravity(mCenterTextView, mCenterTextViewGravity);
             }
 
-            centerTextView.setText(mCenterTextString);
-            centerTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
+            mCenterTextView.setText(mCenterTextString);
+            mCenterTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
 
             if (mCenterViewIsClickable) {
-                centerTextView.setOnClickListener(new OnClickListener() {
+                mCenterTextView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (onCommonTextViewClickListener != null) {
-                            onCommonTextViewClickListener.onCenterViewClick();
+                        if (mOnCommonTextViewClickListener != null) {
+                            mOnCommonTextViewClickListener.onCenterViewClick();
                         }
                     }
                 });
             }
 
         }
-        setDrawable(centerTextView, mCenter_drawableLeft, mCenter_drawableTop, mCenter_drawableRight, mCenter_drawableBottom, mCenterIconDrawablePadding);
+        setDrawable(mCenterTextView, mCenter_drawableLeft, mCenter_drawableTop, mCenter_drawableRight, mCenter_drawableBottom, mCenterIconDrawablePadding);
 
     }
 
@@ -667,18 +668,18 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化中上textView
      */
     private void initCenterTopText() {
-        if (centerTopTextView == null) {
-            if (centerTopTVParams == null) {
-                centerTopTVParams = getParams(centerTopTVParams);
+        if (mCenterTopTextView == null) {
+            if (mCenterTopTVParams == null) {
+                mCenterTopTVParams = getParams(mCenterTopTVParams);
             }
-            centerTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            centerTopTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
-            centerTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
-            centerTopTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
-            centerTopTextView = initText(centerTopTextView, centerTopTVParams, R.id.cCenterTopTextId, mCenterTopTextColor, mCenterTopTextSize);
-            centerTopTextView.setText(mCenterTopTextString);
-            centerTopTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
-            setTextViewGravity(centerTopTextView, mCenterTextViewGravity);
+            mCenterTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            mCenterTopTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
+            mCenterTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
+            mCenterTopTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
+            mCenterTopTextView = initText(mCenterTopTextView, mCenterTopTVParams, R.id.cCenterTopTextId, mCenterTopTextColor, mCenterTopTextSize);
+            mCenterTopTextView.setText(mCenterTopTextString);
+            mCenterTopTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(mCenterTopTextView, mCenterTextViewGravity);
         }
 
     }
@@ -687,18 +688,18 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化中下textView
      */
     private void initCenterBottomText() {
-        if (centerBottomTextView == null) {
-            if (centerBottomTVParams == null) {
-                centerBottomTVParams = getParams(centerBottomTVParams);
+        if (mCenterBottomTextView == null) {
+            if (mCenterBottomTVParams == null) {
+                mCenterBottomTVParams = getParams(mCenterBottomTVParams);
             }
-            centerBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            centerBottomTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
-            centerBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
-            centerBottomTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
-            centerBottomTextView = initText(centerBottomTextView, centerBottomTVParams, R.id.cCenterBottomTextId, mCenterBottomTextColor, mCenterBottomTextSize);
-            centerBottomTextView.setText(mCenterBottomTextString);
-            centerBottomTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
-            setTextViewGravity(centerBottomTextView, mCenterTextViewGravity);
+            mCenterBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            mCenterBottomTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
+            mCenterBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
+            mCenterBottomTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
+            mCenterBottomTextView = initText(mCenterBottomTextView, mCenterBottomTVParams, R.id.cCenterBottomTextId, mCenterBottomTextColor, mCenterBottomTextSize);
+            mCenterBottomTextView.setText(mCenterBottomTextString);
+            mCenterBottomTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(mCenterBottomTextView, mCenterTextViewGravity);
         }
 
     }
@@ -708,33 +709,33 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化右边textView
      */
     private void initRightText() {
-        if (rightTextView == null) {
-            if (rightTVParams == null) {
-                rightTVParams = getParams(rightTVParams);
+        if (mRightTextView == null) {
+            if (mRightTVParams == null) {
+                mRightTVParams = getParams(mRightTVParams);
             }
 
-            rightTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            rightTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
-            rightTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
-            rightTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
-            rightTextView = initText(rightTextView, rightTVParams, R.id.cRightTextId, mRightTextColor, mRightTextSize);
-            rightTextView.setText(mRightTextString);
-//            rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
-            rightTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
-            setTextViewGravity(rightTextView, mRightTextViewGravity);
+            mRightTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            mRightTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+            mRightTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
+            mRightTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
+            mRightTextView = initText(mRightTextView, mRightTVParams, R.id.cRightTextId, mRightTextColor, mRightTextSize);
+            mRightTextView.setText(mRightTextString);
+//            mRightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+            mRightTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(mRightTextView, mRightTextViewGravity);
             if (mRightViewIsClickable) {
-                rightTextView.setOnClickListener(new OnClickListener() {
+                mRightTextView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (onCommonTextViewClickListener != null) {
-                            onCommonTextViewClickListener.onRightViewClick();
+                        if (mOnCommonTextViewClickListener != null) {
+                            mOnCommonTextViewClickListener.onRightViewClick();
                         }
                     }
                 });
             }
 
         }
-        setDrawable(rightTextView, mRight_drawableLeft, mRight_drawableTop, mRight_drawableRight, mRight_drawableBottom, mRightIconDrawablePadding);
+        setDrawable(mRightTextView, mRight_drawableLeft, mRight_drawableTop, mRight_drawableRight, mRight_drawableBottom, mRightIconDrawablePadding);
 
     }
 
@@ -742,19 +743,19 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化右上textView
      */
     private void initRightTopText() {
-        if (rightTopTextView == null) {
-            if (rightTopTVParams == null) {
-                rightTopTVParams = getParams(rightTopTVParams);
+        if (mRightTopTextView == null) {
+            if (mRightTopTVParams == null) {
+                mRightTopTVParams = getParams(mRightTopTVParams);
             }
-            rightTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            rightTopTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
-            rightTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
-            rightTopTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
-            rightTopTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
-            rightTopTextView = initText(rightTopTextView, rightTopTVParams, R.id.cRightTopTextId, mRightTopTextColor, mRightTopTextSize);
-            rightTopTextView.setText(mRightTopTextString);
-            rightTopTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
-            setTextViewGravity(rightTopTextView, mRightTextViewGravity);
+            mRightTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            mRightTopTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+            mRightTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
+            mRightTopTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
+            mRightTopTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
+            mRightTopTextView = initText(mRightTopTextView, mRightTopTVParams, R.id.cRightTopTextId, mRightTopTextColor, mRightTopTextSize);
+            mRightTopTextView.setText(mRightTopTextString);
+            mRightTopTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(mRightTopTextView, mRightTextViewGravity);
 
         }
 
@@ -764,19 +765,19 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * 初始化右下textView
      */
     private void initRightBottomText() {
-        if (rightBottomTextView == null) {
-            if (rightBottomTVParams == null) {
-                rightBottomTVParams = getParams(rightBottomTVParams);
+        if (mRightBottomTextView == null) {
+            if (mRightBottomTVParams == null) {
+                mRightBottomTVParams = getParams(mRightBottomTVParams);
             }
-            rightBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            rightBottomTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
-            rightBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
-            rightBottomTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
-            rightBottomTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
-            rightBottomTextView = initText(rightBottomTextView, rightBottomTVParams, R.id.cRightBottomTextId, mRightBottomTextColor, mRightBottomTextSize);
-            rightBottomTextView.setText(mRightBottomTextString);
-            rightBottomTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
-            setTextViewGravity(rightBottomTextView, mRightTextViewGravity);
+            mRightBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            mRightBottomTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+            mRightBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
+            mRightBottomTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
+            mRightBottomTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
+            mRightBottomTextView = initText(mRightBottomTextView, mRightBottomTVParams, R.id.cRightBottomTextId, mRightBottomTextColor, mRightBottomTextSize);
+            mRightBottomTextView.setText(mRightBottomTextString);
+            mRightBottomTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(mRightBottomTextView, mRightTextViewGravity);
         }
     }
 
@@ -816,7 +817,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
             textView.setSingleLine(mSetSingleLine);
 //            textView.setMaxEms(mSetMaxEms);
 //            textView.setEllipsize(TextUtils.TruncateAt.END);
-            textView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(mSetMaxEms) });
+            textView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(mSetMaxEms)});
             addView(textView);
         }
         return textView;
@@ -825,13 +826,13 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
     private void setTextViewGravity(TextView textView, int gravity_type) {
 
         switch (gravity_type) {
-            case Gravity_Left_Center:
+            case GRAVITY_LEFT_CENTER:
                 textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
                 break;
-            case Gravity_Center:
+            case GRAVITY_CENTER:
                 textView.setGravity(Gravity.CENTER);
                 break;
-            case Gravity_Right_Center:
+            case GRAVITY_RIGHT_CENTER:
                 textView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
         }
 
@@ -859,10 +860,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setLeftTextString(CharSequence string) {
-        if (leftTextView == null) {
+        if (mLeftTextView == null) {
             initLeftText();
         }
-        leftTextView.setText(string);
+        mLeftTextView.setText(string);
         return this;
     }
 
@@ -873,10 +874,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setLeftTopTextString(CharSequence string) {
-        if (leftTopTextView == null) {
+        if (mLeftTopTextView == null) {
             initLeftTopText();
         }
-        leftTopTextView.setText(string);
+        mLeftTopTextView.setText(string);
         return this;
     }
 
@@ -887,10 +888,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setLeftBottomTextString(CharSequence string) {
-        if (leftBottomTextView == null) {
+        if (mLeftBottomTextView == null) {
             initLeftBottomText();
         }
-        leftBottomTextView.setText(string);
+        mLeftBottomTextView.setText(string);
         return this;
     }
 
@@ -901,10 +902,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setLeftTextSize(float size) {
-        if (leftTextView == null) {
+        if (mLeftTextView == null) {
             initLeftText();
         }
-        leftTextView.setTextSize(size);
+        mLeftTextView.setTextSize(size);
         return this;
     }
 
@@ -915,10 +916,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return return
      */
     public CommonTextView setLeftTextColor(int color) {
-        if (leftTextView == null) {
+        if (mLeftTextView == null) {
             initLeftText();
         }
-        leftTextView.setTextColor(color);
+        mLeftTextView.setTextColor(color);
         return this;
     }
 
@@ -929,10 +930,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setCenterTextString(CharSequence string) {
-        if (centerTextView == null) {
+        if (mCenterTextView == null) {
             initCenterText();
         }
-        centerTextView.setText(string);
+        mCenterTextView.setText(string);
         return this;
     }
 
@@ -943,10 +944,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setCenterTopTextString(CharSequence string) {
-        if (centerTopTextView == null) {
+        if (mCenterTopTextView == null) {
             initCenterTopText();
         }
-        centerTopTextView.setText(string);
+        mCenterTopTextView.setText(string);
         return this;
     }
 
@@ -957,10 +958,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setCenterBottomTextString(CharSequence string) {
-        if (centerBottomTextView == null) {
+        if (mCenterBottomTextView == null) {
             initCenterBottomText();
         }
-        centerBottomTextView.setText(string);
+        mCenterBottomTextView.setText(string);
         return this;
     }
 
@@ -971,10 +972,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setCenterTextSize(float size) {
-        if (centerTextView == null) {
+        if (mCenterTextView == null) {
             initCenterText();
         }
-        centerTextView.setTextSize(size);
+        mCenterTextView.setTextSize(size);
         return this;
     }
 
@@ -985,10 +986,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setCenterTextColor(int color) {
-        if (centerTextView == null) {
+        if (mCenterTextView == null) {
             initCenterText();
         }
-        centerTextView.setTextColor(color);
+        mCenterTextView.setTextColor(color);
         return this;
     }
 
@@ -999,10 +1000,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setRightTextString(CharSequence string) {
-        if (rightTextView == null) {
+        if (mRightTextView == null) {
             initRightText();
         }
-        rightTextView.setText(string);
+        mRightTextView.setText(string);
         return this;
     }
 
@@ -1013,10 +1014,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setRightTopTextString(CharSequence string) {
-        if (rightTopTextView == null) {
+        if (mRightTopTextView == null) {
             initRightTopText();
         }
-        rightTopTextView.setText(string);
+        mRightTopTextView.setText(string);
         return this;
     }
 
@@ -1027,10 +1028,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setRightBottomTextString(CharSequence string) {
-        if (rightBottomTextView == null) {
+        if (mRightBottomTextView == null) {
             initRightBottomText();
         }
-        rightBottomTextView.setText(string);
+        mRightBottomTextView.setText(string);
         return this;
     }
 
@@ -1041,10 +1042,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setRightTextSize(float size) {
-        if (rightTextView == null) {
+        if (mRightTextView == null) {
             initRightText();
         }
-        rightTextView.setTextSize(size);
+        mRightTextView.setTextSize(size);
         return this;
     }
 
@@ -1055,10 +1056,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CommonTextView setRightTextColor(int color) {
-        if (rightTextView == null) {
+        if (mRightTextView == null) {
             initRightText();
         }
-        rightTextView.setTextColor(color);
+        mRightTextView.setTextColor(color);
         return this;
     }
 
@@ -1072,10 +1073,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableLeft != null) {
             drawableLeft.setBounds(0, 0, drawableLeft.getMinimumWidth(), drawableLeft.getMinimumHeight());
         }
-        if (leftTextView == null) {
+        if (mLeftTextView == null) {
             initLeftText();
         }
-        leftTextView.setCompoundDrawables(drawableLeft, null, null, null);
+        mLeftTextView.setCompoundDrawables(drawableLeft, null, null, null);
         return this;
     }
 
@@ -1089,10 +1090,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableTop != null) {
             drawableTop.setBounds(0, 0, drawableTop.getMinimumWidth(), drawableTop.getMinimumHeight());
         }
-        if (leftTextView == null) {
+        if (mLeftTextView == null) {
             initLeftText();
         }
-        leftTextView.setCompoundDrawables(null, drawableTop, null, null);
+        mLeftTextView.setCompoundDrawables(null, drawableTop, null, null);
         return this;
     }
 
@@ -1106,10 +1107,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableRight != null) {
             drawableRight.setBounds(0, 0, drawableRight.getMinimumWidth(), drawableRight.getMinimumHeight());
         }
-        if (leftTextView == null) {
+        if (mLeftTextView == null) {
             initLeftText();
         }
-        leftTextView.setCompoundDrawables(null, null, drawableRight, null);
+        mLeftTextView.setCompoundDrawables(null, null, drawableRight, null);
         return this;
     }
 
@@ -1123,10 +1124,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableBottom != null) {
             drawableBottom.setBounds(0, 0, drawableBottom.getMinimumWidth(), drawableBottom.getMinimumHeight());
         }
-        if (leftTextView == null) {
+        if (mLeftTextView == null) {
             initLeftText();
         }
-        leftTextView.setCompoundDrawables(null, null, null, drawableBottom);
+        mLeftTextView.setCompoundDrawables(null, null, null, drawableBottom);
         return this;
     }
 
@@ -1140,10 +1141,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableLeft != null) {
             drawableLeft.setBounds(0, 0, drawableLeft.getMinimumWidth(), drawableLeft.getMinimumHeight());
         }
-        if (centerTextView == null) {
+        if (mCenterTextView == null) {
             initCenterText();
         }
-        centerTextView.setCompoundDrawables(drawableLeft, null, null, null);
+        mCenterTextView.setCompoundDrawables(drawableLeft, null, null, null);
         return this;
     }
 
@@ -1157,10 +1158,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableTop != null) {
             drawableTop.setBounds(0, 0, drawableTop.getMinimumWidth(), drawableTop.getMinimumHeight());
         }
-        if (centerTextView == null) {
+        if (mCenterTextView == null) {
             initCenterText();
         }
-        centerTextView.setCompoundDrawables(null, drawableTop, null, null);
+        mCenterTextView.setCompoundDrawables(null, drawableTop, null, null);
         return this;
     }
 
@@ -1174,10 +1175,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableRight != null) {
             drawableRight.setBounds(0, 0, drawableRight.getMinimumWidth(), drawableRight.getMinimumHeight());
         }
-        if (centerTextView == null) {
+        if (mCenterTextView == null) {
             initCenterText();
         }
-        centerTextView.setCompoundDrawables(null, null, drawableRight, null);
+        mCenterTextView.setCompoundDrawables(null, null, drawableRight, null);
         return this;
     }
 
@@ -1191,10 +1192,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableBottom != null) {
             drawableBottom.setBounds(0, 0, drawableBottom.getMinimumWidth(), drawableBottom.getMinimumHeight());
         }
-        if (centerTextView == null) {
+        if (mCenterTextView == null) {
             initCenterText();
         }
-        centerTextView.setCompoundDrawables(null, null, null, drawableBottom);
+        mCenterTextView.setCompoundDrawables(null, null, null, drawableBottom);
         return this;
     }
 
@@ -1208,10 +1209,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableLeft != null) {
             drawableLeft.setBounds(0, 0, drawableLeft.getMinimumWidth(), drawableLeft.getMinimumHeight());
         }
-        if (rightTextView == null) {
+        if (mRightTextView == null) {
             initRightText();
         }
-        rightTextView.setCompoundDrawables(drawableLeft, null, null, null);
+        mRightTextView.setCompoundDrawables(drawableLeft, null, null, null);
         return this;
     }
 
@@ -1225,10 +1226,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableTop != null) {
             drawableTop.setBounds(0, 0, drawableTop.getMinimumWidth(), drawableTop.getMinimumHeight());
         }
-        if (rightTextView == null) {
+        if (mRightTextView == null) {
             initRightText();
         }
-        rightTextView.setCompoundDrawables(null, drawableTop, null, null);
+        mRightTextView.setCompoundDrawables(null, drawableTop, null, null);
         return this;
     }
 
@@ -1242,10 +1243,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableRight != null) {
             drawableRight.setBounds(0, 0, drawableRight.getMinimumWidth(), drawableRight.getMinimumHeight());
         }
-        if (rightTextView == null) {
+        if (mRightTextView == null) {
             initRightText();
         }
-        rightTextView.setCompoundDrawables(null, null, drawableRight, null);
+        mRightTextView.setCompoundDrawables(null, null, drawableRight, null);
         return this;
     }
 
@@ -1259,10 +1260,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
         if (drawableBottom != null) {
             drawableBottom.setBounds(0, 0, drawableBottom.getMinimumWidth(), drawableBottom.getMinimumHeight());
         }
-        if (rightTextView == null) {
+        if (mRightTextView == null) {
             initRightText();
         }
-        rightTextView.setCompoundDrawables(null, null, null, drawableBottom);
+        mRightTextView.setCompoundDrawables(null, null, null, drawableBottom);
         return this;
     }
 
@@ -1272,10 +1273,10 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回imageView对象
      */
     public ImageView getLeftImageView() {
-        if (leftImageView == null) {
+        if (mLeftImageView == null) {
             initLeftImageView();
         }
-        return leftImageView;
+        return mLeftImageView;
     }
 
     /**
@@ -1284,7 +1285,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getLeftTextString() {
-        return leftTextView != null ? leftTextView.getText() : "";
+        return mLeftTextView != null ? mLeftTextView.getText() : "";
     }
 
     /**
@@ -1293,7 +1294,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getLeftTopTextString() {
-        return leftTopTextView != null ? leftTopTextView.getText() : "";
+        return mLeftTopTextView != null ? mLeftTopTextView.getText() : "";
     }
 
     /**
@@ -1302,7 +1303,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getLeftBottomTextString() {
-        return leftBottomTextView != null ? leftBottomTextView.getText() : "";
+        return mLeftBottomTextView != null ? mLeftBottomTextView.getText() : "";
     }
 
     /**
@@ -1311,7 +1312,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getCenterTextString() {
-        return centerTextView != null ? centerTextView.getText() : "";
+        return mCenterTextView != null ? mCenterTextView.getText() : "";
     }
 
     /**
@@ -1320,7 +1321,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getCenterTopTextString() {
-        return centerTopTextView != null ? centerTopTextView.getText() : "";
+        return mCenterTopTextView != null ? mCenterTopTextView.getText() : "";
     }
 
     /**
@@ -1329,7 +1330,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getCenterBottomTextString() {
-        return centerBottomTextView != null ? centerBottomTextView.getText() : "";
+        return mCenterBottomTextView != null ? mCenterBottomTextView.getText() : "";
     }
 
     /**
@@ -1338,7 +1339,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getRightTextString() {
-        return rightTextView != null ? rightTextView.getText() : "";
+        return mRightTextView != null ? mRightTextView.getText() : "";
     }
 
     /**
@@ -1347,7 +1348,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getRightTopTextString() {
-        return rightTopTextView != null ? rightTopTextView.getText() : "";
+        return mRightTopTextView != null ? mRightTopTextView.getText() : "";
     }
 
     /**
@@ -1356,37 +1357,37 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回
      */
     public CharSequence getRightBottomTextString() {
-        return rightBottomTextView != null ? rightBottomTextView.getText() : "";
+        return mRightBottomTextView != null ? mRightBottomTextView.getText() : "";
     }
 
     @Override
     public void setTypeface(Typeface typeface) {
-        if (leftTextView != null) {
-            leftTextView.setTypeface(typeface);
+        if (mLeftTextView != null) {
+            mLeftTextView.setTypeface(typeface);
         }
-        if (centerTextView != null) {
-            centerTextView.setTypeface(typeface);
+        if (mCenterTextView != null) {
+            mCenterTextView.setTypeface(typeface);
         }
-        if (rightTextView != null) {
-            rightTextView.setTypeface(typeface);
+        if (mRightTextView != null) {
+            mRightTextView.setTypeface(typeface);
         }
-        if (leftTopTextView != null) {
-            leftTopTextView.setTypeface(typeface);
+        if (mLeftTopTextView != null) {
+            mLeftTopTextView.setTypeface(typeface);
         }
-        if (centerTopTextView != null) {
-            centerTopTextView.setTypeface(typeface);
+        if (mCenterTopTextView != null) {
+            mCenterTopTextView.setTypeface(typeface);
         }
-        if (rightTopTextView != null) {
-            rightTopTextView.setTypeface(typeface);
+        if (mRightTopTextView != null) {
+            mRightTopTextView.setTypeface(typeface);
         }
-        if (leftBottomTextView != null) {
-            leftBottomTextView.setTypeface(typeface);
+        if (mLeftBottomTextView != null) {
+            mLeftBottomTextView.setTypeface(typeface);
         }
-        if (centerBottomTextView != null) {
-            centerBottomTextView.setTypeface(typeface);
+        if (mCenterBottomTextView != null) {
+            mCenterBottomTextView.setTypeface(typeface);
         }
-        if (rightBottomTextView != null) {
-            rightBottomTextView.setTypeface(typeface);
+        if (mRightBottomTextView != null) {
+            mRightBottomTextView.setTypeface(typeface);
         }
     }
 
@@ -1415,7 +1416,7 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      * @return 返回当前对象便于链式操作
      */
     public CommonTextView setOnCommonTextViewClickListener(OnCommonTextViewClickListener listener) {
-        this.onCommonTextViewClickListener = listener;
+        this.mOnCommonTextViewClickListener = listener;
         return this;
     }
 
@@ -1427,12 +1428,12 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      */
     public CommonTextView setLeftViewIsClickable(boolean isClickable) {
         if (isClickable) {
-            if (leftTextView != null) {
-                leftTextView.setOnClickListener(new OnClickListener() {
+            if (mLeftTextView != null) {
+                mLeftTextView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (onCommonTextViewClickListener != null) {
-                            onCommonTextViewClickListener.onLeftViewClick();
+                        if (mOnCommonTextViewClickListener != null) {
+                            mOnCommonTextViewClickListener.onLeftViewClick();
                         }
                     }
                 });
@@ -1449,12 +1450,12 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      */
     public CommonTextView setCenterViewIsClickable(boolean isClickable) {
         if (isClickable) {
-            if (centerTextView != null) {
-                centerTextView.setOnClickListener(new OnClickListener() {
+            if (mCenterTextView != null) {
+                mCenterTextView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (onCommonTextViewClickListener != null) {
-                            onCommonTextViewClickListener.onCenterViewClick();
+                        if (mOnCommonTextViewClickListener != null) {
+                            mOnCommonTextViewClickListener.onCenterViewClick();
                         }
                     }
                 });
@@ -1471,12 +1472,12 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      */
     public CommonTextView setRightViewIsClickable(boolean isClickable) {
         if (isClickable) {
-            if (rightTextView != null) {
-                rightTextView.setOnClickListener(new OnClickListener() {
+            if (mRightTextView != null) {
+                mRightTextView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (onCommonTextViewClickListener != null) {
-                            onCommonTextViewClickListener.onRightViewClick();
+                        if (mOnCommonTextViewClickListener != null) {
+                            mOnCommonTextViewClickListener.onRightViewClick();
                         }
                     }
                 });

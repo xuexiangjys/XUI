@@ -178,8 +178,8 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
         if (collection != null) {
             mData.clear();
             mData.addAll(collection);
-            notifyDataSetChanged();
             mSelectPosition = -1;
+            notifyDataSetChanged();
         }
         return this;
     }
@@ -251,6 +251,17 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
         mSelectPosition = selectPosition;
         notifyDataSetChanged();
         return this;
+    }
+
+    /**
+     * 清除数据
+     */
+    public void clear() {
+        if (!isEmpty()) {
+            mData.clear();
+            mSelectPosition = -1;
+            notifyDataSetChanged();
+        }
     }
 
 }

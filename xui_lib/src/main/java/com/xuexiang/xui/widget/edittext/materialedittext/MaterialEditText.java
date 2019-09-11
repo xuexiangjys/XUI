@@ -362,7 +362,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
 
         iconSize = getPixel(32);
-        iconOuterWidth = getPixel(16);
+        iconOuterWidth = getPixel(18);
         iconOuterHeight = getPixel(32);
 
         bottomSpacing = getResources().getDimensionPixelSize(R.dimen.default_edittext_components_spacing);
@@ -446,7 +446,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             }
         }
 
-        iconPadding = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_iconPadding, getPixel(16));
+        iconPadding = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_iconPadding, getPixel(8));
         floatingLabelAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_floatingLabelAlwaysShown, false);
         helperTextAlwaysShown = typedArray.getBoolean(R.styleable.MaterialEditText_met_helperTextAlwaysShown, false);
         validateOnFocusLost = typedArray.getBoolean(R.styleable.MaterialEditText_met_validateOnFocusLost, false);
@@ -849,9 +849,9 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         int buttonsWidthLeft = 0, buttonsWidthRight = 0;
         int buttonsWidth = iconOuterWidth * getButtonsCount();
         if (isRTL()) {
-            buttonsWidthLeft = buttonsWidth;
+            buttonsWidthLeft = buttonsWidth / 2;
         } else {
-            buttonsWidthRight = buttonsWidth;
+            buttonsWidthRight = buttonsWidth / 2;
         }
         super.setPadding(innerPaddingLeft + extraPaddingLeft + buttonsWidthLeft, innerPaddingTop + extraPaddingTop, innerPaddingRight + extraPaddingRight + buttonsWidthRight, innerPaddingBottom + extraPaddingBottom);
     }
@@ -1473,7 +1473,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         drawFloatingLabel(canvas, startX, endX);
 
         // draw the bottom ellipsis
-        drawBottonEllipsis(canvas, startX, endX, lineStartY);
+        drawBottomEllipsis(canvas, startX, endX, lineStartY);
 
         // draw the original things
         super.onDraw(canvas);
@@ -1614,7 +1614,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
     }
 
-    private void drawBottonEllipsis(@NonNull Canvas canvas, int startX, int endX, int lineStartY) {
+    private void drawBottomEllipsis(@NonNull Canvas canvas, int startX, int endX, int lineStartY) {
         if (hasFocus() && singleLineEllipsis && getScrollX() != 0) {
             paint.setColor(isInternalValid() ? primaryColor : errorColor);
             float startY = lineStartY + bottomSpacing;
@@ -1728,6 +1728,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
                 case MotionEvent.ACTION_CANCEL:
                     actionButtonTouched = false;
                     actionButtonClicking = false;
+                    break;
+                default:
                     break;
             }
         }
