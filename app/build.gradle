@@ -16,7 +16,6 @@ android {
         targetSdkVersion build_versions.target_sdk
         versionCode 10
         versionName "1.0.9"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -89,10 +88,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation deps.junit
-    androidTestImplementation deps.runner
-    androidTestImplementation deps.espresso.core
-
     implementation deps.androidx.multidex
 
     //下拉刷新、CityPicker、XUI框架需要
