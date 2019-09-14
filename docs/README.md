@@ -56,7 +56,7 @@ allprojects {
 ```
 dependencies {
   ...
-  //1.0.5版本后只支持androidx
+  //androidx项目
   implementation 'com.github.xuexiangjys:XUI:1.0.9'
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -66,12 +66,13 @@ dependencies {
 }
 ```
 
-【注意】如果你的项目目前还未使用androidx，那你只能使用1.0.5之前的版本了。
+【注意】如果你的项目目前还未使用androidx，请使用如下配置：
 
 ```
 dependencies {
   ...
-  implementation 'com.github.xuexiangjys:XUI:1.0.4'
+  //support项目
+  implementation 'com.github.xuexiangjys:XUI:1.0.9-support'
 
   implementation 'com.android.support:appcompat-v7:28.0.0'
   implementation 'com.android.support:recyclerview-v7:28.0.0'
