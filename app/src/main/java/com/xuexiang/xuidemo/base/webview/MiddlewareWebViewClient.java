@@ -26,7 +26,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 
-import androidx.annotation.RequiresApi;
+import android.support.annotation.RequiresApi;
 
 import com.just.agentweb.core.client.MiddlewareWebClientBase;
 import com.xuexiang.xui.utils.ResUtils;

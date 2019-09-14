@@ -19,8 +19,8 @@ package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 import android.content.Context;
 import android.view.View;
 
-import androidx.annotation.StringRes;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.annotation.StringRes;
+import android.support.v7.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;

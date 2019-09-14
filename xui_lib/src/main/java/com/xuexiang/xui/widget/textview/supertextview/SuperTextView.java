@@ -8,8 +8,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatEditText;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatEditText;
 
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;

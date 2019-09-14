@@ -25,7 +25,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;

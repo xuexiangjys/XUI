@@ -21,7 +21,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 
-import androidx.appcompat.widget.AppCompatTextView;
+import android.support.v7.widget.AppCompatTextView;
 
 /**
  * 能够自适应字体大小的TextView

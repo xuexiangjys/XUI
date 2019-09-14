@@ -19,8 +19,8 @@ package com.xuexiang.xui.widget.dialog.materialdialog.internal;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
 
 import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
 

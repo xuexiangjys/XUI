@@ -16,12 +16,11 @@
 
 package com.xuexiang.xui.widget.tabbar;
 
+import android.support.v4.util.Pools;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
-import androidx.core.util.Pools;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xui.R;
 

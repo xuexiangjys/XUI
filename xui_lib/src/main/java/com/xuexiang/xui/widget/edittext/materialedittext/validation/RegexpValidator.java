@@ -1,6 +1,6 @@
 package com.xuexiang.xui.widget.edittext.materialedittext.validation;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.util.regex.Pattern;
 

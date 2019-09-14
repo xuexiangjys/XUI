@@ -14,7 +14,7 @@
   android:paddingStart="?attr/md_dialog_frame_margin"
   tools:gravity="start|center_vertical">
 
-  <androidx.appcompat.widget.AppCompatRadioButton
+  <android.support.v7.widget.AppCompatRadioButton
     android:id="@+id/md_control"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"

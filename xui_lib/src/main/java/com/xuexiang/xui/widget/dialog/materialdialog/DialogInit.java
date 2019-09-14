@@ -37,11 +37,11 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.StyleRes;
-import androidx.annotation.UiThread;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.StyleRes;
+import android.support.annotation.UiThread;
+import android.support.v7.widget.RecyclerView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;

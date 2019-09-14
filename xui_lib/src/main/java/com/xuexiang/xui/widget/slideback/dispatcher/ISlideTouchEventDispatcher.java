@@ -19,7 +19,7 @@ package com.xuexiang.xui.widget.slideback.dispatcher;
 
 import android.view.View;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.xuexiang.xui.widget.slideback.SlideInfo;
 import com.xuexiang.xui.widget.slideback.callback.SlideCallBack;

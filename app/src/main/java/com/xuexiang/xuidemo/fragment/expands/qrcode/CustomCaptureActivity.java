@@ -25,8 +25,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.fragment.app.Fragment;
+import android.support.v7.widget.AppCompatImageView;
+import android.support.v4.app.Fragment;
 
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.ui.CaptureActivity;

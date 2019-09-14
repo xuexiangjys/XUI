@@ -2,7 +2,7 @@ package com.xuexiang.xui.widget.statelayout;
 
 import android.view.View;
 
-import androidx.annotation.DrawableRes;
+import android.support.annotation.DrawableRes;
 
 import java.io.Serializable;
 

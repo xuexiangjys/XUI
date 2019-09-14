@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:layout_width="?attr/stf_tip_img_size"
         android:layout_height="?attr/stf_tip_img_size"
         android:tint="@color/xui_config_color_main_theme"

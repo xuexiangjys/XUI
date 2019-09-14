@@ -2,7 +2,7 @@ package com.xuexiang.xui.widget.alpha;
 
 import android.view.View;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ThemeUtils;

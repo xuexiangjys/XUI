@@ -20,7 +20,7 @@ package com.xuexiang.xui.widget.dialog.materialdialog;
 import android.content.Context;
 import android.view.View;
 
-import androidx.annotation.IdRes;
+import android.support.annotation.IdRes;
 
 /**
  * 基础抽象的弹窗，可继承后自定义弹窗

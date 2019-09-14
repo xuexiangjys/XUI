@@ -18,7 +18,7 @@
 package com.xuexiang.xui.widget.behavior;
 
 import android.animation.ValueAnimator;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
 
 /**
@@ -48,6 +48,7 @@ public class TranslateAnimateHelper implements AnimateHelper {
         return new TranslateAnimateHelper(target);
     }
 
+    @Override
     public void show() {
         if (mMode == MODE_TITLE) {
             showTitle();

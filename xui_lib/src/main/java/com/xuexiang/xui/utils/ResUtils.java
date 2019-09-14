@@ -11,14 +11,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import androidx.annotation.AnimRes;
-import androidx.annotation.ArrayRes;
-import androidx.annotation.ColorRes;
-import androidx.annotation.DimenRes;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StringRes;
-import androidx.annotation.StyleableRes;
-import androidx.appcompat.content.res.AppCompatResources;
+import android.support.annotation.AnimRes;
+import android.support.annotation.ArrayRes;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DimenRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
+import android.support.annotation.StyleableRes;
+import android.support.v7.content.res.AppCompatResources;
 
 import com.xuexiang.xui.XUI;
 

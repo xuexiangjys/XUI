@@ -23,7 +23,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;

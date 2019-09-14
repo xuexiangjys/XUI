@@ -18,7 +18,7 @@ package com.xuexiang.xui.widget.imageview.preview.loader;
 
 
 import android.graphics.drawable.Drawable;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 
 /**
  * 图片加载回调状态接口

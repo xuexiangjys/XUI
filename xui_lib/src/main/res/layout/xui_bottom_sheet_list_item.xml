@@ -8,7 +8,7 @@
               android:paddingLeft="?attr/xui_bottom_sheet_list_item_padding_horizontal"
               android:paddingRight="?attr/xui_bottom_sheet_list_item_padding_horizontal">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/bottom_dialog_list_item_img"
         android:layout_width="?attr/xui_bottom_sheet_list_item_icon_size"
         android:layout_height="?attr/xui_bottom_sheet_list_item_icon_size"
@@ -21,7 +21,7 @@
         style="?attr/xui_bottom_sheet_list_item_text_style"
         android:textAppearance="?attr/xui_bottom_sheet_list_item_text_appearance"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/bottom_dialog_list_item_point"
         style="?attr/XUITipPointStyle"
         android:layout_width="wrap_content"

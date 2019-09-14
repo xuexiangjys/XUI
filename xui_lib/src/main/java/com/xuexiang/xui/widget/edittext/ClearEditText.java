@@ -13,7 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatEditText;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;

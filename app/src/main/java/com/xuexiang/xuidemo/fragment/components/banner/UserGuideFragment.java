@@ -1,6 +1,6 @@
 package com.xuexiang.xuidemo.fragment.components.banner;
 
-import androidx.viewpager.widget.ViewPager;
+import android.support.v4.view.ViewPager;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xrouter.annotation.AutoWired;

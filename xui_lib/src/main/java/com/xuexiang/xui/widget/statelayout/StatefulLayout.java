@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.AnimRes;
-import androidx.annotation.StringRes;
+import android.support.annotation.AnimRes;
+import android.support.annotation.StringRes;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConfig;

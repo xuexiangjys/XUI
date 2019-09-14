@@ -19,7 +19,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;

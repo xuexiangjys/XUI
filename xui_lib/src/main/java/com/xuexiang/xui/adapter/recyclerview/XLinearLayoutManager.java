@@ -20,8 +20,8 @@ package com.xuexiang.xui.adapter.recyclerview;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 /**
  * 防止数据错位导致数组越界的错误

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:paddingEnd="30dp" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/edit_spinner_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

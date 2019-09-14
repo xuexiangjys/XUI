@@ -19,8 +19,8 @@ package com.xuexiang.xui.widget.imageview.preview;
 import android.content.Context;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 
 import com.xuexiang.xui.widget.imageview.preview.loader.GlideMediaLoader;
 import com.xuexiang.xui.widget.imageview.preview.loader.IMediaLoader;

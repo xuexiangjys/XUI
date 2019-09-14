@@ -1,7 +1,7 @@
 package com.xuexiang.xui.widget.banner.transform;
 
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.ViewPager;
+import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 /**
  * 向上旋转切换

@@ -17,11 +17,11 @@
 
 package com.xuexiang.xui.widget.banner.recycler.layout;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 
 
 /**
- * A {@link androidx.recyclerview.widget.RecyclerView.OnScrollListener} which helps {@link OverFlyingLayoutManager}
+ * A {@link android.support.v7.widget.RecyclerView.OnScrollListener} which helps {@link OverFlyingLayoutManager}
  * to center the current position
  */
 public class CenterScrollListener extends RecyclerView.OnScrollListener {

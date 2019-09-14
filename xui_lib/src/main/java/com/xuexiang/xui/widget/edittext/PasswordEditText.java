@@ -15,7 +15,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatEditText;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;

@@ -19,7 +19,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -34,7 +34,7 @@
                 android:text="欢迎长按或扫码关注：" />
 
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/iv_qq_group"
                 android:layout_width="200dp"
                 android:layout_height="274dp"
@@ -42,7 +42,7 @@
                 android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
                 android:src="@drawable/img_xui_qq" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/iv_win_xin"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
@@ -56,7 +56,7 @@
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 
 </LinearLayout>

@@ -63,7 +63,7 @@
                 app:week_text_size="14sp"
                 app:week_view="com.xuexiang.xuidemo.widget.calendar.SimpleWeekView" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

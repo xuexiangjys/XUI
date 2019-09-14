@@ -34,7 +34,7 @@
         android:layout_height="40dp"
         android:background="@drawable/bg_tab_panel"/>
 
-    <androidx.viewpager.widget.ViewPager
+    <android.support.v4.view.ViewPager
         android:id="@+id/contentViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

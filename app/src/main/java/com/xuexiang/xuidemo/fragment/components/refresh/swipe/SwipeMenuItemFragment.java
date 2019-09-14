@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.view.ViewGroup;
 
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;

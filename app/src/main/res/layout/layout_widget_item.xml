@@ -8,7 +8,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/item_icon"
         android:layout_width="wrap_content"
         android:layout_height="80dp"

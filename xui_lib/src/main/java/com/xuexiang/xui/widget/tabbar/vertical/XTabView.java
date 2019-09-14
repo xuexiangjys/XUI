@@ -26,8 +26,8 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Px;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.Px;
+import android.support.annotation.RequiresApi;
 
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;

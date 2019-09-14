@@ -20,8 +20,8 @@ package com.xuexiang.xuidemo.fragment.expands.calendar;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.RecyclerView;
 
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;

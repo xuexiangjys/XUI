@@ -48,9 +48,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+import android.support.annotation.ColorInt;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 
 import com.xuexiang.xui.R;
 

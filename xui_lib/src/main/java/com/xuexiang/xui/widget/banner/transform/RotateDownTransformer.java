@@ -2,7 +2,7 @@ package com.xuexiang.xui.widget.banner.transform;
 
 import android.view.View;
 
-import androidx.viewpager.widget.ViewPager;
+import android.support.v4.view.ViewPager;
 
 /**
  * 向下旋转切换

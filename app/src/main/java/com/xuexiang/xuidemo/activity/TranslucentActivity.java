@@ -1,8 +1,8 @@
 package com.xuexiang.xuidemo.activity;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;

@@ -1,6 +1,6 @@
 package com.xuexiang.xuidemo.adapter;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;

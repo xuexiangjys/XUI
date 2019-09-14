@@ -17,7 +17,7 @@
 package com.xuexiang.xui.utils;
 
 import android.graphics.Color;
-import androidx.annotation.ColorInt;
+import android.support.annotation.ColorInt;
 
 import java.util.Random;
 

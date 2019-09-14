@@ -2,8 +2,8 @@ package com.xuexiang.xui.widget.statelayout;
 
 import android.view.animation.Animation;
 
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StringRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;

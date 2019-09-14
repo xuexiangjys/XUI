@@ -2,8 +2,7 @@ package com.xuexiang.xuidemo;
 
 import android.app.Application;
 import android.content.Context;
-
-import androidx.multidex.MultiDex;
+import android.support.multidex.MultiDex;
 
 import com.luck.picture.lib.tools.PictureFileUtils;
 import com.xuexiang.xui.XUI;

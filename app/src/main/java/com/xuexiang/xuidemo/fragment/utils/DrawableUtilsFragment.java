@@ -19,8 +19,8 @@ package com.xuexiang.xuidemo.fragment.utils;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
-import androidx.core.content.ContextCompat;
-import androidx.core.widget.NestedScrollView;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.ImageView;
 

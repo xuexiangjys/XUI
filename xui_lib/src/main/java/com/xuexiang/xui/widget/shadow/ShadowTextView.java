@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.view.ViewCompat;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v4.view.ViewCompat;
 
 /**
  * 可设置阴影的TextView

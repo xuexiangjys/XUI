@@ -1,6 +1,6 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;

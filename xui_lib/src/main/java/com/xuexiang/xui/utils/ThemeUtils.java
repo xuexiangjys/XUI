@@ -10,14 +10,14 @@ import android.os.Build;
 import android.util.TypedValue;
 import android.view.View;
 
-import androidx.annotation.ArrayRes;
-import androidx.annotation.AttrRes;
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.content.ContextCompat;
+import android.support.annotation.ArrayRes;
+import android.support.annotation.AttrRes;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.content.res.AppCompatResources;
+import android.support.v4.content.ContextCompat;
 
 import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
 

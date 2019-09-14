@@ -25,8 +25,8 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.Nullable;
 
 /**
  * 边缘返回的图标View

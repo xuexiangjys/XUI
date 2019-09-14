@@ -18,8 +18,8 @@ package com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment;
 
 import android.view.View;
 
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;

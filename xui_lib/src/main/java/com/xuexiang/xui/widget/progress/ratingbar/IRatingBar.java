@@ -2,9 +2,9 @@ package com.xuexiang.xui.widget.progress.ratingbar;
 
 import android.graphics.drawable.Drawable;
 
-import androidx.annotation.DrawableRes;
-import androidx.annotation.FloatRange;
-import androidx.annotation.IntRange;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IntRange;
 
 /**
  * 星级评分控件

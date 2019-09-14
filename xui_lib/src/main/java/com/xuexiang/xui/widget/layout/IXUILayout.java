@@ -19,8 +19,8 @@ package com.xuexiang.xui.widget.layout;
 
 import android.view.View;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.IntDef;
+import android.support.annotation.ColorInt;
+import android.support.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

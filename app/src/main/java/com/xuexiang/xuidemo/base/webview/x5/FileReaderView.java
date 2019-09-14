@@ -27,7 +27,7 @@ import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 
 import com.tencent.smtt.sdk.TbsReaderView;
 import com.xuexiang.xutil.app.PathUtils;

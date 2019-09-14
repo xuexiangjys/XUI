@@ -34,7 +34,7 @@ import android.widget.RelativeLayout;
 import android.widget.Space;
 import android.widget.TextView;
 
-import androidx.annotation.IntDef;
+import android.support.annotation.IntDef;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;

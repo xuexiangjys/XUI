@@ -50,7 +50,7 @@
             app:stf_inAnimation="@android:anim/slide_in_left"
             app:stf_outAnimation="@android:anim/slide_out_right">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

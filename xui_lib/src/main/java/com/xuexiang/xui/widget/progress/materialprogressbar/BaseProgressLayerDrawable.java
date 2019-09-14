@@ -24,12 +24,12 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
-
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ThemeUtils;
@@ -110,7 +110,7 @@ class BaseProgressLayerDrawable<
     @Override
     public void setTint(@ColorInt int tintColor) {
         // Modulate alpha of tintColor against mBackgroundAlpha.
-        int backgroundTintColor = androidx.core.graphics.ColorUtils.setAlphaComponent(
+        int backgroundTintColor = ColorUtils.setAlphaComponent(
                 tintColor, Math.round(Color.alpha(tintColor) * mBackgroundAlpha));
         mBackgroundDrawable.setTint(backgroundTintColor);
         mSecondaryProgressDrawable.setTint(backgroundTintColor);

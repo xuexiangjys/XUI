@@ -18,9 +18,7 @@ package com.xuexiang.xui.widget.imageview.preview.enitity;
 
 import android.graphics.Rect;
 import android.os.Parcelable;
-import androidx.annotation.Nullable;
-
-import java.io.Serializable;
+import android.support.annotation.Nullable;
 
 /**
  * 图片预览接口

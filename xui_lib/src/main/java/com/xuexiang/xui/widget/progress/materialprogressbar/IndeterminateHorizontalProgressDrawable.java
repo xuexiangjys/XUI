@@ -23,7 +23,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
-import androidx.annotation.Keep;
+import android.support.annotation.Keep;
 
 import com.xuexiang.xui.utils.ThemeUtils;
 

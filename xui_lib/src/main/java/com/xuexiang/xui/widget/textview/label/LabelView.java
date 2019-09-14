@@ -32,7 +32,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 
-import androidx.appcompat.widget.AppCompatTextView;
+import android.support.v7.widget.AppCompatTextView;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -115,6 +115,7 @@ public class LabelView extends AppCompatTextView {
 
         ViewTreeObserver vto = getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
             public void onGlobalLayout() {
                 getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 calcOffset(getMeasuredWidth(), d, g, v.getMeasuredWidth(), false);

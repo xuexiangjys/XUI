@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import androidx.annotation.IntRange;
+import android.support.annotation.IntRange;
 
 /**
  *

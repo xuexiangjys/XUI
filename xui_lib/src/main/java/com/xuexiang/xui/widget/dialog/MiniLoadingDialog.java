@@ -2,7 +2,7 @@ package com.xuexiang.xui.widget.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import androidx.annotation.StyleRes;
+import android.support.annotation.StyleRes;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;

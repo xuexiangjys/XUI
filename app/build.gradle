@@ -16,7 +16,6 @@ android {
         targetSdkVersion build_versions.target_sdk
         versionCode 10
         versionName "1.0.9"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -89,32 +88,24 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation deps.junit
-    androidTestImplementation deps.runner
-    androidTestImplementation deps.espresso.core
 
-    implementation deps.androidx.multidex
-
+    implementation deps.support.multidex
     //下拉刷新、CityPicker、XUI框架需要
-//    implementation deps.androidx.appcompat
-//    implementation deps.androidx.recyclerview
-//    implementation deps.androidx.design
-//    implementation deps.glide
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.support.design
+    implementation deps.glide
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.0.9'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.0.9'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
     implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.6'
     implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.6'
     //切片
-    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.5x'
+    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.5'
     //页面路由
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'

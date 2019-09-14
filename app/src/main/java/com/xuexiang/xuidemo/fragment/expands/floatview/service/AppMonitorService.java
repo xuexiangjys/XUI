@@ -9,8 +9,8 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.os.IBinder;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.fragment.expands.floatview.AppSwitchView;

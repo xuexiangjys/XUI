@@ -59,7 +59,7 @@ dependencies {
   //1.0.5版本后只支持androidx
   implementation 'com.github.xuexiangjys:XUI:1.0.9'
 
-  implementation 'androidx.appcompat:appcompat:1.1.0'
+  implementation 'android.support.v7:appcompat:1.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.0.0'
   implementation 'com.google.android.material:material:1.1.0-alpha10'
   implementation 'com.github.bumptech.glide:glide:4.8.0'

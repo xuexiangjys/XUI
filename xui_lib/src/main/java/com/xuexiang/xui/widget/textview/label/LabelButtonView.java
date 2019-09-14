@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 
-import androidx.appcompat.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatButton;
 
 /**
  * 标签按钮

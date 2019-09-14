@@ -1,6 +1,6 @@
 package com.xuexiang.xui.widget.edittext.materialedittext.validation;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * 自定义校验器

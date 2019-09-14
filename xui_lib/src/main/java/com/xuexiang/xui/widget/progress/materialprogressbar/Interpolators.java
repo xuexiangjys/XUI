@@ -18,7 +18,7 @@
 package com.xuexiang.xui.widget.progress.materialprogressbar;
 
 import android.graphics.Path;
-import androidx.core.view.animation.PathInterpolatorCompat;
+import android.support.v4.view.animation.PathInterpolatorCompat;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 

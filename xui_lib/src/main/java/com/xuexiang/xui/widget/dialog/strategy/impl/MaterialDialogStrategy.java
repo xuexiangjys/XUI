@@ -20,7 +20,7 @@ package com.xuexiang.xui.widget.dialog.strategy.impl;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;

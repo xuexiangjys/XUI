@@ -3,7 +3,7 @@ package com.xuexiang.xui.widget.flowlayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.SparseBooleanArray;
 import android.view.View;

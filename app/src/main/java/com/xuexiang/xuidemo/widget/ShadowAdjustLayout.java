@@ -18,11 +18,10 @@
 package com.xuexiang.xuidemo.widget;
 
 import android.content.Context;
+import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import androidx.customview.widget.ViewDragHelper;
 
 import com.xuexiang.xui.widget.layout.XUIFrameLayout;
 import com.xuexiang.xuidemo.R;

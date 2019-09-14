@@ -32,7 +32,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;

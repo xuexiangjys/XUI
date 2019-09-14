@@ -28,7 +28,7 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.ActionBar;
+import android.support.v7.app.ActionBar;
 
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.AppCompatPreferenceActivity;

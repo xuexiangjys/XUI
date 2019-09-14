@@ -68,7 +68,7 @@
                     style="@style/TextStyle.Content"
                     android:text="复杂二维码生成" />
 
-                <androidx.appcompat.widget.SwitchCompat
+                <android.support.v7.widget.SwitchCompat
                     android:id="@+id/sc_change"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
             <include layout="@layout/include_complex_qrcode_produce" />
 
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/iv_qrcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -23,7 +23,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-import androidx.appcompat.app.AppCompatDialog;
+import android.support.v7.app.AppCompatDialog;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.KeyboardUtils;

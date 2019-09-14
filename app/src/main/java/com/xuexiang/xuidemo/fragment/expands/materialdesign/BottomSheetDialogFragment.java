@@ -17,13 +17,13 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 
+import android.support.design.widget.BottomSheetDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.model.PageInfo;

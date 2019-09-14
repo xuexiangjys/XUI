@@ -21,7 +21,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.xuexiang.xui.widget.dialog.strategy.IDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.InputCallback;

@@ -6,7 +6,7 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <android.support.v7.widget.AppCompatEditText
         android:id="@+id/mlet_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

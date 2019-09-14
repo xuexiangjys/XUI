@@ -13,7 +13,7 @@
         android:text="这是我的自定义引导页布局"
         android:textSize="20sp" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

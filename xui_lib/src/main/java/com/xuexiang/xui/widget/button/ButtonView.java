@@ -9,8 +9,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatTextView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;

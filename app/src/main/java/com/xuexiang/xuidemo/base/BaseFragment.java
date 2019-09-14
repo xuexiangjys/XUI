@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 
 import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xpage.base.XPageActivity;

@@ -21,7 +21,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 
-import androidx.annotation.ColorInt;
+import android.support.annotation.ColorInt;
 
 import com.xuexiang.xui.widget.alpha.XUIAlphaRelativeLayout;
 

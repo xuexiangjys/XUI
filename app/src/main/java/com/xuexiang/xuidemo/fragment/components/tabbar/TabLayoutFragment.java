@@ -21,11 +21,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 
-import com.google.android.material.tabs.TabLayout;
+import android.support.design.widget.TabLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -37,7 +37,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 
-import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
+import static android.support.design.widget.TabLayout.MODE_SCROLLABLE;
 
 /**
  * @author xuexiang

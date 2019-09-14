@@ -19,7 +19,7 @@ package com.xuexiang.xui.widget.slideback;
 
 import android.app.Activity;
 
-import androidx.annotation.IntDef;
+import android.support.annotation.IntDef;
 
 import com.xuexiang.xui.widget.slideback.callback.SlideBackCallBack;
 

@@ -37,12 +37,12 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.FloatRange;
-import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.widget.NestedScrollView;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.FloatRange;
+import android.support.annotation.Nullable;
+import android.support.v7.content.res.AppCompatResources;
+import android.support.v4.widget.NestedScrollView;
 
 import com.xuexiang.xui.logs.UILog;
 

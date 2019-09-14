@@ -8,7 +8,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
-import androidx.appcompat.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatButton;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.alpha.IAlphaViewHelper;

@@ -19,7 +19,7 @@ package com.xuexiang.xui.adapter.recyclerview;
 
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.util.List;
 

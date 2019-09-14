@@ -16,7 +16,7 @@
 
 package com.xuexiang.xuidemo.utils;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.text.FieldPosition;
 import java.text.SimpleDateFormat;

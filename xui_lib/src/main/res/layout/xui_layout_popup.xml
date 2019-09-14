@@ -11,7 +11,7 @@
         android:background="?attr/xui_popup_bg"
         android:orientation="vertical" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/arrow_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:layout_marginTop="?attr/xui_popup_arrow_up_margin_top"
         app:srcCompat="?attr/xui_popup_arrow_up" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/arrow_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

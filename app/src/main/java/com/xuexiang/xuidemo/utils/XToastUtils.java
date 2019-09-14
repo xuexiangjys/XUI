@@ -17,9 +17,9 @@
 
 package com.xuexiang.xuidemo.utils;
 
-import androidx.annotation.MainThread;
-import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
+import android.support.annotation.MainThread;
+import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.toast.XToast;

@@ -2,7 +2,7 @@ package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
 
-import androidx.fragment.app.Fragment;
+import android.support.v4.app.Fragment;
 
 import android.view.View;
 import android.view.ViewGroup;

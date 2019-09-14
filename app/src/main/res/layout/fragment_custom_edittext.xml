@@ -42,7 +42,7 @@
                 android:layout_margin="5dp"
                 android:text="PasswordEditText:" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                     android:textAlignment="viewStart"
                     app:pet_enableIconAlpha="true"
                     app:pet_isAsteriskStyle="true" />
-            </com.google.android.material.textfield.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
             <com.xuexiang.xui.widget.edittext.PasswordEditText
                 android:id="@+id/input_password2"

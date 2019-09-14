@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 
 import java.util.UUID;
 

@@ -30,7 +30,7 @@
   android:paddingRight="?attr/md_dialog_frame_margin"
   android:paddingStart="?attr/md_dialog_frame_margin">
 
-  <androidx.appcompat.widget.AppCompatImageView
+  <android.support.v7.widget.AppCompatImageView
     android:id="@android:id/icon"
     android:layout_width="?attr/md_simplelist_icon"
     android:layout_height="?attr/md_simplelist_icon"

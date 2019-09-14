@@ -1,10 +1,9 @@
 package com.xuexiang.xui.widget.textview;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-
-import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 自定义跑马灯Textview类

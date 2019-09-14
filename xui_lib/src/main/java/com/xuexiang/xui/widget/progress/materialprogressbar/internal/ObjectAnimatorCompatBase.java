@@ -24,7 +24,7 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.util.Property;
 
-import androidx.annotation.Size;
+import android.support.annotation.Size;
 
 class ObjectAnimatorCompatBase {
 

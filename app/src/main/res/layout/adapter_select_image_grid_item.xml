@@ -21,7 +21,7 @@
     android:layout_width="95dp"
     android:layout_height="95dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv_select_pic"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -37,7 +37,7 @@
         android:gravity="end"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/iv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,6 +1,6 @@
 package com.xuexiang.xui.logs;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.PrintWriter;

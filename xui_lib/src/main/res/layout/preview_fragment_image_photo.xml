@@ -21,7 +21,7 @@
         android:visibility="visible"
         app:mpb_indeterminateTint="@color/xui_config_color_main_theme" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/btnVideo"
         android:layout_width="48dp"
         android:layout_height="48dp"

@@ -49,7 +49,7 @@
         android:layout_marginTop="10dip"
         android:text="@string/pick_photo_gif" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
         android:overScrollMode="never"
