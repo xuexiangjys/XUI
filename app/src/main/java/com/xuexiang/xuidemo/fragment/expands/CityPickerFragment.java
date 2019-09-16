@@ -227,7 +227,7 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
             if (mOnLocationListener != null) {
-                mOnLocationListener.onLocationChanged(new LocatedCity(bdLocation.getCity(), bdLocation.getProvince(), bdLocation.getCityCode()), LocateState.SUCCESS);
+                mOnLocationListener.onLocationChanged(LocationService.onReceiveLocation(bdLocation), LocateState.SUCCESS);
                 LocationService.get().unregisterListener(this);
             }
         }

@@ -148,11 +148,6 @@ dependencies {
     //预加载占位控件
     implementation 'me.samlss:broccoli:1.0.0'
 
-    //XQRCode二维码扫描
-    implementation 'com.github.xuexiangjys:XQRCode:1.0.6'
-    //CityPicker
-    implementation "com.github.xuexiangjys:CityPicker:1.0.1"
-
 //    //XVideo，太大，暂时去除
 //    implementation 'com.github.xuexiangjys:XVideo:1.0.2'
 //    implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.3'
@@ -167,8 +162,12 @@ dependencies {
     //侧边栏菜单
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
 
+    //XQRCode二维码扫描
+    implementation 'com.github.xuexiangjys:XQRCode:1.0.6'
+    //CityPicker
+    implementation "com.github.xuexiangjys:CityPicker:1.0.2"
     //XFloatView悬浮窗口
-    implementation 'com.github.xuexiangjys:XFloatView:1.0.1'
+    implementation 'com.github.xuexiangjys:XFloatView:1.0.2'
     //android进程监控
     implementation 'com.jaredrummler:android-processes:1.1.1'
 

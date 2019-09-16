@@ -8,6 +8,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.baidu.location.Poi;
+import com.xuexiang.citypicker.model.LocatedCity;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xui.logs.UILog;
 
@@ -25,6 +26,8 @@ public class LocationService {
 
     private LocationClient mClient = null;
     private LocationClientOption mOption, mDIYOption;
+
+    private LocatedCity mLocatedCity = null;
 
     private LocationService() {
 
@@ -180,6 +183,27 @@ public class LocationService {
         return mClient.requestHotSpotState();
     }
 
+    /**
+     * 当收到定位信息
+     *
+     * @param bdLocation
+     * @return
+     */
+    public static LocatedCity onReceiveLocation(BDLocation bdLocation) {
+        if (get().mLocatedCity == null || bdLocation.getCity() != null) {
+            get().mLocatedCity = new LocatedCity(bdLocation.getCity(), bdLocation.getProvince(), bdLocation.getCityCode());
+        }
+        return get().mLocatedCity;
+    }
+
+    public LocationService setLocatedCity(LocatedCity locatedCity) {
+        mLocatedCity = locatedCity;
+        return this;
+    }
+
+    public LocatedCity getLocatedCity() {
+        return mLocatedCity;
+    }
 
     /**
      * 打印地址信息
