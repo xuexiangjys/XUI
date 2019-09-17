@@ -41,7 +41,7 @@
             android:layout_height="64dp"
             android:src="@drawable/icon_avatar1"
             app:riv_border_color="@color/xui_config_color_gray_6"
-            app:riv_border_width="1px"
+            app:riv_border_width="0dp"
             app:riv_is_circle="true"
             app:riv_selected_border_color="@color/xui_config_color_gray_4"
             app:riv_selected_border_width="1px"

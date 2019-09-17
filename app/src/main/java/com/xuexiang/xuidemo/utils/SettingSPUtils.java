@@ -37,6 +37,9 @@ public class SettingSPUtils extends BaseSPUtil {
 
     private final String IS_FIRST_OPEN_KEY = "is_first_open_key";
 
+    private final String IS_USE_CUSTOM_THEME_KEY = "is_use_custom_theme_key";
+
+
     /**
      * 是否是第一次启动
      */
@@ -49,6 +52,14 @@ public class SettingSPUtils extends BaseSPUtil {
      */
     public void setIsFirstOpen(boolean isFirstOpen) {
         putBoolean(IS_FIRST_OPEN_KEY, isFirstOpen);
+    }
+
+    public boolean isUseCustomTheme() {
+        return getBoolean(IS_USE_CUSTOM_THEME_KEY, false);
+    }
+
+    public void setIsUseCustomTheme(boolean isUseCustomTheme) {
+        putBoolean(IS_USE_CUSTOM_THEME_KEY, isUseCustomTheme);
     }
 
 

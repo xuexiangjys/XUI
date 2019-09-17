@@ -27,6 +27,7 @@ import com.xuexiang.xuidemo.fragment.AboutFragment;
 import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 import com.xuexiang.xuidemo.fragment.ExpandsFragment;
 import com.xuexiang.xuidemo.fragment.QRCodeFragment;
+import com.xuexiang.xuidemo.fragment.SettingFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.XUtil;
@@ -179,6 +180,12 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
             @Override
             public void onClick(View v) {
                 openNewPage(QRCodeFragment.class);
+            }
+        });
+        mSlidingRootNav.getLayout().findViewById(R.id.iv_setting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewPage(SettingFragment.class);
             }
         });
 

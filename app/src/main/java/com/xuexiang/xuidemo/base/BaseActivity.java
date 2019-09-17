@@ -12,6 +12,7 @@ import com.xuexiang.xpage.core.CoreSwitchBean;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.utils.SettingSPUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -49,7 +50,7 @@ public class BaseActivity extends XPageActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        XUI.initTheme(this);
+        initTheme();
         super.onCreate(savedInstanceState);
         mUnbinder = ButterKnife.bind(this);
 
@@ -59,6 +60,17 @@ public class BaseActivity extends XPageActivity {
                     .haveScroll(true)
                     .callBack(this::popPage)
                     .register();
+        }
+    }
+
+    /**
+     * 初始化主题
+     */
+    private void initTheme() {
+        if (SettingSPUtils.getInstance().isUseCustomTheme()) {
+            setTheme(R.style.CustomAppTheme);
+        } else {
+            XUI.initTheme(this);
         }
     }
 
