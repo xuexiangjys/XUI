@@ -2,9 +2,11 @@ package com.xuexiang.xuidemo.fragment.components.popupwindow;
 
 import android.view.View;
 
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
 import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.popupwindow.popup.XUISimplePopup;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
@@ -22,6 +24,26 @@ import butterknife.OnClick;
 public class PopupWindowStyleFragment extends BaseFragment {
     private XUISimplePopup mListPopup;
     private XUISimplePopup mMenuPopup;
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.setCenterClickListener(new View.OnClickListener() {
+            @SingleClick
+            @Override
+            public void onClick(View view) {
+                mMenuPopup.showDown(view);
+            }
+        });
+        titleBar.addAction(new TitleBar.TextAction("菜单") {
+            @SingleClick
+            @Override
+            public void performAction(View view) {
+                mMenuPopup.showDown(view);
+            }
+        });
+        return titleBar;
+    }
 
     @Override
     protected int getLayoutId() {
@@ -60,6 +82,7 @@ public class PopupWindowStyleFragment extends BaseFragment {
                 });
     }
 
+    @SingleClick
     @OnClick({R.id.btn_commonlist_popup, R.id.btn_menu_popup})
     void onClick(View v) {
         switch (v.getId()) {

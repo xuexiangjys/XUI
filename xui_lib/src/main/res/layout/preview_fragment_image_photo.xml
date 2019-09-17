@@ -19,7 +19,7 @@
         android:layout_centerInParent="true"
         android:indeterminate="true"
         android:visibility="visible"
-        app:mpb_indeterminateTint="@color/xui_config_color_main_theme" />
+        app:mpb_indeterminateTint="?attr/colorAccent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btnVideo"

@@ -3,6 +3,7 @@ package com.xuexiang.xui.widget.popupwindow.popup;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
@@ -78,6 +79,7 @@ public class XUIListPopup<T extends XUIListPopup> extends XUIPopup {
         mListView.setPadding(margin, 0, margin, 0);
         mListView.setAdapter(mAdapter);
         mListView.setVerticalScrollBarEnabled(false);
+        mListView.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
         updateListViewDivider(mListView);
         setContentView(mListView);
         return (T) this;

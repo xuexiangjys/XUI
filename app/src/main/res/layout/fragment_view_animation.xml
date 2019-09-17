@@ -34,7 +34,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="30dp"
-            android:background="@color/xui_config_color_main_theme"
+            android:background="?attr/colorAccent"
             android:gravity="center"
             android:textColor="@color/xui_config_color_white"
             android:textSize="?attr/xui_config_size_content_text"

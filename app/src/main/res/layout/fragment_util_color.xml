@@ -142,7 +142,7 @@
                     android:id="@+id/transformTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/xui_config_color_main_theme" />
+                    android:textColor="?attr/colorAccent" />
             </LinearLayout>
 
             <!-- 获取随机颜色 -->

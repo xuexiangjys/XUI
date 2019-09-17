@@ -132,8 +132,11 @@ public class XUISimplePopup<T extends XUISimplePopup> extends XUIListPopup {
      */
     public interface OnPopupItemClickListener {
         /**
+         * 条目点击
+         *
          * @param adapter
          * @param item
+         * @param position
          */
         void onItemClick(XUISimpleAdapter adapter, AdapterItem item, int position);
     }

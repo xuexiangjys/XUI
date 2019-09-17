@@ -41,7 +41,7 @@ public class StatefulLayoutFragment extends BaseFragment {
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ToastUtils.toast("点击按钮!");
+            ToastUtils.toast("点击重试按钮!");
         }
     };
 

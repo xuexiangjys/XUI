@@ -39,6 +39,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.LocationService;
+import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
@@ -209,7 +210,18 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        XUI.initTheme(getActivity()); //主题还原
+        resetTheme(); //主题还原
+    }
+
+    /**
+     * 初始化主题
+     */
+    private void resetTheme() {
+        if (SettingSPUtils.getInstance().isUseCustomTheme()) {
+            getActivity().setTheme(R.style.CustomAppTheme);
+        } else {
+            XUI.initTheme(getActivity());
+        }
     }
 
     /**

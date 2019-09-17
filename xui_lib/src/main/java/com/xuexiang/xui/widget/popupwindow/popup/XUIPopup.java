@@ -257,13 +257,13 @@ public class XUIPopup extends XUIBasePopup {
 
     @Override
     public void setContentView(View root) {
-        FrameLayout layout = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.xui_layout_popup, null, false);
-        mArrowDown = (ImageView) layout.findViewById(R.id.arrow_down);
-        mArrowUp = (ImageView) layout.findViewById(R.id.arrow_up);
-        FrameLayout box = (FrameLayout) layout.findViewById(R.id.box);
+        FrameLayout container = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.xui_layout_popup, null, false);
+        mArrowDown = container.findViewById(R.id.arrow_down);
+        mArrowUp = container.findViewById(R.id.arrow_up);
+        FrameLayout box = container.findViewById(R.id.box);
         box.addView(root);
 
-        super.setContentView(layout);
+        super.setContentView(container);
     }
 
 

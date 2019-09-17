@@ -91,6 +91,7 @@
     <public name="xui_config_color_content_text" type="color" />
     <public name="xui_config_color_explain_text" type="color" />
     <public name="xui_config_color_primary_text" type="color" />
+    <public name="xui_config_color_control_normal" type="color" />
 
     <public name="xui_config_color_background_tablet" type="color" />
     <public name="xui_config_color_background_phone" type="color" />
@@ -253,10 +254,10 @@
     <public name="xui_bg_center_popwindow" type="drawable" />
     <public name="xui_popup_bg" type="drawable" />
 
-    <public name="xui_ic_return_back" type="drawable" />
     <public name="xui_ic_default_tip_btn" type="drawable" />
     <public name="xui_ic_default_clear_btn" type="drawable" />
     <public name="xui_ic_arrow_down_black" type="drawable" />
+    <public name="xui_ic_navigation_back_white" type="drawable" />
 
 
 </resources>

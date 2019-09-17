@@ -15,8 +15,8 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_menu"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E7F3FB"
@@ -30,18 +30,20 @@
             android:id="@+id/iv_setting"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:padding="8dp"
-            android:layout_marginStart="10dp"
             android:layout_gravity="start|center_vertical"
-            android:src="@drawable/icon_setting"/>
+            android:layout_marginStart="10dp"
+            android:padding="8dp"
+            android:src="@drawable/icon_setting"
+            android:tint="?attr/colorAccent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_qrcode"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:padding="8dp"
             android:layout_gravity="end|center_vertical"
-            android:src="@drawable/ic_menu_qrcode"/>
+            android:padding="8dp"
+            android:src="@drawable/ic_menu_qrcode"
+            android:tint="?attr/colorAccent" />
 
     </FrameLayout>
 

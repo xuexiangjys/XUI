@@ -17,6 +17,8 @@
 
 package com.xuexiang.xui.adapter.recyclerview;
 
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.View;
@@ -32,6 +34,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.StringRes;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -166,6 +169,23 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         View view = findView(id);
         if (view instanceof ImageView) {
             ImageLoader.get().loadImage((ImageView) view, uri);
+        }
+        return this;
+    }
+
+    /**
+     * 给图片着色
+     *
+     * @param id
+     * @param tint 颜色
+     * @return
+     */
+    public RecyclerViewHolder tint(@IdRes int id, ColorStateList tint) {
+        View view = findView(id);
+        if (view instanceof ImageView) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ((ImageView) view).setImageTintList(tint);
+            }
         }
         return this;
     }

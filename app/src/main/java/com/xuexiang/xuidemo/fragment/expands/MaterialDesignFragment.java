@@ -1,12 +1,9 @@
 package com.xuexiang.xuidemo.fragment.expands;
 
-import android.app.Activity;
-
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.SettingsActivity;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
-import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BottomSheetDialogFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.DrawerLayoutFragment;
