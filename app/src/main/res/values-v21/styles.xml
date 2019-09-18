@@ -62,4 +62,13 @@
     </style>
 
 
+    <!--SettingTheme-->
+    <style name="SettingTheme.Custom">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/custom_color_main_theme</item>
+        <item name="colorPrimaryDark">@color/custom_color_main_theme</item>
+        <item name="colorAccent">@color/custom_color_main_theme</item>
+    </style>
+
+
 </resources>

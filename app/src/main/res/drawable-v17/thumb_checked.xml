@@ -16,10 +16,21 @@
   ~
   -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
 
-    <item android:color="?attr/colorAccent" android:state_selected="true" />
-    <item android:color="?attr/colorAccent" android:state_checked="true" />
-    <item android:color="@color/picture_tab_color_false" />
+    <!-- 高度40 -->
+    <size android:height="20dp" android:width="20dp"/>
+    <!-- 圆角弧度 20 -->
+    <corners android:radius="10dp"/>
 
-</selector>
+
+    <!-- 变化率 -->
+    <gradient
+        android:endColor="#eeeeee"
+        android:startColor="#eeeeee" />
+
+    <stroke android:width="1dp"
+        android:color="@color/xui_config_color_main_theme"/>
+
+</shape>  

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!-- 底层下滑条的样式选择器，可控制Switch在不同状态下，底下下滑条的颜色 -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/track_green" android:state_checked="true" />
-    <item android:drawable="@drawable/track_gray" />
+    <item android:drawable="@drawable/track_checked" android:state_checked="true" />
+    <item android:drawable="@drawable/track_normal" />
 
 </selector>

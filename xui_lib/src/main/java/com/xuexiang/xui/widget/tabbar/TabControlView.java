@@ -34,6 +34,7 @@ import android.widget.RadioGroup;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -144,10 +145,10 @@ public class TabControlView extends RadioGroup implements HasTypeface {
                 0, 0);
         try {
             mTextSize = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_textSize, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_text_size));
-            mSelectedColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedColor, ResUtils.getColor(R.color.xui_config_color_main_theme));
+            mSelectedColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
             mUnselectedColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedColor, Color.TRANSPARENT);
             mSelectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedTextColor, Color.WHITE);
-            mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ResUtils.getColor(R.color.xui_config_color_main_theme));
+            mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
             mStrokeWidth = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_strokeWidth, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_stroke_width));
             //Set text mSelectedColor state list
             mTextColorStateList = new ColorStateList(new int[][]{

@@ -2,5 +2,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:color="@color/xui_config_color_white" />
     <item android:state_selected="true" android:color="@color/xui_config_color_white" />
-    <item android:color="@color/xui_config_color_light_blue" />
+    <item android:color="?attr/colorAccent" />
 </selector>

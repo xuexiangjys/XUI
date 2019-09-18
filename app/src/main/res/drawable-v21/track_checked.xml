@@ -7,9 +7,7 @@
     <corners android:radius="10dp"/>
     <!-- 变化率 -->
     <gradient
-        android:endColor="#33da33"
-        android:startColor="#33da33" />
-
-
+        android:endColor="?attr/colorAccent"
+        android:startColor="?attr/colorAccent" />
 
 </shape>

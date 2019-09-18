@@ -29,6 +29,7 @@ import com.xuexiang.xuidemo.fragment.ExpandsFragment;
 import com.xuexiang.xuidemo.fragment.QRCodeFragment;
 import com.xuexiang.xuidemo.fragment.SettingFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
+import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.common.ClickUtils;
@@ -99,17 +100,17 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     private void initTab() {
         TabLayout.Tab component = mTabLayout.newTab();
         component.setText("组件");
-        component.setIcon(R.drawable.selector_icon_tabbar_component);
+        component.setIcon(SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_component : R.drawable.selector_icon_tabbar_component);
         mTabLayout.addTab(component);
 
         TabLayout.Tab util = mTabLayout.newTab();
         util.setText("工具");
-        util.setIcon(R.drawable.selector_icon_tabbar_util);
+        util.setIcon(SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_util : R.drawable.selector_icon_tabbar_util);
         mTabLayout.addTab(util);
 
         TabLayout.Tab expand = mTabLayout.newTab();
         expand.setText("拓展");
-        expand.setIcon(R.drawable.selector_icon_tabbar_expand);
+        expand.setIcon(SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_expand : R.drawable.selector_icon_tabbar_expand);
         mTabLayout.addTab(expand);
 
         switchPage(ComponentsFragment.class);

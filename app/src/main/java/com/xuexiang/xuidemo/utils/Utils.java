@@ -94,7 +94,7 @@ public final class Utils {
     public static PictureSelectionModel getPictureSelector(Fragment fragment) {
         return PictureSelector.create(fragment)
                 .openGallery(PictureMimeType.ofImage())
-                .theme(R.style.XUIPictureStyle)
+                .theme(SettingSPUtils.getInstance().isUseCustomTheme() ? R.style.XUIPictureStyle_Custom : R.style.XUIPictureStyle)
                 .maxSelectNum(8)
                 .minSelectNum(1)
                 .selectionMode(PictureConfig.MULTIPLE)

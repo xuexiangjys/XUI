@@ -38,6 +38,7 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.PreviewRecycleAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.List;
@@ -147,6 +148,7 @@ public class PreviewRecycleViewFragment extends BaseFragment {
                         .setImgs(mAdapter.getListData())
                         .setCurrentIndex(position)
                         .setSingleFling(true)
+                        .setProgressColor(SettingSPUtils.getInstance().isUseCustomTheme() ? R.color.custom_color_main_theme : R.color.xui_config_color_main_theme)
                         .setType(PreviewBuilder.IndicatorType.Number)
                         .start();
             }
