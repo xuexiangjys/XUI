@@ -27,7 +27,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="48dp"
-                    android:background="#468ED0" />
+                    android:background="?attr/colorAccent" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -35,7 +35,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="LoopBanner"
-                    android:textColor="#468ED0"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -227,7 +227,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="48dp"
-                    android:background="#468ED0" />
+                    android:background="?attr/colorAccent" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -235,7 +235,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="NormalBanner"
-                    android:textColor="#468ED0"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -259,7 +259,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="48dp"
-                    android:background="#468ED0" />
+                    android:background="?attr/colorAccent" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -267,7 +267,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="Transformer"
-                    android:textColor="#468ED0"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -301,7 +301,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="48dp"
-                    android:background="#468ED0" />
+                    android:background="?attr/colorAccent" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -309,7 +309,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="其他使用方式"
-                    android:textColor="#468ED0"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="16sp" />
             </LinearLayout>
 

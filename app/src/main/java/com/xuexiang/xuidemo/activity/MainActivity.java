@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.umeng.analytics.MobclickAgent;
-import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xuidemo.R;
@@ -265,7 +264,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
 
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(mMenuIcons[position], mMenuTitles[position])
-                .withIconTint(ResUtils.getColor(R.color.gray_icon))
+                .withIconTint(ThemeUtils.resolveColor(this, R.attr.xui_config_color_content_text))
                 .withTextTint(ThemeUtils.resolveColor(this, R.attr.xui_config_color_content_text))
                 .withSelectedIconTint(ThemeUtils.resolveColor(this, R.attr.colorAccent))
                 .withSelectedTextTint(ThemeUtils.resolveColor(this, R.attr.colorAccent));

@@ -19,25 +19,20 @@ package com.xuexiang.xuidemo.base.webview;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.KeyEvent;
 
 import com.xuexiang.xrouter.facade.Postcard;
 import com.xuexiang.xrouter.facade.callback.NavCallback;
 import com.xuexiang.xrouter.launcher.XRouter;
-import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseAppCompatActivity;
-import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
-import static com.xuexiang.xutil.system.ClipboardUtils.getIntent;
 
 /**
  * 壳浏览器
@@ -76,18 +71,6 @@ public class AgentWebActivity extends BaseAppCompatActivity {
             }
         }
     }
-
-    /**
-     * 初始化主题
-     */
-    private void initTheme() {
-        if (SettingSPUtils.getInstance().isUseCustomTheme()) {
-            setTheme(R.style.CustomAppTheme);
-        } else {
-            XUI.initTheme(this);
-        }
-    }
-
 
     private AgentWebFragment mAgentWebFragment;
 

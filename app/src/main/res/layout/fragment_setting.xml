@@ -27,7 +27,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         app:sDividerLineType="both"
-        app:sLeftTextString="自定义主题(重启生效)"
+        app:sLeftTextString="自定义主题"
         app:sRightViewType="switchBtn"
         app:sSwitchIsChecked="false"
         app:sThumbResource="@drawable/thumb"

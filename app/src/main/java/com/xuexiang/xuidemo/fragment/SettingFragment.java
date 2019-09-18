@@ -17,11 +17,13 @@
 
 package com.xuexiang.xuidemo.fragment;
 
+import android.content.Intent;
 import android.widget.CompoundButton;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 
@@ -64,5 +66,11 @@ public class SettingFragment extends BaseFragment implements CompoundButton.OnCh
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         SettingSPUtils.getInstance().setIsUseCustomTheme(isChecked);
+        popToBack();
+
+        //重启主页面
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

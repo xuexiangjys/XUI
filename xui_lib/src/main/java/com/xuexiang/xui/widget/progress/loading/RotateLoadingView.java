@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
@@ -32,6 +31,7 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConfig;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
 
 /**
@@ -50,11 +50,6 @@ public class RotateLoadingView extends View {
      * 默认旋转度数的速度
      */
     private static final int DEFAULT_SPEED_OF_DEGREE = 5;
-    /**
-     * 默认圆弧的颜色
-     */
-    private static final int DEFAULT_ARC_COLOR = Color.parseColor("#299EE3");
-
     /**
      * 是否需要画图
      */
@@ -75,7 +70,7 @@ public class RotateLoadingView extends View {
     /**
      * 圆弧的颜色
      */
-    private int mArcColor = DEFAULT_ARC_COLOR;
+    private int mArcColor;
 
     private boolean mIsSingleArc;
     /**
@@ -140,30 +135,28 @@ public class RotateLoadingView extends View {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
-        if (null != attrs) {
-            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView);
-            mArcColor = typedArray.getColor(R.styleable.LoadingView_lv_color, DEFAULT_ARC_COLOR);
-            mArcWidth = typedArray.getDimensionPixelSize(R.styleable.LoadingView_lv_width, DensityUtils.dp2px(getContext(), DEFAULT_ARC_WIDTH));
-            mSpeedOfDegree = typedArray.getInt(R.styleable.LoadingView_lv_speed, DEFAULT_SPEED_OF_DEGREE);
-            mSpeedOfArc = mSpeedOfDegree / 4;
-            mIsDraw = mIsAutoMode = typedArray.getBoolean(R.styleable.LoadingView_lv_auto, true);
-            mIsSingleArc = typedArray.getBoolean(R.styleable.LoadingView_lv_arc_single, false);
-            mMaxArcDegree = mIsSingleArc ? 280 : 160;
-            boolean hasIcon = typedArray.getBoolean(R.styleable.LoadingView_lv_has_icon, true);
-            if (hasIcon) {
-                Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.LoadingView_lv_icon);
-                if (icon != null) {
-                    mIconBitmap = Utils.getBitmapFromDrawable(icon);
-                } else {
-                    Drawable appIcon = UIConfig.getInstance().getAppIcon();
-                    if (appIcon != null) {
-                        mIconBitmap = Utils.getBitmapFromDrawable(appIcon);
-                    }
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView);
+        mArcColor = typedArray.getColor(R.styleable.LoadingView_lv_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        mArcWidth = typedArray.getDimensionPixelSize(R.styleable.LoadingView_lv_width, DensityUtils.dp2px(getContext(), DEFAULT_ARC_WIDTH));
+        mSpeedOfDegree = typedArray.getInt(R.styleable.LoadingView_lv_speed, DEFAULT_SPEED_OF_DEGREE);
+        mSpeedOfArc = mSpeedOfDegree >> 2;
+        mIsDraw = mIsAutoMode = typedArray.getBoolean(R.styleable.LoadingView_lv_auto, true);
+        mIsSingleArc = typedArray.getBoolean(R.styleable.LoadingView_lv_arc_single, false);
+        mMaxArcDegree = mIsSingleArc ? 280 : 160;
+        boolean hasIcon = typedArray.getBoolean(R.styleable.LoadingView_lv_has_icon, true);
+        if (hasIcon) {
+            Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.LoadingView_lv_icon);
+            if (icon != null) {
+                mIconBitmap = Utils.getBitmapFromDrawable(icon);
+            } else {
+                Drawable appIcon = UIConfig.getInstance().getAppIcon();
+                if (appIcon != null) {
+                    mIconBitmap = Utils.getBitmapFromDrawable(appIcon);
                 }
-                mIconScale = typedArray.getFloat(R.styleable.LoadingView_lv_icon_scale, 0.5F);
             }
-            typedArray.recycle();
+            mIconScale = typedArray.getFloat(R.styleable.LoadingView_lv_icon_scale, 0.5F);
         }
+        typedArray.recycle();
 
         initPaint();
     }

@@ -95,12 +95,7 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
     protected void initArgs() {
         super.initArgs();
         mTheme = R.style.DefaultCityPickerTheme;
-        if (mTheme == R.style.DefaultCityPickerTheme) {
-            btnStyle.setText("默认主题");
-        } else if (mTheme == R.style.CustomCityPickerTheme) {
-            btnStyle.setText("自定义主题");
-        }
-
+        btnStyle.setText("默认主题");
         getActivity().setTheme(mTheme);
     }
 
@@ -217,11 +212,7 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
      * 初始化主题
      */
     private void resetTheme() {
-        if (SettingSPUtils.getInstance().isUseCustomTheme()) {
-            getActivity().setTheme(R.style.CustomAppTheme);
-        } else {
-            XUI.initTheme(getActivity());
-        }
+        Utils.initTheme(getActivity());
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.xuexiang.xuidemo.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,6 +23,7 @@ import com.luck.picture.lib.PictureSelectionModel;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
@@ -42,6 +44,17 @@ public final class Utils {
 
     private Utils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+    /**
+     * 初始化主题
+     */
+    public static void initTheme(Activity activity) {
+        if (SettingSPUtils.getInstance().isUseCustomTheme()) {
+            activity.setTheme(R.style.CustomAppTheme);
+        } else {
+            XUI.initTheme(activity);
+        }
     }
 
     /**

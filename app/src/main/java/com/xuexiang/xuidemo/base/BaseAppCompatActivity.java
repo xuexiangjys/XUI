@@ -22,9 +22,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.xuexiang.xui.XUI;
-import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.utils.SettingSPUtils;
+import com.xuexiang.xuidemo.utils.Utils;
 
 /**
  * 基础AppCompatActivity
@@ -36,18 +34,8 @@ public class BaseAppCompatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        initTheme();
+        Utils.initTheme(this);
         super.onCreate(savedInstanceState);
     }
 
-    /**
-     * 初始化主题
-     */
-    private void initTheme() {
-        if (SettingSPUtils.getInstance().isUseCustomTheme()) {
-            setTheme(R.style.CustomAppTheme);
-        } else {
-            XUI.initTheme(this);
-        }
-    }
 }
