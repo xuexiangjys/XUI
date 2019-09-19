@@ -104,15 +104,15 @@
                 style="@style/TextStyle.Content.wrap"
                 android:text="@string/drawable_utils_create_from_view_title" />
 
-            <Button
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                 android:id="@+id/createFromView"
-                style="@style/Button.Blue.wrap"
+                style="@style/Button.Primary.wrap"
                 android:layout_width="wrap_content"
                 android:text="@string/drawable_utils_create_from_view_button" />
 
-            <Button
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                 android:id="@+id/createFromView1"
-                style="@style/Button.Blue.wrap"
+                style="@style/Button.Primary.wrap"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="截取scrollview长图" />

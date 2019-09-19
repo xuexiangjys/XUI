@@ -28,33 +28,33 @@
         app:alignItems="flex_start"
         app:flexWrap="wrap">
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_js_no_param"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="调用JS无参方法" />
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_js_one_param"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="调用JS一个参数方法" />
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_js_more_param"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="调用JS多个参方法" />
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_clear"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"

@@ -36,16 +36,16 @@
                     android:hint="请输入体重值"
                     android:layout_height="?attr/xui_btn_view_height" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_set"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:text="设值"/>
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_get"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="取值"/>

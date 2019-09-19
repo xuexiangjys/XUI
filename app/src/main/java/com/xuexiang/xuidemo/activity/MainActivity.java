@@ -245,7 +245,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 MobclickAgent.onProfileSignOff();
-                                XUtil.get().exitApp();
+                                finish();
                             }
                         },
                         getString(R.string.lab_no),

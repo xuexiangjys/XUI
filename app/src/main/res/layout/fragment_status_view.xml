@@ -49,14 +49,14 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/complete"
-                    style="@style/Button.Blue"
+                    style="@style/Button.Primary"
                     android:text="complete" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/error"
-                    style="@style/Button.Blue"
+                    style="@style/Button.Primary"
                     android:layout_marginStart="20dp"
                     android:text="error" />
 
@@ -69,14 +69,14 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/loading"
-                    style="@style/Button.Blue"
+                    style="@style/Button.Primary"
                     android:text="loading" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/none"
-                    style="@style/Button.Blue"
+                    style="@style/Button.Primary"
                     android:layout_marginStart="20dp"
                     android:text="none" />
 
@@ -89,9 +89,9 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/custom"
-                    style="@style/Button.Blue"
+                    style="@style/Button.Primary"
                     android:layout_marginStart="20dp"
                     android:text="custom" />
 

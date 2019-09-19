@@ -40,6 +40,7 @@ import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.alpha.XUIAlphaImageView;
+import com.xuexiang.xui.widget.alpha.XUIAlphaLinearLayout;
 import com.xuexiang.xui.widget.alpha.XUIAlphaTextView;
 import com.xuexiang.xui.widget.textview.AutoMoveTextView;
 
@@ -60,8 +61,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     public static final int CENTER_RIGHT = 2;
 
     private XUIAlphaTextView mLeftText;
+    private XUIAlphaLinearLayout mCenterLayout;
     private LinearLayout mRightLayout;
-    private LinearLayout mCenterLayout;
     private TextView mCenterText;
     private TextView mSubTitleText;
     private View mCustomCenterView;
@@ -168,7 +169,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     private void initView(Context context) {
         mLeftText = new XUIAlphaTextView(context);
-        mCenterLayout = new LinearLayout(context);
+        mCenterLayout = new XUIAlphaLinearLayout(context);
         mRightLayout = new LinearLayout(context);
         mDividerView = new View(context);
 

@@ -136,11 +136,11 @@ public class StatefulLayout extends LinearLayout {
         setOrientation(VERTICAL);
         content = getChildAt(0); // assume first child as content
         LayoutInflater.from(getContext()).inflate(R.layout.xui_layout_stateful_template, this, true);
-        stContainer = (LinearLayout) findViewById(R.id.stContainer);
-        stProgress = (MaterialProgressBar) findViewById(R.id.stProgress);
-        stImage = (ImageView) findViewById(R.id.stImage);
-        stMessage = (TextView) findViewById(R.id.stMessage);
-        stButton = (Button) findViewById(R.id.stButton);
+        stContainer = findViewById(R.id.stContainer);
+        stProgress = findViewById(R.id.stProgress);
+        stImage = findViewById(R.id.stImage);
+        stMessage = findViewById(R.id.stMessage);
+        stButton = findViewById(R.id.stButton);
     }
 
     // content //

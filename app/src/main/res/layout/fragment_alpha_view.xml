@@ -35,7 +35,7 @@
             android:src="@drawable/icon_avatar1" />
 
         <com.xuexiang.xui.widget.alpha.XUIAlphaButton
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/xui_config_color_blue_btn_normal"

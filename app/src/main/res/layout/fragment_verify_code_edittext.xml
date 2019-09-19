@@ -30,9 +30,9 @@
         android:layout_height="wrap_content"
         app:vcet_is_pwd="true" />
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/btn_clear"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_gravity="center_horizontal"
         android:text="清空"/>
 

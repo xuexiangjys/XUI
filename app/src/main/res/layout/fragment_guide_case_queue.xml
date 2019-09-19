@@ -4,18 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/step1"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:text="步骤1" />
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/step2"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -24,9 +24,9 @@
         android:text="步骤2" />
 
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/step3"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -34,9 +34,9 @@
         android:layout_marginRight="40dp"
         android:text="步骤3" />
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/step4"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -44,9 +44,9 @@
         android:layout_marginRight="40dp"
         android:text="步骤4" />
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/changePicture"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

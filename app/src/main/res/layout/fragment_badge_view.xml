@@ -408,9 +408,9 @@
                         android:textSize="18sp" />
                 </LinearLayout>
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_animation"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:text="animation" />
             </LinearLayout>
         </ScrollView>

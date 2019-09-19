@@ -124,6 +124,8 @@
     <public name="Button.Style" type="style" />
     <public name="Button.Blue" type="style" />
     <public name="Button.Blue.wrap" type="style" />
+    <public name="Button.Primary" type="style" />
+    <public name="Button.Primary.wrap" type="style" />
     <public name="Button.Radius" type="style" />
     <public name="ButtonStyle" type="style" />
     <public name="ButtonView" type="style" />

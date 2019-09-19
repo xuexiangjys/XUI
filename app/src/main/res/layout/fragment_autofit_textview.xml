@@ -20,9 +20,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/btn_add"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:text="随机添加文字" />

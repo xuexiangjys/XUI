@@ -35,8 +35,7 @@
 
         <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/stButton"
-            style="@style/Button.Style"
-            android:background="@drawable/xui_config_bg_primary_btn"
+            style="@style/Button.Primary"
             android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
             android:text="@string/stfRetryButtonText" />
 

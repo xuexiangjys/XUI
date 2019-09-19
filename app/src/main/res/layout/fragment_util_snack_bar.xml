@@ -41,17 +41,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_short"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:layout_weight="1.0"
                     android:text="短" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_long"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:layout_weight="1.0"
@@ -64,17 +64,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_indefinite"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:layout_weight="1.0"
                     android:text="无限长" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_length_custom"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:layout_weight="1.0"
@@ -92,33 +92,33 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_info"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="信息" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_confirm"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="确认" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_warn"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="警告" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_danger"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
@@ -136,25 +136,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_background_color"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="背景颜色" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_message_color"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="文字颜色" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_action_color"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
@@ -172,17 +172,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_action"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="按钮点击监听" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_callback"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
@@ -200,25 +200,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_default"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="默认" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_center"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="居中" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_right"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
@@ -236,25 +236,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_gravity_bottom"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="默认" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_gravity_center"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="居中" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_gravity_top"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
@@ -272,17 +272,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_message_left_right_drawable"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="设置文字两侧图片" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_add_view"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
@@ -295,17 +295,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_margin"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
                     android:text="设置边距" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_radius_stroke"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_width="0dp"
                     android:layout_weight="1.0"
                     android:layout_margin="?attr/xui_config_content_spacing_vertical"
