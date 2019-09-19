@@ -19,7 +19,6 @@ package com.xuexiang.xuidemo.activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xui.adapter.FragmentAdapter;

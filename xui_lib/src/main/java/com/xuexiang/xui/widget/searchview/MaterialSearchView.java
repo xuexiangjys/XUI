@@ -44,9 +44,9 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
@@ -77,7 +77,7 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
     private ImageButton mBackBtn;
     private ImageButton mVoiceBtn;
     private ImageButton mClearBtn;
-    private RelativeLayout mSearchTopBar;
+    private LinearLayout mSearchTopBar;
 
     private CharSequence mOldQueryText;
     private CharSequence mUserQuery;

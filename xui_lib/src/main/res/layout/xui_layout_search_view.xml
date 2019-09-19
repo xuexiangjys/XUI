@@ -32,16 +32,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/search_top_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white">
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/action_up_btn"
+                style="@style/MSV_ImageButton"
+                android:src="?attr/search_view_ic_back" />
+
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/searchTextView"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="@null"
                 android:hint="@string/search_hint"
                 android:imeOptions="actionSearch"
@@ -53,35 +61,23 @@
                 android:textColorHint="?attr/search_view_text_color_hint"
                 android:textSize="?attr/search_view_text_size" />
 
-            <ImageButton
-                android:id="@+id/action_up_btn"
-                style="@style/MSV_ImageButton"
-                android:layout_centerVertical="true"
-                android:src="?attr/search_view_ic_back" />
-
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/action_voice_btn"
                 style="@style/MSV_ImageButton"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:src="?attr/search_view_ic_video" />
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/action_clear_btn"
                 style="@style/MSV_ImageButton"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:src="?attr/search_view_ic_clear"
                 android:visibility="gone" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dip"
-                android:layout_alignParentBottom="true"
-                android:background="#fff"
-                android:backgroundTint="#10000000" />
-        </RelativeLayout>
+        </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#10000000" />
 
         <ListView
             android:id="@+id/suggestion_list"
