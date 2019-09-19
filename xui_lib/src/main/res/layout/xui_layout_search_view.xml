@@ -51,7 +51,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="@string/search_hint"
+                android:hint="@string/xui_search_hint"
                 android:imeOptions="actionSearch"
                 android:inputType="textNoSuggestions"
                 android:paddingLeft="?attr/search_view_text_padding"
@@ -76,8 +76,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dip"
-            android:background="#10000000" />
+            android:layout_height="1dp"
+            android:background="#10000000"/>
 
         <ListView
             android:id="@+id/suggestion_list"

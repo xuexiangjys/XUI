@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">xui_lib</string>
-
     <!--默认字体路径-->
     <string name="default_app_font_path"></string>
 
@@ -49,7 +47,8 @@
     <string name="xui_picker_view_seconds">秒</string>
 
     <!--MaterialSearchView-->
-    <string name="search_hint">Search</string>
+    <string name="xui_search_hint">Search</string>
+    <string name="xui_tip_no_recognize_speech">当前设备不支持语音输入！</string>
 
     <!--Behavior-->
     <string name="xui_float_behavior">com.xuexiang.xui.widget.behavior.FloatingActionButtonBehavior</string>
