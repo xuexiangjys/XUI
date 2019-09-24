@@ -33,6 +33,7 @@ import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.widget.RadiusImageBanner;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
@@ -55,6 +56,9 @@ public class ViewPagerBannerFragment extends BaseFragment {
 
     @BindView(R.id.sib_simple_usage)
     SimpleImageBanner sib_simple_usage;
+
+    @BindView(R.id.rib_simple_usage)
+    RadiusImageBanner rib_simple_usage;
 
     @BindView(R.id.sib_the_most_comlex_usage)
     SimpleImageBanner sib_the_most_comlex_usage;
@@ -140,6 +144,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 })
                 .setIsOnePageLoop(false).startScroll();
 
+        rib_simple_usage.setSource(mData).startScroll();
     }
 
     /**

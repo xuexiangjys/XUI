@@ -59,6 +59,22 @@
                 android:layout_height="48dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="25dp"
+                android:text="自定义轮播简单使用"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xuidemo.widget.RadiusImageBanner
+                android:id="@+id/rib_simple_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bb_barPaddingBottom="10dp"
+                app:bb_scale="0.4317" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
                 android:text="图片轮播复杂使用"
                 android:textColor="#383838"
                 android:textSize="16sp" />
