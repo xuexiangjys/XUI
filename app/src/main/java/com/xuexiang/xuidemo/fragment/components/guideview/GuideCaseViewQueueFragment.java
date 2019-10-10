@@ -46,25 +46,21 @@ public class GuideCaseViewQueueFragment extends BaseFragment {
         final GuideCaseView guideStep1 = new GuideCaseView.Builder(getActivity())
                 .title("请注意，这是第一步")
                 .focusOn(mStep1)
-                .fitWindowsAuto()
                 .build();
 
         final GuideCaseView guideStep2 = new GuideCaseView.Builder(getActivity())
                 .title("请注意，这是第二步")
                 .focusOn(mStep2)
-                .fitWindowsAuto()
                 .build();
 
         final GuideCaseView guideStep3 = new GuideCaseView.Builder(getActivity())
                 .title("请注意，这是第三步")
                 .focusOn(mStep3)
-                .fitWindowsAuto()
                 .build();
 
         final GuideCaseView guideStep4 = new GuideCaseView.Builder(getActivity())
                 .title("请注意，这是第四步")
                 .focusOn(mStep4)
-                .fitWindowsAuto()
                 .build();
 
         new GuideCaseQueue()
@@ -88,25 +84,21 @@ public class GuideCaseViewQueueFragment extends BaseFragment {
         final GuideCaseView guideStep1 = new GuideCaseView.Builder(getActivity())
                 .picture(R.drawable.img_guidecaseview_1)
                 .focusOn(mStep1)
-                .fitWindowsAuto()
                 .build();
 
         final GuideCaseView guideStep2 = new GuideCaseView.Builder(getActivity())
                 .picture(R.drawable.img_guidecaseview_2)
                 .focusOn(mStep2)
-                .fitWindowsAuto()
                 .build();
 
         final GuideCaseView guideStep3 = new GuideCaseView.Builder(getActivity())
                 .picture(R.drawable.img_guidecaseview_3)
                 .focusOn(mStep3)
-                .fitWindowsAuto()
                 .build();
 
         final GuideCaseView guideStep4 = new GuideCaseView.Builder(getActivity())
                 .picture(R.drawable.img_guidecaseview_4)
                 .focusOn(mStep4)
-                .fitWindowsAuto()
                 .build();
 
         new GuideCaseQueue()

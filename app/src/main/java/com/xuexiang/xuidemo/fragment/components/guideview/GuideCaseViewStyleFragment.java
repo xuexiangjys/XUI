@@ -54,7 +54,6 @@ public class GuideCaseViewStyleFragment extends BaseFragment {
                 .title("这是圆角矩形聚焦框")
                 .focusShape(FocusShape.ROUNDED_RECTANGLE)
                 .roundRectRadius(90)
-                .fitWindowsAuto()
                 .build()
                 .show();
     }
@@ -68,7 +67,6 @@ public class GuideCaseViewStyleFragment extends BaseFragment {
                 .title("一个巨大的圆形聚焦")
                 .focusBorderColor(Color.GREEN)
                 .titleStyle(0, Gravity.BOTTOM | Gravity.CENTER)
-                .fitWindowsAuto()
                 .build()
                 .show();
     }
@@ -77,7 +75,7 @@ public class GuideCaseViewStyleFragment extends BaseFragment {
     public void focusRoundRectPosition(View view) {
         new GuideCaseView.Builder(getActivity())
                 .title("坐标聚焦")
-                .focusRectAtPosition(600, 120, 800, 140)
+                .focusRectAtPosition(600, 80, 800, 140)
                 .roundRectRadius(60)
                 .build()
                 .show();
@@ -90,7 +88,6 @@ public class GuideCaseViewStyleFragment extends BaseFragment {
                 .backgroundColor(Color.parseColor("#AAff0000"))
                 .title("背景颜色和文字样式都可以自定义")
                 .titleStyle(R.style.MyTitleStyle, Gravity.TOP | Gravity.CENTER)
-                .fitWindowsAuto()
                 .build()
                 .show();
     }
@@ -99,7 +96,6 @@ public class GuideCaseViewStyleFragment extends BaseFragment {
     public void noFocusAnimation(View view) {
         new GuideCaseView.Builder(getActivity())
                 .focusOn(view)
-                .fitWindowsAuto()
                 .disableFocusAnimation()
                 .build()
                 .show();
@@ -112,7 +108,6 @@ public class GuideCaseViewStyleFragment extends BaseFragment {
 
         final GuideCaseView guideCaseView = new GuideCaseView.Builder(getActivity())
                 .focusOn(view)
-                .fitWindowsAuto()
                 .title("自定义进入和退出动画")
                 .enterAnimation(enterAnimation)
                 .exitAnimation(exitAnimation)
@@ -151,7 +146,6 @@ public class GuideCaseViewStyleFragment extends BaseFragment {
                         });
                     }
                 })
-                .fitWindowsAuto()
                 .closeOnTouch(false)
                 .build();
         guideCaseView.show();

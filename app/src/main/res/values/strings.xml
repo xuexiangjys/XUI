@@ -376,6 +376,7 @@
     <!-- String related to app short cuts -->
     <string name="shortcut_label_setting">设置</string>
     <string name="shortcut_label_search">搜索</string>
+    <string name="guide_key_sliding_root_navigation">guide_key_sliding_root_navigation</string>
 
 
 </resources>

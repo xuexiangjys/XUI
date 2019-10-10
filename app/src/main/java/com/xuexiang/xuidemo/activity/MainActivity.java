@@ -4,10 +4,12 @@ import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +18,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
+import com.xuexiang.xui.widget.guidview.GuideCaseQueue;
+import com.xuexiang.xui.widget.guidview.GuideCaseView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.menu.DrawerAdapter;
 import com.xuexiang.xuidemo.adapter.menu.DrawerItem;
@@ -30,7 +34,6 @@ import com.xuexiang.xuidemo.fragment.SettingFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.system.DeviceUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
@@ -176,13 +179,16 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                 .inject();
 
         mLLMenu = mSlidingRootNav.getLayout().findViewById(R.id.ll_menu);
-        mSlidingRootNav.getLayout().findViewById(R.id.iv_qrcode).setOnClickListener(new View.OnClickListener() {
+        final AppCompatImageView ivQrcode = mSlidingRootNav.getLayout().findViewById(R.id.iv_qrcode);
+        ivQrcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openNewPage(QRCodeFragment.class);
             }
         });
-        mSlidingRootNav.getLayout().findViewById(R.id.iv_setting).setOnClickListener(new View.OnClickListener() {
+
+        final AppCompatImageView ivSetting = mSlidingRootNav.getLayout().findViewById(R.id.iv_setting);
+        ivSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openNewPage(SettingFragment.class);
@@ -213,7 +219,27 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
 
             @Override
             public void onDragEnd(boolean isMenuOpened) {
+                if (isMenuOpened) {
+                    if (!GuideCaseView.isShowOnce(MainActivity.this, getString(R.string.guide_key_sliding_root_navigation))) {
+                        final GuideCaseView guideStep1 = new GuideCaseView.Builder(MainActivity.this)
+                                .title("点击进入，可切换主题样式哦～～")
+                                .titleSize(18, TypedValue.COMPLEX_UNIT_SP)
+                                .focusOn(ivSetting)
+                                .build();
 
+                        final GuideCaseView guideStep2 = new GuideCaseView.Builder(MainActivity.this)
+                                .title("点击进入，扫码关注哦～～")
+                                .titleSize(18, TypedValue.COMPLEX_UNIT_SP)
+                                .focusOn(ivQrcode)
+                                .build();
+
+                        new GuideCaseQueue()
+                                .add(guideStep1)
+                                .add(guideStep2)
+                                .show();
+                        GuideCaseView.setShowOnce(MainActivity.this, getString(R.string.guide_key_sliding_root_navigation));
+                    }
+                }
             }
         });
     }
