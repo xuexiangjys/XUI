@@ -22,11 +22,35 @@ import java.util.List;
  */
 public class SwipeDragTouchListAdapter extends BaseRecyclerAdapter<String> {
 
+    /**
+     * 列表集合
+     */
+    public static final int TYPE_LIST = 1;
+    /**
+     * 网格集合
+     */
+    public static final int TYPE_GRID = 2;
+
+
     private SwipeRecyclerView mMenuRecyclerView;
 
-    public SwipeDragTouchListAdapter(List<String> list, SwipeRecyclerView recyclerView) {
+    private int mItemViewType;
+
+    public SwipeDragTouchListAdapter(List<String> list, int vewType, SwipeRecyclerView recyclerView) {
         super(list);
+        mItemViewType = vewType;
         mMenuRecyclerView = recyclerView;
+    }
+
+    public SwipeDragTouchListAdapter setItemViewType(int itemViewType) {
+        mItemViewType = itemViewType;
+        notifyDataSetChanged();
+        return this;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return mItemViewType;
     }
 
     /**
@@ -37,7 +61,11 @@ public class SwipeDragTouchListAdapter extends BaseRecyclerAdapter<String> {
      */
     @Override
     public int getItemLayoutId(int viewType) {
-        return R.layout.adapter_drag_touch_list_item;
+        if (viewType == TYPE_LIST) {
+            return R.layout.adapter_drag_touch_list_item;
+        } else {
+            return R.layout.adapter_drag_touch_grid_item;
+        }
     }
 
     /**
@@ -63,12 +91,23 @@ public class SwipeDragTouchListAdapter extends BaseRecyclerAdapter<String> {
     }
 
     /**
-     * 拖拽移动
+     * List拖拽移动
+     *
+     * @param srcHolder
+     * @param targetHolder
+     * @return
+     */
+    public boolean onMoveItem(RecyclerView.ViewHolder srcHolder, RecyclerView.ViewHolder targetHolder) {
+       return mItemViewType == TYPE_LIST ? onMoveItemList(srcHolder, targetHolder) : onMoveItemGrid(srcHolder, targetHolder);
+    }
+
+    /**
+     * List拖拽移动
      *
      * @param srcHolder
      * @param targetHolder
      */
-    public boolean onMoveItem(RecyclerView.ViewHolder srcHolder, RecyclerView.ViewHolder targetHolder) {
+    public boolean onMoveItemList(RecyclerView.ViewHolder srcHolder, RecyclerView.ViewHolder targetHolder) {
         // 不同的ViewType不能拖拽换位置。
         if (srcHolder.getItemViewType() != targetHolder.getItemViewType()) {
             return false;
@@ -77,6 +116,38 @@ public class SwipeDragTouchListAdapter extends BaseRecyclerAdapter<String> {
         int toPosition = targetHolder.getAdapterPosition();
 
         Collections.swap(mData, fromPosition, toPosition);
+        notifyItemMoved(fromPosition, toPosition);
+        // 返回true表示处理了并可以换位置，返回false表示你没有处理并不能换位置。
+        return true;
+    }
+
+
+
+    /**
+     * Grid样式的拖拽移动
+     *
+     * @param srcHolder
+     * @param targetHolder
+     */
+    public boolean onMoveItemGrid(RecyclerView.ViewHolder srcHolder, RecyclerView.ViewHolder targetHolder) {
+        // 不同的ViewType不能拖拽换位置。
+        if (srcHolder.getItemViewType() != targetHolder.getItemViewType()) {
+            return false;
+        }
+
+        // 真实的Position：通过ViewHolder拿到的position都需要减掉HeadView的数量。
+        int fromPosition = srcHolder.getAdapterPosition();
+        int toPosition = targetHolder.getAdapterPosition();
+
+        if (fromPosition < toPosition) {
+            for (int i = fromPosition; i < toPosition; i++) {
+                Collections.swap(mData, i, i + 1);
+            }
+        } else {
+            for (int i = fromPosition; i > toPosition; i--) {
+                Collections.swap(mData, i, i - 1);
+            }
+        }
         notifyItemMoved(fromPosition, toPosition);
         // 返回true表示处理了并可以换位置，返回false表示你没有处理并不能换位置。
         return true;

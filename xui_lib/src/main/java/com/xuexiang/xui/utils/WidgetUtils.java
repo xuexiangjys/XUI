@@ -103,6 +103,17 @@ public final class WidgetUtils {
      *
      * @param recyclerView
      * @param spanCount    一行的数量
+     */
+    public static void initGridRecyclerView(@NonNull RecyclerView recyclerView, int spanCount) {
+        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), spanCount));
+        recyclerView.addItemDecoration(new GridDividerItemDecoration(recyclerView.getContext(), spanCount));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+    /**
+     * 初始化Grid网格RecyclerView
+     *
+     * @param recyclerView
+     * @param spanCount    一行的数量
      * @param dividerWidth 分割线的宽度
      */
     public static void initGridRecyclerView(@NonNull RecyclerView recyclerView, int spanCount, int dividerWidth) {

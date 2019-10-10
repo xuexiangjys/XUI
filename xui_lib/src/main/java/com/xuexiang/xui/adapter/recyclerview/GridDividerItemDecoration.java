@@ -27,7 +27,9 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.xuexiang.xui.utils.DensityUtils;
 
@@ -132,11 +134,54 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+        super.getItemOffsets(outRect, view, parent, state);
         int position = parent.getChildLayoutPosition(view);
-        if ((position + 1) % mSpanCount > 0) {
-            outRect.set(0, 0, mDividerWidth, mDividerWidth);
+
+        RecyclerView.Adapter adapter = parent.getAdapter();
+        if (adapter != null) {
+            int itemCount = parent.getAdapter().getItemCount();
+            boolean isLastRow = isLastRow(parent, position, mSpanCount, itemCount);
+
+            int eachWidth = (mSpanCount - 1) * mDividerWidth / mSpanCount;
+            int dl = mDividerWidth - eachWidth;
+
+            int left = position % mSpanCount * dl;
+            int right = eachWidth - left;
+
+            if (isLastRow) {
+                outRect.set(left, 0, right, 0);
+            } else {
+                outRect.set(left, 0, right, mDividerWidth);
+            }
         } else {
-            outRect.set(0, 0, 0, mDividerWidth);
+            if ((position + 1) % mSpanCount > 0) {
+                outRect.set(0, 0, mDividerWidth, mDividerWidth);
+            } else {
+                outRect.set(0, 0, 0, mDividerWidth);
+            }
         }
+    }
+
+
+    private boolean isLastRow(RecyclerView parent, int pos, int spanCount, int childCount) {
+        RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
+        if (layoutManager instanceof GridLayoutManager) {
+            // childCount = childCount - childCount % spanCount;
+            int lines = childCount % spanCount == 0 ? childCount / spanCount : childCount / spanCount + 1;
+            return lines == pos / spanCount + 1;
+        } else if (layoutManager instanceof StaggeredGridLayoutManager) {
+            int orientation = ((StaggeredGridLayoutManager) layoutManager)
+                    .getOrientation();
+            // StaggeredGridLayoutManager 且纵向滚动
+            if (orientation == StaggeredGridLayoutManager.VERTICAL) {
+                childCount = childCount - childCount % spanCount;
+                // 如果是最后一行，则不需要绘制底部
+                return pos >= childCount;
+            } else {
+                // 如果是最后一行，则不需要绘制底部
+                return (pos + 1) % spanCount == 0;
+            }
+        }
+        return false;
     }
 }

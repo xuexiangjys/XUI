@@ -1,7 +1,11 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -18,6 +22,9 @@ import java.util.List;
 
 import butterknife.BindView;
 
+import static com.xuexiang.xuidemo.adapter.swipe.SwipeDragTouchListAdapter.TYPE_GRID;
+import static com.xuexiang.xuidemo.adapter.swipe.SwipeDragTouchListAdapter.TYPE_LIST;
+
 /**
  * @author xuexiang
  * @since 2019/4/6 上午11:59
@@ -29,12 +36,37 @@ public class SwipeDragMoveFragment extends BaseFragment {
     SwipeRecyclerView recyclerView;
 
     private TitleBar mTitleBar;
+    private ImageView mAction;
     private SwipeDragTouchListAdapter mAdapter;
+    private int mType = TYPE_LIST;
+
 
     @Override
     protected TitleBar initTitle() {
         mTitleBar = super.initTitle();
+        mAction = (ImageView) mTitleBar.addAction(new TitleBar.ImageAction(R.drawable.ic_type_list) {
+            @Override
+            public void performAction(View view) {
+                switchType();
+                if (mType == TYPE_LIST) {
+                    mAction.setImageResource(R.drawable.ic_type_grid);
+                    WidgetUtils.initRecyclerView(recyclerView);
+                } else {
+                    mAction.setImageResource(R.drawable.ic_type_list);
+                    WidgetUtils.initGridRecyclerView(recyclerView, 2);
+                }
+                mAdapter.setItemViewType(mType);
+            }
+        });
         return mTitleBar;
+    }
+
+    private void switchType() {
+        if (mType == TYPE_LIST) {
+            mType = TYPE_GRID;
+        } else {
+            mType = TYPE_LIST;
+        }
     }
 
     /**
@@ -59,9 +91,7 @@ public class SwipeDragMoveFragment extends BaseFragment {
         // 监听Item的手指状态:拖拽、侧滑、松开。
         recyclerView.setOnItemStateChangedListener(mOnItemStateChangedListener);
 
-        recyclerView.setAdapter(mAdapter = new SwipeDragTouchListAdapter(getDemoData(), recyclerView));
-        mAdapter.refresh(getDemoData());
-
+        recyclerView.setAdapter(mAdapter = new SwipeDragTouchListAdapter(getDemoData(), mType, recyclerView));
 
         // 长按拖拽，默认关闭。
         recyclerView.setLongPressDragEnabled(true);
@@ -98,11 +128,13 @@ public class SwipeDragMoveFragment extends BaseFragment {
         @Override
         public void onItemDismiss(RecyclerView.ViewHolder srcHolder) {
             int position = mAdapter.onRemoveItem(srcHolder);
-            ToastUtils.toast("现在的第" + position + "条被删除。");
+            ToastUtils.toast("现在的第" + (position + 1) + "被删除。");
         }
 
     };
 
+
+    @MemoryCache
     private List<String> getDemoData() {
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
