@@ -1256,6 +1256,8 @@
         <attr name="tcv_selectedColor" format="reference" />
         <!--边框宽度，默认1dp-->
         <attr name="tcv_strokeWidth" format="dimension" />
+        <!--选项间的padding-->
+        <attr name="tcv_item_padding" format="dimension" />
         <!--选项卡中展示的内容-->
         <attr name="tcv_items" format="reference" />
         <!--选项卡中选中的内容（默认和展示的一样）-->

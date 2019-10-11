@@ -73,6 +73,10 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
      */
     private int mStrokeWidth;
     /**
+     * 选项间距
+     */
+    private int mItemPadding;
+    /**
      * 选中背景的颜色
      */
     private int mSelectedColor;
@@ -159,6 +163,8 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
             mSelectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedTextColor, Color.WHITE);
             mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
             mStrokeWidth = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_strokeWidth, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_stroke_width));
+            mItemPadding = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding, -1);
+
             //Set text mSelectedColor state list
             mTextColorStateList = new ColorStateList(new int[][]{
                     {-android.R.attr.state_checked}, {android.R.attr.state_checked}},
@@ -234,6 +240,9 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
             }
 
             cb.setLayoutParams(params);
+            if (mItemPadding != -1) {
+                cb.setPadding(mItemPadding, mItemPadding, mItemPadding, mItemPadding);
+            }
             cb.setMinWidth(mStrokeWidth * 10);
             cb.setGravity(Gravity.CENTER);
             cb.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
