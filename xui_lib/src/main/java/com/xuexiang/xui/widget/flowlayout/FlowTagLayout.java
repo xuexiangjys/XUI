@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import android.util.AttributeSet;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -73,9 +75,6 @@ public class FlowTagLayout extends ViewGroup {
      * 子View的宽度，如果为0 则为warp_content
      */
     private int mWidth;
-
-    private List<Integer> mSelectedIndexs;
-
 
     public FlowTagLayout(Context context) {
         super(context);
@@ -338,7 +337,7 @@ public class FlowTagLayout extends ViewGroup {
                     childView.setEnabled(false);
                 }
             }
-            mSelectedIndexs = null; //重新加载数据，点击索引清空
+            setSelectedIndexs(null); //重新加载数据，点击索引清空
             setChildViewClickListener(index, childView);
         }
     }
@@ -429,30 +428,31 @@ public class FlowTagLayout extends ViewGroup {
     }
 
     private FlowTagLayout setSelectedIndexs(List<Integer> selectedIndexs) {
-        mSelectedIndexs = selectedIndexs;
+        if (mAdapter != null) {
+            mAdapter.setSelectedIndexs(selectedIndexs);
+        }
         return this;
     }
 
     /**
-     * 获取选中索引的集合【多选】
+     * 获取选中索引的集合
      * @return
      */
+    @Nullable
     public List<Integer> getSelectedIndexs() {
-        if (mSelectedIndexs != null) {
-            return mSelectedIndexs;
-        } else {
-            return getAdapter().getInitSelectedPositions();
+        if (mAdapter != null) {
+            mAdapter.getSelectedIndexs();
         }
+        return null;
     }
 
     /**
-     * 获取选中索引【单选】
+     * 获取选中索引
      * @return
      */
     public int getSelectedIndex() {
-        List<Integer> indexs = getSelectedIndexs();
-        if (indexs != null && indexs.size() > 0) {
-            return indexs.get(0);
+        if (mAdapter != null) {
+            return mAdapter.getSelectedIndex();
         }
         return -1;
     }
@@ -461,10 +461,10 @@ public class FlowTagLayout extends ViewGroup {
      * 获取选中索引
      * @return
      */
+    @Nullable
     public <T> T getSelectedItem() {
-        int selectedIndex = getSelectedIndex();
         if (mAdapter != null) {
-            return (T) mAdapter.getItem(selectedIndex);
+            return (T) mAdapter.getSelectedItem();
         }
         return null;
     }

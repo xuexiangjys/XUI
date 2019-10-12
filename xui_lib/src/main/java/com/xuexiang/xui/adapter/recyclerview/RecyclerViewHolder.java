@@ -17,6 +17,7 @@
 
 package com.xuexiang.xui.adapter.recyclerview;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.text.TextWatcher;
@@ -86,6 +87,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public EditText getEditText(int viewId) {
         return (EditText) getView(viewId);
+    }
+
+    public final Context getContext() {
+        return itemView.getContext();
     }
 
     /**
@@ -169,6 +174,21 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         View view = findView(id);
         if (view instanceof ImageView) {
             ImageLoader.get().loadImage((ImageView) view, uri);
+        }
+        return this;
+    }
+
+    /**
+     * 设置图片的等级
+     *
+     * @param id
+     * @param level
+     * @return
+     */
+    public RecyclerViewHolder imageLevel(@IdRes int id, int level) {
+        View view = findView(id);
+        if (view instanceof ImageView) {
+            ((ImageView) view).setImageLevel(level);
         }
         return this;
     }
@@ -283,6 +303,18 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         if (view instanceof CompoundButton) {
             ((CheckBox) view).setOnCheckedChangeListener(listener);
         }
+        return this;
+    }
+
+    /**
+     * 设置控件是否选中
+     * @param id
+     * @param selected
+     * @return
+     */
+    public RecyclerViewHolder select(@IdRes int id, boolean selected) {
+        View view = findView(id);
+        view.setSelected(selected);
         return this;
     }
 
