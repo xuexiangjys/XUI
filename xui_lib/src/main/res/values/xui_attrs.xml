@@ -1062,6 +1062,8 @@
         <attr name="mlet_contentTextColor" format="color|reference" />
         <!--输入框的高度，默认140dp-->
         <attr name="mlet_contentViewHeight" format="dimension|reference" />
+        <!--输入框的高度是否是固定高度，默认是true-->
+        <attr name="mlet_isFixHeight" format="boolean" />
         <!--统计数字显示剩余数目,默认false-->
         <attr name="mlet_showSurplusNumber" format="boolean" />
     </declare-styleable>
