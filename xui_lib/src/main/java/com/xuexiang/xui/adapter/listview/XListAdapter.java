@@ -221,7 +221,11 @@ public abstract class XListAdapter<T> extends BaseAdapter {
 
 	@Override
 	public T getItem(int position) {
-		return mData != null ? mData.get(position) : null;
+		return mData != null && checkPosition(position) ? mData.get(position) : null;
+	}
+
+	private boolean checkPosition(int position) {
+		return position >= 0 && position <= mData.size() - 1;
 	}
 
 	@Override

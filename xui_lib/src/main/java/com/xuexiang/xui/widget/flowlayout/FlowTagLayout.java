@@ -243,6 +243,54 @@ public class FlowTagLayout extends ViewGroup {
     }
 
     /**
+     * 增加标签数据
+     *
+     * @param data
+     */
+    public <T> FlowTagLayout addTag(T data) {
+        if (mAdapter != null) {
+            mAdapter.addTag(data);
+        }
+        return this;
+    }
+
+    /**
+     * 增加标签数据
+     *
+     * @param datas
+     */
+    public <T> FlowTagLayout addTags(List<T> datas) {
+        if (mAdapter != null) {
+            mAdapter.addTags(datas);
+        }
+        return this;
+    }
+
+    /**
+     * 增加标签数据
+     *
+     * @param datas
+     */
+    public <T> FlowTagLayout addTags(T[] datas) {
+        if (mAdapter != null) {
+            mAdapter.addTags(datas);
+        }
+        return this;
+    }
+
+    /**
+     * 清除并增加标签数据
+     *
+     * @param datas
+     */
+    public <T> FlowTagLayout clearAndAddTags(List<T> datas) {
+        if (mAdapter != null) {
+            mAdapter.clearAndAddTags(datas);
+        }
+        return this;
+    }
+
+    /**
      * 子View个数
      *
      * @param width
@@ -386,7 +434,7 @@ public class FlowTagLayout extends ViewGroup {
     }
 
     /**
-     * 获取选中索引的集合
+     * 获取选中索引的集合【多选】
      * @return
      */
     public List<Integer> getSelectedIndexs() {
@@ -395,6 +443,30 @@ public class FlowTagLayout extends ViewGroup {
         } else {
             return getAdapter().getInitSelectedPositions();
         }
+    }
+
+    /**
+     * 获取选中索引【单选】
+     * @return
+     */
+    public int getSelectedIndex() {
+        List<Integer> indexs = getSelectedIndexs();
+        if (indexs != null && indexs.size() > 0) {
+            return indexs.get(0);
+        }
+        return -1;
+    }
+
+    /**
+     * 获取选中索引
+     * @return
+     */
+    public <T> T getSelectedItem() {
+        int selectedIndex = getSelectedIndex();
+        if (mAdapter != null) {
+            return (T) mAdapter.getItem(selectedIndex);
+        }
+        return null;
     }
 
     /**

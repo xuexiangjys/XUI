@@ -131,7 +131,11 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      * @return
      */
     public T getItem(int position) {
-        return position < getItemCount() ? mData.get(position) : null;
+        return checkPosition(position) ? mData.get(position) : null;
+    }
+
+    private boolean checkPosition(int position) {
+        return position >= 0 && position <= mData.size() - 1;
     }
 
     public boolean isEmpty() {
@@ -157,6 +161,18 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     }
 
     /**
+     * 在列表末端增加一项
+     *
+     * @param item
+     * @return
+     */
+    public XRecyclerAdapter add(T item) {
+        mData.add(item);
+        notifyItemInserted(mData.size() - 1);
+        return this;
+    }
+
+    /**
      * 删除列表中指定索引的数据
      *
      * @param pos
@@ -165,6 +181,19 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     public XRecyclerAdapter delete(int pos) {
         mData.remove(pos);
         notifyItemRemoved(pos);
+        return this;
+    }
+
+    /**
+     * 刷新列表中指定位置的数据
+     *
+     * @param pos
+     * @param item
+     * @return
+     */
+    public XRecyclerAdapter refresh(int pos, T item) {
+        mData.set(pos, item);
+        notifyItemChanged(pos);
         return this;
     }
 
@@ -251,6 +280,15 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
         mSelectPosition = selectPosition;
         notifyDataSetChanged();
         return this;
+    }
+
+    /**
+     * 获取当前列表选中项
+     *
+     * @return 当前列表选中项
+     */
+    public T getSelectItem() {
+        return getItem(mSelectPosition);
     }
 
     /**

@@ -34,6 +34,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
@@ -843,15 +846,15 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      */
     public static abstract class ImageAction implements Action {
 
-        private int mDrawable;
+        private int mDrawableId;
 
-        public ImageAction(int drawable) {
-            mDrawable = drawable;
+        public ImageAction(@DrawableRes int drawableId) {
+            mDrawableId = drawableId;
         }
 
         @Override
         public int getDrawable() {
-            return mDrawable;
+            return mDrawableId;
         }
 
         @Override
@@ -879,6 +882,10 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
         public TextAction(String text) {
             mText = text;
+        }
+
+        public TextAction(@StringRes int resId) {
+            mText = ResUtils.getString(resId);
         }
 
         @Override
