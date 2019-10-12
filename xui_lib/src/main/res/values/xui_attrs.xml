@@ -347,8 +347,12 @@
             <!--只是展示-->
             <enum name="display" value="3" />
         </attr>
+        <!-- 流标签的可选项  -->
         <attr name="ftl_entries" format="reference" />
+        <!-- 流标签默认的已选项索引  -->
         <attr name="ftl_selecteds" format="reference" />
+        <!-- 单选模式下选中是否可取消，默认是false  -->
+        <attr name="ftl_single_cancelable" format="boolean" />
     </declare-styleable>
 
     <!--=============================ProgressBar========================================-->

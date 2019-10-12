@@ -27,6 +27,9 @@ public class FlowTagLayoutFragment extends BaseFragment {
     @BindView(R.id.flowlayout_single_select)
     FlowTagLayout mSingleFlowTagLayout;
 
+    @BindView(R.id.flowlayout_single_select_cancelable)
+    FlowTagLayout mSingleCancelableFlowTagLayout;
+
     @BindView(R.id.flowlayout_multi_select)
     FlowTagLayout mMultiFlowTagLayout;
 
@@ -42,6 +45,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
     protected void initViews() {
         initNormalFlowTagLayout();
         initSingleFlowTagLayout();
+        initSingleCancelableFlowTagLayout();
         initMultiFlowTagLayout();
     }
 
@@ -67,6 +71,21 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mSingleFlowTagLayout.setAdapter(tagAdapter);
         mSingleFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);
         mSingleFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
+            @Override
+            public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
+                ToastUtils.toast(getSelectedText(parent, selectedList));
+            }
+        });
+        tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
+        tagAdapter.setSelectedPositions(2, 3, 4);
+
+    }
+
+    private void initSingleCancelableFlowTagLayout() {
+        FlowTagAdapter tagAdapter = new FlowTagAdapter(getContext());
+        mSingleCancelableFlowTagLayout.setAdapter(tagAdapter);
+        mSingleCancelableFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);
+        mSingleCancelableFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
             @Override
             public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
                 ToastUtils.toast(getSelectedText(parent, selectedList));
@@ -108,10 +127,10 @@ public class FlowTagLayoutFragment extends BaseFragment {
     void onClick(View v) {
         switch(v.getId()) {
             case R.id.btn_add_tag:
-                mDisplayFlowTagLayout.getAdapter().addTag("标签" + (int)(Math.random() * 100));
+                mDisplayFlowTagLayout.addTag("标签" + (int)(Math.random() * 100));
                 break;
             case R.id.btn_clear_tag:
-                mDisplayFlowTagLayout.getAdapter().clearData();
+                mDisplayFlowTagLayout.clearTags();
                 break;
             default:
                 break;
