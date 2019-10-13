@@ -6,12 +6,14 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 
 import com.luck.picture.lib.tools.PictureFileUtils;
+import com.mikepenz.iconics.Iconics;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.utils.sdkinit.BuglyInit;
 import com.xuexiang.xuidemo.utils.sdkinit.TbsInit;
 import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
 import com.xuexiang.xuidemo.utils.sdkinit.XBasicLibInit;
 import com.xuexiang.xuidemo.utils.sdkinit.XUpdateInit;
+import com.xuexiang.xuidemo.widget.iconfont.XUIIconFont;
 
 
 /**
@@ -54,6 +56,12 @@ public class MyApp extends Application {
 //        //设置默认字体为华文行楷
 //        XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
         PictureFileUtils.setAppName("xui");
+
+
+        //字体图标库
+        Iconics.init(this);
+        //这是自己定义的图标库
+        Iconics.registerFont(new XUIIconFont());
     }
 
 

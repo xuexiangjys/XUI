@@ -1,38 +1,43 @@
-package com.xuexiang.xuidemo.base;
+/*
+ * Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 
-import android.content.Context;
+package com.xuexiang.xuidemo.widget.iconfont;
+
 import android.os.Bundle;
 
-import com.jpeng.jptabbar.anno.NorIcons;
-import com.jpeng.jptabbar.anno.SeleIcons;
-import com.jpeng.jptabbar.anno.Titles;
-import com.mikepenz.iconics.context.IconicsContextWrapper;
+import androidx.core.view.LayoutInflaterCompat;
+
+import com.mikepenz.iconics.context.IconicsLayoutInflater;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
 import com.xuexiang.xui.widget.slideback.SlideBack;
-import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
- * 基础容器Activity
+ * 字体图标容器Activity
  *
  * @author XUE
  * @since 2019/3/22 11:21
  */
-public class BaseActivity extends XPageActivity {
-
-    //==============需要注意的是，由于JPTabBar反射获取注解的是context，也就是容器Activity，因此需要将注解写在容器Activity内======================//
-    @Titles
-    public static final int[] mTitles = {R.string.tab1, R.string.tab2, R.string.tab3, R.string.tab4};
-    @SeleIcons
-    private static final int[] mSeleIcons = {R.drawable.nav_01_pre, R.drawable.nav_02_pre, R.drawable.nav_04_pre, R.drawable.nav_05_pre};
-    @NorIcons
-    private static final int[] mNormalIcons = {R.drawable.nav_01_nor, R.drawable.nav_02_nor, R.drawable.nav_04_nor, R.drawable.nav_05_nor};
+public class IconFontActivity extends XPageActivity {
 
     //============================================================================================================================================================//
     /**
@@ -42,15 +47,17 @@ public class BaseActivity extends XPageActivity {
 
     Unbinder mUnbinder;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        //注入字体
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
+//    @Override
+//    protected void attachBaseContext(Context newBase) {
+//        //注入字体方法1
+//        super.attachBaseContext(IconicsContextWrapper.wrap(newBase));
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Utils.initTheme(this);
+        //注入字体方法2,兼容性更好
+        LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
         mUnbinder = ButterKnife.bind(this);
 

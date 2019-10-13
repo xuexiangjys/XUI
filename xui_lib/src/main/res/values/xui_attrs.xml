@@ -1123,7 +1123,7 @@
     <!--IconImageView-->
     <declare-styleable name="IconImageView">
         <!--图标的资源-->
-        <attr name="iiv_icon" format="reference" />
+        <attr name="iiv_icon_res" format="reference" />
         <!--图标缩放的比例, 默认是0.5-->
         <attr name="iiv_icon_scale" format="float" />
         <!--图标是否显示, 默认是true-->

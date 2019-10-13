@@ -19,6 +19,7 @@ package com.xuexiang.xui.adapter.recyclerview;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextWatcher;
 import android.util.SparseArray;
@@ -159,6 +160,21 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         View view = findView(id);
         if (view instanceof ImageView) {
             ((ImageView) view).setImageResource(imageId);
+        }
+        return this;
+    }
+
+    /**
+     * 设置图片
+     *
+     * @param id
+     * @param drawable
+     * @return
+     */
+    public RecyclerViewHolder image(@IdRes int id, Drawable drawable) {
+        View view = findView(id);
+        if (view instanceof ImageView) {
+            ((ImageView) view).setImageDrawable(drawable);
         }
         return this;
     }

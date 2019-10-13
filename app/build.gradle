@@ -180,6 +180,10 @@ dependencies {
     //日历控件
     implementation 'com.github.xuexiangjys:CalendarExaple:1.0.1'
     implementation 'com.haibin:calendarview:3.6.3'
+    //图标库
+    implementation "com.mikepenz:iconics-core:4.0.1-b02"
+    //图标库控件（可选）
+    implementation "com.mikepenz:iconics-views:4.0.1-b02"
 
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.1.1'

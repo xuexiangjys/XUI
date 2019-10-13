@@ -122,6 +122,10 @@
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
+            android:name=".widget.iconfont.IconFontActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
             android:name=".base.XPageTransferActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:windowSoftInputMode="adjustPan|stateHidden" />

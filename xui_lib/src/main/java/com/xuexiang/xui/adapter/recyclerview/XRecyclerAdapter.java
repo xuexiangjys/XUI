@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -56,12 +57,18 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     private int mSelectPosition = -1;
 
     public XRecyclerAdapter() {
-        this(null);
+
     }
 
     public XRecyclerAdapter(List<T> list) {
         if (list != null) {
             mData.addAll(list);
+        }
+    }
+
+    public XRecyclerAdapter(T[] data) {
+        if (data != null && data.length > 0) {
+            mData.addAll(Arrays.asList(data));
         }
     }
 
@@ -214,6 +221,22 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     }
 
     /**
+     * 刷新列表数据
+     *
+     * @param array
+     * @return
+     */
+    public XRecyclerAdapter refresh(T[] array) {
+        if (array != null && array.length > 0) {
+            mData.clear();
+            mData.addAll(Arrays.asList(array));
+            mSelectPosition = -1;
+            notifyDataSetChanged();
+        }
+        return this;
+    }
+
+    /**
      * 加载更多
      *
      * @param collection
@@ -222,6 +245,20 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     public XRecyclerAdapter loadMore(Collection<T> collection) {
         if (collection != null) {
             mData.addAll(collection);
+            notifyDataSetChanged();
+        }
+        return this;
+    }
+
+    /**
+     * 加载更多
+     *
+     * @param array
+     * @return
+     */
+    public XRecyclerAdapter loadMore(T[] array) {
+        if (array != null && array.length > 0) {
+            mData.addAll(Arrays.asList(array));
             notifyDataSetChanged();
         }
         return this;
