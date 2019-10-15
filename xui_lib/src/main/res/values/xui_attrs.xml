@@ -1130,6 +1130,24 @@
         <attr name="iiv_is_show" format="boolean" />
     </declare-styleable>
 
+    <!--CropImageView 图片裁剪工具-->
+    <declare-styleable name="CropImageView">
+        <!-- 网格线 -->
+        <attr name="civ_guidelines">
+            <enum name="on" value="2"/>
+            <enum name="onTouch" value="1"/>
+            <enum name="off" value="0"/>
+        </attr>
+        <!-- 是否是固定比例裁剪 -->
+        <attr name="civ_fixAspectRatio" format="boolean"/>
+        <!-- 宽度比例 -->
+        <attr name="civ_aspectRatioX" format="integer"/>
+        <!-- 高度比例 -->
+        <attr name="civ_aspectRatioY" format= "integer"/>
+        <!-- 裁剪图片的资源 -->
+        <attr name="civ_imageResource" format="reference"/>
+    </declare-styleable>
+
     <!--=============================Bar========================================-->
 
     <declare-styleable name="CookieBar">
