@@ -1,7 +1,6 @@
 package com.xuexiang.xuidemo.activity;
 
 import android.content.DialogInterface;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -10,12 +9,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.umeng.analytics.MobclickAgent;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.guidview.GuideCaseQueue;
@@ -168,8 +167,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     }
 
     private void initSlidingMenu(Bundle savedInstanceState) {
-        mMenuTitles = loadMenuTitles();
-        mMenuIcons = loadMenuIcons();
+        mMenuTitles = ResUtils.getStringArray(R.array.menu_titles);
+        mMenuIcons = ResUtils.getDrawableArray(this, R.array.menu_icons);
 
         mSlidingRootNav = new SlidingRootNavBuilder(this)
                 .withMenuOpened(false)
@@ -294,23 +293,6 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                 .withTextTint(ThemeUtils.resolveColor(this, R.attr.xui_config_color_content_text))
                 .withSelectedIconTint(ThemeUtils.resolveColor(this, R.attr.colorAccent))
                 .withSelectedTextTint(ThemeUtils.resolveColor(this, R.attr.colorAccent));
-    }
-
-    private String[] loadMenuTitles() {
-        return getResources().getStringArray(R.array.menu_titles);
-    }
-
-    private Drawable[] loadMenuIcons() {
-        TypedArray ta = getResources().obtainTypedArray(R.array.menu_icons);
-        Drawable[] icons = new Drawable[ta.length()];
-        for (int i = 0; i < ta.length(); i++) {
-            int id = ta.getResourceId(i, 0);
-            if (id != 0) {
-                icons[i] = ContextCompat.getDrawable(this, id);
-            }
-        }
-        ta.recycle();
-        return icons;
     }
 
     /**
