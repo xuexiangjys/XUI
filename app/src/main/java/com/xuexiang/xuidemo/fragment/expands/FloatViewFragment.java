@@ -1,5 +1,8 @@
 package com.xuexiang.xuidemo.fragment.expands;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 
 import com.xuexiang.xfloatview.permission.FloatWindowPermission;
@@ -45,10 +48,16 @@ public class FloatViewFragment extends BaseSimpleListFragment {
      */
     @Override
     protected void onItemClick(int position) {
+        Dialog dialog = FloatWindowPermission.getInstance().applyFloatWindowPermission(getContext());
+        if  (dialog != null) {
+            //需要申请权限
+            return;
+        }
+
         switch(position) {
             case 0:
                 AppMonitorService.start(getContext(), null);
-                getActivity().moveTaskToBack(true);
+                gotoHome(getActivity());
                 break;
             case 1:
                 AppMonitorService.stop(getContext());
@@ -56,6 +65,15 @@ public class FloatViewFragment extends BaseSimpleListFragment {
             default:
                 break;
         }
+    }
+
+    /**
+     * 防止华为机型未加入白名单时按返回键回到桌面再锁屏后几秒钟进程被杀
+     */
+    public static void gotoHome(Activity activity) {
+        Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
+        launcherIntent.addCategory(Intent.CATEGORY_HOME);
+        activity.startActivity(launcherIntent);
     }
 
     @Override
