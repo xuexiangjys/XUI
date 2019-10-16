@@ -30,18 +30,15 @@ import com.xuexiang.citypicker.adapter.OnPickListener;
 import com.xuexiang.citypicker.model.City;
 import com.xuexiang.citypicker.model.HotCity;
 import com.xuexiang.citypicker.model.LocateState;
-import com.xuexiang.citypicker.model.LocatedCity;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.LocationService;
-import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,13 +144,13 @@ public class CityPickerFragment extends BaseFragment implements CompoundButton.O
                     @Override
                     public void onPick(int position, City data) {
                         tvCurrent.setText(String.format("当前城市：%s，%s", data.getName(), data.getCode()));
-                        ToastUtils.toast(String.format("点击的数据：%s，%s", data.getName(), data.getCode()));
+                        XToastUtils.toast(String.format("点击的数据：%s，%s", data.getName(), data.getCode()));
                         LocationService.stop(mListener);
                     }
 
                     @Override
                     public void onCancel() {
-                        ToastUtils.toast("取消选择");
+                        XToastUtils.toast("取消选择");
                         LocationService.stop(mListener);
                     }
 

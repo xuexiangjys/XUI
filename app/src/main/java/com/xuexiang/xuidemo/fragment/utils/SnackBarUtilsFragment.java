@@ -27,7 +27,7 @@ import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.SnackbarUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.OnClick;
 
@@ -68,7 +68,7 @@ public class SnackBarUtilsFragment extends BaseFragment {
                         .setAction("确定", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                ToastUtils.toast("点击了确定！");
+                                XToastUtils.toast("点击了确定！");
                             }
                         }).show();
                 break;
@@ -156,7 +156,7 @@ public class SnackBarUtilsFragment extends BaseFragment {
                         .setAction("按钮文字", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                ToastUtils.toast("点击了按钮!");
+                                XToastUtils.toast("点击了按钮!");
                             }
                         }).show();
                 break;
@@ -166,13 +166,13 @@ public class SnackBarUtilsFragment extends BaseFragment {
                             @Override
                             public void onDismissed(Snackbar snackbar, int event) {
                                 super.onDismissed(snackbar, event);
-                                ToastUtils.toast("onDismissed!");
+                                XToastUtils.toast("onDismissed!");
                             }
 
                             @Override
                             public void onShown(Snackbar snackbar) {
                                 super.onShown(snackbar);
-                                ToastUtils.toast("onShown!");
+                                XToastUtils.toast("onShown!");
                             }
                         }).show();
                 break;

@@ -32,8 +32,8 @@ import com.just.agentweb.core.client.MiddlewareWebClientBase;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.XUtil;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.net.URISyntaxException;
 
@@ -210,7 +210,7 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             XUtil.getContext().startActivity(intent);
         } catch (Exception e) {
-            ToastUtils.toast("您所打开的第三方App未安装！");
+            XToastUtils.toast("您所打开的第三方App未安装！");
         }
     }
 
@@ -220,7 +220,7 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
             intent.setData(Uri.parse(url));
             context.startActivity(intent);
         } catch (Exception e) {
-            ToastUtils.toast("您所打开的第三方App未安装！");
+            XToastUtils.toast("您所打开的第三方App未安装！");
         }
     }
 

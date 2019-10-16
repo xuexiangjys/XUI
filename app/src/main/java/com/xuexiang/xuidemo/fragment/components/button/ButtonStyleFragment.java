@@ -8,7 +8,7 @@ import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.xuexiang.xui.widget.textview.supertextview.SuperButton;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -50,7 +50,7 @@ public class ButtonStyleFragment extends BaseFragment {
             @Override
             public void onFinished() {
                 mBtCountDown3.setText("点击重试");
-                ToastUtils.toast("时间到！");
+                XToastUtils.toast("时间到！");
             }
         });
     }

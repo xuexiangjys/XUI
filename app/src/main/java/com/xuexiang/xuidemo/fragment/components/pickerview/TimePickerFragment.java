@@ -34,8 +34,8 @@ import com.xuexiang.xui.widget.picker.widget.listener.OnTimeSelectChangeListener
 import com.xuexiang.xui.widget.picker.widget.listener.OnTimeSelectListener;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.data.DateUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -98,7 +98,7 @@ public class TimePickerFragment extends BaseFragment {
         mDatePicker = new TimePickerBuilder(getContext(), new OnTimeSelectListener() {
             @Override
             public void onTimeSelected(Date date, View v) {
-                ToastUtils.toast(DateUtils.date2String(date, DateUtils.yyyyMMdd.get()));
+                XToastUtils.toast(DateUtils.date2String(date, DateUtils.yyyyMMdd.get()));
             }
         })
                 .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
@@ -117,7 +117,7 @@ public class TimePickerFragment extends BaseFragment {
         mTimePicker = new TimePickerBuilder(getContext(), new OnTimeSelectListener() {
             @Override
             public void onTimeSelected(Date date, View v) {
-                ToastUtils.toast(DateUtils.date2String(date, DateUtils.yyyyMMddHHmmss.get()));
+                XToastUtils.toast(DateUtils.date2String(date, DateUtils.yyyyMMddHHmmss.get()));
             }
         })
                 .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {

@@ -8,8 +8,8 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.picker.RulerView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.StringUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -54,11 +54,11 @@ public class RulerViewFragment extends BaseFragment {
                 if (!StringUtils.isEmpty(etWeight.getText().toString())) {
                     rulerView.setCurrentValue(StringUtils.toFloat(etWeight.getText().toString(), 0));
                 } else {
-                    ToastUtils.toast("请输入体重值！");
+                    XToastUtils.toast("请输入体重值！");
                 }
                 break;
             case R.id.btn_get:
-                ToastUtils.toast("体重：" + rulerView.getCurrentValue());
+                XToastUtils.toast("体重：" + rulerView.getCurrentValue());
                 break;
             default:
                 break;

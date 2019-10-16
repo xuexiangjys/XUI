@@ -55,7 +55,6 @@ import androidx.fragment.app.Fragment;
 import com.google.gson.Gson;
 import com.just.agentweb.action.PermissionInterceptor;
 import com.just.agentweb.core.AgentWeb;
-import com.just.agentweb.core.client.DefaultWebClient;
 import com.just.agentweb.core.client.MiddlewareWebChromeBase;
 import com.just.agentweb.core.client.MiddlewareWebClientBase;
 import com.just.agentweb.core.client.WebListenerManager;
@@ -71,8 +70,8 @@ import com.just.agentweb.widget.IWebLayout;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.net.JsonUtil;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.HashMap;
 
@@ -536,7 +535,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
      */
     private void openBrowser(String targetUrl) {
         if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
-            ToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
+            XToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
             return;
         }
         Intent intent = new Intent();

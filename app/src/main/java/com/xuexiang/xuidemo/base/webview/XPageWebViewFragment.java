@@ -73,9 +73,9 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.logger.Logger;
 import com.xuexiang.xutil.net.JsonUtil;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.HashMap;
 
@@ -556,7 +556,7 @@ public class XPageWebViewFragment extends BaseFragment {
      */
     private void openBrowser(String targetUrl) {
         if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
-            ToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
+            XToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
             return;
         }
         Intent intent = new Intent();
@@ -599,7 +599,7 @@ public class XPageWebViewFragment extends BaseFragment {
         if (mAgentWeb != null) {
             //清理所有跟WebView相关的缓存 ，数据库， 历史记录 等。
             mAgentWeb.clearWebCache();
-            ToastUtils.toast("已清理缓存");
+            XToastUtils.toast("已清理缓存");
             //清空所有 AgentWeb 硬盘缓存，包括 WebView 的缓存 , AgentWeb 下载的图片 ，视频 ，apk 等文件。
 //            AgentWebConfig.clearDiskCache(this.getContext());
         }

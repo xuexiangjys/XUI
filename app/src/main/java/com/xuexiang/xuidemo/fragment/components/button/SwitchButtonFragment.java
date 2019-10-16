@@ -7,7 +7,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.button.switchbutton.SwitchButton;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -54,7 +54,7 @@ public class SwitchButtonFragment extends BaseFragment implements CompoundButton
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        ToastUtils.toast("isChecked：" + isChecked);
+        XToastUtils.toast("isChecked：" + isChecked);
     }
 
     @OnClick(R.id.btn_switch)

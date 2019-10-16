@@ -35,9 +35,9 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.webview.x5.FileReaderView;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.file.FileUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.FileCallBack;
 
@@ -99,7 +99,7 @@ public class TbsWebFileReaderFragment extends BaseFragment {
      */
     private void shareFile(Uri uri) {
         if (uri == null) {
-            ToastUtils.toast("文件加载失败！");
+            XToastUtils.toast("文件加载失败！");
             return;
         }
 
@@ -138,7 +138,7 @@ public class TbsWebFileReaderFragment extends BaseFragment {
                 fileReaderView.show(fileUri);
             }
         } else {
-            ToastUtils.toast("文件路径无效！");
+            XToastUtils.toast("文件路径无效！");
             popToBack();
         }
     }

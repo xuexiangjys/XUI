@@ -1,18 +1,19 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
+import android.view.View;
+
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
-
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.display.Colors;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
 
@@ -70,7 +71,7 @@ public class ToolbarBehaviorFragment extends BaseFragment {
         fabScrolling.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("分享");
+                XToastUtils.toast("分享");
             }
         });
 

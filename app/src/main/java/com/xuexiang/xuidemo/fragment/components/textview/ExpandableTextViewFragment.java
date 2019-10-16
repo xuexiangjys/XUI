@@ -6,7 +6,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.textview.ExpandableTextView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -29,7 +29,7 @@ public class ExpandableTextViewFragment extends BaseFragment {
         mExpandableTextView.setOnExpandStateChangeListener(new ExpandableTextView.OnExpandStateChangeListener() {
             @Override
             public void onExpandStateChanged(TextView textView, boolean isExpanded) {
-                ToastUtils.toast(isExpanded ? "Expanded" : "Collapsed");
+                XToastUtils.toast(isExpanded ? "Expanded" : "Collapsed");
             }
         });
 

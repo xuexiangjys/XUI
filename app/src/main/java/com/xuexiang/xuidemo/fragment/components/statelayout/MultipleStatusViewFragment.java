@@ -9,7 +9,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.statelayout.MultipleStatusView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -55,7 +55,7 @@ public class MultipleStatusViewFragment extends BaseFragment {
     final View.OnClickListener mRetryClickListener = (new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ToastUtils.toast("点击重试");
+            XToastUtils.toast("点击重试");
             loading();
         }
     });

@@ -29,7 +29,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.webview.BaseWebViewFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import org.json.JSONObject;
 
@@ -120,7 +120,7 @@ public class JsWebViewFragment extends BaseWebViewFragment {
 
         @JavascriptInterface
         public void callAndroid(final String msg) {
-            ToastUtils.toast("这是Js调用Android的方法，内容:" + msg);
+            XToastUtils.toast("这是Js调用Android的方法，内容:" + msg);
         }
 
     }

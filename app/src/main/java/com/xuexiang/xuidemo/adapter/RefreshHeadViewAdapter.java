@@ -9,7 +9,7 @@ import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -75,7 +75,7 @@ public class RefreshHeadViewAdapter extends BaseRecyclerAdapter<String> {
                     .setOnItemClickL(new BaseBanner.OnItemClickL() {
                         @Override
                         public void onItemClick(int position) {
-                            ToastUtils.toast("headBanner position--->" + position);
+                            XToastUtils.toast("headBanner position--->" + position);
                         }
                     }).startScroll();
 
@@ -85,7 +85,7 @@ public class RefreshHeadViewAdapter extends BaseRecyclerAdapter<String> {
                     .setOnItemClickL(new BaseBanner.OnItemClickL() {
                         @Override
                         public void onItemClick(int position) {
-                            ToastUtils.toast("footBanner position--->" + position);
+                            XToastUtils.toast("footBanner position--->" + position);
                         }
                     }).startScroll();
         } else {

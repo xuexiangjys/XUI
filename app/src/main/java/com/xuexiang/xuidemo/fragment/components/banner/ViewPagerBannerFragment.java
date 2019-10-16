@@ -33,8 +33,8 @@ import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.RadiusImageBanner;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,7 +139,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .setIsOnePageLoop(false).startScroll();
@@ -174,7 +174,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();                                     //start scroll,the last method to call
@@ -191,7 +191,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();
@@ -207,7 +207,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();
@@ -226,7 +226,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();
@@ -243,7 +243,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();
@@ -258,7 +258,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();
@@ -274,7 +274,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();
@@ -292,7 +292,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();
@@ -312,7 +312,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setOnItemClickL(new BaseBanner.OnItemClickL() {
                     @Override
                     public void onItemClick(int position) {
-                        ToastUtils.toast("position--->" + position);
+                        XToastUtils.toast("position--->" + position);
                     }
                 })
                 .startScroll();

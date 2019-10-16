@@ -3,10 +3,9 @@ package com.xuexiang.xuidemo.fragment.expands.chart.line;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 
 import androidx.core.content.ContextCompat;
-
-import android.view.View;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -29,7 +28,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.fragment.expands.chart.BaseChartFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -227,7 +226,7 @@ public class BasicLineChartFragment extends BaseChartFragment implements OnChart
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        ToastUtils.toast("选中了,  x轴值:" + e.getX() + ", y轴值:" + e.getY());
+        XToastUtils.toast("选中了,  x轴值:" + e.getX() + ", y轴值:" + e.getY());
     }
 
     @Override

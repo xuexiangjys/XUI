@@ -8,8 +8,8 @@ import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.TranslucentActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.app.ActivityUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
 
@@ -70,7 +70,7 @@ public class StatusBarUtilsFragment extends BaseFragment {
                 .addItemView(groupListView.createItemView("获取状态栏的实际高度"), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ToastUtils.toast("状态栏的实际高度：" + StatusBarUtils.getStatusBarHeight(getContext()));
+                        XToastUtils.toast("状态栏的实际高度：" + StatusBarUtils.getStatusBarHeight(getContext()));
                     }
                 })
                 .addTo(groupListView);

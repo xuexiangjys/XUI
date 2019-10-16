@@ -11,8 +11,8 @@ import com.xuexiang.xui.widget.popupwindow.popup.XUISimplePopup;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.display.DensityUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.OnClick;
 
@@ -66,7 +66,7 @@ public class PopupWindowStyleFragment extends BaseFragment {
                 .create(DensityUtils.dip2px(getContext(), 170), new XUISimplePopup.OnPopupItemClickListener() {
                     @Override
                     public void onItemClick(XUISimpleAdapter adapter, AdapterItem item, int position) {
-                        ToastUtils.toast(item.getTitle().toString());
+                        XToastUtils.toast(item.getTitle().toString());
                     }
                 })
                 .setHasDivider(true);
@@ -77,7 +77,7 @@ public class PopupWindowStyleFragment extends BaseFragment {
                 .create(new XUISimplePopup.OnPopupItemClickListener() {
                     @Override
                     public void onItemClick(XUISimpleAdapter adapter, AdapterItem item, int position) {
-                        ToastUtils.toast(item.getTitle().toString());
+                        XToastUtils.toast(item.getTitle().toString());
                     }
                 });
     }

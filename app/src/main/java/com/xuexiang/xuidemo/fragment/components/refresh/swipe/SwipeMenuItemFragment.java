@@ -12,7 +12,7 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.yanzhenjie.recyclerview.OnItemMenuClickListener;
 import com.yanzhenjie.recyclerview.SwipeMenu;
 import com.yanzhenjie.recyclerview.SwipeMenuBridge;
@@ -121,9 +121,9 @@ public class SwipeMenuItemFragment extends BaseFragment {
             int menuPosition = menuBridge.getPosition(); // 菜单在RecyclerView的Item中的Position。
 
             if (direction == SwipeRecyclerView.RIGHT_DIRECTION) {
-                ToastUtils.toast("list第" + position + "; 右侧菜单第" + menuPosition);
+                XToastUtils.toast("list第" + position + "; 右侧菜单第" + menuPosition);
             } else if (direction == SwipeRecyclerView.LEFT_DIRECTION) {
-                ToastUtils.toast("list第" + position + "; 左侧菜单第" + menuPosition);
+                XToastUtils.toast("list第" + position + "; 左侧菜单第" + menuPosition);
             }
         }
     };

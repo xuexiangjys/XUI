@@ -67,6 +67,13 @@ public class XToastFragment extends BaseSimpleListFragment {
             default:
                 break;
         }
+    }
 
+    @Override
+    public void onDestroyView() {
+        XToast.Config.get()
+                //位置还原
+                .resetGravity();
+        super.onDestroyView();
     }
 }

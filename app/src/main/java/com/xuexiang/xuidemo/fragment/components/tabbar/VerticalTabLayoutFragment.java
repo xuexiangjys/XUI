@@ -33,8 +33,8 @@ import com.xuexiang.xui.widget.tabbar.vertical.TabView;
 import com.xuexiang.xui.widget.textview.badge.Badge;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.XUtil;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -85,7 +85,7 @@ public class VerticalTabLayoutFragment extends BaseFragment {
         tabLayout0.addOnTabSelectedListener(new VerticalTabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabView tab, int position) {
-                ToastUtils.toast("选中 " + tab.getTitle().getContent());
+                XToastUtils.toast("选中 " + tab.getTitle().getContent());
             }
 
             @Override
@@ -93,14 +93,14 @@ public class VerticalTabLayoutFragment extends BaseFragment {
                 XUtil.getMainHandler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        ToastUtils.toast("选择取消 " + tab.getTitle().getContent());
+                        XToastUtils.toast("选择取消 " + tab.getTitle().getContent());
                     }
                 }, 500);
             }
 
             @Override
             public void onTabReselected(TabView tab, int position) {
-                ToastUtils.toast("重复选择 " + tab.getTitle().getContent());
+                XToastUtils.toast("重复选择 " + tab.getTitle().getContent());
             }
         });
     }

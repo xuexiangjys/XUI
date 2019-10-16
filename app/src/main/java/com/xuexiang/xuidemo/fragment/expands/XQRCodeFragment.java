@@ -38,9 +38,9 @@ import com.xuexiang.xuidemo.fragment.expands.qrcode.CustomCaptureActivity;
 import com.xuexiang.xuidemo.fragment.expands.qrcode.CustomCaptureFragment;
 import com.xuexiang.xuidemo.fragment.expands.qrcode.QRCodeProduceFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.List;
 
@@ -187,12 +187,12 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
         XQRCode.analyzeQRCode(PathUtils.getFilePathByUri(getContext(), uri), new QRCodeAnalyzeUtils.AnalyzeCallback() {
             @Override
             public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-                ToastUtils.toast("解析结果:" + result, Toast.LENGTH_LONG);
+                XToastUtils.toast("解析结果:" + result, Toast.LENGTH_LONG);
             }
 
             @Override
             public void onAnalyzeFailed() {
-                ToastUtils.toast("解析二维码失败", Toast.LENGTH_LONG);
+                XToastUtils.toast("解析二维码失败", Toast.LENGTH_LONG);
             }
         });
     }
@@ -209,9 +209,9 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
             if (bundle != null) {
                 if (bundle.getInt(XQRCode.RESULT_TYPE) == XQRCode.RESULT_SUCCESS) {
                     String result = bundle.getString(XQRCode.RESULT_DATA);
-                    ToastUtils.toast("解析结果:" + result, Toast.LENGTH_LONG);
+                    XToastUtils.toast("解析结果:" + result, Toast.LENGTH_LONG);
                 } else if (bundle.getInt(XQRCode.RESULT_TYPE) == XQRCode.RESULT_FAILED) {
-                    ToastUtils.toast("解析二维码失败", Toast.LENGTH_LONG);
+                    XToastUtils.toast("解析二维码失败", Toast.LENGTH_LONG);
                 }
             }
         }
@@ -219,7 +219,7 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
 
     @Permission(CAMERA)
     private void initPermission() {
-        ToastUtils.toast("相机权限已获取！");
+        XToastUtils.toast("相机权限已获取！");
         XQRCode.setAutoFocusInterval(800);
     }
 

@@ -32,8 +32,8 @@ import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.display.Colors;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
 
@@ -103,7 +103,7 @@ public class ComplexDetailsPageFragment extends BaseFragment {
         fabScrolling.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("新建");
+                XToastUtils.toast("新建");
             }
         });
         appbarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {

@@ -31,7 +31,7 @@ import androidx.fragment.app.Fragment;
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import static com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient.APP_LINK_ACTION;
 import static com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient.APP_LINK_HOST;
@@ -143,7 +143,7 @@ public class CustomCaptureActivity extends CaptureActivity implements View.OnCli
             refreshFlashIcon();
         } catch (RuntimeException e) {
             e.printStackTrace();
-            ToastUtils.toast("设备不支持闪光灯!");
+            XToastUtils.error("设备不支持闪光灯!");
         }
     }
 
@@ -206,7 +206,7 @@ public class CustomCaptureActivity extends CaptureActivity implements View.OnCli
             intent.setData(Uri.parse(url));
             context.startActivity(intent);
         } catch (Exception e) {
-            ToastUtils.toast("您所打开的第三方App未安装！");
+            XToastUtils.error("您所打开的第三方App未安装！");
         }
     }
 

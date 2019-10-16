@@ -31,7 +31,7 @@ import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.Date;
 
@@ -95,7 +95,7 @@ public class MaterialDesignCalendarFragment extends BaseFragment {
         calendarDateView.setOnCalendarSelectedListener(new CalendarView.OnCalendarSelectedListener() {
             @Override
             public void onCalendarSelected(View view, int postion, CalendarDate calendarDate) {
-                ToastUtils.toast("选中:" + calendarDate.formatDate());
+                XToastUtils.toast("选中:" + calendarDate.formatDate());
             }
         });
 

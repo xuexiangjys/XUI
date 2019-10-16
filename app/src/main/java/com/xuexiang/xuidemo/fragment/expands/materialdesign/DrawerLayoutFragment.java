@@ -37,8 +37,8 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.SimpleListFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.CollectionUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import butterknife.BindView;
 
@@ -110,7 +110,7 @@ public class DrawerLayoutFragment extends BaseFragment implements NavigationView
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                ToastUtils.toast("点击了:" + menuItem.getTitle());
+                XToastUtils.toast("点击了:" + menuItem.getTitle());
                 return true;
             }
         });
@@ -126,10 +126,10 @@ public class DrawerLayoutFragment extends BaseFragment implements NavigationView
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.nav_header:
-                ToastUtils.toast("点击头部！");
+                XToastUtils.toast("点击头部！");
                 break;
             case R.id.fab:
-                ToastUtils.toast("新建");
+                XToastUtils.toast("新建");
                 break;
             default:
                 break;

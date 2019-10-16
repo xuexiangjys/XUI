@@ -11,7 +11,7 @@ import com.xuexiang.xui.widget.textview.badge.BadgeView;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -57,52 +57,52 @@ public class SuperClickFragment extends BaseFragment {
         superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
             public void onClickListener(SuperTextView superTextView) {
-                ToastUtils.toast("整个item的点击事件");
+                XToastUtils.toast("整个item的点击事件");
             }
         }).setLeftTopTvClickListener(new SuperTextView.OnLeftTopTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getLeftTopString());
+                XToastUtils.toast(superTextView.getLeftTopString());
             }
         }).setLeftTvClickListener(new SuperTextView.OnLeftTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getLeftString());
+                XToastUtils.toast(superTextView.getLeftString());
             }
         }).setLeftBottomTvClickListener(new SuperTextView.OnLeftBottomTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getLeftBottomString());
+                XToastUtils.toast(superTextView.getLeftBottomString());
             }
         }).setCenterTopTvClickListener(new SuperTextView.OnCenterTopTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getCenterTopString());
+                XToastUtils.toast(superTextView.getCenterTopString());
             }
         }).setCenterTvClickListener(new SuperTextView.OnCenterTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getCenterString());
+                XToastUtils.toast(superTextView.getCenterString());
             }
         }).setCenterBottomTvClickListener(new SuperTextView.OnCenterBottomTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getCenterBottomString());
+                XToastUtils.toast(superTextView.getCenterBottomString());
             }
         }).setRightTopTvClickListener(new SuperTextView.OnRightTopTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getRightTopString());
+                XToastUtils.toast(superTextView.getRightTopString());
             }
         }).setRightTvClickListener(new SuperTextView.OnRightTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getRightString());
+                XToastUtils.toast(superTextView.getRightString());
             }
         }).setRightBottomTvClickListener(new SuperTextView.OnRightBottomTvClickListener() {
             @Override
             public void onClickListener() {
-                ToastUtils.toast(superTextView.getRightBottomString());
+                XToastUtils.toast(superTextView.getRightBottomString());
             }
         }).setLeftImageViewClickListener(new SuperTextView.OnLeftImageViewClickListener() {
             @Override
@@ -123,7 +123,7 @@ public class SuperClickFragment extends BaseFragment {
         }).setCheckBoxCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                ToastUtils.toast("isChecked : " + isChecked);
+                XToastUtils.toast("isChecked : " + isChecked);
             }
         });
 
@@ -135,7 +135,7 @@ public class SuperClickFragment extends BaseFragment {
         }).setSwitchCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                ToastUtils.toast("isChecked : " + isChecked);
+                XToastUtils.toast("isChecked : " + isChecked);
             }
         });
 
@@ -149,14 +149,14 @@ public class SuperClickFragment extends BaseFragment {
         stvName.setCenterEditTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                ToastUtils.toast("聚焦变化：" + hasFocus);
+                XToastUtils.toast("聚焦变化：" + hasFocus);
             }
         });
 
         stvPhone.setCenterEditTextClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("点击监听");
+                XToastUtils.toast("点击监听");
             }
         });
     }

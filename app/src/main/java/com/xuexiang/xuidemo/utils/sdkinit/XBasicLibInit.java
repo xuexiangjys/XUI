@@ -27,9 +27,9 @@ import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xuidemo.BuildConfig;
 import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.utils.LocationService;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.common.StringUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.List;
 
@@ -100,7 +100,7 @@ public final class XBasicLibInit {
         XAOP.setOnPermissionDeniedListener(new PermissionUtils.OnPermissionDeniedListener() {
             @Override
             public void onDenied(List<String> permissionsDenied) {
-                ToastUtils.toast("权限申请被拒绝:" + StringUtils.listToString(permissionsDenied, ","));
+                XToastUtils.error("权限申请被拒绝:" + StringUtils.listToString(permissionsDenied, ","));
             }
         });
     }

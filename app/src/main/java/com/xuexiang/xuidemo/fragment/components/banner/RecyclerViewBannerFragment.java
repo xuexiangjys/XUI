@@ -23,7 +23,7 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.RecyclerViewBannerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -70,14 +70,14 @@ public class RecyclerViewBannerFragment extends BaseFragment implements BannerLa
         blHorizontal.setOnIndicatorIndexChangedListener(new BannerLayout.OnIndicatorIndexChangedListener() {
             @Override
             public void onIndexChanged(int position) {
-                ToastUtils.toast("轮播到第" + (position + 1) + "个");
+                XToastUtils.toast("轮播到第" + (position + 1) + "个");
             }
         });
     }
 
     @Override
     public void onItemClick(int position) {
-        ToastUtils.toast("点击了第" + (position + 1) + "个");
+        XToastUtils.toast("点击了第" + (position + 1) + "个");
     }
 
 }

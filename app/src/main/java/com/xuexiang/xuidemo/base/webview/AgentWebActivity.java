@@ -30,7 +30,7 @@ import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseAppCompatActivity;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
@@ -66,7 +66,7 @@ public class AgentWebActivity extends BaseAppCompatActivity {
             if (url != null) {
                 openFragment(url);
             } else {
-                ToastUtils.toast("数据出错！");
+                XToastUtils.toast("数据出错！");
                 finish();
             }
         }

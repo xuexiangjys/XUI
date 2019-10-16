@@ -18,8 +18,9 @@
 package com.xuexiang.xuidemo.fragment.components.dialog;
 
 import android.content.DialogInterface;
-import androidx.annotation.NonNull;
 import android.text.InputType;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
@@ -30,7 +31,7 @@ import com.xuexiang.xui.widget.dialog.strategy.impl.AlertDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.impl.MaterialDialogStrategy;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -87,7 +88,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ToastUtils.toast("同意打开蓝牙！");
+                                XToastUtils.toast("同意打开蓝牙！");
                                 dialog.dismiss();
                             }
                         },
@@ -95,7 +96,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ToastUtils.toast("不同意打开蓝牙！");
+                                XToastUtils.toast("不同意打开蓝牙！");
                                 dialog.dismiss();
                             }
                         }
@@ -114,7 +115,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         new InputCallback() {
                             @Override
                             public void onInput(@NonNull DialogInterface dialog, CharSequence input) {
-                                ToastUtils.toast(input.toString());
+                                XToastUtils.toast(input.toString());
                             }
                         },
                         getString(R.string.lab_continue),
@@ -123,7 +124,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 if (dialog instanceof MaterialDialog) {
-                                    ToastUtils.toast("你输入了:" + ((MaterialDialog)dialog).getInputEditText().getText().toString());
+                                    XToastUtils.toast("你输入了:" + ((MaterialDialog)dialog).getInputEditText().getText().toString());
                                 }
                             }
                         },
@@ -137,7 +138,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ToastUtils.toast("选择了第" + (which + 1) + "个");
+                                XToastUtils.toast("选择了第" + (which + 1) + "个");
                             }
                         });
                 break;
@@ -150,7 +151,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ToastUtils.toast("选择了第" + (which + 1) + "个");
+                                XToastUtils.toast("选择了第" + (which + 1) + "个");
                             }},
                         getString(R.string.lab_yes),
                         getString(R.string.lab_no));

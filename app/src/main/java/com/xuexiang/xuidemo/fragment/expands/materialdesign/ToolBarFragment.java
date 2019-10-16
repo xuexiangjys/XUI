@@ -1,14 +1,15 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -98,14 +99,14 @@ public class ToolBarFragment extends BaseFragment {
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ToastUtils.toast("点击了NavigationIcon");
+            XToastUtils.toast("点击了NavigationIcon");
         }
     };
 
     Toolbar.OnMenuItemClickListener menuItemClickListener = new Toolbar.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
-            ToastUtils.toast("点击了:" + item.getTitle());
+            XToastUtils.toast("点击了:" + item.getTitle());
             switch (item.getItemId()){
                 case R.id.item_setting:
                     //点击设置

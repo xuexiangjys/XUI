@@ -18,9 +18,10 @@
 package com.xuexiang.xuidemo.fragment.components.dialog;
 
 import android.content.DialogInterface;
-import androidx.annotation.NonNull;
 import android.text.InputType;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;
@@ -30,7 +31,7 @@ import com.xuexiang.xui.widget.dialog.materialdialog.simplelist.MaterialSimpleLi
 import com.xuexiang.xui.widget.dialog.materialdialog.simplelist.MaterialSimpleListItem;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,7 +167,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                         (new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                                ToastUtils.toast(input.toString());
+                                XToastUtils.toast(input.toString());
                             }
                         }))
                 .inputRange(3, 5)
@@ -175,7 +176,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        ToastUtils.toast("你输入了:" + dialog.getInputEditText().getText().toString());
+                        XToastUtils.toast("你输入了:" + dialog.getInputEditText().getText().toString());
                     }
                 })
                 .cancelable(false)
@@ -192,7 +193,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                 .itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
                     public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        ToastUtils.toast(position + ": " + text);
+                        XToastUtils.toast(position + ": " + text);
                     }
                 })
                 .show();
@@ -210,7 +211,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                         new MaterialDialog.ListCallbackSingleChoice() {
                             @Override
                             public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
-                                ToastUtils.toast(which + ": " + text);
+                                XToastUtils.toast(which + ": " + text);
                                 return true;
                             }
                         })
@@ -235,7 +236,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                                 for (int i = 0; i < which.length; i ++){
                                     sb.append(which[i]).append(":").append(text[i]).append("\n");
                                 }
-                                ToastUtils.toast(sb.toString());
+                                XToastUtils.toast(sb.toString());
                                 return true;
                             }
                         })
@@ -346,7 +347,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                 .setOnItemClickListener(new MaterialSimpleListAdapter.OnItemClickListener() {
                     @Override
                     public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
-                        ToastUtils.toast(item.getContent().toString());
+                        XToastUtils.toast(item.getContent().toString());
                     }
                 });
         new MaterialDialog.Builder(getContext()).adapter(adapter, null).show();

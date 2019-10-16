@@ -1,7 +1,8 @@
 package com.xuexiang.xuidemo.fragment.expands.chart.bar;
 
-import androidx.core.content.ContextCompat;
 import android.view.View;
+
+import androidx.core.content.ContextCompat;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -22,7 +23,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.fragment.expands.chart.BaseChartFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -219,7 +220,7 @@ public class BasicBarChartFragment extends BaseChartFragment implements OnChartV
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        ToastUtils.toast("选中了,  x轴值:" + e.getX() + ", y轴值:" + e.getY());
+        XToastUtils.toast("选中了,  x轴值:" + e.getX() + ", y轴值:" + e.getY());
     }
 
     @Override

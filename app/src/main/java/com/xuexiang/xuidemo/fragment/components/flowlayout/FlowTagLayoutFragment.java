@@ -8,7 +8,7 @@ import com.xuexiang.xui.widget.flowlayout.FlowTagLayout;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.FlowTagAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -60,7 +60,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mNormalFlowTagLayout.setOnTagClickListener(new FlowTagLayout.OnTagClickListener() {
             @Override
             public void onItemClick(FlowTagLayout parent, View view, int position) {
-                ToastUtils.toast("点击了：" + parent.getAdapter().getItem(position));
+                XToastUtils.toast("点击了：" + parent.getAdapter().getItem(position));
             }
         });
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
@@ -73,7 +73,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mSingleFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
             @Override
             public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
-                ToastUtils.toast(getSelectedText(parent, selectedList));
+                XToastUtils.toast(getSelectedText(parent, selectedList));
             }
         });
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
@@ -88,7 +88,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mSingleCancelableFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
             @Override
             public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
-                ToastUtils.toast(getSelectedText(parent, selectedList));
+                XToastUtils.toast(getSelectedText(parent, selectedList));
             }
         });
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
@@ -103,7 +103,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mMultiFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
             @Override
             public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
-                ToastUtils.toast(getSelectedText(parent, selectedList));
+                XToastUtils.toast(getSelectedText(parent, selectedList));
             }
         });
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));

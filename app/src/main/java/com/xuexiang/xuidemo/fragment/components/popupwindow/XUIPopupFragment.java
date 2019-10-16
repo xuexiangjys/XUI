@@ -1,11 +1,12 @@
 package com.xuexiang.xuidemo.fragment.components.popupwindow;
 
-import androidx.core.content.ContextCompat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.XUI;
@@ -15,7 +16,7 @@ import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -113,7 +114,7 @@ public class XUIPopupFragment extends BaseFragment {
             mListPopup.create(DensityUtils.dp2px(200), DensityUtils.dp2px(150), new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    ToastUtils.toast("Item " + (i + 1));
+                    XToastUtils.toast("Item " + (i + 1));
                     mListPopup.dismiss();
                 }
             });

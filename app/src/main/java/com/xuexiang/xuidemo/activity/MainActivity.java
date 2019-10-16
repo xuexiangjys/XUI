@@ -33,9 +33,9 @@ import com.xuexiang.xuidemo.fragment.SettingFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.system.DeviceUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
@@ -315,7 +315,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
      */
     @Override
     public void onRetry() {
-        ToastUtils.toast("再按一次退出程序");
+        XToastUtils.toast("再按一次退出程序");
     }
 
     /**
