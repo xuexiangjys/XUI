@@ -201,6 +201,7 @@
     <public name="xui_btn_view_height" type="attr" />
     <public name="xui_btn_view_text_size" type="attr" />
     <public name="xui_btn_view_border_width" type="attr" />
+    <public name="xui_btn_view_disable_color" type="attr" />
 
     <public name="xui_config_size_title_text" type="attr" />
     <public name="xui_config_size_content_text" type="attr" />

@@ -22,50 +22,55 @@
                 android:paddingTop="20dp">
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:layout_width="match_parent"
+                    style="@style/InfoItem.Account"
                     android:layout_height="60dp"
-                    app:sDividerLineType="both"
                     app:sLeftIconRes="@drawable/icon_head_default"
                     app:sLeftTextString="帐号管理"
-                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                    app:sLeftViewMarginLeft="10dp" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    app:sLeftTextString="通知设置"
-                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                    style="@style/InfoItem.Account"
+                    android:layout_height="60dp"
+                    app:sLeftTextString="头像">
+
+                    <com.xuexiang.xui.widget.imageview.RadiusImageView
+                        android:id="@+id/riv_head_pic"
+                        style="@style/RadiusImageView.Circle"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/sRightImgId"
+                        app:srcCompat="@drawable/img_beautiful_scenery" />
+
+                </com.xuexiang.xui.widget.textview.supertextview.SuperTextView>
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    style="@style/InfoItem.Account"
+                    app:sLeftTextString="通知设置" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    style="@style/InfoItem.Account"
                     app:sLeftTextString="账号与安全"
-                    app:sRightIconRes="@drawable/icon_arrow_right_red"
                     app:sRightTextString="已保护"
                     app:sRightTvDrawableLeft="@drawable/icon_crown" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    app:sDividerLineType="bottom"
-                    app:sLeftTextString="设置中心"
-                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                    style="@style/InfoItem.Account"
+                    app:sDividerLineType="none"
+                    app:sLeftTextString="设置中心" />
 
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    style="@style/InfoItem.Account"
                     android:layout_marginTop="50dp"
-                    app:sDividerLineType="both"
-                    app:sLeftTextString="意见反馈"
-                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                    app:sDividerLineType="none"
+                    app:sLeftTextString="意见反馈" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    style="@style/InfoItem.Account"
                     android:layout_marginTop="20dp"
-                    app:sDividerLineType="both"
-                    app:sLeftTextString="关于微博"
-                    app:sRightIconRes="@drawable/icon_arrow_right_red" />
+                    app:sDividerLineType="none"
+                    app:sLeftTextString="关于微博" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

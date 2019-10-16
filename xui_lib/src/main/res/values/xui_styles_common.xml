@@ -19,7 +19,7 @@
     <style name="Button.Blue.wrap">
         <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:layout_height">?attr/xui_btn_view_height</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
     <!--XUIAlphaButton-->
@@ -31,7 +31,7 @@
     <style name="Button.Primary.wrap">
         <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:layout_height">?attr/xui_btn_view_height</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
     <style name="Button.Radius" parent="@style/Button">
@@ -88,7 +88,7 @@
     <!-- Button style -->
     <style name="SuperButton" parent="ButtonStyle">
         <item name="sCornersRadius">?attr/xui_btn_view_radius</item>
-        <item name="sSelectorDisableColor">@color/xui_btn_disable_color</item>
+        <item name="sSelectorDisableColor">?attr/xui_btn_view_disable_color</item>
         <item name="sUseSelector">true</item>
         <item name="sGravity">center</item>
         <item name="android:background">@null</item>
@@ -98,6 +98,17 @@
     <style name="SuperButton.Icon">
         <item name="sGravity">left</item>
         <item name="android:drawablePadding">?attr/xui_config_icon_drawable_padding</item>
+    </style>
+
+    <style name="SuperButton.Primary">
+        <item name="sSelectorNormalColor">?attr/colorAccent</item>
+        <item name="sSelectorPressedColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="SuperButton.Primary.wrap">
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
     <!-- Green Button Style -->
