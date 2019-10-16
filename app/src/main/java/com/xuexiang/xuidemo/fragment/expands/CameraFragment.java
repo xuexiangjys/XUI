@@ -17,44 +17,67 @@
 
 package com.xuexiang.xuidemo.fragment.expands;
 
+import android.content.Intent;
+import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
+
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
+import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.expands.camera.CameraActivity;
+import com.xuexiang.xutil.app.PathUtils;
+import com.xuexiang.xutil.file.FileUtils;
 
-import java.util.List;
+import butterknife.BindView;
+import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_OK;
+import static com.xuexiang.xuidemo.fragment.expands.camera.CameraActivity.REQUEST_CODE_OPEN_CAMERA;
+import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.KEY_PICTURE_PATH;
 
 /**
  * @author xuexiang
  * @since 2019-10-16 10:25
  */
 @Page(name = "照相机", extra = R.drawable.ic_expand_camera)
-public class CameraFragment extends BaseSimpleListFragment {
-    /**
-     * 初始化例子
-     *
-     * @param lists
-     * @return
-     */
+public class CameraFragment extends BaseFragment {
+
+    @BindView(R.id.iv_content)
+    AppCompatImageView ivContent;
+
     @Override
-    protected List<String> initSimpleData(List<String> lists) {
-        lists.add("简单相机拍照");
-        return lists;
+    protected int getLayoutId() {
+        return R.layout.fragment_camera;
     }
 
-    /**
-     * 条目点击
-     *
-     * @param position
-     */
     @Override
-    protected void onItemClick(int position) {
-        switch(position) {
-            case 0:
-                break;
-            case 1:
+    protected void initViews() {
+
+    }
+
+    @SingleClick
+    @OnClick(R.id.btn_camera)
+    public void onViewClicked(View view) {
+        switch(view.getId()) {
+            case R.id.btn_camera:
+                CameraActivity.open(this);
                 break;
             default:
                 break;
+        }
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE_OPEN_CAMERA && resultCode == RESULT_OK) {
+            if (data != null) {
+                String imgPath = data.getStringExtra(KEY_PICTURE_PATH);
+                ivContent.setImageURI(PathUtils.getUriForFile(FileUtils.getFileByPath(imgPath)));
+            }
         }
     }
 }

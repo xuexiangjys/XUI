@@ -31,6 +31,9 @@ import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
+import com.xuexiang.xutil.data.DateUtils;
+import com.xuexiang.xutil.file.FileIOUtils;
+import com.xuexiang.xutil.file.FileUtils;
 
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
@@ -97,6 +100,7 @@ public final class Utils {
         XUpdate.get().setOnUpdateFailureListener(new CustomUpdateFailureListener(needErrorTip));
     }
 
+    //==========图片选择===========//
 
     /**
      * 获取图片选择的配置
@@ -118,7 +122,45 @@ public final class Utils {
                 .previewEggs(true);
     }
 
+    public static PictureSelectionModel getPictureSelector(Activity activity) {
+        return PictureSelector.create(activity)
+                .openGallery(PictureMimeType.ofImage())
+                .theme(SettingSPUtils.getInstance().isUseCustomTheme() ? R.style.XUIPictureStyle_Custom : R.style.XUIPictureStyle)
+                .maxSelectNum(8)
+                .minSelectNum(1)
+                .selectionMode(PictureConfig.MULTIPLE)
+                .previewImage(true)
+                .isCamera(true)
+                .enableCrop(false)
+                .compress(true)
+                .previewEggs(true);
+    }
 
+    //==========拍照===========//
+
+    public static final String JPEG = ".jpeg";
+
+    /**
+     * 处理拍照的回调
+     * @param data
+     * @return
+     */
+    public static String handleOnPictureTaken(byte[] data) {
+        return handleOnPictureTaken(data, JPEG);
+    }
+    /**
+     * 处理拍照的回调
+     *
+     * @param data
+     * @return
+     */
+    public static String handleOnPictureTaken(byte[] data, String fileSuffix) {
+        String picPath = FileUtils.getDiskCacheDir() + "/images/" + DateUtils.getNowMills() + fileSuffix;
+        boolean result = FileIOUtils.writeFileFromBytesByStream(picPath, data);
+        return result ? picPath : "";
+    }
+
+    //==========截图===========//
 
     /**
      * 显示截图结果

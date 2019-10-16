@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28.804688dp"
+    android:height="24dp"
+    android:viewportWidth="1229"
+    android:viewportHeight="1024">
+  <path
+      android:pathData="M1092.27,0 L136.53,0C61.44,0 0,61.44 0,136.53l0,750.93c0,75.09 61.44,136.53 136.53,136.53l955.73,0c75.09,0 136.53,-61.44 136.53,-136.53L1228.8,136.53C1228.8,61.44 1167.36,0 1092.27,0zM1160.53,887.47c0,37.55 -30.72,68.27 -68.27,68.27L136.53,955.73c-37.55,0 -68.27,-30.72 -68.27,-68.27l0,-27.31c0,-37.55 27.31,-85.33 58.03,-105.81l235.52,-150.19c30.72,-20.48 81.92,-20.48 112.64,3.41l64.85,47.79c30.72,20.48 81.92,20.48 112.64,0l187.73,-228.69c30.72,-20.48 81.92,-20.48 112.64,0l150.19,105.81c30.72,20.48 54.61,71.68 54.61,109.23L1157.12,887.47zM1160.53,491.52c-6.83,-3.41 -10.24,-10.24 -17.07,-13.65l-150.19,-105.81c-54.61,-37.55 -136.53,-37.55 -191.15,0L614.4,597.33c-6.83,6.83 -27.31,6.83 -34.13,0l-64.85,-47.79c-54.61,-37.55 -133.12,-40.96 -187.73,-3.41l-235.52,150.19c-6.83,3.41 -13.65,10.24 -20.48,17.07L71.68,136.53c0,-37.55 30.72,-68.27 68.27,-68.27l955.73,0c37.55,0 68.27,30.72 68.27,68.27L1163.95,491.52z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M273.07,204.8c-75.09,0 -136.53,61.44 -136.53,136.53 0,75.09 61.44,136.53 136.53,136.53s136.53,-61.44 136.53,-136.53C409.6,266.24 348.16,204.8 273.07,204.8zM273.07,409.6c-37.55,0 -68.27,-30.72 -68.27,-68.27s30.72,-68.27 68.27,-68.27 68.27,30.72 68.27,68.27S310.61,409.6 273.07,409.6z"
+      android:fillColor="#ffffff"/>
+</vector>
