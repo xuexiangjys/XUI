@@ -34,6 +34,7 @@ final class PaintUtil {
     }
 
     // Private Constants ///////////////////////////////////////////////////////
+    private static final String DEFAULT_LINE_COLOR_ID = "#AAFFFFFF";
     private static final String DEFAULT_BACKGROUND_COLOR_ID = "#B0000000";
     private static final float DEFAULT_LINE_THICKNESS_DP = 3;
     private static final float DEFAULT_CORNER_THICKNESS_DP = 5;
@@ -53,7 +54,7 @@ final class PaintUtil {
                 TypedValue.COMPLEX_UNIT_DIP, DEFAULT_LINE_THICKNESS_DP, context
                         .getResources().getDisplayMetrics());
         final Paint borderPaint = new Paint();
-        borderPaint.setColor(ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        borderPaint.setColor(Color.parseColor(DEFAULT_LINE_COLOR_ID));
         borderPaint.setStrokeWidth(lineThicknessPx);
         borderPaint.setStyle(Paint.Style.STROKE);
 
@@ -67,7 +68,7 @@ final class PaintUtil {
      */
     static Paint newGuidelinePaint(Context context) {
         final Paint paint = new Paint();
-        paint.setColor(ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        paint.setColor(Color.parseColor(DEFAULT_LINE_COLOR_ID));
         paint.setStrokeWidth(DEFAULT_GUIDELINE_THICKNESS_PX);
         return paint;
     }

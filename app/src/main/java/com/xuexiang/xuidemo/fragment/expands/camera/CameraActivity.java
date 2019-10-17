@@ -49,10 +49,10 @@ import butterknife.Unbinder;
 
 import static com.xuexiang.xaop.consts.PermissionConsts.CAMERA;
 import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
-import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.KEY_PICTURE_PATH;
+import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.REQUEST_CODE_PICTURE_CROP;
 
 /**
- * 拍照界面
+ * 简单的相机拍照界面
  *
  * @author xuexiang
  * @since 2019-09-29 13:58
@@ -181,8 +181,7 @@ public class CameraActivity extends AppCompatActivity {
     private void handlePictureTaken(byte[] data) {
         String picPath = Utils.handleOnPictureTaken(data);
         if (!StringUtils.isEmpty(picPath)) {
-//            PictureCropActivity.open(this, true, picPath);
-            handlePictureResult(picPath);
+            PictureCropActivity.open(this, true, picPath);
         } else {
             XToastUtils.error("图片保存失败！");
         }
@@ -198,17 +197,16 @@ public class CameraActivity extends AppCompatActivity {
                     List<LocalMedia> result = PictureSelector.obtainMultipleResult(data);
                     PictureCropActivity.open(this, false, result.get(0).getPath());
                     break;
+                case REQUEST_CODE_PICTURE_CROP:
+                    setResult(RESULT_OK, data);
+                    finish();
+                    break;
                 default:
                     break;
             }
         }
     }
 
-
-    private void handlePictureResult(String imgPath) {
-        setResult(RESULT_OK, new Intent().putExtra(KEY_PICTURE_PATH, imgPath));
-        finish();
-    }
 
 
 

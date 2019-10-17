@@ -31,6 +31,12 @@
             style="@style/SuperButton.Primary.wrap"
             android:text="简单相机" />
 
+        <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+            android:id="@+id/btn_camera_complex"
+            style="@style/SuperButton.Primary.wrap"
+            android:layout_marginStart="@dimen/spacing_16"
+            android:text="复杂相机" />
+
     </LinearLayout>
 
 

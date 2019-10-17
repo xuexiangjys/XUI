@@ -25,9 +25,11 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.expands.camera.CameraActivity;
+import com.xuexiang.xuidemo.fragment.expands.camera.CameraViewActivity;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.file.FileUtils;
 
@@ -59,11 +61,14 @@ public class CameraFragment extends BaseFragment {
     }
 
     @SingleClick
-    @OnClick(R.id.btn_camera)
+    @OnClick({R.id.btn_camera, R.id.btn_camera_complex})
     public void onViewClicked(View view) {
         switch(view.getId()) {
             case R.id.btn_camera:
                 CameraActivity.open(this);
+                break;
+            case R.id.btn_camera_complex:
+                CameraViewActivity.open(this);
                 break;
             default:
                 break;
@@ -76,7 +81,7 @@ public class CameraFragment extends BaseFragment {
         if (requestCode == REQUEST_CODE_OPEN_CAMERA && resultCode == RESULT_OK) {
             if (data != null) {
                 String imgPath = data.getStringExtra(KEY_PICTURE_PATH);
-                ivContent.setImageURI(PathUtils.getUriForFile(FileUtils.getFileByPath(imgPath)));
+                ImageLoader.get().loadImage(ivContent, imgPath);
             }
         }
     }

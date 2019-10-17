@@ -27,7 +27,7 @@
         tools:ignore="contentDescription"
         android:adjustViewBounds="true" />
 
-    <com.hhw.hui.widget.imageview.crop.CropOverlayView
+    <com.xuexiang.xui.widget.imageview.crop.CropOverlayView
         android:id="@+id/crop_overlay_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

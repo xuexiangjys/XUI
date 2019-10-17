@@ -140,6 +140,10 @@
             android:theme="@style/AppTheme.Camera"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".fragment.expands.camera.CameraViewActivity"
+            android:theme="@style/AppTheme.Camera"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity
             android:name=".fragment.expands.qrcode.CustomCaptureActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
