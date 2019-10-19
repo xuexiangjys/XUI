@@ -243,10 +243,19 @@ public class CropImageView extends FrameLayout {
      * Sets a Bitmap as the content of the CropImageView.
      * 设置剪切资源图
      *
+     * @param imagePath 图片的资源路径
+     */
+    public void setImagePath(String imagePath) {
+        setImageBitmap(BitmapFactory.decodeFile(imagePath));
+    }
+
+    /**
+     * Sets a Bitmap as the content of the CropImageView.
+     * 设置剪切资源图
+     *
      * @param bitmap 剪切资源图
      */
     public void setImageBitmap(Bitmap bitmap) {
-
         mBitmap = bitmap;
         mImageView.setImageBitmap(mBitmap);
 
@@ -265,11 +274,9 @@ public class CropImageView extends FrameLayout {
      * @param exif   the EXIF information about this bitmap; may be null
      */
     public void setImageBitmap(Bitmap bitmap, ExifInterface exif) {
-
         if (bitmap == null) {
             return;
         }
-
         if (exif == null) {
             setImageBitmap(bitmap);
             return;
@@ -288,6 +295,8 @@ public class CropImageView extends FrameLayout {
                 break;
             case ExifInterface.ORIENTATION_ROTATE_90:
                 rotate = 90;
+                break;
+            default:
                 break;
         }
 

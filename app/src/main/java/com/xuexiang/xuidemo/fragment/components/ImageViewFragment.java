@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.fragment.components;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.imageview.ImageCropFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.PreviewFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.RadiusImageViewFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.pictureselector.PictureSelectorFragment;
@@ -23,7 +24,8 @@ public class ImageViewFragment extends ComponentContainerFragment {
         return new Class[]{
                 RadiusImageViewFragment.class,
                 PictureSelectorFragment.class,
-                PreviewFragment.class
+                PreviewFragment.class,
+                ImageCropFragment.class
         };
     }
 }
