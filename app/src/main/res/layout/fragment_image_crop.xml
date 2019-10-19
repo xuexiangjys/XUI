@@ -45,15 +45,6 @@
         android:id="@+id/crop_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
         app:civ_imageResource="@null" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_16"
-        android:layout_marginEnd="@dimen/spacing_16"
-        android:visibility="gone"/>
 
 </LinearLayout>

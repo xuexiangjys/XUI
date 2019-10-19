@@ -18,11 +18,8 @@
 package com.xuexiang.xuidemo.fragment.components.imageview;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.View;
-
-import androidx.appcompat.widget.AppCompatImageView;
 
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
@@ -50,8 +47,6 @@ public class ImageCropFragment extends BaseFragment {
 
     @BindView(R.id.crop_image_view)
     CropImageView mCropImageView;
-    @BindView(R.id.iv_content)
-    AppCompatImageView ivContent;
     @BindView(R.id.btn_crop)
     SuperButton btnCrop;
 
@@ -85,10 +80,9 @@ public class ImageCropFragment extends BaseFragment {
                 selectImage();
                 break;
             case R.id.btn_crop:
-                Bitmap bitmap = mCropImageView.getCroppedImage();
-                ivContent.setImageBitmap(bitmap);
-                mCropImageView.setVisibility(View.GONE);
-                ivContent.setVisibility(View.VISIBLE);
+                mCropImageView.cropImage();
+                //使用getCroppedImage获取裁剪的图片
+
                 btnCrop.setEnabled(false);
                 break;
             default:
@@ -109,8 +103,6 @@ public class ImageCropFragment extends BaseFragment {
             if (data != null) {
                 Uri uri = data.getData();
                 if (uri != null) {
-//                    mCropImageView.setVisibility(View.VISIBLE);
-                    ivContent.setVisibility(View.GONE);
                     mCropImageView.setImagePath(PathUtils.getFilePathByUri(uri));
                     btnCrop.setEnabled(true);
                 }

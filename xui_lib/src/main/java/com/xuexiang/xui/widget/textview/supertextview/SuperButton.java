@@ -735,7 +735,7 @@ public class SuperButton extends AppCompatButton {
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        if (isEnableChangeAlphaWhenPress()) {
+        if (isEnableChangeAlpha()) {
             getAlphaViewHelper().onPressedChanged(this, pressed);
         }
     }
@@ -743,12 +743,12 @@ public class SuperButton extends AppCompatButton {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if (isUseGradientColor()) {
+        if (isEnableChangeAlpha()) {
             getAlphaViewHelper().onEnabledChanged(this, enabled);
         }
     }
 
-    private boolean isEnableChangeAlphaWhenPress() {
+    private boolean isEnableChangeAlpha() {
         return isUseGradientColor() || selectorNormalColor == selectorPressedColor;
     }
 
@@ -766,7 +766,7 @@ public class SuperButton extends AppCompatButton {
      * @param changeAlphaWhenPress 是否要在 press 时改变透明度
      */
     public void setChangeAlphaWhenPress(boolean changeAlphaWhenPress) {
-        if (isEnableChangeAlphaWhenPress()) {
+        if (isEnableChangeAlpha()) {
             getAlphaViewHelper().setChangeAlphaWhenPress(changeAlphaWhenPress);
         }
     }
@@ -777,7 +777,7 @@ public class SuperButton extends AppCompatButton {
      * @param changeAlphaWhenDisable 是否要在 disabled 时改变透明度
      */
     public void setChangeAlphaWhenDisable(boolean changeAlphaWhenDisable) {
-        if (isUseGradientColor()) {
+        if (isEnableChangeAlpha()) {
             getAlphaViewHelper().setChangeAlphaWhenDisable(changeAlphaWhenDisable);
         }
     }

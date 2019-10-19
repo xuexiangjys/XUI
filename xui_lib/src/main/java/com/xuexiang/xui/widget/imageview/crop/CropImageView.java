@@ -34,6 +34,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xui.R;
 
 /**
@@ -245,7 +247,7 @@ public class CropImageView extends FrameLayout {
      *
      * @param imagePath 图片的资源路径
      */
-    public void setImagePath(String imagePath) {
+    public void setImagePath(@NonNull String imagePath) {
         setImageBitmap(BitmapFactory.decodeFile(imagePath));
     }
 
@@ -261,7 +263,27 @@ public class CropImageView extends FrameLayout {
 
         if (mCropOverlayView != null) {
             mCropOverlayView.resetCropOverlayView();
+            mCropOverlayView.setVisibility(VISIBLE);
         }
+    }
+
+    public CropImageView switchCropOverlayViewVisibility(boolean visibility) {
+        return setCropOverlayViewVisibility(visibility ? VISIBLE : GONE);
+    }
+
+    public CropImageView setCropOverlayViewVisibility(int visibility) {
+        if (mCropOverlayView != null) {
+            mCropOverlayView.setVisibility(visibility);
+        }
+        return this;
+    }
+
+    public CropOverlayView getCropOverlayView() {
+        return mCropOverlayView;
+    }
+
+    public ImageView getImageView() {
+        return mImageView;
     }
 
     /**
@@ -327,6 +349,27 @@ public class CropImageView extends FrameLayout {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resId);
             setImageBitmap(bitmap);
         }
+    }
+
+    /**
+     * 裁剪图片
+     */
+    public Bitmap cropImage() {
+        return cropImage(false);
+    }
+
+    /**
+     * 裁剪图片
+     *
+     * @param isContinueCrop 是否继续裁剪
+     */
+    public Bitmap cropImage(boolean isContinueCrop) {
+        Bitmap bitmap = getCroppedImage();
+        setImageBitmap(bitmap);
+        if (!isContinueCrop) {
+            setCropOverlayViewVisibility(GONE);
+        }
+        return bitmap;
     }
 
     /**

@@ -529,7 +529,7 @@ public class CropOverlayView extends View {
 
         // Tells the attribute functions the crop window has already been
         // initialized
-        if (initializedCropWindow == false) {
+        if (!initializedCropWindow) {
             initializedCropWindow = true;
         }
 
