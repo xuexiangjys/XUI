@@ -43,7 +43,7 @@ public class MyApp extends Application {
         XUpdateInit.init(this);
         TbsInit.init(this);
         //运营统计数据运行时不初始化
-        if (!BuildConfig.DEBUG) {
+        if (!MyApp.isDebug()) {
             UMengInit.init(this);
             BuglyInit.init(this);
         }
@@ -54,7 +54,7 @@ public class MyApp extends Application {
      */
     private void initUI() {
         XUI.init(this);
-        XUI.debug(BuildConfig.DEBUG);
+        XUI.debug(MyApp.isDebug());
 //        //设置默认字体为华文行楷
 //        XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
         PictureFileUtils.setAppName("xui");
@@ -65,6 +65,11 @@ public class MyApp extends Application {
         Iconics.registerFont(new XUIIconFont());
 
         CameraView.setICameraStrategy(new AutoCameraStrategy(1920 * 1080));
+    }
+
+
+    public static boolean isDebug() {
+        return BuildConfig.DEBUG;
     }
 
 

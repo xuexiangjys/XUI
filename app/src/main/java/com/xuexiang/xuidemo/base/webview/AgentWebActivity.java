@@ -61,7 +61,6 @@ public class AgentWebActivity extends BaseAppCompatActivity {
                 }
             });
         } else {
-            setContentView(R.layout.activity_agent_web);
             String url = getIntent().getStringExtra(KEY_URL);
             if (url != null) {
                 openFragment(url);
@@ -92,8 +91,7 @@ public class AgentWebActivity extends BaseAppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         AgentWebFragment agentWebFragment = mAgentWebFragment;
         if (agentWebFragment != null) {
-            FragmentKeyDown fragmentKeyDown = agentWebFragment;
-            if (fragmentKeyDown.onFragmentKeyDown(keyCode, event)) {
+            if (((FragmentKeyDown) agentWebFragment).onFragmentKeyDown(keyCode, event)) {
                 return true;
             } else {
                 return super.onKeyDown(keyCode, event);

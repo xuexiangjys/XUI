@@ -12,7 +12,8 @@
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff"
+        android:background="@color/xui_config_color_white"
         android:visibility="visible"
         android:overScrollMode="never"/>
+
 </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>

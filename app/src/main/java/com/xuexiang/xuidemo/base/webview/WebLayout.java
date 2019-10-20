@@ -36,7 +36,7 @@ import com.xuexiang.xuidemo.R;
 public class WebLayout implements IWebLayout {
 
     private final TwinklingRefreshLayout mTwinklingRefreshLayout;
-    private WebView mWebView = null;
+    private WebView mWebView;
 
     public WebLayout(Activity activity) {
         mTwinklingRefreshLayout = (TwinklingRefreshLayout) LayoutInflater.from(activity).inflate(R.layout.fragment_twk_web, null);

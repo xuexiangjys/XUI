@@ -161,7 +161,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         AgentWebConfig.debug();
 
         // 得到 AgentWeb 最底层的控件
-        addBGChild(mAgentWeb.getWebCreator().getWebParentLayout());
+        addBackgroundChild(mAgentWeb.getWebCreator().getWebParentLayout());
 
         initView(view);
 
@@ -193,17 +193,17 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         pageNavigator(View.GONE);
     }
 
-    protected void addBGChild(FrameLayout frameLayout) {
-        TextView mTextView = new TextView(frameLayout.getContext());
-        mTextView.setText("技术由 AgentWeb 提供");
-        mTextView.setTextSize(16);
-        mTextView.setTextColor(Color.parseColor("#727779"));
+    protected void addBackgroundChild(FrameLayout frameLayout) {
+        TextView textView = new TextView(frameLayout.getContext());
+        textView.setText("技术由 AgentWeb 提供");
+        textView.setTextSize(16);
+        textView.setTextColor(Color.parseColor("#727779"));
         frameLayout.setBackgroundColor(Color.parseColor("#272b2d"));
-        FrameLayout.LayoutParams mFlp = new FrameLayout.LayoutParams(-2, -2);
-        mFlp.gravity = Gravity.CENTER_HORIZONTAL;
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(-2, -2);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
         final float scale = frameLayout.getContext().getResources().getDisplayMetrics().density;
-        mFlp.topMargin = (int) (15 * scale + 0.5f);
-        frameLayout.addView(mTextView, 0, mFlp);
+        params.topMargin = (int) (15 * scale + 0.5f);
+        frameLayout.addView(textView, 0, params);
     }
 
 
