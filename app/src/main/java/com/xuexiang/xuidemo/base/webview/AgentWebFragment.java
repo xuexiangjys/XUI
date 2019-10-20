@@ -17,7 +17,6 @@
 package com.xuexiang.xuidemo.base.webview;
 
 
-import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -92,10 +91,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     private ImageView mMoreImageView;
     private PopupMenu mPopupMenu;
     public static final String TAG = AgentWebFragment.class.getSimpleName();
-    private MiddlewareWebClientBase mMiddleWareWebClient;
-    private MiddlewareWebChromeBase mMiddleWareWebChrome;
     private DownloadingService mDownloadingService;
-    private AgentWebDownloader.ExtraService mExtraService;
 
     public static AgentWebFragment getInstance(String url) {
         Bundle bundle = new Bundle();
@@ -383,7 +379,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
             public WebListenerManager setDownloader(WebView webView, android.webkit.DownloadListener downloadListener) {
                 return super.setDownloader(webView,
                         DefaultDownloadImpl
-                                .create((Activity) webView.getContext(),
+                                .create(getActivity(),
                                         webView,
                                         mDownloadListenerAdapter,
                                         mDownloadListenerAdapter,
@@ -596,20 +592,6 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
                 case R.id.default_clean:
                     toCleanWebCache();
                     return true;
-//				case R.id.error_website:
-//					loadErrorWebSite();
-                // test DownloadingService
-//			        LogUtils.i(TAG, " :" + mDownloadingService + "  " + (mDownloadingService == null ? "" : mDownloadingService.isShutdown()) + "  :" + mExtraService);
-//                    if (mDownloadingService != null && !mDownloadingService.isShutdown()) {
-//                        mExtraService = mDownloadingService.shutdownNow();
-//                        LogUtils.i(TAG, "mExtraService::" + mExtraService);
-//                        return true;
-//                    }
-//                    if (mExtraService != null) {
-//                        mExtraService.performReDownload();
-//                    }
-
-//					return true;
                 default:
                     return false;
             }
@@ -718,7 +700,11 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
      * @return
      */
     protected MiddlewareWebClientBase getMiddlewareWebClient() {
-        return this.mMiddleWareWebClient = new MiddlewareWebViewClient() {
+        if (LollipopFixedWebView.isLollipopWebViewBug()) {
+            return null;
+        }
+
+        return new MiddlewareWebViewClient() {
             /**
              *
              * @param view
@@ -749,7 +735,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     }
 
     protected MiddlewareWebChromeBase getMiddlewareWebChrome() {
-        return this.mMiddleWareWebChrome = new MiddlewareChromeClient() {
+        return new MiddlewareChromeClient() {
         };
     }
 }

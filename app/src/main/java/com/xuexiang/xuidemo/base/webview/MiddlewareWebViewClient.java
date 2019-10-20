@@ -139,7 +139,6 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
      * 根据url的scheme处理跳转第三方app的业务
      */
     private boolean shouldOverrideUrlLoadingByApp(WebView webView, final String url) {
-
         if (url.startsWith("http") || url.startsWith("https") || url.startsWith("ftp")) {
             //不处理http, https, ftp的请求,除了host = xuexiangjys.club的情况，主要是用于处理AppLink
             Uri uri = Uri.parse(url);

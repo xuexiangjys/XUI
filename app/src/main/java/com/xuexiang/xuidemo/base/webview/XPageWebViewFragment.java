@@ -17,7 +17,6 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
-import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -191,7 +190,7 @@ public class XPageWebViewFragment extends BaseFragment {
 
         pageNavigator(View.GONE);
         // 得到 AgentWeb 最底层的控件
-        addBackground(mAgentWeb.getWebCreator().getWebParentLayout());
+        addBackgroundChild(mAgentWeb.getWebCreator().getWebParentLayout());
 
         // AgentWeb 没有把WebView的功能全面覆盖 ，所以某些设置 AgentWeb 没有提供，请从WebView方面入手设置。
         mAgentWeb.getWebCreator().getWebView().setOverScrollMode(WebView.OVER_SCROLL_NEVER);
@@ -201,17 +200,17 @@ public class XPageWebViewFragment extends BaseFragment {
         return new WebLayout(getActivity());
     }
 
-    protected void addBackground(FrameLayout frameLayout) {
-        TextView mTextView = new TextView(frameLayout.getContext());
-        mTextView.setText("技术由 AgentWeb 提供");
-        mTextView.setTextSize(16);
-        mTextView.setTextColor(Color.parseColor("#727779"));
+    protected void addBackgroundChild(FrameLayout frameLayout) {
+        TextView textView = new TextView(frameLayout.getContext());
+        textView.setText("技术由 AgentWeb 提供");
+        textView.setTextSize(16);
+        textView.setTextColor(Color.parseColor("#727779"));
         frameLayout.setBackgroundColor(Color.parseColor("#272b2d"));
-        FrameLayout.LayoutParams mFlp = new FrameLayout.LayoutParams(-2, -2);
-        mFlp.gravity = Gravity.CENTER_HORIZONTAL;
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(-2, -2);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
         final float scale = frameLayout.getContext().getResources().getDisplayMetrics().density;
-        mFlp.topMargin = (int) (15 * scale + 0.5f);
-        frameLayout.addView(mTextView, 0, mFlp);
+        params.topMargin = (int) (15 * scale + 0.5f);
+        frameLayout.addView(textView, 0, params);
     }
 
 
@@ -319,7 +318,7 @@ public class XPageWebViewFragment extends BaseFragment {
          */
         @Override
         public void onProgress(String url, long loaded, long length, long usedTime) {
-            int mProgress = (int) ((loaded) / Float.valueOf(length) * 100);
+            int mProgress = (int) ((loaded) / (float) length * 100);
             Logger.i("onProgress:" + mProgress);
             super.onProgress(url, loaded, length, usedTime);
         }
@@ -371,7 +370,7 @@ public class XPageWebViewFragment extends BaseFragment {
             public WebListenerManager setDownloader(WebView webView, android.webkit.DownloadListener downloadListener) {
                 return super.setDownloader(webView,
                         DefaultDownloadImpl
-                                .create((Activity) webView.getContext(),
+                                .create(getActivity(),
                                         webView,
                                         mDownloadListenerAdapter,
                                         mDownloadListenerAdapter,
@@ -664,6 +663,10 @@ public class XPageWebViewFragment extends BaseFragment {
      * @return
      */
     protected MiddlewareWebClientBase getMiddlewareWebClient() {
+        if (LollipopFixedWebView.isLollipopWebViewBug()) {
+            return null;
+        }
+
         return new MiddlewareWebViewClient() {
             /**
              *
