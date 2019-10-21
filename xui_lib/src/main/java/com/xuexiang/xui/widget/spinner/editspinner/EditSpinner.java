@@ -56,6 +56,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     private AdapterView.OnItemClickListener mOnItemClickListener;
     private int mMaxLine = DEFAULT_MAX_LINE;
     private Drawable mDropDownBg;
+    private int mPopAnimStyle;
 
     private boolean mIsShowFilterData = true;
 
@@ -125,6 +126,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
             int maxEms = typedArray.getInteger(R.styleable.EditSpinner_es_maxEms, -1);
             setMaxEms(maxEms);
 
+            mPopAnimStyle = typedArray.getResourceId(R.styleable.EditSpinner_es_popAnimStyle, -1);
+
             typedArray.recycle();
         }
     }
@@ -159,6 +162,9 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
             }
 
         };
+        if (mPopAnimStyle != -1) {
+            mPopupWindow.setAnimationStyle(mPopAnimStyle);
+        }
         mPopupWindow.setOnItemClickListener(this);
         mPopupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
         mPopupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);

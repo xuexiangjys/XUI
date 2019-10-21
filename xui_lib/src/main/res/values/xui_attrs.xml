@@ -802,6 +802,8 @@
         <attr name="es_isShowFilterData" format="boolean" />
         <!--输入下拉框显示筛选信息时，是否显示key为醒目的颜色，默认false-->
         <attr name="es_isFilterKey" format="boolean" />
+        <!--弹出窗的动画样式-->
+        <attr name="es_popAnimStyle" format="reference" />
     </declare-styleable>
     <attr name="EditSpinnerStyle" format="reference" />
 

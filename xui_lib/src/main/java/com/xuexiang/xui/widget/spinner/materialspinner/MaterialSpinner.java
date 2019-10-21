@@ -260,7 +260,9 @@ public class MaterialSpinner extends AppCompatTextView {
         if (background instanceof StateListDrawable) { // pre-L
             try {
                 Method getStateDrawable = StateListDrawable.class.getDeclaredMethod("getStateDrawable", int.class);
-                if (!getStateDrawable.isAccessible()) getStateDrawable.setAccessible(true);
+                if (!getStateDrawable.isAccessible()) {
+                    getStateDrawable.setAccessible(true);
+                }
                 int[] colors = {ResUtils.darker(color, 0.85f), color};
                 for (int i = 0; i < colors.length; i++) {
                     ColorDrawable drawable = (ColorDrawable) getStateDrawable.invoke(background, i);
