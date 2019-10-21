@@ -700,10 +700,6 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
      * @return
      */
     protected MiddlewareWebClientBase getMiddlewareWebClient() {
-        if (LollipopFixedWebView.isLollipopWebViewBug()) {
-            return null;
-        }
-
         return new MiddlewareWebViewClient() {
             /**
              *

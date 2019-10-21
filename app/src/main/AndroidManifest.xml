@@ -159,6 +159,9 @@
         <activity
             android:name=".utils.update.UpdateTipDialog"
             android:theme="@style/DialogTheme" />
+        <activity
+            android:name=".base.webview.WebViewTipDialog"
+            android:theme="@style/DialogTheme" />
 
         <!--X5预加载-->
         <service android:name=".utils.sdkinit.PreLoadX5Service" />

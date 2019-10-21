@@ -149,78 +149,8 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
             }
         }
 
-        DialogLoader.getInstance().showConfirmDialog(
-                webView.getContext(),
-                getOpenTitle(url),
-                ResUtils.getString(R.string.lab_yes),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        if (isAppLink(url)) {
-                            openAppLink(webView.getContext(), url);
-                        } else {
-                            openApp(url);
-                        }
-                    }
-                },
-                ResUtils.getString(R.string.lab_no),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }
-        );
+        WebViewTipDialog.show(url);
         return true;
-    }
-
-    private String getOpenTitle(String url) {
-        String scheme = getScheme(url);
-        if ("mqqopensdkapi".equals(scheme)) {
-            return "是否允许页面打开\"QQ\"?";
-        } else {
-            return ResUtils.getString(R.string.lab_open_third_app);
-        }
-    }
-
-    private String getScheme(String url) {
-        try {
-            Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
-            return intent.getScheme();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-
-    private boolean isAppLink(String url) {
-        Uri uri = Uri.parse(url);
-        return uri != null
-                && APP_LINK_HOST.equals(uri.getHost())
-                && (url.startsWith("http") || url.startsWith("https"));
-    }
-
-
-    private void openApp(String url) {
-        Intent intent;
-        try {
-            intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            XUtil.getContext().startActivity(intent);
-        } catch (Exception e) {
-            XToastUtils.toast("您所打开的第三方App未安装！");
-        }
-    }
-
-    private void openAppLink(Context context, String url) {
-        try {
-            Intent intent = new Intent(APP_LINK_ACTION);
-            intent.setData(Uri.parse(url));
-            context.startActivity(intent);
-        } catch (Exception e) {
-            XToastUtils.toast("您所打开的第三方App未安装！");
-        }
     }
 
 }

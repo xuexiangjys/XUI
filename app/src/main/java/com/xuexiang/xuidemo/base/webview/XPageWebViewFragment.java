@@ -185,7 +185,6 @@ public class XPageWebViewFragment extends BaseFragment {
                 //WebView载入该url地址的页面并显示。
                 .go(getUrl());
 
-
         AgentWebConfig.debug();
 
         pageNavigator(View.GONE);
@@ -408,7 +407,6 @@ public class XPageWebViewFragment extends BaseFragment {
             super.onProgressChanged(view, newProgress);
             //网页加载进度
         }
-
         @Override
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
@@ -418,15 +416,13 @@ public class XPageWebViewFragment extends BaseFragment {
                 }
                 mTvTitle.setText(title);
             }
-
         }
     };
 
     /**
-     * 和网页url加载相关
+     * 和网页url加载相关，统计加载时间
      */
     protected WebViewClient mWebViewClient = new WebViewClient() {
-
         private HashMap<String, Long> mTimer = new HashMap<>();
 
         @Override
@@ -445,8 +441,6 @@ public class XPageWebViewFragment extends BaseFragment {
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
             return super.shouldInterceptRequest(view, request);
         }
-
-        //
         @Override
         public boolean shouldOverrideUrlLoading(final WebView view, String url) {
             //intent:// scheme的处理 如果返回false ， 则交给 DefaultWebClient 处理 ， 默认会打开该Activity  ， 如果Activity不存在则跳到应用市场上去.  true 表示拦截
@@ -588,6 +582,7 @@ public class XPageWebViewFragment extends BaseFragment {
 //        Utils.showCaptureBitmap(mAgentWeb.getWebCreator().getWebView());
 
         //网页长截图
+
         Utils.showCaptureBitmap(getContext(), DrawableUtils.createBitmapFromWebView(mAgentWeb.getWebCreator().getWebView()));
     }
 
@@ -621,6 +616,7 @@ public class XPageWebViewFragment extends BaseFragment {
     }
 
     //===================生命周期管理===========================//
+
     @Override
     public void onResume() {
         if (mAgentWeb != null) {
@@ -663,10 +659,6 @@ public class XPageWebViewFragment extends BaseFragment {
      * @return
      */
     protected MiddlewareWebClientBase getMiddlewareWebClient() {
-        if (LollipopFixedWebView.isLollipopWebViewBug()) {
-            return null;
-        }
-
         return new MiddlewareWebViewClient() {
             /**
              *
