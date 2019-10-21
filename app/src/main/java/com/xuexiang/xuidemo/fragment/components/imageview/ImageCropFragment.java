@@ -47,8 +47,11 @@ public class ImageCropFragment extends BaseFragment {
 
     @BindView(R.id.crop_image_view)
     CropImageView mCropImageView;
+    @BindView(R.id.btn_rotate)
+    SuperButton btnRotate;
     @BindView(R.id.btn_crop)
     SuperButton btnCrop;
+
 
     /**
      * 布局的资源id
@@ -70,19 +73,24 @@ public class ImageCropFragment extends BaseFragment {
         // 自由剪切
         mCropImageView.setFixedAspectRatio(false);
 
+        btnRotate.setEnabled(false);
         btnCrop.setEnabled(false);
     }
 
-    @OnClick({R.id.btn_select, R.id.btn_crop})
+    @OnClick({R.id.btn_select, R.id.btn_crop, R.id.btn_rotate})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_select:
                 selectImage();
                 break;
+            case R.id.btn_rotate:
+                mCropImageView.rotateImage(90);
+                break;
             case R.id.btn_crop:
                 mCropImageView.cropImage();
                 //使用getCroppedImage获取裁剪的图片
 
+                btnRotate.setEnabled(false);
                 btnCrop.setEnabled(false);
                 break;
             default:
@@ -104,6 +112,7 @@ public class ImageCropFragment extends BaseFragment {
                 Uri uri = data.getData();
                 if (uri != null) {
                     mCropImageView.setImagePath(PathUtils.getFilePathByUri(uri));
+                    btnRotate.setEnabled(true);
                     btnCrop.setEnabled(true);
                 }
             }

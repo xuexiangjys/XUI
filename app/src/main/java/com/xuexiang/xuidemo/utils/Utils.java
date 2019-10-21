@@ -242,7 +242,10 @@ public final class Utils {
                 height += holder.itemView.getMeasuredHeight();
             }
             // 这个地方容易出现OOM，关键是要看截取RecyclerView的展开的宽高
-            bigBitmap = Bitmap.createBitmap(recyclerView.getMeasuredWidth(), height, Bitmap.Config.ARGB_8888);
+            bigBitmap = DrawableUtils.createBitmapSafely(recyclerView.getMeasuredWidth(), height, Bitmap.Config.ARGB_8888, 1);
+            if (bigBitmap == null) {
+                return null;
+            }
             Canvas canvas = new Canvas(bigBitmap);
             Drawable background = recyclerView.getBackground();
             //先画RecyclerView的背景色

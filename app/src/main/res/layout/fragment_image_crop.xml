@@ -33,6 +33,12 @@
             android:text="选择图片" />
 
         <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+            android:id="@+id/btn_rotate"
+            style="@style/SuperButton.Primary.wrap"
+            android:layout_marginStart="@dimen/spacing_16"
+            android:text="旋转" />
+
+        <com.xuexiang.xui.widget.textview.supertextview.SuperButton
             android:id="@+id/btn_crop"
             style="@style/SuperButton.Primary.wrap"
             android:layout_marginStart="@dimen/spacing_16"
