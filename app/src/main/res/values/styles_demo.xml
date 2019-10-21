@@ -181,4 +181,10 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="pop_window_anim_style" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_hidden_anim</item>
+    </style>
+
+
 </resources>

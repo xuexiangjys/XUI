@@ -15,7 +15,7 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.imageview;
+package com.xuexiang.xuidemo.fragment.components.imageview.edit;
 
 import android.content.Intent;
 import android.net.Uri;

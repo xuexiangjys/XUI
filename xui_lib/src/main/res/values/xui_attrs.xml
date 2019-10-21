@@ -754,7 +754,6 @@
         <attr name="ms_background_selector" format="integer" />
         <!--下拉框字体的颜色-->
         <attr name="ms_text_color" format="color" />
-
         <!--下拉框 下拉条目最大的高度-->
         <attr name="ms_dropdown_max_height" format="dimension" />
         <!--下拉框 下拉条目的样式，默认wrap_content-->
@@ -767,6 +766,8 @@
         <attr name="ms_dropdown_bg" format="reference" />
         <!--是否在dialog中, 默认false-->
         <attr name="ms_in_dialog" format="boolean" />
+        <!--弹出窗的动画样式-->
+        <attr name="ms_pop_anim_style" format="reference" />
     </declare-styleable>
     <attr name="MaterialSpinnerStyle" format="reference" />
 
