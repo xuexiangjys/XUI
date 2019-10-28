@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.view.View;
 
 import com.xuexiang.xaop.annotation.Permission;
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.imageview.crop.CropImageType;
 import com.xuexiang.xui.widget.imageview.crop.CropImageView;
@@ -77,6 +78,7 @@ public class ImageCropFragment extends BaseFragment {
         btnCrop.setEnabled(false);
     }
 
+    @SingleClick
     @OnClick({R.id.btn_select, R.id.btn_crop, R.id.btn_rotate})
     public void onViewClicked(View view) {
         switch (view.getId()) {

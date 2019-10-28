@@ -1151,6 +1151,11 @@
         <attr name="civ_imageResource" format="reference"/>
     </declare-styleable>
 
+    <!-- 图片编辑 -->
+    <declare-styleable name="PhotoEditorView">
+        <attr name="photo_src" format="integer" />
+    </declare-styleable>
+
     <!--=============================Bar========================================-->
 
     <declare-styleable name="CookieBar">

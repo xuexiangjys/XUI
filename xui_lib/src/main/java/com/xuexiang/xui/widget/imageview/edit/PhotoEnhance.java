@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.xuexiang.xui.widget.imageview;
+package com.xuexiang.xui.widget.imageview.edit;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

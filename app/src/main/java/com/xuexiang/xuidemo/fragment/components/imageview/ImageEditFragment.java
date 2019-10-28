@@ -21,6 +21,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.edit.ImageCropFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.edit.ImageEnhanceFragment;
+import com.xuexiang.xuidemo.fragment.components.imageview.edit.PhotoEditFragment;
 
 /**
  * @author xuexiang
@@ -38,7 +39,8 @@ public class ImageEditFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 ImageCropFragment.class,
-                ImageEnhanceFragment.class
+                ImageEnhanceFragment.class,
+                PhotoEditFragment.class
         };
     }
 }

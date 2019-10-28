@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<vector android:height="24dp" android:viewportHeight="1024"
+    android:viewportWidth="1024" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#666666" android:pathData="M511.81,65.05c-246.71,0 -446.71,200 -446.71,446.71s200,446.71 446.71,446.71 446.71,-200 446.71,-446.71S758.52,65.05 511.81,65.05zM716.58,658.65c15.99,15.99 15.99,41.9 0,57.89 -7.99,7.99 -18.47,11.99 -28.94,11.99s-20.95,-4 -28.94,-11.99L511.81,569.65 364.92,716.54c-7.99,7.99 -18.47,11.99 -28.94,11.99s-20.95,-4 -28.94,-11.99c-15.99,-15.99 -15.99,-41.9 0,-57.89l146.89,-146.89L307.03,364.88c-15.99,-15.99 -15.99,-41.9 0,-57.89s41.9,-15.99 57.89,0l146.89,146.89L658.7,306.99c15.99,-15.99 41.9,-15.99 57.89,0 15.99,15.99 15.99,41.9 0,57.89L569.7,511.76 716.58,658.65z"/>
+</vector>
