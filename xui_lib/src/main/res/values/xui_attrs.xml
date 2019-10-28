@@ -347,8 +347,12 @@
             <!--只是展示-->
             <enum name="display" value="3" />
         </attr>
+        <!-- 流标签的可选项  -->
         <attr name="ftl_entries" format="reference" />
+        <!-- 流标签默认的已选项索引  -->
         <attr name="ftl_selecteds" format="reference" />
+        <!-- 单选模式下选中是否可取消，默认是false  -->
+        <attr name="ftl_single_cancelable" format="boolean" />
     </declare-styleable>
 
     <!--=============================ProgressBar========================================-->
@@ -750,7 +754,6 @@
         <attr name="ms_background_selector" format="integer" />
         <!--下拉框字体的颜色-->
         <attr name="ms_text_color" format="color" />
-
         <!--下拉框 下拉条目最大的高度-->
         <attr name="ms_dropdown_max_height" format="dimension" />
         <!--下拉框 下拉条目的样式，默认wrap_content-->
@@ -763,6 +766,8 @@
         <attr name="ms_dropdown_bg" format="reference" />
         <!--是否在dialog中, 默认false-->
         <attr name="ms_in_dialog" format="boolean" />
+        <!--弹出窗的动画样式-->
+        <attr name="ms_pop_anim_style" format="reference" />
     </declare-styleable>
     <attr name="MaterialSpinnerStyle" format="reference" />
 
@@ -797,6 +802,8 @@
         <attr name="es_isShowFilterData" format="boolean" />
         <!--输入下拉框显示筛选信息时，是否显示key为醒目的颜色，默认false-->
         <attr name="es_isFilterKey" format="boolean" />
+        <!--弹出窗的动画样式-->
+        <attr name="es_popAnimStyle" format="reference" />
     </declare-styleable>
     <attr name="EditSpinnerStyle" format="reference" />
 
@@ -1062,6 +1069,8 @@
         <attr name="mlet_contentTextColor" format="color|reference" />
         <!--输入框的高度，默认140dp-->
         <attr name="mlet_contentViewHeight" format="dimension|reference" />
+        <!--输入框的高度是否是固定高度，默认是true-->
+        <attr name="mlet_isFixHeight" format="boolean" />
         <!--统计数字显示剩余数目,默认false-->
         <attr name="mlet_showSurplusNumber" format="boolean" />
     </declare-styleable>
@@ -1117,11 +1126,34 @@
     <!--IconImageView-->
     <declare-styleable name="IconImageView">
         <!--图标的资源-->
-        <attr name="iiv_icon" format="reference" />
+        <attr name="iiv_icon_res" format="reference" />
         <!--图标缩放的比例, 默认是0.5-->
         <attr name="iiv_icon_scale" format="float" />
         <!--图标是否显示, 默认是true-->
         <attr name="iiv_is_show" format="boolean" />
+    </declare-styleable>
+
+    <!--CropImageView 图片裁剪工具-->
+    <declare-styleable name="CropImageView">
+        <!-- 网格线 -->
+        <attr name="civ_guidelines">
+            <enum name="on" value="2"/>
+            <enum name="onTouch" value="1"/>
+            <enum name="off" value="0"/>
+        </attr>
+        <!-- 是否是固定比例裁剪 -->
+        <attr name="civ_fixAspectRatio" format="boolean"/>
+        <!-- 宽度比例 -->
+        <attr name="civ_aspectRatioX" format="integer"/>
+        <!-- 高度比例 -->
+        <attr name="civ_aspectRatioY" format= "integer"/>
+        <!-- 裁剪图片的资源 -->
+        <attr name="civ_imageResource" format="reference"/>
+    </declare-styleable>
+
+    <!-- 图片编辑 -->
+    <declare-styleable name="PhotoEditorView">
+        <attr name="photo_src" format="integer" />
     </declare-styleable>
 
     <!--=============================Bar========================================-->
@@ -1256,6 +1288,8 @@
         <attr name="tcv_selectedColor" format="reference" />
         <!--边框宽度，默认1dp-->
         <attr name="tcv_strokeWidth" format="dimension" />
+        <!--选项间的padding-->
+        <attr name="tcv_item_padding" format="dimension" />
         <!--选项卡中展示的内容-->
         <attr name="tcv_items" format="reference" />
         <!--选项卡中选中的内容（默认和展示的一样）-->

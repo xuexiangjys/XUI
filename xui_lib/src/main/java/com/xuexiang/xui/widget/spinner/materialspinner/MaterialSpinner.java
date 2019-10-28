@@ -65,8 +65,8 @@ public class MaterialSpinner extends AppCompatTextView {
     private int mEntriesID;
     private Drawable mDropDownBg;
     private boolean mIsInDialog;
-
-    private int dropDownOffset;
+    private int mPopAnimStyle;
+    private int mDropDownOffset;
 
     public MaterialSpinner(Context context) {
         this(context, null);
@@ -107,6 +107,7 @@ public class MaterialSpinner extends AppCompatTextView {
             mEntriesID = typedArray.getResourceId(R.styleable.MaterialSpinner_ms_entries, 0);
             mDropDownBg = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.MaterialSpinner_ms_dropdown_bg);
             mIsInDialog = typedArray.getBoolean(R.styleable.MaterialSpinner_ms_in_dialog, false);
+            mPopAnimStyle = typedArray.getResourceId(R.styleable.MaterialSpinner_ms_pop_anim_style, -1);
 
         } finally {
             typedArray.recycle();
@@ -120,7 +121,7 @@ public class MaterialSpinner extends AppCompatTextView {
             left = ThemeUtils.resolveDimension(getContext(), R.attr.ms_padding_left_size);
         }
 
-        dropDownOffset = ThemeUtils.resolveDimension(getContext(), R.attr.ms_dropdown_offset);
+        mDropDownOffset = ThemeUtils.resolveDimension(getContext(), R.attr.ms_dropdown_offset);
 
         setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         setClickable(true);
@@ -177,6 +178,9 @@ public class MaterialSpinner extends AppCompatTextView {
         mPopupWindow = new PopupWindow(context);
         mPopupWindow.setContentView(mListView);
         mPopupWindow.setOutsideTouchable(true);
+        if (mPopAnimStyle != -1) {
+            mPopupWindow.setAnimationStyle(mPopAnimStyle);
+        }
         mPopupWindow.setFocusable(true);
         mPopupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
         mPopupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
@@ -256,7 +260,9 @@ public class MaterialSpinner extends AppCompatTextView {
         if (background instanceof StateListDrawable) { // pre-L
             try {
                 Method getStateDrawable = StateListDrawable.class.getDeclaredMethod("getStateDrawable", int.class);
-                if (!getStateDrawable.isAccessible()) getStateDrawable.setAccessible(true);
+                if (!getStateDrawable.isAccessible()) {
+                    getStateDrawable.setAccessible(true);
+                }
                 int[] colors = {ResUtils.darker(color, 0.85f), color};
                 for (int i = 0; i < colors.length; i++) {
                     ColorDrawable drawable = (ColorDrawable) getStateDrawable.invoke(background, i);
@@ -582,7 +588,7 @@ public class MaterialSpinner extends AppCompatTextView {
         final boolean isNeedShowUp = (screenHeight - anchorLoc[1] - anchorHeight < listViewHeight);
         if (isNeedShowUp) {
             windowPos[0] = anchorLoc[0];
-            windowPos[1] = anchorLoc[1] - listViewHeight - dropDownOffset;
+            windowPos[1] = anchorLoc[1] - listViewHeight - mDropDownOffset;
         } else {
             windowPos[0] = anchorLoc[0];
             windowPos[1] = anchorLoc[1] + anchorHeight;
@@ -613,7 +619,7 @@ public class MaterialSpinner extends AppCompatTextView {
         // 判断需要向上弹出还是向下弹出显示
         final boolean isNeedShowUp = (screenHeight - anchorLoc[1] < listViewHeight + anchorHeight);
         if (isNeedShowUp) {
-            windowYOffset = -(listViewHeight + dropDownOffset + anchorHeight);
+            windowYOffset = -(listViewHeight + mDropDownOffset + anchorHeight);
         } else {
             windowYOffset = 0;
         }

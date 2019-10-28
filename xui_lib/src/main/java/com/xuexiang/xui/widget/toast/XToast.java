@@ -296,8 +296,7 @@ public class XToast {
                                @ColorInt int tintColor, @ColorInt int textColor, int duration,
                                boolean withIcon, boolean shouldTint) {
         final Toast currentToast = Toast.makeText(context, "", duration);
-        final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-                .inflate(R.layout.xtoast_layout, null);
+        final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.xtoast_layout, null);
         final ImageView toastIcon = toastLayout.findViewById(R.id.toast_icon);
         final TextView toastTextView = toastLayout.findViewById(R.id.toast_text);
         Drawable drawableFrame;
@@ -425,6 +424,13 @@ public class XToast {
             this.gravity = gravity;
             this.xOffset = xOffset;
             this.yOffset = yOffset;
+            return this;
+        }
+
+        public Config resetGravity() {
+            gravity = -1;
+            xOffset = 0;
+            yOffset = 0;
             return this;
         }
 

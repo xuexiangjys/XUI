@@ -19,6 +19,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 import androidx.annotation.StyleableRes;
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xui.XUI;
 
@@ -81,6 +82,7 @@ public final class ResUtils {
 
     /**
      * 获取svg资源图片
+     *
      * @param context
      * @param resId
      * @return
@@ -94,6 +96,7 @@ public final class ResUtils {
 
     /**
      * 获取Drawable属性（兼容VectorDrawable）
+     *
      * @param context
      * @param typedArray
      * @param index
@@ -172,6 +175,26 @@ public final class ResUtils {
     }
 
     /**
+     * 获取Drawable的数组
+     *
+     * @param context
+     * @param resId
+     * @return
+     */
+    public static Drawable[] getDrawableArray(Context context, @ArrayRes int resId) {
+        TypedArray ta = getResources().obtainTypedArray(resId);
+        Drawable[] icons = new Drawable[ta.length()];
+        for (int i = 0; i < ta.length(); i++) {
+            int id = ta.getResourceId(i, 0);
+            if (id != 0) {
+                icons[i] = ContextCompat.getDrawable(context, id);
+            }
+        }
+        ta.recycle();
+        return icons;
+    }
+
+    /**
      * 获取数字的数组
      *
      * @param resId
@@ -204,10 +227,8 @@ public final class ResUtils {
     /**
      * Darkens a color by a given factor.
      *
-     * @param color
-     *     the color to darken
-     * @param factor
-     *     The factor to darken the color.
+     * @param color  the color to darken
+     * @param factor The factor to darken the color.
      * @return darker version of specified color.
      */
     public static int darker(int color, float factor) {
@@ -219,11 +240,9 @@ public final class ResUtils {
     /**
      * Lightens a color by a given factor.
      *
-     * @param color
-     *     The color to lighten
-     * @param factor
-     *     The factor to lighten the color. 0 will make the color unchanged. 1 will make the
-     *     color white.
+     * @param color  The color to lighten
+     * @param factor The factor to lighten the color. 0 will make the color unchanged. 1 will make the
+     *               color white.
      * @return lighter version of the specified color.
      */
     public static int lighter(int color, float factor) {

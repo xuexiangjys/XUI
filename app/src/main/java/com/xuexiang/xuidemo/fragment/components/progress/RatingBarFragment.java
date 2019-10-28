@@ -9,7 +9,7 @@ import com.xuexiang.xui.widget.progress.ratingbar.RotationRatingBar;
 import com.xuexiang.xui.widget.progress.ratingbar.ScaleRatingBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -50,7 +50,7 @@ public class RatingBarFragment extends BaseFragment {
         ratingBar.setOnRatingChangeListener(new RatingBar.OnRatingChangeListener() {
             @Override
             public void onRatingChange(RatingBar ratingBar, float rating) {
-                ToastUtils.toast("当前星级：" + rating);
+                XToastUtils.toast("当前星级：" + rating);
             }
         });
         scaleRatingBar.setOnRatingChangeListener(new RatingBar.OnRatingChangeListener() {

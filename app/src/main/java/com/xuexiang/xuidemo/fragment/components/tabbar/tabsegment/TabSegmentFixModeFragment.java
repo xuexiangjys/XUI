@@ -33,7 +33,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.ContentPage;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.SimpleListFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -97,7 +97,7 @@ public class TabSegmentFixModeFragment extends BaseFragment {
         mTabSegment1.setOnTabClickListener(new TabSegment.OnTabClickListener() {
             @Override
             public void onTabClick(int index) {
-                ToastUtils.toast("点击了" + index);
+                XToastUtils.toast("点击了" + index);
             }
         });
         //不使用ViewPager的话，必须notifyDataChanged，否则不能正常显示

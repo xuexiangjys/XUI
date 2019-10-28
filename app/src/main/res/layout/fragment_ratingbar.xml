@@ -94,11 +94,9 @@
             app:srb_starPadding="3dp"
             app:srb_starWidth="12dp"/>
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_add_rating"
-            style="@style/Button.Blue.wrap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button.Primary.wrap"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginRight="8dp"

@@ -1,0 +1,26 @@
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+  <path
+      android:pathData="M179.71,501.29h264.48a20.48,20.48 0,0 0,20.48 -20.48L464.67,216.33a20.48,20.48 0,0 0,-20.48 -20.48L179.71,195.85a20.48,20.48 0,0 0,-20.48 20.48v264.48a20.48,20.48 0,0 0,20.48 20.48zM200.19,236.81h223.52v223.52L200.19,460.33L200.19,236.81zM529.63,501.29h264.48a20.48,20.48 0,0 0,20.48 -20.48L814.59,216.33a20.48,20.48 0,0 0,-20.48 -20.48L529.63,195.85a20.48,20.48 0,0 0,-20.48 20.48v264.48a20.48,20.48 0,0 0,20.48 20.48zM550.11,236.81h223.52v223.52L550.11,460.33L550.11,236.81zM179.71,851.21h264.48a20.48,20.48 0,0 0,20.48 -20.48L464.67,566.23a20.48,20.48 0,0 0,-20.48 -20.48L179.71,545.75a20.48,20.48 0,0 0,-20.48 20.48v264.48a20.48,20.48 0,0 0,20.48 20.5zM200.19,586.71h223.52v223.52L200.19,810.23L200.19,586.71zM509.15,830.73a20.48,20.48 0,0 0,20.48 20.48h264.48a20.48,20.48 0,0 0,20.48 -20.48L814.59,566.23a20.48,20.48 0,0 0,-20.48 -20.48L529.63,545.75a20.48,20.48 0,0 0,-20.48 20.48v264.5zM550.11,586.71h223.52v223.52L550.11,810.23L550.11,586.71z"
+      android:fillColor="#ffffff"/>
+</vector>

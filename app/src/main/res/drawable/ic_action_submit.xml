@@ -1,0 +1,22 @@
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<vector android:height="24dp" android:viewportHeight="1024"
+    android:viewportWidth="1024" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#ffffff" android:pathData="M512,72c59.4,0 117,11.6 171.2,34.5 52.4,22.2 99.4,53.9 139.9,94.3 40.4,40.4 72.2,87.5 94.3,139.9C940.4,395 952,452.6 952,512s-11.6,117 -34.5,171.2c-22.2,52.4 -53.9,99.4 -94.3,139.9 -40.4,40.4 -87.5,72.2 -139.9,94.3C629,940.4 571.4,952 512,952s-117,-11.6 -171.2,-34.5c-52.4,-22.2 -99.4,-53.9 -139.9,-94.3 -40.4,-40.4 -72.2,-87.5 -94.3,-139.9C83.6,629 72,571.4 72,512s11.6,-117 34.5,-171.2c22.2,-52.4 53.9,-99.4 94.3,-139.9 40.4,-40.4 87.5,-72.2 139.9,-94.3C395,83.6 452.6,72 512,72m0,-72C229.2,0 0,229.2 0,512s229.2,512 512,512 512,-229.2 512,-512S794.8,0 512,0z"/>
+    <path android:fillColor="#ffffff" android:pathData="M425,714.9c-20.7,0 -40.2,-8.1 -54.8,-22.7L222.4,544.4c-14.1,-14.1 -14.1,-36.9 0,-50.9 14.1,-14.1 36.9,-14.1 50.9,0l147.8,147.8c1.3,1.3 2.9,1.6 3.9,1.6s2.6,-0.3 3.9,-1.6l321.7,-321.6c14.1,-14.1 36.9,-14.1 50.9,0 14.1,14.1 14.1,36.9 0,50.9L479.9,692.2c-14.7,14.6 -34.1,22.7 -54.9,22.7z"/>
+</vector>

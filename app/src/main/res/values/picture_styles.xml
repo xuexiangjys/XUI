@@ -60,7 +60,7 @@
         <!--图片列表已完成文字颜色-->
         <item name="picture_complete_textColor">@color/picture_tab_text_color</item>
         <!--图片已选数量圆点背景色-->
-        <item name="picture_num_style">@drawable/picture_num_oval</item>
+        <item name="picture_num_style">@drawable/picture_dot_oval</item>
         <!--预览界面标题栏背景色-->
         <item name="picture_ac_preview_title_bg">?attr/colorAccent</item>
         <!--预览界面标题文字颜色-->
@@ -82,7 +82,21 @@
         <!--裁剪页面标题文字颜色-->
         <item name="picture_crop_title_color">?attr/xui_actionbar_text_color</item>
         <!--相册文件夹列表选中图标-->
-        <item name="picture_folder_checked_dot">@drawable/pic_orange_oval</item>
+        <item name="picture_folder_checked_dot">@drawable/picture_dot_oval</item>
+    </style>
+
+
+    <!--图片选择的主题，注意每一项都不能少-->
+    <style name="XUIPictureStyle.Custom">
+        <item name="colorAccent">@color/custom_color_main_theme</item>
+        <!--应用的主要色调，actionBar默认使用该颜色，Toolbar导航栏的底色-->
+        <item name="colorPrimary">@color/custom_color_main_theme</item>
+        <!--应用的主要暗色调，statusBarColor默认使用该颜色-->
+        <item name="colorPrimaryDark">@color/custom_color_main_theme</item>
+        <item name="colorControlNormal">@color/xui_config_color_control_normal</item>
+
+        <!--图片列表勾选样式-->
+        <item name="picture_checked_style">@drawable/custom_icon_checkbox</item>
     </style>
 
 </resources>

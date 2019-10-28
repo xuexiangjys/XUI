@@ -19,12 +19,12 @@ package com.xuexiang.xuidemo.activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.widget.tabbar.EasyIndicator;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.BaseAppCompatActivity;
 import com.xuexiang.xuidemo.fragment.components.tabbar.ContentPage;
 import com.xuexiang.xuidemo.fragment.components.tabbar.TestPageFragment;
 
@@ -35,7 +35,7 @@ import java.util.List;
  * @author xuexiang
  * @since 2018/12/26 下午3:38
  */
-public class EasyIndicatorActivity extends AppCompatActivity {
+public class EasyIndicatorActivity extends BaseAppCompatActivity {
     EasyIndicator mEasyIndicator;
     ViewPager mViewPager;
 

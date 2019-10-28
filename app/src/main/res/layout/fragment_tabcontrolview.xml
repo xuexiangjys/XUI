@@ -76,7 +76,8 @@
         <com.xuexiang.xui.widget.tabbar.TabControlView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            app:tcv_item_padding="5dp"
             app:tcv_items="@array/three_state_option" />
 
 

@@ -31,6 +31,11 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class XLinearLayoutManager extends LinearLayoutManager {
 
+    /**
+     * 是否支持滑动
+     */
+    private boolean mIsScrollEnabled = true;
+
     public XLinearLayoutManager(Context context) {
         super(context);
     }
@@ -50,5 +55,25 @@ public class XLinearLayoutManager extends LinearLayoutManager {
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 是否支持滑动
+     *
+     * @param flag
+     */
+    public XLinearLayoutManager setScrollEnabled(boolean flag) {
+        mIsScrollEnabled = flag;
+        return this;
+    }
+
+    @Override
+    public boolean canScrollVertically() {
+        return mIsScrollEnabled && super.canScrollVertically();
+    }
+
+    @Override
+    public boolean canScrollHorizontally() {
+        return mIsScrollEnabled && super.canScrollHorizontally();
     }
 }

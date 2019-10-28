@@ -21,31 +21,27 @@
     android:background="@color/xui_config_color_white"
     android:orientation="vertical">
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/button"
-        style="@style/Button.Blue.wrap"
-        android:layout_width="wrap_content"
+        style="@style/Button.Primary.wrap"
         android:layout_marginTop="10dip"
         android:text="@string/pick_photo" />
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/button_no_camera"
-        style="@style/Button.Blue.wrap"
-        android:layout_width="wrap_content"
+        style="@style/Button.Primary.wrap"
         android:layout_marginTop="10dip"
         android:text="@string/pick_photo_without_camera" />
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/button_one_photo"
-        style="@style/Button.Blue.wrap"
-        android:layout_width="wrap_content"
+        style="@style/Button.Primary.wrap"
         android:layout_marginTop="10dip"
         android:text="@string/pick_one_photo" />
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/button_photo_gif"
-        style="@style/Button.Blue.wrap"
-        android:layout_width="wrap_content"
+        style="@style/Button.Primary.wrap"
         android:layout_marginTop="10dip"
         android:text="@string/pick_photo_gif" />
 

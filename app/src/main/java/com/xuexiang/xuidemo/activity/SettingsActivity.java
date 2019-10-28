@@ -32,7 +32,7 @@ import androidx.appcompat.app.ActionBar;
 
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.AppCompatPreferenceActivity;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 /**
  * 设置页面
@@ -119,7 +119,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                ToastUtils.toast(R.string.pref_on_preference_click);
+                XToastUtils.toast(R.string.pref_on_preference_click);
                 return false;
             }
         });

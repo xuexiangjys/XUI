@@ -17,7 +17,6 @@
 package com.xuexiang.xuidemo.base.webview;
 
 
-import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -55,7 +54,6 @@ import androidx.fragment.app.Fragment;
 import com.google.gson.Gson;
 import com.just.agentweb.action.PermissionInterceptor;
 import com.just.agentweb.core.AgentWeb;
-import com.just.agentweb.core.client.DefaultWebClient;
 import com.just.agentweb.core.client.MiddlewareWebChromeBase;
 import com.just.agentweb.core.client.MiddlewareWebClientBase;
 import com.just.agentweb.core.client.WebListenerManager;
@@ -71,8 +69,8 @@ import com.just.agentweb.widget.IWebLayout;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.net.JsonUtil;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.HashMap;
 
@@ -93,10 +91,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     private ImageView mMoreImageView;
     private PopupMenu mPopupMenu;
     public static final String TAG = AgentWebFragment.class.getSimpleName();
-    private MiddlewareWebClientBase mMiddleWareWebClient;
-    private MiddlewareWebChromeBase mMiddleWareWebChrome;
     private DownloadingService mDownloadingService;
-    private AgentWebDownloader.ExtraService mExtraService;
 
     public static AgentWebFragment getInstance(String url) {
         Bundle bundle = new Bundle();
@@ -162,7 +157,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         AgentWebConfig.debug();
 
         // 得到 AgentWeb 最底层的控件
-        addBGChild(mAgentWeb.getWebCreator().getWebParentLayout());
+        addBackgroundChild(mAgentWeb.getWebCreator().getWebParentLayout());
 
         initView(view);
 
@@ -194,17 +189,17 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         pageNavigator(View.GONE);
     }
 
-    protected void addBGChild(FrameLayout frameLayout) {
-        TextView mTextView = new TextView(frameLayout.getContext());
-        mTextView.setText("技术由 AgentWeb 提供");
-        mTextView.setTextSize(16);
-        mTextView.setTextColor(Color.parseColor("#727779"));
+    protected void addBackgroundChild(FrameLayout frameLayout) {
+        TextView textView = new TextView(frameLayout.getContext());
+        textView.setText("技术由 AgentWeb 提供");
+        textView.setTextSize(16);
+        textView.setTextColor(Color.parseColor("#727779"));
         frameLayout.setBackgroundColor(Color.parseColor("#272b2d"));
-        FrameLayout.LayoutParams mFlp = new FrameLayout.LayoutParams(-2, -2);
-        mFlp.gravity = Gravity.CENTER_HORIZONTAL;
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(-2, -2);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
         final float scale = frameLayout.getContext().getResources().getDisplayMetrics().density;
-        mFlp.topMargin = (int) (15 * scale + 0.5f);
-        frameLayout.addView(mTextView, 0, mFlp);
+        params.topMargin = (int) (15 * scale + 0.5f);
+        frameLayout.addView(textView, 0, params);
     }
 
 
@@ -384,7 +379,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
             public WebListenerManager setDownloader(WebView webView, android.webkit.DownloadListener downloadListener) {
                 return super.setDownloader(webView,
                         DefaultDownloadImpl
-                                .create((Activity) webView.getContext(),
+                                .create(getActivity(),
                                         webView,
                                         mDownloadListenerAdapter,
                                         mDownloadListenerAdapter,
@@ -536,7 +531,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
      */
     private void openBrowser(String targetUrl) {
         if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
-            ToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
+            XToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
             return;
         }
         Intent intent = new Intent();
@@ -597,20 +592,6 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
                 case R.id.default_clean:
                     toCleanWebCache();
                     return true;
-//				case R.id.error_website:
-//					loadErrorWebSite();
-                // test DownloadingService
-//			        LogUtils.i(TAG, " :" + mDownloadingService + "  " + (mDownloadingService == null ? "" : mDownloadingService.isShutdown()) + "  :" + mExtraService);
-//                    if (mDownloadingService != null && !mDownloadingService.isShutdown()) {
-//                        mExtraService = mDownloadingService.shutdownNow();
-//                        LogUtils.i(TAG, "mExtraService::" + mExtraService);
-//                        return true;
-//                    }
-//                    if (mExtraService != null) {
-//                        mExtraService.performReDownload();
-//                    }
-
-//					return true;
                 default:
                     return false;
             }
@@ -719,7 +700,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
      * @return
      */
     protected MiddlewareWebClientBase getMiddlewareWebClient() {
-        return this.mMiddleWareWebClient = new MiddlewareWebViewClient() {
+        return new MiddlewareWebViewClient() {
             /**
              *
              * @param view
@@ -750,7 +731,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     }
 
     protected MiddlewareWebChromeBase getMiddlewareWebChrome() {
-        return this.mMiddleWareWebChrome = new MiddlewareChromeClient() {
+        return new MiddlewareChromeClient() {
         };
     }
 }

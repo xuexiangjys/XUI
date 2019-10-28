@@ -17,7 +17,6 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
-import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -73,9 +72,9 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.logger.Logger;
 import com.xuexiang.xutil.net.JsonUtil;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.HashMap;
 
@@ -186,12 +185,11 @@ public class XPageWebViewFragment extends BaseFragment {
                 //WebView载入该url地址的页面并显示。
                 .go(getUrl());
 
-
         AgentWebConfig.debug();
 
         pageNavigator(View.GONE);
         // 得到 AgentWeb 最底层的控件
-        addBackground(mAgentWeb.getWebCreator().getWebParentLayout());
+        addBackgroundChild(mAgentWeb.getWebCreator().getWebParentLayout());
 
         // AgentWeb 没有把WebView的功能全面覆盖 ，所以某些设置 AgentWeb 没有提供，请从WebView方面入手设置。
         mAgentWeb.getWebCreator().getWebView().setOverScrollMode(WebView.OVER_SCROLL_NEVER);
@@ -201,17 +199,17 @@ public class XPageWebViewFragment extends BaseFragment {
         return new WebLayout(getActivity());
     }
 
-    protected void addBackground(FrameLayout frameLayout) {
-        TextView mTextView = new TextView(frameLayout.getContext());
-        mTextView.setText("技术由 AgentWeb 提供");
-        mTextView.setTextSize(16);
-        mTextView.setTextColor(Color.parseColor("#727779"));
+    protected void addBackgroundChild(FrameLayout frameLayout) {
+        TextView textView = new TextView(frameLayout.getContext());
+        textView.setText("技术由 AgentWeb 提供");
+        textView.setTextSize(16);
+        textView.setTextColor(Color.parseColor("#727779"));
         frameLayout.setBackgroundColor(Color.parseColor("#272b2d"));
-        FrameLayout.LayoutParams mFlp = new FrameLayout.LayoutParams(-2, -2);
-        mFlp.gravity = Gravity.CENTER_HORIZONTAL;
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(-2, -2);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
         final float scale = frameLayout.getContext().getResources().getDisplayMetrics().density;
-        mFlp.topMargin = (int) (15 * scale + 0.5f);
-        frameLayout.addView(mTextView, 0, mFlp);
+        params.topMargin = (int) (15 * scale + 0.5f);
+        frameLayout.addView(textView, 0, params);
     }
 
 
@@ -319,7 +317,7 @@ public class XPageWebViewFragment extends BaseFragment {
          */
         @Override
         public void onProgress(String url, long loaded, long length, long usedTime) {
-            int mProgress = (int) ((loaded) / Float.valueOf(length) * 100);
+            int mProgress = (int) ((loaded) / (float) length * 100);
             Logger.i("onProgress:" + mProgress);
             super.onProgress(url, loaded, length, usedTime);
         }
@@ -371,7 +369,7 @@ public class XPageWebViewFragment extends BaseFragment {
             public WebListenerManager setDownloader(WebView webView, android.webkit.DownloadListener downloadListener) {
                 return super.setDownloader(webView,
                         DefaultDownloadImpl
-                                .create((Activity) webView.getContext(),
+                                .create(getActivity(),
                                         webView,
                                         mDownloadListenerAdapter,
                                         mDownloadListenerAdapter,
@@ -409,7 +407,6 @@ public class XPageWebViewFragment extends BaseFragment {
             super.onProgressChanged(view, newProgress);
             //网页加载进度
         }
-
         @Override
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
@@ -419,15 +416,13 @@ public class XPageWebViewFragment extends BaseFragment {
                 }
                 mTvTitle.setText(title);
             }
-
         }
     };
 
     /**
-     * 和网页url加载相关
+     * 和网页url加载相关，统计加载时间
      */
     protected WebViewClient mWebViewClient = new WebViewClient() {
-
         private HashMap<String, Long> mTimer = new HashMap<>();
 
         @Override
@@ -446,8 +441,6 @@ public class XPageWebViewFragment extends BaseFragment {
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
             return super.shouldInterceptRequest(view, request);
         }
-
-        //
         @Override
         public boolean shouldOverrideUrlLoading(final WebView view, String url) {
             //intent:// scheme的处理 如果返回false ， 则交给 DefaultWebClient 处理 ， 默认会打开该Activity  ， 如果Activity不存在则跳到应用市场上去.  true 表示拦截
@@ -556,7 +549,7 @@ public class XPageWebViewFragment extends BaseFragment {
      */
     private void openBrowser(String targetUrl) {
         if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
-            ToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
+            XToastUtils.toast(targetUrl + " 该链接无法使用浏览器打开。");
             return;
         }
         Intent intent = new Intent();
@@ -589,6 +582,7 @@ public class XPageWebViewFragment extends BaseFragment {
 //        Utils.showCaptureBitmap(mAgentWeb.getWebCreator().getWebView());
 
         //网页长截图
+
         Utils.showCaptureBitmap(getContext(), DrawableUtils.createBitmapFromWebView(mAgentWeb.getWebCreator().getWebView()));
     }
 
@@ -599,7 +593,7 @@ public class XPageWebViewFragment extends BaseFragment {
         if (mAgentWeb != null) {
             //清理所有跟WebView相关的缓存 ，数据库， 历史记录 等。
             mAgentWeb.clearWebCache();
-            ToastUtils.toast("已清理缓存");
+            XToastUtils.toast("已清理缓存");
             //清空所有 AgentWeb 硬盘缓存，包括 WebView 的缓存 , AgentWeb 下载的图片 ，视频 ，apk 等文件。
 //            AgentWebConfig.clearDiskCache(this.getContext());
         }
@@ -622,6 +616,7 @@ public class XPageWebViewFragment extends BaseFragment {
     }
 
     //===================生命周期管理===========================//
+
     @Override
     public void onResume() {
         if (mAgentWeb != null) {

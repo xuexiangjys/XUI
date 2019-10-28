@@ -17,6 +17,10 @@
 
 package com.xuexiang.xui.adapter.recyclerview;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.View;
@@ -32,6 +36,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.StringRes;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,6 +88,10 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public EditText getEditText(int viewId) {
         return (EditText) getView(viewId);
+    }
+
+    public final Context getContext() {
+        return itemView.getContext();
     }
 
     /**
@@ -159,6 +168,21 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * 设置图片
      *
      * @param id
+     * @param drawable
+     * @return
+     */
+    public RecyclerViewHolder image(@IdRes int id, Drawable drawable) {
+        View view = findView(id);
+        if (view instanceof ImageView) {
+            ((ImageView) view).setImageDrawable(drawable);
+        }
+        return this;
+    }
+
+    /**
+     * 设置图片
+     *
+     * @param id
      * @param uri 图片资源
      * @return
      */
@@ -166,6 +190,38 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         View view = findView(id);
         if (view instanceof ImageView) {
             ImageLoader.get().loadImage((ImageView) view, uri);
+        }
+        return this;
+    }
+
+    /**
+     * 设置图片的等级
+     *
+     * @param id
+     * @param level
+     * @return
+     */
+    public RecyclerViewHolder imageLevel(@IdRes int id, int level) {
+        View view = findView(id);
+        if (view instanceof ImageView) {
+            ((ImageView) view).setImageLevel(level);
+        }
+        return this;
+    }
+
+    /**
+     * 给图片着色
+     *
+     * @param id
+     * @param tint 颜色
+     * @return
+     */
+    public RecyclerViewHolder tint(@IdRes int id, ColorStateList tint) {
+        View view = findView(id);
+        if (view instanceof ImageView) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ((ImageView) view).setImageTintList(tint);
+            }
         }
         return this;
     }
@@ -263,6 +319,18 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         if (view instanceof CompoundButton) {
             ((CheckBox) view).setOnCheckedChangeListener(listener);
         }
+        return this;
+    }
+
+    /**
+     * 设置控件是否选中
+     * @param id
+     * @param selected
+     * @return
+     */
+    public RecyclerViewHolder select(@IdRes int id, boolean selected) {
+        View view = findView(id);
+        view.setSelected(selected);
         return this;
     }
 

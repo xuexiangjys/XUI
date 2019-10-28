@@ -25,26 +25,23 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_load"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="加载三级联动的数据"/>
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_picker"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="省市区选择器"/>
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_picker_dialog"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="省市区选择器（弹窗）"/>
 

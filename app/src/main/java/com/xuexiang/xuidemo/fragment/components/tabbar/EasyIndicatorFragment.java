@@ -31,7 +31,7 @@ import com.xuexiang.xui.widget.tabbar.EasyIndicator;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.EasyIndicatorActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -127,7 +127,7 @@ public class EasyIndicatorFragment extends BaseFragment {
         mEasyIndicator1.setOnTabClickListener(new EasyIndicator.onTabClickListener() {
             @Override
             public void onTabClick(String title, int position) {
-                ToastUtils.toast("点击了" + title);
+                XToastUtils.toast("点击了" + title);
             }
         });
 

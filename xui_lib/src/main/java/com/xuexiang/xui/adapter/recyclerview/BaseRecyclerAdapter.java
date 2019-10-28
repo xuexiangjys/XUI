@@ -32,11 +32,15 @@ import java.util.List;
 public abstract class BaseRecyclerAdapter<T> extends XRecyclerAdapter<T, RecyclerViewHolder> {
 
     public BaseRecyclerAdapter() {
-        super(null);
+        super();
     }
 
     public BaseRecyclerAdapter(List<T> list) {
         super(list);
+    }
+
+    public BaseRecyclerAdapter(T[] data) {
+        super(data);
     }
 
     /**

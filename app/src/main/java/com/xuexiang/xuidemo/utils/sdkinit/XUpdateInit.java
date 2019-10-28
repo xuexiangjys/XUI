@@ -19,7 +19,7 @@ package com.xuexiang.xuidemo.utils.sdkinit;
 
 import android.app.Application;
 
-import com.xuexiang.xuidemo.BuildConfig;
+import com.xuexiang.xuidemo.MyApp;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateDownloader;
 import com.xuexiang.xuidemo.utils.update.OKHttpUpdateHttpService;
 import com.xuexiang.xupdate.XUpdate;
@@ -38,7 +38,7 @@ public final class XUpdateInit {
 
     public static void init(Application application) {
         XUpdate.get()
-                .debug(BuildConfig.DEBUG)
+                .debug(MyApp.isDebug())
                 //默认设置只在wifi下检查版本更新
                 .isWifiOnly(false)
                 //默认设置使用get请求检查版本

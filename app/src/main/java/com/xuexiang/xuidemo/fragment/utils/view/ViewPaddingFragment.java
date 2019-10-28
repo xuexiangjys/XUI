@@ -16,10 +16,7 @@
 
 package com.xuexiang.xuidemo.fragment.utils.view;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -27,12 +24,10 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * @author xuexiang
@@ -104,13 +99,15 @@ public class ViewPaddingFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_1:
-                ToastUtils.toast("点击图片1");
+                XToastUtils.toast("点击图片1");
                 break;
             case R.id.iv_2:
-                ToastUtils.toast("点击图片2");
+                XToastUtils.toast("点击图片2");
                 break;
             case R.id.iv_3:
-                ToastUtils.toast("点击图片3");
+                XToastUtils.toast("点击图片3");
+                break;
+            default:
                 break;
         }
     }

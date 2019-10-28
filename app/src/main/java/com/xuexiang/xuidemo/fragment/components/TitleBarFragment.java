@@ -23,7 +23,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -53,30 +53,30 @@ public class TitleBarFragment extends BaseFragment {
         mTitleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtils.toast("点击返回");
+                XToastUtils.toast("点击返回");
             }
         }).setCenterClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("点击标题");
+                XToastUtils.toast("点击标题");
             }
         }).addAction(new TitleBar.ImageAction(R.drawable.ic_add_white_24dp) {
             @Override
             public void performAction(View view) {
-                ToastUtils.toast("点击更多！");
+                XToastUtils.toast("点击更多！");
             }
         });
 
         mTitleBar1.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("点击返回");
+                XToastUtils.toast("点击返回");
             }
         })
                 .addAction(new TitleBar.TextAction("更多") {
                     @Override
                     public void performAction(View view) {
-                        ToastUtils.toast("点击更多！");
+                        XToastUtils.toast("点击更多！");
                     }
                 });
 
@@ -85,7 +85,7 @@ public class TitleBarFragment extends BaseFragment {
                 .addAction(new TitleBar.ImageAction(R.drawable.ic_navigation_more) {
                     @Override
                     public void performAction(View view) {
-                        ToastUtils.toast("点击菜单！");
+                        XToastUtils.toast("点击菜单！");
                     }
                 });
     }

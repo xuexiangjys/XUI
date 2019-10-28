@@ -1,16 +1,15 @@
 package com.xuexiang.xuidemo.adapter;
 
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.annotation.NonNull;
 
-import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -20,33 +19,33 @@ import java.util.List;
  * @author xuexiang
  * @since 2019/3/31 下午11:45
  */
-public class RefreshHeadViewAdapter extends SmartRecyclerAdapter<String> {
+public class RefreshHeadViewAdapter extends BaseRecyclerAdapter<String> {
 
     private static final int TYPE_BANNER_HEAD = 0;
     private static final int TYPE_COMMON = 1;
     private static final int TYPE_BANNER_FOOT = 2;
 
-
     private List<BannerItem> mData;
+    private SimpleImageBanner headBanner;
+    private SimpleImageBanner footBanner;
 
     public RefreshHeadViewAdapter(List<BannerItem> bannerData) {
-        super(android.R.layout.simple_list_item_2);
+        super();
         mData = bannerData;
     }
 
     /**
-     * 创建条目控件
+     * 适配的布局
      *
-     * @param parent
      * @param viewType
      * @return
      */
     @Override
-    protected View generateItemView(ViewGroup parent, int viewType) {
+    protected int getItemLayoutId(int viewType) {
         if (viewType == TYPE_BANNER_HEAD || viewType == TYPE_BANNER_FOOT) {
-            return getInflate(parent, R.layout.include_head_view_banner);
+            return R.layout.include_head_view_banner;
         } else {
-            return getInflate(parent, android.R.layout.simple_list_item_2);
+            return android.R.layout.simple_list_item_2;
         }
     }
 
@@ -54,7 +53,7 @@ public class RefreshHeadViewAdapter extends SmartRecyclerAdapter<String> {
     public int getItemViewType(int position) {
         if (position == 0) {
             return TYPE_BANNER_HEAD;
-        } else if (position == getCount() - 1) {
+        } else if (position == getItemCount() - 1) {
             return TYPE_BANNER_FOOT;
         } else {
             return TYPE_COMMON;
@@ -62,21 +61,21 @@ public class RefreshHeadViewAdapter extends SmartRecyclerAdapter<String> {
     }
 
     /**
-     * 绑定布局控件
+     * 绑定数据
      *
      * @param holder
-     * @param model
-     * @param position
+     * @param position 索引
+     * @param item     列表项
      */
     @Override
-    protected void onBindViewHolder(SmartViewHolder holder, String model, int position) {
+    protected void bindData(@NonNull RecyclerViewHolder holder, int position, String item) {
         if (getItemViewType(position) == TYPE_BANNER_HEAD) {
             headBanner = holder.findViewById(R.id.sib_simple_usage);
             headBanner.setSource(mData)
                     .setOnItemClickL(new BaseBanner.OnItemClickL() {
                         @Override
                         public void onItemClick(int position) {
-                            ToastUtils.toast("headBanner position--->" + position);
+                            XToastUtils.toast("headBanner position--->" + position);
                         }
                     }).startScroll();
 
@@ -86,19 +85,15 @@ public class RefreshHeadViewAdapter extends SmartRecyclerAdapter<String> {
                     .setOnItemClickL(new BaseBanner.OnItemClickL() {
                         @Override
                         public void onItemClick(int position) {
-                            ToastUtils.toast("footBanner position--->" + position);
+                            XToastUtils.toast("footBanner position--->" + position);
                         }
                     }).startScroll();
         } else {
             holder.text(android.R.id.text1, ResUtils.getResources().getString(R.string.item_example_number_title, position));
-            holder.text(android.R.id.text2, ResUtils.getResources().getString(R.string.item_example_number_abstract, position) + "：" + model);
+            holder.text(android.R.id.text2, ResUtils.getResources().getString(R.string.item_example_number_abstract, position) + "：" + item);
             holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
         }
     }
-
-    private SimpleImageBanner headBanner;
-
-    private SimpleImageBanner footBanner;
 
     /**
      * 资源释放
@@ -112,4 +107,6 @@ public class RefreshHeadViewAdapter extends SmartRecyclerAdapter<String> {
         }
         clear();
     }
+
+
 }

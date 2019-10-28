@@ -24,7 +24,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/xui_config_color_main_theme"
+        android:background="?attr/colorAccent"
         app:titleTextColor="@color/xui_config_color_white"/>
 
     <com.xuexiang.xui.widget.searchview.MaterialSearchView

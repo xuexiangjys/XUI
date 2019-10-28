@@ -82,13 +82,14 @@
                 <TextView
                     style="@style/TextStyle.Explain"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
-                    android:text="MaterialSpinner[自定义实体]：" />
+                    android:text="MaterialSpinner[自定义实体/动画]：" />
 
                 <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
                     android:id="@+id/ms_custom"
                     style="@style/Material.SpinnerStyle"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="?attr/xui_config_content_spacing_vertical" />
+                    android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                    app:ms_pop_anim_style="@style/pop_window_anim_style" />
 
             </LinearLayout>
 
@@ -173,6 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                    app:es_popAnimStyle="@style/pop_window_anim_style"
                     app:es_hint="@string/lab_please_select"
                     app:es_maxLength="20" />
 

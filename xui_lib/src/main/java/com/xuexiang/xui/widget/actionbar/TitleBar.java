@@ -34,12 +34,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.alpha.XUIAlphaImageView;
+import com.xuexiang.xui.widget.alpha.XUIAlphaLinearLayout;
 import com.xuexiang.xui.widget.alpha.XUIAlphaTextView;
 import com.xuexiang.xui.widget.textview.AutoMoveTextView;
 
@@ -60,8 +64,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     public static final int CENTER_RIGHT = 2;
 
     private XUIAlphaTextView mLeftText;
+    private XUIAlphaLinearLayout mCenterLayout;
     private LinearLayout mRightLayout;
-    private LinearLayout mCenterLayout;
     private TextView mCenterText;
     private TextView mSubTitleText;
     private View mCustomCenterView;
@@ -168,7 +172,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     private void initView(Context context) {
         mLeftText = new XUIAlphaTextView(context);
-        mCenterLayout = new LinearLayout(context);
+        mCenterLayout = new XUIAlphaLinearLayout(context);
         mRightLayout = new LinearLayout(context);
         mDividerView = new View(context);
 
@@ -842,15 +846,15 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      */
     public static abstract class ImageAction implements Action {
 
-        private int mDrawable;
+        private int mDrawableId;
 
-        public ImageAction(int drawable) {
-            mDrawable = drawable;
+        public ImageAction(@DrawableRes int drawableId) {
+            mDrawableId = drawableId;
         }
 
         @Override
         public int getDrawable() {
-            return mDrawable;
+            return mDrawableId;
         }
 
         @Override
@@ -878,6 +882,10 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
         public TextAction(String text) {
             mText = text;
+        }
+
+        public TextAction(@StringRes int resId) {
+            mText = ResUtils.getString(resId);
         }
 
         @Override

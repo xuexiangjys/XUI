@@ -5,6 +5,6 @@
     <corners
         android:radius="?attr/xui_btn_view_radius" />
 
-    <solid android:color="@color/xui_btn_disable_color"/>
+    <solid android:color="?attr/xui_btn_view_disable_color"/>
 
 </shape>

@@ -53,13 +53,13 @@
                 app:min_year="2016"
                 app:month_view="com.xuexiang.xuidemo.widget.calendar.SimpleMonthView"
                 app:other_month_text_color="#e1e1e1"
-                app:scheme_text_color="@color/xui_config_color_primary_text"
-                app:scheme_theme_color="@color/xui_config_color_primary_text"
+                app:scheme_text_color="?attr/xui_config_color_title_text"
+                app:scheme_theme_color="?attr/xui_config_color_title_text"
                 app:selected_text_color="@color/xui_config_color_white"
-                app:selected_theme_color="@color/xui_config_color_main_theme"
+                app:selected_theme_color="?attr/colorAccent"
                 app:week_background="@color/xui_config_color_white"
                 app:week_bar_height="26dp"
-                app:week_text_color="@color/xui_config_color_primary_text"
+                app:week_text_color="?attr/xui_config_color_title_text"
                 app:week_text_size="14sp"
                 app:week_view="com.xuexiang.xuidemo.widget.calendar.SimpleWeekView" />
 

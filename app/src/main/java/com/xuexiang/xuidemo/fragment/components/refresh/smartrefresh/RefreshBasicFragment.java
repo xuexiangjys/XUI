@@ -16,9 +16,11 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh;
 
-import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.AbsListView;
+
+import androidx.annotation.NonNull;
+
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -28,10 +30,7 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
-
-import java.util.Arrays;
-import java.util.Collection;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 /**
  * @author xuexiang
  * @since 2018/12/6 下午5:57
@@ -83,7 +82,7 @@ public class RefreshBasicFragment extends BaseFragment {
                     @Override
                     public void run() {
                         if (mAdapter.getItemCount() > 30) {
-                            ToastUtils.toast("数据全部加载完毕");
+                            XToastUtils.toast("数据全部加载完毕");
                             refreshLayout.finishLoadMoreWithNoMoreData();//将不会再次触发加载更多事件
                         } else {
                             mAdapter.loadMore(DemoDataProvider.getDemoData());
@@ -100,14 +99,14 @@ public class RefreshBasicFragment extends BaseFragment {
         mAdapter.setOnItemClickListener(new SmartViewHolder.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                ToastUtils.toast("点击:" + position);
+                XToastUtils.toast("点击:" + position);
             }
         });
 
         mAdapter.setOnItemLongClickListener(new SmartViewHolder.OnItemLongClickListener() {
             @Override
             public void onItemLongClick(View itemView, int position) {
-                ToastUtils.toast("长按:" + position);
+                XToastUtils.toast("长按:" + position);
             }
         });
 
@@ -117,7 +116,7 @@ public class RefreshBasicFragment extends BaseFragment {
 //            refreshLayout.getRefreshFooter().getView().findViewById(ClassicsFooter.ID_TEXT_TITLE).setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
-//                    ToastUtils.toast("已经到底了！");
+//                    XToastUtils.toast("已经到底了！");
 //                }
 //            });
 //        }

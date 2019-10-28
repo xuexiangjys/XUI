@@ -16,11 +16,11 @@
 
 package com.xuexiang.xuidemo.fragment.components.textview;
 
-import androidx.core.content.ContextCompat;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+
+import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
@@ -29,7 +29,7 @@ import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xui.widget.progress.loading.MiniLoadingView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -85,7 +85,7 @@ public class GroupListViewFragment extends BaseFragment {
         itemWithSwitch.getSwitch().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                ToastUtils.toast("checked = " + isChecked);
+                XToastUtils.toast("checked = " + isChecked);
             }
         });
 
@@ -99,7 +99,7 @@ public class GroupListViewFragment extends BaseFragment {
             public void onClick(View v) {
                 if (v instanceof XUICommonListItemView) {
                     CharSequence text = ((XUICommonListItemView) v).getText();
-                    ToastUtils.toast(text + " is Clicked");
+                    XToastUtils.toast(text + " is Clicked");
                 }
             }
         };

@@ -1,0 +1,38 @@
+<!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="25.21875dp"
+    android:height="24dp"
+    android:viewportWidth="1076"
+    android:viewportHeight="1024">
+  <path
+      android:pathData="M1074.98,463.14l1.76,1.4q-0.87,-0.74 -1.76,-1.4zM0,465.15l3.18,-2.52c-3.82,2.66 -6.94,6.06 -9.2,10.01z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M111.98,994.89c-0.28,1.89 -0.58,3.76 -0.83,5.66 0.53,-2.01 0.84,-4.33 0.86,-6.71zM83.76,1021.83zM55.57,991.48q0.31,-2.12 0.64,-4.24c-0.43,1.79 -0.69,3.86 -0.71,5.98z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M1021.93,984.9c0.35,2.22 0.67,4.45 0.99,6.67 -0.09,-2.68 -0.52,-5.22 -1.26,-7.63zM965.27,999.46c-0.25,-1.75 -0.5,-3.49 -0.77,-5.23 0.14,2.39 0.54,4.64 1.18,6.78z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M538.63,0c-282.33,0 -512,229.67 -512,512s229.67,512 512,512 512,-229.67 512,-512 -229.67,-512 -512,-512zM538.63,950.52c-241.81,0 -438.53,-196.76 -438.53,-438.53s196.72,-438.52 438.53,-438.52 438.53,196.72 438.53,438.53 -196.76,438.53 -438.53,438.53z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M748.55,305.45c-6.63,-6.71 -15.83,-10.86 -26,-10.86 -10.02,0 -19.11,4.03 -25.71,10.57l-158.35,156.64 -155.94,-156.46c-6.62,-6.64 -15.78,-10.75 -25.89,-10.75 -20.19,0 -36.57,16.37 -36.57,36.57 0,10.08 4.08,19.21 10.67,25.82l155.72,156.25 -157,155.26c-6.7,6.63 -10.86,15.83 -10.86,26 0,20.2 16.37,36.57 36.57,36.57 10.03,0 19.11,-4.04 25.72,-10.57l157.21,-155.51 158.47,159.03c6.57,6.34 15.52,10.26 25.39,10.26 20.19,0 36.56,-16.37 36.56,-36.56 0,-9.81 -3.87,-18.73 -10.16,-25.29l-158.27,-158.83 158.14,-156.41c6.71,-6.63 10.86,-15.83 10.86,-26 0,-10.02 -4.03,-19.11 -10.57,-25.71z"
+      android:fillColor="#ffffff"/>
+</vector>

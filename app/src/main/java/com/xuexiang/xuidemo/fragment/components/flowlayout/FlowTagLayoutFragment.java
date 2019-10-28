@@ -8,7 +8,7 @@ import com.xuexiang.xui.widget.flowlayout.FlowTagLayout;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.FlowTagAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -27,6 +27,9 @@ public class FlowTagLayoutFragment extends BaseFragment {
     @BindView(R.id.flowlayout_single_select)
     FlowTagLayout mSingleFlowTagLayout;
 
+    @BindView(R.id.flowlayout_single_select_cancelable)
+    FlowTagLayout mSingleCancelableFlowTagLayout;
+
     @BindView(R.id.flowlayout_multi_select)
     FlowTagLayout mMultiFlowTagLayout;
 
@@ -42,6 +45,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
     protected void initViews() {
         initNormalFlowTagLayout();
         initSingleFlowTagLayout();
+        initSingleCancelableFlowTagLayout();
         initMultiFlowTagLayout();
     }
 
@@ -56,7 +60,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mNormalFlowTagLayout.setOnTagClickListener(new FlowTagLayout.OnTagClickListener() {
             @Override
             public void onItemClick(FlowTagLayout parent, View view, int position) {
-                ToastUtils.toast("点击了：" + parent.getAdapter().getItem(position));
+                XToastUtils.toast("点击了：" + parent.getAdapter().getItem(position));
             }
         });
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
@@ -69,7 +73,22 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mSingleFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
             @Override
             public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
-                ToastUtils.toast(getSelectedText(parent, selectedList));
+                XToastUtils.toast(getSelectedText(parent, selectedList));
+            }
+        });
+        tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
+        tagAdapter.setSelectedPositions(2, 3, 4);
+
+    }
+
+    private void initSingleCancelableFlowTagLayout() {
+        FlowTagAdapter tagAdapter = new FlowTagAdapter(getContext());
+        mSingleCancelableFlowTagLayout.setAdapter(tagAdapter);
+        mSingleCancelableFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);
+        mSingleCancelableFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
+            @Override
+            public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
+                XToastUtils.toast(getSelectedText(parent, selectedList));
             }
         });
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
@@ -84,7 +103,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mMultiFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
             @Override
             public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
-                ToastUtils.toast(getSelectedText(parent, selectedList));
+                XToastUtils.toast(getSelectedText(parent, selectedList));
             }
         });
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
@@ -108,10 +127,10 @@ public class FlowTagLayoutFragment extends BaseFragment {
     void onClick(View v) {
         switch(v.getId()) {
             case R.id.btn_add_tag:
-                mDisplayFlowTagLayout.getAdapter().addTag("标签" + (int)(Math.random() * 100));
+                mDisplayFlowTagLayout.addTag("标签" + (int)(Math.random() * 100));
                 break;
             case R.id.btn_clear_tag:
-                mDisplayFlowTagLayout.getAdapter().clearData();
+                mDisplayFlowTagLayout.clearTags();
                 break;
             default:
                 break;

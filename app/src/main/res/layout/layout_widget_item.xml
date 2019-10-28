@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:gravity="center"
     android:background="@drawable/xui_config_list_item_selector"
+    android:gravity="center"
     android:orientation="vertical"
     android:paddingLeft="8dp"
     android:paddingRight="8dp">
@@ -12,7 +12,8 @@
         android:id="@+id/item_icon"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:padding="20dp"/>
+        android:padding="20dp"
+        android:tint="?attr/colorAccent" />
 
     <TextView
         android:id="@+id/item_name"

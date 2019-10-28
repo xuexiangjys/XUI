@@ -31,7 +31,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.slideback.SlideBack;
+import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.utils.SettingSPUtils;
 
 /**
  * A {@link PreferenceActivity} which implements and proxies the necessary calls
@@ -43,6 +46,7 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        initTheme();
         getDelegate().installViewFactory();
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
@@ -51,6 +55,17 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
                 .haveScroll(true)
                 .callBack(this::finish)
                 .register();
+    }
+
+    /**
+     * 初始化主题
+     */
+    private void initTheme() {
+        if (SettingSPUtils.getInstance().isUseCustomTheme()) {
+            setTheme(R.style.SettingTheme_Custom);
+        } else {
+            setTheme(R.style.SettingTheme);
+        }
     }
 
     @Override

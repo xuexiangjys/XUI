@@ -11,9 +11,9 @@
         android:layout_margin="20dp"
         android:orientation="horizontal">
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_switch"
-            style="@style/Button.Blue"
+            style="@style/Button.Primary"
             android:text="开始" />
 
     </LinearLayout>

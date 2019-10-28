@@ -25,32 +25,32 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_date_bottom"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="日期选择器（底部）"/>
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_time_dialog"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="时间选择器（弹窗）"/>
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_date_system"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="日期选择器（系统）"/>
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_time_system"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

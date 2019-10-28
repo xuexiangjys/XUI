@@ -29,9 +29,9 @@ import com.xuexiang.xui.widget.picker.widget.builder.OptionsPickerBuilder;
 import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectListener;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.net.JsonUtil;
 import com.xuexiang.xutil.resource.ResourceUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +86,7 @@ public class AddressPickerFragment extends BaseFragment {
     @IOThread
     private void loadData() {//加载数据
         if (isLoaded) {
-            ToastUtils.toast("已加载！");
+            XToastUtils.toast("已加载！");
             return;
         }
 
@@ -95,7 +95,7 @@ public class AddressPickerFragment extends BaseFragment {
         }.getType());
         if (provinceInfos == null) {
             isLoaded = false;
-            ToastUtils.toast("加载失败！");
+            XToastUtils.toast("加载失败！");
             return;
         }
         /**
@@ -132,13 +132,13 @@ public class AddressPickerFragment extends BaseFragment {
             options3Items.add(areaList);
         }
         isLoaded = true;
-        ToastUtils.toast("加载成功！");
+        XToastUtils.toast("加载成功！");
     }
 
 
     private void showPickerView(boolean isDialog) {// 弹出选择器
         if (!isLoaded) {
-            ToastUtils.toast("请先加载数据！");
+            XToastUtils.toast("请先加载数据！");
             return;
         }
 
@@ -152,7 +152,7 @@ public class AddressPickerFragment extends BaseFragment {
                         options2Items.get(options1).get(options2) + "-" +
                         options3Items.get(options1).get(options2).get(options3);
 
-                ToastUtils.toast(tx);
+                XToastUtils.toast(tx);
             }
         })
 

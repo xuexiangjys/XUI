@@ -1,8 +1,8 @@
 package com.xuexiang.xui.widget.banner.widget.banner;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseIndicatorBanner;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
 
@@ -27,29 +28,40 @@ public class SimpleImageBanner extends BaseIndicatorBanner<BannerItem, SimpleIma
     /**
      * 默认加载图片
      */
-    private ColorDrawable mColorDrawable;
+    private Drawable mColorDrawable;
     /**
      * 是否允许进行缓存
      */
-    private boolean mEnableCache = true;
+    private boolean mEnableCache;
     /**
      * 高／宽比率
      */
-    private double mScale = 0.5625D;
+    private double mScale;
 
     public SimpleImageBanner(Context context) {
         super(context);
-        mColorDrawable = new ColorDrawable(Color.parseColor("#555555"));
+        initImageBanner(context);
     }
 
     public SimpleImageBanner(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mColorDrawable = new ColorDrawable(Color.parseColor("#555555"));
+        initImageBanner(context);
     }
 
     public SimpleImageBanner(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        mColorDrawable = new ColorDrawable(Color.parseColor("#555555"));
+        initImageBanner(context);
+    }
+
+    /**
+     * 初始化ImageBanner
+     *
+     * @param context
+     */
+    protected void initImageBanner(Context context) {
+        mColorDrawable = new ColorDrawable(ResUtils.getColor(R.color.default_image_banner_placeholder_color));
+        mEnableCache = true;
+        mScale = getContainerScale();
     }
 
     @Override
@@ -119,11 +131,11 @@ public class SimpleImageBanner extends BaseIndicatorBanner<BannerItem, SimpleIma
         return mEnableCache;
     }
 
-    public ColorDrawable getColorDrawable() {
+    public Drawable getColorDrawable() {
         return mColorDrawable;
     }
 
-    public SimpleImageBanner setColorDrawable(ColorDrawable colorDrawable) {
+    public SimpleImageBanner setColorDrawable(Drawable colorDrawable) {
         mColorDrawable = colorDrawable;
         return this;
     }

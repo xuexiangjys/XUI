@@ -32,6 +32,6 @@
         android:focusable="false"
         android:scaleType="centerCrop"
         android:src="@drawable/xui_ic_default_img"
-        app:iiv_icon="@drawable/ic_player"/>
+        app:iiv_icon_res="@drawable/ic_player"/>
 
 </RelativeLayout>

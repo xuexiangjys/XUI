@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 10
-        versionName "1.0.9"
+        versionCode 11
+        versionName "1.1.0"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -97,12 +97,12 @@ dependencies {
 //    implementation deps.glide
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'com.google.android.material:material:1.1.0-beta01'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.0.9'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.0.9'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
@@ -114,7 +114,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.6'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.7'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime
@@ -180,6 +180,12 @@ dependencies {
     //日历控件
     implementation 'com.github.xuexiangjys:CalendarExaple:1.0.1'
     implementation 'com.haibin:calendarview:3.6.3'
+    //图标库
+    implementation "com.mikepenz:iconics-core:4.0.1-b02"
+    //图标库控件（可选）
+    implementation "com.mikepenz:iconics-views:4.0.1-b02"
+    //相机拍摄
+    implementation 'com.github.xuexiangjys:CameraView:1.0.0'
 
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.1.1'

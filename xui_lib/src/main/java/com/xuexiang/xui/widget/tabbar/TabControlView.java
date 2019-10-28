@@ -34,6 +34,7 @@ import android.widget.RadioGroup;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -68,6 +69,10 @@ public class TabControlView extends RadioGroup implements HasTypeface {
      * 边框宽度
      */
     private int mStrokeWidth;
+    /**
+     * 选项间距
+     */
+    private int mItemPadding;
     /**
      * 选中背景的颜色
      */
@@ -144,11 +149,13 @@ public class TabControlView extends RadioGroup implements HasTypeface {
                 0, 0);
         try {
             mTextSize = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_textSize, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_text_size));
-            mSelectedColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedColor, ResUtils.getColor(R.color.xui_config_color_main_theme));
+            mSelectedColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
             mUnselectedColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedColor, Color.TRANSPARENT);
             mSelectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedTextColor, Color.WHITE);
-            mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ResUtils.getColor(R.color.xui_config_color_main_theme));
+            mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
             mStrokeWidth = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_strokeWidth, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_stroke_width));
+            mItemPadding = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding, -1);
+
             //Set text mSelectedColor state list
             mTextColorStateList = new ColorStateList(new int[][]{
                     {-android.R.attr.state_checked}, {android.R.attr.state_checked}},
@@ -171,7 +178,6 @@ public class TabControlView extends RadioGroup implements HasTypeface {
 
     private void init(Context context) {
         mContext = context;
-        //Needed for calling the right "setbackground" method
         //Provide a tad bit of padding for the view
         setPadding(10, 10, 10, 10);
     }
@@ -223,6 +229,9 @@ public class TabControlView extends RadioGroup implements HasTypeface {
             }
 
             rb.setLayoutParams(params);
+            if (mItemPadding != -1) {
+                rb.setPadding(mItemPadding, mItemPadding, mItemPadding, mItemPadding);
+            }
             rb.setMinWidth(mStrokeWidth * 10);
             rb.setGravity(Gravity.CENTER);
             rb.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);

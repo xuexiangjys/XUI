@@ -30,7 +30,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -121,7 +121,7 @@ public class TabLayoutFragment extends BaseFragment implements TabLayout.OnTabSe
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-        ToastUtils.toast("选中了:" + tab.getText());
+        XToastUtils.toast("选中了:" + tab.getText());
     }
 
     @Override

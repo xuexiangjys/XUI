@@ -23,7 +23,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.OnClick;
 
@@ -62,7 +62,7 @@ public class CookieBarFragment extends BaseFragment {
                         .setAction(R.string.cookie_action, new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ToastUtils.toast("点击消失！");
+                                XToastUtils.toast("点击消失！");
                             }
                         })
                         .show();
@@ -74,7 +74,7 @@ public class CookieBarFragment extends BaseFragment {
                         .setActionWithIcon(R.drawable.ic_action_close, new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ToastUtils.toast("点击消失！");
+                                XToastUtils.toast("点击消失！");
                             }
                         })
                         .show();
@@ -90,7 +90,7 @@ public class CookieBarFragment extends BaseFragment {
                         .setAction(R.string.cookie_action, new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ToastUtils.toast("点击消失！");
+                                XToastUtils.toast("点击消失！");
                             }
                         })
                         .show();

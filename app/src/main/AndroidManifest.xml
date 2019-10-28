@@ -56,6 +56,7 @@
 
         <activity
             android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
@@ -121,11 +122,27 @@
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
+            android:name=".widget.iconfont.IconFontActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
             android:name=".base.XPageTransferActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity android:name=".activity.TranslucentActivity" />
+
+        <activity android:name=".fragment.expands.camera.CameraActivity"
+            android:theme="@style/AppTheme.Camera"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".fragment.expands.camera.PictureCropActivity"
+            android:theme="@style/AppTheme.Camera"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".fragment.expands.camera.CameraViewActivity"
+            android:theme="@style/AppTheme.Camera"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
             android:name=".fragment.expands.qrcode.CustomCaptureActivity"
@@ -141,6 +158,9 @@
 
         <activity
             android:name=".utils.update.UpdateTipDialog"
+            android:theme="@style/DialogTheme" />
+        <activity
+            android:name=".base.webview.WebViewTipDialog"
             android:theme="@style/DialogTheme" />
 
         <!--X5预加载-->

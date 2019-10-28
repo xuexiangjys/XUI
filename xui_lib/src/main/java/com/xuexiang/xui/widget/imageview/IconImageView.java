@@ -20,16 +20,17 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
-import android.util.AttributeSet;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
 
 /**
@@ -81,7 +82,7 @@ public class IconImageView extends AppCompatImageView {
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconImageView);
 
-            Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.IconImageView_iiv_icon);
+            Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.IconImageView_iiv_icon_res);
             if (icon != null) {
                 mIconBitmap = Utils.getBitmapFromDrawable(icon);
             }
@@ -96,7 +97,7 @@ public class IconImageView extends AppCompatImageView {
 
     private void initPaint() {
         mIconPaint = new Paint();
-        mIconPaint.setColor(Color.parseColor("#299EE3"));
+        mIconPaint.setColor(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
         mIconPaint.setAntiAlias(true);
         mIconPaint.setFilterBitmap(true);
         mIconPaint.setStyle(Paint.Style.STROKE);

@@ -128,15 +128,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_background_image"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_weight="1"
             android:text="选择背景图片" />
 
-        <Button
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
             android:id="@+id/btn_remove_background_image"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_weight="1"
             android:layout_marginStart="30dp"
             android:text="去除背景图片" />
@@ -175,9 +175,9 @@
         android:maxLines="1"
         android:singleLine="true" />
 
-    <Button
+    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/btn_create"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="生成二维码" />

@@ -20,8 +20,21 @@ public abstract class BaseTagAdapter<T, H> extends BaseListAdapter<T, H> impleme
      */
     private List<Integer> mPositions = new ArrayList<>();
 
+    /**
+     * 当前选中的索引集合
+     */
+    private List<Integer> mSelectedIndexs;
+
     public BaseTagAdapter(Context context) {
         super(context);
+    }
+
+    public BaseTagAdapter(Context context, List<T> data) {
+        super(context, data);
+    }
+
+    public BaseTagAdapter(Context context, T[] data) {
+        super(context, data);
     }
 
     /**
@@ -152,5 +165,47 @@ public abstract class BaseTagAdapter<T, H> extends BaseListAdapter<T, H> impleme
      */
     public List<Integer> getInitSelectedPositions() {
         return mPositions;
+    }
+
+    /**
+     * @param selectedIndexs
+     * @return
+     */
+    public BaseTagAdapter setSelectedIndexs(List<Integer> selectedIndexs) {
+        mSelectedIndexs = selectedIndexs;
+        return this;
+    }
+
+    /**
+     * 获取选中索引的集合
+     * @return
+     */
+    public List<Integer> getSelectedIndexs() {
+        if (mSelectedIndexs != null) {
+            return mSelectedIndexs;
+        } else {
+            return getInitSelectedPositions();
+        }
+    }
+
+    /**
+     * 获取选中索引
+     * @return
+     */
+    public int getSelectedIndex() {
+        List<Integer> indexs = getSelectedIndexs();
+        if (indexs != null && indexs.size() > 0) {
+            return indexs.get(0);
+        }
+        return -1;
+    }
+
+    /**
+     * 获取选中索引
+     * @return
+     */
+    public T getSelectedItem() {
+        int selectedIndex = getSelectedIndex();
+        return getItem(selectedIndex);
     }
 }

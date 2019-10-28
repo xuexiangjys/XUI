@@ -3,7 +3,7 @@ package com.xuexiang.xuidemo.fragment.expands.chart;
 import com.github.mikephil.charting.charts.Chart;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
@@ -50,10 +50,10 @@ public abstract class BaseChartFragment extends BaseFragment {
     @Permission(STORAGE)
     public void saveToGallery(Chart chart, String name) {
         if (chart.saveToGallery(name + "_" + System.currentTimeMillis(), 70)) {
-            ToastUtils.toast("保存成功!");
+            XToastUtils.toast("保存成功!");
 
         } else {
-            ToastUtils.toast("保存失败!");
+            XToastUtils.toast("保存失败!");
         }
     }
 

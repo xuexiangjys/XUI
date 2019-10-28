@@ -1,5 +1,6 @@
 package com.xuexiang.xuidemo.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,6 +23,7 @@ import com.luck.picture.lib.PictureSelectionModel;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
@@ -29,6 +31,9 @@ import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
+import com.xuexiang.xutil.data.DateUtils;
+import com.xuexiang.xutil.file.FileIOUtils;
+import com.xuexiang.xutil.file.FileUtils;
 
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
@@ -42,6 +47,17 @@ public final class Utils {
 
     private Utils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+    /**
+     * 初始化主题
+     */
+    public static void initTheme(Activity activity) {
+        if (SettingSPUtils.getInstance().isUseCustomTheme()) {
+            activity.setTheme(R.style.CustomAppTheme);
+        } else {
+            XUI.initTheme(activity);
+        }
     }
 
     /**
@@ -84,6 +100,7 @@ public final class Utils {
         XUpdate.get().setOnUpdateFailureListener(new CustomUpdateFailureListener(needErrorTip));
     }
 
+    //==========图片选择===========//
 
     /**
      * 获取图片选择的配置
@@ -94,7 +111,7 @@ public final class Utils {
     public static PictureSelectionModel getPictureSelector(Fragment fragment) {
         return PictureSelector.create(fragment)
                 .openGallery(PictureMimeType.ofImage())
-                .theme(R.style.XUIPictureStyle)
+                .theme(SettingSPUtils.getInstance().isUseCustomTheme() ? R.style.XUIPictureStyle_Custom : R.style.XUIPictureStyle)
                 .maxSelectNum(8)
                 .minSelectNum(1)
                 .selectionMode(PictureConfig.MULTIPLE)
@@ -105,7 +122,45 @@ public final class Utils {
                 .previewEggs(true);
     }
 
+    public static PictureSelectionModel getPictureSelector(Activity activity) {
+        return PictureSelector.create(activity)
+                .openGallery(PictureMimeType.ofImage())
+                .theme(SettingSPUtils.getInstance().isUseCustomTheme() ? R.style.XUIPictureStyle_Custom : R.style.XUIPictureStyle)
+                .maxSelectNum(8)
+                .minSelectNum(1)
+                .selectionMode(PictureConfig.MULTIPLE)
+                .previewImage(true)
+                .isCamera(true)
+                .enableCrop(false)
+                .compress(true)
+                .previewEggs(true);
+    }
 
+    //==========拍照===========//
+
+    public static final String JPEG = ".jpeg";
+
+    /**
+     * 处理拍照的回调
+     * @param data
+     * @return
+     */
+    public static String handleOnPictureTaken(byte[] data) {
+        return handleOnPictureTaken(data, JPEG);
+    }
+    /**
+     * 处理拍照的回调
+     *
+     * @param data
+     * @return
+     */
+    public static String handleOnPictureTaken(byte[] data, String fileSuffix) {
+        String picPath = FileUtils.getDiskCacheDir() + "/images/" + DateUtils.getNowMills() + fileSuffix;
+        boolean result = FileIOUtils.writeFileFromBytesByStream(picPath, data);
+        return result ? picPath : "";
+    }
+
+    //==========截图===========//
 
     /**
      * 显示截图结果
@@ -187,7 +242,10 @@ public final class Utils {
                 height += holder.itemView.getMeasuredHeight();
             }
             // 这个地方容易出现OOM，关键是要看截取RecyclerView的展开的宽高
-            bigBitmap = Bitmap.createBitmap(recyclerView.getMeasuredWidth(), height, Bitmap.Config.ARGB_8888);
+            bigBitmap = DrawableUtils.createBitmapSafely(recyclerView.getMeasuredWidth(), height, Bitmap.Config.ARGB_8888, 1);
+            if (bigBitmap == null) {
+                return null;
+            }
             Canvas canvas = new Canvas(bigBitmap);
             Drawable background = recyclerView.getBackground();
             //先画RecyclerView的背景色

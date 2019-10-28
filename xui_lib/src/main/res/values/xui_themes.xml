@@ -42,7 +42,7 @@
         <item name="colorControlNormal">@color/xui_config_color_control_normal</item>
 
         <!--**********************************************
-        *               通用颜色属性设置                *
+        *               通用颜色属性设置                    *
         ***********************************************-->
         <item name="xui_config_color_error_text">@color/xui_config_color_red</item>
         <item name="xui_config_color_input_text">@color/xui_config_color_edittext_input_text</item>
@@ -117,6 +117,7 @@
         <item name="xui_round_btn_bg_color">@color/xui_transparent</item>
         <item name="xui_round_btn_border_color">@color/xui_default_round_btn_blue_border</item>
         <item name="xui_round_btn_text_color">@color/xui_default_round_btn_blue_text</item>
+        <item name="xui_btn_view_disable_color">@color/xui_btn_disable_color</item>
 
         <!--*********************************************
         *           MaterialDialog(共同样式）            *
@@ -135,8 +136,8 @@
         <item name="xui_popup_bg">@drawable/xui_popup_bg</item>
         <item name="xui_popup_arrow_down">@drawable/xui_popup_arrow_down</item>
         <item name="xui_popup_arrow_up">@drawable/xui_popup_arrow_up</item>
-        <item name="xui_popup_arrow_up_margin_top">17dp</item>
-        <item name="xui_popup_arrow_down_margin_bottom">17dp</item>
+        <item name="xui_popup_arrow_up_margin_top">0dp</item>
+        <item name="xui_popup_arrow_down_margin_bottom">0dp</item>
 
         <!--**********************************************
         *               xui 提供的drawable                *

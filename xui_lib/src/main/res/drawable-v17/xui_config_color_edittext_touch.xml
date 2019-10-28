@@ -3,7 +3,7 @@
     android:shape="rectangle">
     <stroke
         android:width="2dp"
-        android:color="@color/xui_config_color_light_blue" />
+        android:color="@color/xui_config_color_main_theme" />
 
     <corners
         android:radius="@dimen/xui_config_size_edittext_radius_phone" />

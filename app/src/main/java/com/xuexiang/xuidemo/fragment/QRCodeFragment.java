@@ -19,12 +19,12 @@ package com.xuexiang.xuidemo.fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
@@ -32,12 +32,12 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.app.SocialShareUtils;
 import com.xuexiang.xutil.display.ImageUtils;
 import com.xuexiang.xutil.file.FileUtils;
 import com.xuexiang.xutil.net.NetworkUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.io.File;
 
@@ -124,14 +124,14 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
                                 if (result) {
                                     SocialShareUtils.sharePicture(getActivity(), PathUtils.getUriForFile(FileUtils.getFileByPath(imgPath)));
                                 } else {
-                                    ToastUtils.toast("图片发送失败!");
+                                    XToastUtils.toast("图片发送失败!");
                                 }
                                 break;
                             case 1:
                                 if (result) {
-                                    ToastUtils.toast("图片保存成功:" + imgPath);
+                                    XToastUtils.toast("图片保存成功:" + imgPath);
                                 } else {
-                                    ToastUtils.toast("图片保存失败!");
+                                    XToastUtils.toast("图片保存失败!");
                                 }
                                 break;
                             case 2:
@@ -146,11 +146,11 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
 
                                         @Override
                                         public void onAnalyzeFailed() {
-                                            ToastUtils.toast("解析二维码失败！");
+                                            XToastUtils.toast("解析二维码失败！");
                                         }
                                     });
                                 } else {
-                                    ToastUtils.toast("二维码识别失败!");
+                                    XToastUtils.toast("二维码识别失败!");
                                 }
                                 break;
                             default:

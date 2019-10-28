@@ -37,6 +37,41 @@
         <item name="android:paddingBottom">4dp</item>
     </style>
 
+    <style name="Container">
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
+    </style>
+
+    <style name="InfoItem" parent="Container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="sLeftViewMarginLeft">0dp</item>
+        <item name="sRightViewMarginRight">0dp</item>
+        <item name="sRightIconMarginRight">0dp</item>
+        <item name="sLeftIconMarginLeft">0dp</item>
+        <item name="sLeftTextSize">?attr/xui_config_size_content_text</item>
+        <item name="sLeftTextColor">@color/xui_config_color_title_text</item>
+        <item name="sCenterTextColor">@color/xui_config_color_black</item>
+        <item name="sRightTextColor">@color/xui_config_color_explain_text</item>
+        <item name="sRightTextSize">?attr/xui_config_size_content_text</item>
+    </style>
+
+    <style name="InfoItem.Account">
+        <item name="sLeftViewWidth">110dp</item>
+        <item name="sLeftViewGravity">left_center</item>
+        <item name="sCenterViewGravity">left_center</item>
+        <item name="sCenterViewMarginLeft">25dp</item>
+        <item name="sRightTextSize">?attr/xui_config_size_content_text</item>
+        <item name="sRightViewMarginRight">10dp</item>
+        <item name="sRightIconRes">@drawable/icon_arrow_right_red</item>
+    </style>
+
+    <style name="RadiusImageView.Circle">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="riv_is_circle">true</item>
+        <item name="riv_border_width">0dp</item>
+    </style>
+
 
     <!-- MaterialProgressBar -->
     <style name="Widget.MaterialProgressBar.ProgressBar.Horizontal" parent="android:Widget.ProgressBar.Horizontal">
@@ -112,14 +147,14 @@
     </style>
 
     <style name="TabLayoutStyle" parent="Base.Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">@color/xui_config_color_main_theme</item>
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>
         <item name="android:background">@color/xui_config_color_white</item>
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabTextAppearance">@style/TabText</item>
-        <item name="tabSelectedTextColor">@color/xui_config_color_main_theme</item>
+        <item name="tabSelectedTextColor">?attr/colorAccent</item>
         <item name="tabTextColor">@color/xui_config_color_gray_6</item>
     </style>
 

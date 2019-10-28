@@ -15,7 +15,7 @@ import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -90,7 +90,7 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
      * 初始化控件
      * mTabbar的设置详细参见
      * {@link BaseActivity#mTitles}
-     * {@link BaseActivity#mSeleIcons}
+     * {@link BaseActivity#mSelectIcons}
      * {@link BaseActivity#mNormalIcons}
      */
     @Override
@@ -107,7 +107,7 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
             mTabbar.getMiddleView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ToastUtils.toast("中间点击");
+                    XToastUtils.toast("中间点击");
                 }
             });
         }
@@ -130,7 +130,7 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
         if (index == 2) {
             mTabbar.hideBadge(2);
         }
-        ToastUtils.toast("点击了" + getString(mTitles[index]));
+        XToastUtils.toast("点击了" + getString(mTitles[index]));
     }
 
     /**

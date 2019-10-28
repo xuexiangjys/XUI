@@ -27,7 +27,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="48dp"
-                    android:background="#468ED0" />
+                    android:background="?attr/colorAccent" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -35,7 +35,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="LoopBanner"
-                    android:textColor="#468ED0"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -53,6 +53,22 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 app:bb_scale="0.5625" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="自定义轮播简单使用"
+                android:textColor="#383838"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xuidemo.widget.RadiusImageBanner
+                android:id="@+id/rib_simple_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bb_barPaddingBottom="10dp"
+                app:bb_scale="0.4317" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -227,7 +243,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="48dp"
-                    android:background="#468ED0" />
+                    android:background="?attr/colorAccent" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -235,7 +251,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="NormalBanner"
-                    android:textColor="#468ED0"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -259,7 +275,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="48dp"
-                    android:background="#468ED0" />
+                    android:background="?attr/colorAccent" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -267,7 +283,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="Transformer"
-                    android:textColor="#468ED0"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -301,7 +317,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="48dp"
-                    android:background="#468ED0" />
+                    android:background="?attr/colorAccent" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -309,7 +325,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="其他使用方式"
-                    android:textColor="#468ED0"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="16sp" />
             </LinearLayout>
 

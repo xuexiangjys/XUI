@@ -17,21 +17,34 @@
     </style>
 
     <style name="Button.Blue.wrap">
-        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:layout_height">?attr/xui_btn_view_height</item>
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <!--XUIAlphaButton-->
+    <style name="Button.Primary" parent="Button.Style">
+        <item name="android:background">@drawable/xui_config_bg_primary_btn</item>
+    </style>
+
+    <!--XUIAlphaButton-->
+    <style name="Button.Primary.wrap">
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
     <style name="Button.Radius" parent="@style/Button">
         <item name="android:layout_height">?attr/xui_btn_view_height</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:background">@drawable/rb_bg_selector</item>
         <item name="android:textColor">?attr/xui_round_btn_text_color</item>
         <item name="android:textSize">?attr/xui_btn_view_text_size</item>
         <item name="android:gravity">center</item>
     </style>
+
     <!--*********************************************
     *                 ButtonViewStyle               *
     **********************************************-->
@@ -75,7 +88,7 @@
     <!-- Button style -->
     <style name="SuperButton" parent="ButtonStyle">
         <item name="sCornersRadius">?attr/xui_btn_view_radius</item>
-        <item name="sSelectorDisableColor">@color/xui_btn_disable_color</item>
+        <item name="sSelectorDisableColor">?attr/xui_btn_view_disable_color</item>
         <item name="sUseSelector">true</item>
         <item name="sGravity">center</item>
         <item name="android:background">@null</item>
@@ -85,6 +98,17 @@
     <style name="SuperButton.Icon">
         <item name="sGravity">left</item>
         <item name="android:drawablePadding">?attr/xui_config_icon_drawable_padding</item>
+    </style>
+
+    <style name="SuperButton.Primary">
+        <item name="sSelectorNormalColor">?attr/colorAccent</item>
+        <item name="sSelectorPressedColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="SuperButton.Primary.wrap">
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
     <!-- Green Button Style -->
@@ -148,8 +172,8 @@
 
     <style name="RoundButton.Auto">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:singleLine">true</item>
     </style>
 
@@ -306,8 +330,8 @@
     <style name="EditText" parent="EditTextBase">
         <item name="android:layout_height">?attr/xui_config_size_edittext_height</item>
         <item name="android:textSize">?attr/xui_config_size_edittext_input_text</item>
-        <item name="android:paddingLeft">?attr/xui_config_size_edittext_left_padding</item>
-        <item name="android:paddingRight">?attr/xui_config_size_edittext_left_padding</item>
+        <item name="android:paddingStart">?attr/xui_config_size_edittext_left_padding</item>
+        <item name="android:paddingEnd">?attr/xui_config_size_edittext_left_padding</item>
         <item name="android:textColor">?attr/xui_config_color_input_text</item>
         <item name="android:textColorHint">?attr/xui_config_color_hint_text</item>
         <item name="android:singleLine">true</item>

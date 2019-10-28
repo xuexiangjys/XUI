@@ -37,6 +37,7 @@ import com.xuexiang.xui.widget.imageview.preview.loader.GlideMediaLoader;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridInfo;
+import com.xuexiang.xuidemo.utils.SettingSPUtils;
 
 import java.util.List;
 
@@ -106,7 +107,7 @@ public class NineGridRecycleAdapter extends XRecyclerAdapter<NineGridInfo, NineG
                     PreviewBuilder.from((Activity) context)
                             .setImgs(list)
                             .setCurrentIndex(index)
-//                            .setProgressColor(R.color.color_red)
+                            .setProgressColor(SettingSPUtils.getInstance().isUseCustomTheme() ? R.color.custom_color_main_theme : R.color.xui_config_color_main_theme)
                             .setType(PreviewBuilder.IndicatorType.Dot)
                             .start();//启动
                 }

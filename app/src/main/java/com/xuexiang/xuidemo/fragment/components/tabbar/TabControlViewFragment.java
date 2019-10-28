@@ -22,7 +22,7 @@ import com.xuexiang.xui.widget.tabbar.MultiTabControlView;
 import com.xuexiang.xui.widget.tabbar.TabControlView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -60,7 +60,7 @@ public class TabControlViewFragment extends BaseFragment {
         mTabControlView.setOnTabSelectionChangedListener(new TabControlView.OnTabSelectionChangedListener() {
             @Override
             public void newSelection(String title, String value) {
-                ToastUtils.toast("选中了：" + title + ", 选中的值为：" + value);
+                XToastUtils.toast("选中了：" + title + ", 选中的值为：" + value);
             }
         });
     }
@@ -75,7 +75,7 @@ public class TabControlViewFragment extends BaseFragment {
         mMultiTabControlView.setOnMultiTabSelectionChangedListener(new MultiTabControlView.OnMultiTabSelectionChangedListener() {
             @Override
             public void newSelection(String title, String value, boolean isChecked) {
-                ToastUtils.toast("选中了：" + title + ", 选中的值为：" + value + ", isChecked：" + isChecked);
+                XToastUtils.toast("选中了：" + title + ", 选中的值为：" + value + ", isChecked：" + isChecked);
             }
         });
     }

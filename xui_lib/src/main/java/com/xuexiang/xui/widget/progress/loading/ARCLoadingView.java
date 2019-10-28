@@ -36,6 +36,7 @@ import com.xuexiang.xui.R;
 import com.xuexiang.xui.UIConfig;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
 
 /**
@@ -53,10 +54,6 @@ public class ARCLoadingView extends View {
      * 默认旋转度数的速度
      */
     private static final int DEFAULT_SPEED_OF_DEGREE = 5;
-    /**
-     * 默认圆弧的颜色
-     */
-    private static final int DEFAULT_ARC_COLOR = Color.parseColor("#299EE3");
     /**
      * 默认圆弧的角度
      */
@@ -82,7 +79,7 @@ public class ARCLoadingView extends View {
     /**
      * 圆弧的颜色
      */
-    private int mArcColor = DEFAULT_ARC_COLOR;
+    private int mArcColor;
 
     /**
      * 圆弧所在的椭圆对象
@@ -116,7 +113,7 @@ public class ARCLoadingView extends View {
     /**
      * 渐变色
      */
-    private int[] mGradientColors = new int[]{Color.TRANSPARENT, DEFAULT_ARC_COLOR};
+    private int[] mGradientColors;
 
     public ARCLoadingView(Context context) {
         super(context);
@@ -134,32 +131,29 @@ public class ARCLoadingView extends View {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
-        if (null != attrs) {
-            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView);
-            mArcColor = typedArray.getColor(R.styleable.LoadingView_lv_color, DEFAULT_ARC_COLOR);
-            mArcDegree = typedArray.getInt(R.styleable.LoadingView_lv_arc_degree, DEFAULT_ARC_DEGREE);
-            if (mArcColor != DEFAULT_ARC_COLOR) {
-                mGradientColors = new int[]{Color.TRANSPARENT, mArcColor};
-            }
-            mArcWidth = typedArray.getDimensionPixelSize(R.styleable.LoadingView_lv_width, DensityUtils.dp2px(getContext(), DEFAULT_ARC_WIDTH));
-            mSpeedOfDegree = typedArray.getInt(R.styleable.LoadingView_lv_speed, DEFAULT_SPEED_OF_DEGREE);
-            mIsDraw = mIsAutoMode = typedArray.getBoolean(R.styleable.LoadingView_lv_auto, true);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView);
+        mArcColor = typedArray.getColor(R.styleable.LoadingView_lv_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        mArcDegree = typedArray.getInt(R.styleable.LoadingView_lv_arc_degree, DEFAULT_ARC_DEGREE);
+        mGradientColors = new int[]{Color.TRANSPARENT, mArcColor};
 
-            boolean hasIcon = typedArray.getBoolean(R.styleable.LoadingView_lv_has_icon, true);
-            if (hasIcon) {
-                Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.LoadingView_lv_icon);
-                if (icon != null) {
-                    mIconBitmap = Utils.getBitmapFromDrawable(icon);
-                } else {
-                    Drawable appIcon = UIConfig.getInstance().getAppIcon();
-                    if (appIcon != null) {
-                        mIconBitmap = Utils.getBitmapFromDrawable(appIcon);
-                    }
+        mArcWidth = typedArray.getDimensionPixelSize(R.styleable.LoadingView_lv_width, DensityUtils.dp2px(getContext(), DEFAULT_ARC_WIDTH));
+        mSpeedOfDegree = typedArray.getInt(R.styleable.LoadingView_lv_speed, DEFAULT_SPEED_OF_DEGREE);
+        mIsDraw = mIsAutoMode = typedArray.getBoolean(R.styleable.LoadingView_lv_auto, true);
+
+        boolean hasIcon = typedArray.getBoolean(R.styleable.LoadingView_lv_has_icon, true);
+        if (hasIcon) {
+            Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.LoadingView_lv_icon);
+            if (icon != null) {
+                mIconBitmap = Utils.getBitmapFromDrawable(icon);
+            } else {
+                Drawable appIcon = UIConfig.getInstance().getAppIcon();
+                if (appIcon != null) {
+                    mIconBitmap = Utils.getBitmapFromDrawable(appIcon);
                 }
-                mIconScale = typedArray.getFloat(R.styleable.LoadingView_lv_icon_scale, 0.5F);
             }
-            typedArray.recycle();
+            mIconScale = typedArray.getFloat(R.styleable.LoadingView_lv_icon_scale, 0.5F);
         }
+        typedArray.recycle();
 
         initPaint();
     }

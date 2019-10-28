@@ -33,7 +33,7 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NineGridRecycleAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -111,7 +111,7 @@ public class NineGridImageViewFragment extends BaseFragment {
                             mAdapter.loadMore(getMediaRes().get(mPage));
                             refreshLayout.finishLoadMore();
                         } else {
-                            ToastUtils.toast("数据全部加载完毕");
+                            XToastUtils.toast("数据全部加载完毕");
                             refreshLayout.finishLoadMoreWithNoMoreData();//将不会再次触发加载更多事件
                         }
                     }

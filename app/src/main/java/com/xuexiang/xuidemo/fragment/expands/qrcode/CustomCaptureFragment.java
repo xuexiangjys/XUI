@@ -32,7 +32,7 @@ import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xqrcode.ui.CaptureFragment;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.OnClick;
 
@@ -129,7 +129,7 @@ public class CustomCaptureFragment extends XPageFragment {
             XQRCode.switchFlashLight(mIsOpen);
         } catch (RuntimeException e) {
             e.printStackTrace();
-            ToastUtils.toast("设备不支持闪光灯!");
+            XToastUtils.error("设备不支持闪光灯!");
         }
     }
 

@@ -22,8 +22,8 @@ import android.os.Bundle;
 import com.xuexiang.xrouter.annotation.AutoWired;
 import com.xuexiang.xrouter.annotation.Router;
 import com.xuexiang.xrouter.launcher.XRouter;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.StringUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 /**
  * https://xuexiangjys.club/xpage/transfer?pageName=xxxxx&....
@@ -45,11 +45,11 @@ public class XPageTransferActivity extends BaseActivity {
 
         if (!StringUtils.isEmpty(pageName)) {
             if (openPage(pageName, getIntent().getExtras()) == null) {
-                ToastUtils.toast("页面未找到！");
+                XToastUtils.toast("页面未找到！");
                 finish();
             }
         } else {
-            ToastUtils.toast("页面未找到！");
+            XToastUtils.toast("页面未找到！");
             finish();
         }
     }

@@ -7,10 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatEditText;
-
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
@@ -24,6 +20,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
@@ -610,7 +610,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      */
     private void initLeftIcon() {
         if (mLeftIconIV == null) {
-            mLeftIconIV = new ImageView(mContext);
+            mLeftIconIV = new AppCompatImageView(mContext);
         }
         mLeftImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         mLeftImgParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, TRUE);
@@ -634,7 +634,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      */
     private void initRightIcon() {
         if (mRightIconIV == null) {
-            mRightIconIV = new ImageView(mContext);
+            mRightIconIV = new AppCompatImageView(mContext);
         }
         mRightImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         mRightImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);

@@ -10,7 +10,7 @@ import com.xuexiang.xui.widget.popupwindow.easypopup.HorizontalGravity;
 import com.xuexiang.xui.widget.popupwindow.easypopup.VerticalGravity;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -52,7 +52,7 @@ public class EasyPopFragment extends BaseFragment {
         tvZan.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 ToastUtils.toast("点赞");
+                 XToastUtils.toast("点赞");
                  mCirclePop.dismiss();
              }
          });
@@ -60,7 +60,7 @@ public class EasyPopFragment extends BaseFragment {
         tvComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("评论");
+                XToastUtils.toast("评论");
                 mCirclePop.dismiss();
             }
         });

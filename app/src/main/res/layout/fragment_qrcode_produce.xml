@@ -48,9 +48,9 @@
                     android:hint="请输入二维码的内容"
                     android:inputType="text" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_save"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_marginStart="10dp"
                     android:text="保存" />
 
@@ -88,15 +88,15 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_create_no_logo"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_weight="1"
                     android:text="生成无图标的二维码" />
 
-                <Button
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_create_with_logo"
-                    style="@style/Button.Blue.wrap"
+                    style="@style/Button.Primary.wrap"
                     android:layout_marginStart="30dp"
                     android:layout_weight="1"
                     android:text="生成带图标的二维码" />

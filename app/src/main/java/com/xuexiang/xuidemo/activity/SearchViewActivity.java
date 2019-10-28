@@ -19,16 +19,16 @@ package com.xuexiang.xuidemo.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.xuexiang.xui.XUI;
+import androidx.appcompat.widget.Toolbar;
+
 import com.xuexiang.xui.utils.SnackbarUtils;
 import com.xuexiang.xui.widget.searchview.MaterialSearchView;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.BaseAppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ import butterknife.Unbinder;
  * @author xuexiang
  * @date 2017/12/3 下午12:07
  */
-public class SearchViewActivity extends AppCompatActivity {
+public class SearchViewActivity extends BaseAppCompatActivity {
     @BindView(R.id.search_view)
     MaterialSearchView mSearchView;
     private Unbinder mUnbinder;
@@ -48,8 +48,6 @@ public class SearchViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        XUI.initTheme(this);
-
         setContentView(R.layout.activity_searchview_toolbar);
         mUnbinder = ButterKnife.bind(this);
         initViews();

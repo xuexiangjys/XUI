@@ -9,7 +9,7 @@
         android:layout_height="32dp"
         android:layout_marginLeft="?attr/xui_config_content_spacing_horizontal"
         android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
-        android:background="@drawable/xui_default_flow_tag_bg_rect_round_blue"
+        android:background="@drawable/xui_default_flow_tag_bg_rect_round"
         android:paddingBottom="5dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"

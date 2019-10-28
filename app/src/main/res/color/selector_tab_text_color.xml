@@ -16,7 +16,7 @@
   -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:color="@color/xui_config_color_main_theme" />
-    <item android:state_selected="true" android:color="@color/xui_config_color_main_theme" />
+    <item android:state_pressed="true" android:color="?attr/colorAccent" />
+    <item android:state_selected="true" android:color="?attr/colorAccent" />
     <item android:color="@color/xui_config_color_gray_6" />
 </selector>

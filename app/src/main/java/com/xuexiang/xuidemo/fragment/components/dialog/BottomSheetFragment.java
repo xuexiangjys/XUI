@@ -7,7 +7,7 @@ import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheetItemView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class BottomSheetFragment extends BaseSimpleListFragment {
                     @Override
                     public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
                         dialog.dismiss();
-                        ToastUtils.toast("Item " + (position + 1));
+                        XToastUtils.toast("Item " + (position + 1));
                     }
                 })
                 .build()
@@ -86,7 +86,7 @@ public class BottomSheetFragment extends BaseSimpleListFragment {
                     public void onClick(BottomSheet dialog, BottomSheetItemView itemView) {
                         dialog.dismiss();
                         int tag = (int) itemView.getTag();
-                        ToastUtils.toast("tag:" + tag + ", content:" + itemView.toString());
+                        XToastUtils.toast("tag:" + tag + ", content:" + itemView.toString());
                     }
                 }).build().show();
 

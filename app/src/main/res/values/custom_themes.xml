@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<resources>
+
+
+    <!-- 自定义XUI的主题. -->
+    <style name="CustomAppTheme" parent="XUITheme.Phone">
+        <!--**********************************************
+        *                   xui color                    *
+        ***********************************************-->
+        <!-- CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色 -->
+        <item name="colorAccent">@color/custom_color_main_theme</item>
+        <!--应用的主要色调，actionBar默认使用该颜色，Toolbar导航栏的底色-->
+        <item name="colorPrimary">@color/custom_color_main_theme</item>
+        <!--应用的主要暗色调，statusBarColor默认使用该颜色-->
+        <item name="colorPrimaryDark">@color/custom_color_main_theme</item>
+        <item name="colorControlNormal">@color/xui_config_color_control_normal</item>
+
+        <!--**********************************************
+        *               通用颜色属性设置                    *
+        ***********************************************-->
+        <item name="xui_config_color_error_text">@color/xui_config_color_red</item>
+        <item name="xui_config_color_input_text">@color/xui_config_color_edittext_input_text</item>
+        <item name="xui_config_color_hint_text">@color/xui_config_color_edittext_hint_text</item>
+        <item name="xui_config_color_stroke">@color/xui_config_color_edittext_stroke</item>
+        <item name="xui_config_color_disable">@color/xui_config_color_edittext_disable</item>
+        <item name="xui_config_color_pressed">@color/xui_config_color_background_pressed</item>
+
+        <!--actionbar的样式-->
+        <item name="xui_actionbar_color">@color/custom_color_main_theme</item>
+        <item name="xui_actionbar_text_color">@color/xui_config_color_white</item>
+        <item name="xui_actionbar_immersive">false</item>
+        <item name="xui_actionbar_ic_navigation_back">@drawable/ic_navigation_back_white</item>
+
+        <!-- 文字的style -->
+        <item name="xui_config_color_title_text">@color/custom_color_title_text</item>
+        <item name="xui_config_color_content_text">@color/custom_color_content_text</item>
+        <item name="xui_config_color_explain_text">@color/custom_color_explain_text</item>
+        <!--应用的主要文字颜色，actionBar的标题文字默认使用该颜色-->
+        <item name="android:textColorPrimary">@color/custom_color_primary_text</item>
+
+        <!--全局样式-->
+        <item name="xui_config_content_spacing_horizontal">16dp</item>
+        <item name="xui_config_content_spacing_vertical">10dp</item>
+
+        <!--文字字号样式-->
+        <item name="xui_config_size_title_text">21sp</item>
+        <item name="xui_config_size_content_text">18sp</item>
+        <item name="xui_config_size_explain_text">14sp</item>
+        <item name="xui_config_size_spinner_text">14sp</item>
+
+        <!--按钮样式-->
+        <item name="xui_btn_view_radius">8dp</item>
+        <item name="xui_btn_view_width">@dimen/default_btn_view_width_phone</item>
+        <item name="xui_btn_view_height">36dp</item>
+        <item name="xui_btn_view_text_size">14sp</item>
+        <item name="xui_btn_view_border_width">0.8dp</item>
+        <item name="xui_config_icon_drawable_padding">8dp</item>
+
+        <!--输入框样式-->
+        <item name="xui_config_size_edittext_input_text">14sp</item>
+        <item name="xui_config_size_edittext_helper_text">10sp</item>
+        <item name="xui_config_size_edittext_components_spacing">8dp</item>
+        <item name="xui_config_size_edittext_left_padding">12dp</item>
+        <item name="xui_config_size_edittext_radius">5dp</item>
+        <item name="xui_config_size_edittext_height">36dp</item>
+
+        <!--actionbar-->
+        <item name="xui_actionbar_height">60dp</item>
+        <item name="xui_actionbar_title_text_size">21dp</item>
+        <item name="xui_actionbar_action_text_size">18sp</item>
+        <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_phone</item>
+        <item name="xui_actionbar_action_padding">8dp</item>
+        <item name="xui_actionbar_side_text_padding">15dp</item>
+
+        <!--spinner-->
+        <item name="ms_padding_left_size">10dp</item>
+        <item name="ms_padding_top_size">8dp</item>
+        <item name="ms_item_height_size">36dp</item>
+        <item name="ms_dropdown_offset">2dp</item>
+        <item name="ms_arrow_size">10dp</item>
+        <!--StatefulLayout-->
+        <item name="stf_progressbar_size">70dp</item>
+        <item name="stf_tip_img_size">90dp</item>
+        <!--*********************************************
+        *                  Dialog                       *
+        **********************************************-->
+        <item name="xui_dialog_radius_size">8dp</item>
+        <item name="xui_dialog_loading_padding_size">30dp</item>
+        <item name="xui_dialog_loading_min_size">110dp</item>
+        <item name="xui_dialog_mini_loading_padding_size">20dp</item>
+        <item name="xui_dialog_mini_loading_min_size">100dp</item>
+        <item name="xui_loading_view_size">85dp</item>
+        <item name="xui_mini_loading_view_size">30dp</item>
+        <item name="xui_loading_text_size">14sp</item>
+        <item name="xui_loading_view_width">5dp</item>
+        <item name="xui_loading_margin_size">8dp</item>
+        <item name="xui_mini_loading_margin_size">15dp</item>
+        <item name="mini_loading_view_size">25dp</item>
+    </style>
+
+
+    <!--SettingTheme-->
+    <style name="SettingTheme.Custom">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/custom_color_main_theme</item>
+        <item name="colorPrimaryDark">@color/custom_color_main_theme</item>
+        <item name="colorAccent">@color/custom_color_main_theme</item>
+    </style>
+
+
+</resources>

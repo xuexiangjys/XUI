@@ -3,7 +3,10 @@ package com.xuexiang.xui.widget.flowlayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import android.util.AttributeSet;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -64,6 +67,10 @@ public class FlowTagLayout extends ViewGroup {
      * 标签流式布局选中模式，默认是不支持选中的
      */
     private int mTagCheckMode = FLOW_TAG_CHECKED_NONE;
+    /**
+     * 单选模式下点击是否可取消选中,默认为false不可取消
+     */
+    private boolean mSingleCancelable;
 
     /**
      * 存储选中的tag
@@ -73,9 +80,6 @@ public class FlowTagLayout extends ViewGroup {
      * 子View的宽度，如果为0 则为warp_content
      */
     private int mWidth;
-
-    private List<Integer> mSelectedIndexs;
-
 
     public FlowTagLayout(Context context) {
         super(context);
@@ -98,6 +102,7 @@ public class FlowTagLayout extends ViewGroup {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FlowTagLayout);
         mTagCheckMode = typedArray.getInt(R.styleable.FlowTagLayout_ftl_check_mode, FLOW_TAG_CHECKED_NONE);
+        mSingleCancelable = typedArray.getBoolean(R.styleable.FlowTagLayout_ftl_single_cancelable, false);
         int entriesID = typedArray.getResourceId(R.styleable.FlowTagLayout_ftl_entries, 0);
         if (entriesID != 0) {
             BaseTagAdapter tagAdapter = setItems(ResUtils.getStringArray(entriesID));
@@ -109,6 +114,16 @@ public class FlowTagLayout extends ViewGroup {
         typedArray.recycle();
     }
 
+    /**
+     * 设置单选模式下点击是否可取消选中
+     *
+     * @param singleCancelable
+     * @return
+     */
+    public FlowTagLayout setSingleCancelable(boolean singleCancelable) {
+        mSingleCancelable = singleCancelable;
+        return this;
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -243,6 +258,64 @@ public class FlowTagLayout extends ViewGroup {
     }
 
     /**
+     * 增加标签数据
+     *
+     * @param data
+     */
+    public <T> FlowTagLayout addTag(T data) {
+        if (mAdapter != null) {
+            mAdapter.addTag(data);
+        }
+        return this;
+    }
+
+    /**
+     * 增加标签数据
+     *
+     * @param datas
+     */
+    public <T> FlowTagLayout addTags(List<T> datas) {
+        if (mAdapter != null) {
+            mAdapter.addTags(datas);
+        }
+        return this;
+    }
+
+    /**
+     * 增加标签数据
+     *
+     * @param datas
+     */
+    public <T> FlowTagLayout addTags(T[] datas) {
+        if (mAdapter != null) {
+            mAdapter.addTags(datas);
+        }
+        return this;
+    }
+
+    /**
+     * 清除并增加标签数据
+     *
+     * @param datas
+     */
+    public <T> FlowTagLayout clearAndAddTags(List<T> datas) {
+        if (mAdapter != null) {
+            mAdapter.clearAndAddTags(datas);
+        }
+        return this;
+    }
+
+    /**
+     * 清除标签数据
+     */
+    public <T> FlowTagLayout clearTags() {
+        if (mAdapter != null) {
+            mAdapter.clearData();
+        }
+        return this;
+    }
+
+    /**
      * 子View个数
      *
      * @param width
@@ -284,19 +357,22 @@ public class FlowTagLayout extends ViewGroup {
                         mCheckedTagArray.put(i, true);
                         childView.setSelected(true);
                     }
-                } else if (mTagCheckMode == FLOW_TAG_DISPLAY) { //不可点击
+                } else if (mTagCheckMode == FLOW_TAG_DISPLAY) {
+                    //不可点击
                     mCheckedTagArray.put(i, true);
                     childView.setSelected(true);
                     childView.setEnabled(false);
                 }
             }
-            mSelectedIndexs = null; //重新加载数据，点击索引清空
+            //重新加载数据，点击索引清空
+            setSelectedIndexs(null);
             setChildViewClickListener(index, childView);
         }
     }
 
     /**
      * 设置子控件的点击监听
+     *
      * @param index
      * @param childView
      */
@@ -311,21 +387,29 @@ public class FlowTagLayout extends ViewGroup {
                 } else if (mTagCheckMode == FLOW_TAG_CHECKED_SINGLE) {
                     //判断状态
                     if (mCheckedTagArray.get(index)) {
-                        return;
-                    }
-                    //更新全部状态为fasle
+                        if (mSingleCancelable) {
+                            //更新点击状态
+                            mCheckedTagArray.put(index, false);
+                            childView.setSelected(false);
+                            setSelectedIndexs(null);
+                            if (mOnTagSelectListener != null) {
+                                mOnTagSelectListener.onItemSelect(FlowTagLayout.this, index, new ArrayList<Integer>());
+                            }
+                        }
+                    } else {
+                        //更新全部状态为fasle
+                        for (int k = 0; k < mAdapter.getCount(); k++) {
+                            mCheckedTagArray.put(k, false);
+                            getChildAt(k).setSelected(false);
+                        }
 
-                    for (int k = 0; k < mAdapter.getCount(); k++) {
-                        mCheckedTagArray.put(k, false);
-                        getChildAt(k).setSelected(false);
-                    }
-                    //更新点击状态
-                    mCheckedTagArray.put(index, true);
-                    childView.setSelected(true);
-
-                    setSelectedIndexs(Arrays.asList(index));
-                    if (mOnTagSelectListener != null) {
-                        mOnTagSelectListener.onItemSelect(FlowTagLayout.this, index, Arrays.asList(index));
+                        //更新点击状态
+                        mCheckedTagArray.put(index, true);
+                        childView.setSelected(true);
+                        setSelectedIndexs(Arrays.asList(index));
+                        if (mOnTagSelectListener != null) {
+                            mOnTagSelectListener.onItemSelect(FlowTagLayout.this, index, Arrays.asList(index));
+                        }
                     }
                 } else if (mTagCheckMode == FLOW_TAG_CHECKED_MULTI) {
                     if (mCheckedTagArray.get(index)) {
@@ -381,20 +465,48 @@ public class FlowTagLayout extends ViewGroup {
     }
 
     private FlowTagLayout setSelectedIndexs(List<Integer> selectedIndexs) {
-        mSelectedIndexs = selectedIndexs;
+        if (mAdapter != null) {
+            mAdapter.setSelectedIndexs(selectedIndexs);
+        }
         return this;
     }
 
     /**
      * 获取选中索引的集合
+     *
      * @return
      */
+    @Nullable
     public List<Integer> getSelectedIndexs() {
-        if (mSelectedIndexs != null) {
-            return mSelectedIndexs;
-        } else {
-            return getAdapter().getInitSelectedPositions();
+        if (mAdapter != null) {
+            mAdapter.getSelectedIndexs();
         }
+        return null;
+    }
+
+    /**
+     * 获取选中索引
+     *
+     * @return
+     */
+    public int getSelectedIndex() {
+        if (mAdapter != null) {
+            return mAdapter.getSelectedIndex();
+        }
+        return -1;
+    }
+
+    /**
+     * 获取选中索引
+     *
+     * @return
+     */
+    @Nullable
+    public <T> T getSelectedItem() {
+        if (mAdapter != null) {
+            return (T) mAdapter.getSelectedItem();
+        }
+        return null;
     }
 
     /**
@@ -424,6 +536,7 @@ public class FlowTagLayout extends ViewGroup {
 
     /**
      * 设置初始化选中的标签索引
+     *
      * @param ps
      * @return
      */
@@ -436,6 +549,7 @@ public class FlowTagLayout extends ViewGroup {
 
     /**
      * 设置初始化选中的标签索引
+     *
      * @param ps
      * @return
      */
@@ -448,6 +562,7 @@ public class FlowTagLayout extends ViewGroup {
 
     /**
      * 设置初始化选中的标签索引
+     *
      * @param ps
      * @return
      */
@@ -461,6 +576,7 @@ public class FlowTagLayout extends ViewGroup {
 
     /**
      * 设置默认选中的内容
+     *
      * @param selectedItems 选中的内容集合
      * @return
      */
@@ -471,6 +587,7 @@ public class FlowTagLayout extends ViewGroup {
 
     /**
      * 设置默认选中的内容
+     *
      * @param selectedItems 选中的内容集合
      * @return
      */
@@ -486,13 +603,11 @@ public class FlowTagLayout extends ViewGroup {
     /**
      * 获取选中内容在流布局中的索引位置集合
      *
-     * @param selectedItems
-     *            选中的内容集合
-     * @param items
-     *            流布局中选项的集合
+     * @param selectedItems 选中的内容集合
+     * @param items         流布局中选项的集合
      * @return
      */
-    private  <T> List<Integer> getSelectedPositions(List<T> selectedItems, List<T> items) {
+    private <T> List<Integer> getSelectedPositions(List<T> selectedItems, List<T> items) {
         List<Integer> positions = new ArrayList<>();
         if (!isListEmpty(selectedItems) && !isListEmpty(items)) {
             for (int i = 0; i < selectedItems.size(); i++) {
@@ -509,6 +624,7 @@ public class FlowTagLayout extends ViewGroup {
 
     /**
      * 集合是否为空
+     *
      * @param list
      * @param <T>
      * @return

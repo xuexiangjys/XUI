@@ -81,6 +81,8 @@
     <color name="toast_warning_color">@color/xui_config_color_waring</color>
     <color name="toast_normal_tint_color">#353A3E</color>
 
+    <color name="default_image_banner_placeholder_color">#555555</color>
+
     <!--*********************************************
     *              Config Color                     *
     **********************************************-->

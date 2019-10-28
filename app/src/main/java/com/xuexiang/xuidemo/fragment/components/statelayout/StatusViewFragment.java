@@ -23,7 +23,7 @@ import com.xuexiang.xui.widget.popupwindow.status.Status;
 import com.xuexiang.xui.widget.popupwindow.status.StatusView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -48,7 +48,7 @@ public class StatusViewFragment extends BaseFragment {
         mStatusView.setOnErrorClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("点击错误状态视图");
+                XToastUtils.toast("点击错误状态视图");
                 mStatusView.dismiss();
             }
         });
@@ -56,7 +56,7 @@ public class StatusViewFragment extends BaseFragment {
         mStatusView.setOnLoadingClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("点击正在加载状态视图");
+                XToastUtils.toast("点击正在加载状态视图");
                 mStatusView.dismiss();
             }
         });
@@ -64,7 +64,7 @@ public class StatusViewFragment extends BaseFragment {
         mStatusView.setOnCustomClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.toast("点击自定义状态视图");
+                XToastUtils.toast("点击自定义状态视图");
                 mStatusView.dismiss();
             }
         });

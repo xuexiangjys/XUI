@@ -33,7 +33,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.tabbar.TabSegment;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.tip.ToastUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -149,22 +149,22 @@ public class TabSegmentScrollableModeFragment extends BaseFragment {
         mTabSegment.addOnTabSelectedListener(new TabSegment.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int index) {
-                ToastUtils.toast("select " + pages[index]);
+                XToastUtils.toast("select " + pages[index]);
             }
 
             @Override
             public void onTabUnselected(int index) {
-                ToastUtils.toast("unSelect " + pages[index]);
+                XToastUtils.toast("unSelect " + pages[index]);
             }
 
             @Override
             public void onTabReselected(int index) {
-                ToastUtils.toast("reSelect " + pages[index]);
+                XToastUtils.toast("reSelect " + pages[index]);
             }
 
             @Override
             public void onDoubleTap(int index) {
-                ToastUtils.toast("double tap " + pages[index]);
+                XToastUtils.toast("double tap " + pages[index]);
             }
         });
     }

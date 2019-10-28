@@ -68,6 +68,10 @@ public class MultiLineEditText extends LinearLayout {
      */
     private float mContentViewHeight;
     /**
+     * 输入框高度是否是固定高度，默认是true
+     */
+    private boolean mIsFixHeight;
+    /**
      * 输入框padding
      */
     private int mContentPadding;
@@ -112,6 +116,7 @@ public class MultiLineEditText extends LinearLayout {
         mContentTextColor = typedArray.getColor(R.styleable.MultiLineEditText_mlet_contentTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_input_text));
         mContentTextSize = typedArray.getDimensionPixelSize(R.styleable.MultiLineEditText_mlet_contentTextSize, sp2px(context, 14));
         mContentViewHeight = typedArray.getDimensionPixelSize(R.styleable.MultiLineEditText_mlet_contentViewHeight, dp2px(context, 140));
+        mIsFixHeight = typedArray.getBoolean(R.styleable.MultiLineEditText_mlet_isFixHeight, true);
         mIsShowSurplusNumber = typedArray.getBoolean(R.styleable.MultiLineEditText_mlet_showSurplusNumber, false);
         typedArray.recycle();
     }
@@ -129,13 +134,17 @@ public class MultiLineEditText extends LinearLayout {
         mEtInput.setHint(mHintText);
         mEtInput.setHintTextColor(mHintTextColor);
         mEtInput.setText(mContentText);
-        mEtInput.setPadding(mContentPadding, mContentPadding, mContentPadding, mContentPadding);
+        mEtInput.setPadding(mContentPadding, mContentPadding, mContentPadding, 0);
         if (mContentBackground != null) {
             mEtInput.setBackground(mContentBackground);
         }
         mEtInput.setTextColor(mContentTextColor);
         mEtInput.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContentTextSize);
-        mEtInput.setHeight((int) mContentViewHeight);
+        if (mIsFixHeight) {
+            mEtInput.setHeight((int) mContentViewHeight);
+        } else {
+            mEtInput.setMinHeight((int) mContentViewHeight);
+        }
         /**
          * 配合 mTvInputNumber xml的 android:focusable="true"
          android:focusableInTouchMode="true"

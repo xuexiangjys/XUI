@@ -17,8 +17,8 @@ import com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner;
 import com.xuexiang.xui.widget.textview.supertextview.SuperButton;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.EditSpinnerDialog;
-import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +96,7 @@ public class SpinnerStyleFragment extends BaseFragment {
         mMaterialSpinnerOne.setOnNoMoreChoiceListener(new MaterialSpinner.OnNoMoreChoiceListener() {
             @Override
             public void OnNoMoreChoice(MaterialSpinner spinner) {
-                ToastUtils.toast("没有更多的选项！");
+                XToastUtils.toast("没有更多的选项！");
             }
         });
 

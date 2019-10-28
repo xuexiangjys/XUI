@@ -117,6 +117,18 @@
 #如果引用了v4或者v7包
 -dontwarn android.support.**
 
+# AndroidX 防止混淆
+-dontwarn com.google.android.material.**
+-dontnote com.google.android.material.**
+-dontwarn androidx.**
+-keep class com.google.android.material.** {*;}
+-keep class androidx.** {*;}
+-keep public class * extends androidx.**
+-keep interface androidx.** {*;}
+-keepclassmembers class * {
+    @androidx.annotation.Keep *;
+}
+
 # zxing
 -dontwarn com.google.zxing.**
 -keep class com.google.zxing.**{*;}
