@@ -74,6 +74,14 @@ public class TabControlView extends RadioGroup implements HasTypeface {
      */
     private int mItemPadding;
     /**
+     * 选项水平间距
+     */
+    private int mItemPaddingHorizontal;
+    /**
+     * 选项垂直间距
+     */
+    private int mItemPaddingVertical;
+    /**
      * 选中背景的颜色
      */
     private int mSelectedColor;
@@ -104,6 +112,7 @@ public class TabControlView extends RadioGroup implements HasTypeface {
     private ColorStateList mTextColorStateList;
 
     //Item organization
+
     private LinkedHashMap<String, String> mItemMap = new LinkedHashMap<>();
     private List<RadioButton> mOptions;
     /**
@@ -155,6 +164,8 @@ public class TabControlView extends RadioGroup implements HasTypeface {
             mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
             mStrokeWidth = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_strokeWidth, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_stroke_width));
             mItemPadding = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding, -1);
+            mItemPaddingHorizontal = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding_horizontal, -1);
+            mItemPaddingVertical = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding_vertical, -1);
 
             //Set text mSelectedColor state list
             mTextColorStateList = new ColorStateList(new int[][]{
@@ -231,6 +242,9 @@ public class TabControlView extends RadioGroup implements HasTypeface {
             rb.setLayoutParams(params);
             if (mItemPadding != -1) {
                 rb.setPadding(mItemPadding, mItemPadding, mItemPadding, mItemPadding);
+            }
+            if (mItemPaddingHorizontal != -1 && mItemPaddingVertical != -1) {
+                rb.setPadding(mItemPaddingHorizontal, mItemPaddingVertical, mItemPaddingHorizontal, mItemPaddingVertical);
             }
             rb.setMinWidth(mStrokeWidth * 10);
             rb.setGravity(Gravity.CENTER);

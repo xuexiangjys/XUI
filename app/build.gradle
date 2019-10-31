@@ -101,8 +101,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.1.0'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.0'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类

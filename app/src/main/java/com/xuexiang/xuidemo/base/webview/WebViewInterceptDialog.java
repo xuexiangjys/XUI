@@ -35,21 +35,25 @@ import com.xuexiang.xutil.app.ActivityUtils;
 
 import java.net.URISyntaxException;
 
-import static com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient.APP_LINK_ACTION;
-import static com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient.APP_LINK_HOST;
-
 /**
  * WebView拦截提示
  *
  * @author xuexiang
  * @since 2019-10-21 9:51
  */
-public class WebViewTipDialog extends AppCompatActivity implements DialogInterface.OnDismissListener {
+public class WebViewInterceptDialog extends AppCompatActivity implements DialogInterface.OnDismissListener {
 
-    private static final String KEY_INTERCEPT_URL = "KEY_INTERCEPT_URL";
+    private static final String KEY_INTERCEPT_URL = "key_intercept_url";
+    public static final String APP_LINK_HOST = "xuexiangjys.club";
+    public static final String APP_LINK_ACTION = "com.xuexiang.xui.applink";
 
+    /**
+     * 显示WebView拦截提示
+     *
+     * @param url
+     */
     public static void show(String url) {
-        ActivityUtils.startActivity(WebViewTipDialog.class, KEY_INTERCEPT_URL, url);
+        ActivityUtils.startActivity(WebViewInterceptDialog.class, KEY_INTERCEPT_URL, url);
     }
 
     @Override

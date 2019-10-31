@@ -16,9 +16,6 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
@@ -30,12 +27,9 @@ import androidx.annotation.RequiresApi;
 
 import com.just.agentweb.core.client.MiddlewareWebClientBase;
 import com.xuexiang.xui.utils.ResUtils;
-import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.utils.XToastUtils;
-import com.xuexiang.xutil.XUtil;
 
-import java.net.URISyntaxException;
+import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_HOST;
 
 /**
  * 【网络请求、加载】
@@ -60,7 +54,7 @@ import java.net.URISyntaxException;
  * <p>
  * <p>
  * 中断中间件的执行， 删除super.methodName(...) 这行即可
- *
+ * <p>
  * 这里主要是做去广告的工作
  */
 public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
@@ -131,10 +125,6 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
         return false;
     }
 
-    public static final String APP_LINK_HOST = "xuexiangjys.club";
-    public static final String APP_LINK_ACTION = "com.xuexiang.xui.applink";
-
-
     /**
      * 根据url的scheme处理跳转第三方app的业务
      */
@@ -149,7 +139,7 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
             }
         }
 
-        WebViewTipDialog.show(url);
+        WebViewInterceptDialog.show(url);
         return true;
     }
 
