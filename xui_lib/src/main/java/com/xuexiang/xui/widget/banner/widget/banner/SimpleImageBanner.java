@@ -10,11 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseIndicatorBanner;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
+import com.xuexiang.xui.widget.imageview.strategy.DiskCacheStrategyEnum;
+import com.xuexiang.xui.widget.imageview.strategy.LoadOption;
 
 import java.lang.ref.WeakReference;
 
@@ -103,9 +104,10 @@ public class SimpleImageBanner extends BaseIndicatorBanner<BannerItem, SimpleIma
         String imgUrl = item.imgUrl;
 
         if (!TextUtils.isEmpty(imgUrl)) {
-            ImageLoader.get().loadImage(iv, imgUrl,
-                    itemWidth, itemHeight, mColorDrawable,
-                    mEnableCache ? DiskCacheStrategy.RESOURCE : DiskCacheStrategy.NONE);
+            LoadOption option = LoadOption.of(mColorDrawable)
+                    .setCacheStrategy(mEnableCache ? DiskCacheStrategyEnum.RESOURCE : DiskCacheStrategyEnum.NONE)
+                    .setSize(itemWidth, itemHeight);
+            ImageLoader.get().loadImage(iv, imgUrl, option);
         } else {
             iv.setImageDrawable(mColorDrawable);
         }

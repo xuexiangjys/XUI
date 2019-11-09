@@ -23,8 +23,10 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.xuexiang.xui.widget.imageview.strategy.DiskCacheStrategyEnum;
 import com.xuexiang.xui.widget.imageview.strategy.IImageLoadStrategy;
+import com.xuexiang.xui.widget.imageview.strategy.ILoadListener;
+import com.xuexiang.xui.widget.imageview.strategy.LoadOption;
 import com.xuexiang.xui.widget.imageview.strategy.impl.GlideImageLoadStrategy;
 
 /**
@@ -78,10 +80,21 @@ public class ImageLoader implements IImageLoadStrategy {
         return sInstance;
     }
 
-
     @Override
     public void loadImage(@NonNull ImageView imageView, Object path) {
         mStrategy.loadImage(imageView, path);
+    }
+
+    /**
+     * 加载图片【最常用】
+     *
+     * @param imageView 图片控件
+     * @param path      图片资源的索引
+     * @param listener  加载监听
+     */
+    @Override
+    public void loadImage(@NonNull ImageView imageView, Object path, @NonNull ILoadListener listener) {
+        mStrategy.loadImage(imageView, path, listener);
     }
 
     @Override
@@ -89,29 +102,140 @@ public class ImageLoader implements IImageLoadStrategy {
         mStrategy.loadGifImage(imageView, path);
     }
 
+    /**
+     * 加载图片【最常用】
+     *
+     * @param imageView 图片控件
+     * @param path      图片资源的索引
+     * @param listener  加载监听
+     */
     @Override
-    public void loadImage(@NonNull ImageView imageView, Object path, DiskCacheStrategy strategy) {
+    public void loadGifImage(@NonNull ImageView imageView, Object path, @NonNull ILoadListener listener) {
+        mStrategy.loadGifImage(imageView, path, listener);
+    }
+
+    @Override
+    public void loadImage(@NonNull ImageView imageView, Object path, DiskCacheStrategyEnum strategy) {
         mStrategy.loadImage(imageView, path, strategy);
     }
 
+    /**
+     * 加载图片
+     *
+     * @param imageView 图片控件
+     * @param path      图片资源的索引
+     * @param strategy  磁盘缓存策略
+     * @param listener  加载监听
+     */
     @Override
-    public void loadGifImage(@NonNull ImageView imageView, Object path, DiskCacheStrategy strategy) {
+    public void loadImage(@NonNull ImageView imageView, Object path, DiskCacheStrategyEnum strategy, ILoadListener listener) {
+        mStrategy.loadImage(imageView, path, strategy, listener);
+    }
+
+    @Override
+    public void loadGifImage(@NonNull ImageView imageView, Object path, DiskCacheStrategyEnum strategy) {
         mStrategy.loadGifImage(imageView, path, strategy);
     }
 
+    /**
+     * 加载Gif图片
+     *
+     * @param imageView 图片控件
+     * @param path      图片资源的索引
+     * @param strategy  磁盘缓存策略
+     * @param listener  加载监听
+     */
     @Override
-    public void loadImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategy strategy) {
+    public void loadGifImage(@NonNull ImageView imageView, Object path, DiskCacheStrategyEnum strategy, ILoadListener listener) {
+        mStrategy.loadGifImage(imageView, path, strategy, listener);
+    }
+
+    @Override
+    public void loadImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategyEnum strategy) {
         mStrategy.loadImage(imageView, path, placeholder, strategy);
     }
 
+    /**
+     * 加载图片
+     *
+     * @param imageView   图片控件
+     * @param path        图片资源的索引
+     * @param placeholder 占位图片
+     * @param strategy    磁盘缓存策略
+     * @param listener    加载监听
+     */
     @Override
-    public void loadGifImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategy strategy) {
-        mStrategy.loadGifImage(imageView, path, placeholder, strategy);
+    public void loadImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategyEnum strategy, ILoadListener listener) {
+        mStrategy.loadImage(imageView, path, placeholder, strategy, listener);
     }
 
     @Override
-    public void loadImage(@NonNull ImageView imageView, Object path, int width, int height, Drawable placeholder, DiskCacheStrategy strategy) {
-        mStrategy.loadImage(imageView, path, width, height, placeholder, strategy);
+    public void loadGifImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategyEnum strategy) {
+        mStrategy.loadGifImage(imageView, path, placeholder, strategy);
+    }
+
+    /**
+     * 加载Gif图片
+     *
+     * @param imageView   图片控件
+     * @param path        图片资源的索引
+     * @param placeholder 占位图片
+     * @param strategy    磁盘缓存策略
+     * @param listener    加载监听
+     */
+    @Override
+    public void loadGifImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategyEnum strategy, ILoadListener listener) {
+        mStrategy.loadGifImage(imageView, path, placeholder, strategy, listener);
+    }
+
+    /**
+     * 加载图片
+     *
+     * @param imageView  图片控件
+     * @param path       图片资源的索引
+     * @param loadOption 加载选项
+     */
+    @Override
+    public void loadImage(@NonNull ImageView imageView, Object path, LoadOption loadOption) {
+        mStrategy.loadImage(imageView, path, loadOption);
+    }
+
+    /**
+     * 加载图片
+     *
+     * @param imageView  图片控件
+     * @param path       图片资源的索引
+     * @param loadOption 加载选项
+     * @param listener   加载监听
+     */
+    @Override
+    public void loadImage(@NonNull ImageView imageView, Object path, LoadOption loadOption, ILoadListener listener) {
+        mStrategy.loadImage(imageView, path, loadOption, listener);
+    }
+
+    /**
+     * 加载Gif图片
+     *
+     * @param imageView  图片控件
+     * @param path       图片资源的索引
+     * @param loadOption 加载选项
+     */
+    @Override
+    public void loadGifImage(@NonNull ImageView imageView, Object path, LoadOption loadOption) {
+        mStrategy.loadGifImage(imageView, path, loadOption);
+    }
+
+    /**
+     * 加载Gif图片
+     *
+     * @param imageView  图片控件
+     * @param path       图片资源的索引
+     * @param loadOption 加载选项
+     * @param listener   加载监听
+     */
+    @Override
+    public void loadGifImage(@NonNull ImageView imageView, Object path, LoadOption loadOption, ILoadListener listener) {
+        mStrategy.loadGifImage(imageView, path, loadOption, listener);
     }
 
     @Override

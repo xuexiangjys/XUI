@@ -25,11 +25,11 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.banner.recycler.BannerLayout;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
+import com.xuexiang.xui.widget.imageview.strategy.DiskCacheStrategyEnum;
 import com.xuexiang.xuidemo.R;
 
 import java.util.Arrays;
@@ -93,7 +93,7 @@ public class RecyclerViewBannerAdapter extends BaseRecyclerAdapter<String> {
 
         if (!TextUtils.isEmpty(imgUrl)) {
             ImageLoader.get().loadImage(imageView, imgUrl, mColorDrawable,
-                    mEnableCache ? DiskCacheStrategy.RESOURCE : DiskCacheStrategy.NONE);
+                    mEnableCache ? DiskCacheStrategyEnum.RESOURCE : DiskCacheStrategyEnum.NONE);
         } else {
             imageView.setImageDrawable(mColorDrawable);
         }
