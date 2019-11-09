@@ -17,10 +17,13 @@
 
 package com.xuexiang.xuidemo.fragment.components.imageview.edit;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.annotation.SingleClick;
@@ -35,6 +38,8 @@ import com.xuexiang.xui.widget.imageview.edit.TextStyleBuilder;
 import com.xuexiang.xui.widget.imageview.edit.ViewType;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.display.ImageUtils;
@@ -50,7 +55,7 @@ import static com.xuexiang.xuidemo.fragment.expands.XQRCodeFragment.REQUEST_IMAG
  * @author xuexiang
  * @since 2019-10-28 10:56
  */
-@Page(name = "图片编辑\n画笔、橡皮檫、文字、滤镜")
+@Page(name = "图片编辑\n画笔、橡皮檫、文字、滤镜、保存")
 public class PhotoEditFragment extends BaseFragment implements OnPhotoEditorListener {
 
     @BindView(R.id.photo_editor_view)
@@ -81,7 +86,7 @@ public class PhotoEditFragment extends BaseFragment implements OnPhotoEditorList
     }
 
     @SingleClick
-    @OnClick({R.id.btn_select, R.id.btn_brush, R.id.btn_text, R.id.btn_rubber, R.id.iv_undo, R.id.iv_redo, R.id.btn_filter})
+    @OnClick({R.id.btn_select, R.id.btn_brush, R.id.btn_text, R.id.btn_rubber, R.id.iv_undo, R.id.iv_redo, R.id.btn_filter, R.id.btn_save})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_select:
@@ -95,8 +100,8 @@ public class PhotoEditFragment extends BaseFragment implements OnPhotoEditorList
                 break;
             case R.id.btn_brush:
                 mPhotoEditor.setBrushColor(ResUtils.getColor(R.color.xui_config_color_white))
-                            .setBrushSize(DensityUtils.dp2px(5))
-                            .setBrushDrawingMode(true);
+                        .setBrushSize(DensityUtils.dp2px(5))
+                        .setBrushDrawingMode(true);
                 break;
             case R.id.btn_text:
                 final TextStyleBuilder styleBuilder = new TextStyleBuilder();
@@ -109,9 +114,35 @@ public class PhotoEditFragment extends BaseFragment implements OnPhotoEditorList
             case R.id.btn_filter:
                 mPhotoEditor.setFilterEffect(PhotoFilter.GRAY_SCALE);
                 break;
+            case R.id.btn_save:
+                saveImage();
+                break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 保存图片
+     */
+    @SuppressLint("MissingPermission")
+    @Permission(STORAGE)
+    private void saveImage() {
+        getMessageLoader("保存中...").show();
+        mPhotoEditor.saveAsFile(Utils.getImageSavePath(), new PhotoEditor.OnSaveListener() {
+            @Override
+            public void onSuccess(@NonNull String imagePath) {
+                getMessageLoader().dismiss();
+                if (photoEditorView != null) {
+                    photoEditorView.getSource().setImageBitmap(ImageUtils.getBitmap(imagePath));
+                }
+            }
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                getMessageLoader().dismiss();
+                XToastUtils.error(exception);
+            }
+        });
     }
 
     @Permission(STORAGE)
@@ -128,6 +159,7 @@ public class PhotoEditFragment extends BaseFragment implements OnPhotoEditorList
                 Uri uri = data.getData();
                 if (uri != null) {
                     mPhotoEditor.clearAllViews();
+                    @SuppressLint("MissingPermission")
                     Bitmap bitmap = ImageUtils.getBitmap(PathUtils.getFilePathByUri(uri));
                     photoEditorView.getSource().setImageBitmap(bitmap);
                 }

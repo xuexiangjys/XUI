@@ -61,6 +61,13 @@
             android:layout_marginTop="8dp"
             android:text="滤镜" />
 
+        <com.xuexiang.xui.widget.textview.supertextview.SuperButton
+            android:id="@+id/btn_save"
+            style="@style/SuperButton.Primary.wrap"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="保存" />
+
     </com.xuexiang.xui.widget.flowlayout.FlowLayout>
 
     <FrameLayout

@@ -71,6 +71,11 @@ public final class XToastUtils {
     }
 
     @MainThread
+    public static void error(@NonNull Exception error) {
+        XToast.error(XUI.getContext(), error.getMessage()).show();
+    }
+
+    @MainThread
     public static void error(@StringRes int message) {
         XToast.error(XUI.getContext(), message).show();
     }
