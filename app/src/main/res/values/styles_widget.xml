@@ -165,4 +165,17 @@
         <item name="sv_custom">@layout/sv_layout_custom</item>
     </style>
 
+    <style name="PullDownStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="srlEnableOverScrollDrag">true</item>
+        <item name="srlEnablePureScrollMode">true</item>
+    </style>
+
+    <style name="ScrollViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
 </resources>

@@ -17,14 +17,15 @@
 package com.xuexiang.xuidemo.base.webview;
 
 import android.app.Activity;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.just.agentweb.widget.IWebLayout;
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xuexiang.xuidemo.R;
 
 /**
@@ -35,19 +36,18 @@ import com.xuexiang.xuidemo.R;
  */
 public class WebLayout implements IWebLayout {
 
-    private final TwinklingRefreshLayout mTwinklingRefreshLayout;
+    private final SmartRefreshLayout mSmartRefreshLayout;
     private WebView mWebView;
 
     public WebLayout(Activity activity) {
-        mTwinklingRefreshLayout = (TwinklingRefreshLayout) LayoutInflater.from(activity).inflate(R.layout.fragment_twk_web, null);
-        mTwinklingRefreshLayout.setPureScrollModeOn();
-        mWebView = mTwinklingRefreshLayout.findViewById(R.id.webView);
+        mSmartRefreshLayout = (SmartRefreshLayout) LayoutInflater.from(activity).inflate(R.layout.fragment_pulldown_web, null);
+        mWebView = mSmartRefreshLayout.findViewById(R.id.webView);
     }
 
     @NonNull
     @Override
     public ViewGroup getLayout() {
-        return mTwinklingRefreshLayout;
+        return mSmartRefreshLayout;
     }
 
     @Nullable
@@ -55,6 +55,5 @@ public class WebLayout implements IWebLayout {
     public WebView getWebView() {
         return mWebView;
     }
-
 
 }

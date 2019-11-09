@@ -5,15 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srlEnableOverScrollDrag="true"
-        app:srlEnablePureScrollMode="true">
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout style="@style/PullDownStyle">
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView style="@style/ScrollViewStyle">
 
             <LinearLayout
                 android:layout_width="match_parent"
