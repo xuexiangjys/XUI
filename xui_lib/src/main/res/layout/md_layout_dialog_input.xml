@@ -24,7 +24,7 @@
   android:orientation="vertical"
   app:md_reduce_padding_no_title_no_buttons="false">
 
-  <include layout="@layout/md_stub_titleframe"/>
+  <include layout="@layout/md_layout_stub_titleframe"/>
 
   <LinearLayout
     android:layout_width="match_parent"
@@ -32,6 +32,8 @@
     android:layout_weight="1"
     android:orientation="vertical"
     android:paddingBottom="@dimen/md_content_padding_bottom"
+    android:paddingLeft="?attr/md_dialog_frame_margin"
+    android:paddingRight="?attr/md_dialog_frame_margin"
     android:paddingTop="@dimen/md_content_padding_top">
 
     <TextView
@@ -40,18 +42,15 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
       android:layout_marginBottom="@dimen/md_content_padding_bottom"
-      android:layout_marginLeft="?attr/md_dialog_frame_margin"
-      android:layout_marginRight="?attr/md_dialog_frame_margin"
       android:layout_marginTop="4dp"
+      android:fontFamily="sans-serif"
       android:textSize="?attr/md_content_textsize"
       tools:ignore="UnusedAttribute"
       tools:text="Message"/>
 
     <RelativeLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="?attr/md_dialog_frame_margin"
-      android:layout_marginRight="?attr/md_dialog_frame_margin">
+      android:layout_height="wrap_content">
 
       <EditText
         android:id="@android:id/input"
@@ -60,6 +59,7 @@
         android:layout_marginBottom="1dp"
         android:layout_marginLeft="-2dp"
         android:layout_marginRight="-2dp"
+        android:focusable="true"
         android:textSize="?attr/md_content_textsize"
         tools:ignore="TextFields"/>
 
@@ -81,19 +81,8 @@
 
     </RelativeLayout>
 
-    <CheckBox
-      android:id="@+id/md_promptCheckbox"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="start|center_vertical"
-      android:layout_marginLeft="@dimen/md_notitle_vertical_padding_more"
-      android:layout_marginRight="@dimen/md_notitle_vertical_padding_more"
-      android:focusable="true"
-      android:gravity="start"
-      tools:text="Don't ask again"/>
-
   </LinearLayout>
 
-  <include layout="@layout/md_stub_actionbuttons"/>
+  <include layout="@layout/md_layout_stub_actionbuttons"/>
 
 </com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout>

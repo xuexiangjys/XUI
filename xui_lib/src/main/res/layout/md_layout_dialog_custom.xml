@@ -17,28 +17,18 @@
 
 <com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/md_root"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:orientation="vertical"
-  app:md_reduce_padding_no_title_no_buttons="false">
+  android:orientation="vertical">
 
-  <include layout="@layout/md_stub_titleframe"/>
+  <include layout="@layout/md_layout_stub_titleframe"/>
 
-  <LinearLayout
+  <FrameLayout
+    android:id="@+id/md_customViewFrame"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/md_content_padding_bottom"
-    android:paddingLeft="?attr/md_dialog_frame_margin"
-    android:paddingRight="?attr/md_dialog_frame_margin"
-    android:paddingTop="@dimen/md_content_padding_top">
+    android:layout_height="wrap_content"/>
 
-    <include layout="@layout/md_stub_progress"/>
-
-  </LinearLayout>
-
-  <include layout="@layout/md_stub_actionbuttons"/>
+  <include layout="@layout/md_layout_stub_actionbuttons"/>
 
 </com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout>

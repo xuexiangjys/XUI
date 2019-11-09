@@ -23,10 +23,10 @@
   android:orientation="vertical"
   app:md_reduce_padding_no_title_no_buttons="false">
 
-  <include layout="@layout/md_stub_titleframe"/>
+  <include layout="@layout/md_layout_stub_titleframe"/>
 
-  <include layout="@layout/md_stub_progress_indeterminate"/>
+  <include layout="@layout/md_layout_stub_progress_indeterminate"/>
 
-  <include layout="@layout/md_stub_actionbuttons"/>
+  <include layout="@layout/md_layout_stub_actionbuttons"/>
 
 </com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout>

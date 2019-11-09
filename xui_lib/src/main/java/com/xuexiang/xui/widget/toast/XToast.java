@@ -296,7 +296,7 @@ public class XToast {
                                @ColorInt int tintColor, @ColorInt int textColor, int duration,
                                boolean withIcon, boolean shouldTint) {
         final Toast currentToast = Toast.makeText(context, "", duration);
-        final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.xtoast_layout, null);
+        final View toastLayout = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.xui_layout_xtoast, null);
         final ImageView toastIcon = toastLayout.findViewById(R.id.toast_icon);
         final TextView toastTextView = toastLayout.findViewById(R.id.toast_text);
         Drawable drawableFrame;

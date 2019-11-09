@@ -39,7 +39,7 @@ public abstract class MaterialSpinnerBaseAdapter<T> extends BaseAdapter {
         final TextView textView;
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.ms_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.ms_layout_list_item, parent, false);
             textView = convertView.findViewById(R.id.tv_tinted_spinner);
             textView.setTextColor(textColor);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);

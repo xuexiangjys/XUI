@@ -162,13 +162,12 @@
     <public name="XUIDialog" type="style" />
     <public name="XUIDialog.Custom" type="style" />
 
-
     <!--layout-->
     <public name="xui_include_titlebar" type="layout" />
-    <public name="msv_empty_view" type="layout" />
-    <public name="msv_error_view" type="layout" />
-    <public name="msv_loading_view" type="layout" />
-    <public name="msv_no_network_view" type="layout" />
+    <public name="msv_layout_empty_view" type="layout" />
+    <public name="msv_layout_error_view" type="layout" />
+    <public name="msv_layout_loading_view" type="layout" />
+    <public name="msv_layout_no_network_view" type="layout" />
 
     <!--attr-->
     <public name="xui_config_content_spacing_horizontal" type="attr" />

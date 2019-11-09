@@ -444,10 +444,10 @@
     </style>
 
     <style name="MultipleStatusView">
-        <item name="msv_loadingView">@layout/msv_loading_view</item>
-        <item name="msv_errorView">@layout/msv_error_view</item>
-        <item name="msv_emptyView">@layout/msv_empty_view</item>
-        <item name="msv_noNetworkView">@layout/msv_no_network_view</item>
+        <item name="msv_loadingView">@layout/msv_layout_loading_view</item>
+        <item name="msv_errorView">@layout/msv_layout_error_view</item>
+        <item name="msv_emptyView">@layout/msv_layout_empty_view</item>
+        <item name="msv_noNetworkView">@layout/msv_layout_no_network_view</item>
     </style>
 
     <style name="StatefulLayout">
