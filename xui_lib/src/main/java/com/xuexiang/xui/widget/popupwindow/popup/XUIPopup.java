@@ -9,6 +9,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.UIConsts;
+import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.utils.ResUtils;
 
 /**
  * 提供一个浮层，支持自定义浮层的内容，支持在指定 {@link View} 的任一方向旁边展示该浮层，支持自定义浮层出现/消失的动画。
@@ -37,7 +40,6 @@ public class XUIPopup extends XUIBasePopup {
     protected int mAnimStyle;
     private int mPreferredDirection;
     protected int mDirection;
-
 
     protected int mX = -1;
     protected int mY = -1;
@@ -169,6 +171,8 @@ public class XUIPopup extends XUIBasePopup {
                     // 默认Y值与attachedView的Y值相同
                     mY = attachedViewLocation[1];
                     break;
+                default:
+                    break;
             }
         } else {
             mX = (mScreenSize.x - mWindowWidth) / 2;
@@ -275,6 +279,48 @@ public class XUIPopup extends XUIBasePopup {
 
     public ViewGroup.LayoutParams generateLayoutParam(int width, int height) {
         return new FrameLayout.LayoutParams(width, height);
+    }
+
+    /**
+     * 向下显示
+     *
+     * @param v
+     */
+    public void showDown(View v) {
+        setPreferredDirection(XUIPopup.DIRECTION_BOTTOM);
+        show(v);
+    }
+
+    /**
+     * 向上显示
+     *
+     * @param v
+     */
+    public void showUp(View v) {
+        setPreferredDirection(XUIPopup.DIRECTION_TOP);
+        show(v);
+    }
+
+    /**
+     * @return 获取弹出窗的宽度
+     */
+    protected int getPopupWidth() {
+        int width;
+        switch (XUI.getScreenType()) {
+            case UIConsts.ScreenType.BIG_TABLET:
+                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_big);
+                break;
+            case UIConsts.ScreenType.SMALL_TABLET:
+                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_small);
+                break;
+            case UIConsts.ScreenType.PHONE:
+                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_phone);
+                break;
+            default:
+                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_small);
+                break;
+        }
+        return width;
     }
 
 }

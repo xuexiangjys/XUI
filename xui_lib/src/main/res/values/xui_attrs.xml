@@ -1419,6 +1419,12 @@
         <attr name="wclv_max_height" format="dimension" />
     </declare-styleable>
 
+    <!--XUIWrapContentExpandableListView-->
+    <declare-styleable name="XUIWrapContentExpandableListView">
+        <!--设置listView的最大高度-->
+        <attr name="wcelv_max_height" format="dimension" />
+    </declare-styleable>
+
     <!--XUIWrapContentScrollView-->
     <declare-styleable name="XUIWrapContentScrollView">
         <!--设置ScrollView的最大高度-->

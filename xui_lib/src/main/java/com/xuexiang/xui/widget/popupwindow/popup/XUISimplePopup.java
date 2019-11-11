@@ -108,26 +108,6 @@ public class XUISimplePopup<T extends XUISimplePopup> extends XUIListPopup {
     }
 
     /**
-     * 向下显示
-     *
-     * @param v
-     */
-    public void showDown(View v) {
-        setPreferredDirection(XUIPopup.DIRECTION_BOTTOM);
-        show(v);
-    }
-
-    /**
-     * 向上显示
-     *
-     * @param v
-     */
-    public void showUp(View v) {
-        setPreferredDirection(XUIPopup.DIRECTION_TOP);
-        show(v);
-    }
-
-    /**
      * 条目点击监听
      */
     public interface OnPopupItemClickListener {
@@ -146,24 +126,6 @@ public class XUISimplePopup<T extends XUISimplePopup> extends XUIListPopup {
         return (XUISimpleAdapter) mAdapter;
     }
 
-    private int getPopupWidth() {
-        int width;
-        switch (XUI.getScreenType()) {
-            case UIConsts.ScreenType.BIG_TABLET:
-                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_big);
-                break;
-            case UIConsts.ScreenType.SMALL_TABLET:
-                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_small);
-                break;
-            case UIConsts.ScreenType.PHONE:
-                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_phone);
-                break;
-            default:
-                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_small);
-                break;
-        }
-        return width;
-    }
 
     @Override
     public T setHasDivider(boolean hasDivider) {

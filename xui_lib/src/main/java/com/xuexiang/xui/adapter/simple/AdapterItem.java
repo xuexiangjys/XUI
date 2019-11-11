@@ -22,6 +22,18 @@ public class AdapterItem {
      */
     private Drawable mIcon;
 
+    public static AdapterItem of(CharSequence title) {
+        return new AdapterItem(title);
+    }
+
+    public static AdapterItem[] arrayof(CharSequence[] title) {
+        AdapterItem[] array = new AdapterItem[title.length];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = new AdapterItem(title[i]);
+        }
+        return array;
+    }
+
     public AdapterItem(CharSequence title) {
         mTitle = title;
     }

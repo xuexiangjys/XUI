@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="?attr/xui_config_content_spacing_horizontal">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="?attr/xui_config_simple_list_icon_size"
+        android:layout_height="?attr/xui_config_simple_list_icon_size"
+        android:layout_marginEnd="?attr/xui_config_content_spacing_horizontal" />
+
+    <TextView
+        android:id="@+id/tv_group_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="?attr/xui_config_content_spacing_horizontal"
+        android:layout_weight="1"
+        android:singleLine="true"
+        android:textColor="@color/xui_config_color_title_text"
+        android:textSize="?attr/xui_config_size_content_text"
+        tools:text="标题" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="?attr/colorAccent"
+        app:srcCompat="@drawable/xui_ic_expand_arrow_down" />
+
+</LinearLayout>

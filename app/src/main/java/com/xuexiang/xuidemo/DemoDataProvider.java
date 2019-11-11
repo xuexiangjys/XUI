@@ -4,6 +4,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
+import com.xuexiang.xui.adapter.simple.ExpandableItem;
 import com.xuexiang.xui.widget.banner.transform.DepthTransformer;
 import com.xuexiang.xui.widget.banner.transform.FadeSlideTransformer;
 import com.xuexiang.xui.widget.banner.transform.FlowTransformer;
@@ -87,6 +88,12 @@ public class DemoDataProvider {
             new AdapterItem("登陆", R.drawable.icon_password_login),
             new AdapterItem("筛选", R.drawable.icon_filter),
             new AdapterItem("设置", R.drawable.icon_setting),
+    };
+
+    public static ExpandableItem[] expandableItems = new ExpandableItem[]{
+            ExpandableItem.of(new AdapterItem("屏幕尺寸", R.drawable.icon_password_login)).addChild(AdapterItem.arrayof(dpiItems)),
+            ExpandableItem.of(new AdapterItem("设备亮度", R.drawable.icon_filter)).addChild(menuItems),
+            ExpandableItem.of(new AdapterItem("屏幕分辨率", R.drawable.icon_setting)).addChild(AdapterItem.arrayof(dpiItems))
     };
 
     public static List<List<ImageViewInfo>> sPics;
@@ -321,8 +328,9 @@ public class DemoDataProvider {
      * @return 返回拆分后的各个集合
      */
     public static <T> List<List<T>> split(List<T> resList, int count) {
-        if (resList == null || count < 1)
+        if (resList == null || count < 1) {
             return null;
+        }
         List<List<T>> ret = new ArrayList<>();
         int size = resList.size();
         if (size <= count) { //数据量不足count指定的大小
