@@ -222,7 +222,10 @@ public class XUIExpandableListPopup<T extends XUIExpandableListPopup> extends XU
      * @param expandedPosition
      * @return
      */
-    private boolean expandOnlyOne(int expandedPosition) {
+    public boolean expandOnlyOne(int expandedPosition) {
+        if (mExpandableListView == null) {
+            return false;
+        }
         boolean result = true;
         int groupLength = mExpandableListView.getExpandableListAdapter().getGroupCount();
         for (int i = 0; i < groupLength; i++) {
@@ -234,11 +237,23 @@ public class XUIExpandableListPopup<T extends XUIExpandableListPopup> extends XU
     }
 
     /**
-     * 清空展开状态
-     *
-     * @return
+     * 展开所有组
      */
-    public void clearExpandStatus() {
+    public void expandAllGroup() {
+        if (mExpandableListView != null) {
+            int groupLength = mExpandableListView.getExpandableListAdapter().getGroupCount();
+            for (int i = 0; i < groupLength; i++) {
+                if (!mExpandableListView.isGroupExpanded(i)) {
+                    mExpandableListView.expandGroup(i);
+                }
+            }
+        }
+    }
+
+    /**
+     * 收起所有组
+     */
+    public void collapseAllGroup() {
         if (mExpandableListView != null) {
             int groupLength = mExpandableListView.getExpandableListAdapter().getGroupCount();
             for (int i = 0; i < groupLength; i++) {
@@ -248,6 +263,16 @@ public class XUIExpandableListPopup<T extends XUIExpandableListPopup> extends XU
             }
         }
     }
+
+    /**
+     * 清空展开状态
+     *
+     * @return
+     */
+    public void clearExpandStatus() {
+        collapseAllGroup();
+    }
+
 
     public ExpandableListAdapter getAdapter() {
         return mAdapter;

@@ -79,7 +79,7 @@ public class PopupWindowStyleFragment extends BaseFragment {
 
     private void initExpandableListPopup() {
         mExpandableListPopup = new XUISimpleExpandablePopup(getContext(), DemoDataProvider.expandableItems)
-                .create(DensityUtils.dip2px(getContext(), 200))
+                .create(DensityUtils.dip2px(getContext(), 200), DensityUtils.dip2px(getContext(), 200))
                 .setOnExpandableItemClickListener(false, new XUISimpleExpandablePopup.OnExpandableItemClickListener() {
                     @Override
                     public void onExpandableItemClick(XUISimpleExpandableListAdapter adapter, ExpandableItem group, int groupPosition, int childPosition) {

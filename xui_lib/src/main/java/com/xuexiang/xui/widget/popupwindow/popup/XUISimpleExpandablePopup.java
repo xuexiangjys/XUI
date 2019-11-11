@@ -62,6 +62,19 @@ public class XUISimpleExpandablePopup<T extends XUISimpleExpandablePopup> extend
     /**
      * 创建弹窗
      *
+     * @param width     弹窗的宽度
+     * @param maxHeight 弹窗最大的高度
+     * @return
+     */
+    @Override
+    public T create(int width, int maxHeight) {
+        super.create(width, maxHeight);
+        return (T) this;
+    }
+
+    /**
+     * 创建弹窗
+     *
      * @param width
      * @param maxHeight
      * @param onExpandableItemClickListener
