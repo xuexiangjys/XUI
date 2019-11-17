@@ -89,6 +89,7 @@ public class CountDownButtonHelper {
      * 开始倒计时
      */
     public void start() {
+        initCountDownTimer();
         mButton.setEnabled(false);
         mCountDownTimer.start();
     }
@@ -130,6 +131,16 @@ public class CountDownButtonHelper {
     public void cancel() {
         if (mCountDownTimer != null) {
             mCountDownTimer.cancel();
+            mCountDownTimer = null;
         }
+    }
+
+    /**
+     * 资源回收
+     */
+    public void recycle() {
+        cancel();
+        mListener = null;
+        mButton = null;
     }
 }

@@ -50,7 +50,8 @@ public class BaseActivity extends XPageActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Utils.initTheme(this);
+        initAppTheme();
+        initStatusBarStyle();
         super.onCreate(savedInstanceState);
         mUnbinder = ButterKnife.bind(this);
 
@@ -61,6 +62,20 @@ public class BaseActivity extends XPageActivity {
                     .callBack(this::popPage)
                     .register();
         }
+    }
+
+    /**
+     * 初始化应用的主题
+     */
+    protected void initAppTheme() {
+        Utils.initTheme(this);
+    }
+
+    /**
+     * 初始化状态栏的样式
+     */
+    protected void initStatusBarStyle() {
+        
     }
 
     /**

@@ -189,6 +189,8 @@ dependencies {
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.1.1'
     implementation 'com.zhy:okhttputils:2.6.2'
+    //腾讯的键值对存储mmkv
+    implementation 'com.tencent:mmkv:1.0.22'
 
     //umeng统计
     implementation 'com.umeng.umsdk:analytics:8.0.2'

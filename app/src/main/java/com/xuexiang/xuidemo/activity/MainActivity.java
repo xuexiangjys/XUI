@@ -32,6 +32,7 @@ import com.xuexiang.xuidemo.fragment.QRCodeFragment;
 import com.xuexiang.xuidemo.fragment.SettingFragment;
 import com.xuexiang.xuidemo.fragment.UtilitysFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
+import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.ClickUtils;
@@ -269,7 +270,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                MobclickAgent.onProfileSignOff();
+                                TokenUtils.handleLogoutSuccess();
                                 finish();
                             }
                         },
