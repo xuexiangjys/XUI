@@ -118,13 +118,83 @@
 
         </FrameLayout>
 
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                android:id="@+id/tv_other_login"
+                style="@style/TextStyle.Explain"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="其他登录方式"
+                android:textColor="@color/xui_config_color_primary_text" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                android:id="@+id/tv_forget_password"
+                style="@style/TextStyle.Explain"
+                android:layout_gravity="end"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="忘记密码"
+                android:textColor="@color/xui_config_color_primary_text" />
+
+        </FrameLayout>
+
     </LinearLayout>
 
     <com.xuexiang.xui.widget.textview.supertextview.SuperButton
         android:id="@+id/btn_login"
         style="@style/SuperButton.Primary.Login"
-        android:layout_marginTop="@dimen/spacing_16"
+        android:layout_marginTop="16dp"
         android:text="@string/title_login_register" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:layout_width="wrap_content"
+                android:text="登陆/注册代表您已阅读并同意"
+                android:textColor="@color/xui_config_color_primary_text" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                android:id="@+id/tv_user_protocol"
+                style="@style/TextStyle.Explain"
+                android:layout_width="wrap_content"
+                android:text="用户协议"
+                android:textColor="?attr/colorAccent" />
+
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:layout_width="wrap_content"
+                android:text="和"
+                android:textColor="@color/xui_config_color_primary_text" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                android:id="@+id/tv_privacy_protocol"
+                style="@style/TextStyle.Explain"
+                android:layout_width="wrap_content"
+                android:text="隐私政策"
+                android:textColor="?attr/colorAccent" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 
 </LinearLayout>

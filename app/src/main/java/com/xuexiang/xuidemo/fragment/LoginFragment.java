@@ -32,6 +32,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.TokenUtils;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.common.RandomUtils;
 
@@ -79,7 +80,7 @@ public class LoginFragment extends BaseFragment {
     }
 
     @SingleClick
-    @OnClick({R.id.btn_get_verify_code, R.id.btn_login})
+    @OnClick({R.id.btn_get_verify_code, R.id.btn_login, R.id.tv_other_login, R.id.tv_forget_password, R.id.tv_user_protocol, R.id.tv_privacy_protocol})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_get_verify_code:
@@ -93,6 +94,18 @@ public class LoginFragment extends BaseFragment {
                         loginByVerifyCode(etPhoneNumber.getEditValue(), etVerifyCode.getEditValue());
                     }
                 }
+                break;
+            case R.id.tv_other_login:
+                XToastUtils.info("其他登录方式");
+                break;
+            case R.id.tv_forget_password:
+                XToastUtils.info("忘记密码");
+                break;
+            case R.id.tv_user_protocol:
+                XToastUtils.info("用户协议");
+                break;
+            case R.id.tv_privacy_protocol:
+                XToastUtils.info("隐私政策");
                 break;
             default:
                 break;
@@ -117,8 +130,8 @@ public class LoginFragment extends BaseFragment {
         // TODO: 2019-11-18 这里只是界面演示而已
         String token = RandomUtils.getRandomNumbersAndLetters(16);
         if (TokenUtils.handleLoginSuccess(token)) {
-            ActivityUtils.startActivity(MainActivity.class);
             popToBack();
+            ActivityUtils.startActivity(MainActivity.class);
         }
     }
 

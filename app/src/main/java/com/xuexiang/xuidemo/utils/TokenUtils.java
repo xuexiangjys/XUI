@@ -37,7 +37,6 @@ public final class TokenUtils {
 
     private static final String KEY_TOKEN = "com.xuexiang.xuidemo.utils.KEY_TOKEN";
 
-
     private TokenUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
@@ -52,6 +51,7 @@ public final class TokenUtils {
 
     public static void setToken(String token) {
         sToken = token;
+        MMKV.defaultMMKV().putString(KEY_TOKEN, token);
     }
 
     public static void clearToken() {
@@ -60,7 +60,7 @@ public final class TokenUtils {
     }
 
     public static boolean hasToken() {
-        return !StringUtils.isEmpty(sToken);
+        return MMKV.defaultMMKV().containsKey(KEY_TOKEN);
     }
 
     /**
