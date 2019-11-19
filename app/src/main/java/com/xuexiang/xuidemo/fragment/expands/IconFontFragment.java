@@ -17,12 +17,16 @@
 
 package com.xuexiang.xuidemo.fragment.expands;
 
+import android.view.View;
+
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.core.PageOption;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.fragment.expands.iconfont.SimpleIconFontFragment;
 import com.xuexiang.xuidemo.fragment.expands.iconfont.XUIIconFontDisplayFragment;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.widget.iconfont.IconFontActivity;
 
 import java.util.List;
@@ -55,5 +59,23 @@ public class IconFontFragment extends BaseSimpleListFragment {
             default:
                 break;
         }
+    }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("图标库") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://www.iconfont.cn/");
+            }
+        });
+        titleBar.addAction(new TitleBar.TextAction("Github") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://github.com/mikepenz/Android-Iconics");
+            }
+        });
+        return titleBar;
     }
 }

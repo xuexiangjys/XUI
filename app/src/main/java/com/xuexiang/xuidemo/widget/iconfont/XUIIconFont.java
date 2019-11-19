@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * XUI字体图标库
+ * XUI字体图标库，是使用 <a href="https://www.iconfont.cn/"> 平台自动生成的
  *
  * @author xuexiang
  * @since 2019-10-13 16:29
