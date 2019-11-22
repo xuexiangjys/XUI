@@ -123,6 +123,19 @@
         <!--轮廓是否使用内边距，默认false-->
         <attr name="xui_outlineExcludePadding" format="boolean" />
     </declare-styleable>
+
+    <!--可伸展的布局-->
+    <declare-styleable name="ExpandableLayout">
+        <!--动画持续的时间，默认是300ms-->
+        <attr name="el_duration" format="integer" />
+        <!--是否是展开的，默认是false-->
+        <attr name="el_expanded" format="boolean" />
+        <!--视差效果，默认是1-->
+        <attr name="el_parallax" format="float" />
+        <!--对齐方式，默认是VERTICAL，垂直-->
+        <attr name="android:orientation"/>
+    </declare-styleable>
+
     <!--============================Banner=========================================-->
 
     <!-- BaseBanner -->
@@ -1137,18 +1150,18 @@
     <declare-styleable name="CropImageView">
         <!-- 网格线 -->
         <attr name="civ_guidelines">
-            <enum name="on" value="2"/>
-            <enum name="onTouch" value="1"/>
-            <enum name="off" value="0"/>
+            <enum name="on" value="2" />
+            <enum name="onTouch" value="1" />
+            <enum name="off" value="0" />
         </attr>
         <!-- 是否是固定比例裁剪 -->
-        <attr name="civ_fixAspectRatio" format="boolean"/>
+        <attr name="civ_fixAspectRatio" format="boolean" />
         <!-- 宽度比例 -->
-        <attr name="civ_aspectRatioX" format="integer"/>
+        <attr name="civ_aspectRatioX" format="integer" />
         <!-- 高度比例 -->
-        <attr name="civ_aspectRatioY" format= "integer"/>
+        <attr name="civ_aspectRatioY" format="integer" />
         <!-- 裁剪图片的资源 -->
-        <attr name="civ_imageResource" format="reference"/>
+        <attr name="civ_imageResource" format="reference" />
     </declare-styleable>
 
     <!-- 图片编辑 -->

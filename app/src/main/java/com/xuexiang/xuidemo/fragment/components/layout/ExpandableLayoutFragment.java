@@ -15,21 +15,20 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components;
+package com.xuexiang.xuidemo.fragment.components.layout;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
-import com.xuexiang.xuidemo.fragment.components.layout.AlphaViewFragment;
-import com.xuexiang.xuidemo.fragment.components.layout.ExpandableLayoutFragment;
-import com.xuexiang.xuidemo.fragment.components.layout.XUILayoutFragment;
+import com.xuexiang.xuidemo.fragment.components.layout.expandable.ExpandableHorizontalFragment;
+import com.xuexiang.xuidemo.fragment.components.layout.expandable.ExpandableRecycleViewFragment;
+import com.xuexiang.xuidemo.fragment.components.layout.expandable.ExpandableSimpleFragment;
 
 /**
  * @author xuexiang
- * @since 2019-06-02 16:46
+ * @since 2019-11-22 14:18
  */
-@Page(name = "通用布局", extra = R.drawable.ic_widget_layout)
-public class LayoutFragment extends ComponentContainerFragment {
+@Page(name = "可伸缩布局\n可水平、垂直伸缩")
+public class ExpandableLayoutFragment extends ComponentContainerFragment {
     /**
      * 获取页面的类集合[使用@Page注解进行注册的页面]
      *
@@ -38,9 +37,9 @@ public class LayoutFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
-                AlphaViewFragment.class,
-                XUILayoutFragment.class,
-                ExpandableLayoutFragment.class
+                ExpandableSimpleFragment.class,
+                ExpandableHorizontalFragment.class,
+                ExpandableRecycleViewFragment.class
         };
     }
 }
