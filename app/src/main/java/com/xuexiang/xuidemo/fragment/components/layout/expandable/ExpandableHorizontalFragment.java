@@ -56,7 +56,9 @@ public class ExpandableHorizontalFragment extends BaseFragment {
         expandableLayout.setOnExpansionChangedListener(new ExpandableLayout.OnExpansionChangedListener() {
             @Override
             public void onExpansionChanged(float expansion, int state) {
-                expandButton.setRotation(expansion * 180);
+                if (expandButton != null) {
+                    expandButton.setRotation(expansion * 180);
+                }
             }
         });
     }
