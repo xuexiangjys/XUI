@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xaop.annotation.SingleClick;
@@ -68,12 +69,16 @@ public class ExpandableListAdapter extends BaseRecyclerAdapter<String> {
     @Override
     protected void bindData(@NonNull RecyclerViewHolder holder, int position, String item) {
         ExpandableLayout expandableLayout = holder.findViewById(R.id.expandable_layout);
+        AppCompatImageView ivIndicator = holder.findViewById(R.id.iv_indicator);
         expandableLayout.setInterpolator(new OvershootInterpolator());
         expandableLayout.setOnExpansionChangedListener(new ExpandableLayout.OnExpansionChangedListener() {
             @Override
             public void onExpansionChanged(float expansion, int state) {
-                if (state == ExpandableLayout.State.EXPANDING) {
+                if (mRecyclerView != null && state == ExpandableLayout.State.EXPANDING) {
                     mRecyclerView.smoothScrollToPosition(position);
+                }
+                if (ivIndicator != null) {
+                    ivIndicator.setRotation(expansion * 90);
                 }
             }
         });
@@ -81,9 +86,10 @@ public class ExpandableListAdapter extends BaseRecyclerAdapter<String> {
         boolean isSelected = position == mSelectPosition;
         expandableLayout.setExpanded(isSelected, false);
 
-        holder.select(R.id.tv_content, isSelected);
-        holder.text(R.id.tv_content, ResUtils.getResources().getString(R.string.item_example_number_title, position));
-        holder.click(R.id.tv_content, new View.OnClickListener() {
+        holder.select(R.id.fl_title, isSelected);
+        holder.text(R.id.tv_title, ResUtils.getResources().getString(R.string.item_example_number_title, position + 1));
+        holder.text(R.id.tv_content, ResUtils.getResources().getString(R.string.item_example_number_abstract, position + 1));
+        holder.click(R.id.fl_title, new View.OnClickListener() {
             @SingleClick
             @Override
             public void onClick(View v) {
@@ -95,7 +101,7 @@ public class ExpandableListAdapter extends BaseRecyclerAdapter<String> {
     private void onClickItem(View view, final ExpandableLayout expandableLayout, final int position) {
         RecyclerViewHolder holder = (RecyclerViewHolder) mRecyclerView.findViewHolderForAdapterPosition(mSelectPosition);
         if (holder != null) {
-            holder.select(R.id.tv_content, false);
+            holder.select(R.id.fl_title, false);
             ((ExpandableLayout) holder.findViewById(R.id.expandable_layout)).collapse();
         }
 

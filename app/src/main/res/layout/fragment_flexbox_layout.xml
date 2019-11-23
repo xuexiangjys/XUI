@@ -66,6 +66,17 @@
                 android:layout_height="wrap_content"
                 android:overScrollMode="never" />
 
+            <TextView
+                style="@style/TextStyle.Explain"
+                android:layout_marginTop="20dp"
+                android:text="多选：" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+
 
         </LinearLayout>
 

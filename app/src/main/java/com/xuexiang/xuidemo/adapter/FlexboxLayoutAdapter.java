@@ -17,11 +17,16 @@
 
 package com.xuexiang.xuidemo.adapter;
 
+import android.util.SparseBooleanArray;
+
 import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xuidemo.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author xuexiang
@@ -29,8 +34,23 @@ import com.xuexiang.xuidemo.R;
  */
 public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
 
+    private boolean mIsMultiSelectMode;
+    private boolean mCancelable;
+
+    private SparseBooleanArray mSparseArray = new SparseBooleanArray();
+
     public FlexboxLayoutAdapter(String[] data) {
         super(data);
+    }
+
+    public FlexboxLayoutAdapter setIsMultiSelectMode(boolean isMultiSelectMode) {
+        mIsMultiSelectMode = isMultiSelectMode;
+        return this;
+    }
+
+    public FlexboxLayoutAdapter setCancelable(boolean cancelable) {
+        mCancelable = cancelable;
+        return this;
     }
 
     @Override
@@ -41,9 +61,59 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
     @Override
     protected void bindData(@NonNull RecyclerViewHolder holder, int position, String item) {
         holder.text(R.id.tv_tag, item);
-        holder.select(R.id.tv_tag, getSelectPosition() == position);
+        if (mIsMultiSelectMode) {
+            holder.select(R.id.tv_tag, mSparseArray.get(position));
+        } else {
+            holder.select(R.id.tv_tag, getSelectPosition() == position);
+        }
     }
 
+    /**
+     * 选择
+     *
+     * @param position
+     * @return
+     */
+    public boolean select(int position) {
+        return mIsMultiSelectMode ? multiSelect(position) : singleSelect(position);
+    }
+
+    /**
+     * 多选
+     *
+     * @param positions
+     */
+    public void multiSelect(int... positions) {
+        if (!mIsMultiSelectMode) {
+            return;
+        }
+        for (int position : positions) {
+            multiSelect(position);
+        }
+    }
+
+    /**
+     * 多选
+     *
+     * @param position
+     */
+    public boolean multiSelect(int position) {
+        if (!mIsMultiSelectMode) {
+            return false;
+        }
+        mSparseArray.append(position, !mSparseArray.get(position));
+        notifyItemChanged(position);
+        return true;
+    }
+
+    /**
+     * 单选
+     *
+     * @param position
+     */
+    public boolean singleSelect(int position) {
+        return singleSelect(position, mCancelable);
+    }
 
     /**
      * 单选
@@ -74,5 +144,19 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
             return "";
         }
         return value;
+    }
+
+
+    /**
+     * @return 获取多选的内容
+     */
+    public List<String> getMultiContent() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < getItemCount(); i++) {
+            if (mSparseArray.get(i)) {
+                list.add(getItem(i));
+            }
+        }
+        return list;
     }
 }

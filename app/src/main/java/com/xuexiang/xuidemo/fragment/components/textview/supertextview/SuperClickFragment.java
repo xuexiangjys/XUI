@@ -6,6 +6,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.layout.ExpandableLayout;
 import com.xuexiang.xui.widget.textview.badge.Badge;
 import com.xuexiang.xui.widget.textview.badge.BadgeView;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
@@ -25,6 +26,10 @@ public class SuperClickFragment extends BaseFragment {
     SuperTextView superTextView_switch;
     @BindView(R.id.super_message_tv)
     SuperTextView stvMessage;
+    @BindView(R.id.stv_expandable)
+    SuperTextView stvExpandable;
+    @BindView(R.id.expandable_layout)
+    ExpandableLayout mExpandableLayout;
     @BindView(R.id.stv_name)
     SuperTextView stvName;
     @BindView(R.id.stv_phone)
@@ -159,6 +164,26 @@ public class SuperClickFragment extends BaseFragment {
                 XToastUtils.toast("点击监听");
             }
         });
+
+
+        mExpandableLayout.setOnExpansionChangedListener(new ExpandableLayout.OnExpansionChangedListener() {
+            @Override
+            public void onExpansionChanged(float expansion, int state) {
+                if (stvExpandable != null && stvExpandable.getRightIconIV() != null) {
+                    stvExpandable.getRightIconIV().setRotation(expansion * 90);
+                }
+            }
+        });
+        stvExpandable.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
+            @Override
+            public void onClickListener(SuperTextView superTextView) {
+                if (mExpandableLayout != null) {
+                    mExpandableLayout.toggle();
+                }
+            }
+        });
+
+
     }
 
 }

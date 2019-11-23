@@ -17,17 +17,34 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_content"
-        style="@style/TextAppearance.AppCompat.Medium"
+    <FrameLayout
+        android:id="@+id/fl_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/xui_config_list_item_selector"
-        android:padding="16dp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextStyle.Content"
+            android:layout_gravity="center_vertical"
+            android:padding="16dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:padding="16dp"
+            android:tint="?attr/colorAccent"
+            app:srcCompat="@drawable/ic_arrow_right" />
+
+    </FrameLayout>
 
     <com.xuexiang.xui.widget.layout.ExpandableLayout
         android:id="@+id/expandable_layout"
@@ -38,13 +55,11 @@
         app:el_expanded="false">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:gravity="center"
+            android:id="@+id/tv_content"
+            style="@style/TextStyle.Explain"
             android:padding="16dp"
-            android:text="Content"
-            android:textColor="#fff" />
+            android:textColor="@color/xui_config_color_white"
+            tools:text="这里面是内容" />
 
     </com.xuexiang.xui.widget.layout.ExpandableLayout>
 

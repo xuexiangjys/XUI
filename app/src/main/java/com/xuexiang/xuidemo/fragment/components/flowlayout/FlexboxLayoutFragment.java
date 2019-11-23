@@ -33,6 +33,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.FlexboxLayoutAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xutil.common.StringUtils;
 
 import butterknife.BindView;
 
@@ -40,9 +41,8 @@ import butterknife.BindView;
  * @author xuexiang
  * @since 2019-11-23 01:23
  */
-@Page(name = "FlexboxLayout + RecyclerView")
+@Page(name = "FlexboxLayoutManager + RecyclerView\n流标签")
 public class FlexboxLayoutFragment extends BaseFragment {
-
 
     @BindView(R.id.recycler_view_1)
     RecyclerView recyclerView1;
@@ -50,10 +50,13 @@ public class FlexboxLayoutFragment extends BaseFragment {
     RecyclerView recyclerView2;
     @BindView(R.id.recycler_view_3)
     RecyclerView recyclerView3;
+    @BindView(R.id.recycler_view_4)
+    RecyclerView recyclerView4;
 
     private FlexboxLayoutAdapter mAdapter1;
     private FlexboxLayoutAdapter mAdapter2;
     private FlexboxLayoutAdapter mAdapter3;
+    private FlexboxLayoutAdapter mAdapter4;
 
     @Override
     protected int getLayoutId() {
@@ -71,10 +74,17 @@ public class FlexboxLayoutFragment extends BaseFragment {
         recyclerView2.setAdapter(mAdapter2 = new FlexboxLayoutAdapter(array));
 
         recyclerView3.setLayoutManager(getFlexboxLayoutManager());
-        recyclerView3.setAdapter(mAdapter3 = new FlexboxLayoutAdapter(array));
+        recyclerView3.setAdapter(mAdapter3 = new FlexboxLayoutAdapter(array).setCancelable(true));
 
+        recyclerView4.setLayoutManager(getFlexboxLayoutManager());
+        recyclerView4.setItemAnimator(null);
+        recyclerView4.setAdapter(mAdapter4 = new FlexboxLayoutAdapter(array).setIsMultiSelectMode(true));
 
+        mAdapter2.select(2);
+        mAdapter3.select(3);
+        mAdapter4.multiSelect(1, 2, 3);
     }
+
 
     private FlexboxLayoutManager getFlexboxLayoutManager() {
         //设置布局管理器
@@ -104,7 +114,7 @@ public class FlexboxLayoutFragment extends BaseFragment {
         mAdapter2.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<String>() {
             @Override
             public void onItemClick(View itemView, String item, int position) {
-                if (mAdapter2.singleSelect(position, false)) {
+                if (mAdapter2.select(position)) {
                     XToastUtils.toast("选中的内容：" + mAdapter2.getSelectContent());
                 }
             }
@@ -113,9 +123,17 @@ public class FlexboxLayoutFragment extends BaseFragment {
         mAdapter3.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<String>() {
             @Override
             public void onItemClick(View itemView, String item, int position) {
-                if (mAdapter3.singleSelect(position, true)) {
+                if (mAdapter3.select(position)) {
                     XToastUtils.toast("选中的内容：" + mAdapter3.getSelectContent());
                 }
+            }
+        });
+
+        mAdapter4.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<String>() {
+            @Override
+            public void onItemClick(View itemView, String item, int position) {
+                mAdapter4.select(position);
+                XToastUtils.toast("选中的内容：" + StringUtils.listToString(mAdapter4.getMultiContent(), ","));
             }
         });
     }

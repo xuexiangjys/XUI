@@ -52,7 +52,7 @@ public class ExpandableRecycleViewFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        WidgetUtils.initRecyclerView(recyclerView, 0);
+        WidgetUtils.initRecyclerView(recyclerView);
 
         recyclerView.setAdapter(new ExpandableListAdapter(recyclerView, DemoDataProvider.getDemoData1()));
     }
