@@ -192,6 +192,9 @@ dependencies {
     //腾讯的键值对存储mmkv
     implementation 'com.tencent:mmkv:1.0.22'
 
+    //双列表联动
+    implementation 'com.kunminx.linkage:linkage-recyclerview:1.9.2'
+
     //umeng统计
     implementation 'com.umeng.umsdk:analytics:8.0.2'
     implementation 'com.umeng.umsdk:common:2.0.2'

@@ -2,6 +2,7 @@ package com.xuexiang.xuidemo;
 
 import androidx.viewpager.widget.ViewPager;
 
+import com.kunminx.linkage.bean.DefaultGroupedItem;
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
 import com.xuexiang.xui.adapter.simple.ExpandableItem;
@@ -16,6 +17,7 @@ import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridInfo;
+import com.xuexiang.xuidemo.fragment.expands.linkage.custom.CustomGroupedItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -417,6 +419,32 @@ public class DemoDataProvider {
                 .setDetailUrl("https://juejin.im/post/5b6b9b49e51d4576b828978d")
                 .setImageUrl("https://user-gold-cdn.xitu.io/2018/8/9/1651c568a7e30e02?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"));
         return list;
+    }
+
+    @MemoryCache
+    public static List<DefaultGroupedItem> getGroupItems() {
+        List<DefaultGroupedItem> items = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            if (i % 10 == 0) {
+                items.add(new DefaultGroupedItem(true, "菜单" + i / 10));
+            } else {
+                items.add(new DefaultGroupedItem(new DefaultGroupedItem.ItemInfo("这是标题" + i, "菜单" + i / 10, "这是内容" + i)));
+            }
+        }
+        return items;
+    }
+
+    @MemoryCache
+    public static List<CustomGroupedItem> getCustomGroupItems() {
+        List<CustomGroupedItem> items = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            if (i % 10 == 0) {
+                items.add(new CustomGroupedItem(true, "菜单" + i / 10));
+            } else {
+                items.add(new CustomGroupedItem(new CustomGroupedItem.ItemInfo("这是标题" + i, "菜单" + i / 10, "这是内容" + i)));
+            }
+        }
+        return items;
     }
 
 }
