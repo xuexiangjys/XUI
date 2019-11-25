@@ -18,8 +18,12 @@
 package com.xuexiang.xuidemo.fragment.expands.linkage;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.kunminx.linkage.LinkageRecyclerView;
+import com.kunminx.linkage.adapter.viewholder.LinkagePrimaryViewHolder;
+import com.kunminx.linkage.adapter.viewholder.LinkageSecondaryViewHolder;
+import com.kunminx.linkage.bean.BaseGroupedItem;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.SnackbarUtils;
@@ -27,15 +31,19 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.expands.linkage.custom.CustomLinkagePrimaryAdapterConfig;
+import com.xuexiang.xuidemo.fragment.expands.linkage.eleme.ElemeGroupedItem;
+import com.xuexiang.xuidemo.fragment.expands.linkage.eleme.ElemeSecondaryAdapterConfig;
 
 import butterknife.BindView;
 
 /**
  * @author xuexiang
- * @since 2019-11-25 11:36
+ * @since 2019-11-25 23:20
  */
-@Page(name = "双列表简单使用")
-public class LinkageRecyclerViewSimpleFragment extends BaseFragment {
+@Page(name = "仿饿了么双列表联动菜单")
+public class LinkageRecyclerViewElemeFragment extends BaseFragment implements CustomLinkagePrimaryAdapterConfig.OnPrimaryItemClickListener, ElemeSecondaryAdapterConfig.OnSecondaryItemClickListener {
+
     @BindView(R.id.linkage)
     LinkageRecyclerView linkage;
 
@@ -69,33 +77,21 @@ public class LinkageRecyclerViewSimpleFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        linkage.init(DemoDataProvider.getGroupItems());
-        linkage.setScrollSmoothly(true);
-        linkage.setDefaultOnItemBindListener(
-                (primaryHolder, primaryClickView, title) -> {
-                    //一级列表点击
-                    SnackbarUtils.Short(primaryClickView, title).show();
-                },
-                (primaryHolder, title) -> {
-                    //一级列表样式设置
-                    //TODO
-
-                    },
-                (secondaryHolder, item) -> {
-                    //二级列表点击
-                    secondaryHolder.getView(R.id.level_2_item).setOnClickListener(v -> {
-                        SnackbarUtils.Short(v, item.info.getTitle()).show();
-                    });
-                },
-                (headerHolder, item) -> {
-                    //TODO
-                },
-                (footerHolder, item) -> {
-                    //TODO
-                }
-        );
+        linkage.init(DemoDataProvider.getElemeGroupItems(), new CustomLinkagePrimaryAdapterConfig(this), new ElemeSecondaryAdapterConfig(this));
     }
 
+    @Override
+    public void onPrimaryItemClick(LinkagePrimaryViewHolder holder, View view, String title) {
+        SnackbarUtils.Short(view, title).show();
+    }
 
+    @Override
+    public void onSecondaryItemClick(LinkageSecondaryViewHolder holder, ViewGroup view, BaseGroupedItem<ElemeGroupedItem.ItemInfo> item) {
+        SnackbarUtils.Short(view, item.info.getTitle()).show();
+    }
 
+    @Override
+    public void onGoodAdd(View view, BaseGroupedItem<ElemeGroupedItem.ItemInfo> item) {
+        SnackbarUtils.Short(view, "添加：" + item.info.getTitle()).show();
+    }
 }

@@ -24,6 +24,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.linkage.LinkageRecyclerViewCustomFragment;
+import com.xuexiang.xuidemo.fragment.expands.linkage.LinkageRecyclerViewElemeFragment;
 import com.xuexiang.xuidemo.fragment.expands.linkage.LinkageRecyclerViewSimpleFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
@@ -42,7 +43,8 @@ public class LinkageRecyclerViewFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 LinkageRecyclerViewSimpleFragment.class,
-                LinkageRecyclerViewCustomFragment.class
+                LinkageRecyclerViewCustomFragment.class,
+                LinkageRecyclerViewElemeFragment.class
         };
     }
 

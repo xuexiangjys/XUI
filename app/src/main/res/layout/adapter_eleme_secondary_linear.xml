@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iv_goods_item"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:id="@+id/iv_goods_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/bg_food_sample"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_goods_img_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tag_new_good"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_goods_img"
+        app:layout_constraintTop_toTopOf="@+id/iv_goods_img" />
+
+    <TextView
+        android:id="@+id/iv_goods_name"
+        style="@style/TextStyle.Title"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/iv_goods_img"
+        app:layout_constraintTop_toTopOf="@+id/iv_goods_img"
+        tools:text="水果" />
+
+    <TextView
+        android:id="@+id/iv_goods_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="好吃的食物，增肥神器，有求必应"
+        android:textColor="@color/colorGray"
+        android:textSize="10sp"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_goods_name"
+        app:layout_constraintTop_toBottomOf="@+id/iv_goods_name" />
+
+    <TextView
+        android:id="@+id/iv_goods_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="月售1023 好评率90%"
+        android:textColor="@color/colorGray"
+        android:textSize="10sp"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_goods_name"
+        app:layout_constraintTop_toBottomOf="@+id/iv_goods_detail" />
+
+    <TextView
+        android:id="@+id/iv_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="¥18.8"
+        android:textColor="@color/color_red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_goods_name"
+        app:layout_constraintTop_toBottomOf="@+id/iv_goods_comment" />
+
+    <ImageView
+        android:id="@+id/iv_goods_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:src="@drawable/btn_add_food"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

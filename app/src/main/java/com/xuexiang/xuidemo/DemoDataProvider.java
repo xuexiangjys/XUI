@@ -2,6 +2,7 @@ package com.xuexiang.xuidemo;
 
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.gson.reflect.TypeToken;
 import com.kunminx.linkage.bean.DefaultGroupedItem;
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
@@ -17,7 +18,11 @@ import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridInfo;
+import com.xuexiang.xuidemo.fragment.components.pickerview.ProvinceInfo;
 import com.xuexiang.xuidemo.fragment.expands.linkage.custom.CustomGroupedItem;
+import com.xuexiang.xuidemo.fragment.expands.linkage.eleme.ElemeGroupedItem;
+import com.xuexiang.xutil.net.JsonUtil;
+import com.xuexiang.xutil.resource.ResourceUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -445,6 +450,12 @@ public class DemoDataProvider {
             }
         }
         return items;
+    }
+
+    @MemoryCache
+    public static List<ElemeGroupedItem> getElemeGroupItems() {
+        return JsonUtil.fromJson(ResourceUtils.readStringFromAssert("eleme.json"), new TypeToken<List<ElemeGroupedItem>>() {
+        }.getType());
     }
 
 }
