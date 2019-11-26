@@ -360,6 +360,12 @@ public class TabControlView extends RadioGroup implements HasTypeface {
         return this;
     }
 
+    /**
+     * 为每一个选项设置 items and values
+     *
+     * @param itemArray
+     * @param valueArray
+     */
     private void setItems(CharSequence[] itemArray, CharSequence[] valueArray) throws Exception {
         if (itemArray != null && valueArray != null) {
             if (itemArray.length != valueArray.length) {
@@ -418,22 +424,64 @@ public class TabControlView extends RadioGroup implements HasTypeface {
      * @param value
      */
     public TabControlView setSelection(String value) {
-        String buttonText = "";
-        if (mItemMap.containsValue(value)) {
-            for (String entry : mItemMap.keySet()) {
-                if (mItemMap.get(entry).equalsIgnoreCase(value)) {
-                    buttonText = entry;
-                }
-            }
-        }
+        setSelection(value, true);
+        return this;
+    }
+
+    /**
+     * 通过值 设置选中的Tab
+     *
+     * @param value
+     */
+    public TabControlView setSelection(String value, boolean isSilent) {
+        String title = getTitleByValue(value);
+        setSelectionTitle(title, isSilent);
+        return this;
+    }
+
+    /**
+     * 通过标题设置选中的Tab
+     *
+     * @param title
+     * @return
+     */
+    public TabControlView setSelectionTitle(String title) {
+        setSelectionTitle(title, true);
+        return this;
+    }
+
+    /**
+     * 通过标题设置选中的Tab
+     *
+     * @param title
+     * @param isSilent 是否静默设置
+     * @return
+     */
+    public TabControlView setSelectionTitle(String title, boolean isSilent) {
         for (RadioButton option : mOptions) {
-            if (option.getText().toString().equalsIgnoreCase(buttonText)) {
-                this.check(option.getId());
+            if (option.getText().toString().equalsIgnoreCase(title)) {
+                if (isSilent) {
+                    setOnCheckedChangeListener(null);
+                    this.check(option.getId());
+                    setOnCheckedChangeListener(mSelectionChangedListener);
+                } else {
+                    this.check(option.getId());
+                }
             }
         }
         return this;
     }
 
+    private String getTitleByValue(String value) {
+        if (mItemMap.containsValue(value)) {
+            for (String key : mItemMap.keySet()) {
+                if (mItemMap.get(key).equalsIgnoreCase(value)) {
+                    return key;
+                }
+            }
+        }
+        return "";
+    }
 
     /**
      * Sets the colors used when drawing the view. The primary color will be used for selected color

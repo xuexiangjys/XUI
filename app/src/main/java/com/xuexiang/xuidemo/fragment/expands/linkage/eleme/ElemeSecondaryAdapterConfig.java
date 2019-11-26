@@ -77,7 +77,7 @@ public class ElemeSecondaryAdapterConfig implements ILinkageSecondaryAdapterConf
 
     @Override
     public int getFooterLayoutId() {
-        return 0;
+        return R.layout.adapter_linkage_empty_footer;
     }
 
     @Override
