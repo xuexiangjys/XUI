@@ -109,6 +109,8 @@
                         style="@style/EditInfoItem"
                         app:sEditTextButtonType="none"
                         app:sEditTextHint="请输入姓名"
+                        app:sLeftIconRes="@drawable/ic_phone"
+                        app:sLeftIconTint="?attr/colorAccent"
                         app:sLeftTextString="姓名" />
 
                     <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
@@ -117,6 +119,8 @@
                         android:inputType="phone"
                         app:sEditTextButtonType="clear"
                         app:sEditTextHint="请输入手机号"
+                        app:sLeftIconRes="@drawable/ic_phone"
+                        app:sLeftIconTint="?attr/colorAccent"
                         app:sLeftTextString="手机号" />
 
                     <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
@@ -126,6 +130,8 @@
                         app:sEditTextButtonType="password"
                         app:sEditTextHint="请输入密码"
                         app:sEditTextIsAsteriskStyle="true"
+                        app:sLeftIconRes="@drawable/ic_password"
+                        app:sLeftIconTint="?attr/colorAccent"
                         app:sLeftTextString="密码" />
 
                 </LinearLayout>

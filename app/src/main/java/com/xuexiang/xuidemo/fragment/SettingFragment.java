@@ -56,7 +56,7 @@ public class SettingFragment extends BaseFragment implements CompoundButton.OnCh
         stvSwitchCustomTheme.setSwitchIsChecked(SettingSPUtils.getInstance().isUseCustomTheme());
         stvSwitchCustomTheme.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener(SuperTextView superTextView) {
+            public void onClick(SuperTextView superTextView) {
                 stvSwitchCustomTheme.setSwitchIsChecked(!stvSwitchCustomTheme.getSwitchIsChecked(), false);
             }
         });

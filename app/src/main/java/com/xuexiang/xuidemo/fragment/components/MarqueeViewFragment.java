@@ -1,5 +1,6 @@
 package com.xuexiang.xuidemo.fragment.components;
 
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -59,7 +60,7 @@ public class MarqueeViewFragment extends BaseFragment {
         marqueeView1.startFlipping();
         marqueeFactory1.setOnItemClickListener(new MarqueeFactory.OnItemClickListener<TextView, String>() {
             @Override
-            public void onItemClickListener(MarqueeFactory.ViewHolder<TextView, String> holder) {
+            public void onItemClick(View view, MarqueeFactory.ViewHolder<TextView, String> holder) {
                 XToastUtils.toast(holder.getData());
             }
         });
@@ -68,7 +69,7 @@ public class MarqueeViewFragment extends BaseFragment {
         MarqueeFactory<TextView, String> marqueeFactory2 = new SimpleNoticeMF(getContext());
         marqueeFactory2.setOnItemClickListener(new MarqueeFactory.OnItemClickListener<TextView, String>() {
             @Override
-            public void onItemClickListener(MarqueeFactory.ViewHolder<TextView, String> holder) {
+            public void onItemClick(View view, MarqueeFactory.ViewHolder<TextView, String> holder) {
                 XToastUtils.toast(holder.getData());
             }
         });
@@ -81,7 +82,7 @@ public class MarqueeViewFragment extends BaseFragment {
         MarqueeFactory<TextView, String> marqueeFactory3 = new SimpleNoticeMF(getContext());
         marqueeFactory3.setOnItemClickListener(new MarqueeFactory.OnItemClickListener<TextView, String>() {
             @Override
-            public void onItemClickListener(MarqueeFactory.ViewHolder<TextView, String> holder) {
+            public void onItemClick(View view, MarqueeFactory.ViewHolder<TextView, String> holder) {
                 XToastUtils.toast(holder.getData());
             }
         });
@@ -95,7 +96,7 @@ public class MarqueeViewFragment extends BaseFragment {
         MarqueeFactory<TextView, String> marqueeFactory4 = new SimpleNoticeMF(getContext());
         marqueeFactory4.setOnItemClickListener(new MarqueeFactory.OnItemClickListener<TextView, String>() {
             @Override
-            public void onItemClickListener(MarqueeFactory.ViewHolder<TextView, String> holder) {
+            public void onItemClick(View view, MarqueeFactory.ViewHolder<TextView, String> holder) {
                 XToastUtils.toast(holder.getData());
             }
         });
@@ -111,7 +112,7 @@ public class MarqueeViewFragment extends BaseFragment {
         MarqueeFactory<RelativeLayout, ComplexItemEntity> marqueeFactory5 = new ComplexViewMF(getContext());
         marqueeFactory5.setOnItemClickListener(new MarqueeFactory.OnItemClickListener<RelativeLayout, ComplexItemEntity>() {
             @Override
-            public void onItemClickListener(MarqueeFactory.ViewHolder<RelativeLayout, ComplexItemEntity> holder) {
+            public void onItemClick(View view, MarqueeFactory.ViewHolder<RelativeLayout, ComplexItemEntity> holder) {
                 XToastUtils.toast(holder.getData().toString());
             }
         });

@@ -4,6 +4,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.layout.ExpandableLayout;
@@ -35,7 +36,7 @@ public class SuperClickFragment extends BaseFragment {
     @BindView(R.id.stv_phone)
     SuperTextView stvPhone;
 
-    Badge mBadge;
+    private Badge mBadge;
 
     @Override
     protected int getLayoutId() {
@@ -61,68 +62,68 @@ public class SuperClickFragment extends BaseFragment {
          */
         superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener(SuperTextView superTextView) {
+            public void onClick(SuperTextView superTextView) {
                 XToastUtils.toast("整个item的点击事件");
             }
         }).setLeftTopTvClickListener(new SuperTextView.OnLeftTopTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getLeftTopString());
             }
         }).setLeftTvClickListener(new SuperTextView.OnLeftTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getLeftString());
             }
         }).setLeftBottomTvClickListener(new SuperTextView.OnLeftBottomTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getLeftBottomString());
             }
         }).setCenterTopTvClickListener(new SuperTextView.OnCenterTopTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getCenterTopString());
             }
         }).setCenterTvClickListener(new SuperTextView.OnCenterTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getCenterString());
             }
         }).setCenterBottomTvClickListener(new SuperTextView.OnCenterBottomTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getCenterBottomString());
             }
         }).setRightTopTvClickListener(new SuperTextView.OnRightTopTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getRightTopString());
             }
         }).setRightTvClickListener(new SuperTextView.OnRightTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getRightString());
             }
         }).setRightBottomTvClickListener(new SuperTextView.OnRightBottomTvClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClick(TextView textView) {
                 XToastUtils.toast(superTextView.getRightBottomString());
             }
         }).setLeftImageViewClickListener(new SuperTextView.OnLeftImageViewClickListener() {
             @Override
-            public void onClickListener(ImageView imageView) {
+            public void onClick(ImageView imageView) {
             }
         }).setRightImageViewClickListener(new SuperTextView.OnRightImageViewClickListener() {
             @Override
-            public void onClickListener(ImageView imageView) {
+            public void onClick(ImageView imageView) {
             }
         });
 
 
         superTextView_cb.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener(SuperTextView superTextView) {
+            public void onClick(SuperTextView superTextView) {
                 superTextView.setCheckBoxChecked(!superTextView.getCheckBoxIsChecked());
             }
         }).setCheckBoxCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -134,7 +135,7 @@ public class SuperClickFragment extends BaseFragment {
 
         superTextView_switch.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener(SuperTextView superTextView) {
+            public void onClick(SuperTextView superTextView) {
                 superTextView.setSwitchIsChecked(!superTextView.getSwitchIsChecked(), false);
             }
         }).setSwitchCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -146,7 +147,7 @@ public class SuperClickFragment extends BaseFragment {
 
         stvMessage.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener(SuperTextView superTextView) {
+            public void onClick(SuperTextView superTextView) {
                 mBadge.hide(true);
             }
         });
@@ -176,7 +177,7 @@ public class SuperClickFragment extends BaseFragment {
         });
         stvExpandable.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener(SuperTextView superTextView) {
+            public void onClick(SuperTextView superTextView) {
                 if (mExpandableLayout != null) {
                     mExpandableLayout.toggle();
                 }

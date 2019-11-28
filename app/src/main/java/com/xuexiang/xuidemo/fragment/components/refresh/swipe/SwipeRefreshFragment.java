@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.xuexiang.xuidemo.DemoDataProvider;
@@ -62,9 +63,9 @@ public class SwipeRefreshFragment extends BaseFragment {
 
         banner = headerView.findViewById(R.id.sib_simple_usage);
         banner.setSource(DemoDataProvider.getBannerList())
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
+                .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
                     @Override
-                    public void onItemClick(int position) {
+                    public void onItemClick(View view, BannerItem item, int position) {
                         XToastUtils.toast("headBanner position--->" + position);
                     }
                 }).startScroll();

@@ -596,7 +596,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * Function to set a click listener for Title TextView
      *
-     * @param listener the onClickListener
+     * @param listener the onClick
      */
     public TitleBar setOnTitleClickListener(OnClickListener listener) {
         mCenterText.setOnClickListener(listener);

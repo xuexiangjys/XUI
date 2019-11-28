@@ -51,7 +51,7 @@ import static com.xuexiang.xuidemo.fragment.components.banner.UserGuideFragment.
  * @date 2017/10/15 下午1:17
  */
 @Page(name = "使用ViewPager实现的Banner")
-public class ViewPagerBannerFragment extends BaseFragment {
+public class ViewPagerBannerFragment extends BaseFragment implements BaseBanner.OnItemClickListener<BannerItem> {
     private List<BannerItem> mData;
 
     @BindView(R.id.sib_simple_usage)
@@ -136,10 +136,9 @@ public class ViewPagerBannerFragment extends BaseFragment {
      */
     private void sib_simple_usage() {
         sib_simple_usage.setSource(mData)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
+                .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
                     @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
+                    public void onItemClick(View view, BannerItem t, int position) {
                     }
                 })
                 .setIsOnePageLoop(false).startScroll();
@@ -171,12 +170,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
 //              .setPeriod(10)                                      //scroll setPeriod
                 .setSource(mData)                  //data source list
                 .setTransformerClass(ZoomOutSlideTransformer.class) //set page transformer
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
-                    @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener(this)
                 .startScroll();                                     //start scroll,the last method to call
     }
 
@@ -188,12 +182,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
 //                .setIndicatorStyle(SimpleImageBanner.STYLE_DRAWABLE_RESOURCE)
 //                .setIndicatorSelectorRes(R.mipmap.banner_dot_unselect, R.mipmap.banner_dot_select)
                 .setSource(mData)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
-                    @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener(this)
                 .startScroll();
     }
 
@@ -204,12 +193,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
         sib_rectangle
 //                .setIndicatorCornerRadius(0)
                 .setSource(mData)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
-                    @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener(this)
                 .startScroll();
 
     }
@@ -223,12 +207,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
 //                .setIndicatorHeight(4)
 //                .setIndicatorCornerRadius(2)
                 .setSource(mData)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
-                    @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener(this)
                 .startScroll();
 
     }
@@ -240,12 +219,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
     private void sib_indicator_right_with_text() {
         sib_indicator_right_with_text
                 .setSource(mData)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
-                    @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener(this)
                 .startScroll();
     }
 
@@ -255,12 +229,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
     private void sib_indicator_left_with_text() {
         sib_indicator_left_with_text
                 .setSource(mData)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
-                    @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener(this)
                 .startScroll();
     }
 
@@ -271,12 +240,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
         sib_anim
                 .setSelectAnimClass(ZoomInEnter.class)
                 .setSource(mData)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
-                    @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener(this)
                 .startScroll();
 
     }
@@ -289,12 +253,7 @@ public class ViewPagerBannerFragment extends BaseFragment {
                 .setSelectAnimClass(RotateEnter.class)
                 .setUnselectAnimClass(NoAnimExist.class)
                 .setSource(mData)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
-                    @Override
-                    public void onItemClick(int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener(this)
                 .startScroll();
     }
 
@@ -309,9 +268,9 @@ public class ViewPagerBannerFragment extends BaseFragment {
         }
         stb
                 .setSource(titles)
-                .setOnItemClickL(new BaseBanner.OnItemClickL() {
+                .setOnItemClickListener(new BaseBanner.OnItemClickListener<String>() {
                     @Override
-                    public void onItemClick(int position) {
+                    public void onItemClick(View view, String item, int position) {
                         XToastUtils.toast("position--->" + position);
                     }
                 })
@@ -354,5 +313,10 @@ public class ViewPagerBannerFragment extends BaseFragment {
         sib_anim2.recycle();
         stb.recycle();
         super.onDestroyView();
+    }
+
+    @Override
+    public void onItemClick(View view, BannerItem item, int position) {
+        XToastUtils.toast("position--->" + position + ", item:" + item.title);
     }
 }

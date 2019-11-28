@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.adapter;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
@@ -72,9 +74,9 @@ public class RefreshHeadViewAdapter extends BaseRecyclerAdapter<String> {
         if (getItemViewType(position) == TYPE_BANNER_HEAD) {
             headBanner = holder.findViewById(R.id.sib_simple_usage);
             headBanner.setSource(mData)
-                    .setOnItemClickL(new BaseBanner.OnItemClickL() {
+                    .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
                         @Override
-                        public void onItemClick(int position) {
+                        public void onItemClick(View view, BannerItem item, int position) {
                             XToastUtils.toast("headBanner position--->" + position);
                         }
                     }).startScroll();
@@ -82,10 +84,10 @@ public class RefreshHeadViewAdapter extends BaseRecyclerAdapter<String> {
         } else if (getItemViewType(position) == TYPE_BANNER_FOOT) {
             footBanner = holder.findViewById(R.id.sib_simple_usage);
             footBanner.setSource(mData)
-                    .setOnItemClickL(new BaseBanner.OnItemClickL() {
+                    .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
                         @Override
-                        public void onItemClick(int position) {
-                            XToastUtils.toast("footBanner position--->" + position);
+                        public void onItemClick(View view, BannerItem item, int position) {
+                            XToastUtils.toast("headBanner position--->" + position);
                         }
                     }).startScroll();
         } else {

@@ -45,6 +45,7 @@ public abstract class MarqueeFactory<T extends View, E> {
 
     /**
      * 设置Item的监听
+     *
      * @param onItemClickListener
      */
     public void setOnItemClickListener(OnItemClickListener<T, E> onItemClickListener) {
@@ -59,13 +60,13 @@ public abstract class MarqueeFactory<T extends View, E> {
     private void registerOnItemClick() {
         if (!isOnItemClickRegistered && mOnItemClickListener != null && mDatas != null) {
             for (int i = 0; i < mDatas.size(); i++) {
-                T mView = mViews.get(i);
+                T view = mViews.get(i);
                 E data = mDatas.get(i);
-                mView.setTag(new ViewHolder(mView, data, i));
-                mView.setOnClickListener(new View.OnClickListener() {
+                final ViewHolder<T, E> viewHolder = new ViewHolder<>(view, data, i);
+                view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        mOnItemClickListener.onItemClickListener((ViewHolder<T, E>) view.getTag());
+                        mOnItemClickListener.onItemClick(view, viewHolder);
                     }
                 });
             }
@@ -73,8 +74,20 @@ public abstract class MarqueeFactory<T extends View, E> {
         }
     }
 
+    /**
+     * 条目点击监听
+     *
+     * @param <V>
+     * @param <E>
+     */
     public interface OnItemClickListener<V extends View, E> {
-        void onItemClickListener(ViewHolder<V, E> holder);
+        /**
+         * 条目点击
+         *
+         * @param view
+         * @param holder
+         */
+        void onItemClick(View view, ViewHolder<V, E> holder);
     }
 
     public static class ViewHolder<V extends View, P> {
@@ -117,6 +130,6 @@ public abstract class MarqueeFactory<T extends View, E> {
     }
 
     public void setAttachedToMarqueeView(MarqueeView marqueeView) {
-       mMarqueeView = marqueeView;
+        mMarqueeView = marqueeView;
     }
 }
