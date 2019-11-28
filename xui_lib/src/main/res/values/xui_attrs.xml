@@ -133,7 +133,7 @@
         <!--视差效果，默认是1-->
         <attr name="el_parallax" format="float" />
         <!--对齐方式，默认是VERTICAL，垂直-->
-        <attr name="android:orientation"/>
+        <attr name="android:orientation" />
     </declare-styleable>
 
     <!--============================Banner=========================================-->
@@ -1387,6 +1387,21 @@
         <!--圆角大小，默认10dp-->
         <attr name="rv_roundRadius" format="dimension" />
     </declare-styleable>
+
+    <!--DropDownMenu 下拉选择菜单-->
+    <declare-styleable name="DropDownMenu">
+        <attr name="ddm_underlineColor" format="color" />
+        <attr name="ddm_dividerColor" format="color" />
+        <attr name="ddm_textSelectedColor" format="color" />
+        <attr name="ddm_textUnselectedColor" format="color" />
+        <attr name="ddm_menuBackgroundColor" format="color" />
+        <attr name="ddm_maskColor" format="color" />
+        <attr name="ddm_menuTextSize" format="dimension" />
+        <attr name="ddm_menuSelectedIcon" format="reference" />
+        <attr name="ddm_menuUnselectedIcon" format="reference" />
+        <attr name="ddm_menuMenuHeightPercent" format="float" />
+    </declare-styleable>
+    <attr name="DropDownMenuStyle" format="reference" />
 
     <!--=====================================================================-->
     <!--MaterialSearchView-->

@@ -39,145 +39,139 @@ public class RulerView extends View implements HasTypeface {
     /**
      * 2个大刻度之间间距，默认为1
      */
-    private int scaleLimit = 1;
+    private int mScaleLimit = 1;
     /**
      * 尺子高度
      */
-    private int rulerHeight = 50;
+    private int mRulerHeight = 50;
     /**
      * 尺子和屏幕顶部以及结果之间的高度
      */
-    private int rulerToResultGap = rulerHeight / 4;
+    private int mRulerToResultGap = mRulerHeight / 4;
     /**
      * 刻度平分多少份
      */
-    private int scaleCount = 10;
+    private int mScaleCount = 10;
     /**
      * 刻度间距
      */
-    private int scaleGap = 10;
+    private int mScaleGap = 10;
     /**
      * 刻度最小值
      */
-    private int minScale = 0;
+    private int mMinScale = 0;
     /**
      * 第一次显示的刻度
      */
-    private float firstScale = 50f;
+    private float mFirstScale = 50f;
     /**
      * 刻度最大值
      */
-    private int maxScale = 100;
+    private int mMaxScale = 100;
 
     /**
      * 背景颜色
      */
-    private int bgColor;
+    private int mBgColor;
     /**
      * 小刻度的颜色
      */
-    private int smallScaleColor;
+    private int mSmallScaleColor;
     /**
      * 中刻度的颜色
      */
-    private int midScaleColor;
+    private int mMidScaleColor;
     /**
      * 大刻度的颜色
      */
-    private int largeScaleColor;
+    private int mLargeScaleColor;
     /**
      * 刻度颜色
      */
-    private int scaleNumColor;
+    private int mScaleNumColor;
     /**
      * 结果值颜色
      */
-    private int resultNumColor;
+    private int mResultNumColor;
     /**
      * kg颜色
      */
-    private String unit = "kg";
+    private String mUnit = "kg";
     /**
      * kg颜色
      */
-    private int unitColor;
+    private int mUnitColor;
     /**
      * 小刻度粗细大小
      */
-    private int smallScaleStroke = 2;
+    private int mSmallScaleStroke = 2;
     /**
      * 中刻度粗细大小
      */
-    private int midScaleStroke = 3;
+    private int mMidScaleStroke = 3;
     /**
      * 大刻度粗细大小
      */
-    private int largeScaleStroke = 5;
+    private int mLargeScaleStroke = 5;
     /**
      * 结果字体大小
      */
-    private int resultNumTextSize = 20;
+    private int mResultNumTextSize = 20;
     /**
      * 刻度字体大小
      */
-    private int scaleNumTextSize = 16;
+    private int mScaleNumTextSize = 16;
     /**
      * 单位字体大小
      */
-    private int unitTextSize = 13;
+    private int mUnitTextSize = 13;
     /**
      * 是否显示刻度结果
      */
-    private boolean showScaleResult = true;
+    private boolean mShowScaleResult = true;
     /**
      * 是否背景显示圆角
      */
-    private boolean isBgRoundRect = true;
+    private boolean mIsBgRoundRect = true;
     /**
      * 圆角大小
      */
-    private int roundRadius = 10;
+    private int mRoundRadius = 10;
     /**
      * 结果回调
      */
-    private OnChooseResultListener onChooseResultListener;
+    private OnChooseResultListener mOnChooseResultListener;
     /**
      * 滑动选择刻度
      */
-    private float computeScale = -1;
+    private float mComputeScale = -1;
     /**
      * 当前刻度
      */
-    public float currentScale = firstScale;
+    public float mCurrentScale = mFirstScale;
 
-    private ValueAnimator valueAnimator;
-    private VelocityTracker velocityTracker = VelocityTracker.obtain();
-    private String resultText = String.valueOf(firstScale);
-    private Paint bgPaint;
-    private Paint smallScalePaint;
-    private Paint midScalePaint;
-    private Paint lagScalePaint;
-    private TextPaint scaleNumPaint;
-    private TextPaint resultNumPaint;
-    private TextPaint unitPaint;
-    private Rect scaleNumRect;
-    private Rect resultNumRect;
-    private Rect kgRect;
-    private RectF bgRect;
-    private int height, width;
-    private int smallScaleHeight;
-    private int midScaleHeight;
-    private int lagScaleHeight;
-    private int rulerRight = 0;
-    private int resultNumRight;
-    private float downX;
-    private float moveX = 0;
-    private float currentX;
-    private float lastMoveX = 0;
-    private boolean isUp = false;
-    private int leftScroll;
-    private int rightScroll;
-    private int xVelocity;
+    private ValueAnimator mValueAnimator;
+    private VelocityTracker mVelocityTracker = VelocityTracker.obtain();
+    private String mResultText = String.valueOf(mFirstScale);
+    private Paint mBgPaint;
+    private Paint mSmallScalePaint;
+    private Paint mMidScalePaint;
+    private Paint mLagScalePaint;
+    private TextPaint mScaleNumPaint;
+    private TextPaint mResultNumPaint;
+    private TextPaint mUnitPaint;
+    private Rect mScaleNumRect;
+    private Rect mResultNumRect;
+    private Rect mKgRect;
+    private RectF mBgRect;
+    private int mHeight, mWidth;
+    private int mSmallScaleHeight;
+    private int mMidScaleHeight;
+    private int mLagScaleHeight;
+    private float mDownX;
+    private float mMoveX = 0;
+    private float mLastMoveX = 0;
+    private boolean mIsUp = false;
 
     public RulerView(Context context) {
         this(context, null, R.attr.RulerViewStyle);
@@ -201,87 +195,87 @@ public class RulerView extends View implements HasTypeface {
      */
     private void initAttrs(AttributeSet attrs, int defStyleAttr) {
         TypedArray a = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.RulerView, defStyleAttr, 0);
-        scaleLimit = a.getInt(R.styleable.RulerView_rv_scaleLimit, scaleLimit);
-        rulerHeight = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerHeight, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, rulerHeight, getResources().getDisplayMetrics()));
-        rulerToResultGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerToResultGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, rulerToResultGap, getResources().getDisplayMetrics()));
-        scaleCount = a.getInt(R.styleable.RulerView_rv_scaleCount, scaleCount);
-        scaleGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_scaleGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, scaleGap, getResources().getDisplayMetrics()));
-        minScale = a.getInt(R.styleable.RulerView_rv_minScale, minScale) / scaleLimit;
-        firstScale = a.getFloat(R.styleable.RulerView_rv_firstScale, firstScale) / scaleLimit;
-        maxScale = a.getInt(R.styleable.RulerView_rv_maxScale, maxScale) / scaleLimit;
-        bgColor = a.getColor(R.styleable.RulerView_rv_bgColor, ResUtils.getColor(R.color.default_ruler_view_bg_color));
-        smallScaleColor = a.getColor(R.styleable.RulerView_rv_smallScaleColor, ResUtils.getColor(R.color.default_ruler_view_small_scale_color));
-        midScaleColor = a.getColor(R.styleable.RulerView_rv_midScaleColor, ResUtils.getColor(R.color.default_ruler_view_mid_scale_color));
-        largeScaleColor = a.getColor(R.styleable.RulerView_rv_largeScaleColor, ResUtils.getColor(R.color.default_ruler_view_large_scale_color));
-        scaleNumColor = a.getColor(R.styleable.RulerView_rv_scaleNumColor, ResUtils.getColor(R.color.default_ruler_view_scale_num_color));
-        resultNumColor = a.getColor(R.styleable.RulerView_rv_resultNumColor, ResUtils.getColor(R.color.default_ruler_view_result_num_color));
-        unitColor = a.getColor(R.styleable.RulerView_rv_unitColor, ResUtils.getColor(R.color.default_ruler_view_unit_color));
-        String tempUnit = unit;
-        unit = a.getString(R.styleable.RulerView_rv_unit);
-        if (TextUtils.isEmpty(unit)) {
-            unit = tempUnit;
+        mScaleLimit = a.getInt(R.styleable.RulerView_rv_scaleLimit, mScaleLimit);
+        mRulerHeight = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerHeight, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRulerHeight, getResources().getDisplayMetrics()));
+        mRulerToResultGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerToResultGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRulerToResultGap, getResources().getDisplayMetrics()));
+        mScaleCount = a.getInt(R.styleable.RulerView_rv_scaleCount, mScaleCount);
+        mScaleGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_scaleGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mScaleGap, getResources().getDisplayMetrics()));
+        mMinScale = a.getInt(R.styleable.RulerView_rv_minScale, mMinScale) / mScaleLimit;
+        mFirstScale = a.getFloat(R.styleable.RulerView_rv_firstScale, mFirstScale) / mScaleLimit;
+        mMaxScale = a.getInt(R.styleable.RulerView_rv_maxScale, mMaxScale) / mScaleLimit;
+        mBgColor = a.getColor(R.styleable.RulerView_rv_bgColor, ResUtils.getColor(R.color.default_ruler_view_bg_color));
+        mSmallScaleColor = a.getColor(R.styleable.RulerView_rv_smallScaleColor, ResUtils.getColor(R.color.default_ruler_view_small_scale_color));
+        mMidScaleColor = a.getColor(R.styleable.RulerView_rv_midScaleColor, ResUtils.getColor(R.color.default_ruler_view_mid_scale_color));
+        mLargeScaleColor = a.getColor(R.styleable.RulerView_rv_largeScaleColor, ResUtils.getColor(R.color.default_ruler_view_large_scale_color));
+        mScaleNumColor = a.getColor(R.styleable.RulerView_rv_scaleNumColor, ResUtils.getColor(R.color.default_ruler_view_scale_num_color));
+        mResultNumColor = a.getColor(R.styleable.RulerView_rv_resultNumColor, ResUtils.getColor(R.color.default_ruler_view_result_num_color));
+        mUnitColor = a.getColor(R.styleable.RulerView_rv_unitColor, ResUtils.getColor(R.color.default_ruler_view_unit_color));
+        String tempUnit = mUnit;
+        mUnit = a.getString(R.styleable.RulerView_rv_unit);
+        if (TextUtils.isEmpty(mUnit)) {
+            mUnit = tempUnit;
         }
-        smallScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_smallScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, smallScaleStroke, getResources().getDisplayMetrics()));
-        midScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_midScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, midScaleStroke, getResources().getDisplayMetrics()));
-        largeScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_largeScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, largeScaleStroke, getResources().getDisplayMetrics()));
-        resultNumTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_resultNumTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, resultNumTextSize, getResources().getDisplayMetrics()));
-        scaleNumTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_scaleNumTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, scaleNumTextSize, getResources().getDisplayMetrics()));
-        unitTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_unitTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, unitTextSize, getResources().getDisplayMetrics()));
-        showScaleResult = a.getBoolean(R.styleable.RulerView_rv_showScaleResult, showScaleResult);
-        isBgRoundRect = a.getBoolean(R.styleable.RulerView_rv_isBgRoundRect, isBgRoundRect);
-        roundRadius = a.getDimensionPixelSize(R.styleable.RulerView_rv_roundRadius, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, roundRadius, getResources().getDisplayMetrics()));
+        mSmallScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_smallScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mSmallScaleStroke, getResources().getDisplayMetrics()));
+        mMidScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_midScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mMidScaleStroke, getResources().getDisplayMetrics()));
+        mLargeScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_largeScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mLargeScaleStroke, getResources().getDisplayMetrics()));
+        mResultNumTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_resultNumTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mResultNumTextSize, getResources().getDisplayMetrics()));
+        mScaleNumTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_scaleNumTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mScaleNumTextSize, getResources().getDisplayMetrics()));
+        mUnitTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_unitTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mUnitTextSize, getResources().getDisplayMetrics()));
+        mShowScaleResult = a.getBoolean(R.styleable.RulerView_rv_showScaleResult, mShowScaleResult);
+        mIsBgRoundRect = a.getBoolean(R.styleable.RulerView_rv_isBgRoundRect, mIsBgRoundRect);
+        mRoundRadius = a.getDimensionPixelSize(R.styleable.RulerView_rv_roundRadius, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRoundRadius, getResources().getDisplayMetrics()));
         a.recycle();
     }
 
 
     private void init() {
-        bgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        smallScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        midScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        lagScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        scaleNumPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        resultNumPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        unitPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        mBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mSmallScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mMidScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mLagScalePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mScaleNumPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        mResultNumPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        mUnitPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
 
-        bgPaint.setColor(bgColor);
-        smallScalePaint.setColor(smallScaleColor);
-        midScalePaint.setColor(midScaleColor);
-        lagScalePaint.setColor(largeScaleColor);
-        scaleNumPaint.setColor(scaleNumColor);
-        resultNumPaint.setColor(resultNumColor);
-        unitPaint.setColor(unitColor);
+        mBgPaint.setColor(mBgColor);
+        mSmallScalePaint.setColor(mSmallScaleColor);
+        mMidScalePaint.setColor(mMidScaleColor);
+        mLagScalePaint.setColor(mLargeScaleColor);
+        mScaleNumPaint.setColor(mScaleNumColor);
+        mResultNumPaint.setColor(mResultNumColor);
+        mUnitPaint.setColor(mUnitColor);
 
-        resultNumPaint.setStyle(Paint.Style.FILL);
-        unitPaint.setStyle(Paint.Style.FILL);
-        bgPaint.setStyle(Paint.Style.FILL);
-        smallScalePaint.setStyle(Paint.Style.FILL);
-        midScalePaint.setStyle(Paint.Style.FILL);
-        lagScalePaint.setStyle(Paint.Style.FILL);
+        mResultNumPaint.setStyle(Paint.Style.FILL);
+        mUnitPaint.setStyle(Paint.Style.FILL);
+        mBgPaint.setStyle(Paint.Style.FILL);
+        mSmallScalePaint.setStyle(Paint.Style.FILL);
+        mMidScalePaint.setStyle(Paint.Style.FILL);
+        mLagScalePaint.setStyle(Paint.Style.FILL);
 
-        lagScalePaint.setStrokeCap(Paint.Cap.ROUND);
-        midScalePaint.setStrokeCap(Paint.Cap.ROUND);
-        smallScalePaint.setStrokeCap(Paint.Cap.ROUND);
+        mLagScalePaint.setStrokeCap(Paint.Cap.ROUND);
+        mMidScalePaint.setStrokeCap(Paint.Cap.ROUND);
+        mSmallScalePaint.setStrokeCap(Paint.Cap.ROUND);
 
-        smallScalePaint.setStrokeWidth(smallScaleStroke);
-        midScalePaint.setStrokeWidth(midScaleStroke);
-        lagScalePaint.setStrokeWidth(largeScaleStroke);
+        mSmallScalePaint.setStrokeWidth(mSmallScaleStroke);
+        mMidScalePaint.setStrokeWidth(mMidScaleStroke);
+        mLagScalePaint.setStrokeWidth(mLargeScaleStroke);
 
-        resultNumPaint.setTextSize(resultNumTextSize);
-        unitPaint.setTextSize(unitTextSize);
-        scaleNumPaint.setTextSize(scaleNumTextSize);
+        mResultNumPaint.setTextSize(mResultNumTextSize);
+        mUnitPaint.setTextSize(mUnitTextSize);
+        mScaleNumPaint.setTextSize(mScaleNumTextSize);
 
-        bgRect = new RectF();
-        resultNumRect = new Rect();
-        scaleNumRect = new Rect();
-        kgRect = new Rect();
+        mBgRect = new RectF();
+        mResultNumRect = new Rect();
+        mScaleNumRect = new Rect();
+        mKgRect = new Rect();
 
-        resultNumPaint.getTextBounds(resultText, 0, resultText.length(), resultNumRect);
-        unitPaint.getTextBounds(resultText, 0, 1, kgRect);
+        mResultNumPaint.getTextBounds(mResultText, 0, mResultText.length(), mResultNumRect);
+        mUnitPaint.getTextBounds(mResultText, 0, 1, mKgRect);
 
-        smallScaleHeight = rulerHeight / 4;
-        midScaleHeight = rulerHeight / 2;
-        lagScaleHeight = rulerHeight / 2 + 5;
-        valueAnimator = new ValueAnimator();
+        mSmallScaleHeight = mRulerHeight / 4;
+        mMidScaleHeight = mRulerHeight / 2;
+        mLagScaleHeight = mRulerHeight / 2 + 5;
+        mValueAnimator = new ValueAnimator();
 
     }
 
@@ -294,19 +288,19 @@ public class RulerView extends View implements HasTypeface {
 
         switch (heightModule) {
             case MeasureSpec.AT_MOST:
-                height = rulerHeight + (showScaleResult ? resultNumRect.height() : 0) + rulerToResultGap * 2 + getPaddingTop() + getPaddingBottom();
+                mHeight = mRulerHeight + (mShowScaleResult ? mResultNumRect.height() : 0) + mRulerToResultGap * 2 + getPaddingTop() + getPaddingBottom();
                 break;
             case MeasureSpec.UNSPECIFIED:
             case MeasureSpec.EXACTLY:
-                height = heightSize + getPaddingTop() + getPaddingBottom();
+                mHeight = heightSize + getPaddingTop() + getPaddingBottom();
                 break;
             default:
                 break;
         }
 
-        width = widthSize + getPaddingLeft() + getPaddingRight();
+        mWidth = widthSize + getPaddingLeft() + getPaddingRight();
 
-        setMeasuredDimension(width, height);
+        setMeasuredDimension(mWidth, mHeight);
 
     }
 
@@ -314,7 +308,7 @@ public class RulerView extends View implements HasTypeface {
     protected void onDraw(Canvas canvas) {
         drawBg(canvas);
         drawScaleAndNum(canvas);
-        drawResultText(canvas, resultText);
+        drawResultText(canvas, mResultText);
     }
 
     @Override
@@ -324,34 +318,34 @@ public class RulerView extends View implements HasTypeface {
             getParent().requestDisallowInterceptTouchEvent(true);
         }
 
-        currentX = event.getX();
-        isUp = false;
-        velocityTracker.computeCurrentVelocity(500);
-        velocityTracker.addMovement(event);
+        float currentX = event.getX();
+        mIsUp = false;
+        mVelocityTracker.computeCurrentVelocity(500);
+        mVelocityTracker.addMovement(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 //按下时如果属性动画还没执行完,就终止,记录下当前按下点的位置
-                if (valueAnimator != null && valueAnimator.isRunning()) {
-                    valueAnimator.end();
-                    valueAnimator.cancel();
+                if (mValueAnimator != null && mValueAnimator.isRunning()) {
+                    mValueAnimator.end();
+                    mValueAnimator.cancel();
                 }
-                downX = event.getX();
+                mDownX = event.getX();
                 break;
             case MotionEvent.ACTION_MOVE:
                 //滑动时候,通过假设的滑动距离,做超出左边界以及右边界的限制。
-                moveX = currentX - downX + lastMoveX;
-                if (moveX >= width / 2) {
-                    moveX = width / 2;
-                } else if (moveX <= getWhichScaleMoveX(maxScale)) {
-                    moveX = getWhichScaleMoveX(maxScale);
+                mMoveX = currentX - mDownX + mLastMoveX;
+                if (mMoveX >= mWidth / 2) {
+                    mMoveX = mWidth / 2;
+                } else if (mMoveX <= getWhichScaleMoveX(mMaxScale)) {
+                    mMoveX = getWhichScaleMoveX(mMaxScale);
                 }
                 break;
             case MotionEvent.ACTION_UP:
                 //手指抬起时候制造惯性滑动
-                lastMoveX = moveX;
-                xVelocity = (int) velocityTracker.getXVelocity();
+                mLastMoveX = mMoveX;
+                int xVelocity = (int) mVelocityTracker.getXVelocity();
                 autoVelocityScroll(xVelocity);
-                velocityTracker.clear();
+                mVelocityTracker.clear();
                 break;
             default:
                 break;
@@ -363,213 +357,213 @@ public class RulerView extends View implements HasTypeface {
     private void autoVelocityScroll(int xVelocity) {
         //惯性滑动的代码,速率和滑动距离,以及滑动时间需要控制的很好,应该网上已经有关于这方面的算法了吧。。这里是经过N次测试调节出来的惯性滑动
         if (Math.abs(xVelocity) < 50) {
-            isUp = true;
+            mIsUp = true;
             return;
         }
-        if (valueAnimator.isRunning()) {
+        if (mValueAnimator.isRunning()) {
             return;
         }
-        valueAnimator = ValueAnimator.ofInt(0, xVelocity / 20).setDuration(Math.abs(xVelocity / 10));
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        mValueAnimator = ValueAnimator.ofInt(0, xVelocity / 20).setDuration(Math.abs(xVelocity / 10));
+        mValueAnimator.setInterpolator(new DecelerateInterpolator());
+        mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                moveX += (int) animation.getAnimatedValue();
-                if (moveX >= width / 2) {
-                    moveX = width / 2;
-                } else if (moveX <= getWhichScaleMoveX(maxScale)) {
-                    moveX = getWhichScaleMoveX(maxScale);
+                mMoveX += (int) animation.getAnimatedValue();
+                if (mMoveX >= mWidth / 2) {
+                    mMoveX = mWidth / 2;
+                } else if (mMoveX <= getWhichScaleMoveX(mMaxScale)) {
+                    mMoveX = getWhichScaleMoveX(mMaxScale);
                 }
-                lastMoveX = moveX;
+                mLastMoveX = mMoveX;
                 invalidate();
             }
 
         });
-        valueAnimator.addListener(new AnimatorListenerAdapter() {
+        mValueAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                isUp = true;
+                mIsUp = true;
                 invalidate();
             }
         });
 
-        valueAnimator.start();
+        mValueAnimator.start();
     }
 
     private float getWhichScaleMoveX(float scale) {
-        return width / 2 - scaleGap * scaleCount * (scale - minScale);
+        return mWidth / 2 - mScaleGap * mScaleCount * (scale - mMinScale);
     }
 
     private void drawScaleAndNum(Canvas canvas) {
-        canvas.translate(0, (showScaleResult ? resultNumRect.height() : 0) + rulerToResultGap);//移动画布到结果值的下面
+        canvas.translate(0, (mShowScaleResult ? mResultNumRect.height() : 0) + mRulerToResultGap);//移动画布到结果值的下面
 
         int num1;//确定刻度位置
         float num2;
 
-        if (firstScale != -1) {   //第一次进来的时候计算出默认刻度对应的假设滑动的距离moveX
-            moveX = getWhichScaleMoveX(firstScale);          //如果设置了默认滑动位置，计算出需要滑动的距离
-            lastMoveX = moveX;
-            firstScale = -1;                                //将结果置为-1，下次不再计算初始位置
+        if (mFirstScale != -1) {   //第一次进来的时候计算出默认刻度对应的假设滑动的距离moveX
+            mMoveX = getWhichScaleMoveX(mFirstScale);          //如果设置了默认滑动位置，计算出需要滑动的距离
+            mLastMoveX = mMoveX;
+            mFirstScale = -1;                                //将结果置为-1，下次不再计算初始位置
         }
 
-        if (computeScale != -1) {//弹性滑动到目标刻度
-            lastMoveX = moveX;
-            if (valueAnimator != null && !valueAnimator.isRunning()) {
-                valueAnimator = ValueAnimator.ofFloat(getWhichScaleMoveX(currentScale), getWhichScaleMoveX(computeScale));
-                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        if (mComputeScale != -1) {//弹性滑动到目标刻度
+            mLastMoveX = mMoveX;
+            if (mValueAnimator != null && !mValueAnimator.isRunning()) {
+                mValueAnimator = ValueAnimator.ofFloat(getWhichScaleMoveX(mCurrentScale), getWhichScaleMoveX(mComputeScale));
+                mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
-                        moveX = (float) animation.getAnimatedValue();
-                        lastMoveX = moveX;
+                        mMoveX = (float) animation.getAnimatedValue();
+                        mLastMoveX = mMoveX;
                         invalidate();
                     }
                 });
-                valueAnimator.addListener(new AnimatorListenerAdapter() {
+                mValueAnimator.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         //这里是滑动结束时候回调给使用者的结果值
-                        computeScale = -1;
+                        mComputeScale = -1;
                     }
                 });
-                valueAnimator.setDuration(Math.abs((long) ((getWhichScaleMoveX(computeScale) - getWhichScaleMoveX(currentScale)) / 100)));
-                valueAnimator.start();
+                mValueAnimator.setDuration(Math.abs((long) ((getWhichScaleMoveX(mComputeScale) - getWhichScaleMoveX(mCurrentScale)) / 100)));
+                mValueAnimator.start();
             }
         }
 
-        num1 = -(int) (moveX / scaleGap);                   //滑动刻度的整数部分
-        num2 = (moveX % scaleGap);                         //滑动刻度的小数部分
+        num1 = -(int) (mMoveX / mScaleGap);                   //滑动刻度的整数部分
+        num2 = (mMoveX % mScaleGap);                         //滑动刻度的小数部分
 
         canvas.save();                                      //保存当前画布
 
-        rulerRight = 0;                                    //准备开始绘制当前屏幕,从最左面开始
+        int rulerRight = 0;                                    //准备开始绘制当前屏幕,从最左面开始
 
-        if (isUp) {   //这部分代码主要是计算手指抬起时，惯性滑动结束时，刻度需要停留的位置
-            num2 = ((moveX - width / 2 % scaleGap) % scaleGap);     //计算滑动位置距离整点刻度的小数部分距离
+        if (mIsUp) {   //这部分代码主要是计算手指抬起时，惯性滑动结束时，刻度需要停留的位置
+            num2 = ((mMoveX - mWidth / 2 % mScaleGap) % mScaleGap);     //计算滑动位置距离整点刻度的小数部分距离
             if (num2 <= 0) {
-                num2 = scaleGap - Math.abs(num2);
+                num2 = mScaleGap - Math.abs(num2);
             }
-            leftScroll = (int) Math.abs(num2);                        //当前滑动位置距离左边整点刻度的距离
-            rightScroll = (int) (scaleGap - Math.abs(num2));         //当前滑动位置距离右边整点刻度的距离
+            int leftScroll = (int) Math.abs(num2);                        //当前滑动位置距离左边整点刻度的距离
+            int rightScroll = (int) (mScaleGap - Math.abs(num2));         //当前滑动位置距离右边整点刻度的距离
 
-            float moveX2 = num2 <= scaleGap / 2 ? moveX - leftScroll : moveX + rightScroll; //最终计算出当前位置到整点刻度位置需要滑动的距离
+            float moveX2 = num2 <= mScaleGap / 2 ? mMoveX - leftScroll : mMoveX + rightScroll; //最终计算出当前位置到整点刻度位置需要滑动的距离
 
-            if (valueAnimator != null && !valueAnimator.isRunning()) {      //手指抬起，并且当前没有惯性滑动在进行，创建一个惯性滑动
-                valueAnimator = ValueAnimator.ofFloat(moveX, moveX2);
-                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            if (mValueAnimator != null && !mValueAnimator.isRunning()) {      //手指抬起，并且当前没有惯性滑动在进行，创建一个惯性滑动
+                mValueAnimator = ValueAnimator.ofFloat(mMoveX, moveX2);
+                mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
-                        moveX = (float) animation.getAnimatedValue();            //不断滑动去更新新的位置
-                        lastMoveX = moveX;
+                        mMoveX = (float) animation.getAnimatedValue();            //不断滑动去更新新的位置
+                        mLastMoveX = mMoveX;
                         invalidate();
                     }
                 });
-                valueAnimator.addListener(new AnimatorListenerAdapter() {       //增加一个监听，用来返回给使用者滑动结束后的最终结果刻度值
+                mValueAnimator.addListener(new AnimatorListenerAdapter() {       //增加一个监听，用来返回给使用者滑动结束后的最终结果刻度值
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         //这里是滑动结束时候回调给使用者的结果值
-                        if (onChooseResultListener != null) {
-                            onChooseResultListener.onEndResult(resultText);
+                        if (mOnChooseResultListener != null) {
+                            mOnChooseResultListener.onEndResult(mResultText);
                         }
                     }
                 });
-                valueAnimator.setDuration(300);
-                valueAnimator.start();
-                isUp = false;
+                mValueAnimator.setDuration(300);
+                mValueAnimator.start();
+                mIsUp = false;
             }
-
-            num1 = (int) -(moveX / scaleGap);                //重新计算当前滑动位置的整数以及小数位置
-            num2 = (moveX % scaleGap);
+            //重新计算当前滑动位置的整数以及小数位置
+            num1 = (int) -(mMoveX / mScaleGap);
+            num2 = (mMoveX % mScaleGap);
         }
 
-
-        canvas.translate(num2, 0);    //不加该偏移的话，滑动时刻度不会落在0~1之间只会落在整数上面,其实这个都能设置一种模式了，毕竟初衷就是指针不会落在小数上面
+        //不加该偏移的话，滑动时刻度不会落在0~1之间只会落在整数上面,其实这个都能设置一种模式了，毕竟初衷就是指针不会落在小数上面
+        canvas.translate(num2, 0);
 
         //这里是滑动时候不断回调给使用者的结果值
-        currentScale = new WeakReference<>(new BigDecimal(((width / 2 - moveX) / (scaleGap * scaleCount) + minScale) * scaleLimit)).get().setScale(1, BigDecimal.ROUND_HALF_UP).floatValue();
+        mCurrentScale = new WeakReference<>(new BigDecimal(((mWidth / 2 - mMoveX) / (mScaleGap * mScaleCount) + mMinScale) * mScaleLimit)).get().setScale(1, BigDecimal.ROUND_HALF_UP).floatValue();
 
-        resultText = String.valueOf(currentScale);
+        mResultText = String.valueOf(mCurrentScale);
 
 
-        if (onChooseResultListener != null) {
-            onChooseResultListener.onScrollResult(resultText); //接口不断回调给使用者结果值
+        if (mOnChooseResultListener != null) {
+            mOnChooseResultListener.onScrollResult(mResultText); //接口不断回调给使用者结果值
         }
-        //绘制当前屏幕可见刻度,不需要裁剪屏幕,while循环只会执行·屏幕宽度/刻度宽度·次,大部分的绘制都是if(curDis<width)这样子内存暂用相对来说会比较高。。
-        while (rulerRight < width) {
-            if (num1 % scaleCount == 0) {    //绘制整点刻度以及文字
-                if ((moveX >= 0 && rulerRight < moveX - scaleGap) || width / 2 - rulerRight <= getWhichScaleMoveX(maxScale + 1) - moveX) {
+        //绘制当前屏幕可见刻度,不需要裁剪屏幕,while循环只会执行·屏幕宽度/刻度宽度·次,大部分的绘制都是if(curDis<mWidth)这样子内存暂用相对来说会比较高。。
+        while (rulerRight < mWidth) {
+            if (num1 % mScaleCount == 0) {    //绘制整点刻度以及文字
+                if ((mMoveX >= 0 && rulerRight < mMoveX - mScaleGap) || mWidth / 2 - rulerRight <= getWhichScaleMoveX(mMaxScale + 1) - mMoveX) {
                     //当滑动出范围的话，不绘制，去除左右边界
                 } else {
                     //绘制刻度，绘制刻度数字
-                    canvas.drawLine(0, 0, 0, midScaleHeight, midScalePaint);
-                    scaleNumPaint.getTextBounds(num1 / scaleGap + minScale + "", 0, (num1 / scaleGap + minScale + "").length(), scaleNumRect);
-                    canvas.drawText((num1 / scaleCount + minScale) * scaleLimit + "", -scaleNumRect.width() / 2, lagScaleHeight +
-                            (rulerHeight - lagScaleHeight) / 2 + scaleNumRect.height(), scaleNumPaint);
+                    canvas.drawLine(0, 0, 0, mMidScaleHeight, mMidScalePaint);
+                    mScaleNumPaint.getTextBounds(num1 / mScaleGap + mMinScale + "", 0, (num1 / mScaleGap + mMinScale + "").length(), mScaleNumRect);
+                    canvas.drawText((num1 / mScaleCount + mMinScale) * mScaleLimit + "", -mScaleNumRect.width() / 2, mLagScaleHeight +
+                            (mRulerHeight - mLagScaleHeight) / 2 + mScaleNumRect.height(), mScaleNumPaint);
 
                 }
 
             } else {   //绘制小数刻度
-                if ((moveX >= 0 && rulerRight < moveX) || width / 2 - rulerRight < getWhichScaleMoveX(maxScale) - moveX) {
+                if ((mMoveX >= 0 && rulerRight < mMoveX) || mWidth / 2 - rulerRight < getWhichScaleMoveX(mMaxScale) - mMoveX) {
                     //当滑动出范围的话，不绘制，去除左右边界
                 } else {
                     //绘制小数刻度
-                    canvas.drawLine(0, 0, 0, smallScaleHeight, smallScalePaint);
+                    canvas.drawLine(0, 0, 0, mSmallScaleHeight, mSmallScalePaint);
                 }
             }
             ++num1;  //刻度加1
-            rulerRight += scaleGap;  //绘制屏幕的距离在原有基础上+1个刻度间距
-            canvas.translate(scaleGap, 0); //移动画布到下一个刻度
+            rulerRight += mScaleGap;  //绘制屏幕的距离在原有基础上+1个刻度间距
+            canvas.translate(mScaleGap, 0); //移动画布到下一个刻度
         }
 
         canvas.restore();
         //绘制屏幕中间用来选中刻度的最大刻度
-        canvas.drawLine(width / 2, 0, width / 2, lagScaleHeight, lagScalePaint);
+        canvas.drawLine(mWidth / 2, 0, mWidth / 2, mLagScaleHeight, mLagScalePaint);
 
     }
 
     //绘制上面的结果 结果值+单位
     private void drawResultText(Canvas canvas, String resultText) {
-        if (!showScaleResult) {   //判断用户是否设置需要显示当前刻度值，如果否则取消绘制
+        if (!mShowScaleResult) {   //判断用户是否设置需要显示当前刻度值，如果否则取消绘制
             return;
         }
-        canvas.translate(0, -resultNumRect.height() - rulerToResultGap / 2);  //移动画布到正确的位置来绘制结果值
-        resultNumPaint.getTextBounds(resultText, 0, resultText.length(), resultNumRect);
-        canvas.drawText(resultText, width / 2 - resultNumRect.width() / 2, resultNumRect.height(), //绘制当前刻度结果值
-                resultNumPaint);
-        resultNumRight = width / 2 + resultNumRect.width() / 2 + 10;
-        canvas.drawText(unit, resultNumRight, kgRect.height() + 2, unitPaint);            //在当前刻度结果值的又面10px的位置绘制单位
+        canvas.translate(0, -mResultNumRect.height() - mRulerToResultGap / 2);  //移动画布到正确的位置来绘制结果值
+        mResultNumPaint.getTextBounds(resultText, 0, resultText.length(), mResultNumRect);
+        canvas.drawText(resultText, mWidth / 2 - mResultNumRect.width() / 2, mResultNumRect.height(), //绘制当前刻度结果值
+                mResultNumPaint);
+        int resultNumRight = mWidth / 2 + mResultNumRect.width() / 2 + 10;
+        canvas.drawText(mUnit, resultNumRight, mKgRect.height() + 2, mUnitPaint);            //在当前刻度结果值的又面10px的位置绘制单位
     }
 
     private void drawBg(Canvas canvas) {
-        bgRect.set(0, 0, width, height);
-        if (isBgRoundRect) {
+        mBgRect.set(0, 0, mWidth, mHeight);
+        if (mIsBgRoundRect) {
             //椭圆的用于圆形角x-radius
-            canvas.drawRoundRect(bgRect, roundRadius, roundRadius, bgPaint);
+            canvas.drawRoundRect(mBgRect, mRoundRadius, mRoundRadius, mBgPaint);
         } else {
-            canvas.drawRect(bgRect, bgPaint);
+            canvas.drawRect(mBgRect, mBgPaint);
         }
     }
 
     private void computeScrollTo(float scale) {
-        scale = scale / scaleLimit;
-        if (scale < minScale || scale > maxScale) {
+        scale = scale / mScaleLimit;
+        if (scale < mMinScale || scale > mMaxScale) {
             return;
         }
-        computeScale = scale;
+        mComputeScale = scale;
         invalidate();
     }
 
     @Override
     public void setTypeface(Typeface typeface) {
-        if (resultNumPaint != null) {
-            resultNumPaint.setTypeface(typeface);
+        if (mResultNumPaint != null) {
+            mResultNumPaint.setTypeface(typeface);
         }
-        if (unitPaint != null) {
-            unitPaint.setTypeface(typeface);
+        if (mUnitPaint != null) {
+            mUnitPaint.setTypeface(typeface);
         }
-        if (scaleNumPaint != null) {
-            scaleNumPaint.setTypeface(typeface);
+        if (mScaleNumPaint != null) {
+            mScaleNumPaint.setTypeface(typeface);
         }
     }
 
@@ -593,121 +587,121 @@ public class RulerView extends View implements HasTypeface {
     }
 
     public void setRulerHeight(int rulerHeight) {
-        this.rulerHeight = rulerHeight;
+        this.mRulerHeight = rulerHeight;
         invalidate();
     }
 
     public void setRulerToResultGap(int rulerToResultGap) {
-        this.rulerToResultGap = rulerToResultGap;
+        this.mRulerToResultGap = rulerToResultGap;
         invalidate();
     }
 
     public void setScaleCount(int scaleCount) {
-        this.scaleCount = scaleCount;
+        this.mScaleCount = scaleCount;
         invalidate();
     }
 
     public void setScaleGap(int scaleGap) {
-        this.scaleGap = scaleGap;
+        this.mScaleGap = scaleGap;
         invalidate();
     }
 
     public void setMinScale(int minScale) {
-        this.minScale = minScale;
+        this.mMinScale = minScale;
         invalidate();
     }
 
     public void setFirstScale(float firstScale) {
-        this.firstScale = firstScale;
+        this.mFirstScale = firstScale;
         invalidate();
     }
 
     public void setMaxScale(int maxScale) {
-        this.maxScale = maxScale;
+        this.mMaxScale = maxScale;
         invalidate();
     }
 
     public void setBgColor(int bgColor) {
-        this.bgColor = bgColor;
+        this.mBgColor = bgColor;
         invalidate();
     }
 
     public void setSmallScaleColor(int smallScaleColor) {
-        this.smallScaleColor = smallScaleColor;
+        this.mSmallScaleColor = smallScaleColor;
         invalidate();
     }
 
     public void setMidScaleColor(int midScaleColor) {
-        this.midScaleColor = midScaleColor;
+        this.mMidScaleColor = midScaleColor;
         invalidate();
     }
 
     public void setLargeScaleColor(int largeScaleColor) {
-        this.largeScaleColor = largeScaleColor;
+        this.mLargeScaleColor = largeScaleColor;
     }
 
     public void setScaleNumColor(int scaleNumColor) {
-        this.scaleNumColor = scaleNumColor;
+        this.mScaleNumColor = scaleNumColor;
         invalidate();
     }
 
     public void setResultNumColor(int resultNumColor) {
-        this.resultNumColor = resultNumColor;
+        this.mResultNumColor = resultNumColor;
         invalidate();
     }
 
     public void setUnit(String unit) {
-        this.unit = unit;
+        this.mUnit = unit;
         invalidate();
     }
 
     public void setUnitColor(int unitColor) {
-        this.unitColor = unitColor;
+        this.mUnitColor = unitColor;
         invalidate();
     }
 
     public void setSmallScaleStroke(int smallScaleStroke) {
-        this.smallScaleStroke = smallScaleStroke;
+        this.mSmallScaleStroke = smallScaleStroke;
         invalidate();
     }
 
     public void setMidScaleStroke(int midScaleStroke) {
-        this.midScaleStroke = midScaleStroke;
+        this.mMidScaleStroke = midScaleStroke;
         invalidate();
     }
 
     public void setLargeScaleStroke(int largeScaleStroke) {
-        this.largeScaleStroke = largeScaleStroke;
+        this.mLargeScaleStroke = largeScaleStroke;
         invalidate();
     }
 
     public void setResultNumTextSize(int resultNumTextSize) {
-        this.resultNumTextSize = resultNumTextSize;
+        this.mResultNumTextSize = resultNumTextSize;
         invalidate();
     }
 
     public void setScaleNumTextSize(int scaleNumTextSize) {
-        this.scaleNumTextSize = scaleNumTextSize;
+        this.mScaleNumTextSize = scaleNumTextSize;
         invalidate();
     }
 
     public void setUnitTextSize(int unitTextSize) {
-        this.unitTextSize = unitTextSize;
+        this.mUnitTextSize = unitTextSize;
         invalidate();
     }
 
     public void setShowScaleResult(boolean showScaleResult) {
-        this.showScaleResult = showScaleResult;
+        this.mShowScaleResult = showScaleResult;
         invalidate();
     }
 
     public void setIsBgRoundRect(boolean bgRoundRect) {
-        isBgRoundRect = bgRoundRect;
+        mIsBgRoundRect = bgRoundRect;
         invalidate();
     }
 
     public void setScaleLimit(int scaleLimit) {
-        this.scaleLimit = scaleLimit;
+        this.mScaleLimit = scaleLimit;
         invalidate();
     }
 
@@ -726,7 +720,7 @@ public class RulerView extends View implements HasTypeface {
      * @return
      */
     public float getCurrentValue() {
-        return currentScale;
+        return mCurrentScale;
     }
 
     /**
@@ -735,7 +729,7 @@ public class RulerView extends View implements HasTypeface {
      * @return
      */
     public String getSelectValue() {
-        return resultText;
+        return mResultText;
     }
 
     /**
@@ -745,7 +739,7 @@ public class RulerView extends View implements HasTypeface {
      * @return
      */
     public RulerView setOnChooseResultListener(OnChooseResultListener onChooseResultListener) {
-        this.onChooseResultListener = onChooseResultListener;
+        this.mOnChooseResultListener = onChooseResultListener;
         return this;
     }
 }

@@ -391,7 +391,6 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
                 public void onAnimationStart(Animation animation) {
 
                 }
-
                 @Override
                 public void onAnimationEnd(Animation animation) {
                     removeView();
