@@ -17,71 +17,46 @@
 
 package com.xuexiang.xuidemo.adapter.dropdownmenu;
 
-import android.view.LayoutInflater;
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.adapter.listview.BaseListAdapter;
 import com.xuexiang.xuidemo.R;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 星座适配器
+ *
+ * @author xuexiang
+ * @since 2019-11-30 15:55
+ */
+public class ConstellationAdapter extends BaseListAdapter<String, ConstellationAdapter.ViewHolder> {
 
-public class ConstellationAdapter extends BaseAdapter {
-
-    private List<String> list;
-    private int checkItemPosition = 0;
-
-    public void setCheckItem(int position) {
-        checkItemPosition = position;
-        notifyDataSetChanged();
-    }
-
-    public ConstellationAdapter(List<String> list) {
-        this.list = list;
+    public ConstellationAdapter(Context context, String[] data) {
+        super(context, data);
     }
 
     @Override
-    public int getCount() {
-        return list.size();
+    protected ViewHolder newViewHolder(View convertView) {
+        return new ViewHolder(convertView);
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    protected int getLayoutId() {
+        return R.layout.adapter_drop_down_constellation;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        if (convertView != null) {
-            viewHolder = (ViewHolder) convertView.getTag();
-        } else {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_drop_down_constellation, null);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        }
-        fillValue(position, viewHolder);
-        return convertView;
-    }
-
-    private void fillValue(int position, ViewHolder viewHolder) {
-        viewHolder.mText.setText(list.get(position));
-        if (checkItemPosition != -1) {
-            if (checkItemPosition == position) {
-                viewHolder.mText.setSelected(true);
+    protected void convert(ViewHolder holder, String item, int position) {
+        holder.mText.setText(item);
+        if (mSelectPosition != -1) {
+            if (mSelectPosition == position) {
+                holder.mText.setSelected(true);
             } else {
-                viewHolder.mText.setSelected(false);
+                holder.mText.setSelected(false);
             }
         }
     }

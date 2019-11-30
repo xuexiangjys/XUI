@@ -82,6 +82,8 @@
     <color name="toast_normal_tint_color">#353A3E</color>
 
     <color name="default_image_banner_placeholder_color">#555555</color>
+    <!--DropDownMenu-->
+    <color name="default_ddm_mask_color">#88888888</color>
 
     <!--*********************************************
     *              Config Color                     *

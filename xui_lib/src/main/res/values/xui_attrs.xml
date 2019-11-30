@@ -1390,16 +1390,38 @@
 
     <!--DropDownMenu 下拉选择菜单-->
     <declare-styleable name="DropDownMenu">
-        <attr name="ddm_underlineColor" format="color" />
+        <!--下拉选择菜单的内容布局-->
+        <attr name="ddm_contentLayoutId" format="reference" />
+        <!--菜单垂直分割线的颜色，默认R.attr.xui_config_color_separator_dark-->
         <attr name="ddm_dividerColor" format="color" />
-        <attr name="ddm_textSelectedColor" format="color" />
-        <attr name="ddm_textUnselectedColor" format="color" />
-        <attr name="ddm_menuBackgroundColor" format="color" />
+        <!--菜单垂直分割线的宽度， 默认0.5dp-->
+        <attr name="ddm_dividerWidth" format="dimension" />
+        <!--菜单垂直分割线的Margin， 默认10dp-->
+        <attr name="ddm_dividerMargin" format="dimension" />
+        <!--菜单底线的颜色, 默认R.attr.xui_config_color_separator_light-->
+        <attr name="ddm_underlineColor" format="color" />
+        <!--菜单底线的高度， 默认1dp-->
+        <attr name="ddm_underlineHeight" format="dimension" />
+        <!--半透明遮罩颜色, 默认#88888888-->
         <attr name="ddm_maskColor" format="color" />
+        <!--菜单文字的字体大小，默认14sp-->
         <attr name="ddm_menuTextSize" format="dimension" />
+        <!--菜单文字水平padding，默认5dp-->
+        <attr name="ddm_menuTextPaddingHorizontal" format="dimension" />
+        <!--菜单文字垂直padding，默认12dp-->
+        <attr name="ddm_menuTextPaddingVertical" format="dimension" />
+        <!--菜单文字选中的颜色，默认R.attr.colorAccent-->
+        <attr name="ddm_menuTextSelectedColor" format="color" />
+        <!--菜单文字未选中的颜色，默认R.attr.xui_config_color_content_text-->
+        <attr name="ddm_menuTextUnselectedColor" format="color" />
+        <!--菜单选择时的图标， 默认R.drawable.ddm_ic_arrow_up-->
         <attr name="ddm_menuSelectedIcon" format="reference" />
+        <!--菜单未选择时的图标, 默认R.drawable.ddm_ic_arrow_down-->
         <attr name="ddm_menuUnselectedIcon" format="reference" />
-        <attr name="ddm_menuMenuHeightPercent" format="float" />
+        <!--菜单的背景颜色，默认Color.WHITE-->
+        <attr name="ddm_menuBackgroundColor" format="color" />
+        <!--选择菜单的高度/屏幕高度 占比， 默认0.5-->
+        <attr name="ddm_menuHeightPercent" format="float" />
     </declare-styleable>
     <attr name="DropDownMenuStyle" format="reference" />
 

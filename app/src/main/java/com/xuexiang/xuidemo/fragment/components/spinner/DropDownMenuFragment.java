@@ -37,6 +37,7 @@ import com.xuexiang.xuidemo.adapter.dropdownmenu.CityDropDownAdapter;
 import com.xuexiang.xuidemo.adapter.dropdownmenu.ConstellationAdapter;
 import com.xuexiang.xuidemo.adapter.dropdownmenu.ListDropDownAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xutil.common.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,17 +58,15 @@ public class DropDownMenuFragment extends BaseFragment {
     private String[] mHeaders = {"城市", "年龄", "性别", "星座"};
     private List<View> mPopupViews = new ArrayList<>();
 
-    private CityDropDownAdapter cityAdapter;
-    private ListDropDownAdapter ageAdapter;
-    private ListDropDownAdapter sexAdapter;
-    private ConstellationAdapter constellationAdapter;
+    private CityDropDownAdapter mCityAdapter;
+    private ListDropDownAdapter mAgeAdapter;
+    private ListDropDownAdapter mSexAdapter;
+    private ConstellationAdapter mConstellationAdapter;
 
     private String[] mCitys;
     private String[] mAges;
     private String[] mSexs;
     private String[] mConstellations;
-
-    private int constellationPosition = 0;
 
     @Override
     protected int getLayoutId() {
@@ -96,31 +95,31 @@ public class DropDownMenuFragment extends BaseFragment {
     @Override
     protected void initViews() {
         final ListView cityView = new ListView(getContext());
-        cityAdapter = new CityDropDownAdapter(Arrays.asList(mCitys));
+        mCityAdapter = new CityDropDownAdapter(getContext(), mCitys);
         cityView.setDividerHeight(0);
-        cityView.setAdapter(cityAdapter);
+        cityView.setAdapter(mCityAdapter);
 
         //init age menu
         final ListView ageView = new ListView(getContext());
         ageView.setDividerHeight(0);
-        ageAdapter = new ListDropDownAdapter(Arrays.asList(mAges));
-        ageView.setAdapter(ageAdapter);
+        mAgeAdapter = new ListDropDownAdapter(getContext(), mAges);
+        ageView.setAdapter(mAgeAdapter);
 
         //init sex menu
         final ListView sexView = new ListView(getContext());
         sexView.setDividerHeight(0);
-        sexAdapter = new ListDropDownAdapter(Arrays.asList(mSexs));
-        sexView.setAdapter(sexAdapter);
+        mSexAdapter = new ListDropDownAdapter(getContext(), mSexs);
+        sexView.setAdapter(mSexAdapter);
 
         //init constellation
         final View constellationView = getLayoutInflater().inflate(R.layout.layout_drop_down_custom, null);
         GridView constellation = constellationView.findViewById(R.id.constellation);
-        constellationAdapter = new ConstellationAdapter(Arrays.asList(mConstellations));
-        constellation.setAdapter(constellationAdapter);
+        mConstellationAdapter = new ConstellationAdapter(getContext(), mConstellations);
+        constellation.setAdapter(mConstellationAdapter);
         constellationView.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDropDownMenu.setTabText(constellationPosition == 0 ? mHeaders[3] : mConstellations[constellationPosition]);
+                mDropDownMenu.setTabMenuText(mConstellationAdapter.getSelectPosition() == 0 ? mHeaders[3] : mConstellationAdapter.getSelectItem());
                 mDropDownMenu.closeMenu();
             }
         });
@@ -135,8 +134,8 @@ public class DropDownMenuFragment extends BaseFragment {
         cityView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                cityAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? mHeaders[0] : mCitys[position]);
+                mCityAdapter.setSelectPosition(position);
+                mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[0] : mCitys[position]);
                 mDropDownMenu.closeMenu();
             }
         });
@@ -144,8 +143,8 @@ public class DropDownMenuFragment extends BaseFragment {
         ageView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ageAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? mHeaders[1] : mAges[position]);
+                mAgeAdapter.setSelectPosition(position);
+                mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[1] : mAges[position]);
                 mDropDownMenu.closeMenu();
             }
         });
@@ -153,8 +152,8 @@ public class DropDownMenuFragment extends BaseFragment {
         sexView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                sexAdapter.setCheckItem(position);
-                mDropDownMenu.setTabText(position == 0 ? mHeaders[2] : mSexs[position]);
+                mSexAdapter.setSelectPosition(position);
+                mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[2] : mSexs[position]);
                 mDropDownMenu.closeMenu();
             }
         });
@@ -162,8 +161,7 @@ public class DropDownMenuFragment extends BaseFragment {
         constellation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                constellationAdapter.setCheckItem(position);
-                constellationPosition = position;
+                mConstellationAdapter.setSelectPosition(position);
             }
         });
 
@@ -175,7 +173,7 @@ public class DropDownMenuFragment extends BaseFragment {
         contentView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
         //init dropdownview
-        mDropDownMenu.setDropDownMenu(Arrays.asList(mHeaders), mPopupViews, contentView);
+        mDropDownMenu.setDropDownMenu(mHeaders, mPopupViews, contentView);
     }
 
 

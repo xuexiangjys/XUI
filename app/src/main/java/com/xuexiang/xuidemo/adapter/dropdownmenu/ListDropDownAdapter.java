@@ -17,6 +17,7 @@
 
 package com.xuexiang.xuidemo.adapter.dropdownmenu;
 
+import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.xuexiang.xui.adapter.listview.BaseListAdapter;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xuidemo.R;
 
@@ -33,58 +35,32 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ListDropDownAdapter extends BaseAdapter {
+public class ListDropDownAdapter extends BaseListAdapter<String, ListDropDownAdapter.ViewHolder> {
 
-    private List<String> list;
-    private int checkItemPosition = 0;
-
-    public void setCheckItem(int position) {
-        checkItemPosition = position;
-        notifyDataSetChanged();
-    }
-
-    public ListDropDownAdapter(List<String> list) {
-        this.list = list;
+    public ListDropDownAdapter(Context context, String[] data) {
+        super(context, data);
     }
 
     @Override
-    public int getCount() {
-        return list.size();
+    protected ViewHolder newViewHolder(View convertView) {
+        return new ViewHolder(convertView);
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    protected int getLayoutId() {
+        return R.layout.adapter_drop_down_list_item;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        if (convertView != null) {
-            viewHolder = (ViewHolder) convertView.getTag();
-        } else {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_drop_down_list_item, null);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        }
-        fillValue(position, viewHolder);
-        return convertView;
-    }
-
-    private void fillValue(int position, ViewHolder viewHolder) {
-        viewHolder.mText.setText(list.get(position));
-        if (checkItemPosition != -1) {
-            if (checkItemPosition == position) {
-                viewHolder.mText.setSelected(true);
-                viewHolder.mText.setBackgroundResource(R.color.check_bg);
+    protected void convert(ViewHolder holder, String item, int position) {
+        holder.mText.setText(item);
+        if (mSelectPosition != -1) {
+            if (mSelectPosition == position) {
+                holder.mText.setSelected(true);
+                holder.mText.setBackgroundResource(R.color.check_bg);
             } else {
-                viewHolder.mText.setSelected(false);
-                viewHolder.mText.setBackgroundResource(R.color.white);
+                holder.mText.setSelected(false);
+                holder.mText.setBackgroundResource(R.color.white);
             }
         }
     }

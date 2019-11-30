@@ -17,74 +17,48 @@
 
 package com.xuexiang.xuidemo.adapter.dropdownmenu;
 
-import android.view.LayoutInflater;
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.xuexiang.xui.adapter.listview.BaseListAdapter;
 import com.xuexiang.xui.utils.ResUtils;
-import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xuidemo.R;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class CityDropDownAdapter extends BaseAdapter {
+public class CityDropDownAdapter extends BaseListAdapter<String, CityDropDownAdapter.ViewHolder> {
 
-    private List<String> list;
-    private int checkItemPosition = 0;
-
-    public void setCheckItem(int position) {
-        checkItemPosition = position;
-        notifyDataSetChanged();
+    public CityDropDownAdapter(Context context) {
+        super(context);
     }
 
-    public CityDropDownAdapter(List<String> list) {
-        this.list = list;
+    public CityDropDownAdapter(Context context, String[] data) {
+        super(context, data);
     }
 
     @Override
-    public int getCount() {
-        return list.size();
+    protected ViewHolder newViewHolder(View convertView) {
+        return new ViewHolder(convertView);
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    protected int getLayoutId() {
+        return R.layout.adapter_drop_down_list_item;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        if (convertView != null) {
-            viewHolder = (ViewHolder) convertView.getTag();
-        } else {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_drop_down_list_item, null);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        }
-        fillValue(position, viewHolder);
-        return convertView;
-    }
-
-    private void fillValue(int position, ViewHolder viewHolder) {
-        viewHolder.mText.setText(list.get(position));
-        if (checkItemPosition != -1) {
-            if (checkItemPosition == position) {
-                viewHolder.mText.setSelected(true);
-                viewHolder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, ResUtils.getVectorDrawable(viewHolder.mText.getContext(), R.drawable.ic_checked_right), null);
+    protected void convert(ViewHolder holder, String item, int position) {
+        holder.mText.setText(item);
+        if (mSelectPosition != -1) {
+            if (mSelectPosition == position) {
+                holder.mText.setSelected(true);
+                holder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, ResUtils.getVectorDrawable(holder.mText.getContext(), R.drawable.ic_checked_right), null);
             } else {
-                viewHolder.mText.setSelected(false);
-                viewHolder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+                holder.mText.setSelected(false);
+                holder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
             }
         }
     }
