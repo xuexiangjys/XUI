@@ -63,10 +63,10 @@ allprojects {
 dependencies {
   ...
   //androidx项目
-  implementation 'com.github.xuexiangjys:XUI:1.1.0'
+  implementation 'com.github.xuexiangjys:XUI:1.1.1'
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'androidx.recyclerview:recyclerview:1.0.0'
+  implementation 'androidx.recyclerview:recyclerview:1.1.0'
   implementation 'com.google.android.material:material:1.1.0-beta01'
   implementation 'com.github.bumptech.glide:glide:4.8.0'
 }
@@ -216,6 +216,7 @@ C*y | 1￥ | 微信
 *、 | 20￥ | 微信
 *钰晗 | 6￥ | 支付宝
 *娜 | 3￥ | 微信
+*米 | 20￥ | 微信
 
 ## 联系方式
 
