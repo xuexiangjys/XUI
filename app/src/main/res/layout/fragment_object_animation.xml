@@ -79,4 +79,46 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/btn_value_animator"
+            style="@style/Button.Primary.wrap"
+            android:layout_width="0dp"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:layout_weight="1"
+            android:text="值动画" />
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/btn_type_evaluator"
+            style="@style/Button.Primary.wrap"
+            android:layout_width="0dp"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:layout_weight="1"
+            android:text="估值器" />
+
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/btn_compose1"
+            style="@style/Button.Primary.wrap"
+            android:layout_width="0dp"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:layout_weight="1"
+            android:text="组合1" />
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/btn_compose2"
+            style="@style/Button.Primary.wrap"
+            android:layout_width="0dp"
+            android:layout_margin="?attr/xui_config_content_spacing_vertical"
+            android:layout_weight="1"
+            android:text="组合2" />
+
+
+    </LinearLayout>
+
+
 </LinearLayout>
