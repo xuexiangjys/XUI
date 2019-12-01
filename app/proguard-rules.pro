@@ -244,6 +244,7 @@
 }
 
 -keep public class com.xuexiang.xuidemo.fragment.components.pickerview.**{*;}
+-keep public class com.xuexiang.xuidemo.fragment.expands.linkage.eleme.**{*;}
 
 # agentweb
 -keep class com.just.agentweb.** {

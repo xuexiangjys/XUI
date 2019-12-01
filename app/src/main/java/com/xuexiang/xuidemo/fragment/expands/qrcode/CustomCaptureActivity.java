@@ -33,8 +33,8 @@ import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 
-import static com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient.APP_LINK_ACTION;
-import static com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient.APP_LINK_HOST;
+import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_ACTION;
+import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_HOST;
 
 /**
  * 自定义二维码扫描界面

@@ -75,7 +75,7 @@ public class TabControlViewFragment extends BaseFragment {
         mMultiTabControlView.setOnMultiTabSelectionChangedListener(new MultiTabControlView.OnMultiTabSelectionChangedListener() {
             @Override
             public void newSelection(String title, String value, boolean isChecked) {
-                XToastUtils.toast("选中了：" + title + ", 选中的值为：" + value + ", isChecked：" + isChecked);
+                XToastUtils.toast((isChecked ? "选中了：" : "取消了：") + title + ", 值为：" + value);
             }
         });
     }

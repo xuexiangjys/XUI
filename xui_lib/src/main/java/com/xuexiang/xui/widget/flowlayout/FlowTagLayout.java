@@ -391,7 +391,7 @@ public class FlowTagLayout extends ViewGroup {
                             //更新点击状态
                             mCheckedTagArray.put(index, false);
                             childView.setSelected(false);
-                            setSelectedIndexs(null);
+                            setSelectedIndexs(new ArrayList<Integer>());
                             if (mOnTagSelectListener != null) {
                                 mOnTagSelectListener.onItemSelect(FlowTagLayout.this, index, new ArrayList<Integer>());
                             }

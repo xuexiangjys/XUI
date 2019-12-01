@@ -6,10 +6,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
-
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager.widget.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -22,6 +18,9 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.logs.UILog;
@@ -600,18 +599,6 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
         return super.dispatchTouchEvent(ev);
     }
 
-//    @Override
-//    protected void onWindowVisibilityChanged(int visibility) {
-//        super.onWindowVisibilityChanged(visibility);
-//        if (mIsSmart) {
-//            if (visibility != VISIBLE) {
-//                pauseScroll();
-//            } else {
-//                goOnScroll();
-//            }
-//        }
-//    }
-
     private class InnerBannerAdapter extends PagerAdapter {
         @Override
         public int getCount() {
@@ -624,8 +611,8 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
             inflate.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mOnItemClickL != null) {
-                        mOnItemClickL.onItemClick(position);
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(v, getItem(position), position);
                     }
                 }
             });
@@ -705,15 +692,31 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
         return this;
     }
 
-    private OnItemClickL mOnItemClickL;
+    private OnItemClickListener<E> mOnItemClickListener;
 
-    public BaseBanner setOnItemClickL(OnItemClickL onItemClickL) {
-        this.mOnItemClickL = onItemClickL;
+    /**
+     * 设置条目点击监听
+     *
+     * @param onItemClickListener
+     * @return
+     */
+    public BaseBanner setOnItemClickListener(OnItemClickListener<E> onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
         return this;
     }
 
-    public interface OnItemClickL {
-        void onItemClick(int position);
+    /**
+     * 条目点击监听
+     *
+     * @param <E>
+     */
+    public interface OnItemClickListener<E> {
+        /**
+         * @param view
+         * @param item
+         * @param position
+         */
+        void onItemClick(View view, E item, int position);
     }
 
     /**

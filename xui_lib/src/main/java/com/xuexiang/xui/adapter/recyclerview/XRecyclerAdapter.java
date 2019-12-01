@@ -54,13 +54,13 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 当前点击的条目
      */
-    private int mSelectPosition = -1;
+    protected int mSelectPosition = -1;
 
     public XRecyclerAdapter() {
 
     }
 
-    public XRecyclerAdapter(List<T> list) {
+    public XRecyclerAdapter(Collection<T> list) {
         if (list != null) {
             mData.addAll(list);
         }

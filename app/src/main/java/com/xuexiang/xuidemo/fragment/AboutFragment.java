@@ -79,6 +79,7 @@ public class AboutFragment extends BaseFragment {
                         Utils.checkUpdate(getContext(), true);
                     }
                 })
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_add_qq_group)), v -> Utils.goWeb(getContext(), getString(R.string.url_add_qq_group)))
                 .addTo(mAboutGroupListView);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy", Locale.CHINA);

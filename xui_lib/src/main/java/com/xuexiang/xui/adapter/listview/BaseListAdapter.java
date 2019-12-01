@@ -35,11 +35,6 @@ public abstract class BaseListAdapter<T, H> extends XListAdapter<T> {
     public BaseListAdapter(Context context) {
         super(context);
     }
-
-    public BaseListAdapter(Context context, OnListItemListener<T> listener) {
-        super(context, listener);
-    }
-
     public BaseListAdapter(Context context, List<T> data) {
         super(context, data);
     }

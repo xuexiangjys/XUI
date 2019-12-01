@@ -77,7 +77,7 @@ public final class ResUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return context.getDrawable(resId);
         }
-        return context.getResources().getDrawable(resId);
+        return AppCompatResources.getDrawable(context, resId);
     }
 
     /**

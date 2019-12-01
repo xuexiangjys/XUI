@@ -5,8 +5,11 @@ import android.view.View;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
+import com.xuexiang.xui.adapter.simple.ExpandableItem;
 import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
+import com.xuexiang.xui.adapter.simple.XUISimpleExpandableListAdapter;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
+import com.xuexiang.xui.widget.popupwindow.popup.XUISimpleExpandablePopup;
 import com.xuexiang.xui.widget.popupwindow.popup.XUISimplePopup;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
@@ -23,6 +26,7 @@ import butterknife.OnClick;
 @Page(name = "弹出框统一样式")
 public class PopupWindowStyleFragment extends BaseFragment {
     private XUISimplePopup mListPopup;
+    private XUISimpleExpandablePopup mExpandableListPopup;
     private XUISimplePopup mMenuPopup;
 
     @Override
@@ -53,6 +57,7 @@ public class PopupWindowStyleFragment extends BaseFragment {
     @Override
     protected void initViews() {
         initListPopup();
+        initExpandableListPopup();
         initMenuPopup();
     }
 
@@ -72,6 +77,17 @@ public class PopupWindowStyleFragment extends BaseFragment {
                 .setHasDivider(true);
     }
 
+    private void initExpandableListPopup() {
+        mExpandableListPopup = new XUISimpleExpandablePopup(getContext(), DemoDataProvider.expandableItems)
+                .create(DensityUtils.dip2px(getContext(), 200), DensityUtils.dip2px(getContext(), 200))
+                .setOnExpandableItemClickListener(false, new XUISimpleExpandablePopup.OnExpandableItemClickListener() {
+                    @Override
+                    public void onExpandableItemClick(XUISimpleExpandableListAdapter adapter, ExpandableItem group, int groupPosition, int childPosition) {
+                        XToastUtils.toast(group.getChildItem(childPosition).getTitle());
+                    }
+                });
+    }
+
     private void initMenuPopup() {
         mMenuPopup = new XUISimplePopup(getContext(), DemoDataProvider.menuItems)
                 .create(new XUISimplePopup.OnPopupItemClickListener() {
@@ -83,11 +99,15 @@ public class PopupWindowStyleFragment extends BaseFragment {
     }
 
     @SingleClick
-    @OnClick({R.id.btn_commonlist_popup, R.id.btn_menu_popup})
+    @OnClick({R.id.btn_commonlist_popup, R.id.btn_expandable_popup, R.id.btn_menu_popup})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_commonlist_popup:
                 mListPopup.showDown(v);
+                break;
+            case R.id.btn_expandable_popup:
+                mExpandableListPopup.clearExpandStatus();
+                mExpandableListPopup.showDown(v);
                 break;
             case R.id.btn_menu_popup:
                 mMenuPopup.showDown(v);

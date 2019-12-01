@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 11
-        versionName "1.1.0"
+        versionCode 12
+        versionName "1.1.1"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -89,6 +89,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.androidx.multidex
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     //下拉刷新、CityPicker、XUI框架需要
 //    implementation deps.androidx.appcompat
@@ -96,13 +97,13 @@ dependencies {
 //    implementation deps.androidx.design
 //    implementation deps.glide
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.1.0-beta01'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.1.0'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.0'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
@@ -126,6 +127,7 @@ dependencies {
 
     //弹性布局
     implementation 'com.google.android:flexbox:0.3.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     //悬浮按钮
     implementation 'com.github.clans:fab:1.6.4'
     //RxUtil2
@@ -156,8 +158,6 @@ dependencies {
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-core:1.0.0'
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-download:1.0.0'//选填
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-filechooser:1.0.0'//选填
-    //WebView的回弹布局
-    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
 
     //侧边栏菜单
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
@@ -185,11 +185,16 @@ dependencies {
     //图标库控件（可选）
     implementation "com.mikepenz:iconics-views:4.0.1-b02"
     //相机拍摄
-    implementation 'com.github.xuexiangjys:CameraView:1.0.0'
+    implementation 'com.github.xuexiangjys:CameraView:1.0.3'
 
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.1.1'
     implementation 'com.zhy:okhttputils:2.6.2'
+    //腾讯的键值对存储mmkv
+    implementation 'com.tencent:mmkv:1.0.22'
+
+    //双列表联动
+    implementation 'com.kunminx.linkage:linkage-recyclerview:1.9.2'
 
     //umeng统计
     implementation 'com.umeng.umsdk:analytics:8.0.2'

@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.fragment.components;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.flowlayout.FlexboxLayoutFragment;
 import com.xuexiang.xuidemo.fragment.components.flowlayout.FlowTagLayoutFragment;
 import com.xuexiang.xuidemo.fragment.components.flowlayout.NormalFlowLayoutFragment;
 
@@ -22,7 +23,8 @@ public class FlowLayoutFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 FlowTagLayoutFragment.class,
-                NormalFlowLayoutFragment.class
+                NormalFlowLayoutFragment.class,
+                FlexboxLayoutFragment.class
         };
     }
 }

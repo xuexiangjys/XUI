@@ -91,7 +91,7 @@ public class MaterialSimpleListAdapter
     public SimpleListVH onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view =
                 LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.md_simplelist_item, parent, false);
+                        .inflate(R.layout.md_layout_simplelist_item, parent, false);
         return new SimpleListVH(view, this);
     }
 

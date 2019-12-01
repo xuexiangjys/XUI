@@ -3,6 +3,7 @@ package com.xuexiang.xuidemo.fragment.components;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.spinner.DropDownMenuFragment;
 import com.xuexiang.xuidemo.fragment.components.spinner.SpinnerStyleFragment;
 
 /**
@@ -23,6 +24,7 @@ public class SpinnerFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 SpinnerStyleFragment.class,
+                DropDownMenuFragment.class
         };
     }
 }

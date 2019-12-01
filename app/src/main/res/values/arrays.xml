@@ -309,4 +309,51 @@
         <item>6</item>
     </string-array>
 
+    <string-array name="city_entry">
+        <item>不限</item>
+        <item>武汉</item>
+        <item>北京</item>
+        <item>上海</item>
+        <item>成都</item>
+        <item>广州</item>
+        <item>深圳</item>
+        <item>重庆</item>
+        <item>天津</item>
+        <item>西安</item>
+        <item>南京</item>
+        <item>杭州</item>
+    </string-array>
+
+    <string-array name="age_entry">
+        <item>不限</item>
+        <item>18岁以下</item>
+        <item>18-22岁</item>
+        <item>23-26岁</item>
+        <item>27-35岁</item>
+        <item>35岁以上</item>
+    </string-array>
+
+    <string-array name="sex_entry">
+        <item>不限</item>
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+    <string-array name="constellation_entry">
+        <item>不限</item>
+        <item>白羊座</item>
+        <item>金牛座</item>
+        <item>双子座</item>
+        <item>巨蟹座</item>
+        <item>狮子座</item>
+        <item>处女座</item>
+        <item>天秤座</item>
+        <item>天蝎座</item>
+        <item>射手座</item>
+        <item>摩羯座</item>
+        <item>水瓶座</item>
+        <item>双鱼座</item>
+    </string-array>
+
+
 </resources>

@@ -77,6 +77,14 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
      */
     private int mItemPadding;
     /**
+     * 选项水平间距
+     */
+    private int mItemPaddingHorizontal;
+    /**
+     * 选项垂直间距
+     */
+    private int mItemPaddingVertical;
+    /**
      * 选中背景的颜色
      */
     private int mSelectedColor;
@@ -106,7 +114,6 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
     private boolean mEqualWidth = false;
     private ColorStateList mTextColorStateList;
 
-    //Item organization
     private LinkedHashMap<String, String> mItemMap = new LinkedHashMap<>();
     private List<CheckBox> mOptions;
 
@@ -117,18 +124,20 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
      */
     private void addOnCheckedChangeListener(CheckBox cb) {
         if (cb != null) {
-            cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton checkBox, boolean b) {
-                    if (mListener != null) {
-                        String identifier = checkBox.getText().toString();
-                        String value = mItemMap.get(identifier);
-                        mListener.newSelection(identifier, value, checkBox.isChecked());
-                    }
-                }
-            });
+            cb.setOnCheckedChangeListener(mCheckBoxListener);
         }
     }
+
+    private CompoundButton.OnCheckedChangeListener mCheckBoxListener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton checkBox, boolean isChecked) {
+            if (mListener != null) {
+                String identifier = checkBox.getText().toString();
+                String value = mItemMap.get(identifier);
+                mListener.newSelection(identifier, value, checkBox.isChecked());
+            }
+        }
+    };
 
     public MultiTabControlView(Context context) {
         super(context, null);
@@ -164,6 +173,8 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
             mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
             mStrokeWidth = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_strokeWidth, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_stroke_width));
             mItemPadding = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding, -1);
+            mItemPaddingHorizontal = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding_horizontal, -1);
+            mItemPaddingVertical = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding_vertical, -1);
 
             //Set text mSelectedColor state list
             mTextColorStateList = new ColorStateList(new int[][]{
@@ -242,6 +253,9 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
             cb.setLayoutParams(params);
             if (mItemPadding != -1) {
                 cb.setPadding(mItemPadding, mItemPadding, mItemPadding, mItemPadding);
+            }
+            if (mItemPaddingHorizontal != -1 && mItemPaddingVertical != -1) {
+                cb.setPadding(mItemPaddingHorizontal, mItemPaddingVertical, mItemPaddingHorizontal, mItemPaddingVertical);
             }
             cb.setMinWidth(mStrokeWidth * 10);
             cb.setGravity(Gravity.CENTER);
@@ -443,20 +457,65 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
      * @param value
      */
     public MultiTabControlView setSelection(String value) {
-        String buttonText = "";
-        if (mItemMap.containsValue(value)) {
-            for (String entry : mItemMap.keySet()) {
-                if (mItemMap.get(entry).equalsIgnoreCase(value)) {
-                    buttonText = entry;
+        setSelectionStatus(value, true);
+        return this;
+    }
+
+    /**
+     * 通过值 设置tab的选中状态
+     *
+     * @param value
+     */
+    public MultiTabControlView setSelectionStatus(String value, boolean isChecked) {
+        String title = getTitleByValue(value);
+        setSelectionStatusByTitle(title, isChecked);
+        return this;
+    }
+
+    /**
+     * 静默通过标题设置tab的选中状态
+     *
+     * @param title
+     * @param isChecked
+     * @return
+     */
+    public MultiTabControlView setSelectionStatusByTitle(String title, boolean isChecked) {
+        setSelectionStatusByTitle(title, isChecked, true);
+        return this;
+    }
+
+    /**
+     * 通过标题设置tab的选中状态
+     *
+     * @param title
+     * @param isChecked 是否选中
+     * @param isSilent  是否静默设置
+     * @return
+     */
+    public MultiTabControlView setSelectionStatusByTitle(String title, boolean isChecked, boolean isSilent) {
+        for (CheckBox option : mOptions) {
+            if (option.getText().toString().equalsIgnoreCase(title)) {
+                if (isSilent) {
+                    option.setOnCheckedChangeListener(null);
+                    option.setChecked(isChecked);
+                    addOnCheckedChangeListener(option);
+                } else {
+                    option.setChecked(isChecked);
                 }
             }
         }
-        for (CheckBox option : mOptions) {
-            if (option.getText().toString().equalsIgnoreCase(buttonText)) {
-                option.setChecked(true);
+        return this;
+    }
+
+    private String getTitleByValue(String value) {
+        if (mItemMap.containsValue(value)) {
+            for (String key : mItemMap.keySet()) {
+                if (mItemMap.get(key).equalsIgnoreCase(value)) {
+                    return key;
+                }
             }
         }
-        return this;
+        return "";
     }
 
     /**

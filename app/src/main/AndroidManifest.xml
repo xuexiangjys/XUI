@@ -56,9 +56,15 @@
 
         <activity
             android:name=".activity.MainActivity"
-            android:launchMode="singleTask"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
 
         <activity android:name=".activity.UserGuideActivity" />
 
@@ -66,8 +72,8 @@
 
         <!--&lt;!&ndash;XVideo视频录制&ndash;&gt;-->
         <!--<activity-->
-            <!--android:name="com.xuexiang.xvideo.MediaRecorderActivity"-->
-            <!--android:theme="@style/XVideoNoBarTheme" />-->
+        <!--android:name="com.xuexiang.xvideo.MediaRecorderActivity"-->
+        <!--android:theme="@style/XVideoNoBarTheme" />-->
 
         <!--SearchView-->
         <activity
@@ -78,12 +84,13 @@
             android:name=".base.webview.AgentWebActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:hardwareAccelerated="true"
-            android:label="XUI浏览器"
+            android:label="@string/app_browser_name"
             android:theme="@style/AppTheme">
             <!-- Scheme -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-                <action android:name="com.xuexiang.xui.applink"/>
+                <action android:name="com.xuexiang.xui.applink" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -93,12 +100,14 @@
                 <data android:scheme="javascript" />
                 <data
                     android:host="xuexiangjys.club"
-                    android:scheme="xui"/>
+                    android:scheme="xui" />
             </intent-filter>
             <!-- AppLink -->
-            <intent-filter android:autoVerify="true"
+            <intent-filter
+                android:autoVerify="true"
                 tools:targetApi="m">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -111,12 +120,18 @@
                 <data android:mimeType="application/vnd.wap.xhtml+xml" />
                 <data
                     android:host="xuexiangjys.club"
-                    android:scheme="http"/>
+                    android:scheme="http" />
                 <data
                     android:host="xuexiangjys.club"
-                    android:scheme="https"/>
+                    android:scheme="https" />
             </intent-filter>
         </activity>
+        <!-- applink的中转页面 -->
+        <activity
+            android:name=".base.XPageTransferActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <!--fragment的页面容器-->
         <activity
             android:name=".base.BaseActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
@@ -125,42 +140,39 @@
             android:name=".widget.iconfont.IconFontActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity
-            android:name=".base.XPageTransferActivity"
-            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <activity android:name=".activity.TranslucentActivity" />
-
-        <activity android:name=".fragment.expands.camera.CameraActivity"
-            android:theme="@style/AppTheme.Camera"
+        <activity
+            android:name=".fragment.expands.camera.CameraActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".fragment.expands.camera.PictureCropActivity"
             android:theme="@style/AppTheme.Camera"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".fragment.expands.camera.PictureCropActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".fragment.expands.camera.CameraViewActivity"
             android:theme="@style/AppTheme.Camera"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
+        <activity
+            android:name=".fragment.expands.camera.CameraViewActivity"
+            android:theme="@style/AppTheme.Camera"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".fragment.expands.qrcode.CustomCaptureActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:theme="@style/XQRCodeTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/SettingTheme" />
 
+        <!-- 版本更新提示-->
         <activity
             android:name=".utils.update.UpdateTipDialog"
             android:theme="@style/DialogTheme" />
+        <!-- Webview拦截提示弹窗-->
         <activity
-            android:name=".base.webview.WebViewTipDialog"
+            android:name=".base.webview.WebViewInterceptDialog"
             android:theme="@style/DialogTheme" />
 
         <!--X5预加载-->

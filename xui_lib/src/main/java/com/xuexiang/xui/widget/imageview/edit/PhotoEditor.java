@@ -339,7 +339,7 @@ public class PhotoEditor implements BrushViewChangeListener {
         View rootView = null;
         switch (viewType) {
             case TEXT:
-                rootView = mLayoutInflater.inflate(R.layout.layout_photo_editor_text, null);
+                rootView = mLayoutInflater.inflate(R.layout.xui_layout_photo_editor_text, null);
                 TextView txtText = rootView.findViewById(R.id.tv_editor_text);
                 if (txtText != null && mDefaultTextTypeface != null) {
                     txtText.setGravity(Gravity.CENTER);
@@ -349,10 +349,10 @@ public class PhotoEditor implements BrushViewChangeListener {
                 }
                 break;
             case IMAGE:
-                rootView = mLayoutInflater.inflate(R.layout.layout_photo_editor_image, null);
+                rootView = mLayoutInflater.inflate(R.layout.xui_layout_photo_editor_image, null);
                 break;
             case EMOJI:
-                rootView = mLayoutInflater.inflate(R.layout.layout_photo_editor_text, null);
+                rootView = mLayoutInflater.inflate(R.layout.xui_layout_photo_editor_text, null);
                 TextView txtTextEmoji = rootView.findViewById(R.id.tv_editor_text);
                 if (txtTextEmoji != null) {
                     if (mDefaultEmojiTypeface != null) {

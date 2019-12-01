@@ -30,10 +30,23 @@
         android:layout_height="wrap_content"
         app:vcet_is_pwd="true" />
 
+    <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+        android:id="@+id/vcet_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:vcet_bg_focus="@drawable/custom_vcet_shape_bg_focus"
+        app:vcet_bg_normal="@drawable/custom_vcet_shape_bg_normal"
+        app:vcet_is_pwd="false"
+        app:vcet_number="4"
+        app:vcet_text_color="@color/xui_config_color_primary_text"
+        app:vcet_text_size="16sp"
+        app:vcet_width="45dp" />
+
     <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/btn_clear"
         style="@style/Button.Primary.wrap"
         android:layout_gravity="center_horizontal"
-        android:text="清空"/>
+        android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+        android:text="清空" />
 
 </LinearLayout>

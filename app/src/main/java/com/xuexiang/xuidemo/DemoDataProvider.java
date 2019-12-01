@@ -2,8 +2,11 @@ package com.xuexiang.xuidemo;
 
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.gson.reflect.TypeToken;
+import com.kunminx.linkage.bean.DefaultGroupedItem;
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
+import com.xuexiang.xui.adapter.simple.ExpandableItem;
 import com.xuexiang.xui.widget.banner.transform.DepthTransformer;
 import com.xuexiang.xui.widget.banner.transform.FadeSlideTransformer;
 import com.xuexiang.xui.widget.banner.transform.FlowTransformer;
@@ -15,6 +18,11 @@ import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridInfo;
+import com.xuexiang.xuidemo.fragment.components.pickerview.ProvinceInfo;
+import com.xuexiang.xuidemo.fragment.expands.linkage.custom.CustomGroupedItem;
+import com.xuexiang.xuidemo.fragment.expands.linkage.eleme.ElemeGroupedItem;
+import com.xuexiang.xutil.net.JsonUtil;
+import com.xuexiang.xutil.resource.ResourceUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,6 +95,12 @@ public class DemoDataProvider {
             new AdapterItem("登陆", R.drawable.icon_password_login),
             new AdapterItem("筛选", R.drawable.icon_filter),
             new AdapterItem("设置", R.drawable.icon_setting),
+    };
+
+    public static ExpandableItem[] expandableItems = new ExpandableItem[]{
+            ExpandableItem.of(new AdapterItem("屏幕尺寸", R.drawable.icon_password_login)).addChild(AdapterItem.arrayof(dpiItems)),
+            ExpandableItem.of(new AdapterItem("设备亮度", R.drawable.icon_filter)).addChild(menuItems),
+            ExpandableItem.of(new AdapterItem("屏幕分辨率", R.drawable.icon_setting)).addChild(AdapterItem.arrayof(dpiItems))
     };
 
     public static List<List<ImageViewInfo>> sPics;
@@ -321,8 +335,9 @@ public class DemoDataProvider {
      * @return 返回拆分后的各个集合
      */
     public static <T> List<List<T>> split(List<T> resList, int count) {
-        if (resList == null || count < 1)
+        if (resList == null || count < 1) {
             return null;
+        }
         List<List<T>> ret = new ArrayList<>();
         int size = resList.size();
         if (size <= count) { //数据量不足count指定的大小
@@ -409,6 +424,38 @@ public class DemoDataProvider {
                 .setDetailUrl("https://juejin.im/post/5b6b9b49e51d4576b828978d")
                 .setImageUrl("https://user-gold-cdn.xitu.io/2018/8/9/1651c568a7e30e02?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"));
         return list;
+    }
+
+    @MemoryCache
+    public static List<DefaultGroupedItem> getGroupItems() {
+        List<DefaultGroupedItem> items = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            if (i % 10 == 0) {
+                items.add(new DefaultGroupedItem(true, "菜单" + i / 10));
+            } else {
+                items.add(new DefaultGroupedItem(new DefaultGroupedItem.ItemInfo("这是标题" + i, "菜单" + i / 10, "这是内容" + i)));
+            }
+        }
+        return items;
+    }
+
+    @MemoryCache
+    public static List<CustomGroupedItem> getCustomGroupItems() {
+        List<CustomGroupedItem> items = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            if (i % 10 == 0) {
+                items.add(new CustomGroupedItem(true, "菜单" + i / 10));
+            } else {
+                items.add(new CustomGroupedItem(new CustomGroupedItem.ItemInfo("这是标题" + i, "菜单" + i / 10, "这是内容" + i)));
+            }
+        }
+        return items;
+    }
+
+    @MemoryCache
+    public static List<ElemeGroupedItem> getElemeGroupItems() {
+        return JsonUtil.fromJson(ResourceUtils.readStringFromAssert("eleme.json"), new TypeToken<List<ElemeGroupedItem>>() {
+        }.getType());
     }
 
 }

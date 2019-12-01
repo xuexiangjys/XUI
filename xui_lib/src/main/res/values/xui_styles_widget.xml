@@ -411,7 +411,8 @@
         <item name="met_floatingLabelTextSize">?attr/xui_config_size_edittext_helper_text</item>
         <item name="met_bottomTextSize">?attr/xui_config_size_edittext_helper_text</item>
 
-        <item name="met_floatingLabelPadding">?attr/xui_config_size_edittext_components_spacing</item>
+        <item name="met_floatingLabelPadding">?attr/xui_config_size_edittext_components_spacing
+        </item>
     </style>
 
     <style name="EditText.Validator">
@@ -444,10 +445,10 @@
     </style>
 
     <style name="MultipleStatusView">
-        <item name="msv_loadingView">@layout/msv_loading_view</item>
-        <item name="msv_errorView">@layout/msv_error_view</item>
-        <item name="msv_emptyView">@layout/msv_empty_view</item>
-        <item name="msv_noNetworkView">@layout/msv_no_network_view</item>
+        <item name="msv_loadingView">@layout/msv_layout_loading_view</item>
+        <item name="msv_errorView">@layout/msv_layout_error_view</item>
+        <item name="msv_emptyView">@layout/msv_layout_empty_view</item>
+        <item name="msv_noNetworkView">@layout/msv_layout_no_network_view</item>
     </style>
 
     <style name="StatefulLayout">
@@ -514,13 +515,34 @@
         <item name="bl_indicatorSelectedColor">@color/xui_config_color_red</item>
         <item name="bl_indicatorUnselectedColor">@color/xui_config_color_gray_2</item>
         <item name="bl_indicatorSpace">@dimen/default_recycler_banner_indicatorSpace</item>
-        <item name="bl_indicatorMarginLeft">@dimen/default_recycler_banner_indicatorMarginLeft</item>
-        <item name="bl_indicatorMarginRight">@dimen/default_recycler_banner_indicatorMarginRight</item>
-        <item name="bl_indicatorMarginBottom">@dimen/default_recycler_banner_indicatorMarginBottom</item>
+        <item name="bl_indicatorMarginLeft">@dimen/default_recycler_banner_indicatorMarginLeft
+        </item>
+        <item name="bl_indicatorMarginRight">@dimen/default_recycler_banner_indicatorMarginRight
+        </item>
+        <item name="bl_indicatorMarginBottom">@dimen/default_recycler_banner_indicatorMarginBottom
+        </item>
         <item name="bl_indicatorGravity">left</item>
         <item name="bl_itemSpace">@dimen/default_recycler_banner_itemSpace</item>
         <item name="bl_centerScale">1.2</item>
         <item name="bl_moveSpeed">1.0</item>
+    </style>
+
+    <style name="DropDownMenu">
+        <item name="ddm_dividerColor">?attr/xui_config_color_separator_dark</item>
+        <item name="ddm_dividerWidth">@dimen/default_ddm_divider_width</item>
+        <item name="ddm_dividerMargin">@dimen/default_ddm_divider_margin</item>
+        <item name="ddm_underlineColor">?attr/xui_config_color_separator_light</item>
+        <item name="ddm_underlineHeight">@dimen/default_ddm_underline_height</item>
+        <item name="ddm_maskColor">@color/default_ddm_mask_color</item>
+        <item name="ddm_menuTextSize">@dimen/default_ddm_menu_text_size</item>
+        <item name="ddm_menuTextPaddingHorizontal">@dimen/default_ddm_menu_text_padding_horizontal</item>
+        <item name="ddm_menuTextPaddingVertical">@dimen/default_ddm_menu_text_padding_vertical</item>
+        <item name="ddm_menuTextSelectedColor">?attr/colorAccent</item>
+        <item name="ddm_menuTextUnselectedColor">?attr/xui_config_color_content_text</item>
+        <item name="ddm_menuSelectedIcon">@drawable/ddm_ic_arrow_up</item>
+        <item name="ddm_menuUnselectedIcon">@drawable/ddm_ic_arrow_down</item>
+        <item name="ddm_menuBackgroundColor">@color/xui_config_color_white</item>
+        <item name="ddm_menuHeightPercent">0.5</item>
     </style>
 
 </resources>

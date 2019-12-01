@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.core.view.ViewCompat;
+
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +61,24 @@ public class StatusBarUtils {
 
     private StatusBarUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+    /**
+     * 设置沉浸式状态栏样式
+     *
+     * @param activity
+     * @param isDark    是否是深色的状态栏
+     * @param colorOn5x 颜色
+     */
+    public static void initStatusBarStyle(Activity activity, boolean isDark, @ColorInt int colorOn5x) {
+        //设置沉浸式状态栏的颜色
+        translucent(activity, colorOn5x);
+        //修改状态栏的字体颜色
+        if (isDark) {
+            setStatusBarDarkMode(activity);
+        } else {
+            setStatusBarLightMode(activity);
+        }
     }
 
     /**
@@ -512,7 +532,7 @@ public class StatusBarUtils {
      * @param navigationBarColor 导航栏的颜色
      */
     public static void cancelFullScreen(Activity activity, @ColorInt int statusBarColor, @ColorInt int navigationBarColor) {
-        cancelFullScreen(activity, statusBarColor, navigationBarColor);
+        cancelFullScreen(activity.getWindow(), statusBarColor, navigationBarColor);
     }
 
     /**

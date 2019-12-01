@@ -35,6 +35,8 @@ import com.xuexiang.xutil.data.DateUtils;
 import com.xuexiang.xutil.file.FileIOUtils;
 import com.xuexiang.xutil.file.FileUtils;
 
+import java.io.File;
+
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
 /**
@@ -142,12 +144,14 @@ public final class Utils {
 
     /**
      * 处理拍照的回调
+     *
      * @param data
      * @return
      */
     public static String handleOnPictureTaken(byte[] data) {
         return handleOnPictureTaken(data, JPEG);
     }
+
     /**
      * 处理拍照的回调
      *
@@ -158,6 +162,10 @@ public final class Utils {
         String picPath = FileUtils.getDiskCacheDir() + "/images/" + DateUtils.getNowMills() + fileSuffix;
         boolean result = FileIOUtils.writeFileFromBytesByStream(picPath, data);
         return result ? picPath : "";
+    }
+
+    public static String getImageSavePath() {
+        return FileUtils.getDiskCacheDir("images") + File.separator + DateUtils.getNowMills() + JPEG;
     }
 
     //==========截图===========//

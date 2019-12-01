@@ -267,7 +267,7 @@
         <item name="AutoFitTextViewStyle">@style/AutoFitTextView</item>
         <item name="RippleViewStyle">@style/RippleView</item>
         <item name="BannerLayoutStyle">@style/BannerLayout</item>
-
+        <item name="DropDownMenuStyle">@style/DropDownMenu</item>
     </style>
 
     <style name="XUITheme" parent="XUIBaseTheme" />

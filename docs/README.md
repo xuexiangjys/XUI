@@ -57,10 +57,10 @@ allprojects {
 dependencies {
   ...
   //androidx项目
-  implementation 'com.github.xuexiangjys:XUI:1.1.0'
+  implementation 'com.github.xuexiangjys:XUI:1.1.1'
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'androidx.recyclerview:recyclerview:1.0.0'
+  implementation 'androidx.recyclerview:recyclerview:1.1.0'
   implementation 'com.google.android.material:material:1.1.0-beta01'
   implementation 'com.github.bumptech.glide:glide:4.8.0'
 }
@@ -159,15 +159,19 @@ protected void attachBaseContext(Context newBase) {
 
 * [QMUI_Android](https://github.com/Tencent/QMUI_Android)
 * [AgentWeb](https://github.com/Justson/AgentWeb)
-* [CityPicker](https://github.com/xuexiangjys/CityPicker)
-* [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
-* [PictureSelector](https://github.com/LuckSiege/PictureSelector)
+* [Android-Iconics](https://github.com/mikepenz/Android-Iconics)
 * [Android-PickerView](https://github.com/Bigkoo/Android-PickerView)
+* [CityPicker](https://github.com/xuexiangjys/CityPicker)
+* [FlycoBanner_Master](https://github.com/H07000223/FlycoBanner_Master)
+* [Linkage-RecyclerView](https://github.com/KunMinX/Linkage-RecyclerView)
 * [MaterialEditText](https://github.com/rengwuxian/MaterialEditText)
 * [MaterialSpinner](https://github.com/jaredrummler/MaterialSpinner)
-* [FlycoBanner_Master](https://github.com/H07000223/FlycoBanner_Master)
 * [MaterialProgressBar](https://github.com/DreaminginCodeZH/MaterialProgressBar)
+* [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)
+* [PictureSelector](https://github.com/LuckSiege/PictureSelector)
+* [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
 * [SlideBack](https://github.com/ParfoisMeng/SlideBack)
+* [SwipeRecyclerView](https://github.com/yanzhenjie/SwipeRecyclerView)
 
 ## 联系方式
 

@@ -6,6 +6,7 @@ import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.widget.activity.BaseSplashActivity;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
+import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xutil.app.ActivityUtils;
 
 /**
@@ -36,7 +37,7 @@ public class SplashActivity extends BaseSplashActivity {
             ActivityUtils.startActivity(UserGuideActivity.class);
             finish();
 
-        }  else {
+        } else {
             if (enableAlphaAnim) {
                 initSplashView(R.drawable.bg_splash);
             } else {
@@ -49,7 +50,11 @@ public class SplashActivity extends BaseSplashActivity {
     @Override
     public void onSplashFinished() {
         if (!isDisplay) {
-            ActivityUtils.startActivity(MainActivity.class);
+            if (TokenUtils.hasToken()) {
+                ActivityUtils.startActivity(MainActivity.class);
+            } else {
+                ActivityUtils.startActivity(LoginActivity.class);
+            }
         }
         finish();
     }

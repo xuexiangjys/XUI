@@ -246,7 +246,8 @@ public class MarqueeTextView extends AppCompatTextView {
     public boolean removeDisplayEntity(DisplayEntity displayEntity) {
         if (displayEntity != null && displayEntity.isValid()) {
             if (isRollingDisplayEntity(displayEntity)) {
-                if (mCurrentIndex <= mDisplayList.size() - 1) {  //防止remove出错
+                //防止remove出错
+                if (mCurrentIndex <= mDisplayList.size() - 1) {
                     mDisplayList.remove(mCurrentIndex);
                     rollDisplayByIndex(mCurrentIndex);
                     return true;
@@ -314,11 +315,13 @@ public class MarqueeTextView extends AppCompatTextView {
         if (displayEntity != null) {
             if (mOnMarqueeListener != null) {
                 DisplayEntity temp = mOnMarqueeListener.onStartMarquee(displayEntity, mCurrentIndex);
-                if (temp != null && temp.isValid()) {  //返回的消息有效
+                //返回的消息有效
+                if (temp != null && temp.isValid()) {
                     displayEntity = temp;
                     mDisplayList.set(mCurrentIndex, displayEntity);
                 } else {   //返回的消息无效， 去除该条消息，继续滚动下一条
-                    if (mCurrentIndex <= mDisplayList.size() - 1) {  //防止remove出错
+                    //防止remove出错
+                    if (mCurrentIndex <= mDisplayList.size() - 1) {
                         mDisplayList.remove(mCurrentIndex);
                     }
                     rollDisplayByIndex(mCurrentIndex);

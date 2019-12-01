@@ -22,7 +22,7 @@ public class UserGuideActivity extends BaseGuideActivity {
 
     @Override
     protected Class<? extends Activity> getSkipClass() {
-        return MainActivity.class;
+        return LoginActivity.class;
     }
 
 }

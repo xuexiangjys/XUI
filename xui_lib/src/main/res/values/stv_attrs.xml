@@ -162,19 +162,21 @@
 
         <!-- 图片资源 -->
         <attr name="sLeftIconRes" format="reference" />
-        <attr name="sRightIconRes" format="reference" />
-
         <attr name="sLeftIconWidth" format="dimension" />
         <attr name="sLeftIconHeight" format="dimension" />
+        <attr name="sLeftIconMarginLeft" format="dimension" />
+        <attr name="sLeftIconTint" format="reference" />
+        <attr name="sLeftIconPadding" format="dimension" />
 
+        <attr name="sRightIconRes" format="reference" />
         <attr name="sRightIconWidth" format="dimension" />
         <attr name="sRightIconHeight" format="dimension" />
+        <attr name="sRightIconMarginRight" format="dimension" />
+        <attr name="sRightIconTint" format="reference" />
+        <attr name="sRightIconPadding" format="dimension" />
 
         <!--上中下三行文字的间距-->
         <attr name="sCenterSpaceHeight" format="dimension" />
-
-        <attr name="sLeftIconMarginLeft" format="dimension" />
-        <attr name="sRightIconMarginRight" format="dimension" />
 
         <attr name="sRightViewType" format="enum">
             <enum name="checkbox" value="0" />

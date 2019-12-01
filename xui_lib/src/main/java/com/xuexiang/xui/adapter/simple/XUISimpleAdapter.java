@@ -78,6 +78,7 @@ public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
 
     /**
      * 创建简单的适配器【不含图标】
+     *
      * @param context
      * @param data
      * @return
@@ -96,6 +97,7 @@ public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
 
     /**
      * 创建简单的适配器【不含图标】
+     *
      * @param context
      * @param data
      * @return

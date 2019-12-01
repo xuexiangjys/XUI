@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center_vertical"
     android:layout_height="match_parent"
+    android:gravity="center_vertical"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,9 +22,10 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设置"
+            android:singleLine="true"
             android:textColor="@color/xui_config_color_title_text"
-            android:textSize="?attr/xui_config_size_content_text" />
+            android:textSize="?attr/xui_config_size_content_text"
+            tools:text="设置" />
 
     </LinearLayout>
 

@@ -80,28 +80,28 @@ class DialogInit {
     @LayoutRes
     static int getInflateLayout(MaterialDialog.Builder builder) {
         if (builder.customView != null) {
-            return R.layout.md_dialog_custom;
+            return R.layout.md_layout_dialog_custom;
         } else if (builder.items != null || builder.adapter != null) {
             if (builder.checkBoxPrompt != null) {
-                return R.layout.md_dialog_list_check;
+                return R.layout.md_layout_dialog_list_check;
             }
-            return R.layout.md_dialog_list;
+            return R.layout.md_layout_dialog_list;
         } else if (builder.progress > -2) {
-            return R.layout.md_dialog_progress;
+            return R.layout.md_layout_dialog_progress;
         } else if (builder.indeterminateProgress) {
             if (builder.indeterminateIsHorizontalProgress) {
-                return R.layout.md_dialog_progress_indeterminate_horizontal;
+                return R.layout.md_layout_dialog_progress_indeterminate_horizontal;
             }
-            return R.layout.md_dialog_progress_indeterminate;
+            return R.layout.md_layout_dialog_progress_indeterminate;
         } else if (builder.inputCallback != null) {
             if (builder.checkBoxPrompt != null) {
-                return R.layout.md_dialog_input_check;
+                return R.layout.md_layout_dialog_input_check;
             }
-            return R.layout.md_dialog_input;
+            return R.layout.md_layout_dialog_input;
         } else if (builder.checkBoxPrompt != null) {
-            return R.layout.md_dialog_basic_check;
+            return R.layout.md_layout_dialog_basic_check;
         } else {
-            return R.layout.md_dialog_basic;
+            return R.layout.md_layout_dialog_basic;
         }
     }
 

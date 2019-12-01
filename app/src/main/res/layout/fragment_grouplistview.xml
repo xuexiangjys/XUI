@@ -19,16 +19,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout style="@style/PullDownStyle">
 
-        <com.xuexiang.xui.widget.grouplist.XUIGroupListView
-            android:id="@+id/groupListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <androidx.core.widget.NestedScrollView style="@style/ScrollViewStyle">
 
-    </ScrollView>
+            <com.xuexiang.xui.widget.grouplist.XUIGroupListView
+                android:id="@+id/groupListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 
 </LinearLayout>

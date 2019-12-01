@@ -99,10 +99,10 @@ public class MultipleStatusView extends FrameLayout {
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MultipleStatusView, defStyleAttr, 0);
-        mEmptyViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_emptyView, R.layout.msv_empty_view);
-        mErrorViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_errorView, R.layout.msv_error_view);
-        mLoadingViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_loadingView, R.layout.msv_loading_view);
-        mNoNetworkViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_noNetworkView, R.layout.msv_no_network_view);
+        mEmptyViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_emptyView, R.layout.msv_layout_empty_view);
+        mErrorViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_errorView, R.layout.msv_layout_error_view);
+        mLoadingViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_loadingView, R.layout.msv_layout_loading_view);
+        mNoNetworkViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_noNetworkView, R.layout.msv_layout_no_network_view);
         mContentViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_contentView, NULL_RESOURCE_ID);
         a.recycle();
         mInflater = LayoutInflater.from(getContext());

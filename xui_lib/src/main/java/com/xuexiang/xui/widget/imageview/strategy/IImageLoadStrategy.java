@@ -23,8 +23,6 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 /**
  * 图片加载策略
  *
@@ -42,6 +40,15 @@ public interface IImageLoadStrategy {
     void loadImage(@NonNull ImageView imageView, Object path);
 
     /**
+     * 加载图片【最常用】
+     *
+     * @param imageView 图片控件
+     * @param path      图片资源的索引
+     * @param listener  加载监听
+     */
+    void loadImage(@NonNull ImageView imageView, Object path, @NonNull ILoadListener listener);
+
+    /**
      * 加载Gif图片【最常用】
      *
      * @param imageView 图片控件
@@ -50,14 +57,35 @@ public interface IImageLoadStrategy {
     void loadGifImage(@NonNull ImageView imageView, Object path);
 
     /**
+     * 加载图片【最常用】
+     *
+     * @param imageView 图片控件
+     * @param path      图片资源的索引
+     * @param listener  加载监听
+     */
+    void loadGifImage(@NonNull ImageView imageView, Object path, @NonNull ILoadListener listener);
+
+    //=============================================//
+
+    /**
      * 加载图片
      *
      * @param imageView 图片控件
      * @param path      图片资源的索引
      * @param strategy  磁盘缓存策略
      */
-    void loadImage(@NonNull ImageView imageView, Object path, DiskCacheStrategy strategy);
+    void loadImage(@NonNull ImageView imageView, Object path, DiskCacheStrategyEnum strategy);
 
+
+    /**
+     * 加载图片
+     *
+     * @param imageView 图片控件
+     * @param path      图片资源的索引
+     * @param strategy  磁盘缓存策略
+     * @param listener  加载监听
+     */
+    void loadImage(@NonNull ImageView imageView, Object path, DiskCacheStrategyEnum strategy, ILoadListener listener);
 
     /**
      * 加载Gif图片
@@ -66,7 +94,19 @@ public interface IImageLoadStrategy {
      * @param path      图片资源的索引
      * @param strategy  磁盘缓存策略
      */
-    void loadGifImage(@NonNull ImageView imageView, Object path, DiskCacheStrategy strategy);
+    void loadGifImage(@NonNull ImageView imageView, Object path, DiskCacheStrategyEnum strategy);
+
+    /**
+     * 加载Gif图片
+     *
+     * @param imageView 图片控件
+     * @param path      图片资源的索引
+     * @param strategy  磁盘缓存策略
+     * @param listener  加载监听
+     */
+    void loadGifImage(@NonNull ImageView imageView, Object path, DiskCacheStrategyEnum strategy, ILoadListener listener);
+
+    //=============================================//
 
     /**
      * 加载图片
@@ -76,7 +116,18 @@ public interface IImageLoadStrategy {
      * @param placeholder 占位图片
      * @param strategy    磁盘缓存策略
      */
-    void loadImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategy strategy);
+    void loadImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategyEnum strategy);
+
+    /**
+     * 加载图片
+     *
+     * @param imageView   图片控件
+     * @param path        图片资源的索引
+     * @param placeholder 占位图片
+     * @param strategy    磁盘缓存策略
+     * @param listener    加载监听
+     */
+    void loadImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategyEnum strategy, ILoadListener listener);
 
     /**
      * 加载Gif图片
@@ -86,20 +137,60 @@ public interface IImageLoadStrategy {
      * @param placeholder 占位图片
      * @param strategy    磁盘缓存策略
      */
-    void loadGifImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategy strategy);
+    void loadGifImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategyEnum strategy);
 
     /**
-     * 加载指定宽高的图片
+     * 加载Gif图片
      *
      * @param imageView   图片控件
      * @param path        图片资源的索引
-     * @param width       宽
-     * @param height      高
      * @param placeholder 占位图片
      * @param strategy    磁盘缓存策略
+     * @param listener    加载监听
      */
-    void loadImage(@NonNull ImageView imageView, Object path, int width, int height, Drawable placeholder, DiskCacheStrategy strategy);
+    void loadGifImage(@NonNull ImageView imageView, Object path, Drawable placeholder, DiskCacheStrategyEnum strategy, ILoadListener listener);
 
+    //=============================================//
+
+    /**
+     * 加载图片
+     *
+     * @param imageView  图片控件
+     * @param path       图片资源的索引
+     * @param loadOption 加载选项
+     */
+    void loadImage(@NonNull ImageView imageView, Object path, LoadOption loadOption);
+
+    /**
+     * 加载图片
+     *
+     * @param imageView  图片控件
+     * @param path       图片资源的索引
+     * @param loadOption 加载选项
+     * @param listener   加载监听
+     */
+    void loadImage(@NonNull ImageView imageView, Object path, LoadOption loadOption, ILoadListener listener);
+
+    /**
+     * 加载Gif图片
+     *
+     * @param imageView  图片控件
+     * @param path       图片资源的索引
+     * @param loadOption 加载选项
+     */
+    void loadGifImage(@NonNull ImageView imageView, Object path, LoadOption loadOption);
+
+    /**
+     * 加载Gif图片
+     *
+     * @param imageView  图片控件
+     * @param path       图片资源的索引
+     * @param loadOption 加载选项
+     * @param listener   加载监听
+     */
+    void loadGifImage(@NonNull ImageView imageView, Object path, LoadOption loadOption, ILoadListener listener);
+
+    //=============================================//
 
     /**
      * 清除缓存【内存和磁盘缓存】

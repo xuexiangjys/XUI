@@ -116,11 +116,13 @@
         <item name="sLeftViewWidth">60dp</item>
         <item name="sLeftViewGravity">left_center</item>
         <item name="sCenterViewGravity">left_center</item>
-        <item name="sCenterViewMarginLeft">25dp</item>
-        <item name="sCenterViewMarginRight">25dp</item>
+        <item name="sCenterViewMarginLeft">15dp</item>
+        <item name="sCenterViewMarginRight">15dp</item>
         <item name="sDividerLineHeight">2dp</item>
         <item name="sRightTextSize">13sp</item>
         <item name="sRightViewMarginRight">0dp</item>
+        <item name="sLeftIconWidth">16dp</item>
+        <item name="sLeftIconHeight">16dp</item>
         <item name="sUseRipple">false</item>
         <item name="sEnableEdit">true</item>
     </style>

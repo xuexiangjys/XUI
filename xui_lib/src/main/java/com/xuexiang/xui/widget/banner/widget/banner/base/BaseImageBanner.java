@@ -27,11 +27,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
+import com.xuexiang.xui.widget.imageview.strategy.DiskCacheStrategyEnum;
+import com.xuexiang.xui.widget.imageview.strategy.LoadOption;
 
 import java.lang.ref.WeakReference;
 
@@ -134,11 +135,12 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
                 iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 iv.setLayoutParams(new LinearLayout.LayoutParams(itemWidth, itemHeight));
 
-                ImageLoader.get().loadImage(iv, imgUrl,
-                        itemWidth, itemHeight, mPlaceHolder,
-                        mEnableCache ? DiskCacheStrategy.RESOURCE : DiskCacheStrategy.NONE);
+                LoadOption option = LoadOption.of(mPlaceHolder)
+                        .setSize(itemWidth, itemHeight)
+                        .setCacheStrategy(mEnableCache ? DiskCacheStrategyEnum.RESOURCE : DiskCacheStrategyEnum.NONE);
+                ImageLoader.get().loadImage(iv, imgUrl, option);
             } else {
-                ImageLoader.get().loadImage(iv, imgUrl, mPlaceHolder, mEnableCache ? DiskCacheStrategy.RESOURCE : DiskCacheStrategy.NONE);
+                ImageLoader.get().loadImage(iv, imgUrl, mPlaceHolder, mEnableCache ? DiskCacheStrategyEnum.RESOURCE : DiskCacheStrategyEnum.NONE);
             }
         } else {
             iv.setImageDrawable(mPlaceHolder);

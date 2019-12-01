@@ -123,6 +123,19 @@
         <!--轮廓是否使用内边距，默认false-->
         <attr name="xui_outlineExcludePadding" format="boolean" />
     </declare-styleable>
+
+    <!--可伸展的布局-->
+    <declare-styleable name="ExpandableLayout">
+        <!--动画持续的时间，默认是300ms-->
+        <attr name="el_duration" format="integer" />
+        <!--是否是展开的，默认是false-->
+        <attr name="el_expanded" format="boolean" />
+        <!--视差效果，默认是1-->
+        <attr name="el_parallax" format="float" />
+        <!--对齐方式，默认是VERTICAL，垂直-->
+        <attr name="android:orientation" />
+    </declare-styleable>
+
     <!--============================Banner=========================================-->
 
     <!-- BaseBanner -->
@@ -1137,18 +1150,18 @@
     <declare-styleable name="CropImageView">
         <!-- 网格线 -->
         <attr name="civ_guidelines">
-            <enum name="on" value="2"/>
-            <enum name="onTouch" value="1"/>
-            <enum name="off" value="0"/>
+            <enum name="on" value="2" />
+            <enum name="onTouch" value="1" />
+            <enum name="off" value="0" />
         </attr>
         <!-- 是否是固定比例裁剪 -->
-        <attr name="civ_fixAspectRatio" format="boolean"/>
+        <attr name="civ_fixAspectRatio" format="boolean" />
         <!-- 宽度比例 -->
-        <attr name="civ_aspectRatioX" format="integer"/>
+        <attr name="civ_aspectRatioX" format="integer" />
         <!-- 高度比例 -->
-        <attr name="civ_aspectRatioY" format= "integer"/>
+        <attr name="civ_aspectRatioY" format="integer" />
         <!-- 裁剪图片的资源 -->
-        <attr name="civ_imageResource" format="reference"/>
+        <attr name="civ_imageResource" format="reference" />
     </declare-styleable>
 
     <!-- 图片编辑 -->
@@ -1288,8 +1301,12 @@
         <attr name="tcv_selectedColor" format="reference" />
         <!--边框宽度，默认1dp-->
         <attr name="tcv_strokeWidth" format="dimension" />
-        <!--选项间的padding-->
+        <!--选项卡间的padding-->
         <attr name="tcv_item_padding" format="dimension" />
+        <!--选项卡水平间的padding-->
+        <attr name="tcv_item_padding_horizontal" format="dimension" />
+        <!--选项卡垂直间的padding-->
+        <attr name="tcv_item_padding_vertical" format="dimension" />
         <!--选项卡中展示的内容-->
         <attr name="tcv_items" format="reference" />
         <!--选项卡中选中的内容（默认和展示的一样）-->
@@ -1371,6 +1388,43 @@
         <attr name="rv_roundRadius" format="dimension" />
     </declare-styleable>
 
+    <!--DropDownMenu 下拉选择菜单-->
+    <declare-styleable name="DropDownMenu">
+        <!--下拉选择菜单的内容布局-->
+        <attr name="ddm_contentLayoutId" format="reference" />
+        <!--菜单垂直分割线的颜色，默认R.attr.xui_config_color_separator_dark-->
+        <attr name="ddm_dividerColor" format="color" />
+        <!--菜单垂直分割线的宽度， 默认0.5dp-->
+        <attr name="ddm_dividerWidth" format="dimension" />
+        <!--菜单垂直分割线的Margin， 默认10dp-->
+        <attr name="ddm_dividerMargin" format="dimension" />
+        <!--菜单底线的颜色, 默认R.attr.xui_config_color_separator_light-->
+        <attr name="ddm_underlineColor" format="color" />
+        <!--菜单底线的高度， 默认1dp-->
+        <attr name="ddm_underlineHeight" format="dimension" />
+        <!--半透明遮罩颜色, 默认#88888888-->
+        <attr name="ddm_maskColor" format="color" />
+        <!--菜单文字的字体大小，默认14sp-->
+        <attr name="ddm_menuTextSize" format="dimension" />
+        <!--菜单文字水平padding，默认5dp-->
+        <attr name="ddm_menuTextPaddingHorizontal" format="dimension" />
+        <!--菜单文字垂直padding，默认12dp-->
+        <attr name="ddm_menuTextPaddingVertical" format="dimension" />
+        <!--菜单文字选中的颜色，默认R.attr.colorAccent-->
+        <attr name="ddm_menuTextSelectedColor" format="color" />
+        <!--菜单文字未选中的颜色，默认R.attr.xui_config_color_content_text-->
+        <attr name="ddm_menuTextUnselectedColor" format="color" />
+        <!--菜单选择时的图标， 默认R.drawable.ddm_ic_arrow_up-->
+        <attr name="ddm_menuSelectedIcon" format="reference" />
+        <!--菜单未选择时的图标, 默认R.drawable.ddm_ic_arrow_down-->
+        <attr name="ddm_menuUnselectedIcon" format="reference" />
+        <!--菜单的背景颜色，默认Color.WHITE-->
+        <attr name="ddm_menuBackgroundColor" format="color" />
+        <!--选择菜单的高度/屏幕高度 占比， 默认0.5-->
+        <attr name="ddm_menuHeightPercent" format="float" />
+    </declare-styleable>
+    <attr name="DropDownMenuStyle" format="reference" />
+
     <!--=====================================================================-->
     <!--MaterialSearchView-->
     <declare-styleable name="MaterialSearchView">
@@ -1413,6 +1467,12 @@
     <declare-styleable name="XUIWrapContentListView">
         <!--设置listView的最大高度-->
         <attr name="wclv_max_height" format="dimension" />
+    </declare-styleable>
+
+    <!--XUIWrapContentExpandableListView-->
+    <declare-styleable name="XUIWrapContentExpandableListView">
+        <!--设置listView的最大高度-->
+        <attr name="wcelv_max_height" format="dimension" />
     </declare-styleable>
 
     <!--XUIWrapContentScrollView-->

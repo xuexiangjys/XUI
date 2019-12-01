@@ -19,7 +19,6 @@ public abstract class BaseTagAdapter<T, H> extends BaseListAdapter<T, H> impleme
      * 初始化选中的位置
      */
     private List<Integer> mPositions = new ArrayList<>();
-
     /**
      * 当前选中的索引集合
      */

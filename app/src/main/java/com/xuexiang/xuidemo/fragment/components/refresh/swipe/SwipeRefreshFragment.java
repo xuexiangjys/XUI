@@ -1,15 +1,20 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
 import android.os.Handler;
+import android.view.View;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
+import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
+import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.MaterialLoadMoreView;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
@@ -23,6 +28,7 @@ import butterknife.BindView;
 public class SwipeRefreshFragment extends BaseFragment {
 
     private SimpleRecyclerAdapter mAdapter;
+    private SimpleImageBanner banner;
 
     @BindView(R.id.recycler_view)
     SwipeRecyclerView recyclerView;
@@ -32,6 +38,9 @@ public class SwipeRefreshFragment extends BaseFragment {
     private Handler mHandler = new Handler();
 
     private boolean mEnableLoadMore;
+
+    private int mIndex = 0;
+    MaterialLoadMoreView mLoadMoreView;
     /**
      * 布局的资源id
      *
@@ -49,6 +58,19 @@ public class SwipeRefreshFragment extends BaseFragment {
     protected void initViews() {
         WidgetUtils.initRecyclerView(recyclerView);
 
+        // HeaderView，必须在setAdapter之前调用
+        View headerView = getLayoutInflater().inflate(R.layout.include_head_view_banner, recyclerView, false);
+
+        banner = headerView.findViewById(R.id.sib_simple_usage);
+        banner.setSource(DemoDataProvider.getBannerList())
+                .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
+                    @Override
+                    public void onItemClick(View view, BannerItem item, int position) {
+                        XToastUtils.toast("headBanner position--->" + position);
+                    }
+                }).startScroll();
+        recyclerView.addHeaderView(headerView);
+
         recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         swipeRefreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);
@@ -60,7 +82,7 @@ public class SwipeRefreshFragment extends BaseFragment {
         // 刷新监听。
         swipeRefreshLayout.setOnRefreshListener(mRefreshListener);
 
-        refresh();
+        autoRefresh();
     }
 
     /**
@@ -69,16 +91,17 @@ public class SwipeRefreshFragment extends BaseFragment {
     private SwipeRefreshLayout.OnRefreshListener mRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            loadData();
+            refreshData();
         }
     };
 
-    private void refresh() {
+    private void autoRefresh() {
         swipeRefreshLayout.setRefreshing(true);
-        loadData();
+        refreshData();
     }
 
-    private void loadData() {
+    private void refreshData() {
+        mIndex = 0;
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -97,8 +120,6 @@ public class SwipeRefreshFragment extends BaseFragment {
     private void enableLoadMore() {
         if (recyclerView != null && !mEnableLoadMore) {
             mEnableLoadMore = true;
-            //SwipeRefreshLayout不支持加载更多
-//            recyclerView.useDefaultLoadMore();
             useMaterialLoadMore();
             // 加载更多的监听。
             recyclerView.setLoadMoreListener(mLoadMoreListener);
@@ -107,9 +128,32 @@ public class SwipeRefreshFragment extends BaseFragment {
     }
 
     private void useMaterialLoadMore() {
-        MaterialLoadMoreView loadMoreView = new MaterialLoadMoreView(getContext());
-        recyclerView.addFooterView(loadMoreView);
-        recyclerView.setLoadMoreView(loadMoreView);
+        if (mLoadMoreView == null) {
+            mLoadMoreView = new MaterialLoadMoreView(getContext());
+        }
+        recyclerView.addFooterView(mLoadMoreView);
+        recyclerView.setLoadMoreView(mLoadMoreView);
+    }
+
+    /**
+     * 确保有数据加载了才开启加载更多
+     */
+    private void disEnableLoadMore() {
+        if (recyclerView != null && mEnableLoadMore) {
+            mEnableLoadMore = false;
+            disableMaterialLoadMore();
+            // 加载更多的监听。
+            recyclerView.setLoadMoreListener(null);
+            recyclerView.loadMoreFinish(false, false);
+        }
+    }
+
+    private void disableMaterialLoadMore() {
+        if (mLoadMoreView == null) {
+            mLoadMoreView = new MaterialLoadMoreView(getContext());
+        }
+        recyclerView.removeFooterView(mLoadMoreView);
+        recyclerView.setLoadMoreView(null);
     }
 
     /**
@@ -118,6 +162,7 @@ public class SwipeRefreshFragment extends BaseFragment {
     private SwipeRecyclerView.LoadMoreListener mLoadMoreListener = new SwipeRecyclerView.LoadMoreListener() {
         @Override
         public void onLoadMore() {
+            mIndex ++;
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -127,6 +172,9 @@ public class SwipeRefreshFragment extends BaseFragment {
                     // 第二个参数：表示是否还有更多数据。
                     if (recyclerView != null) {
                         recyclerView.loadMoreFinish(false, true);
+                    }
+                    if (mIndex >= 2) {
+                        disEnableLoadMore();
                     }
                     // 如果加载失败调用下面的方法，传入errorCode和errorMessage。
                     // errorCode随便传，你自定义LoadMoreView时可以根据errorCode判断错误类型。
@@ -140,9 +188,11 @@ public class SwipeRefreshFragment extends BaseFragment {
 
     @Override
     public void onDestroyView() {
+        banner.recycle();
         mHandler.removeCallbacksAndMessages(null);
         super.onDestroyView();
     }
+
 }
 
 

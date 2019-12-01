@@ -19,52 +19,54 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout style="@style/PullDownStyle">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingTop="50dp"
-            android:paddingBottom="25dp">
+        <androidx.core.widget.NestedScrollView style="@style/ScrollViewStyle">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="165dp"
-                android:layout_height="165dp"
-                android:contentDescription="Logo"
-                android:src="@mipmap/about_logo" />
-
-            <TextView
-                android:id="@+id/version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:textColor="@color/xui_config_color_gray_3"
-                android:textSize="16sp" />
-
-            <com.xuexiang.xui.widget.grouplist.XUIGroupListView
-                android:id="@+id/about_list"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/copyright"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/xui_config_color_gray_7" />
+                android:orientation="vertical"
+                android:paddingTop="50dp"
+                android:paddingBottom="25dp">
 
-        </LinearLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="165dp"
+                    android:layout_height="165dp"
+                    android:contentDescription="Logo"
+                    android:src="@mipmap/about_logo" />
 
-    </ScrollView>
+                <TextView
+                    android:id="@+id/version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/xui_config_color_gray_3"
+                    android:textSize="16sp" />
+
+                <com.xuexiang.xui.widget.grouplist.XUIGroupListView
+                    android:id="@+id/about_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/copyright"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/xui_config_color_gray_7" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 </LinearLayout>

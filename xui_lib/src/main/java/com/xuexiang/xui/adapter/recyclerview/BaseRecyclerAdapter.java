@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * 通用的RecyclerView适配器
@@ -35,7 +35,7 @@ public abstract class BaseRecyclerAdapter<T> extends XRecyclerAdapter<T, Recycle
         super();
     }
 
-    public BaseRecyclerAdapter(List<T> list) {
+    public BaseRecyclerAdapter(Collection<T> list) {
         super(list);
     }
 
