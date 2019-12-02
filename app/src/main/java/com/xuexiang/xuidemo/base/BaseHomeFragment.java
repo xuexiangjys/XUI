@@ -32,6 +32,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
 import com.xuexiang.xuidemo.fragment.AboutFragment;
+import com.xuexiang.xuidemo.fragment.SearchComponentFragment;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -61,6 +62,17 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
             @SingleClick
             public void onClick(View v) {
                 getContainer().openMenu();
+            }
+        });
+        titleBar.addAction(new TitleBar.ImageAction(R.drawable.icon_action_query) {
+            @Override
+            @SingleClick
+            public void performAction(View view) {
+                openNewPage(SearchComponentFragment.class);
+            }
+            @Override
+            public int rightPadding() {
+                return DensityUtils.dp2px(10);
             }
         });
         titleBar.addAction(new TitleBar.ImageAction(R.drawable.icon_action_about) {

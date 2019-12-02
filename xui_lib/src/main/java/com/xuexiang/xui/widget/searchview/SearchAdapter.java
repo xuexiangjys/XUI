@@ -39,70 +39,64 @@ import java.util.List;
  * @author xuexiang
  * @since 2019/1/2 下午4:04
  */
-public class SearchAdapter extends BaseAdapter implements Filterable {
+public class SearchAdapter extends BaseAdapter implements Filterable, AbstractSearchFilter.OnFilterResultListener {
 
-    private List<String> data;
-    private String[] suggestions;
-    private Drawable suggestionIcon;
-    private LayoutInflater inflater;
-    private boolean ellipsize;
+    private List<String> mData;
+    private String[] mSuggestions;
+    private Drawable mSuggestionIcon;
+    private LayoutInflater mInflater;
+    private boolean mEllipsize;
+
+    private AbstractSearchFilter mSearchFilter;
 
     public SearchAdapter(Context context, String[] suggestions) {
-        inflater = LayoutInflater.from(context);
-        data = new ArrayList<>();
-        this.suggestions = suggestions;
+        mInflater = LayoutInflater.from(context);
+        mData = new ArrayList<>();
+        mSuggestions = suggestions;
+        setSearchFilter(new DefaultSearchFilter());
     }
 
     public SearchAdapter(Context context, String[] suggestions, Drawable suggestionIcon, boolean ellipsize) {
-        inflater = LayoutInflater.from(context);
-        data = new ArrayList<>();
-        this.suggestions = suggestions;
-        this.suggestionIcon = suggestionIcon;
-        this.ellipsize = ellipsize;
+        mInflater = LayoutInflater.from(context);
+        mData = new ArrayList<>();
+        mSuggestions = suggestions;
+        mSuggestionIcon = suggestionIcon;
+        mEllipsize = ellipsize;
+        setSearchFilter(new DefaultSearchFilter());
     }
 
     @Override
     public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                FilterResults filterResults = new FilterResults();
-                if (!TextUtils.isEmpty(constraint)) {
+        return mSearchFilter;
+    }
 
-                    // Retrieve the autocomplete results.
-                    List<String> searchData = new ArrayList<>();
+    /**
+     * 设置搜索过滤器
+     *
+     * @param searchFilter
+     * @return
+     */
+    public SearchAdapter setSearchFilter(AbstractSearchFilter searchFilter) {
+        mSearchFilter = searchFilter;
+        mSearchFilter.setSuggestions(mSuggestions);
+        mSearchFilter.setOnFilterResultListener(this);
+        return this;
+    }
 
-                    for (String string : suggestions) {
-                        if (string.toLowerCase().startsWith(constraint.toString().toLowerCase())) {
-                            searchData.add(string);
-                        }
-                    }
-
-                    // Assign the data to the FilterResults
-                    filterResults.values = searchData;
-                    filterResults.count = searchData.size();
-                }
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                if (results.values != null) {
-                    data = (List<String>) results.values;
-                    notifyDataSetChanged();
-                }
-            }
-        };
+    @Override
+    public void publishResults(List<String> results) {
+        mData = results;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return data.size();
+        return mData.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return data.get(position);
+        return mData.get(position);
     }
 
     @Override
@@ -116,7 +110,7 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
         SuggestionsViewHolder viewHolder;
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.xui_layout_search_view_suggest_item, parent, false);
+            convertView = mInflater.inflate(R.layout.xui_layout_search_view_suggest_item, parent, false);
             viewHolder = new SuggestionsViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
@@ -126,13 +120,14 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
         String currentListData = (String) getItem(position);
 
         viewHolder.textView.setText(currentListData);
-        if (ellipsize) {
+        if (mEllipsize) {
             viewHolder.textView.setSingleLine();
             viewHolder.textView.setEllipsize(TextUtils.TruncateAt.END);
         }
 
         return convertView;
     }
+
 
     private class SuggestionsViewHolder {
 
@@ -141,9 +136,9 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
 
         public SuggestionsViewHolder(View convertView) {
             textView = convertView.findViewById(R.id.suggestion_text);
-            if (suggestionIcon != null) {
+            if (mSuggestionIcon != null) {
                 imageView = convertView.findViewById(R.id.suggestion_icon);
-                imageView.setImageDrawable(suggestionIcon);
+                imageView.setImageDrawable(mSuggestionIcon);
             }
         }
     }

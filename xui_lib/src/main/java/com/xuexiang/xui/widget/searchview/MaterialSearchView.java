@@ -439,6 +439,18 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
         startFilter(mSearchSrcTextView.getText());
     }
 
+
+    /**
+     * 设置搜索过滤器
+     *
+     * @param searchFilter
+     */
+    public void setSearchFilter(AbstractSearchFilter searchFilter) {
+        if (mAdapter != null && mAdapter instanceof SearchAdapter) {
+            ((SearchAdapter) mAdapter).setSearchFilter(searchFilter);
+        }
+    }
+
     /**
      * 设置搜索提示信息集合
      * Set Adapter for suggestions list with the given suggestion array

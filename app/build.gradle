@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 12
-        versionName "1.1.1"
+        versionCode 13
+        versionName "1.1.2"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -102,8 +102,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.1.1'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.1'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
