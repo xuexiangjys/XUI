@@ -19,30 +19,47 @@ package com.xuexiang.xuidemo.fragment;
 
 import android.view.View;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xaop.annotation.SingleClick;
+import com.xuexiang.xormlite.XUIDataBaseRepository;
+import com.xuexiang.xormlite.db.DBService;
 import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.model.PageInfo;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.searchview.DefaultSearchFilter;
 import com.xuexiang.xui.widget.searchview.MaterialSearchView;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.adapter.SearchRecordTagAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.base.db.entity.SearchRecord;
+import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xutil.data.DateUtils;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author xuexiang
  * @since 2019-12-02 23:32
  */
-@Page(name = "全局搜索")
-public class SearchComponentFragment extends BaseFragment {
+@Page(name = "组件搜索")
+public class SearchComponentFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener<SearchRecord> {
 
     @BindView(R.id.search_view)
     MaterialSearchView mSearchView;
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    private DBService<SearchRecord> mDBService;
+    private SearchRecordTagAdapter mAdapter;
 
     @Override
     protected TitleBar initTitle() {
@@ -58,6 +75,10 @@ public class SearchComponentFragment extends BaseFragment {
         return titleBar;
     }
 
+    @Override
+    protected void initArgs() {
+        mDBService = XUIDataBaseRepository.getInstance().getDataBase(SearchRecord.class);
+    }
 
     @Override
     protected int getLayoutId() {
@@ -78,8 +99,7 @@ public class SearchComponentFragment extends BaseFragment {
         mSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //直接跳转到指定页面
-                openPage(query);
+                onQueryResult(query);
                 return false;
             }
 
@@ -90,8 +110,72 @@ public class SearchComponentFragment extends BaseFragment {
             }
         });
         mSearchView.setSubmitOnClick(true);
+
+        recyclerView.setLayoutManager(Utils.getFlexboxLayoutManager(getContext()));
+        recyclerView.setAdapter(mAdapter = new SearchRecordTagAdapter());
+        refreshRecord();
     }
 
+    @SingleClick
+    @OnClick(R.id.iv_delete)
+    public void onViewClicked(View view) {
+        try {
+            mDBService.deleteAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        mAdapter.clear();
+    }
+
+    private void refreshRecord() {
+        try {
+            mAdapter.refresh(mDBService.queryAllOrderBy("time", false));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 点击查询结果之后
+     *
+     * @param query
+     */
+    private void onQueryResult(String query) {
+        //直接跳转到指定页面
+        openPage(query);
+        try {
+            SearchRecord record = mDBService.queryForColumnFirst("content", query);
+            if (record == null) {
+                record = new SearchRecord().setContent(query).setTime(DateUtils.getNowMills());
+                mDBService.insert(record);
+            } else {
+                record.setTime(DateUtils.getNowMills());
+                mDBService.updateData(record);
+            }
+            refreshRecord();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void initListeners() {
+        mAdapter.setOnItemClickListener(this);
+    }
+
+
+    @SingleClick(500)
+    @Override
+    public void onItemClick(View itemView, SearchRecord item, int position) {
+        if (item != null) {
+            openPage(item.getContent());
+            try {
+                mDBService.updateData(item.setTime(DateUtils.getNowMills()));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public void onDestroyView() {
@@ -111,5 +195,6 @@ public class SearchComponentFragment extends BaseFragment {
         }
         return array;
     }
+
 
 }

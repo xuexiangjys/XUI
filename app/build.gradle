@@ -159,6 +159,10 @@ dependencies {
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-download:1.0.0'//选填
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-filechooser:1.0.0'//选填
 
+    //数据库
+    implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
+    annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
+
     //侧边栏菜单
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
 

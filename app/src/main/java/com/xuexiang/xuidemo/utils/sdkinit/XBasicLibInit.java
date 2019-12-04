@@ -21,11 +21,14 @@ import android.app.Application;
 
 import com.xuexiang.xaop.XAOP;
 import com.xuexiang.xaop.util.PermissionUtils;
+import com.xuexiang.xormlite.XUIDataBaseRepository;
+import com.xuexiang.xormlite.logs.DBLog;
 import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.PageConfig;
 import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xuidemo.MyApp;
 import com.xuexiang.xuidemo.base.BaseActivity;
+import com.xuexiang.xuidemo.base.db.InternalDataBase;
 import com.xuexiang.xuidemo.utils.LocationService;
 import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
@@ -54,6 +57,7 @@ public final class XBasicLibInit {
         initPage(application);
         initAOP(application);
         initRouter(application);
+        initDB(application);
     }
 
     /**
@@ -119,6 +123,19 @@ public final class XBasicLibInit {
             XRouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         XRouter.init(application);
+    }
+
+    /**
+     * 初始化数据库框架
+     *
+     * @param application
+     */
+    private static void initDB(Application application) {
+        XUIDataBaseRepository.getInstance()
+                //设置内部存储的数据库实现接口
+                .setIDatabase(new InternalDataBase())
+                .init(application);
+        DBLog.debug(MyApp.isDebug());
     }
 
 //    /**
