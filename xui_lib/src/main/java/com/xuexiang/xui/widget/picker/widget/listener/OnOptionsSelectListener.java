@@ -26,6 +26,13 @@ import android.view.View;
  */
 public interface OnOptionsSelectListener {
 
-    void onOptionsSelect(int options1, int options2, int options3, View v);
+    /**
+     * @param view
+     * @param options1 选项1
+     * @param options2 选项2
+     * @param options3 选项3
+     * @return true：拦截，不消失；false：不拦截，消失
+     */
+    boolean onOptionsSelect(View view, int options1, int options2, int options3);
 
 }

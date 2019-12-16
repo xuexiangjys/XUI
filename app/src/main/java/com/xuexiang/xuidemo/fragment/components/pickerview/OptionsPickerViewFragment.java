@@ -64,6 +64,8 @@ public class OptionsPickerViewFragment extends BaseFragment {
             case R.id.btn_class_picker:
                 showClassPickerView();
                 break;
+            default:
+                break;
         }
     }
 
@@ -74,9 +76,10 @@ public class OptionsPickerViewFragment extends BaseFragment {
     private void showSexPickerView() {
         OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
             @Override
-            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+            public boolean onOptionsSelect(View v, int options1, int options2, int options3) {
                 btnSexPicker.setText(mSexOption[options1]);
                 sexSelectOption = options1;
+                return false;
             }
         })
                 .setTitleText(getString(R.string.title_sex_select))
@@ -93,10 +96,11 @@ public class OptionsPickerViewFragment extends BaseFragment {
     private void showClassPickerView() {
         OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
             @Override
-            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+            public boolean onOptionsSelect(View v, int options1, int options2, int options3) {
                 btnClassPicker.setText(String.format("%s%s", mGradeOption[options1], mClassOption[options2]));
                 gradeSelectOption = options1;
                 classSelectOption = options2;
+                return false;
             }
         })
                 .setTitleText(getString(R.string.title_grade_class_select))

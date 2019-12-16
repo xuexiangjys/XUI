@@ -135,7 +135,7 @@ public class DemoDataProvider {
         NineGridInfo info;
         for (int i = 0; i < length; i++) {
             info = new NineGridInfo("我是一只喵，快乐的星猫～～～", getRandomMedias((int) (Math.random() * 10 + 0.5), type))
-                .setShowType(NineGridImageView.STYLE_FILL);
+                    .setShowType(NineGridImageView.STYLE_FILL);
             list.add(info);
         }
         return list;
@@ -456,6 +456,61 @@ public class DemoDataProvider {
     public static List<ElemeGroupedItem> getElemeGroupItems() {
         return JsonUtil.fromJson(ResourceUtils.readStringFromAssert("eleme.json"), new TypeToken<List<ElemeGroupedItem>>() {
         }.getType());
+    }
+
+    /**
+     * @return 省市区数据
+     */
+    public static List<ProvinceInfo> getProvinceInfos() {
+        return JsonUtil.fromJson(ResourceUtils.readStringFromAssert("province.json"), new TypeToken<List<ProvinceInfo>>() {
+        }.getType());
+    }
+
+    /**
+     * 获取时间段
+     *
+     * @param interval 时间间隔（分钟）
+     * @return
+     */
+    public static String[] getTimePeriod(int interval) {
+        return getTimePeriod(24, interval);
+    }
+
+    /**
+     * 获取时间段
+     *
+     * @param interval 时间间隔（分钟）
+     * @return
+     */
+    public static String[] getTimePeriod(int totalHour, int interval) {
+        String[] time = new String[totalHour * 60 / interval];
+        int point, hour, min;
+        for (int i = 0; i < time.length; i++) {
+            point = i * interval;
+            hour = point / 60;
+            min = point - hour * 60;
+            time[i] = (hour < 9 ? "0" + hour : "" + hour) + ":" + (min < 9 ? "0" + min : "" + min);
+        }
+        return time;
+    }
+
+
+    /**
+     * 获取时间段
+     *
+     * @param interval 时间间隔（分钟）
+     * @return
+     */
+    public static String[] getTimePeriod(int startHour, int totalHour, int interval) {
+        String[] time = new String[totalHour * 60 / interval];
+        int point, hour, min;
+        for (int i = 0; i < time.length; i++) {
+            point = i * interval + startHour * 60;
+            hour = point / 60;
+            min = point - hour * 60;
+            time[i] = (hour < 9 ? "0" + hour : "" + hour) + ":" + (min < 9 ? "0" + min : "" + min);
+        }
+        return time;
     }
 
 }
