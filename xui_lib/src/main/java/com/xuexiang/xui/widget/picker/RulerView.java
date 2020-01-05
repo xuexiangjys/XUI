@@ -174,7 +174,7 @@ public class RulerView extends View implements HasTypeface {
     private boolean mIsUp = false;
 
     public RulerView(Context context) {
-        this(context, null, R.attr.RulerViewStyle);
+        this(context, null);
     }
 
     public RulerView(Context context, @Nullable AttributeSet attrs) {
@@ -183,7 +183,7 @@ public class RulerView extends View implements HasTypeface {
 
     public RulerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttrs(attrs, defStyleAttr);
+        initAttrs(context, attrs, defStyleAttr);
         init();
     }
 
@@ -193,8 +193,8 @@ public class RulerView extends View implements HasTypeface {
      * @param attrs
      * @param defStyleAttr
      */
-    private void initAttrs(AttributeSet attrs, int defStyleAttr) {
-        TypedArray a = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.RulerView, defStyleAttr, 0);
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RulerView, defStyleAttr, 0);
         mScaleLimit = a.getInt(R.styleable.RulerView_rv_scaleLimit, mScaleLimit);
         mRulerHeight = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerHeight, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRulerHeight, getResources().getDisplayMetrics()));
         mRulerToResultGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerToResultGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRulerToResultGap, getResources().getDisplayMetrics()));

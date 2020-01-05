@@ -1425,6 +1425,130 @@
     </declare-styleable>
     <attr name="DropDownMenuStyle" format="reference" />
 
+    <!--  XRangeSlider  -->
+    <declare-styleable name="XRangeSlider">
+        <!--  控件的垂直间距，默认是10dp  -->
+        <attr name="xrs_verticalPadding" format="dimension" />
+        <!--  选中范围的线条颜色，默认是R.attr.colorAccent -->
+        <attr name="xrs_insideRangeLineColor" format="color" />
+        <!--  不在选中范围的线条颜色，默认是#F0F0F0 -->
+        <attr name="xrs_outsideRangeLineColor" format="color" />
+        <!--  选中范围的线条宽度，默认是5dp -->
+        <attr name="xrs_insideRangeLineStrokeWidth" format="dimension" />
+        <!--  不在选中范围的线条宽度，默认是5dp -->
+        <attr name="xrs_outsideRangeLineStrokeWidth" format="dimension" />
+        <!--  滑块选择的最小值，默认为0  -->
+        <attr name="xrs_min" format="integer" />
+        <!--  滑块选择的最大值，默认为100  -->
+        <attr name="xrs_max" format="integer" />
+        <!--  滑块的图标  -->
+        <attr name="xrs_sliderIcon" format="reference" />
+        <!--  滑块触摸时的图标  -->
+        <attr name="xrs_sliderIconFocus" format="reference" />
+        <!--  线条是否有圆角，默认是true -->
+        <attr name="xrs_isLineRound" format="boolean" />
+
+        <!--  是否显示数字气泡，默认是false  -->
+        <attr name="xrs_isShowBubble" format="boolean" />
+        <!--  是否自适应气泡和数字文字的颜色，默认是true  -->
+        <attr name="xrs_isFitColor" format="boolean" />
+        <!--  气泡的背景资源 -->
+        <attr name="xrs_bubbleResource" format="reference" />
+        <!--  气泡数字的文字颜色，默认是R.attr.colorControlNormal -->
+        <attr name="xrs_numberTextColor" format="color" />
+        <!--  气泡数字的文字大小，默认是12sp -->
+        <attr name="xrs_numberTextSize" format="dimension" />
+        <!--  气泡距离底部的距离，默认是2dp -->
+        <attr name="xrs_numberMarginBottom" format="dimension" />
+
+        <!--  是否显示刻度尺，默认是false -->
+        <attr name="xrs_isShowRuler" format="boolean" />
+        <!--  刻度尺的颜色，默认是R.attr.colorControlNormal -->
+        <attr name="xrs_rulerColor" format="color" />
+        <!--  刻度尺文字的颜色，默认是R.attr.colorControlNormal -->
+        <attr name="xrs_rulerTextColor" format="color" />
+        <!--  刻度尺文字的大小，默认是12sp -->
+        <attr name="xrs_rulerTextSize" format="dimension" />
+        <!--  刻度尺刻度距离顶部的距离，默认是4dp -->
+        <attr name="xrs_rulerMarginTop" format="dimension" />
+        <!--  刻度尺刻度的高度，默认是4dp -->
+        <attr name="xrs_rulerDividerHeight" format="dimension" />
+        <!--  刻度尺刻度文字距离上部的距离，默认是4dp -->
+        <attr name="xrs_rulerTextMarginTop" format="dimension" />
+        <!--  刻度尺刻度的间隔，默认是twenty -->
+        <attr name="xrs_rulerInterval">
+            <enum name="ten" value="10" />
+            <enum name="twenty" value="20" />
+            <enum name="forty" value="40" />
+            <enum name="fifty" value="50" />
+            <enum name="hundred" value="100" />
+        </attr>
+    </declare-styleable>
+    <attr name="XRangeSliderStyle" format="reference" />
+
+    <!--  XSeekBar  -->
+    <declare-styleable name="XSeekBar">
+        <!--  控件的垂直间距，默认是10dp  -->
+        <attr name="xsb_verticalPadding" format="dimension" />
+        <!--  选中范围的线条颜色，默认是R.attr.colorAccent -->
+        <attr name="xsb_insideRangeLineColor" format="color" />
+        <!--  不在选中范围的线条颜色，默认是#F0F0F0 -->
+        <attr name="xsb_outsideRangeLineColor" format="color" />
+        <!--  选中范围的线条宽度，默认是5dp -->
+        <attr name="xsb_insideRangeLineStrokeWidth" format="dimension" />
+        <!--  不在选中范围的线条宽度，默认是5dp -->
+        <attr name="xsb_outsideRangeLineStrokeWidth" format="dimension" />
+        <!--  滑块选择的最小值，默认为0  -->
+        <attr name="xsb_min" format="integer" />
+        <!--  滑块选择的最大值，默认为100  -->
+        <attr name="xsb_max" format="integer" />
+        <!--  滑块的图标 -->
+        <attr name="xsb_sliderIcon" format="reference" />
+        <!--  滑块触摸时的图标  -->
+        <attr name="xsb_sliderIconFocus" format="reference" />
+        <!--  线条是否有圆角，默认是true -->
+        <attr name="xsb_isLineRound" format="boolean" />
+
+        <!--  是否显示数字气泡，默认是false  -->
+        <attr name="xsb_isShowBubble" format="boolean" />
+        <!--  是否显示数字，默认是true  -->
+        <attr name="xsb_isShowNumber" format="boolean" />
+        <!--  是否自适应气泡和数字文字的颜色，默认是true  -->
+        <attr name="xsb_isFitColor" format="boolean" />
+        <!--  气泡的背景资源 -->
+        <attr name="xsb_bubbleResource" format="reference" />
+        <!--  气泡数字的文字颜色，默认是R.attr.colorControlNormal -->
+        <attr name="xsb_numberTextColor" format="color" />
+        <!--  气泡数字的文字大小，默认是12sp -->
+        <attr name="xsb_numberTextSize" format="dimension" />
+        <!--  气泡距离底部的距离，默认是2dp -->
+        <attr name="xsb_numberMarginBottom" format="dimension" />
+
+        <!--  是否显示刻度尺，默认是false -->
+        <attr name="xsb_isShowRuler" format="boolean" />
+        <!--  刻度尺的颜色，默认是R.attr.colorControlNormal -->
+        <attr name="xsb_rulerColor" format="color" />
+        <!--  刻度尺文字的颜色，默认是R.attr.colorControlNormal -->
+        <attr name="xsb_rulerTextColor" format="color" />
+        <!--  刻度尺文字的大小，默认是12sp -->
+        <attr name="xsb_rulerTextSize" format="dimension" />
+        <!--  刻度尺刻度距离顶部的距离，默认是4dp -->
+        <attr name="xsb_rulerMarginTop" format="dimension" />
+        <!--  刻度尺刻度的高度，默认是4dp -->
+        <attr name="xsb_rulerDividerHeight" format="dimension" />
+        <!--  刻度尺刻度文字距离上部的距离，默认是4dp -->
+        <attr name="xsb_rulerTextMarginTop" format="dimension" />
+        <!--  刻度尺刻度的间隔，默认是twenty -->
+        <attr name="xsb_rulerInterval">
+            <enum name="ten" value="10" />
+            <enum name="twenty" value="20" />
+            <enum name="forty" value="40" />
+            <enum name="fifty" value="50" />
+            <enum name="hundred" value="100" />
+        </attr>
+    </declare-styleable>
+    <attr name="XSeekBarStyle" format="reference" />
+
     <!--=====================================================================-->
     <!--MaterialSearchView-->
     <declare-styleable name="MaterialSearchView">

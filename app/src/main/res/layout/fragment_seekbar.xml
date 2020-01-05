@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xui_config_color_white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp" />
+
+    <com.xuexiang.xui.widget.picker.XRangeSlider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp" />
+
+    <com.xuexiang.xui.widget.picker.XSeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp" />
+
+
+    <com.xuexiang.xui.widget.picker.XRangeSlider
+        android:id="@+id/xrs_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        app:xrs_insideRangeLineColor="#0bd97f"
+        app:xrs_insideRangeLineStrokeWidth="5dp"
+        app:xrs_max="300000000"
+        app:xrs_min="3000"
+        app:xrs_numberTextColor="#0bd97f"
+        app:xrs_numberTextSize="15sp"
+        app:xrs_outsideRangeLineColor="#f0f0f0"
+        app:xrs_outsideRangeLineStrokeWidth="5dp" />
+
+    <TextView
+        android:id="@+id/tv_number"
+        style="@style/TextStyle.Content"
+        android:layout_width="match_parent" />
+
+    <com.xuexiang.xui.widget.picker.XRangeSlider
+        android:id="@+id/xrs_bubble"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        app:xrs_insideRangeLineColor="#0bd97f"
+        app:xrs_insideRangeLineStrokeWidth="5dp"
+        app:xrs_isShowBubble="true"
+        app:xrs_isShowRuler="true"
+        app:xrs_max="200"
+        app:xrs_min="50"
+        app:xrs_numberTextColor="#ffffff"
+        app:xrs_numberTextSize="15sp"
+        app:xrs_outsideRangeLineColor="#f0f0f0"
+        app:xrs_outsideRangeLineStrokeWidth="5dp"
+        app:xrs_rulerInterval="twenty" />
+
+    <TextView
+        android:id="@+id/tv_bubble"
+        style="@style/TextStyle.Content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="16dp" />
+
+    <com.xuexiang.xui.widget.picker.XSeekBar
+        android:id="@+id/xsb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        app:xsb_insideRangeLineColor="#0bd97f"
+        app:xsb_insideRangeLineStrokeWidth="5dp"
+        app:xsb_isShowBubble="true"
+        app:xsb_isShowRuler="true"
+        app:xsb_min="10"
+        app:xsb_numberTextColor="#ffffff"
+        app:xsb_numberTextSize="15sp"
+        app:xsb_outsideRangeLineColor="#f0f0f0"
+        app:xsb_outsideRangeLineStrokeWidth="5dp"
+        app:xsb_rulerColor="@color/xui_config_color_gray_4" />
+
+    <TextView
+        android:id="@+id/tv_xsb"
+        style="@style/TextStyle.Content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="16dp" />
+
+
+</LinearLayout>

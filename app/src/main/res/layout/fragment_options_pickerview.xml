@@ -25,6 +25,24 @@
             android:layout_marginTop="20dp"
             android:text="年级选择器"/>
 
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/btn_constellation_picker"
+            style="@style/Button.Primary.wrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="星座选择器"/>
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/btn_nation_picker"
+            style="@style/Button.Primary.wrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="民族选择器"/>
+
+
+
     </LinearLayout>
 
 </LinearLayout>
