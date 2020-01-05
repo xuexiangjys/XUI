@@ -750,6 +750,23 @@
     </declare-styleable>
     <attr name="RippleViewStyle" format="reference" />
 
+    <!--SwitchIconView-->
+    <declare-styleable name="SwitchIconView">
+        <!--填充颜色，默认是R.attr.colorAccent-->
+        <attr name="siv_tint_color" format="color"/>
+        <!--动画持续时间，默认300ms-->
+        <attr name="siv_animation_duration" format="integer"/>
+        <!--不可点击时的透明度，默认是0.5-->
+        <attr name="siv_disabled_alpha" format="float"/>
+        <!--不可点击时的填充颜色-->
+        <attr name="siv_disabled_color" format="color"/>
+        <!--是否可点击,默认true-->
+        <attr name="siv_enabled" format="boolean"/>
+        <!--不可点击时是否没有斜杠,默认false-->
+        <attr name="siv_no_dash" format="boolean"/>
+    </declare-styleable>
+    <attr name="SwitchIconViewStyle" format="reference" />
+
     <!--===============================Spinner======================================-->
     <!--MaterialSpinner-->
     <declare-styleable name="MaterialSpinner">
