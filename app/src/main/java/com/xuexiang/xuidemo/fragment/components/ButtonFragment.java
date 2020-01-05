@@ -5,6 +5,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ButtonStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ButtonViewFragment;
+import com.xuexiang.xuidemo.fragment.components.button.GoodViewFragment;
 import com.xuexiang.xuidemo.fragment.components.button.RippleViewFragment;
 import com.xuexiang.xuidemo.fragment.components.button.RoundButtonFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ShadowButtonFragment;
@@ -34,7 +35,8 @@ public class ButtonFragment extends ComponentContainerFragment {
                 RoundButtonFragment.class,
                 ButtonViewFragment.class,
                 SwitchButtonFragment.class,
-                RippleViewFragment.class
+                RippleViewFragment.class,
+                GoodViewFragment.class
         };
     }
 }
