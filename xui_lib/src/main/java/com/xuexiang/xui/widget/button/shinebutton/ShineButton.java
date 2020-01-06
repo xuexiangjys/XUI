@@ -24,7 +24,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +36,8 @@ import androidx.fragment.app.Fragment;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+
+import java.lang.ref.WeakReference;
 
 /**
  * 增强效果的按钮
@@ -55,7 +56,7 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
 
     private OnCheckedChangeListener mOnCheckedChangeListener;
 
-    Window mWindow;
+    WeakReference<Window> mWindow;
     private boolean mIsDialog;
 
     public ShineButton(Context context) {
@@ -63,7 +64,7 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
     }
 
     public ShineButton(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.ShineButtonStyle);
     }
 
     public ShineButton(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -73,28 +74,34 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
 
     private void initButton(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ShineButton);
-        mNormalColor = a.getColor(R.styleable.ShineButton_sb_normal_color, Color.GRAY);
+        mNormalColor = a.getColor(R.styleable.ShineButton_sb_normal_color, ResUtils.getColor(R.color.default_sb_normal_color));
         mCheckedColor = a.getColor(R.styleable.ShineButton_sb_checked_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
         mShineParams.allowRandomColor = a.getBoolean(R.styleable.ShineButton_sb_allow_random_color, false);
         mShineParams.animDuration = a.getInteger(R.styleable.ShineButton_sb_shine_animation_duration, (int) mShineParams.animDuration);
-        mShineParams.bigShineColor = a.getColor(R.styleable.ShineButton_sb_big_shine_color, mShineParams.bigShineColor);
         mShineParams.clickAnimDuration = a.getInteger(R.styleable.ShineButton_sb_click_animation_duration, (int) mShineParams.clickAnimDuration);
         mShineParams.enableFlashing = a.getBoolean(R.styleable.ShineButton_sb_enable_flashing, false);
-        mShineParams.shineCount = a.getInteger(R.styleable.ShineButton_sb_shine_count, mShineParams.shineCount);
         mShineParams.shineDistanceMultiple = a.getFloat(R.styleable.ShineButton_sb_shine_distance_multiple, mShineParams.shineDistanceMultiple);
-        mShineParams.shineTurnAngle = a.getFloat(R.styleable.ShineButton_sb_shine_turn_angle, mShineParams.shineTurnAngle);
-        mShineParams.smallShineColor = a.getColor(R.styleable.ShineButton_sb_small_shine_color, mShineParams.smallShineColor);
-        mShineParams.smallShineOffsetAngle = a.getFloat(R.styleable.ShineButton_sb_small_shine_offset_angle, mShineParams.smallShineOffsetAngle);
+        mShineParams.shineCount = a.getInteger(R.styleable.ShineButton_sb_shine_count, mShineParams.shineCount);
         mShineParams.shineSize = a.getDimensionPixelSize(R.styleable.ShineButton_sb_shine_size, mShineParams.shineSize);
+        mShineParams.shineTurnAngle = a.getFloat(R.styleable.ShineButton_sb_shine_turn_angle, mShineParams.shineTurnAngle);
+        mShineParams.smallShineOffsetAngle = a.getFloat(R.styleable.ShineButton_sb_small_shine_offset_angle, mShineParams.smallShineOffsetAngle);
+        mShineParams.smallShineColor = a.getColor(R.styleable.ShineButton_sb_small_shine_color, mShineParams.smallShineColor);
+        mShineParams.bigShineColor = a.getColor(R.styleable.ShineButton_sb_big_shine_color, mShineParams.bigShineColor);
         a.recycle();
         setTintColor(mNormalColor);
+
         if (context instanceof Activity) {
             initWindow((Activity) context);
         }
     }
 
+    /**
+     * 修复对话框中显示的问题
+     *
+     * @param dialog
+     */
     public void fitDialog(Dialog dialog) {
-        mWindow = dialog.getWindow();
+        mWindow = new WeakReference<>(dialog.getWindow());
         mIsDialog = true;
     }
 
@@ -116,13 +123,15 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
         setChecked(!isChecked());
     }
 
-    public void setNormalColor(int normalColor) {
+    public ShineButton setNormalColor(int normalColor) {
         mNormalColor = normalColor;
         setTintColor(mNormalColor);
+        return this;
     }
 
-    public void setCheckedColor(int checkedColor) {
+    public ShineButton setCheckedColor(int checkedColor) {
         mCheckedColor = checkedColor;
+        return this;
     }
 
     public void setChecked(boolean checked, boolean anim) {
@@ -168,48 +177,59 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
         }
     }
 
-    public void setAllowRandomColor(boolean allowRandomColor) {
+    public ShineButton setAllowRandomColor(boolean allowRandomColor) {
         mShineParams.allowRandomColor = allowRandomColor;
+        return this;
     }
 
-    public void setAnimDuration(int durationMs) {
+    public ShineButton setAnimDuration(int durationMs) {
         mShineParams.animDuration = durationMs;
+        return this;
     }
 
-    public void setBigShineColor(int color) {
+    public ShineButton setBigShineColor(int color) {
         mShineParams.bigShineColor = color;
+        return this;
     }
 
-    public void setClickAnimDuration(int durationMs) {
+    public ShineButton setClickAnimDuration(int durationMs) {
         mShineParams.clickAnimDuration = durationMs;
+        return this;
     }
 
-    public void enableFlashing(boolean enable) {
+    public ShineButton enableFlashing(boolean enable) {
         mShineParams.enableFlashing = enable;
+        return this;
     }
 
-    public void setShineCount(int count) {
+    public ShineButton setShineCount(int count) {
         mShineParams.shineCount = count;
+        return this;
     }
 
-    public void setShineDistanceMultiple(float multiple) {
+    public ShineButton setShineDistanceMultiple(float multiple) {
         mShineParams.shineDistanceMultiple = multiple;
+        return this;
     }
 
-    public void setShineTurnAngle(float angle) {
+    public ShineButton setShineTurnAngle(float angle) {
         mShineParams.shineTurnAngle = angle;
+        return this;
     }
 
-    public void setSmallShineColor(int color) {
+    public ShineButton setSmallShineColor(int color) {
         mShineParams.smallShineColor = color;
+        return this;
     }
 
-    public void setSmallShineOffAngle(float angle) {
+    public ShineButton setSmallShineOffAngle(float angle) {
         mShineParams.smallShineOffsetAngle = angle;
+        return this;
     }
 
-    public void setShineSize(int size) {
+    public ShineButton setShineSize(int size) {
         mShineParams.shineSize = size;
+        return this;
     }
 
     @Override
@@ -223,22 +243,23 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
         }
     }
 
-    OnClickListenWrapper mOnClickListenWrapper;
+    private OnClickListenWrapper mOnClickListenWrapper;
 
     public void initWindow(Activity activity) {
         initWindow(activity.getWindow());
+        mIsDialog = false;
     }
 
     public void initWindow(Window window) {
-        mWindow = window;
+        mWindow = new WeakReference<>(window);
         mOnClickListenWrapper = new OnClickListenWrapper();
         setOnClickListener(mOnClickListenWrapper);
     }
 
     public void showAnim() {
-        if (mWindow != null) {
+        if (getWindow() != null) {
             ShineView shineView = new ShineView(getContext(), this, mShineParams);
-            ViewGroup rootView = (ViewGroup) mWindow.getDecorView();
+            ViewGroup rootView = (ViewGroup) getWindow().getDecorView();
             if (mIsDialog) {
                 View innerView = rootView.findViewById(Window.ID_ANDROID_CONTENT);
                 rootView.addView(shineView, new ViewGroup.LayoutParams(innerView.getWidth(), innerView.getHeight()));
@@ -250,14 +271,22 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
     }
 
     public void removeView(View view) {
-        if (mWindow != null) {
-            final ViewGroup rootView = mWindow.findViewById(Window.ID_ANDROID_CONTENT);
+        if (getWindow() != null) {
+            final ViewGroup rootView = getWindow().findViewById(Window.ID_ANDROID_CONTENT);
             rootView.removeView(view);
         }
     }
 
-    public void setShapeResource(int resId) {
-        setShapeDrawable(ResUtils.getDrawable(getContext(), resId));
+    public Window getWindow() {
+        if (mWindow != null) {
+            return mWindow.get();
+        }
+        return null;
+    }
+
+    public ShineButton setIconResource(int resId) {
+        setIconDrawable(ResUtils.getDrawable(getContext(), resId));
+        return this;
     }
 
     private void doShareAnim() {
@@ -324,15 +353,22 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
         }
     }
 
-    public void setOnCheckStateChangeListener(OnCheckedChangeListener listener) {
+    public ShineButton setOnCheckStateChangeListener(OnCheckedChangeListener listener) {
         mOnCheckedChangeListener = listener;
+        return this;
     }
 
     /**
      * 点击切换的监听
      */
     public interface OnCheckedChangeListener {
-        void onCheckedChanged(ShineButton shineButton, boolean checked);
+        /**
+         * 选中状态改变
+         *
+         * @param shineButton
+         * @param isChecked
+         */
+        void onCheckedChanged(ShineButton shineButton, boolean isChecked);
     }
 
 }

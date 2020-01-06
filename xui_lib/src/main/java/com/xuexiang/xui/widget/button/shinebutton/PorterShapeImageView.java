@@ -29,9 +29,15 @@ import android.util.AttributeSet;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
 
+/**
+ * 图标资源控件
+ *
+ * @author xuexiang
+ * @since 2020-01-06 20:42
+ */
 public class PorterShapeImageView extends PorterImageView {
 
-    private Drawable mShapeDrawable;
+    private Drawable mIconDrawable;
     private Matrix mMatrix;
     private Matrix mDrawMatrix;
 
@@ -51,45 +57,50 @@ public class PorterShapeImageView extends PorterImageView {
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         if (attrs != null) {
             TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.PorterShapeImageView, defStyleAttr, 0);
-            mShapeDrawable = ResUtils.getDrawableAttrRes(getContext(), array, R.styleable.PorterShapeImageView_psiv_shape_image);
+            mIconDrawable = ResUtils.getDrawableAttrRes(getContext(), array, R.styleable.PorterShapeImageView_sb_icon_image);
             array.recycle();
         }
         mMatrix = new Matrix();
     }
 
-    public void setShapeDrawable(Drawable drawable) {
-        mShapeDrawable = drawable;
+    /**
+     * 设置图标资源
+     *
+     * @param drawable
+     */
+    public void setIconDrawable(Drawable drawable) {
+        mIconDrawable = drawable;
         invalidate();
     }
 
     @Override
     protected void paintMaskCanvas(Canvas maskCanvas, Paint maskPaint, int width, int height) {
-        if (mShapeDrawable != null) {
-            if (mShapeDrawable instanceof BitmapDrawable) {
+        if (mIconDrawable != null) {
+            if (mIconDrawable instanceof BitmapDrawable) {
                 configureBitmapBounds(getWidth(), getHeight());
                 if (mDrawMatrix != null) {
                     int drawableSaveCount = maskCanvas.getSaveCount();
                     maskCanvas.save();
                     maskCanvas.concat(mMatrix);
-                    mShapeDrawable.draw(maskCanvas);
+                    mIconDrawable.draw(maskCanvas);
                     maskCanvas.restoreToCount(drawableSaveCount);
                     return;
                 }
             }
 
-            mShapeDrawable.setBounds(0, 0, getWidth(), getHeight());
-            mShapeDrawable.draw(maskCanvas);
+            mIconDrawable.setBounds(0, 0, getWidth(), getHeight());
+            mIconDrawable.draw(maskCanvas);
         }
     }
 
     private void configureBitmapBounds(int viewWidth, int viewHeight) {
         mDrawMatrix = null;
-        int drawableWidth = mShapeDrawable.getIntrinsicWidth();
-        int drawableHeight = mShapeDrawable.getIntrinsicHeight();
+        int drawableWidth = mIconDrawable.getIntrinsicWidth();
+        int drawableHeight = mIconDrawable.getIntrinsicHeight();
         boolean fits = viewWidth == drawableWidth && viewHeight == drawableHeight;
 
         if (drawableWidth > 0 && drawableHeight > 0 && !fits) {
-            mShapeDrawable.setBounds(0, 0, drawableWidth, drawableHeight);
+            mIconDrawable.setBounds(0, 0, drawableWidth, drawableHeight);
             float widthRatio = (float) viewWidth / (float) drawableWidth;
             float heightRatio = (float) viewHeight / (float) drawableHeight;
             float scale = Math.min(widthRatio, heightRatio);

@@ -17,16 +17,28 @@
 
 package com.xuexiang.xuidemo.fragment.components.button;
 
+import android.view.View;
+
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.button.shinebutton.ShineButton;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xuidemo.widget.ShineButtonDialog;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author xuexiang
  * @since 2020-01-06 17:24
  */
 @Page(name = "ShineButton\n增强效果的按钮，自带闪烁的特效")
-public class ShineButtonFragment extends BaseFragment {
+public class ShineButtonFragment extends BaseFragment implements ShineButton.OnCheckedChangeListener {
+    @BindView(R.id.shine_button_1)
+    ShineButton shineButton1;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_shine_button;
@@ -34,6 +46,21 @@ public class ShineButtonFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+    }
 
+    @Override
+    protected void initListeners() {
+        shineButton1.setOnCheckStateChangeListener(this);
+    }
+
+    @SingleClick
+    @OnClick(R.id.btn_dialog)
+    public void onViewClicked(View view) {
+        new ShineButtonDialog(getContext()).show();
+    }
+
+    @Override
+    public void onCheckedChanged(ShineButton shineButton, boolean isChecked) {
+        XToastUtils.toast("checked:" + isChecked);
     }
 }

@@ -31,6 +31,7 @@ import android.view.View;
 import com.xuexiang.xui.widget.button.shinebutton.interpolator.Ease;
 import com.xuexiang.xui.widget.button.shinebutton.interpolator.EasingInterpolator;
 
+import java.lang.ref.WeakReference;
 import java.util.Random;
 
 /**
@@ -50,7 +51,7 @@ public class ShineView extends View {
     private ShineAnimator mShineAnimator;
     private ValueAnimator mClickAnimator;
 
-    private ShineButton mShineButton;
+    private WeakReference<ShineButton> mShineButton;
     private Paint mPaint;
     private Paint mPaint2;
     private Paint mPaintSmall;
@@ -73,7 +74,7 @@ public class ShineView extends View {
     private boolean mEnableFlashing = false;
 
     private RectF mRectF = new RectF();
-    private RectF mRectFSmall = new RectF();
+    private RectF mSmallRectF = new RectF();
 
     private Random mRandom = new Random();
     private int mCenterAnimX;
@@ -93,9 +94,9 @@ public class ShineView extends View {
     public ShineView(Context context, final ShineButton shineButton, ShineParams shineParams) {
         super(context);
         initShineParams(shineParams, shineButton);
+        mShineButton = new WeakReference<>(shineButton);
         mShineAnimator = new ShineAnimator(mAnimDuration, mShineDistanceMultiple, mClickAnimDuration);
         ValueAnimator.setFrameDelay(FRAME_REFRESH_DELAY);
-        mShineButton = shineButton;
 
         mPaint = new Paint();
         mPaint.setColor(mBigShineColor);
@@ -135,7 +136,9 @@ public class ShineView extends View {
         mShineAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animator) {
-                shineButton.removeView(ShineView.this);
+                if (mShineButton != null && mShineButton.get() != null) {
+                    mShineButton.get().removeView(ShineView.this);
+                }
             }
         });
 
@@ -152,6 +155,9 @@ public class ShineView extends View {
 
 
     public void showAnimation(ShineButton shineButton) {
+        if (shineButton == null) {
+            return;
+        }
         mBtnWidth = shineButton.getWidth();
         mBtnHeight = shineButton.getHeight();
         int[] location = new int[2];
@@ -159,8 +165,8 @@ public class ShineView extends View {
         mCenterAnimX = location[0] + shineButton.getWidth() / 2;
         mCenterAnimY = location[1] + shineButton.getHeight() / 2;
 
-        if (shineButton.mWindow != null) {
-            View decor = shineButton.mWindow.getDecorView();
+        if (shineButton.getWindow() != null) {
+            View decor = shineButton.getWindow().getDecorView();
             mCenterAnimX = mCenterAnimX - decor.getPaddingLeft();
             mCenterAnimY = mCenterAnimY - decor.getPaddingTop();
         }
@@ -177,7 +183,7 @@ public class ShineView extends View {
                     mPaintSmall.setStrokeWidth((mBtnWidth / 3) * (mShineDistanceMultiple - mValue));
                 }
                 mRectF.set(mCenterAnimX - (mBtnWidth / (3 - mShineDistanceMultiple) * mValue), mCenterAnimY - (mBtnHeight / (3 - mShineDistanceMultiple) * mValue), mCenterAnimX + (mBtnWidth / (3 - mShineDistanceMultiple) * mValue), mCenterAnimY + (mBtnHeight / (3 - mShineDistanceMultiple) * mValue));
-                mRectFSmall.set(mCenterAnimX - (mBtnWidth / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimY - (mBtnHeight / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimX + (mBtnWidth / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimY + (mBtnHeight / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue));
+                mSmallRectF.set(mCenterAnimX - (mBtnWidth / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimY - (mBtnHeight / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimX + (mBtnWidth / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimY + (mBtnHeight / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue));
                 invalidate();
             }
         });
@@ -199,7 +205,7 @@ public class ShineView extends View {
             if (mAllowRandomColor) {
                 mPaint.setColor(sColorRandom[Math.abs(mColorCount / 2 - i) >= mColorCount ? mColorCount - 1 : Math.abs(mColorCount / 2 - i)]);
             }
-            canvas.drawArc(mRectFSmall, 360f / mShineCount * i + 1 - mSmallOffsetAngle + ((mValue - 1) * mTurnAngle), 0.1f, false, getConfigPaint(mPaintSmall));
+            canvas.drawArc(mSmallRectF, 360f / mShineCount * i + 1 - mSmallOffsetAngle + ((mValue - 1) * mTurnAngle), 0.1f, false, getConfigPaint(mPaintSmall));
         }
         mPaint.setStrokeWidth(mBtnWidth * (mClickValue) * (mShineDistanceMultiple - mDistanceOffset));
         if (mClickValue != 0) {
@@ -211,7 +217,7 @@ public class ShineView extends View {
         canvas.drawPoint(mCenterAnimX, mCenterAnimY, mPaint2);
         if (mShineAnimator != null && !mIsAnimating) {
             mIsAnimating = true;
-            showAnimation(mShineButton);
+            showAnimation(mShineButton.get());
         }
     }
 
@@ -268,6 +274,5 @@ public class ShineView extends View {
         if (mBigShineColor == 0) {
             mBigShineColor = shineButton.getColor();
         }
-
     }
 }

@@ -752,55 +752,70 @@
     <!--SwitchIconView-->
     <declare-styleable name="SwitchIconView">
         <!--填充颜色，默认是R.attr.colorAccent-->
-        <attr name="siv_tint_color" format="color"/>
+        <attr name="siv_tint_color" format="color" />
         <!--动画持续时间，默认300ms-->
-        <attr name="siv_animation_duration" format="integer"/>
+        <attr name="siv_animation_duration" format="integer" />
         <!--不可点击时的透明度，默认是0.5-->
-        <attr name="siv_disabled_alpha" format="float"/>
+        <attr name="siv_disabled_alpha" format="float" />
         <!--不可点击时的填充颜色-->
-        <attr name="siv_disabled_color" format="color"/>
+        <attr name="siv_disabled_color" format="color" />
         <!--是否可点击,默认true-->
-        <attr name="siv_enabled" format="boolean"/>
+        <attr name="siv_enabled" format="boolean" />
         <!--不可点击时是否没有斜杠,默认false-->
-        <attr name="siv_no_dash" format="boolean"/>
+        <attr name="siv_no_dash" format="boolean" />
     </declare-styleable>
     <attr name="SwitchIconViewStyle" format="reference" />
 
     <!--    -->
     <declare-styleable name="SmoothCheckBox">
         <!-- 切换动画的持续时间，默认是300ms-->
-        <attr name="scb_duration" format="integer"/>
+        <attr name="scb_duration" format="integer" />
         <!-- 未选中时边框宽度，默认是宽度的10分之一-->
-        <attr name="scb_stroke_width" format="dimension"/>
+        <attr name="scb_stroke_width" format="dimension" />
         <!-- 对勾颜色，默认是Color.WHITE-->
-        <attr name="scb_color_tick" format="color"/>
+        <attr name="scb_color_tick" format="color" />
         <!-- 选中时的填充颜色，默认是R.attr.colorAccent-->
-        <attr name="scb_color_checked" format="color"/>
+        <attr name="scb_color_checked" format="color" />
         <!-- 未选中时的填充颜色，默认是Color.WHITE-->
-        <attr name="scb_color_unchecked" format="color"/>
+        <attr name="scb_color_unchecked" format="color" />
         <!-- 未选中时边框颜色，默认是#DFDFDF-->
-        <attr name="scb_color_unchecked_stroke" format="color"/>
+        <attr name="scb_color_unchecked_stroke" format="color" />
     </declare-styleable>
     <attr name="SmoothCheckBoxStyle" format="reference" />
 
     <declare-styleable name="ShineButton">
+        <!-- 未选中时的填充颜色，默认是#AAAAAA -->
         <attr name="sb_normal_color" format="color" />
+        <!-- 选中时的填充颜色，默认R.attr.colorAccent  -->
         <attr name="sb_checked_color" format="color" />
-        <attr name="sb_shine_count" format="integer" />
-        <attr name="sb_shine_turn_angle" format="float" />
-        <attr name="sb_small_shine_offset_angle" format="float" />
-        <attr name="sb_enable_flashing" format="boolean" />
+        <!-- 是否使用随机颜色，默认是false  -->
         <attr name="sb_allow_random_color" format="boolean" />
-        <attr name="sb_small_shine_color" format="color" />
-        <attr name="sb_big_shine_color" format="color" />
+        <!-- 发散动画持续的时间，默认是 1500ms -->
         <attr name="sb_shine_animation_duration" format="integer" />
+        <!-- 点击动画持续的时间，默认是 200ms -->
         <attr name="sb_click_animation_duration" format="integer" />
+        <!-- 是否开启闪烁，默认是false -->
+        <attr name="sb_enable_flashing" format="boolean" />
+        <!-- 发散距离的倍数，必须大于1，默认是1.5 -->
         <attr name="sb_shine_distance_multiple" format="float" />
+        <!-- 发散点的数量，默认是7 -->
+        <attr name="sb_shine_count" format="integer" />
+        <!-- 发散点起始的大小，默认是按钮宽度的一半 -->
         <attr name="sb_shine_size" format="dimension" />
+        <!-- 发散点的转角度数，默认是20 -->
+        <attr name="sb_shine_turn_angle" format="float" />
+        <!-- 小发散点的偏移角度，默认是20 -->
+        <attr name="sb_small_shine_offset_angle" format="float" />
+        <!-- 小发散点的颜色，默认是#666666 -->
+        <attr name="sb_small_shine_color" format="color" />
+        <!-- 大发散点的颜色，默认是选中时的填充颜色 -->
+        <attr name="sb_big_shine_color" format="color" />
     </declare-styleable>
     <declare-styleable name="PorterShapeImageView">
-        <attr name="psiv_shape_image" format="reference" />
+        <!-- 图标资源  -->
+        <attr name="sb_icon_image" format="reference" />
     </declare-styleable>
+    <attr name="ShineButtonStyle" format="reference" />
 
     <!--===============================Spinner======================================-->
     <!--MaterialSpinner-->

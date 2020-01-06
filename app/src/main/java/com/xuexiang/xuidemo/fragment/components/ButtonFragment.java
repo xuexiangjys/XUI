@@ -39,9 +39,9 @@ public class ButtonFragment extends ComponentContainerFragment {
                 ButtonViewFragment.class,
                 SwitchButtonFragment.class,
                 RippleViewFragment.class,
-                GoodViewFragment.class,
                 SwitchIconViewFragment.class,
                 SmoothCheckBoxFragment.class,
+                GoodViewFragment.class,
                 ShineButtonFragment.class
         };
     }

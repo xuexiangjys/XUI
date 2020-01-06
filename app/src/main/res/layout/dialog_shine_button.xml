@@ -103,11 +103,4 @@
 
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/btn_dialog"
-        style="@style/Button.Blue"
-        android:layout_margin="@dimen/spacing_16"
-        android:text="对话框" />
-
 </LinearLayout>
