@@ -27,6 +27,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.edittext.ClearEditText;
@@ -508,7 +509,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mDividerLineType = typedArray.getInt(R.styleable.SuperTextView_sDividerLineType, DEFAULT_DIVIDER);
         mDividerLineColor = typedArray.getColor(R.styleable.SuperTextView_sDividerLineColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_light));
 
-        mDividerLineHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sDividerLineHeight, dip2px(mContext, 0.5f));
+        mDividerLineHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sDividerLineHeight, DensityUtils.dp2px(mContext, 0.5f));
         ////////////////////////////////////////////////
         mLeftViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftViewMarginLeft, mDefaultMargin);
         mLeftViewMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftViewMarginRight, mDefaultMargin);
@@ -582,7 +583,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mSwitchThumbResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sThumbResource);
         mSwitchTrackResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sTrackResource);
 
-        mCenterSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
+        mCenterSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, DensityUtils.dp2px(mContext, 5));
         ////////////////////////////////////////////////////
         mSelectorPressedColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSelectorPressedColor, mDefaultShapeColor);
         mSelectorNormalColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSelectorNormalColor, mDefaultShapeColor);
@@ -2476,7 +2477,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeSelectorPressedColor(int color) {
-        this.mSelectorPressedColor = color;
+        mSelectorPressedColor = color;
         return this;
     }
 
@@ -2487,7 +2488,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeSelectorNormalColor(int color) {
-        this.mSelectorNormalColor = color;
+        mSelectorNormalColor = color;
         return this;
     }
 
@@ -2498,7 +2499,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeSolidColor(int color) {
-        this.mSolidColor = color;
+        mSolidColor = color;
         return this;
     }
 
@@ -2509,7 +2510,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeStrokeWidth(int strokeWidth) {
-        this.mStrokeWidth = dip2px(mContext, strokeWidth);
+        mStrokeWidth = DensityUtils.dp2px(mContext, strokeWidth);
         return this;
     }
 
@@ -2531,7 +2532,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeSrokeDashWidth(float strokeDashWidth) {
-        this.mStrokeDashWidth = dip2px(mContext, strokeDashWidth);
+        this.mStrokeDashWidth = DensityUtils.dp2px(mContext, strokeDashWidth);
         return this;
     }
 
@@ -2542,7 +2543,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeStrokeDashGap(float strokeDashGap) {
-        this.mStrokeDashGap = dip2px(mContext, strokeDashGap);
+        this.mStrokeDashGap = DensityUtils.dp2px(mContext, strokeDashGap);
         return this;
     }
 
@@ -2553,7 +2554,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeCornersRadius(float radius) {
-        this.mCornersRadius = dip2px(mContext, radius);
+        this.mCornersRadius = DensityUtils.dp2px(mContext, radius);
         return this;
     }
 
@@ -2564,7 +2565,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeCornersTopLeftRadius(float radius) {
-        this.mCornersTopLeftRadius = dip2px(mContext, radius);
+        this.mCornersTopLeftRadius = DensityUtils.dp2px(mContext, radius);
         return this;
     }
 
@@ -2575,7 +2576,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeCornersTopRightRadius(float radius) {
-        this.mCornersTopRightRadius = dip2px(mContext, radius);
+        this.mCornersTopRightRadius = DensityUtils.dp2px(mContext, radius);
         return this;
     }
 
@@ -2586,7 +2587,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeCornersBottomLeftRadius(float radius) {
-        this.mCornersBottomLeftRadius = dip2px(mContext, radius);
+        this.mCornersBottomLeftRadius = DensityUtils.dp2px(mContext, radius);
         return this;
     }
 
@@ -2597,7 +2598,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return 对象
      */
     public SuperTextView setShapeCornersBottomRightRadius(float radius) {
-        this.mCornersBottomRightRadius = dip2px(mContext, radius);
+        this.mCornersBottomRightRadius = DensityUtils.dp2px(mContext, radius);
         return this;
     }
 
@@ -2615,27 +2616,4 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         return this;
     }
 
-    /**
-     * 单位转换工具类
-     *
-     * @param context 上下文对象
-     * @param spValue 值
-     * @return 返回值
-     */
-    private int sp2px(Context context, float spValue) {
-        final float scale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (spValue * scale + 0.5f);
-    }
-
-    /**
-     * 单位转换工具类
-     *
-     * @param context  上下文对象
-     * @param dipValue 值
-     * @return 返回值
-     */
-    private int dip2px(Context context, float dipValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale + 0.5f);
-    }
 }

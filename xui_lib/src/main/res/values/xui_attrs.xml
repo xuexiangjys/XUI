@@ -767,6 +767,23 @@
     </declare-styleable>
     <attr name="SwitchIconViewStyle" format="reference" />
 
+    <!--    -->
+    <declare-styleable name="SmoothCheckBox">
+        <!-- 切换动画的持续时间，默认是300ms-->
+        <attr name="scb_duration" format="integer"/>
+        <!-- 未选中时边框宽度，默认是宽度的10分之一-->
+        <attr name="scb_stroke_width" format="dimension"/>
+        <!-- 对勾颜色，默认是Color.WHITE-->
+        <attr name="scb_color_tick" format="color"/>
+        <!-- 选中时的填充颜色，默认是R.attr.colorAccent-->
+        <attr name="scb_color_checked" format="color"/>
+        <!-- 未选中时的填充颜色，默认是Color.WHITE-->
+        <attr name="scb_color_unchecked" format="color"/>
+        <!-- 未选中时边框颜色，默认是#DFDFDF-->
+        <attr name="scb_color_unchecked_stroke" format="color"/>
+    </declare-styleable>
+    <attr name="SmoothCheckBoxStyle" format="reference" />
+
     <!--===============================Spinner======================================-->
     <!--MaterialSpinner-->
     <declare-styleable name="MaterialSpinner">
@@ -1062,7 +1079,7 @@
         <!--是否自动校验, 默认是true-->
         <attr name="vet_autoValidate" format="boolean" />
         <!--是否显示出错图标，默认true-->
-        <attr name="vet_show_errorIcon" format="boolean" />
+        <attr name="vet_showErrorIcon" format="boolean" />
         <!--出错提示的图片资源-->
         <attr name="vet_errorIcon" format="reference" />
         <!--出错提示的图片尺寸-->

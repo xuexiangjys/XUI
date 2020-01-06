@@ -54,7 +54,7 @@
         app:vet_tipPosition="top"
         app:vet_regexp="@string/regexp_number_only"
         app:vet_errorMessage="@string/tip_number_only_error_message"
-        app:vet_show_errorIcon="false"/>
+        app:vet_showErrorIcon="false"/>
 
     <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
         android:layout_width="match_parent"
