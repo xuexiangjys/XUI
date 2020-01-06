@@ -694,7 +694,6 @@
         <attr name="swb_textAdjust" format="dimension" />
     </declare-styleable>
 
-
     <!-- 阴影 -->
     <declare-styleable name="ShadowDrawable">
         <!-- 阴影圆角弧度-->
@@ -783,6 +782,25 @@
         <attr name="scb_color_unchecked_stroke" format="color"/>
     </declare-styleable>
     <attr name="SmoothCheckBoxStyle" format="reference" />
+
+    <declare-styleable name="ShineButton">
+        <attr name="sb_normal_color" format="color" />
+        <attr name="sb_checked_color" format="color" />
+        <attr name="sb_shine_count" format="integer" />
+        <attr name="sb_shine_turn_angle" format="float" />
+        <attr name="sb_small_shine_offset_angle" format="float" />
+        <attr name="sb_enable_flashing" format="boolean" />
+        <attr name="sb_allow_random_color" format="boolean" />
+        <attr name="sb_small_shine_color" format="color" />
+        <attr name="sb_big_shine_color" format="color" />
+        <attr name="sb_shine_animation_duration" format="integer" />
+        <attr name="sb_click_animation_duration" format="integer" />
+        <attr name="sb_shine_distance_multiple" format="float" />
+        <attr name="sb_shine_size" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="PorterShapeImageView">
+        <attr name="psiv_shape_image" format="reference" />
+    </declare-styleable>
 
     <!--===============================Spinner======================================-->
     <!--MaterialSpinner-->
