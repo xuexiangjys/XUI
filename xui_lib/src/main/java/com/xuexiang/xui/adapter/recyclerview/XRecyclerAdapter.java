@@ -155,6 +155,13 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     }
 
     /**
+     * @return 数据源
+     */
+    public List<T> getData() {
+        return mData;
+    }
+
+    /**
      * 给指定位置添加一项
      *
      * @param pos
