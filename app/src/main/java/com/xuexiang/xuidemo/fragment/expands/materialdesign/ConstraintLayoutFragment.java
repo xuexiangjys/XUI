@@ -21,7 +21,10 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutConstraintSetFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutContainerFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutGroupFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutPlaceholderFragment;
 
 import java.util.List;
 
@@ -41,6 +44,10 @@ public class ConstraintLayoutFragment extends BaseSimpleListFragment {
         lists.add("尺寸约束");
         lists.add("链约束");
         lists.add("导航线Guideline使用");
+        lists.add("栅栏Barrier使用");
+        lists.add("分组Group使用");
+        lists.add("占位符Placeholder使用");
+        lists.add("ConstraintSet实现切换动画");
         return lists;
     }
 
@@ -58,6 +65,18 @@ public class ConstraintLayoutFragment extends BaseSimpleListFragment {
                 break;
             case 3:
                 gotoExample(mSimpleData.get(position), R.layout.layout_constraint_guideline);
+                break;
+            case 4:
+                gotoExample(mSimpleData.get(position), R.layout.layout_constraint_barrier);
+                break;
+            case 5:
+                openPage(ConstraintLayoutGroupFragment.class);
+                break;
+            case 6:
+                openPage(ConstraintLayoutPlaceholderFragment.class);
+                break;
+            case 7:
+                openPage(ConstraintLayoutConstraintSetFragment.class);
                 break;
             default:
                 break;
