@@ -298,3 +298,5 @@
 -dontwarn com.github.mikephil.**
 -keep class com.github.mikephil.**{ *; }
 
+# 数据库
+-keep class com.xuexiang.xuidemo.base.db.entity.** { *; }
