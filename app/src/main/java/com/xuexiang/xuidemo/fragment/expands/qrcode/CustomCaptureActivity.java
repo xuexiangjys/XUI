@@ -31,7 +31,9 @@ import androidx.fragment.app.Fragment;
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xutil.common.StringUtils;
 
 import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_ACTION;
 import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_HOST;
@@ -174,6 +176,8 @@ public class CustomCaptureActivity extends CaptureActivity implements View.OnCli
     protected void handleAnalyzeSuccess(Bitmap bitmap, String result) {
         if (isAppLink(result)) {
             openAppLink(this, result);
+        } else if (isWeb(result)) {
+            Utils.goWeb(this, result);
         } else {
             Intent resultIntent = new Intent();
             Bundle bundle = new Bundle();
@@ -198,6 +202,11 @@ public class CustomCaptureActivity extends CaptureActivity implements View.OnCli
                 && APP_LINK_HOST.equals(uri.getHost())
                 && (url.startsWith("http") || url.startsWith("https"))
                 && url.contains("xpage");
+    }
+
+    private boolean isWeb(String url) {
+        return !StringUtils.isEmpty(url)
+                && (url.startsWith("http") || url.startsWith("https"));
     }
 
     private void openAppLink(Context context, String url) {

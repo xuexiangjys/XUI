@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_1"
+            android:gravity="center"
+            android:text="链1"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_2"
+            android:gravity="center"
+            android:text="链2"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text3"
+            app:layout_constraintStart_toEndOf="@id/text1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_3"
+            android:gravity="center"
+            android:text="链3"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        style="@style/TextStyle.Explain"
+        android:layout_height="40dp"
+        android:text="chainStyle：spread [默认]"
+        android:textColor="@color/black" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_1"
+            android:gravity="center"
+            android:text="链1"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_2"
+            android:gravity="center"
+            android:text="链2"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text6"
+            app:layout_constraintStart_toEndOf="@id/text4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_3"
+            android:gravity="center"
+            android:text="链3"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        style="@style/TextStyle.Explain"
+        android:layout_height="40dp"
+        android:text="chainStyle：spread_inside"
+        android:textColor="@color/black" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_1"
+            android:gravity="center"
+            android:text="链1"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text8"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_2"
+            android:gravity="center"
+            android:text="链2"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text9"
+            app:layout_constraintStart_toEndOf="@id/text7"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_3"
+            android:gravity="center"
+            android:text="链3"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text8"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        style="@style/TextStyle.Explain"
+        android:layout_height="40dp"
+        android:text="weight：packed"
+        android:textColor="@color/black" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_1"
+            android:gravity="center"
+            android:text="链1"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text11"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_2"
+            android:gravity="center"
+            android:text="链2"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text12"
+            app:layout_constraintStart_toEndOf="@id/text10"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_3"
+            android:gravity="center"
+            android:text="链3"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text11"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        style="@style/TextStyle.Explain"
+        android:layout_height="40dp"
+        android:text="weight：权重链"
+        android:textColor="@color/black" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_1"
+            android:gravity="center"
+            android:text="weight = 1"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text14"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_2"
+            android:gravity="center"
+            android:text="weight = 2"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/text15"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toEndOf="@id/text13"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text15"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/app_color_theme_3"
+            android:gravity="center"
+            android:text="weight = 3"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintStart_toEndOf="@id/text14"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

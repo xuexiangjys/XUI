@@ -5,11 +5,15 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ButtonStyleFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ButtonViewFragment;
+import com.xuexiang.xuidemo.fragment.components.button.GoodViewFragment;
 import com.xuexiang.xuidemo.fragment.components.button.RippleViewFragment;
 import com.xuexiang.xuidemo.fragment.components.button.RoundButtonFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ShadowButtonFragment;
 import com.xuexiang.xuidemo.fragment.components.button.ShadowViewFragment;
+import com.xuexiang.xuidemo.fragment.components.button.ShineButtonFragment;
+import com.xuexiang.xuidemo.fragment.components.button.SmoothCheckBoxFragment;
 import com.xuexiang.xuidemo.fragment.components.button.SwitchButtonFragment;
+import com.xuexiang.xuidemo.fragment.components.button.SwitchIconViewFragment;
 
 /**
  * 按钮
@@ -34,7 +38,11 @@ public class ButtonFragment extends ComponentContainerFragment {
                 RoundButtonFragment.class,
                 ButtonViewFragment.class,
                 SwitchButtonFragment.class,
-                RippleViewFragment.class
+                RippleViewFragment.class,
+                SwitchIconViewFragment.class,
+                SmoothCheckBoxFragment.class,
+                GoodViewFragment.class,
+                ShineButtonFragment.class
         };
     }
 }

@@ -421,7 +421,7 @@
 
         <item name="android:background">@drawable/xui_config_bg_edittext</item>
         <item name="vet_autoValidate">true</item>
-        <item name="vet_show_errorIcon">true</item>
+        <item name="vet_showErrorIcon">true</item>
         <item name="vet_errorIcon">@drawable/xui_ic_default_tip_btn</item>
         <item name="vet_errorIconSize">21dp</item>
         <item name="vet_tipPosition">top</item>

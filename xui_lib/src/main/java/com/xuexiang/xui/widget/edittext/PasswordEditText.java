@@ -18,6 +18,7 @@ import android.view.View;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 
 /**
@@ -27,31 +28,22 @@ import com.xuexiang.xui.utils.ResUtils;
  * @since 2019/1/14 下午10:08
  */
 public class PasswordEditText extends AppCompatEditText {
+    /**
+     * 增大点击区域
+     */
+    private int mExtraClickArea;
 
     private final static int ALPHA_ICON_ENABLED = (int) (255 * 0.54f);
-
     private final static int ALPHA_ICON_DISABLED = (int) (255 * 0.38f);
 
-    private Drawable showPwDrawable;
-
-    private Drawable hidePwDrawable;
-
-    private boolean passwordVisible;
-
-    private boolean isRTL;
-
-    private boolean showingIcon;
-
-    private boolean setErrorCalled;
-
-    private boolean hoverShowsPw;
-
-    private boolean useNonMonospaceFont;
-
-    private boolean enableIconAlpha;
-
-    private boolean handlingHoverEvent;
-
+    private Drawable mShowPwDrawable;
+    private Drawable mHidePwDrawable;
+    private boolean mPasswordVisible;
+    private boolean mIsRTL;
+    private boolean mShowingIcon;
+    private boolean mSetErrorCalled;
+    private boolean mHoverShowsPw;
+    private boolean mHandlingHoverEvent;
     private PasswordTransformationMethod mTransformationMethod;
 
     public PasswordEditText(Context context) {
@@ -64,21 +56,24 @@ public class PasswordEditText extends AppCompatEditText {
 
     public PasswordEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttrs(attrs, defStyleAttr);
+        initAttrs(context, attrs, defStyleAttr);
     }
 
-    public void initAttrs(AttributeSet attrs, int defStyleAttr) {
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.PasswordEditText, defStyleAttr, 0);
+    public void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        mExtraClickArea = DensityUtils.dp2px(20);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.PasswordEditText, defStyleAttr, 0);
+        boolean useNonMonospaceFont;
+        boolean enableIconAlpha;
         try {
-            showPwDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.PasswordEditText_pet_iconShow);
-            if (showPwDrawable == null) {
-                showPwDrawable = ResUtils.getVectorDrawable(getContext(), R.drawable.pet_icon_visibility_24dp);
+            mShowPwDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.PasswordEditText_pet_iconShow);
+            if (mShowPwDrawable == null) {
+                mShowPwDrawable = ResUtils.getVectorDrawable(getContext(), R.drawable.pet_icon_visibility_24dp);
             }
-            hidePwDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.PasswordEditText_pet_iconHide);
-            if (hidePwDrawable == null) {
-                hidePwDrawable = ResUtils.getVectorDrawable(getContext(), R.drawable.pet_icon_visibility_off_24dp);
+            mHidePwDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.PasswordEditText_pet_iconHide);
+            if (mHidePwDrawable == null) {
+                mHidePwDrawable = ResUtils.getVectorDrawable(getContext(), R.drawable.pet_icon_visibility_off_24dp);
             }
-            hoverShowsPw = typedArray.getBoolean(R.styleable.PasswordEditText_pet_hoverShowsPw, false);
+            mHoverShowsPw = typedArray.getBoolean(R.styleable.PasswordEditText_pet_hoverShowsPw, false);
             useNonMonospaceFont = typedArray.getBoolean(R.styleable.PasswordEditText_pet_nonMonospaceFont, false);
             enableIconAlpha = typedArray.getBoolean(R.styleable.PasswordEditText_pet_enableIconAlpha, true);
             boolean isAsteriskStyle = typedArray.getBoolean(R.styleable.PasswordEditText_pet_isAsteriskStyle, false);
@@ -92,43 +87,41 @@ public class PasswordEditText extends AppCompatEditText {
         }
 
         if (enableIconAlpha) {
-            hidePwDrawable.setAlpha(ALPHA_ICON_ENABLED);
-            showPwDrawable.setAlpha(ALPHA_ICON_DISABLED);
+            mHidePwDrawable.setAlpha(ALPHA_ICON_ENABLED);
+            mShowPwDrawable.setAlpha(ALPHA_ICON_DISABLED);
         }
 
         if (useNonMonospaceFont) {
             setTypeface(Typeface.DEFAULT);
         }
 
-        isRTL = isRTLLanguage();
+        mIsRTL = isRTLLanguage();
 
         addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //NOOP
             }
 
             @Override
             public void onTextChanged(CharSequence seq, int start, int before, int count) {
-                //NOOP
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.length() > 0) {
-                    if (setErrorCalled) {
+                    if (mSetErrorCalled) {
                         // resets drawables after setError was called as this leads to icons
                         // not changing anymore afterwards
                         setCompoundDrawables(null, null, null, null);
-                        setErrorCalled = false;
+                        mSetErrorCalled = false;
                         showPasswordVisibilityIndicator(true);
                     }
-                    if (!showingIcon) {
+                    if (!mShowingIcon) {
                         showPasswordVisibilityIndicator(true);
                     }
                 } else {
                     // hides the indicator if no text inside text field
-                    passwordVisible = false;
+                    mPasswordVisible = false;
                     handlePasswordInputVisibility();
                     showPasswordVisibilityIndicator(false);
                 }
@@ -137,6 +130,11 @@ public class PasswordEditText extends AppCompatEditText {
         });
 
         handlePasswordInputVisibility();
+    }
+
+    public PasswordEditText setExtraClickAreaSize(int extraClickArea) {
+        mExtraClickArea = extraClickArea;
+        return this;
     }
 
     /**
@@ -176,77 +174,84 @@ public class PasswordEditText extends AppCompatEditText {
     @Override
     public Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
-        return new SavedState(superState, showingIcon, passwordVisible);
+        return new SavedState(superState, mShowingIcon, mPasswordVisible);
     }
 
     @Override
     public void onRestoreInstanceState(Parcelable state) {
         SavedState savedState = (SavedState) state;
         super.onRestoreInstanceState(savedState.getSuperState());
-        showingIcon = savedState.isShowingIcon();
-        passwordVisible = savedState.isPasswordVisible();
+        mShowingIcon = savedState.isShowingIcon();
+        mPasswordVisible = savedState.isPasswordVisible();
         handlePasswordInputVisibility();
-        showPasswordVisibilityIndicator(showingIcon);
+        showPasswordVisibilityIndicator(mShowingIcon);
     }
 
     @Override
     public void setError(CharSequence error) {
         super.setError(error);
-        setErrorCalled = true;
+        mSetErrorCalled = true;
 
     }
 
     @Override
     public void setError(CharSequence error, Drawable icon) {
         super.setError(error, icon);
-        setErrorCalled = true;
+        mSetErrorCalled = true;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!showingIcon) {
+        if (!mShowingIcon) {
             return super.onTouchEvent(event);
         } else {
-            boolean touchable;
-            if (isRTL) {
-                touchable = event.getX() > getPaddingLeft() && event.getX() < (getPaddingLeft() + showPwDrawable.getIntrinsicWidth());
-            } else {
-                touchable = event.getX() > (getWidth() - getPaddingRight() - showPwDrawable.getIntrinsicWidth()) && event.getX() < ((getWidth() - getPaddingRight()));
-            }
+            boolean touchable = isTouchable(event);
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    if (hoverShowsPw) {
+                    if (mHoverShowsPw) {
                         if (touchable) {
                             togglePasswordIconVisibility();
                             // prevent keyboard from coming up
                             event.setAction(MotionEvent.ACTION_CANCEL);
-                            handlingHoverEvent = true;
+                            mHandlingHoverEvent = true;
                         }
                     }
                     break;
                 case MotionEvent.ACTION_UP:
-                    if (handlingHoverEvent || touchable) {
+                    if (mHandlingHoverEvent || touchable) {
                         togglePasswordIconVisibility();
                         // prevent keyboard from coming up
                         event.setAction(MotionEvent.ACTION_CANCEL);
-                        handlingHoverEvent = false;
+                        mHandlingHoverEvent = false;
                     }
+                    break;
+                default:
                     break;
             }
             return super.onTouchEvent(event);
         }
     }
 
+    private boolean isTouchable(MotionEvent event) {
+        boolean touchable;
+        if (mIsRTL) {
+            touchable = event.getX() > getPaddingLeft() - mExtraClickArea && event.getX() < getPaddingLeft() + mShowPwDrawable.getIntrinsicWidth() + mExtraClickArea;
+        } else {
+            touchable = event.getX() > getWidth() - getPaddingRight() - mShowPwDrawable.getIntrinsicWidth() - mExtraClickArea && event.getX() < getWidth() - getPaddingRight() + mExtraClickArea;
+        }
+        return touchable;
+    }
+
 
     private void showPasswordVisibilityIndicator(boolean shouldShowIcon) {
         if (shouldShowIcon) {
-            Drawable drawable = passwordVisible ? showPwDrawable : hidePwDrawable;
-            showingIcon = true;
-            setCompoundDrawablesWithIntrinsicBounds(isRTL ? drawable : null, null, isRTL ? null : drawable, null);
+            Drawable drawable = mPasswordVisible ? mShowPwDrawable : mHidePwDrawable;
+            mShowingIcon = true;
+            setCompoundDrawablesWithIntrinsicBounds(mIsRTL ? drawable : null, null, mIsRTL ? null : drawable, null);
         } else {
             // reset drawable
             setCompoundDrawables(null, null, null, null);
-            showingIcon = false;
+            mShowingIcon = false;
         }
     }
 
@@ -257,7 +262,7 @@ public class PasswordEditText extends AppCompatEditText {
      * This method may only be called if there is an icon visible
      */
     private void togglePasswordIconVisibility() {
-        passwordVisible = !passwordVisible;
+        mPasswordVisible = !mPasswordVisible;
         handlePasswordInputVisibility();
         showPasswordVisibilityIndicator(true);
     }
@@ -268,7 +273,7 @@ public class PasswordEditText extends AppCompatEditText {
     private void handlePasswordInputVisibility() {
         int selectionStart = getSelectionStart();
         int selectionEnd = getSelectionEnd();
-        if (passwordVisible) {
+        if (mPasswordVisible) {
             setTransformationMethod(null);
         } else {
             setTransformationMethod(mTransformationMethod);

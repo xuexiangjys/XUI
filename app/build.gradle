@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 12
-        versionName "1.1.1"
+        versionCode 13
+        versionName "1.1.2"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -102,8 +102,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.1.1'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.1'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
@@ -115,7 +115,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.8'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.9'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime
@@ -158,6 +158,10 @@ dependencies {
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-core:1.0.0'
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-download:1.0.0'//选填
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-filechooser:1.0.0'//选填
+
+    //数据库
+    implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
+    annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
 
     //侧边栏菜单
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'

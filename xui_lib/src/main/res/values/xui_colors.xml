@@ -85,6 +85,10 @@
     <!--DropDownMenu-->
     <color name="default_ddm_mask_color">#88888888</color>
 
+    <color name="default_xrs_outside_line_color">#F0F0F0</color>
+    <color name="default_sb_normal_color">#AAAAAA</color>
+
+
     <!--*********************************************
     *              Config Color                     *
     **********************************************-->

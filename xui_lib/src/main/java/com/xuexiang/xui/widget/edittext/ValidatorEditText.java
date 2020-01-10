@@ -90,7 +90,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
                     }
                 }
                 mIsAutoValidate = typedArray.getBoolean(R.styleable.ValidatorEditText_vet_autoValidate, true);
-                mIsShowErrorIcon = typedArray.getBoolean(R.styleable.ValidatorEditText_vet_show_errorIcon, true);
+                mIsShowErrorIcon = typedArray.getBoolean(R.styleable.ValidatorEditText_vet_showErrorIcon, true);
                 mErrorDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ValidatorEditText_vet_errorIcon);
                 if (mErrorDrawable == null) {
                     //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片

@@ -22,8 +22,9 @@ class Calculator {
     public void setCircleRadius(int mCircleRadius) {
         this.mCircleRadius = mCircleRadius;
     }
+
     Calculator(Activity activity, FocusShape focusShape, View view, double radiusFactor,
-               boolean fitSystemWindows, int adjustHeight) {
+               boolean fitSystemWindows, int adjustHeight, int offsetX) {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -41,7 +42,7 @@ class Calculator {
             mFocusWidth = view.getWidth();
             mFocusHeight = view.getHeight();
             mFocusShape = focusShape;
-            mCircleCenterX = viewPoint[0] + mFocusWidth / 2;
+            mCircleCenterX = viewPoint[0] + mFocusWidth / 2 + offsetX;
             mCircleCenterY = viewPoint[1] + mFocusHeight / 2 - adjustHeight;
             mCircleRadius = (int) ((int) (Math.hypot(view.getWidth(), view.getHeight()) / 2) * radiusFactor);
             mHasFocus = true;

@@ -6,16 +6,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsListAdapter;
+import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
@@ -80,12 +81,13 @@ public class AnimationPlaceholderFragment extends BaseFragment {
             }
         });
 
-        mNewsListAdapter.setOnItemClickListener(new SmartViewHolder.OnItemClickListener() {
+        mNewsListAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
             @Override
-            public void onItemClick(View itemView, int position) {
-                Utils.goWeb(getContext(), mNewsListAdapter.getItem(position).getDetailUrl());
+            public void onItemClick(View itemView, NewInfo item, int position) {
+                Utils.goWeb(getContext(), item.getDetailUrl());
             }
         });
+
         //设置刷新加载时禁止所有列表操作
         refreshLayout.setDisableContentWhenRefresh(true);
         refreshLayout.setDisableContentWhenLoading(true);

@@ -22,6 +22,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.pickerview.AddressPickerFragment;
 import com.xuexiang.xuidemo.fragment.components.pickerview.OptionsPickerViewFragment;
 import com.xuexiang.xuidemo.fragment.components.pickerview.RulerViewFragment;
+import com.xuexiang.xuidemo.fragment.components.pickerview.SeekBarFragment;
 import com.xuexiang.xuidemo.fragment.components.pickerview.TimePickerFragment;
 
 /**
@@ -36,7 +37,8 @@ public class PickerViewFragment extends ComponentContainerFragment {
                 TimePickerFragment.class,
                 AddressPickerFragment.class,
                 OptionsPickerViewFragment.class,
-                RulerViewFragment.class
+                RulerViewFragment.class,
+                SeekBarFragment.class
         };
     }
 }

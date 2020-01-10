@@ -117,6 +117,7 @@ public class LoginFragment extends BaseFragment {
      */
     private void getVerifyCode(String phoneNumber) {
         // TODO: 2019-11-18 这里只是界面演示而已
+        XToastUtils.warning("只是演示，验证码请随便输");
         mCountDownHelper.start();
     }
 

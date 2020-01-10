@@ -104,7 +104,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                 break;
             case 6:
                 //带水平Loading进度条的Dialog
-                showHorizonalLoadingProgressDialog();
+                showHorizontalLoadingProgressDialog();
                 break;
             case 7:
                 //带圆形Loading的Dialog
@@ -249,7 +249,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
     /**
      * 带水平Loading进度条的Dialog
      */
-    private void showHorizonalLoadingProgressDialog() {
+    private void showHorizontalLoadingProgressDialog() {
         new MaterialDialog.Builder(getContext())
                 .title(R.string.tip_update)
                 .content(R.string.content_downloading)

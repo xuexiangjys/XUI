@@ -6,6 +6,7 @@ import com.xuexiang.xuidemo.activity.SettingsActivity;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BottomSheetDialogFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.ConstraintLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.DrawerLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ToolBarFragment;
 import com.xuexiang.xutil.app.ActivityUtils;
@@ -32,6 +33,7 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
         lists.add("Behavior\n手势行为");
         lists.add("DrawerLayout + NavigationView\n常见主页布局");
         lists.add("BottomSheetDialog");
+        lists.add("ConstraintLayout\n约束布局");
         lists.add("设置页面");
         return lists;
     }
@@ -57,6 +59,9 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
                 openPage(BottomSheetDialogFragment.class);
                 break;
             case 4:
+                openPage(ConstraintLayoutFragment.class);
+                break;
+            case 5:
                 ActivityUtils.startActivity(SettingsActivity.class);
                 break;
             default:

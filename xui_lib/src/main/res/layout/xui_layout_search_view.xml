@@ -15,6 +15,7 @@
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/search_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -43,7 +44,7 @@
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/action_up_btn"
                 style="@style/MSV_ImageButton"
-                android:src="?attr/search_view_ic_back" />
+                app:srcCompat="?attr/search_view_ic_back" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/searchTextView"
@@ -64,20 +65,20 @@
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/action_voice_btn"
                 style="@style/MSV_ImageButton"
-                android:src="?attr/search_view_ic_video" />
+                app:srcCompat="?attr/search_view_ic_video" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/action_clear_btn"
                 style="@style/MSV_ImageButton"
-                android:src="?attr/search_view_ic_clear"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:srcCompat="?attr/search_view_ic_clear" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#10000000"/>
+            android:background="#10000000" />
 
         <ListView
             android:id="@+id/suggestion_list"

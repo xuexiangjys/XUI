@@ -283,6 +283,32 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     /**
+     * 设置左侧文字是否加粗
+     *
+     * @param isBold
+     * @return
+     */
+    public TitleBar setLeftTextBold(boolean isBold) {
+        if (mLeftText != null) {
+            mLeftText.getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置中间文字是否加粗
+     *
+     * @param isBold
+     * @return
+     */
+    public TitleBar setCenterTextBold(boolean isBold) {
+        if (mCenterText != null) {
+            mCenterText.getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
      * 设置左侧图标
      *
      * @param resId

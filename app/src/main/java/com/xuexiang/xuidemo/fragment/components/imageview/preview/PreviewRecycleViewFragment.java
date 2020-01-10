@@ -25,12 +25,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.GridDividerItemDecoration;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
@@ -140,12 +140,12 @@ public class PreviewRecycleViewFragment extends BaseFragment {
             }
         });
 
-        mAdapter.setOnItemClickListener(new SmartViewHolder.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<ImageViewInfo>() {
             @Override
-            public void onItemClick(View itemView, int position) {
+            public void onItemClick(View itemView, ImageViewInfo item, int position) {
                 computeBoundsBackward(mGridLayoutManager.findFirstVisibleItemPosition());
                 PreviewBuilder.from(getActivity())
-                        .setImgs(mAdapter.getListData())
+                        .setImgs(mAdapter.getData())
                         .setCurrentIndex(position)
                         .setSingleFling(true)
                         .setProgressColor(SettingSPUtils.getInstance().isUseCustomTheme() ? R.color.custom_color_main_theme : R.color.xui_config_color_main_theme)
@@ -160,7 +160,7 @@ public class PreviewRecycleViewFragment extends BaseFragment {
      * 从第一个完整可见item逆序遍历，如果初始位置为0，则不执行方法内循环
      */
     private void computeBoundsBackward(int firstCompletelyVisiblePos) {
-        for (int i = firstCompletelyVisiblePos; i < mAdapter.getCount(); i++) {
+        for (int i = firstCompletelyVisiblePos; i < mAdapter.getItemCount(); i++) {
             View itemView = mGridLayoutManager.findViewByPosition(i);
             Rect bounds = new Rect();
             if (itemView != null) {

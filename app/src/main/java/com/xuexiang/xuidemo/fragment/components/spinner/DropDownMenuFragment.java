@@ -119,7 +119,7 @@ public class DropDownMenuFragment extends BaseFragment {
         constellationView.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDropDownMenu.setTabMenuText(mConstellationAdapter.getSelectPosition() == 0 ? mHeaders[3] : mConstellationAdapter.getSelectItem());
+                mDropDownMenu.setTabMenuText(mConstellationAdapter.getSelectPosition() <= 0 ? mHeaders[3] : mConstellationAdapter.getSelectItem());
                 mDropDownMenu.closeMenu();
             }
         });

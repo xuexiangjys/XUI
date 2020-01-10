@@ -8,6 +8,8 @@ import androidx.multidex.MultiDex;
 import com.google.android.cameraview.CameraView;
 import com.luck.picture.lib.tools.PictureFileUtils;
 import com.mikepenz.iconics.Iconics;
+import com.xuexiang.xormlite.annotation.DataBase;
+import com.xuexiang.xormlite.enums.DataBaseType;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.utils.sdkinit.AutoCameraStrategy;
 import com.xuexiang.xuidemo.utils.sdkinit.BuglyInit;
@@ -24,6 +26,7 @@ import com.xuexiang.xuidemo.widget.iconfont.XUIIconFont;
  * @author xuexiang
  * @since 2018/11/7 下午1:12
  */
+@DataBase(name = "XUI", type = DataBaseType.INTERNAL)
 public class MyApp extends Application {
 
     @Override

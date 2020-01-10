@@ -1,10 +1,12 @@
 package com.xuexiang.xuidemo.adapter.base;
 
-import androidx.annotation.LayoutRes;
 import android.view.View;
 
-import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
+import androidx.annotation.NonNull;
+
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
+import com.xuexiang.xui.adapter.recyclerview.XRecyclerAdapter;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -18,26 +20,21 @@ import me.samlss.broccoli.Broccoli;
  * @author XUE
  * @since 2019/4/8 16:33
  */
-public abstract class BroccoliRecyclerAdapter<T> extends SmartRecyclerAdapter<T> {
+public abstract class BroccoliRecyclerAdapter<T> extends BaseRecyclerAdapter<T> {
     /**
      * 是否已经加载成功
      */
     private boolean mHasLoad = false;
     private Map<View, Broccoli> mBroccoliMap = new HashMap<>();
 
-    public BroccoliRecyclerAdapter(Collection<T> collection, @LayoutRes int layoutId) {
-        super(collection, layoutId);
+    public BroccoliRecyclerAdapter(Collection<T> collection) {
+        super(collection);
     }
 
-    /**
-     * 绑定布局控件
-     *
-     * @param holder
-     * @param model
-     * @param position
-     */
+
+
     @Override
-    protected void onBindViewHolder(SmartViewHolder holder, T model, int position) {
+    protected void bindData(@NonNull RecyclerViewHolder holder, int position, T item) {
         Broccoli broccoli = mBroccoliMap.get(holder.itemView);
         if (broccoli == null) {
             broccoli = new Broccoli();
@@ -46,7 +43,7 @@ public abstract class BroccoliRecyclerAdapter<T> extends SmartRecyclerAdapter<T>
         if (mHasLoad) {
             broccoli.removeAllPlaceholders();
 
-            onBindData(holder, model, position);
+            onBindData(holder, item, position);
         } else {
             onBindBroccoli(holder, broccoli);
             broccoli.show();
@@ -60,17 +57,17 @@ public abstract class BroccoliRecyclerAdapter<T> extends SmartRecyclerAdapter<T>
      * @param model
      * @param position
      */
-    protected abstract void onBindData(SmartViewHolder holder, T model, int position);
+    protected abstract void onBindData(RecyclerViewHolder holder, T model, int position);
 
     /**
      * 绑定占位控件
      *
      * @param broccoli
      */
-    protected abstract void onBindBroccoli(SmartViewHolder holder, Broccoli broccoli);
+    protected abstract void onBindBroccoli(RecyclerViewHolder holder, Broccoli broccoli);
 
     @Override
-    public SmartRecyclerAdapter<T> refresh(Collection<T> collection) {
+    public XRecyclerAdapter refresh(Collection<T> collection) {
         mHasLoad = true;
         return super.refresh(collection);
     }

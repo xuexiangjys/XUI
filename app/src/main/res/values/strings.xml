@@ -241,6 +241,8 @@
     <string name="add_rating_title">增加星级</string>
     <string name="title_grade_class_select">班级选择</string>
     <string name="title_sex_select">性别选择</string>
+    <string name="title_constellation_select">星座选择</string>
+    <string name="title_nation_select">民族选择</string>
 
     <string name="title_toolbar">主标题</string>
     <string name="title_toolbar_sub">副标题</string>
@@ -414,5 +416,27 @@
     <string name="lab_register_account">点击注册即表示同意</string>
     <string name="lab_service_protocol"><![CDATA[<用户协议>]]></string>
     <string name="url_add_qq_group"><![CDATA[https://qm.qq.com/cgi-bin/qm/qr?k=0lUqsbfHTNDbS2KK4nTPwPq07tOqAk6J&authKey=4PzQ2cQYIr28Qyg%2FkTk%2BmI7xlcq8B0IZKZGc1H3XloRrCDBO8az97DIsBHnQW0Ya]]></string>
+
+    <string name="sync">Sync</string>
+    <string name="alarm">Alarm</string>
+    <string name="camera">Camera</string>
+
+    <string name="lake_description">
+        Lake Tahoe is a large freshwater lake in the Sierra Nevada of the United States. At a surface
+        elevation of 6,225 ft (1,897 m), it straddles the border between California and Nevada, west
+        of Carson City. Lake Tahoe is the largest alpine lake in North America. Its depth is
+        1,645 ft (501 m), making it the second deepest in the United States after Crater Lake
+        (1,945 ft (593 m)). Additionally, Lake Tahoe is the sixth largest lake by volume in the
+        United States at 122,160,280 acre·ft (150,682,490 dam3), behind the five Great Lakes.
+
+The lake was formed about 2 million years ago and is a part of the Lake Tahoe Basin with the modern
+        lake being shaped during the ice ages. It is known for the clarity of its water and the
+        panorama of surrounding mountains on all sides. The area surrounding the lake is also
+        referred to as Lake Tahoe, or simply Tahoe. More than 75 percent of the lakes watershed is
+        national forest land, comprising the Lake Tahoe Basin Management Unit of the United States
+        Forest Service.
+    </string>
+    <string name="lake_tahoe_image">Image of Lake Tahoe</string>
+    <string name="lake_tahoe_title">Lake Tahoe</string>
 
 </resources>

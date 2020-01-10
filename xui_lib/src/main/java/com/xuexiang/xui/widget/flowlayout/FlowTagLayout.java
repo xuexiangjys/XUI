@@ -476,10 +476,11 @@ public class FlowTagLayout extends ViewGroup {
      *
      * @return
      */
+    @Deprecated
     @Nullable
     public List<Integer> getSelectedIndexs() {
         if (mAdapter != null) {
-            mAdapter.getSelectedIndexs();
+            return mAdapter.getSelectedIndexs();
         }
         return null;
     }
@@ -489,6 +490,7 @@ public class FlowTagLayout extends ViewGroup {
      *
      * @return
      */
+    @Deprecated
     public int getSelectedIndex() {
         if (mAdapter != null) {
             return mAdapter.getSelectedIndex();
@@ -502,6 +504,7 @@ public class FlowTagLayout extends ViewGroup {
      * @return
      */
     @Nullable
+    @Deprecated
     public <T> T getSelectedItem() {
         if (mAdapter != null) {
             return (T) mAdapter.getSelectedItem();

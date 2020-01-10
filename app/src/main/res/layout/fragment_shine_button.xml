@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_16"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <com.xuexiang.xui.widget.button.shinebutton.ShineButton
+                android:id="@+id/shine_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                app:sb_checked_color="#f26d7d"
+                app:sb_icon_image="@drawable/ic_heart"
+                app:sb_normal_color="@android:color/darker_gray" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <com.xuexiang.xui.widget.button.shinebutton.ShineButton
+                android:id="@+id/shine_button_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@android:color/darker_gray"
+                app:sb_allow_random_color="false"
+                app:sb_big_shine_color="#FF6666"
+                app:sb_checked_color="#FF6666"
+                app:sb_click_animation_duration="200"
+                app:sb_enable_flashing="false"
+                app:sb_icon_image="@drawable/ic_like"
+                app:sb_normal_color="@android:color/darker_gray"
+                app:sb_shine_animation_duration="1500"
+                app:sb_shine_count="15"
+                app:sb_shine_distance_multiple="1.5"
+                app:sb_shine_turn_angle="10"
+                app:sb_small_shine_color="#CC9999"
+                app:sb_small_shine_offset_angle="20" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <com.xuexiang.xui.widget.button.shinebutton.ShineButton
+                android:id="@+id/shine_button_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@android:color/darker_gray"
+                app:sb_allow_random_color="true"
+                app:sb_checked_color="#F44336"
+                app:sb_icon_image="@drawable/ic_smile"
+                app:sb_normal_color="@android:color/darker_gray" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <com.xuexiang.xui.widget.button.shinebutton.ShineButton
+                android:id="@+id/shine_button_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                app:sb_enable_flashing="true"
+                app:sb_icon_image="@drawable/ic_star"
+                app:sb_shine_size="20dp" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_dialog"
+        style="@style/Button.Blue"
+        android:layout_margin="@dimen/spacing_16"
+        android:text="对话框" />
+
+</LinearLayout>

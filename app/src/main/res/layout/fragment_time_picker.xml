@@ -19,45 +19,82 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
-            android:id="@+id/btn_date_bottom"
-            style="@style/Button.Primary.wrap"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="日期选择器（底部）"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
-            android:id="@+id/btn_time_dialog"
-            style="@style/Button.Primary.wrap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="时间选择器（弹窗）"/>
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_date_bottom"
+                style="@style/Button.Primary.wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="日期选择器（底部）" />
 
-        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
-            android:id="@+id/btn_date_system"
-            style="@style/Button.Primary.wrap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="日期选择器（系统）"/>
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_time_picker"
+                style="@style/Button.Primary.wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="时间选择器（底部）" />
 
-        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
-            android:id="@+id/btn_time_system"
-            style="@style/Button.Primary.wrap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="时间选择器（系统）"/>
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_time_picker_dialog"
+                style="@style/Button.Primary.wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="时间选择器（弹窗）" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_date_system"
+                style="@style/Button.Primary.wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="日期选择器（系统）" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_time_system"
+                style="@style/Button.Primary.wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="时间选择器（系统）" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_time_period"
+                style="@style/Button.Primary.wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="时间点选择（24小时）" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_time_period_1"
+                style="@style/Button.Primary.wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="时间点选择（中式）" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_time_period_2"
+                style="@style/Button.Primary.wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="时间段选择" />
 
 
+        </LinearLayout>
 
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
