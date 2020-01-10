@@ -15,6 +15,7 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
@@ -38,6 +39,6 @@
         android:focusable="false"
         android:paddingLeft="?attr/search_icon_padding"
         android:paddingRight="?attr/search_icon_padding"
-        android:src="?attr/search_view_ic_suggestion" />
+        app:srcCompat="?attr/search_view_ic_suggestion" />
 
 </RelativeLayout>

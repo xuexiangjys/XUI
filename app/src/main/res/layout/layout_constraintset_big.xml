@@ -40,9 +40,7 @@
             app:layout_constraintDimensionRatio="h,16:9"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -66,9 +64,7 @@
             app:layout_constraintLeft_toLeftOf="@id/tv_title"
             app:layout_constraintRight_toRightOf="@id/iv_content"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_constraintBottom_creator="1"
-            tools:layout_constraintTop_creator="1" />
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

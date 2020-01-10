@@ -1,0 +1,23 @@
+<!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<vector android:height="24dp" android:viewportHeight="1024"
+    android:viewportWidth="1024" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#727272" android:pathData="M924.78,337.61A449.35,449.35 0,1 0,960 512a446.29,446.29 0,0 0,-35.22 -174.39zM775,775a372,372 0,1 1,109 -263,369.53 369.53,0 0,1 -109,263z"/>
+    <path android:fillColor="#727272" android:pathData="M512,691m-48,0a48,48 0,1 0,96 0,48 48,0 1,0 -96,0Z"/>
+    <path android:fillColor="#727272" android:pathData="M480,283m8,0l48,0q8,0 8,8l0,280q0,8 -8,8l-48,0q-8,0 -8,-8l0,-280q0,-8 8,-8Z"/>
+</vector>

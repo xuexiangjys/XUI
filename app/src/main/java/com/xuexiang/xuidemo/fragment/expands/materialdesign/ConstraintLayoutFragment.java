@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 
+import android.os.Build;
+
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xuidemo.R;
@@ -25,6 +27,7 @@ import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.Con
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutGroupFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutPlaceholderFragment;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import java.util.List;
 
@@ -76,7 +79,11 @@ public class ConstraintLayoutFragment extends BaseSimpleListFragment {
                 openPage(ConstraintLayoutPlaceholderFragment.class);
                 break;
             case 7:
-                openPage(ConstraintLayoutConstraintSetFragment.class);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                    XToastUtils.warning("当前手机版本过低，暂不支持");
+                } else {
+                    openPage(ConstraintLayoutConstraintSetFragment.class);
+                }
                 break;
             default:
                 break;

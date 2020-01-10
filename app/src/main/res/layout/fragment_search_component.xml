@@ -62,7 +62,8 @@
     <com.xuexiang.xui.widget.searchview.MaterialSearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="请输入组件的名称"/>
 
 
 </FrameLayout>

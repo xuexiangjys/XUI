@@ -30,6 +30,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
+import com.xuexiang.xui.widget.guidview.GuideCaseView;
 import com.xuexiang.xui.widget.searchview.DefaultSearchFilter;
 import com.xuexiang.xui.widget.searchview.MaterialSearchView;
 import com.xuexiang.xuidemo.R;
@@ -61,10 +62,12 @@ public class SearchComponentFragment extends BaseFragment implements RecyclerVie
     private DBService<SearchRecord> mDBService;
     private SearchRecordTagAdapter mAdapter;
 
+    private View mAction;
+
     @Override
     protected TitleBar initTitle() {
         TitleBar titleBar = super.initTitle();
-        titleBar.addAction(new TitleBar.ImageAction(R.drawable.icon_action_query) {
+        mAction = titleBar.addAction(new TitleBar.ImageAction(R.drawable.icon_action_query) {
 
             @Override
             @SingleClick
@@ -87,6 +90,12 @@ public class SearchComponentFragment extends BaseFragment implements RecyclerVie
 
     @Override
     protected void initViews() {
+        new GuideCaseView.Builder(getActivity())
+                .title("点击按钮开始搜索")
+                .focusOn(mAction)
+                .showOnce("key_start_search")
+                .show();
+
         mSearchView.setVoiceSearch(false);
         mSearchView.setEllipsize(true);
         mSearchView.setSuggestions(getPageSuggestions());
@@ -114,6 +123,8 @@ public class SearchComponentFragment extends BaseFragment implements RecyclerVie
         recyclerView.setLayoutManager(Utils.getFlexboxLayoutManager(getContext()));
         recyclerView.setAdapter(mAdapter = new SearchRecordTagAdapter());
         refreshRecord();
+
+
     }
 
     @SingleClick
