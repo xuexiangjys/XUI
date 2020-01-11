@@ -19,7 +19,6 @@ package com.xuexiang.xuidemo.fragment.components.button;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.button.SmoothCheckBox;
-import com.xuexiang.xui.widget.toast.XToast;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.XToastUtils;

@@ -757,7 +757,7 @@
         <attr name="siv_animation_duration" format="integer" />
         <!--不可点击时的透明度，默认是0.5-->
         <attr name="siv_disabled_alpha" format="float" />
-        <!--不可点击时的填充颜色-->
+        <!--不可点击时的填充颜色,默认是siv_tint_color属性值-->
         <attr name="siv_disabled_color" format="color" />
         <!--是否可点击,默认true-->
         <attr name="siv_enabled" format="boolean" />
@@ -766,7 +766,7 @@
     </declare-styleable>
     <attr name="SwitchIconViewStyle" format="reference" />
 
-    <!--    -->
+    <!--  SmoothCheckBox  -->
     <declare-styleable name="SmoothCheckBox">
         <!-- 切换动画的持续时间，默认是300ms-->
         <attr name="scb_duration" format="integer" />
@@ -783,6 +783,7 @@
     </declare-styleable>
     <attr name="SmoothCheckBoxStyle" format="reference" />
 
+    <!--  ShineButton  -->
     <declare-styleable name="ShineButton">
         <!-- 未选中时的填充颜色，默认是#AAAAAA -->
         <attr name="sb_normal_color" format="color" />
@@ -1405,7 +1406,7 @@
     <declare-styleable name="RulerView">
         <!--尺子的高度, 默认50dp-->
         <attr name="rv_rulerHeight" format="dimension" />
-        <!--尺子距离结果的高度,默认12.5-->
+        <!--尺子距离结果的高度,默认12.5dp-->
         <attr name="rv_rulerToResultGap" format="dimension" />
         <!--刻度间距, 默认10dp-->
         <attr name="rv_scaleGap" format="dimension" />
@@ -1508,9 +1509,9 @@
         <attr name="xrs_min" format="integer" />
         <!--  滑块选择的最大值，默认为100  -->
         <attr name="xrs_max" format="integer" />
-        <!--  滑块的图标  -->
+        <!--  滑块的图标，默认是R.drawable.xui_ic_slider_icon -->
         <attr name="xrs_sliderIcon" format="reference" />
-        <!--  滑块触摸时的图标  -->
+        <!--  滑块触摸时的图标，默认是R.drawable.xui_ic_slider_icon  -->
         <attr name="xrs_sliderIconFocus" format="reference" />
         <!--  线条是否有圆角，默认是true -->
         <attr name="xrs_isLineRound" format="boolean" />
@@ -1519,7 +1520,7 @@
         <attr name="xrs_isShowBubble" format="boolean" />
         <!--  是否自适应气泡和数字文字的颜色，默认是true  -->
         <attr name="xrs_isFitColor" format="boolean" />
-        <!--  气泡的背景资源 -->
+        <!--  气泡的背景资源，默认是R.drawable.xui_bg_bubble_blue -->
         <attr name="xrs_bubbleResource" format="reference" />
         <!--  气泡数字的文字颜色，默认是R.attr.colorControlNormal -->
         <attr name="xrs_numberTextColor" format="color" />
@@ -1569,9 +1570,9 @@
         <attr name="xsb_min" format="integer" />
         <!--  滑块选择的最大值，默认为100  -->
         <attr name="xsb_max" format="integer" />
-        <!--  滑块的图标 -->
+        <!--  滑块的图标，默认是R.drawable.xui_ic_slider_icon -->
         <attr name="xsb_sliderIcon" format="reference" />
-        <!--  滑块触摸时的图标  -->
+        <!--  滑块触摸时的图标，默认是R.drawable.xui_ic_slider_icon  -->
         <attr name="xsb_sliderIconFocus" format="reference" />
         <!--  线条是否有圆角，默认是true -->
         <attr name="xsb_isLineRound" format="boolean" />
@@ -1582,7 +1583,7 @@
         <attr name="xsb_isShowNumber" format="boolean" />
         <!--  是否自适应气泡和数字文字的颜色，默认是true  -->
         <attr name="xsb_isFitColor" format="boolean" />
-        <!--  气泡的背景资源 -->
+        <!--  气泡的背景资源，默认是R.drawable.xui_bg_bubble_blue -->
         <attr name="xsb_bubbleResource" format="reference" />
         <!--  气泡数字的文字颜色，默认是R.attr.colorControlNormal -->
         <attr name="xsb_numberTextColor" format="color" />
