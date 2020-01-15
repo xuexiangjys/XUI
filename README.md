@@ -169,6 +169,8 @@ protected void attachBaseContext(Context newBase) {
 
 #### 蒲公英下载
 
+> 蒲公英下载的密码: xuexiangjys
+
 [![蒲公英](https://img.shields.io/badge/downloads-蒲公英-blue.svg)](https://www.pgyer.com/XUIDemo)
 
 ![](./art/download_pugongying.png)
