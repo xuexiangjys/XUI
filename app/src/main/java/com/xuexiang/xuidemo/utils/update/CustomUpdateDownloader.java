@@ -47,7 +47,7 @@ public class CustomUpdateDownloader extends DefaultUpdateDownloader {
         super.cancelDownload();
         if (mIsStartDownload) {
             mIsStartDownload = false;
-            ActivityUtils.startActivity(UpdateTipDialog.class);
+            UpdateTipDialog.show("");
         }
     }
 

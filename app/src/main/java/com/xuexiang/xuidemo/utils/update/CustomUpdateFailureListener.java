@@ -35,5 +35,8 @@ public class CustomUpdateFailureListener implements OnUpdateFailureListener {
         if (mNeedErrorTip) {
             XToastUtils.toast(error.toString());
         }
+        if (error.getCode() == UpdateError.ERROR.DOWNLOAD_FAILED) {
+            UpdateTipDialog.show("Github被墙无法下载，是否考虑切换蒲公英下载[密码:xuexiangjys]？");
+        }
     }
 }

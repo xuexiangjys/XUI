@@ -49,7 +49,7 @@ import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
  */
 public final class Utils {
 
-    public final static String mUpdateUrl = "https://raw.githubusercontent.com/xuexiangjys/XUI/master/jsonapi/update_api.json";
+    public final static String mUpdateUrl = "https://gitee.com/xuexiangjys/XUI/raw/master/jsonapi/update_api.json";
 
     private Utils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
