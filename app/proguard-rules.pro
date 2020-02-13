@@ -300,3 +300,9 @@
 
 # 数据库
 -keep class com.xuexiang.xuidemo.base.db.entity.** { *; }
+
+
+-dontwarn com.google.android.gms.**
+-keepclasseswithmembers class com.camerakit.preview.CameraSurfaceView {
+    native <methods>;
+}

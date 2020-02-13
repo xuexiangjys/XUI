@@ -29,9 +29,8 @@ import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.expands.camera.CameraActivity;
+import com.xuexiang.xuidemo.fragment.expands.camera.CameraKitFragment;
 import com.xuexiang.xuidemo.fragment.expands.camera.CameraViewActivity;
-import com.xuexiang.xutil.app.PathUtils;
-import com.xuexiang.xutil.file.FileUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -61,7 +60,7 @@ public class CameraFragment extends BaseFragment {
     }
 
     @SingleClick
-    @OnClick({R.id.btn_camera, R.id.btn_camera_complex})
+    @OnClick({R.id.btn_camera, R.id.btn_camera_complex, R.id.btn_camera_kit})
     public void onViewClicked(View view) {
         switch(view.getId()) {
             case R.id.btn_camera:
@@ -69,6 +68,9 @@ public class CameraFragment extends BaseFragment {
                 break;
             case R.id.btn_camera_complex:
                 CameraViewActivity.open(this);
+                break;
+            case R.id.btn_camera_kit:
+                openNewPage(CameraKitFragment.class);
                 break;
             default:
                 break;
