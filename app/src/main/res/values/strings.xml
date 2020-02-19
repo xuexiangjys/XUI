@@ -15,9 +15,11 @@
     <string name="about_item_homepage">访问官网</string>
     <string name="about_item_wiki">说明文档</string>
     <string name="about_item_update">版本更新</string>
+    <string name="about_item_sponsor">赞助项目</string>
     <string name="about_item_github">GitHub主页</string>
     <string name="about_copyright">© %1$s xuexiangjys All rights reserved.</string>
     <string name="about_item_add_qq_group">加入QQ官方交流群</string>
+    <string name="title_sponsor_explain">&#160;&#160;&#160;&#160;你的打赏是我维护的动力，我将会列出所有打赏人员的清单在Github上作为凭证，打赏前请留下打赏项目的备注！</string>
 
     <!--ExpandableTextView-->
     <string name="etv_content_demo1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</string>
