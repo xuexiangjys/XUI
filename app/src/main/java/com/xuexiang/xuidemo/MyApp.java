@@ -11,6 +11,7 @@ import com.mikepenz.iconics.Iconics;
 import com.xuexiang.xormlite.annotation.DataBase;
 import com.xuexiang.xormlite.enums.DataBaseType;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xuidemo.utils.sdkinit.ANRWatchDogInit;
 import com.xuexiang.xuidemo.utils.sdkinit.AutoCameraStrategy;
 import com.xuexiang.xuidemo.utils.sdkinit.BuglyInit;
 import com.xuexiang.xuidemo.utils.sdkinit.TbsInit;
@@ -50,6 +51,8 @@ public class MyApp extends Application {
             UMengInit.init(this);
             BuglyInit.init(this);
         }
+        //ANR监控
+        ANRWatchDogInit.init();
     }
 
     /**

@@ -301,7 +301,13 @@
 # 数据库
 -keep class com.xuexiang.xuidemo.base.db.entity.** { *; }
 
+# PictureSelector
+-keep class com.luck.picture.lib.** { *; }
+-dontwarn com.yalantis.ucrop**
+-keep class com.yalantis.ucrop** { *; }
+-keep interface com.yalantis.ucrop** { *; }
 
+# camerakit
 -dontwarn com.google.android.gms.**
 -keepclasseswithmembers class com.camerakit.preview.CameraSurfaceView {
     native <methods>;
