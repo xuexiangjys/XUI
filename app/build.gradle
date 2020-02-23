@@ -107,8 +107,8 @@ dependencies {
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
-    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.6'
-    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.6'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.7'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.7'
     //切片
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.5x'
     //页面路由
