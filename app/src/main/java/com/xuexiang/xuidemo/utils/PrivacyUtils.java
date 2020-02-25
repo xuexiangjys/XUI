@@ -76,6 +76,7 @@ public final class PrivacyUtils {
                         DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(R.string.title_reminder), String.format(ResUtils.getString(R.string.content_privacy_explain_again), ResUtils.getString(R.string.app_name)), ResUtils.getString(R.string.lab_look_again), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
                                 showPrivacyDialog(context, submitListener);
                             }
                         }, ResUtils.getString(R.string.lab_still_disagree), new DialogInterface.OnClickListener() {
@@ -85,11 +86,13 @@ public final class PrivacyUtils {
                                 DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(R.string.content_think_about_it_again), ResUtils.getString(R.string.lab_look_again), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
                                         showPrivacyDialog(context, submitListener);
                                     }
                                 }, ResUtils.getString(R.string.lab_exit_app), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
                                         XUtil.get().exitApp();
                                     }
                                 });
