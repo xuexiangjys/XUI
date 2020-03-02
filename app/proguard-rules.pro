@@ -187,8 +187,6 @@
   **[] $VALUES;
   public *;
 }
-# for DexGuard only
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 
 # Retrofit
 -dontwarn retrofit2.**
@@ -322,3 +320,6 @@
 -keepclasseswithmembers class com.camerakit.preview.CameraSurfaceView {
     native <methods>;
 }
+
+
+-keep class com.xuexiang.xui.widget.edittext.materialedittext.** { *; }

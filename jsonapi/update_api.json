@@ -2,11 +2,11 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 13,
-  "VersionName": "1.1.2",
-  "UploadTime": "2020-01-10 00:00:00",
-  "ModifyContent": "\r\n1、新增多个按钮特效组件。\n2、优化了部分组件功能。\n3、新增组件全局搜索功能。",
+  "VersionCode": 14,
+  "VersionName": "1.1.3",
+  "UploadTime": "2020-03-02 00:00:00",
+  "ModifyContent": "\r\n1、修复AS3.6编译问题。\n2、优化了部分组件功能。\n3、新增隐私弹窗演示。",
   "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo.apk",
-  "ApkSize": 11306,
-  "ApkMd5": "0CECC733A63F993547E6B0564DC86B66"
+  "ApkSize": 11952,
+  "ApkMd5": "03E8A14747591493122BDB457F37987F"
 }
