@@ -26,7 +26,9 @@
 
 ## X系列库快速集成
 
-为了方便大家快速集成X系列框架库，我提供了一个空壳模版供大家参考使用: https://github.com/xuexiangjys/TemplateAppProject
+为了方便大家快速集成X系列框架库，我提供了一个空壳模版供大家参考使用: [https://github.com/xuexiangjys/TemplateAppProject](https://github.com/xuexiangjys/TemplateAppProject)
+
+除此之外，我还特别制作了几期[视频教程](https://space.bilibili.com/483850585/channel/detail?cid=104998)供大家学习参考.
 
 ----
 
@@ -63,12 +65,12 @@ allprojects {
 dependencies {
   ...
   //androidx项目
-  implementation 'com.github.xuexiangjys:XUI:1.1.2'
+  implementation 'com.github.xuexiangjys:XUI:1.1.3'
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.1.0'
   implementation 'com.google.android.material:material:1.1.0-beta01'
-  implementation 'com.github.bumptech.glide:glide:4.8.0'
+  implementation 'com.github.bumptech.glide:glide:4.11.0'
 }
 ```
 
@@ -223,6 +225,10 @@ C*y | 1￥ | 微信
 *清红 | 1￥ | 支付宝
 *口 | 5￥ | 微信
 \* | 10.24￥ | 微信
+*俊耀 | 100￥ | 支付宝
+*俊杰 | 1￥ | 支付宝
+*鸥 | 10.24￥ | 微信
+*云 | 20.21￥ | 支付宝
 
 
 ## 联系方式

@@ -43,7 +43,8 @@ public class AboutFragment extends BaseFragment {
     TextView mVersionTextView;
     @BindView(R.id.about_list)
     XUIGroupListView mAboutGroupListView;
-    @BindView(R.id.copyright) TextView mCopyrightTextView;
+    @BindView(R.id.copyright)
+    TextView mCopyrightTextView;
 
     @Override
     protected int getLayoutId() {
@@ -77,6 +78,11 @@ public class AboutFragment extends BaseFragment {
                     @Override
                     public void onClick(View v) {
                         Utils.checkUpdate(getContext(), true);
+                    }
+                }).addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_sponsor)), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        openPage(SponsorFragment.class);
                     }
                 })
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_add_qq_group)), v -> Utils.goWeb(getContext(), getString(R.string.url_add_qq_group)))

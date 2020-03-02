@@ -31,6 +31,8 @@ import com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.utils.PrivacyUtils;
+import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.app.ActivityUtils;
@@ -77,6 +79,14 @@ public class LoginFragment extends BaseFragment {
     protected void initViews() {
         mCountDownHelper = new CountDownButtonHelper(btnGetVerifyCode, 60);
 
+        //隐私政策弹窗
+        SettingSPUtils spUtils = SettingSPUtils.getInstance();
+        if (!spUtils.isAgreePrivacy()) {
+            PrivacyUtils.showPrivacyDialog(getContext(), (dialog, which) -> {
+                dialog.dismiss();
+                spUtils.setIsAgreePrivacy(true);
+            });
+        }
     }
 
     @SingleClick

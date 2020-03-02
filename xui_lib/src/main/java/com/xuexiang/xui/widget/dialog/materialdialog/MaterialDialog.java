@@ -58,13 +58,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.annotation.UiThread;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.internal.MDButton;
 import com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout;
@@ -79,9 +79,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-
-import java.lang.String;
-import java.lang.CharSequence;
 
 
 /**
@@ -307,8 +304,7 @@ public class MaterialDialog extends DialogBase
 
     final Drawable getListSelector() {
         if (builder.listSelector != 0) {
-            return ResourcesCompat.getDrawable(
-                    builder.context.getResources(), builder.listSelector, null);
+            return ResUtils.getDrawable(builder.context, builder.listSelector);
         }
         final Drawable d = ThemeUtils.resolveDrawable(builder.context, R.attr.md_list_selector);
         if (d != null) {
@@ -335,8 +331,7 @@ public class MaterialDialog extends DialogBase
     /* package */ Drawable getButtonSelector(DialogAction which, boolean isStacked) {
         if (isStacked) {
             if (builder.btnSelectorStacked != 0) {
-                return ResourcesCompat.getDrawable(
-                        builder.context.getResources(), builder.btnSelectorStacked, null);
+                return ResUtils.getDrawable(builder.context, builder.btnSelectorStacked);
             }
             final Drawable d =
                     ThemeUtils.resolveDrawable(builder.context, R.attr.md_btn_stacked_selector);
@@ -349,8 +344,7 @@ public class MaterialDialog extends DialogBase
             switch (which) {
                 case NEUTRAL:
                     if (builder.btnSelectorNeutral != 0) {
-                        return ResourcesCompat.getDrawable(
-                                builder.context.getResources(), builder.btnSelectorNeutral, null);
+                        return ResUtils.getDrawable(builder.context, builder.btnSelectorNeutral);
                     }
                     d = ThemeUtils.resolveDrawable(builder.context, R.attr.md_btn_neutral_selector);
                     if (d != null) {
@@ -363,8 +357,7 @@ public class MaterialDialog extends DialogBase
                     break;
                 case NEGATIVE:
                     if (builder.btnSelectorNegative != 0) {
-                        return ResourcesCompat.getDrawable(
-                                builder.context.getResources(), builder.btnSelectorNegative, null);
+                        return ResUtils.getDrawable(builder.context, builder.btnSelectorNegative);
                     }
                     d = ThemeUtils.resolveDrawable(builder.context, R.attr.md_btn_negative_selector);
                     if (d != null) {
@@ -377,8 +370,7 @@ public class MaterialDialog extends DialogBase
                     break;
                 default:
                     if (builder.btnSelectorPositive != 0) {
-                        return ResourcesCompat.getDrawable(
-                                builder.context.getResources(), builder.btnSelectorPositive, null);
+                        return ResUtils.getDrawable(builder.context, builder.btnSelectorPositive);
                     }
                     d = ThemeUtils.resolveDrawable(builder.context, R.attr.md_btn_positive_selector);
                     if (d != null) {
@@ -1504,7 +1496,7 @@ public class MaterialDialog extends DialogBase
 
         public Builder iconRes(@DrawableRes int icon) {
             if (icon != -1) {
-                this.icon = ResourcesCompat.getDrawable(context.getResources(), icon, null);
+                this.icon = ResUtils.getDrawable(context, icon);
             }
             return this;
         }

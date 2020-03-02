@@ -19,7 +19,7 @@ public abstract class BaseSplashActivity extends AppCompatActivity {
     /**
      * 默认启动页过渡时间
      */
-    private static final int DEFAULT_SPLASH_DURATION_MILLIS = 2000;
+    private static final int DEFAULT_SPLASH_DURATION_MILLIS = 500;
 
     protected LinearLayout mWelcomeLayout;
 

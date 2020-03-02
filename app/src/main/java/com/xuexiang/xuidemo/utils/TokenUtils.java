@@ -59,6 +59,10 @@ public final class TokenUtils {
         MMKV.defaultMMKV().remove(KEY_TOKEN);
     }
 
+    public static String getToken() {
+        return sToken;
+    }
+
     public static boolean hasToken() {
         return MMKV.defaultMMKV().containsKey(KEY_TOKEN);
     }

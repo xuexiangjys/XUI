@@ -18,8 +18,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--*********************************************
-      *                  MaterialDialog               *
-      **********************************************-->
+    *                  MaterialDialog               *
+    **********************************************-->
     <style name="MD_ActionButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">?attr/md_button_height</item>

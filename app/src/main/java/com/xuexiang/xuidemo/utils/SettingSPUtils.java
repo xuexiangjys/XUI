@@ -21,6 +21,7 @@ public class SettingSPUtils extends BaseSPUtil {
 
     /**
      * 获取单例
+     *
      * @return
      */
     public static SettingSPUtils getInstance() {
@@ -37,6 +38,8 @@ public class SettingSPUtils extends BaseSPUtil {
 
     private final String IS_FIRST_OPEN_KEY = "is_first_open_key";
 
+    private final String IS_AGREE_PRIVACY_KEY = "is_agree_privacy_key";
+
     private final String IS_USE_CUSTOM_THEME_KEY = "is_use_custom_theme_key";
 
 
@@ -52,6 +55,17 @@ public class SettingSPUtils extends BaseSPUtil {
      */
     public void setIsFirstOpen(boolean isFirstOpen) {
         putBoolean(IS_FIRST_OPEN_KEY, isFirstOpen);
+    }
+
+    /**
+     * @return 是否同意隐私政策
+     */
+    public boolean isAgreePrivacy() {
+        return getBoolean(IS_AGREE_PRIVACY_KEY, false);
+    }
+
+    public void setIsAgreePrivacy(boolean isAgreePrivacy) {
+        putBoolean(IS_AGREE_PRIVACY_KEY, isAgreePrivacy);
     }
 
     public boolean isUseCustomTheme() {

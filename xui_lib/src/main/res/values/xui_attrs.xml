@@ -979,7 +979,7 @@
         <!-- 高亮样式的颜色 -->
         <attr name="met_primaryColor" format="color" />
         <!-- 悬浮提示文字的样式（默认是none）-->
-        <attr name="met_floatingLabel">
+        <attr name="met_floatingLabel" format="enum">
             <enum name="none" value="0" />
             <enum name="normal" value="1" />
             <enum name="highlight" value="2" />
@@ -1217,7 +1217,7 @@
     <!--CropImageView 图片裁剪工具-->
     <declare-styleable name="CropImageView">
         <!-- 网格线 -->
-        <attr name="civ_guidelines">
+        <attr name="civ_guidelines" format="enum">
             <enum name="on" value="2" />
             <enum name="onTouch" value="1" />
             <enum name="off" value="0" />
@@ -1389,7 +1389,7 @@
 
     <!--==============================Picker=======================================-->
     <declare-styleable name="WheelView">
-        <attr name="wv_gravity">
+        <attr name="wv_gravity" format="enum">
             <enum name="center" value="17" />
             <enum name="left" value="3" />
             <enum name="right" value="5" />
@@ -1544,7 +1544,7 @@
         <!--  刻度尺刻度文字距离上部的距离，默认是4dp -->
         <attr name="xrs_rulerTextMarginTop" format="dimension" />
         <!--  刻度尺刻度的间隔，默认是twenty -->
-        <attr name="xrs_rulerInterval">
+        <attr name="xrs_rulerInterval" format="enum">
             <enum name="ten" value="10" />
             <enum name="twenty" value="20" />
             <enum name="forty" value="40" />
@@ -1607,7 +1607,7 @@
         <!--  刻度尺刻度文字距离上部的距离，默认是4dp -->
         <attr name="xsb_rulerTextMarginTop" format="dimension" />
         <!--  刻度尺刻度的间隔，默认是twenty -->
-        <attr name="xsb_rulerInterval">
+        <attr name="xsb_rulerInterval" format="enum">
             <enum name="ten" value="10" />
             <enum name="twenty" value="20" />
             <enum name="forty" value="40" />
@@ -1682,7 +1682,10 @@
         </attr>
     </declare-styleable>
     <declare-styleable name="XUICommonListItemView">
-        <attr name="xui_orientation" />
+        <attr name="xui_orientation" format="enum">
+            <enum name="vertical" value="0" />
+            <enum name="horizontal" value="1" />
+        </attr>
         <attr name="xui_accessory_type" format="enum">
             <enum name="none" value="0" />
             <enum name="chevron" value="1" />

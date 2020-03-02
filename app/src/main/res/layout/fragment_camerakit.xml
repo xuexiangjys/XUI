@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.wonderkiln.camerakit.CameraView
+            android:id="@+id/camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaImageView
+            android:id="@+id/iv_flash_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="70dp"
+            app:srcCompat="@drawable/ic_flash_auto" />
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaImageView
+            android:id="@+id/iv_face"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            app:srcCompat="@drawable/ic_switch_camera" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="16dp" />
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaImageView
+            android:id="@+id/iv_take_photo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="30dp"
+            app:srcCompat="@drawable/ic_take_picture" />
+
+
+    </FrameLayout>
+
+
+</LinearLayout>
