@@ -141,6 +141,13 @@ protected void attachBaseContext(Context newBase) {
 }
 ```
 
+## 混淆配置
+
+```
+-keep class com.xuexiang.xui.widget.edittext.materialedittext.** { *; }
+
+```
+
 ----
 
 ### Demo下载
