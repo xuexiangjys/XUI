@@ -6,7 +6,7 @@
   "VersionName": "1.1.3",
   "UploadTime": "2020-03-02 00:00:00",
   "ModifyContent": "\r\n1、修复AS3.6编译问题。\n2、优化了部分组件功能。\n3、新增隐私弹窗演示。",
-  "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUI/master/apk/xuidemo.apk",
+  "DownloadUrl": "https://xuexiangjys.oss-cn-shanghai.aliyuncs.com/apk/xuidemo.apk",
   "ApkSize": 11952,
   "ApkMd5": "03E8A14747591493122BDB457F37987F"
 }
