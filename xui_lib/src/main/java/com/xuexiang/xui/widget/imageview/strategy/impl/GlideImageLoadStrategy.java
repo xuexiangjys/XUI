@@ -71,6 +71,7 @@ public class GlideImageLoadStrategy implements IImageLoadStrategy {
                         listener.onLoadFailed(e);
                         return false;
                     }
+
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                         listener.onLoadSuccess();
@@ -234,6 +235,7 @@ public class GlideImageLoadStrategy implements IImageLoadStrategy {
                     listener.onLoadFailed(e);
                     return false;
                 }
+
                 @Override
                 public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                     listener.onLoadSuccess();
@@ -265,6 +267,7 @@ public class GlideImageLoadStrategy implements IImageLoadStrategy {
                     listener.onLoadFailed(e);
                     return false;
                 }
+
                 @Override
                 public boolean onResourceReady(GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
                     listener.onLoadSuccess();
@@ -275,6 +278,12 @@ public class GlideImageLoadStrategy implements IImageLoadStrategy {
         builder.into(imageView);
     }
 
+    /**
+     * loadOption转化为RequestOptions
+     *
+     * @param loadOption
+     * @return
+     */
     @SuppressLint("CheckResult")
     private RequestOptions getRequestOptions(LoadOption loadOption) {
         RequestOptions options = new RequestOptions();
@@ -284,9 +293,29 @@ public class GlideImageLoadStrategy implements IImageLoadStrategy {
         if (loadOption.placeholder != null) {
             options.placeholder(loadOption.placeholder);
         }
+        if (loadOption.error != null) {
+            options.error(loadOption.error);
+        }
         if (loadOption.cacheStrategy != null) {
             options.diskCacheStrategy(toGlideStrategy(loadOption.cacheStrategy));
         }
+        switch (loadOption.align) {
+            case CENTER_CROP:
+                options.centerCrop();
+                break;
+            case CIRCLE_CROP:
+                options.circleCrop();
+                break;
+            case CENTER_INSIDE:
+                options.centerInside();
+                break;
+            case FIT_CENTER:
+                options.fitCenter();
+                break;
+            default:
+                break;
+        }
+        options.timeout(loadOption.timeoutMs);
         return options;
     }
 

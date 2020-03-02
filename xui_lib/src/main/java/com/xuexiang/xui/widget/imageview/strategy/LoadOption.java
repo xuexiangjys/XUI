@@ -26,6 +26,11 @@ import android.graphics.drawable.Drawable;
  * @since 2019-11-09 11:12
  */
 public class LoadOption {
+
+    /**
+     * 默认加载的超时时间（2500ms）
+     */
+    public static final int DEFAULT_TIMEOUT = 2500;
     /**
      * 磁盘缓存策略
      */
@@ -35,6 +40,10 @@ public class LoadOption {
      */
     public Drawable placeholder;
     /**
+     * 出错时显示的图片
+     */
+    public Drawable error;
+    /**
      * 宽度
      */
     public int width;
@@ -42,6 +51,14 @@ public class LoadOption {
      * 高度
      */
     public int height;
+    /**
+     * 对齐方式
+     */
+    public AlignEnum align = AlignEnum.DEFAULT;
+    /**
+     * 加载超时时间
+     */
+    public int timeoutMs = DEFAULT_TIMEOUT;
 
     public static LoadOption of(DiskCacheStrategyEnum cacheStrategy) {
         return new LoadOption(cacheStrategy);
@@ -103,6 +120,33 @@ public class LoadOption {
 
     public int getWidth() {
         return width;
+    }
+
+    public AlignEnum getAlign() {
+        return align;
+    }
+
+    public LoadOption setAlign(AlignEnum align) {
+        this.align = align;
+        return this;
+    }
+
+    public int getTimeoutMs() {
+        return timeoutMs;
+    }
+
+    public LoadOption setTimeoutMs(int timeoutMs) {
+        this.timeoutMs = timeoutMs;
+        return this;
+    }
+
+    public Drawable getError() {
+        return error;
+    }
+
+    public LoadOption setError(Drawable error) {
+        this.error = error;
+        return this;
     }
 
     @Override
