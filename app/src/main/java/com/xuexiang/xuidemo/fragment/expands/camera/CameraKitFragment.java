@@ -22,13 +22,13 @@ import android.view.View;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
-import com.wonderkiln.camerakit.CameraKit;
 import com.wonderkiln.camerakit.CameraKitError;
 import com.wonderkiln.camerakit.CameraKitEvent;
 import com.wonderkiln.camerakit.CameraKitEventListener;
 import com.wonderkiln.camerakit.CameraKitImage;
 import com.wonderkiln.camerakit.CameraKitVideo;
 import com.wonderkiln.camerakit.CameraView;
+import com.xuexiang.xaop.annotation.IOThread;
 import com.xuexiang.xaop.annotation.MainThread;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
@@ -44,7 +44,6 @@ import butterknife.OnClick;
 import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_AUTO;
 import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_OFF;
 import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_ON;
-import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_TORCH;
 
 /**
  * CameraKit 相机工具
@@ -93,11 +92,11 @@ public class CameraKitFragment extends BaseFragment {
 
             }
 
-            @MainThread
+            @IOThread
             @Override
             public void onImage(CameraKitImage cameraKitImage) {
                 Bitmap bitmap = cameraKitImage.getBitmap();
-                ivPhoto.setImageBitmap(bitmap);
+                updatePhoto(bitmap);
             }
 
             @Override
@@ -105,6 +104,12 @@ public class CameraKitFragment extends BaseFragment {
 
             }
         });
+    }
+
+    @MainThread
+    private void updatePhoto(Bitmap bitmap) {
+        getMessageLoader().dismiss();
+        ivPhoto.setImageBitmap(bitmap);
     }
 
     @SingleClick
@@ -118,11 +123,17 @@ public class CameraKitFragment extends BaseFragment {
                 cameraView.toggleFacing();
                 break;
             case R.id.iv_take_photo:
-                cameraView.captureImage();
+                getMessageLoader("处理中...").show();
+                takePhoto();
                 break;
             default:
                 break;
         }
+    }
+
+    @IOThread
+    private void takePhoto() {
+        cameraView.captureImage();
     }
 
     private void switchFlashIcon(int flash) {

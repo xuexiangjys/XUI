@@ -28,6 +28,9 @@ import java.io.Serializable;
  */
 public abstract class BaseFragment extends XPageFragment {
 
+    /**
+     * 消息加载框
+     */
     private IMessageLoader mIMessageLoader;
 
     @Override
@@ -69,7 +72,10 @@ public abstract class BaseFragment extends XPageFragment {
 
     @Override
     public void onDestroyView() {
-//        KeyboardUtils.fixSoftInputLeaks(getContext());
+        if (mIMessageLoader != null) {
+            mIMessageLoader.dismiss();
+            mIMessageLoader = null;
+        }
         super.onDestroyView();
     }
 
