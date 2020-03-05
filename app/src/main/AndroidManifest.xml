@@ -35,6 +35,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        tools:ignore="LockedOrientationActivity"
         tools:replace="android:allowBackup">
 
         <activity
@@ -64,7 +65,7 @@
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity android:name=".activity.UserGuideActivity" />
 

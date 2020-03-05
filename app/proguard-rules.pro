@@ -191,7 +191,7 @@
 # Retrofit
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
--keepattributes Exceptions#XHt
+-keepattributes Exceptions
 
 # RxJava RxAndroid
 -dontwarn sun.misc.**
