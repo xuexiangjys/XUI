@@ -21,6 +21,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import androidx.annotation.StyleRes;
+
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
@@ -80,7 +83,13 @@ public class LoadingDialog extends BaseDialog implements IMessageLoader {
     @Override
     public void updateMessage(String tipMessage) {
         if (mTvTipMessage != null) {
-            mTvTipMessage.setText(tipMessage);
+            if (!TextUtils.isEmpty(tipMessage)) {
+                mTvTipMessage.setText(tipMessage);
+                mTvTipMessage.setVisibility(View.VISIBLE);
+            } else {
+                mTvTipMessage.setText("");
+                mTvTipMessage.setVisibility(View.GONE);
+            }
         }
     }
 
