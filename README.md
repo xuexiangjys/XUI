@@ -197,6 +197,7 @@ protected void attachBaseContext(Context newBase) {
 * [Android-Iconics](https://github.com/mikepenz/Android-Iconics)
 * [Android-PickerView](https://github.com/Bigkoo/Android-PickerView)
 * [CityPicker](https://github.com/xuexiangjys/CityPicker)
+* [ELinkageScroll](https://github.com/MFC-TEC/ELinkageScroll)
 * [FlycoBanner_Master](https://github.com/H07000223/FlycoBanner_Master)
 * [Linkage-RecyclerView](https://github.com/KunMinX/Linkage-RecyclerView)
 * [MaterialEditText](https://github.com/rengwuxian/MaterialEditText)
@@ -207,6 +208,7 @@ protected void attachBaseContext(Context newBase) {
 * [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
 * [SlideBack](https://github.com/ParfoisMeng/SlideBack)
 * [SwipeRecyclerView](https://github.com/yanzhenjie/SwipeRecyclerView)
+
 
 ## 如果觉得项目还不错，可以考虑打赏一波
 
@@ -238,7 +240,9 @@ C*y | 1￥ | 微信
 *云 | 20.21￥ | 支付宝
 *钰晗 | 66￥ | 支付宝
 *杰柱 | 10￥ | 支付宝
-
+*毛 | 6.66￥ | 微信
+*凯 | 10￥ | 微信
+r*o | 8.88￥ | 微信
 
 ## 联系方式
 

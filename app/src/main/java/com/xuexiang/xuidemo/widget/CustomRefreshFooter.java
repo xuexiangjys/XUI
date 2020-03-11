@@ -41,7 +41,11 @@ import com.scwang.smartrefresh.layout.util.DensityUtil;
 public class CustomRefreshFooter extends ProgressBar implements RefreshFooter {
 
     public CustomRefreshFooter(Context context) {
-        super(context);
+        this(context, null);
+    }
+
+    public CustomRefreshFooter(Context context, AttributeSet attrs) {
+        super(context, attrs);
         initView();
     }
 
@@ -51,7 +55,6 @@ public class CustomRefreshFooter extends ProgressBar implements RefreshFooter {
         setPadding(0, DensityUtil.dp2px(10), 0, DensityUtil.dp2px(10));
         setLayoutParams(params);
     }
-
 
     @Override
     public boolean setNoMoreData(boolean noMoreData) {
