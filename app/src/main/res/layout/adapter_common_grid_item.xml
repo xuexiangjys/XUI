@@ -16,6 +16,7 @@
   -->
 <com.xuexiang.xui.widget.alpha.XUIAlphaLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_container"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:gravity="center"

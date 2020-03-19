@@ -17,15 +17,12 @@
 
 package com.xuexiang.xuidemo.fragment.components.layout;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.simple.AdapterItem;
-import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
@@ -39,9 +36,6 @@ import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -85,18 +79,7 @@ public class LinkageScrollLayoutFragment extends BaseFragment {
 
         WidgetUtils.initGridRecyclerView(recyclerHead, 4, 0);
         recyclerHead.setAdapter(mGridAdapter = new CommonGridAdapter(true));
-        mGridAdapter.refresh(getGridItems(R.array.grid_titles_entry, R.array.grid_icons_entry));
-    }
-
-
-    private List<AdapterItem> getGridItems(int titleArrayId, int iconArrayId) {
-        List<AdapterItem> list = new ArrayList<>();
-        String[] titles = ResUtils.getStringArray(titleArrayId);
-        Drawable[] icons = ResUtils.getDrawableArray(getContext(), iconArrayId);
-        for (int i = 0; i < titles.length; i++) {
-            list.add(new AdapterItem(titles[i], icons[i]));
-        }
-        return list;
+        mGridAdapter.refresh(DemoDataProvider.getGridItems(getContext()));
     }
 
     @Override
