@@ -46,7 +46,7 @@ import java.util.Arrays;
 import butterknife.BindView;
 
 /**
- * 项目壳工程
+ * 项目主页面
  *
  * @author xuexiang
  * @since 2018/11/13 下午5:20

@@ -35,7 +35,7 @@
         android:shortcutShortLabel="@string/shortcut_label_search">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.xuexiang.xuidemo.activity.SearchViewActivity"
+            android:targetClass="com.xuexiang.xuidemo.activity.SearchComponentActivity"
             android:targetPackage="com.xuexiang.xuidemo" />
     </shortcut>
 

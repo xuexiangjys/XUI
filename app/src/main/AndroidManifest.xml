@@ -80,6 +80,9 @@
         <activity
             android:name=".activity.SearchViewActivity"
             android:label="SearchView" />
+        <activity
+            android:name=".activity.SearchComponentActivity"
+            android:launchMode="singleInstance"/>
 
         <activity
             android:name=".base.webview.AgentWebActivity"
