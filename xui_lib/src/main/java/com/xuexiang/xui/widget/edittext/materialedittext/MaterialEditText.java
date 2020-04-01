@@ -268,7 +268,11 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
      * Underline's color
      */
     private int underlineColor;
-
+    /**
+     * Underline's height
+     */
+    private int underlineHeight;
+    private int underlineHeightFocused;
     /**
      * Whether to validate as soon as the text has changed. False by default
      */
@@ -416,6 +420,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         bottomTextSize = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_bottomTextSize, getResources().getDimensionPixelSize(R.dimen.default_bottom_text_size));
         hideUnderline = typedArray.getBoolean(R.styleable.MaterialEditText_met_hideUnderline, false);
         underlineColor = typedArray.getColor(R.styleable.MaterialEditText_met_underlineColor, -1);
+        underlineHeight = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_underlineHeight, getPixel(1));
+        underlineHeightFocused = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_underlineHeightFocused, getPixel(2));
         autoValidate = typedArray.getBoolean(R.styleable.MaterialEditText_met_autoValidate, false);
         iconLeftBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconLeft, -1));
         iconRightBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconRight, -1));
@@ -1541,19 +1547,19 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             lineStartY += bottomSpacing;
             if (!isInternalValid()) { // not valid
                 paint.setColor(errorColor);
-                canvas.drawRect(startX, lineStartY, endX, lineStartY + getPixel(2), paint);
+                canvas.drawRect(startX, lineStartY, endX, lineStartY + underlineHeightFocused, paint);
             } else if (!isEnabled()) { // disabled
                 paint.setColor(underlineColor != -1 ? underlineColor : baseColor & 0x00ffffff | 0x44000000);
                 float interval = getPixel(1);
                 for (float xOffset = 0; xOffset < getWidth(); xOffset += interval * 3) {
-                    canvas.drawRect(startX + xOffset, lineStartY, startX + xOffset + interval, lineStartY + getPixel(1), paint);
+                    canvas.drawRect(startX + xOffset, lineStartY, startX + xOffset + interval, lineStartY + underlineHeight, paint);
                 }
             } else if (hasFocus()) { // focused
                 paint.setColor(primaryColor);
-                canvas.drawRect(startX, lineStartY, endX, lineStartY + getPixel(2), paint);
+                canvas.drawRect(startX, lineStartY, endX, lineStartY + underlineHeightFocused, paint);
             } else { // normal
                 paint.setColor(underlineColor != -1 ? underlineColor : baseColor & 0x00ffffff | 0x1E000000);
-                canvas.drawRect(startX, lineStartY, endX, lineStartY + getPixel(1), paint);
+                canvas.drawRect(startX, lineStartY, endX, lineStartY + underlineHeight, paint);
             }
         }
         return lineStartY;

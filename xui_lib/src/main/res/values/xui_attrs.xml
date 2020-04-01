@@ -1014,6 +1014,10 @@
         <attr name="met_hideUnderline" format="boolean" />
         <!-- 输入框底线的颜色 -->
         <attr name="met_underlineColor" format="color" />
+        <!-- 输入框底线的高度,默认1dp -->
+        <attr name="met_underlineHeight" format="dimension" />
+        <!-- 输入框聚焦时底线的高度，默认2dp -->
+        <attr name="met_underlineHeightFocused" format="dimension" />
         <!-- 是否自动校验 -->
         <attr name="met_autoValidate" format="boolean" />
         <!-- 左侧图标资源 -->
