@@ -66,11 +66,18 @@ public class SearchComponentFragment extends BaseFragment implements RecyclerVie
 
     @Override
     protected TitleBar initTitle() {
-        TitleBar titleBar = super.initTitle();
+        TitleBar titleBar = super.initTitle().setLeftClickListener(new View.OnClickListener() {
+            @SingleClick
+            @Override
+            public void onClick(View v) {
+                popToBack();
+                Utils.syncMainPageStatus();
+            }
+        });
         mAction = titleBar.addAction(new TitleBar.ImageAction(R.drawable.icon_action_query) {
 
-            @Override
             @SingleClick
+            @Override
             public void performAction(View view) {
                 mSearchView.showSearch();
             }

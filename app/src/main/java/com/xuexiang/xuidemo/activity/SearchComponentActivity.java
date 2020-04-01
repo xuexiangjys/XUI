@@ -23,8 +23,7 @@ import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.fragment.SearchComponentFragment;
-import com.xuexiang.xutil.XUtil;
-import com.xuexiang.xutil.app.ActivityUtils;
+import com.xuexiang.xuidemo.utils.Utils;
 
 /**
  * 组件搜索页面
@@ -38,10 +37,16 @@ public class SearchComponentActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ActivityUtils.startActivity(MainActivity.class);
-
         PageOption.to(SearchComponentFragment.class)
                 .setAnim(CoreAnim.none)
                 .open(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (this.getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            Utils.syncMainPageStatus();
+        }
+        super.onBackPressed();
     }
 }

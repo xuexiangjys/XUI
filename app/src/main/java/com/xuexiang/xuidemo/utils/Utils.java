@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,15 +32,19 @@ import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
+import com.xuexiang.xutil.XUtil;
+import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.data.DateUtils;
 import com.xuexiang.xutil.file.FileIOUtils;
 import com.xuexiang.xutil.file.FileUtils;
 
 import java.io.File;
+import java.util.Stack;
 
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
@@ -64,6 +69,31 @@ public final class Utils {
         } else {
             XUI.initTheme(activity);
         }
+    }
+
+
+    /**
+     * 同步首页状态,未启动就启动
+     */
+    public static void syncMainPageStatus() {
+        if (!Utils.isActivityExist(MainActivity.class)) {
+            ActivityUtils.startActivity(MainActivity.class);
+        }
+    }
+
+    /**
+     * 某一个Activity是否存在
+     *
+     * @return
+     */
+    public static boolean isActivityExist(@NonNull Class<? extends Activity> clazz) {
+        Stack<Activity> stack = XUtil.get().getActivityLifecycleHelper().getActivityStack();
+        for (Activity activity : stack) {
+            if (activity.getClass().equals(clazz)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

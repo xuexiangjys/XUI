@@ -82,13 +82,14 @@
             android:label="SearchView" />
         <activity
             android:name=".activity.SearchComponentActivity"
-            android:launchMode="singleInstance"/>
+            android:launchMode="singleTask" />
 
         <activity
             android:name=".base.webview.AgentWebActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:hardwareAccelerated="true"
             android:label="@string/app_browser_name"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme">
             <!-- Scheme -->
             <intent-filter>
