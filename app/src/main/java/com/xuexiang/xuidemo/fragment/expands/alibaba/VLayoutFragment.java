@@ -99,6 +99,16 @@ public class VLayoutFragment extends BaseFragment {
             }
         };
 
+        //资讯的标题
+        SingleDelegateAdapter titleAdapter = new SingleDelegateAdapter(R.layout.adapter_title_item) {
+            @Override
+            public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+                holder.text(R.id.tv_title, "资讯");
+                holder.text(R.id.tv_action, "更多");
+                holder.click(R.id.tv_action, v -> XToastUtils.toast("更多"));
+            }
+        };
+
         //资讯
         mNewsAdapter = new SimpleDelegateAdapter<NewInfo>(R.layout.adapter_news_card_view_list_item, new LinearLayoutHelper()) {
             @Override
@@ -121,6 +131,7 @@ public class VLayoutFragment extends BaseFragment {
         DelegateAdapter delegateAdapter = new DelegateAdapter(virtualLayoutManager);
         delegateAdapter.addAdapter(bannerAdapter);
         delegateAdapter.addAdapter(commonAdapter);
+        delegateAdapter.addAdapter(titleAdapter);
         delegateAdapter.addAdapter(mNewsAdapter);
 
         recyclerView.setAdapter(delegateAdapter);
