@@ -1,0 +1,33 @@
+[
+  {
+    "type": "container-twoColumn",
+    "items": [
+      {
+        "type": "AnnotationCell",
+        "text": "注解方式自定义View"
+      },
+      {
+        "type": "AnnotationCell",
+        "text": "注解方式自定义View"
+      },
+      {
+        "type": "AnnotationCell",
+        "text": "注解方式自定义View"
+      },
+      {
+        "type": "AnnotationCell",
+        "text": "注解方式自定义View"
+      }
+    ],
+    "style": {
+      "padding": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "vGap": 10,
+      "hGap": 10
+    }
+  }
+]

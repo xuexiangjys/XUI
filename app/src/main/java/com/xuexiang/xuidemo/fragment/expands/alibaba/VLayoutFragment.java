@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.fragment.expands.alibaba;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,11 +28,13 @@ import com.alibaba.android.vlayout.layout.FixLayoutHelper;
 import com.alibaba.android.vlayout.layout.FloatLayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.alibaba.android.vlayout.layout.ScrollFixLayoutHelper;
 import com.alibaba.android.vlayout.layout.StickyLayoutHelper;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
@@ -141,7 +145,7 @@ public class VLayoutFragment extends BaseFragment {
         };
 
         FloatLayoutHelper floatLayoutHelper = new FloatLayoutHelper();
-        floatLayoutHelper.setDefaultLocation(ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight() - 200);
+        floatLayoutHelper.setDefaultLocation(ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight());
         SingleDelegateAdapter floatAdapter = new SingleDelegateAdapter(R.layout.adapter_vlayout_float_item, floatLayoutHelper) {
             @Override
             public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
@@ -149,8 +153,8 @@ public class VLayoutFragment extends BaseFragment {
             }
         };
 
-        FixLayoutHelper scrollFixLayoutHelper = new FixLayoutHelper(50, 100);
-        SingleDelegateAdapter scrollFixAdapter = new SingleDelegateAdapter(R.layout.adapter_vlayout_float_item, scrollFixLayoutHelper) {
+        FixLayoutHelper fixLayoutHelper = new ScrollFixLayoutHelper(50, 100);
+        SingleDelegateAdapter scrollFixAdapter = new SingleDelegateAdapter(R.layout.adapter_vlayout_float_item, fixLayoutHelper) {
             @Override
             public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
                 holder.image(R.id.iv_content, R.drawable.icon_avatar1);
@@ -187,5 +191,17 @@ public class VLayoutFragment extends BaseFragment {
             }, 1000);
         });
         refreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
+    }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("Github") {
+            @Override
+            public void performAction(View view) {
+                Utils.goWeb(getContext(), "https://github.com/alibaba/vlayout");
+            }
+        });
+        return titleBar;
     }
 }

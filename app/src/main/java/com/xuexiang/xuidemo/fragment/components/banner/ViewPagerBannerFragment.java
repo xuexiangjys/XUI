@@ -37,6 +37,7 @@ import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.RadiusImageBanner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -262,10 +263,8 @@ public class ViewPagerBannerFragment extends BaseFragment implements BaseBanner.
      */
     private void stb() {
 
-        ArrayList<String> titles = new ArrayList<>();
-        for (String title : DemoDataProvider.titles) {
-            titles.add(title);
-        }
+        List<String> titles = new ArrayList<>();
+        Collections.addAll(titles, DemoDataProvider.titles);
         stb
                 .setSource(titles)
                 .setOnItemClickListener(new BaseBanner.OnItemClickListener<String>() {

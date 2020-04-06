@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+ * Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,99 +15,89 @@
  *
  */
 
-package com.xuexiang.xui.widget.banner.widget.banner.base;
+package com.xuexiang.xuidemo.adapter;
 
-import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.xuexiang.xui.R;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xui.widget.imageview.strategy.DiskCacheStrategyEnum;
 import com.xuexiang.xui.widget.imageview.strategy.LoadOption;
+import com.xuexiang.xuidemo.R;
+import com.xuexiang.xutil.display.ScreenUtils;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
+ * UltraViewPager适配器
+ *
  * @author xuexiang
- * @since 2019-09-24 9:04
+ * @since 2020/4/7 12:19 AM
  */
-public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends BaseIndicatorBanner<BannerItem, T> {
+public class UltraPagerAdapter extends PagerAdapter {
+
+    private final List<BannerItem> mData = new ArrayList<>();
 
     /**
      * 默认加载图片
      */
-    protected Drawable mPlaceHolder;
+    private Drawable mPlaceHolder;
     /**
      * 是否允许进行缓存
      */
-    protected boolean mEnableCache;
+    private boolean mEnableCache;
     /**
      * 加载图片的高／宽比率
      */
-    protected double mScale;
+    private double mScale;
 
-    public BaseImageBanner(Context context) {
-        super(context);
-        initImageBanner(context);
-    }
+    private RecyclerViewHolder.OnItemClickListener<BannerItem> mOnItemClickListener;
 
-    public BaseImageBanner(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initImageBanner(context);
-    }
-
-    public BaseImageBanner(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        initImageBanner(context);
-    }
-
-    /**
-     * 初始化ImageBanner
-     *
-     * @param context
-     */
-    protected void initImageBanner(Context context) {
+    public UltraPagerAdapter(List<BannerItem> list, float scale) {
+        if (list != null && !list.isEmpty()) {
+            mData.addAll(list);
+        }
         mPlaceHolder = new ColorDrawable(ResUtils.getColor(R.color.default_image_banner_placeholder_color));
         mEnableCache = true;
-        mScale = getContainerScale();
+        mScale = scale;
     }
 
     @Override
-    public void onTitleSelect(TextView tv, int position) {
-        final BannerItem item = getItem(position);
-        if (item != null) {
-            tv.setText(item.title);
-        }
+    public int getCount() {
+        return mData.size();
     }
 
-    /**
-     * @return 轮播布局的ID
-     */
-    protected abstract int getItemLayoutId();
+    private boolean checkPosition(int position) {
+        return position >= 0 && position <= mData.size() - 1;
+    }
 
-    /**
-     * @return 图片控件的ID
-     */
-    protected abstract int getImageViewId();
+    public BannerItem getItem(int position) {
+        return checkPosition(position) ? mData.get(position) : null;
+    }
 
-    /**
-     * 创建ViewPager的Item布局
-     *
-     * @param position
-     */
     @Override
-    public View onCreateItemView(int position) {
-        View inflate = View.inflate(getContext(), getItemLayoutId(), null);
-        ImageView iv = inflate.findViewById(getImageViewId());
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == object;
+    }
+
+    @NonNull
+    @Override
+    public Object instantiateItem(final ViewGroup container, final int position) {
+        View rootView = View.inflate(container.getContext(), R.layout.xui_adapter_simple_image, null);
+        ImageView iv = rootView.findViewById(R.id.iv);
 
         //解决Glide资源释放的问题，详细见http://blog.csdn.net/shangmingchao/article/details/51125554
         WeakReference<ImageView> imageViewWeakReference = new WeakReference<>(iv);
@@ -117,7 +107,18 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
         if (item != null && target != null) {
             loadingImageView(target, item);
         }
-        return inflate;
+        rootView.setOnClickListener(v -> {
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(v, item, position);
+            }
+        });
+        container.addView(rootView);
+        return rootView;
+    }
+
+    public UltraPagerAdapter setOnItemClickListener(RecyclerViewHolder.OnItemClickListener<BannerItem> onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+        return this;
     }
 
     /**
@@ -130,7 +131,7 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
         String imgUrl = item.imgUrl;
         if (!TextUtils.isEmpty(imgUrl)) {
             if (mScale > 0) {
-                int itemWidth = getItemWidth();
+                int itemWidth = ScreenUtils.getScreenWidth();
                 int itemHeight = (int) (itemWidth * mScale);
                 iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 iv.setLayoutParams(new LinearLayout.LayoutParams(itemWidth, itemHeight));
@@ -147,48 +148,8 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
         }
     }
 
-    /**
-     * 设置是否允许缓存
-     *
-     * @param enableCache
-     * @return
-     */
-    public T enableCache(boolean enableCache) {
-        mEnableCache = enableCache;
-        return (T) this;
-    }
-
-    /**
-     * 获取是否允许缓存
-     *
-     * @return
-     */
-    public boolean getEnableCache() {
-        return mEnableCache;
-    }
-
-    public Drawable getPlaceHolderDrawable() {
-        return mPlaceHolder;
-    }
-
-    public T setPlaceHolderDrawable(Drawable placeHolder) {
-        mPlaceHolder = placeHolder;
-        return (T) this;
-    }
-
-    public double getScale() {
-        return mScale;
-    }
-
-    public T setScale(double scale) {
-        mScale = scale;
-        return (T) this;
-    }
-
     @Override
-    protected void onDetachedFromWindow() {
-        //解决内存泄漏的问题
-        pauseScroll();
-        super.onDetachedFromWindow();
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((View) object);
     }
 }

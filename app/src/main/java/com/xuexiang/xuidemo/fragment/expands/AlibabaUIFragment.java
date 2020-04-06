@@ -20,6 +20,8 @@ package com.xuexiang.xuidemo.fragment.expands;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.expands.alibaba.TangramAndroidFragment;
+import com.xuexiang.xuidemo.fragment.expands.alibaba.UltraViewPagerFragment;
 import com.xuexiang.xuidemo.fragment.expands.alibaba.VLayoutFragment;
 
 /**
@@ -31,7 +33,9 @@ public class AlibabaUIFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
-                VLayoutFragment.class
+                VLayoutFragment.class,
+                TangramAndroidFragment.class,
+                UltraViewPagerFragment.class
         };
     }
 }

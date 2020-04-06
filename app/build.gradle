@@ -194,8 +194,10 @@ dependencies {
     //另一款相机拍摄库，使用更简单
     implementation 'com.wonderkiln:camerakit:0.13.1'
 
-    implementation 'com.alibaba.android:vlayout:1.2.8'
-
+    //阿里巴巴组件
+    implementation 'com.alibaba.android:vlayout:1.2.36'
+    implementation 'com.alibaba.android:ultraviewpager:1.0.7.8'
+    implementation 'com.alibaba.android:tangram:3.3.6'
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:1.1.4'
     implementation 'com.zhy:okhttputils:2.6.2'
