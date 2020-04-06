@@ -15,12 +15,15 @@
   ~
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.xuexiang.xui.widget.layout.XUIFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="4dp">
+    android:background="@color/xui_config_color_white"
+    android:paddingTop="8dp"
+    android:paddingBottom="4dp"
+    app:xui_shadowElevation="0dp">
 
     <TextView
         android:id="@+id/tv_title"
@@ -42,4 +45,4 @@
         android:paddingEnd="16dp"
         tools:text="更多" />
 
-</FrameLayout>
+</com.xuexiang.xui.widget.layout.XUIFrameLayout>

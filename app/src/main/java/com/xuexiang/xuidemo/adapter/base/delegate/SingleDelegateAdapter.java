@@ -39,13 +39,31 @@ public abstract class SingleDelegateAdapter extends DelegateAdapter.Adapter<Recy
 
     private int mLayoutId;
 
+    private LayoutHelper mLayoutHelper;
+
+    /**
+     * 构造函数
+     *
+     * @param layoutId 布局ID
+     */
     public SingleDelegateAdapter(int layoutId) {
+        this(layoutId, new SingleLayoutHelper());
+    }
+
+    /**
+     * 构造函数
+     *
+     * @param layoutId     布局ID
+     * @param layoutHelper 布局助手
+     */
+    public SingleDelegateAdapter(int layoutId, LayoutHelper layoutHelper) {
         mLayoutId = layoutId;
+        mLayoutHelper = layoutHelper;
     }
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
-        return new SingleLayoutHelper();
+        return mLayoutHelper;
     }
 
     /**

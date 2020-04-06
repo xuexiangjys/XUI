@@ -22,8 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.FixLayoutHelper;
+import com.alibaba.android.vlayout.layout.FloatLayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.alibaba.android.vlayout.layout.StickyLayoutHelper;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
@@ -39,6 +42,10 @@ import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xutil.display.ScreenUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -56,6 +63,9 @@ public class VLayoutFragment extends BaseFragment {
 
     private SimpleDelegateAdapter<NewInfo> mNewsAdapter;
 
+    private DelegateAdapter mDelegateAdapter;
+    private List<DelegateAdapter.Adapter> mAdapters = new ArrayList<>();
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_v_layout;
@@ -69,7 +79,7 @@ public class VLayoutFragment extends BaseFragment {
         recyclerView.setRecycledViewPool(viewPool);
         viewPool.setMaxRecycledViews(0, 20);
 
-        //轮播条
+        //轮播条，单独布局
         SingleDelegateAdapter bannerAdapter = new SingleDelegateAdapter(R.layout.include_head_view_banner) {
             @Override
             public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
@@ -79,7 +89,7 @@ public class VLayoutFragment extends BaseFragment {
             }
         };
 
-        //九宫格菜单
+        //九宫格菜单, 九宫格布局
         GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(4);
         gridLayoutHelper.setPadding(0, 16, 0, 0);
         gridLayoutHelper.setVGap(10);
@@ -100,7 +110,9 @@ public class VLayoutFragment extends BaseFragment {
         };
 
         //资讯的标题
-        SingleDelegateAdapter titleAdapter = new SingleDelegateAdapter(R.layout.adapter_title_item) {
+        StickyLayoutHelper stickyLayoutHelper = new StickyLayoutHelper();
+        stickyLayoutHelper.setStickyStart(true);
+        SingleDelegateAdapter titleAdapter = new SingleDelegateAdapter(R.layout.adapter_vlayout_title_item, stickyLayoutHelper) {
             @Override
             public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
                 holder.text(R.id.tv_title, "资讯");
@@ -109,8 +121,8 @@ public class VLayoutFragment extends BaseFragment {
             }
         };
 
-        //资讯
-        mNewsAdapter = new SimpleDelegateAdapter<NewInfo>(R.layout.adapter_news_card_view_list_item, new LinearLayoutHelper()) {
+        //资讯，线性布局
+        mNewsAdapter = new SimpleDelegateAdapter<NewInfo>(R.layout.adapter_news_xuilayout_list_item, new LinearLayoutHelper()) {
             @Override
             protected void bindData(@NonNull RecyclerViewHolder holder, int position, NewInfo model) {
                 if (model != null) {
@@ -128,13 +140,33 @@ public class VLayoutFragment extends BaseFragment {
             }
         };
 
-        DelegateAdapter delegateAdapter = new DelegateAdapter(virtualLayoutManager);
-        delegateAdapter.addAdapter(bannerAdapter);
-        delegateAdapter.addAdapter(commonAdapter);
-        delegateAdapter.addAdapter(titleAdapter);
-        delegateAdapter.addAdapter(mNewsAdapter);
+        FloatLayoutHelper floatLayoutHelper = new FloatLayoutHelper();
+        floatLayoutHelper.setDefaultLocation(ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight() - 200);
+        SingleDelegateAdapter floatAdapter = new SingleDelegateAdapter(R.layout.adapter_vlayout_float_item, floatLayoutHelper) {
+            @Override
+            public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+                holder.itemView.setOnClickListener(v -> XToastUtils.toast("点击了悬浮窗"));
+            }
+        };
 
-        recyclerView.setAdapter(delegateAdapter);
+        FixLayoutHelper scrollFixLayoutHelper = new FixLayoutHelper(50, 100);
+        SingleDelegateAdapter scrollFixAdapter = new SingleDelegateAdapter(R.layout.adapter_vlayout_float_item, scrollFixLayoutHelper) {
+            @Override
+            public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+                holder.image(R.id.iv_content, R.drawable.icon_avatar1);
+            }
+        };
+
+        mDelegateAdapter = new DelegateAdapter(virtualLayoutManager);
+
+        mAdapters.add(floatAdapter);
+        mAdapters.add(scrollFixAdapter);
+        mAdapters.add(bannerAdapter);
+        mAdapters.add(commonAdapter);
+        mAdapters.add(titleAdapter);
+        mAdapters.add(mNewsAdapter);
+
+        recyclerView.setAdapter(mDelegateAdapter);
     }
 
     @Override
@@ -143,6 +175,7 @@ public class VLayoutFragment extends BaseFragment {
         refreshLayout.setOnRefreshListener(refreshLayout -> {
             refreshLayout.getLayout().postDelayed(() -> {
                 mNewsAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+                mDelegateAdapter.setAdapters(mAdapters);
                 refreshLayout.finishRefresh();
             }, 1000);
         });
