@@ -1,14 +1,44 @@
 [
   {
+    "type": "container-oneColumn",
+    "items": [
+      {
+        "type": "InterfaceCell",
+        "text": "接口方式自定义View",
+        "style": {
+          "height": 140,
+          "margin": [
+            30,
+            10,
+            30,
+            10
+          ]
+        }
+      },
+      {
+        "type": "InterfaceCell",
+        "text": "接口方式自定义View"
+      }
+    ],
+    "style": {
+      "margin": [
+        10,
+        10,
+        10,
+        10
+      ]
+    }
+  },
+  {
     "type": "container-twoColumn",
     "items": [
       {
-        "type": "AnnotationCell",
-        "text": "注解方式自定义View"
+        "type": "InterfaceCell",
+        "text": "接口方式自定义View"
       },
       {
-        "type": "AnnotationCell",
-        "text": "注解方式自定义View"
+        "type": "InterfaceCell",
+        "text": "接口方式自定义View"
       },
       {
         "type": "AnnotationCell",
@@ -28,6 +58,79 @@
       ],
       "vGap": 10,
       "hGap": 10
+    }
+  },
+  {
+    "type": "container-threeColumn",
+    "items": [
+      {
+        "type": "CustomCell",
+        "text": "自定义model",
+        "randomColor": true,
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png"
+      },
+      {
+        "type": "CustomCell",
+        "text": "自定义model",
+        "randomColor": false,
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png"
+      },
+      {
+        "type": "CustomCell",
+        "text": "自定义model",
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png"
+      }
+    ],
+    "style": {
+      "cols": [
+        30,
+        40
+      ]
+    }
+  },
+  {
+    "type": "container-fourColumn",
+    "items": [
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      }
+    ],
+    "style": {
+      "aspectRatio": "4",
+      "bgImgUrl": "https://gw.alicdn.com/tps/TB1dkjfOXXXXXb0aXXXXXXXXXXX-1125-220.png"
+    }
+  },
+  {
+    "type": "container-fiveColumn",
+    "items": [
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      }
+    ],
+    "style": {
+      "bgColor": "#299ee3"
     }
   }
 ]

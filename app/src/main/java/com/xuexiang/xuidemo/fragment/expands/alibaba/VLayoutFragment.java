@@ -54,6 +54,11 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
+ * VLayout使用步骤
+ * 1.设置VirtualLayoutManager
+ * 2.设置RecycledViews复用池大小（可选）
+ * 3.设置DelegateAdapter
+ *
  * @author xuexiang
  * @since 2020/3/19 11:26 PM
  */
@@ -77,11 +82,14 @@ public class VLayoutFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+        // 1.设置VirtualLayoutManager
         VirtualLayoutManager virtualLayoutManager = new VirtualLayoutManager(getContext());
         recyclerView.setLayoutManager(virtualLayoutManager);
+
+        // 2.设置RecycledViews复用池大小（可选）
         RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
-        recyclerView.setRecycledViewPool(viewPool);
         viewPool.setMaxRecycledViews(0, 20);
+        recyclerView.setRecycledViewPool(viewPool);
 
         //轮播条，单独布局
         SingleDelegateAdapter bannerAdapter = new SingleDelegateAdapter(R.layout.include_head_view_banner) {
@@ -170,6 +178,7 @@ public class VLayoutFragment extends BaseFragment {
         mAdapters.add(titleAdapter);
         mAdapters.add(mNewsAdapter);
 
+        // 3.设置DelegateAdapter
         recyclerView.setAdapter(mDelegateAdapter);
     }
 

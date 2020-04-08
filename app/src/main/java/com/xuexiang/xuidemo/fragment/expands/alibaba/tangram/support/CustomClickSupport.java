@@ -15,12 +15,13 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.expands.alibaba.tangram;
+package com.xuexiang.xuidemo.fragment.expands.alibaba.tangram.support;
 
 import android.view.View;
 
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.support.SimpleClickSupport;
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 
 /**
@@ -35,6 +36,7 @@ public class CustomClickSupport extends SimpleClickSupport {
         setOptimizedMode(true);
     }
 
+    @SingleClick(3000)
     @Override
     public void defaultClick(View targetView, BaseCell cell, int eventType) {
         XToastUtils.toast("您点击了组件，type=" + cell.stringType + ", pos=" + cell.pos);
