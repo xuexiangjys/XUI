@@ -19,6 +19,7 @@ package com.xuexiang.xuidemo.fragment.expands.alibaba;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tmall.wireless.tangram.TangramBuilder;
 import com.tmall.wireless.tangram.TangramEngine;
+import com.tmall.wireless.tangram.structure.viewcreator.ViewHolderCreator;
 import com.tmall.wireless.tangram.util.IInnerImageSetter;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -38,6 +40,9 @@ import com.xuexiang.xuidemo.fragment.expands.alibaba.tangram.model.CustomCell;
 import com.xuexiang.xuidemo.fragment.expands.alibaba.tangram.model.CustomCellView;
 import com.xuexiang.xuidemo.fragment.expands.alibaba.tangram.support.CustomClickSupport;
 import com.xuexiang.xuidemo.fragment.expands.alibaba.tangram.CustomInterfaceView;
+import com.xuexiang.xuidemo.fragment.expands.alibaba.tangram.support.CustomExposureSupport;
+import com.xuexiang.xuidemo.fragment.expands.alibaba.tangram.viewholder.CustomHolderCell;
+import com.xuexiang.xuidemo.fragment.expands.alibaba.tangram.viewholder.CustomViewHolder;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.resource.ResourceUtils;
 
@@ -48,7 +53,7 @@ import butterknife.BindView;
 
 /**
  * Tangram-Android使用步骤
- *
+ * <p>
  * 1.初始化 Tangram 环境
  * 2.初始化 TangramBuilder
  * 3.注册自定义的卡片和组件
@@ -92,17 +97,20 @@ public class TangramAndroidFragment extends BaseFragment {
         // 3.注册自定义的卡片和组件
         /// 使用接口方式的自定义View
         builder.registerCell("InterfaceCell", CustomInterfaceView.class);
+        builder.registerCell("NoBackground", NoBackgroundView.class);
         /// 使用注解方式的自定义View
         builder.registerCell("AnnotationCell", CustomAnnotationView.class);
         /// 自定义model组件
         builder.registerCell("CustomCell", CustomCell.class, CustomCellView.class);
-        builder.registerCell("NoBackground", NoBackgroundView.class);
+        builder.registerCell("CustomHolderCell", CustomHolderCell.class,
+                new ViewHolderCreator<>(R.layout.tangram_item_holder, CustomViewHolder.class, TextView.class));
 
         // 4.生成TangramEngine实例
         mEngine = builder.build();
 
         // 5.绑定业务 support 类到 engine
         mEngine.addSimpleClickSupport(new CustomClickSupport());
+        mEngine.addExposureSupport(new CustomExposureSupport());
 
         // 6.绑定 recyclerView
         mEngine.bindView(recyclerView);
