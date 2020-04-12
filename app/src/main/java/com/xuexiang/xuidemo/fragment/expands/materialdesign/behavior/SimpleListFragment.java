@@ -1,11 +1,14 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.xuexiang.xrouter.annotation.AutoWired;
+import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
@@ -24,12 +27,30 @@ import butterknife.BindView;
  */
 public class SimpleListFragment extends BaseFragment {
 
+    private static final String KEY_IS_SPECIAL = "key_is_special";
+
     @BindView(R.id.recyclerView)
     SwipeRecyclerView recyclerView;
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
 
     private NewsCardViewListAdapter mAdapter;
+
+    @AutoWired(name = KEY_IS_SPECIAL)
+    boolean isSpecial;
+
+    public static SimpleListFragment newInstance(boolean isSpecial) {
+        Bundle args = new Bundle();
+        args.putBoolean(KEY_IS_SPECIAL, isSpecial);
+        SimpleListFragment fragment = new SimpleListFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    protected void initArgs() {
+        XRouter.getInstance().inject(this);
+    }
 
     @Override
     protected TitleBar initTitle() {
@@ -47,7 +68,7 @@ public class SimpleListFragment extends BaseFragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.setAdapter(mAdapter = new NewsCardViewListAdapter());
-        mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+        mAdapter.refresh(isSpecial ? DemoDataProvider.getSpecialDemoNewInfos() : DemoDataProvider.getDemoNewInfos());
 
         swipeRefreshLayout.setEnabled(false);
     }

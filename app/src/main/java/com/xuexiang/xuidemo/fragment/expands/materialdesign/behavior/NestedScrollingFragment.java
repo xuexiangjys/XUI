@@ -64,7 +64,7 @@ public class NestedScrollingFragment extends BaseFragment {
 
     @Override
     protected void initArgs() {
-        StatusBarUtils.initStatusBarStyle(getActivity(), true, Colors.TRANSPARENT);
+        StatusBarUtils.initStatusBarStyle(getActivity(), true);
     }
 
     @Override
