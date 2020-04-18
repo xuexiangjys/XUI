@@ -139,16 +139,20 @@ public class ComplexNestedScrollingFragment extends BaseFragment implements TabL
 
     private void refreshTopViewHeight(int topViewHeight) {
         scrollingLayout.setTopViewHeight(topViewHeight, mIsShowNavigationView);
-        updateContainerHeight();
-        scrollingLayout.requestLayout();
+        if (updateContainerHeight()) {
+            scrollingLayout.requestLayout();
+        }
     }
 
-    private int updateContainerHeight() {
+    private boolean updateContainerHeight() {
         int containerHeight = scrollingLayout.getContainerHeight(mIsShowNavigationView);
         ViewGroup.LayoutParams lp = flContainer.getLayoutParams();
-        lp.height = containerHeight;
-        flContainer.setLayoutParams(lp);
-        return containerHeight;
+        if (lp.height != containerHeight) {
+            lp.height = containerHeight;
+            flContainer.setLayoutParams(lp);
+            return true;
+        }
+        return false;
     }
 
     private void initFragment() {
@@ -191,7 +195,7 @@ public class ComplexNestedScrollingFragment extends BaseFragment implements TabL
     private void dismissTipView(View view) {
         LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) view.getLayoutParams();
         int newTopHeight = llTipContainer.getMeasuredHeight() - view.getMeasuredHeight() - lp.topMargin - lp.bottomMargin;
-        ViewUtils.fadeOut(view, 500, new SimpleAnimationListener(){
+        ViewUtils.fadeOut(view, 500, new SimpleAnimationListener() {
             @Override
             public void onAnimationEnd(Animation animation) {
                 view.setVisibility(View.GONE);
