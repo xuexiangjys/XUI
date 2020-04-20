@@ -36,7 +36,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.FragmentAdapter;
+import com.xuexiang.xui.adapter.FragmentStateAdapter;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -162,9 +162,8 @@ public class ComplexNestedScrollingFragment extends BaseFragment implements TabL
     }
 
     private void initTabLayout() {
-        FragmentAdapter<Fragment> adapter = new FragmentAdapter<>(getChildFragmentManager());
+        FragmentStateAdapter<Fragment> adapter = new FragmentStateAdapter<>(getChildFragmentManager());
         for (String page : MultiPage.getPageNames()) {
-            tabLayout.addTab(tabLayout.newTab().setText(page));
             adapter.addFragment(SimpleListFragment.newInstance(false), page);
         }
         tabLayout.setTabMode(MODE_SCROLLABLE);

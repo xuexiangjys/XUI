@@ -31,7 +31,7 @@ import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.tabbar.TabSegment;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.fragment.components.tabbar.ContentPage;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.ContentPage;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.SimpleListFragment;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 
