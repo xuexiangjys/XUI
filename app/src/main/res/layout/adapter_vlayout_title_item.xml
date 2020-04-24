@@ -22,7 +22,8 @@
     android:layout_height="wrap_content"
     android:background="@color/xui_config_color_white"
     android:paddingTop="8dp"
-    android:paddingBottom="4dp"
+    android:paddingBottom="8dp"
+    android:tag="sticky"
     app:xui_shadowElevation="0dp">
 
     <TextView
@@ -43,6 +44,6 @@
         android:layout_gravity="end|center_vertical"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        tools:text="更多" />
+        android:text="更多" />
 
 </com.xuexiang.xui.widget.layout.XUIFrameLayout>

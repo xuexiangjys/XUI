@@ -23,6 +23,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.layout.AlphaViewFragment;
 import com.xuexiang.xuidemo.fragment.components.layout.ExpandableLayoutFragment;
 import com.xuexiang.xuidemo.fragment.components.layout.LinkageScrollLayoutFragment;
+import com.xuexiang.xuidemo.fragment.components.layout.StickyNestedScrollViewFragment;
 import com.xuexiang.xuidemo.fragment.components.layout.XUILayoutFragment;
 
 /**
@@ -42,7 +43,8 @@ public class LayoutFragment extends ComponentContainerFragment {
                 AlphaViewFragment.class,
                 XUILayoutFragment.class,
                 ExpandableLayoutFragment.class,
-                LinkageScrollLayoutFragment.class
+                LinkageScrollLayoutFragment.class,
+                StickyNestedScrollViewFragment.class
         };
     }
 }
