@@ -83,13 +83,15 @@ public class MultipleStatusViewFragment extends BaseFragment {
             case R.id.fab_content:
                 mMultipleStatusView.showContent();
                 break;
+            default:
+                break;
         }
         mFloatingActionMenu.toggle(false);
     }
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         mLoadingHandler.removeCallbacksAndMessages(null);
+        super.onDestroyView();
     }
 }
