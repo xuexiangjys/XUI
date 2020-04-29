@@ -15,7 +15,7 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.statelayout.status;
+package com.xuexiang.xuidemo.fragment.components.statelayout.status.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xuidemo.R;
 
 import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_CUSTOM;
@@ -53,7 +54,7 @@ public class DefaultStatusView extends LinearLayout implements View.OnClickListe
         }
         mRetryListener = retryListener;
         setStatus(status);
-        setBackgroundColor(0xFFF0F0F0);
+        setBackgroundColor(ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_background));
     }
 
     /**

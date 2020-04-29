@@ -15,7 +15,7 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.statelayout.status;
+package com.xuexiang.xuidemo.fragment.components.statelayout.status.adapter;
 
 import android.view.View;
 

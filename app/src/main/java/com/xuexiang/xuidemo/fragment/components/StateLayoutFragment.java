@@ -6,6 +6,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.MultipleStatusViewFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.StatefulLayoutFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.StatusLoaderFragment;
+import com.xuexiang.xuidemo.fragment.components.statelayout.status.StatusLoaderMultipleFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.StatusViewFragment;
 
 /**
