@@ -30,7 +30,7 @@ import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 import com.xuexiang.xuidemo.fragment.ExpandsFragment;
 import com.xuexiang.xuidemo.fragment.QRCodeFragment;
 import com.xuexiang.xuidemo.fragment.SettingFragment;
-import com.xuexiang.xuidemo.fragment.UtilitysFragment;
+import com.xuexiang.xuidemo.fragment.UtilitiesFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.Utils;
@@ -126,7 +126,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                         switchPage(ComponentsFragment.class);
                         break;
                     case 1:
-                        switchPage(UtilitysFragment.class);
+                        switchPage(UtilitiesFragment.class);
                         break;
                     case 2:
                         switchPage(ExpandsFragment.class);

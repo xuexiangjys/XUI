@@ -29,7 +29,7 @@ import java.util.List;
  * @since 2018/12/27 上午10:09
  */
 @Page(name = "工具", anim = CoreAnim.none)
-public class UtilitysFragment extends BaseHomeFragment {
+public class UtilitiesFragment extends BaseHomeFragment {
 
     @Override
     protected List<PageInfo> getPageContents() {
