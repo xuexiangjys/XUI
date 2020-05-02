@@ -15,52 +15,66 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.layout;
+package com.xuexiang.xuidemo.fragment.components.refresh.sticky;
+
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.xuexiang.xaop.annotation.MemoryCache;
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.recyclerview.sticky.StickyHeadContainer;
+import com.xuexiang.xui.adapter.recyclerview.sticky.StickyItemDecoration;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.StickyListAdapter;
-import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.adapter.entity.StickyItem;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
 import com.xuexiang.xuidemo.utils.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.xuexiang.xuidemo.utils.XToastUtils;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author xuexiang
- * @since 2020/4/25 1:09 AM
+ * @since 2020/5/2 10:59 AM
  */
-@Page(name = "StickyNestedScrollView\n粘顶嵌套滚动布局")
-public class StickyNestedScrollViewFragment extends BaseFragment {
+@Page(name = "StickyItemDecoration\n通过装饰实现粘顶效果")
+public class StickyItemDecorationFragment extends BaseFragment {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
-    private StickyListAdapter mAdapter;
+    @BindView(R.id.sticky_container)
+    StickyHeadContainer stickyContainer;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
 
+    private StickyListAdapter mAdapter;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_sticky_nested_scrollview;
+        return R.layout.fragment_sticky_item_decoration;
     }
 
     @Override
     protected void initViews() {
-        recyclerView.setNestedScrollingEnabled(false);
+        stickyContainer.setOnStickyPositionChangedListener(position -> {
+            StickyItem item = mAdapter.getItem(position);
+            if (item != null) {
+                tvTitle.setText(item.getHeadTitle());
+            }
+        });
+
         WidgetUtils.initRecyclerView(recyclerView, 0);
+        StickyItemDecoration stickyItemDecoration = new StickyItemDecoration(stickyContainer, StickyListAdapter.TYPE_HEAD_STICKY);
+        recyclerView.addItemDecoration(stickyItemDecoration);
         recyclerView.setAdapter(mAdapter = new StickyListAdapter());
 
-        mAdapter.refresh(getStickyDemoData());
+        mAdapter.refresh(DemoDataProvider.getStickyDemoData());
     }
 
     @Override
@@ -72,20 +86,16 @@ public class StickyNestedScrollViewFragment extends BaseFragment {
         });
     }
 
-    @MemoryCache
-    private List<StickyItem> getStickyDemoData() {
-        List<StickyItem> list = new ArrayList<>();
-        List<StickyItem> temp = new ArrayList<>();
-        List<NewInfo> news = DemoDataProvider.getDemoNewInfos();
-        for (NewInfo newInfo : news) {
-            temp.add(new StickyItem(newInfo));
-        }
-        for (String page : MultiPage.getPageNames()) {
-            list.add(new StickyItem(page));
-            list.addAll(temp);
-        }
-        return list;
+    @SingleClick
+    @OnClick(R.id.tv_action)
+    public void onViewClicked(View view) {
+        XToastUtils.toast("点击更多");
     }
 
 
+    @Override
+    public void onDestroyView() {
+        stickyContainer.recycle();
+        super.onDestroyView();
+    }
 }

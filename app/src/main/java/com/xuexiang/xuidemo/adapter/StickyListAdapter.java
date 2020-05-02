@@ -18,9 +18,11 @@
 package com.xuexiang.xuidemo.adapter;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
+import com.xuexiang.xui.adapter.recyclerview.sticky.FullSpanUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.adapter.entity.StickyItem;
@@ -34,12 +36,21 @@ public class StickyListAdapter extends BaseRecyclerAdapter<StickyItem> {
     /**
      * 头部标题
      */
-    private static final int TYPE_HEAD_STICKY = 1;
+    public static final int TYPE_HEAD_STICKY = 1;
     /**
      * 新闻信息
      */
     private static final int TYPE_NEW_INFO = 2;
 
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+        FullSpanUtils.onAttachedToRecyclerView(recyclerView, this, TYPE_HEAD_STICKY);
+    }
+
+    @Override
+    public void onViewAttachedToWindow(@NonNull RecyclerViewHolder holder) {
+        FullSpanUtils.onViewAttachedToWindow(holder, this, TYPE_HEAD_STICKY);
+    }
 
     @Override
     public int getItemViewType(int position) {

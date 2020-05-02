@@ -20,9 +20,11 @@ import com.xuexiang.xui.widget.banner.transform.ZoomOutSlideTransformer;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
+import com.xuexiang.xuidemo.adapter.entity.StickyItem;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
 import com.xuexiang.xuidemo.fragment.components.imageview.preview.NineGridInfo;
 import com.xuexiang.xuidemo.fragment.components.pickerview.ProvinceInfo;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
 import com.xuexiang.xuidemo.fragment.expands.linkage.custom.CustomGroupedItem;
 import com.xuexiang.xuidemo.fragment.expands.linkage.eleme.ElemeGroupedItem;
 import com.xuexiang.xutil.net.JsonUtil;
@@ -405,6 +407,22 @@ public class DemoDataProvider {
         List<NewInfo> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             list.add(new NewInfo());
+        }
+        return list;
+    }
+
+
+    @MemoryCache
+    public static List<StickyItem> getStickyDemoData() {
+        List<StickyItem> list = new ArrayList<>();
+        List<StickyItem> temp = new ArrayList<>();
+        List<NewInfo> news = DemoDataProvider.getDemoNewInfos();
+        for (NewInfo newInfo : news) {
+            temp.add(new StickyItem(newInfo));
+        }
+        for (String page : MultiPage.getPageNames()) {
+            list.add(new StickyItem(page));
+            list.addAll(temp);
         }
         return list;
     }
