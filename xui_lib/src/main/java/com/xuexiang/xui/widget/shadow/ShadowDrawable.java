@@ -58,7 +58,7 @@ public class ShadowDrawable extends Drawable {
     /**
      * 背景颜色[大于1为渐变色]
      */
-    private int mBgColor[];
+    private int[] mBgColor;
     private RectF mRect;
 
     /**

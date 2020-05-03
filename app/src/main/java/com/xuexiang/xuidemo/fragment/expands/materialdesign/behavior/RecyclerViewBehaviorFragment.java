@@ -1,7 +1,6 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
 import android.os.Handler;
-import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -9,13 +8,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.adapter.recyclerview.XLinearLayoutManager;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
-import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
@@ -64,24 +61,9 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("新建");
-            }
-        });
-        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
-            @Override
-            public void onItemClick(View itemView, NewInfo item, int position) {
-                Utils.goWeb(getContext(), item.getDetailUrl());
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> popToBack());
+        fab.setOnClickListener(v -> XToastUtils.toast("新建"));
+        mAdapter.setOnItemClickListener((itemView, item, position) -> Utils.goWeb(getContext(), item.getDetailUrl()));
         // 刷新监听。
         swipeRefreshLayout.setOnRefreshListener(mRefreshListener);
         refresh();
@@ -90,12 +72,7 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
     /**
      * 刷新。
      */
-    private SwipeRefreshLayout.OnRefreshListener mRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
-        @Override
-        public void onRefresh() {
-            loadData();
-        }
-    };
+    private SwipeRefreshLayout.OnRefreshListener mRefreshListener = this::loadData;
 
     private void refresh() {
         swipeRefreshLayout.setRefreshing(true);
@@ -103,15 +80,12 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
     }
 
     private void loadData() {
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
-                if (swipeRefreshLayout != null) {
-                    swipeRefreshLayout.setRefreshing(false);
-                }
-                enableLoadMore();
+        mHandler.postDelayed(() -> {
+            mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+            if (swipeRefreshLayout != null) {
+                swipeRefreshLayout.setRefreshing(false);
             }
+            enableLoadMore();
         }, 1000);
     }
 
@@ -140,13 +114,10 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
     private SwipeRecyclerView.LoadMoreListener mLoadMoreListener = new SwipeRecyclerView.LoadMoreListener() {
         @Override
         public void onLoadMore() {
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
-                    if (recyclerView != null) {
-                        recyclerView.loadMoreFinish(false, true);
-                    }
+            mHandler.postDelayed(() -> {
+                mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
+                if (recyclerView != null) {
+                    recyclerView.loadMoreFinish(false, true);
                 }
             }, 1000);
         }

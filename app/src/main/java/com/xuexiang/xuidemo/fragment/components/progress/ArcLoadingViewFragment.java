@@ -15,7 +15,6 @@ import com.xuexiang.xuidemo.base.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.functions.Consumer;
 
 /**
  *
@@ -57,18 +56,15 @@ public class ArcLoadingViewFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        mBtSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mLoadingView.isStart()) {
-                    mBtSwitch.setText(R.string.tip_start);
-                    mLoadingView.stop();
-                    mAutoLoadingView.stop();
-                } else {
-                    mBtSwitch.setText(R.string.tip_stop);
-                    mLoadingView.start();
-                    mAutoLoadingView.start();
-                }
+        mBtSwitch.setOnClickListener(v -> {
+            if (mLoadingView.isStart()) {
+                mBtSwitch.setText(R.string.tip_start);
+                mLoadingView.stop();
+                mAutoLoadingView.stop();
+            } else {
+                mBtSwitch.setText(R.string.tip_stop);
+                mLoadingView.start();
+                mAutoLoadingView.start();
             }
         });
     }
@@ -76,35 +72,20 @@ public class ArcLoadingViewFragment extends BaseFragment {
     @OnClick(R.id.btn_loading_dialog)
     void showLoadingDialog(View v) {
         mLoadingDialog.show();
-        RxJavaUtils.delay(4, new Consumer<Long>() {
-            @Override
-            public void accept(Long aLong) throws Exception {
-                mLoadingDialog.dismiss();
-            }
-        });
+        RxJavaUtils.delay(4, aLong -> mLoadingDialog.dismiss());
     }
 
     @OnClick(R.id.btn_loading_layout)
     void showLoadingLayout(View v) {
         mLoadingViewLayout.show();
-        RxJavaUtils.delay(4, new Consumer<Long>() {
-            @Override
-            public void accept(Long aLong) throws Exception {
-                mLoadingViewLayout.dismiss();
-            }
-        });
+        RxJavaUtils.delay(4, aLong -> mLoadingViewLayout.dismiss());
     }
 
 
     @OnClick(R.id.btn_test_dialog)
     void showTestDialog(View v) {
         mMiniLoadingDialog.show();
-        RxJavaUtils.delay(4, new Consumer<Long>() {
-            @Override
-            public void accept(Long aLong) throws Exception {
-                mMiniLoadingDialog.dismiss();
-            }
-        });
+        RxJavaUtils.delay(4, aLong -> mMiniLoadingDialog.dismiss());
     }
 
     @Override

@@ -61,7 +61,7 @@ public class TabSegmentScrollableModeFragment extends BaseFragment {
     private Map<MultiPage, View> mPageMap = new HashMap<>();
     private PagerAdapter mPagerAdapter = new PagerAdapter() {
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
         }
 
@@ -81,7 +81,7 @@ public class TabSegmentScrollableModeFragment extends BaseFragment {
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View) object);
         }
 

@@ -207,8 +207,12 @@ public class MDTintHelper {
             Drawable[] drawables = new Drawable[2];
             drawables[0] = ContextCompat.getDrawable(editText.getContext(), mCursorDrawableRes);
             drawables[1] = ContextCompat.getDrawable(editText.getContext(), mCursorDrawableRes);
-            drawables[0].setColorFilter(color, PorterDuff.Mode.SRC_IN);
-            drawables[1].setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            if (drawables[0] != null) {
+                drawables[0].setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            }
+            if (drawables[1] != null) {
+                drawables[1].setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            }
             fCursorDrawable.set(editor, drawables);
         } catch (NoSuchFieldException e1) {
             Log.d("MDTintHelper", "Device issue with cursor tinting: " + e1.getMessage());

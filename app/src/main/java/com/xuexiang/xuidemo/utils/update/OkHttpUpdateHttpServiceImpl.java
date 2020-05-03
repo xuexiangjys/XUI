@@ -38,9 +38,9 @@ import okhttp3.Request;
  * @author xuexiang
  * @since 2018/7/10 下午4:04
  */
-public class OKHttpUpdateHttpService implements IUpdateHttpService {
+public class OkHttpUpdateHttpServiceImpl implements IUpdateHttpService {
 
-    public OKHttpUpdateHttpService() {
+    public OkHttpUpdateHttpServiceImpl() {
         OkHttpUtils.initClient(new OkHttpClient.Builder()
                 .connectTimeout(20000L, TimeUnit.MILLISECONDS)
                 .readTimeout(20000L, TimeUnit.MILLISECONDS)

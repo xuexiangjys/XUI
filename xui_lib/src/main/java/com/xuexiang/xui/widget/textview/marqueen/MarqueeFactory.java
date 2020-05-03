@@ -31,7 +31,7 @@ public abstract class MarqueeFactory<T extends View, E> {
             return;
         }
         mDatas = datas;
-        mViews = new ArrayList<T>();
+        mViews = new ArrayList<>();
         for (int i = 0; i < datas.size(); i++) {
             E data = datas.get(i);
             T mView = generateMarqueeItemView(data);

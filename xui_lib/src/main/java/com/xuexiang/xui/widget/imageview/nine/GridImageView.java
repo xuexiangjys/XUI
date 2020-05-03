@@ -6,7 +6,8 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.ImageView;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * 九宫图图片
@@ -14,7 +15,7 @@ import android.widget.ImageView;
  * @author xuexiang
  * @since 2018/12/9 下午10:37
  */
-public class GridImageView extends ImageView {
+public class GridImageView extends AppCompatImageView {
 
     public GridImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -26,7 +27,6 @@ public class GridImageView extends ImageView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Drawable drawable = getDrawable();
@@ -42,6 +42,8 @@ public class GridImageView extends ImageView {
                 if (drawableUp != null) {
                     drawableUp.mutate().clearColorFilter();
                 }
+                break;
+            default:
                 break;
         }
 

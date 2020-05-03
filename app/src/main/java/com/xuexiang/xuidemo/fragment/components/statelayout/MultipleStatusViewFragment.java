@@ -52,12 +52,9 @@ public class MultipleStatusViewFragment extends BaseFragment {
         mMultipleStatusView.setOnRetryClickListener(mRetryClickListener);
     }
 
-    final View.OnClickListener mRetryClickListener = (new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            XToastUtils.toast("点击重试");
-            loading();
-        }
+    final View.OnClickListener mRetryClickListener = (v -> {
+        XToastUtils.toast("点击重试");
+        loading();
     });
 
     void loading() {

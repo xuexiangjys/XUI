@@ -103,30 +103,24 @@ public class NineGridImageViewFragment extends BaseFragment {
         mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(final @NonNull RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPage++;
-                        if (mPage < getMediaRes().size()) {
-                            mAdapter.loadMore(getMediaRes().get(mPage));
-                            refreshLayout.finishLoadMore();
-                        } else {
-                            XToastUtils.toast("数据全部加载完毕");
-                            refreshLayout.finishLoadMoreWithNoMoreData();//将不会再次触发加载更多事件
-                        }
+                refreshLayout.getLayout().postDelayed(() -> {
+                    mPage++;
+                    if (mPage < getMediaRes().size()) {
+                        mAdapter.loadMore(getMediaRes().get(mPage));
+                        refreshLayout.finishLoadMore();
+                    } else {
+                        XToastUtils.toast("数据全部加载完毕");
+                        refreshLayout.finishLoadMoreWithNoMoreData();//将不会再次触发加载更多事件
                     }
                 }, 1000);
             }
 
             @Override
             public void onRefresh(final @NonNull RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPage = 0;
-                        mAdapter.refresh(getMediaRes().get(mPage));
-                        refreshLayout.finishRefresh();
-                    }
+                refreshLayout.getLayout().postDelayed(() -> {
+                    mPage = 0;
+                    mAdapter.refresh(getMediaRes().get(mPage));
+                    refreshLayout.finishRefresh();
                 }, 1000);
 
             }

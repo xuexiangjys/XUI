@@ -18,8 +18,11 @@
 package com.xuexiang.xui.widget.behavior;
 
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
+
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -43,17 +46,16 @@ abstract public class BaseBehavior extends CoordinatorLayout.Behavior<View> {
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
     }
 
-    // on Scroll Started
     @Override
-    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child,
-                                       View directTargetChild, View target, int nestedScrollAxes) {
+    public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child,
+                                       @NonNull View directTargetChild, @NonNull View target, int nestedScrollAxes) {
 
         return (nestedScrollAxes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
     }
 
     @Override
-    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target,
-                                  int dx, int dy, int[] consumed) {
+    public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target,
+                                  int dx, int dy, @NonNull int[] consumed) {
         onNestPreScrollInit(child);
 
         if (Math.abs(dy) > 2) {

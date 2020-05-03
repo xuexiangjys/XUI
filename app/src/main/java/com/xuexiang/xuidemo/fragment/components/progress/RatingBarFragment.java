@@ -47,17 +47,9 @@ public class RatingBarFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        ratingBar.setOnRatingChangeListener(new RatingBar.OnRatingChangeListener() {
-            @Override
-            public void onRatingChange(RatingBar ratingBar, float rating) {
-                XToastUtils.toast("当前星级：" + rating);
-            }
-        });
-        scaleRatingBar.setOnRatingChangeListener(new RatingBar.OnRatingChangeListener() {
-            @Override
-            public void onRatingChange(RatingBar ratingBar, float rating) {
+        ratingBar.setOnRatingChangeListener((ratingBar, rating) -> XToastUtils.toast("当前星级：" + rating));
+        scaleRatingBar.setOnRatingChangeListener((ratingBar, rating) -> {
 
-            }
         });
     }
 

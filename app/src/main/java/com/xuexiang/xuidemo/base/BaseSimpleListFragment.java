@@ -18,7 +18,6 @@ package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
 import android.os.Parcelable;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -50,12 +49,7 @@ public abstract class BaseSimpleListFragment extends XPageSimpleListFragment {
     }
 
     protected TitleBar initTitle() {
-        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
+        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), v -> popToBack());
     }
 
     @Override
@@ -65,7 +59,7 @@ public abstract class BaseSimpleListFragment extends XPageSimpleListFragment {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         //屏幕旋转时刷新一下title
         super.onConfigurationChanged(newConfig);
         ViewGroup root = (ViewGroup) getRootView();

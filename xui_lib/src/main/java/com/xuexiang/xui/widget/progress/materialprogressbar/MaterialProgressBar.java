@@ -711,7 +711,6 @@ public class MaterialProgressBar extends ProgressBar {
 
             if (hasTint) {
                 if (drawable instanceof TintableDrawable) {
-                    //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintList(tint);
                 } else {
                     logDrawableTintWarning();
@@ -723,7 +722,6 @@ public class MaterialProgressBar extends ProgressBar {
 
             if (hasTintMode) {
                 if (drawable instanceof TintableDrawable) {
-                    //noinspection RedundantCast
                     ((TintableDrawable) drawable).setTintMode(tintMode);
                 } else {
                     logDrawableTintWarning();

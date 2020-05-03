@@ -20,10 +20,6 @@ import com.xuexiang.xui.widget.XUIWrapContentListView;
  */
 public class ListPopup extends BaseCustomPopup {
     /**
-     * 集合
-     */
-    private ListView mListView;
-    /**
      * 适配器
      */
     private BaseAdapter mAdapter;
@@ -38,7 +34,10 @@ public class ListPopup extends BaseCustomPopup {
 
     @Override
     protected void initAttributes() {
-        mListView = new XUIWrapContentListView(getContext(), mMaxHeight);
+        /**
+         * 集合
+         */
+        ListView mListView = new XUIWrapContentListView(getContext(), mMaxHeight);
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(mWidth, mMaxHeight);
         mListView.setLayoutParams(lp);
         mListView.setAdapter(mAdapter);

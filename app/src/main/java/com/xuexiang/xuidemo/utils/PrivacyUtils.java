@@ -19,7 +19,6 @@ package com.xuexiang.xuidemo.utils;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -31,7 +30,6 @@ import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
-import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xutil.XUtil;
@@ -69,40 +67,27 @@ public final class PrivacyUtils {
                         dialog1.dismiss();
                     }
                 })
-                .negativeText(R.string.lab_disagree).onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        dialog.dismiss();
-                        DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(R.string.title_reminder), String.format(ResUtils.getString(R.string.content_privacy_explain_again), ResUtils.getString(R.string.app_name)), ResUtils.getString(R.string.lab_look_again), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                showPrivacyDialog(context, submitListener);
-                            }
-                        }, ResUtils.getString(R.string.lab_still_disagree), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(R.string.content_think_about_it_again), ResUtils.getString(R.string.lab_look_again), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                        showPrivacyDialog(context, submitListener);
-                                    }
-                                }, ResUtils.getString(R.string.lab_exit_app), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                        XUtil.get().exitApp();
-                                    }
-                                });
-                            }
+                .negativeText(R.string.lab_disagree).onNegative((dialog16, which) -> {
+                    dialog16.dismiss();
+                    DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(R.string.title_reminder), String.format(ResUtils.getString(R.string.content_privacy_explain_again), ResUtils.getString(R.string.app_name)), ResUtils.getString(R.string.lab_look_again), (dialog15, which14) -> {
+                        dialog15.dismiss();
+                        showPrivacyDialog(context, submitListener);
+                    }, ResUtils.getString(R.string.lab_still_disagree), (dialog14, which13) -> {
+                        dialog14.dismiss();
+                        DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(R.string.content_think_about_it_again), ResUtils.getString(R.string.lab_look_again), (dialog13, which12) -> {
+                            dialog13.dismiss();
+                            showPrivacyDialog(context, submitListener);
+                        }, ResUtils.getString(R.string.lab_exit_app), (dialog12, which1) -> {
+                            dialog12.dismiss();
+                            XUtil.get().exitApp();
                         });
-                    }
+                    });
                 }).build();
         dialog.setContent(getPrivacyContent(context));
         //开始响应点击事件
-        dialog.getContentView().setMovementMethod(LinkMovementMethod.getInstance());
+        if (dialog.getContentView() != null) {
+            dialog.getContentView().setMovementMethod(LinkMovementMethod.getInstance());
+        }
         dialog.show();
         return dialog;
     }

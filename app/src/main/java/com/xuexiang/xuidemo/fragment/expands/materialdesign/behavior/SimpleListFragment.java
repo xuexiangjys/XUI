@@ -1,7 +1,6 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,12 +8,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.xuexiang.xrouter.annotation.AutoWired;
 import com.xuexiang.xrouter.launcher.XRouter;
-import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
-import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
@@ -75,11 +72,6 @@ public class SimpleListFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
-            @Override
-            public void onItemClick(View itemView, NewInfo item, int position) {
-                Utils.goWeb(getContext(), item.getDetailUrl());
-            }
-        });
+        mAdapter.setOnItemClickListener((itemView, item, position) -> Utils.goWeb(getContext(), item.getDetailUrl()));
     }
 }

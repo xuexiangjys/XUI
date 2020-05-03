@@ -149,7 +149,6 @@ public class HorizontalProgressView extends View {
      */
     private RectF mRect;
     private RectF mTrackRect;
-    private Paint mTextPaint;
     private Interpolator mInterpolator;
     private HorizontalProgressUpdateListener animatorUpdateListener;
 
@@ -240,7 +239,7 @@ public class HorizontalProgressView extends View {
     private void drawProgressText(Canvas canvas) {
 
         if (textVisibility) {
-            mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            Paint mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             mTextPaint.setStyle(Paint.Style.FILL);
             mTextPaint.setTextSize(mProgressTextSize);
             mTextPaint.setColor(mProgressTextColor);

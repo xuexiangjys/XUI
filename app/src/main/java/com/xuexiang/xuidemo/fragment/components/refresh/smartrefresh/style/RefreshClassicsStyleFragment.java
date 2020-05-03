@@ -142,7 +142,9 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
         mRefreshLayout.setPrimaryColorsId(colorPrimary, android.R.color.white);
         mTitleBar.setBackgroundColor(ContextCompat.getColor(getContext(), colorPrimary));
         if (Build.VERSION.SDK_INT >= 21) {
-            getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(getContext(), colorPrimary));
+            if (getActivity() != null) {
+                getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(getContext(), colorPrimary));
+            }
             mDrawableProgress.setTint(0xffffffff);
         }
     }

@@ -11,8 +11,6 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.xuexiang.xuidemo.R;
 
-import java.text.DecimalFormat;
-
 /**
  * 柱状图的数字指示器
  *

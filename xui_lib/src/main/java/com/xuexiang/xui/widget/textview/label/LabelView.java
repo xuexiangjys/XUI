@@ -51,6 +51,7 @@ public class LabelView extends AppCompatTextView {
     private float _angel;
     private int _labelViewContainerID;
     private Animation _animation = new Animation() {
+        @Override
         protected void applyTransformation(float interpolatedTime, Transformation t) {
             Matrix tran = t.getMatrix();
             tran.postTranslate(_offsetx, _offsety);
@@ -83,7 +84,6 @@ public class LabelView extends AppCompatTextView {
 
 
     private void init() {
-
         if (!(getLayoutParams() instanceof ViewGroup.LayoutParams)) {
             LayoutParams layoutParams =
                     new LayoutParams(
@@ -115,6 +115,7 @@ public class LabelView extends AppCompatTextView {
 
         ViewTreeObserver vto = getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
             public void onGlobalLayout() {
                 getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 calcOffset(getMeasuredWidth(), d, g, v.getMeasuredWidth(), false);
@@ -253,7 +254,9 @@ public class LabelView extends AppCompatTextView {
             final int result = sNextGeneratedId.get();
             // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
             int newValue = result + 1;
-            if (newValue > 0x00FFFFFF) newValue = 1; // Roll over to 1, not 0.
+            if (newValue > 0x00FFFFFF) {
+                newValue = 1; // Roll over to 1, not 0.
+            }
             if (sNextGeneratedId.compareAndSet(result, newValue)) {
                 return result;
             }

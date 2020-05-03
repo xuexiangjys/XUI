@@ -58,21 +58,13 @@ public class ExpandableSimpleFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        expandableLayout1.setOnExpansionChangedListener(new ExpandableLayout.OnExpansionChangedListener() {
-            @Override
-            public void onExpansionChanged(float expansion, int state) {
-                Log.d("expandableLayout1", "State: " + state);
-            }
-        });
+        expandableLayout1.setOnExpansionChangedListener((expansion, state) -> Log.d("expandableLayout1", "State: " + state));
 
-        expandableLayout2.setOnExpansionChangedListener(new ExpandableLayout.OnExpansionChangedListener() {
-            @Override
-            public void onExpansionChanged(float expansion, int state) {
-                if (state == COLLAPSED) {
-                    XToastUtils.toast("已收起");
-                } else if (state == EXPANDED) {
-                    XToastUtils.toast("已展开");
-                }
+        expandableLayout2.setOnExpansionChangedListener((expansion, state) -> {
+            if (state == COLLAPSED) {
+                XToastUtils.toast("已收起");
+            } else if (state == EXPANDED) {
+                XToastUtils.toast("已展开");
             }
         });
     }

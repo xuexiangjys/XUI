@@ -509,8 +509,10 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
 
     private String getTitleByValue(String value) {
         if (mItemMap.containsValue(value)) {
+            String title;
             for (String key : mItemMap.keySet()) {
-                if (mItemMap.get(key).equalsIgnoreCase(value)) {
+                title = mItemMap.get(key);
+                if (title != null && title.equalsIgnoreCase(value)) {
                     return key;
                 }
             }

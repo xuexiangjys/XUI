@@ -192,15 +192,14 @@ public class EasyPopup implements PopupWindow.OnDismissListener {
                     final int x = (int) event.getX();
                     final int y = (int) event.getY();
 
+                    //outside
                     if ((event.getAction() == MotionEvent.ACTION_DOWN)
                             && ((x < 0) || (x >= mWidth) || (y < 0) || (y >= mHeight))) {
                         //outside
                         return true;
-                    } else if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-                        //outside
-                        return true;
+                    } else {
+                        return event.getAction() == MotionEvent.ACTION_OUTSIDE;
                     }
-                    return false;
                 }
             });
         } else {

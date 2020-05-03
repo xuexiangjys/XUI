@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -70,7 +71,7 @@ public class EasyIndicatorFragment extends BaseFragment {
 
     private PagerAdapter mPagerAdapter = new PagerAdapter() {
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
         }
 
@@ -89,7 +90,7 @@ public class EasyIndicatorFragment extends BaseFragment {
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View) object);
         }
     };
@@ -125,12 +126,7 @@ public class EasyIndicatorFragment extends BaseFragment {
 
     private void initIndicatorNoViewPager() {
         mEasyIndicator1.setTabTitles(ContentPage.getPageNames());
-        mEasyIndicator1.setOnTabClickListener(new EasyIndicator.onTabClickListener() {
-            @Override
-            public void onTabClick(String title, int position) {
-                XToastUtils.toast("点击了" + title);
-            }
-        });
+        mEasyIndicator1.setOnTabClickListener((title, position) -> XToastUtils.toast("点击了" + title));
 
     }
 

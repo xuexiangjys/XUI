@@ -72,9 +72,7 @@ public class UltraViewPagerFragment extends BaseFragment {
         ultraViewPager.setInfiniteLoop(true);
         ultraViewPager.setAutoScroll(2000);
 
-        adapter.setOnItemClickListener((itemView, item, position) -> {
-            XToastUtils.toast("position--->" + position);
-        });
+        adapter.setOnItemClickListener((itemView, item, position) -> XToastUtils.toast("position--->" + position));
     }
 
     @Override

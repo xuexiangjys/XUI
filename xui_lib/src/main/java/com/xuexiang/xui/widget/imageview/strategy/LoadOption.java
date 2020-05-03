@@ -19,6 +19,8 @@ package com.xuexiang.xui.widget.imageview.strategy;
 
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.NonNull;
+
 /**
  * 加载选项
  *
@@ -149,6 +151,7 @@ public class LoadOption {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "LoadOption{" +

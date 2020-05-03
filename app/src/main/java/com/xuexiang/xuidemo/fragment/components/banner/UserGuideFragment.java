@@ -75,14 +75,9 @@ public class UserGuideFragment extends BaseFragment {
                 .setSelectAnimClass(ZoomInEnter.class)
                 .setTransformerClass(transformerClass)
                 .barPadding(0, 10, 0, 10)
-                .setSource(DemoDataProvider.getUsertGuides())
+                .setSource(DemoDataProvider.getUserGuides())
                 .startScroll();
 
-        sgb.setOnJumpClickListener(new SimpleGuideBanner.OnJumpClickListener() {
-            @Override
-            public void onJumpClick() {
-                popToBack();
-            }
-        });
+        sgb.setOnJumpClickListener(this::popToBack);
     }
 }

@@ -228,7 +228,7 @@ public abstract class BaseIndicatorBanner<E, T extends BaseIndicatorBanner<E, T>
         return (T) this;
     }
 
-    private class ReverseInterpolator implements Interpolator {
+    private static class ReverseInterpolator implements Interpolator {
         @Override
         public float getInterpolation(float value) {
             return Math.abs(1.0f - value);

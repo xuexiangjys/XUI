@@ -46,18 +46,8 @@ public class ViewTipFragment extends BaseFragment {
                 .clickToHide(true)
                 .autoHide(false, 0)
                 .animation(new ViewTooltip.FadeTooltipAnimation(500))
-                .onDisplay(new ViewTooltip.ListenerDisplay() {
-                    @Override
-                    public void onDisplay(View view) {
-                        XToastUtils.toast("onDisplay");
-                    }
-                })
-                .onHide(new ViewTooltip.ListenerHide() {
-                    @Override
-                    public void onHide(View view) {
-                        XToastUtils.toast("onHide");
-                    }
-                })
+                .onDisplay(view12 -> XToastUtils.toast("onDisplay"))
+                .onHide(view1 -> XToastUtils.toast("onHide"))
                 .show();
     }
 

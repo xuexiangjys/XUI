@@ -17,6 +17,8 @@
 
 package com.xuexiang.xui.widget.dialog.strategy;
 
+import androidx.annotation.NonNull;
+
 /**
  * 输入信息
  *
@@ -99,6 +101,7 @@ public class InputInfo {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "InputInfo{" +

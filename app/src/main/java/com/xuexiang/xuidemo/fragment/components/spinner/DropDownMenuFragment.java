@@ -22,7 +22,6 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,10 +36,8 @@ import com.xuexiang.xuidemo.adapter.dropdownmenu.CityDropDownAdapter;
 import com.xuexiang.xuidemo.adapter.dropdownmenu.ConstellationAdapter;
 import com.xuexiang.xuidemo.adapter.dropdownmenu.ListDropDownAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xutil.common.StringUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -116,12 +113,9 @@ public class DropDownMenuFragment extends BaseFragment {
         GridView constellation = constellationView.findViewById(R.id.constellation);
         mConstellationAdapter = new ConstellationAdapter(getContext(), mConstellations);
         constellation.setAdapter(mConstellationAdapter);
-        constellationView.findViewById(R.id.btn_ok).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDropDownMenu.setTabMenuText(mConstellationAdapter.getSelectPosition() <= 0 ? mHeaders[3] : mConstellationAdapter.getSelectItem());
-                mDropDownMenu.closeMenu();
-            }
+        constellationView.findViewById(R.id.btn_ok).setOnClickListener(v -> {
+            mDropDownMenu.setTabMenuText(mConstellationAdapter.getSelectPosition() <= 0 ? mHeaders[3] : mConstellationAdapter.getSelectItem());
+            mDropDownMenu.closeMenu();
         });
 
         //init mPopupViews
@@ -131,39 +125,25 @@ public class DropDownMenuFragment extends BaseFragment {
         mPopupViews.add(constellationView);
 
         //add item click event
-        cityView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mCityAdapter.setSelectPosition(position);
-                mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[0] : mCitys[position]);
-                mDropDownMenu.closeMenu();
-            }
+        cityView.setOnItemClickListener((parent, view, position, id) -> {
+            mCityAdapter.setSelectPosition(position);
+            mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[0] : mCitys[position]);
+            mDropDownMenu.closeMenu();
         });
 
-        ageView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mAgeAdapter.setSelectPosition(position);
-                mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[1] : mAges[position]);
-                mDropDownMenu.closeMenu();
-            }
+        ageView.setOnItemClickListener((parent, view, position, id) -> {
+            mAgeAdapter.setSelectPosition(position);
+            mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[1] : mAges[position]);
+            mDropDownMenu.closeMenu();
         });
 
-        sexView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mSexAdapter.setSelectPosition(position);
-                mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[2] : mSexs[position]);
-                mDropDownMenu.closeMenu();
-            }
+        sexView.setOnItemClickListener((parent, view, position, id) -> {
+            mSexAdapter.setSelectPosition(position);
+            mDropDownMenu.setTabMenuText(position == 0 ? mHeaders[2] : mSexs[position]);
+            mDropDownMenu.closeMenu();
         });
 
-        constellation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mConstellationAdapter.setSelectPosition(position);
-            }
-        });
+        constellation.setOnItemClickListener((parent, view, position, id) -> mConstellationAdapter.setSelectPosition(position));
 
         //init context view
         TextView contentView = new TextView(getContext());

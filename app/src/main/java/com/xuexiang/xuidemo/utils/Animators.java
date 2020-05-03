@@ -15,13 +15,10 @@ public class Animators {
         animator.setInterpolator(new LinearInterpolator());
         animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.addUpdateListener(
-                new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator animator) {
-                        int value = (int) animator.getAnimatedValue();
-                        for (ProgressBar progressBar : progressBars) {
-                            progressBar.setProgress(value);
-                        }
+                animator1 -> {
+                    int value = (int) animator1.getAnimatedValue();
+                    for (ProgressBar progressBar : progressBars) {
+                        progressBar.setProgress(value);
                     }
                 });
         return animator;
@@ -31,13 +28,10 @@ public class Animators {
             final ProgressBar[] progressBars) {
         ValueAnimator animator = makeDeterminateCircularPrimaryProgressAnimator(progressBars);
         animator.addUpdateListener(
-                new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator animator) {
-                        int value = Math.round(1.25f * (int) animator.getAnimatedValue());
-                        for (ProgressBar progressBar : progressBars) {
-                            progressBar.setSecondaryProgress(value);
-                        }
+                animator1 -> {
+                    int value = Math.round(1.25f * (int) animator1.getAnimatedValue());
+                    for (ProgressBar progressBar : progressBars) {
+                        progressBar.setSecondaryProgress(value);
                     }
                 });
         return animator;

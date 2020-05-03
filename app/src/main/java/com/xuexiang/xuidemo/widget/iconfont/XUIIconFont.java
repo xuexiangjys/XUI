@@ -179,11 +179,13 @@ public class XUIIconFont implements ITypeface {
             return "{" + name() + "}";
         }
 
+        @NonNull
         @Override
         public String getName() {
             return name();
         }
 
+        @NonNull
         @Override
         public ITypeface getTypeface() {
             if (sITypeface == null) {

@@ -74,7 +74,7 @@ public final class WidgetUtils {
      */
     public static void initSpinnerStyle(Spinner spinner, String[] items) {
         setSpinnerDropDownVerticalOffset(spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(spinner.getContext(), R.layout.xui_layout_spinner_selected_item, R.id.spinner_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(spinner.getContext(), R.layout.xui_layout_spinner_selected_item, R.id.spinner_item, items);
         adapter.setDropDownViewResource(R.layout.xui_layout_spinner_drop_down_item);
         spinner.setAdapter(adapter);
     }

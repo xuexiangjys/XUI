@@ -167,8 +167,6 @@ public class MultiLineEditText extends LinearLayout {
     }
 
     private TextWatcher mTextWatcher = new TextWatcher() {
-        private int mEditStart;
-        private int mEditEnd;
 
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -183,8 +181,8 @@ public class MultiLineEditText extends LinearLayout {
         @Override
         public void afterTextChanged(Editable editable) {
 
-            mEditStart = mEtInput.getSelectionStart();
-            mEditEnd = mEtInput.getSelectionEnd();
+            int mEditStart = mEtInput.getSelectionStart();
+            int mEditEnd = mEtInput.getSelectionEnd();
 
             // 先去掉监听器，否则会出现栈溢出
             mEtInput.removeTextChangedListener(mTextWatcher);
@@ -219,7 +217,7 @@ public class MultiLineEditText extends LinearLayout {
     private long calculateLength(CharSequence c) {
         double len = 0;
         for (int i = 0; i < c.length(); i++) {
-            int tmp = (int) c.charAt(i);
+            int tmp = c.charAt(i);
             if (tmp > 0 && tmp < 127) {
                 len += 0.5;
             } else {
@@ -283,7 +281,7 @@ public class MultiLineEditText extends LinearLayout {
         if (!mIgnoreCnOrEn) {
             double len = 0;
             for (int i = 0; i < content.length(); i++) {
-                int tmp = (int) content.charAt(i);
+                int tmp = content.charAt(i);
                 if (tmp > 0 && tmp < 127) {
                     len += 0.5;
                 } else {

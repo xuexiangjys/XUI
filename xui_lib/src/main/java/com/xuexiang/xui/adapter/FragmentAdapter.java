@@ -102,6 +102,7 @@ public class FragmentAdapter<T extends Fragment> extends FragmentPagerAdapter {
         return this;
     }
 
+    @NonNull
     @Override
     public T getItem(int position) {
         return mFragmentList.get(position);

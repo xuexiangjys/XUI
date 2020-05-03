@@ -285,9 +285,9 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
         mCalculator = new Calculator(mActivity, mFocusShape, mView, mFocusCircleRadiusFactor,
                 mFitSystemWindows, mAdjustHeight, mFocusOffsetX);
 
-        ViewGroup androidContent = (ViewGroup) mActivity.findViewById(android.R.id.content);
+        ViewGroup androidContent = mActivity.findViewById(android.R.id.content);
         mRoot = (ViewGroup) androidContent.getParent().getParent();
-        GuideCaseView visibleView = (GuideCaseView) mRoot.findViewWithTag(CONTAINER_TAG);
+        GuideCaseView visibleView = mRoot.findViewWithTag(CONTAINER_TAG);
         setClickable(true);
         if (visibleView == null) {
             setTag(CONTAINER_TAG);
@@ -351,9 +351,9 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
      * @param activity should be used to find GuideCaseView inside it
      */
     public static Boolean isVisible(Activity activity) {
-        ViewGroup androidContent = (ViewGroup) activity.findViewById(android.R.id.content);
+        ViewGroup androidContent = activity.findViewById(android.R.id.content);
         ViewGroup mRoot = (ViewGroup) androidContent.getParent().getParent();
-        GuideCaseView mContainer = (GuideCaseView) mRoot.findViewWithTag(CONTAINER_TAG);
+        GuideCaseView mContainer = mRoot.findViewWithTag(CONTAINER_TAG);
         return mContainer != null;
     }
 
@@ -363,9 +363,9 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
      * @param activity should be used to hide GuideCaseView inside it
      */
     public static void hideCurrent(Activity activity) {
-        ViewGroup androidContent = (ViewGroup) activity.findViewById(android.R.id.content);
+        ViewGroup androidContent = activity.findViewById(android.R.id.content);
         ViewGroup mRoot = (ViewGroup) androidContent.getParent().getParent();
-        GuideCaseView mContainer = (GuideCaseView) mRoot.findViewWithTag(CONTAINER_TAG);
+        GuideCaseView mContainer = mRoot.findViewWithTag(CONTAINER_TAG);
         mContainer.hide();
     }
 
@@ -436,7 +436,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
         inflateCustomView(R.layout.gcv_layout_title, new OnViewInflateListener() {
             @Override
             public void onViewInflated(View view) {
-                TextView textView = (TextView) view.findViewById(R.id.gcv_title);
+                TextView textView = view.findViewById(R.id.gcv_title);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     textView.setTextAppearance(mTitleStyle);
@@ -464,7 +464,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
         inflateCustomView(R.layout.gcv_layout_image, new OnViewInflateListener() {
             @Override
             public void onViewInflated(View view) {
-                ImageView imageView = (ImageView) view.findViewById(R.id.gcv_img);
+                ImageView imageView = view.findViewById(R.id.gcv_img);
                 imageView.setImageResource(mPictureResId);
                 FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) imageView.getLayoutParams();
                 params.gravity = mPictureGravity;

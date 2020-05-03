@@ -87,20 +87,17 @@ public class SnapHelperFragment extends BaseFragment {
         new BottomSheet.BottomListSheetBuilder(getActivity())
                 .addItem("水平方向")
                 .addItem("垂直方向")
-                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
-                        dialog.dismiss();
-                        switch (position) {
-                            case 0:
-                                mPagerLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-                                break;
-                            case 1:
-                                mPagerLayoutManager.setOrientation(RecyclerView.VERTICAL);
-                                break;
-                            default:
-                                break;
-                        }
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    switch (position) {
+                        case 0:
+                            mPagerLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+                            break;
+                        case 1:
+                            mPagerLayoutManager.setOrientation(RecyclerView.VERTICAL);
+                            break;
+                        default:
+                            break;
                     }
                 })
                 .build()

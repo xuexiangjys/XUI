@@ -19,7 +19,6 @@ package com.xuexiang.xuidemo.fragment.expands.camera;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +73,7 @@ public class AspectRatioFragment extends DialogFragment {
 
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof Listener) {
             mListener = (Listener) context;
@@ -96,6 +95,9 @@ public class AspectRatioFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Bundle args = getArguments();
+        if (args == null) {
+            throw new RuntimeException("args is null!");
+        }
         final AspectRatio[] ratios = (AspectRatio[]) args.getParcelableArray(ARG_ASPECT_RATIOS);
         if (ratios == null) {
             throw new RuntimeException("No ratios");
@@ -104,12 +106,7 @@ public class AspectRatioFragment extends DialogFragment {
         final AspectRatio current = args.getParcelable(ARG_CURRENT_ASPECT_RATIO);
         final AspectRatioAdapter adapter = new AspectRatioAdapter(ratios, current);
         return new AlertDialog.Builder(getActivity())
-                .setAdapter(adapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int position) {
-                        mListener.onAspectRatioSelected(ratios[position]);
-                    }
-                })
+                .setAdapter(adapter, (dialog, position) -> mListener.onAspectRatioSelected(ratios[position]))
                 .create();
     }
 

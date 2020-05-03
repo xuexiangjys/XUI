@@ -170,6 +170,8 @@ public class XTabView extends TabView {
             case Gravity.BOTTOM:
                 mTitle.setCompoundDrawables(null, null, null, drawable);
                 break;
+            default:
+                break;
         }
         refreshDrawablePadding();
     }

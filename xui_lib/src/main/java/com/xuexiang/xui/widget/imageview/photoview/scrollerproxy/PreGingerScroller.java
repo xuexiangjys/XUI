@@ -42,6 +42,7 @@ public class PreGingerScroller extends ScrollerProxy {
         mScroller.forceFinished(finished);
     }
 
+    @Override
     public boolean isFinished() {
         return mScroller.isFinished();
     }

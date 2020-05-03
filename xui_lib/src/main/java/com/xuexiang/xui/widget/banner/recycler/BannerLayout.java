@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.OrientationHelper;
@@ -260,14 +261,14 @@ public class BannerLayout extends FrameLayout {
         setPlaying(true);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 if (dx != 0) {
                     setPlaying(false);
                 }
             }
 
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 int first = mLayoutManager.getCurrentPosition();
                 if (mCurrentIndex != first) {
                     mCurrentIndex = first;
@@ -290,6 +291,8 @@ public class BannerLayout extends FrameLayout {
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 setPlaying(true);
+                break;
+            default:
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -328,8 +331,9 @@ public class BannerLayout extends FrameLayout {
             this.currentPosition = currentPosition;
         }
 
+        @NonNull
         @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             ImageView bannerPoint = new ImageView(getContext());
             RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);

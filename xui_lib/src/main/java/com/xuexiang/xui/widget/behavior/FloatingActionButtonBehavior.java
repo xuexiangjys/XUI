@@ -18,6 +18,8 @@
 package com.xuexiang.xui.widget.behavior;
 
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
@@ -35,7 +37,7 @@ public class FloatingActionButtonBehavior extends BaseBehavior {
     }
 
     @Override
-    public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
+    public boolean layoutDependsOn(@NonNull CoordinatorLayout parent, @NonNull View child, @NonNull View dependency) {
         if (canInit) {
             mAnimateHelper = ScaleAnimateHelper.get(child);
             canInit = false;

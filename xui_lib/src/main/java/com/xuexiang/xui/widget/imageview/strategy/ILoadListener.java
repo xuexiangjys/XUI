@@ -17,10 +17,6 @@
 
 package com.xuexiang.xui.widget.imageview.strategy;
 
-import android.graphics.drawable.Drawable;
-
-import androidx.annotation.Nullable;
-
 /**
  * 加载监听
  *

@@ -20,6 +20,7 @@ import com.xuexiang.xui.utils.ResUtils;
  * @since 2019/1/14 下午10:00
  */
 public class XUIPopup extends XUIBasePopup {
+
     public static final int ANIM_GROW_FROM_LEFT = 1;
     public static final int ANIM_GROW_FROM_RIGHT = 2;
     public static final int ANIM_GROW_FROM_CENTER = 3;
@@ -29,10 +30,14 @@ public class XUIPopup extends XUIBasePopup {
     public static final int DIRECTION_BOTTOM = 1;
     public static final int DIRECTION_NONE = 2;
 
-    // 该PopupWindow的View距离屏幕左右的最小距离
+    /**
+     * 该PopupWindow的View距离屏幕左右的最小距离
+     */
     private int mPopupLeftRightMinMargin = 0;
 
-    // 该PopupWindow的View距离屏幕上下的最小距离
+    /**
+     * 该PopupWindow的View距离屏幕上下的最小距离
+     */
     private int mPopupTopBottomMinMargin = 0;
 
     protected ImageView mArrowUp;
@@ -45,11 +50,17 @@ public class XUIPopup extends XUIBasePopup {
     protected int mY = -1;
     protected int mArrowCenter;
 
-    // 计算位置后的偏移x值
+    /**
+     * 计算位置后的偏移x值
+     */
     private int mOffsetX = 0;
-    // 计算位置后的偏移y值，当浮层在View的上方时使用
+    /**
+     * 计算位置后的偏移y值，当浮层在View的上方时使用
+     */
     private int mOffsetYWhenTop = 0;
-    // 计算位置后的偏移y值，当浮层在View的下方时使用
+    /**
+     * 计算位置后的偏移y值，当浮层在View的下方时使用
+     */
     private int mOffsetYWhenBottom = 0;
 
     public XUIPopup(Context context) {
@@ -138,11 +149,7 @@ public class XUIPopup extends XUIBasePopup {
             mArrowCenter = attachedViewLocation[0] + attachedView.getWidth() / 2;
             if (mArrowCenter < mScreenSize.x / 2) {
                 //描点在左侧
-                if (mArrowCenter - mWindowWidth / 2 > mPopupLeftRightMinMargin) {
-                    mX = mArrowCenter - mWindowWidth / 2;
-                } else {
-                    mX = mPopupLeftRightMinMargin;
-                }
+                mX = Math.max(mArrowCenter - mWindowWidth / 2, mPopupLeftRightMinMargin);
             } else {//描点在右侧
                 if (mArrowCenter + mWindowWidth / 2 < mScreenSize.x - mPopupLeftRightMinMargin) {
                     mX = mArrowCenter - mWindowWidth / 2;
@@ -213,7 +220,8 @@ public class XUIPopup extends XUIBasePopup {
                 } else {
                     getPopupWindow().setAnimationStyle(onTop ? R.style.XUI_Animation_PopUpMenu_Right : R.style.XUI_Animation_PopDownMenu_Right);
                 }
-
+                break;
+            default:
                 break;
         }
     }

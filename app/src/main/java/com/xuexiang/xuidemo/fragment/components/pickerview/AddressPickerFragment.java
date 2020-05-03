@@ -24,7 +24,6 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.picker.widget.OptionsPickerView;
 import com.xuexiang.xui.widget.picker.widget.builder.OptionsPickerBuilder;
-import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectListener;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -131,17 +130,14 @@ public class AddressPickerFragment extends BaseFragment {
 
         int[] defaultSelectOptions = getDefaultCity();
 
-        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
-            @Override
-            public boolean onOptionsSelect(View v, int options1, int options2, int options3) {
-                //返回的分别是三个级别的选中位置
-                String tx = options1Items.get(options1).getPickerViewText() + "-" +
-                        options2Items.get(options1).get(options2) + "-" +
-                        options3Items.get(options1).get(options2).get(options3);
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), (v, options1, options2, options3) -> {
+            //返回的分别是三个级别的选中位置
+            String tx = options1Items.get(options1).getPickerViewText() + "-" +
+                    options2Items.get(options1).get(options2) + "-" +
+                    options3Items.get(options1).get(options2).get(options3);
 
-                XToastUtils.toast(tx);
-                return false;
-            }
+            XToastUtils.toast(tx);
+            return false;
         })
 
                 .setTitleText("城市选择")

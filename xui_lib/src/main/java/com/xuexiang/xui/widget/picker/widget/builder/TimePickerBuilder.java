@@ -262,35 +262,35 @@ public class TimePickerBuilder {
     }
 
 
-    public TimePickerBuilder setLabel(String label_year, String label_month, String label_day, String label_hours, String label_mins, String label_seconds) {
-        mPickerOptions.label_year = label_year;
-        mPickerOptions.label_month = label_month;
-        mPickerOptions.label_day = label_day;
-        mPickerOptions.label_hours = label_hours;
-        mPickerOptions.label_minutes = label_mins;
-        mPickerOptions.label_seconds = label_seconds;
+    public TimePickerBuilder setLabel(String labelYear, String labelMonth, String labelDay, String labelHours, String labelMins, String labelSeconds) {
+        mPickerOptions.labelYear = labelYear;
+        mPickerOptions.labelMonth = labelMonth;
+        mPickerOptions.labelDay = labelDay;
+        mPickerOptions.labelHours = labelHours;
+        mPickerOptions.labelMinutes = labelMins;
+        mPickerOptions.labelSeconds = labelSeconds;
         return this;
     }
 
     /**
      * 设置X轴倾斜角度[ -90 , 90°]
      *
-     * @param x_offset_year    年
-     * @param x_offset_month   月
-     * @param x_offset_day     日
-     * @param x_offset_hours   时
-     * @param x_offset_minutes 分
-     * @param x_offset_seconds 秒
+     * @param xOffsetYear    年
+     * @param xOffsetMonth   月
+     * @param xOffsetDay     日
+     * @param xOffsetHours   时
+     * @param xOffsetMinutes 分
+     * @param xOffsetSeconds 秒
      * @return
      */
-    public TimePickerBuilder setTextXOffset(int x_offset_year, int x_offset_month, int x_offset_day,
-                                            int x_offset_hours, int x_offset_minutes, int x_offset_seconds) {
-        mPickerOptions.x_offset_year = x_offset_year;
-        mPickerOptions.x_offset_month = x_offset_month;
-        mPickerOptions.x_offset_day = x_offset_day;
-        mPickerOptions.x_offset_hours = x_offset_hours;
-        mPickerOptions.x_offset_minutes = x_offset_minutes;
-        mPickerOptions.x_offset_seconds = x_offset_seconds;
+    public TimePickerBuilder setTextXOffset(int xOffsetYear, int xOffsetMonth, int xOffsetDay,
+                                            int xOffsetHours, int xOffsetMinutes, int xOffsetSeconds) {
+        mPickerOptions.xOffsetYear = xOffsetYear;
+        mPickerOptions.xOffsetMonth = xOffsetMonth;
+        mPickerOptions.xOffsetDay = xOffsetDay;
+        mPickerOptions.xOffsetHours = xOffsetHours;
+        mPickerOptions.xOffsetMinutes = xOffsetMinutes;
+        mPickerOptions.xOffsetSeconds = xOffsetSeconds;
         return this;
     }
 

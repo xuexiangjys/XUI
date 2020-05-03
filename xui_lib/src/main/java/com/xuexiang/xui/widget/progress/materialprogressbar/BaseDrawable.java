@@ -141,7 +141,7 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
      * {@inheritDoc}
      */
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
 
         Rect bounds = getBounds();
         if (bounds.width() == 0 || bounds.height() == 0) {

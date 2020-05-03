@@ -230,7 +230,9 @@ public final class Utils {
      * @param closeables closeables
      */
     public static void closeIOQuietly(final Closeable... closeables) {
-        if (closeables == null) return;
+        if (closeables == null) {
+            return;
+        }
         for (Closeable closeable : closeables) {
             if (closeable != null) {
                 try {
@@ -393,7 +395,9 @@ public final class Utils {
      * @return 数值的位数，若传的参数小于等于0，则返回0
      */
     public static int getNumberDigits(int number) {
-        if (number <= 0) return 0;
+        if (number <= 0) {
+            return 0;
+        }
         return (int) (Math.log10(number) + 1);
     }
 

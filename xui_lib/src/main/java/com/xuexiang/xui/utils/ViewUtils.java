@@ -79,7 +79,7 @@ public final class ViewUtils {
     }
 
     // copy from View.generateViewId for API <= 16
-    private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
+    private static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger(1);
 
 
     private static final int[] APPCOMPAT_CHECK_ATTRS = {
@@ -106,7 +106,6 @@ public final class ViewUtils {
     /**
      * 触发window的insets的广播，使得view的fitSystemWindows得以生效
      */
-    @SuppressWarnings("deprecation")
     public static void requestApplyInsets(Window window) {
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             window.getDecorView().requestFitSystemWindows();
@@ -132,7 +131,6 @@ public final class ViewUtils {
         view.setPadding(padding[0], padding[1], padding[2], padding[3]);
     }
 
-    @SuppressWarnings("deprecation")
     public static void setBackgroundKeepingPadding(View view, int backgroundResId) {
         setBackgroundKeepingPadding(view, ContextCompat.getDrawable(view.getContext(), backgroundResId));
     }
@@ -275,13 +273,13 @@ public final class ViewUtils {
             return View.generateViewId();
         } else {
             for (; ; ) {
-                final int result = sNextGeneratedId.get();
+                final int result = ATOMIC_INTEGER.get();
                 // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
                 int newValue = result + 1;
                 if (newValue > 0x00FFFFFF) {
                     newValue = 1; // Roll over to 1, not 0.
                 }
-                if (sNextGeneratedId.compareAndSet(result, newValue)) {
+                if (ATOMIC_INTEGER.compareAndSet(result, newValue)) {
                     return result;
                 }
             }
@@ -483,6 +481,8 @@ public final class ViewUtils {
                             Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f,
                             Animation.RELATIVE_TO_SELF, 1f, Animation.RELATIVE_TO_SELF, 0f
                     );
+                    break;
+                default:
                     break;
             }
             translate.setInterpolator(new DecelerateInterpolator());
@@ -894,7 +894,7 @@ public final class ViewUtils {
         }
         View view = parentView.findViewById(inflatedViewId);
         if (null == view) {
-            ViewStub vs = (ViewStub) parentView.findViewById(viewStubId);
+            ViewStub vs = parentView.findViewById(viewStubId);
             if (null == vs) {
                 return null;
             }
@@ -916,7 +916,7 @@ public final class ViewUtils {
         }
         View view = parentView.findViewById(inflatedViewId);
         if (null == view) {
-            ViewStub vs = (ViewStub) parentView.findViewById(viewStubId);
+            ViewStub vs = parentView.findViewById(viewStubId);
             if (null == vs) {
                 return null;
             }
@@ -989,24 +989,24 @@ public final class ViewUtils {
 
 
     private static class ViewGroupHelper {
-        private static final ThreadLocal<Matrix> sMatrix = new ThreadLocal<>();
-        private static final ThreadLocal<RectF> sRectF = new ThreadLocal<>();
+        private static final ThreadLocal<Matrix> MATRIX_THREAD_LOCAL = new ThreadLocal<>();
+        private static final ThreadLocal<RectF> RECT_F_THREAD_LOCAL = new ThreadLocal<>();
 
         public static void offsetDescendantRect(ViewGroup group, View child, Rect rect) {
-            Matrix m = sMatrix.get();
+            Matrix m = MATRIX_THREAD_LOCAL.get();
             if (m == null) {
                 m = new Matrix();
-                sMatrix.set(m);
+                MATRIX_THREAD_LOCAL.set(m);
             } else {
                 m.reset();
             }
 
             offsetDescendantMatrix(group, child, m);
 
-            RectF rectF = sRectF.get();
+            RectF rectF = RECT_F_THREAD_LOCAL.get();
             if (rectF == null) {
                 rectF = new RectF();
-                sRectF.set(rectF);
+                RECT_F_THREAD_LOCAL.set(rectF);
             }
             rectF.set(rect);
             m.mapRect(rectF);

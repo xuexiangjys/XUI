@@ -17,9 +17,11 @@
 
 package com.xuexiang.xui.widget.banner.recycler.layout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 
@@ -49,11 +51,14 @@ public class CenterSnapHelper extends RecyclerView.OnFlingListener {
                 boolean mScrolled = false;
 
                 @Override
-                public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                     super.onScrollStateChanged(recyclerView, newState);
 
                     final BannerLayoutManager layoutManager =
                             (BannerLayoutManager) recyclerView.getLayoutManager();
+                    if (layoutManager == null) {
+                        return;
+                    }
                     final BannerLayoutManager.OnPageChangeListener onPageChangeListener =
                             layoutManager.onPageChangeListener;
                     if (onPageChangeListener != null) {
@@ -72,7 +77,7 @@ public class CenterSnapHelper extends RecyclerView.OnFlingListener {
                 }
 
                 @Override
-                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                     if (dx != 0 || dy != 0) {
                         mScrolled = true;
                     }
@@ -144,7 +149,9 @@ public class CenterSnapHelper extends RecyclerView.OnFlingListener {
         mRecyclerView = recyclerView;
         if (mRecyclerView != null) {
             final LayoutManager layoutManager = mRecyclerView.getLayoutManager();
-            if (!(layoutManager instanceof BannerLayoutManager)) return;
+            if (!(layoutManager instanceof BannerLayoutManager)) {
+                return;
+            }
 
             setupCallbacks();
             mGravityScroller = new Scroller(mRecyclerView.getContext(),
@@ -170,8 +177,9 @@ public class CenterSnapHelper extends RecyclerView.OnFlingListener {
             snapToCenter = false;
         }
 
-        if (listener != null)
+        if (listener != null) {
             listener.onPageSelected(layoutManager.getCurrentPosition());
+        }
     }
 
     /**

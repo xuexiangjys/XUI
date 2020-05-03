@@ -1,7 +1,5 @@
 package com.xuexiang.xuidemo.fragment.components.textview;
 
-import android.widget.TextView;
-
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.textview.ExpandableTextView;
 import com.xuexiang.xuidemo.R;
@@ -26,12 +24,7 @@ public class ExpandableTextViewFragment extends BaseFragment {
     @Override
     protected void initViews() {
         mExpandableTextView.setText(getString(R.string.etv_content_demo1));
-        mExpandableTextView.setOnExpandStateChangeListener(new ExpandableTextView.OnExpandStateChangeListener() {
-            @Override
-            public void onExpandStateChanged(TextView textView, boolean isExpanded) {
-                XToastUtils.toast(isExpanded ? "Expanded" : "Collapsed");
-            }
-        });
+        mExpandableTextView.setOnExpandStateChangeListener((textView, isExpanded) -> XToastUtils.toast(isExpanded ? "Expanded" : "Collapsed"));
 
     }
 

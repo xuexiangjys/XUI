@@ -65,9 +65,8 @@ public class BadgeAnimator extends ValueAnimator {
     }
 
     public void draw(Canvas canvas) {
-        for (int i = 0; i < mFragments.length; i++) {
-            for (int j = 0; j < mFragments[i].length; j++) {
-                BitmapFragment bf = mFragments[i][j];
+        for (BitmapFragment[] mFragment : mFragments) {
+            for (BitmapFragment bf : mFragment) {
                 float value = Float.parseFloat(getAnimatedValue().toString());
                 bf.update(value, canvas);
             }
@@ -97,7 +96,7 @@ public class BadgeAnimator extends ValueAnimator {
         return fragments;
     }
 
-    private class BitmapFragment {
+    private static class BitmapFragment {
         Random random;
         float x;
         float y;

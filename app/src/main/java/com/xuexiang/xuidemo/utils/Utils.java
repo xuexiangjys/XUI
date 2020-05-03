@@ -54,7 +54,7 @@ import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
  */
 public final class Utils {
 
-    public final static String mUpdateUrl = "https://gitee.com/xuexiangjys/XUI/raw/master/jsonapi/update_api.json";
+    public final static String UPDATE_URL = "https://gitee.com/xuexiangjys/XUI/raw/master/jsonapi/update_api.json";
 
     private Utils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
@@ -132,7 +132,7 @@ public final class Utils {
      * @param context
      */
     public static void checkUpdate(Context context, boolean needErrorTip) {
-        XUpdate.newBuild(context).updateUrl(mUpdateUrl).update();
+        XUpdate.newBuild(context).updateUrl(UPDATE_URL).update();
         XUpdate.get().setOnUpdateFailureListener(new CustomUpdateFailureListener(needErrorTip));
     }
 
@@ -218,12 +218,7 @@ public final class Utils {
         Bitmap createFromViewBitmap = DrawableUtils.createBitmapFromView(view);
         displayImageView.setImageBitmap(createFromViewBitmap);
 
-        displayImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        displayImageView.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }
@@ -239,12 +234,7 @@ public final class Utils {
         ImageView displayImageView = dialog.findViewById(R.id.createFromViewDisplay);
         displayImageView.setImageBitmap(bitmap);
 
-        displayImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        displayImageView.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }

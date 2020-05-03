@@ -212,7 +212,7 @@ public class LocationService {
      */
     public static void printLocationInfo(BDLocation location) {
         if (null != location && location.getLocType() != BDLocation.TypeServerError) {
-            StringBuffer sb = new StringBuffer(256);
+            StringBuilder sb = new StringBuilder(256);
             sb.append("time : ");
             /**
              * 时间也可以使用systemClock.elapsedRealtime()方法 获取的是自从开机以来，每次回调的时间；

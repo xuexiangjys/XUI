@@ -2,6 +2,8 @@ package com.xuexiang.xui.widget.textview.marqueen;
 
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 /**
@@ -72,6 +74,7 @@ public class DisplayEntity {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return updateMessage();

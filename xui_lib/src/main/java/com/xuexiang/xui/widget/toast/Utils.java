@@ -47,10 +47,11 @@ final class Utils {
     }
 
     static void setBackground(@NonNull View view, Drawable drawable) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             view.setBackground(drawable);
-        else
+        } else {
             view.setBackgroundDrawable(drawable);
+        }
     }
 
     static Drawable getDrawable(@NonNull Context context, @DrawableRes int id) {

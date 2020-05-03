@@ -67,12 +67,7 @@ public class RecyclerViewBannerFragment extends BaseFragment implements BannerLa
         mAdapterHorizontal.setOnBannerItemClickListener(this);
         mAdapterVertical.setOnBannerItemClickListener(this);
 
-        blHorizontal.setOnIndicatorIndexChangedListener(new BannerLayout.OnIndicatorIndexChangedListener() {
-            @Override
-            public void onIndexChanged(int position) {
-                XToastUtils.toast("轮播到第" + (position + 1) + "个");
-            }
-        });
+        blHorizontal.setOnIndicatorIndexChangedListener(position -> XToastUtils.toast("轮播到第" + (position + 1) + "个"));
     }
 
     @Override

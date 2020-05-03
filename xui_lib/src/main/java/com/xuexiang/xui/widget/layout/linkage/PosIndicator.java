@@ -20,6 +20,8 @@ package com.xuexiang.xui.widget.layout.linkage;
 import android.graphics.PointF;
 import android.view.MotionEvent;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xui.logs.UILog;
 
 /**
@@ -533,6 +535,7 @@ public class PosIndicator {
     }
 
 
+    @NonNull
     @Override
     public String toString() {
         return "mCurrentPos: " + mCurrentPos

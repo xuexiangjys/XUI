@@ -515,7 +515,9 @@ public class BezierBannerView extends View implements ViewPager.OnPageChangeList
      */
     public void attachToViewpager(ViewPager viewPager) {
         viewPager.addOnPageChangeListener(this);
-        count = viewPager.getAdapter().getCount();
+        if (viewPager.getAdapter() != null) {
+            count = viewPager.getAdapter().getCount();
+        }
         mSelectedIndex = viewPager.getCurrentItem();
         moveToNext();
         mDrection = DIRECTION_RIGHT;
@@ -535,7 +537,7 @@ public class BezierBannerView extends View implements ViewPager.OnPageChangeList
         if (position + positionOffset - mSelectedIndex > 0) {
             mDrection = DIRECTION_RIGHT;
             //向左快速滑动 偏移量不归0 但是position发生了改变 需要更新当前索引
-            if (mDrection == DIRECTION_RIGHT && position + positionOffset > mSelectedIndex + 1) {
+            if (position + positionOffset > mSelectedIndex + 1) {
                 mSelectedIndex = position;
                 Log.d(TAG, "向左快速滑动");
             } else {
@@ -544,7 +546,7 @@ public class BezierBannerView extends View implements ViewPager.OnPageChangeList
         } else if (position + positionOffset - mSelectedIndex < 0) { //向右滑，指示器向左移动
             mDrection = DIRECTION_LEFT;
             //向右快速滑动
-            if (mDrection == DIRECTION_LEFT && position + positionOffset < mSelectedIndex - 1) {
+            if (position + positionOffset < mSelectedIndex - 1) {
                 mSelectedIndex = position;
                 Log.d(TAG, "向右快速滑动");
             } else {

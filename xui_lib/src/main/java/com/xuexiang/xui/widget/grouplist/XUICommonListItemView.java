@@ -189,7 +189,7 @@ public class XUICommonListItemView extends RelativeLayout {
 
 
     public void updateImageViewLp(LayoutParamConfig lpConfig) {
-        if(lpConfig != null){
+        if (lpConfig != null) {
             LayoutParams lp = (LayoutParams) mImageView.getLayoutParams();
             mImageView.setLayoutParams(lpConfig.onConfig(lp));
         }
@@ -342,6 +342,8 @@ public class XUICommonListItemView extends RelativeLayout {
             // 清空所有accessoryView
             case ACCESSORY_TYPE_NONE:
                 mAccessoryView.setVisibility(GONE);
+                break;
+            default:
                 break;
         }
     }

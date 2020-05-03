@@ -24,7 +24,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -132,33 +131,22 @@ public class QRCodeProduceFragment extends BaseFragment {
      */
     @Override
     protected void initListeners() {
-        mScChange.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    mLLComplexCreate.setVisibility(View.VISIBLE);
-                    mLLNormalCreate.setVisibility(View.GONE);
-                } else {
-                    mLLComplexCreate.setVisibility(View.GONE);
-                    mLLNormalCreate.setVisibility(View.VISIBLE);
-                }
+        mScChange.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                mLLComplexCreate.setVisibility(View.VISIBLE);
+                mLLNormalCreate.setVisibility(View.GONE);
+            } else {
+                mLLComplexCreate.setVisibility(View.GONE);
+                mLLNormalCreate.setVisibility(View.VISIBLE);
             }
         });
 
-        mCbAutoColor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mEtColorDark.setEnabled(!isChecked);
-                mEtColorLight.setEnabled(!isChecked);
-            }
+        mCbAutoColor.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            mEtColorDark.setEnabled(!isChecked);
+            mEtColorLight.setEnabled(!isChecked);
         });
 
-        mCbBinarize.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mEtBinarizeThreshold.setEnabled(isChecked);
-            }
-        });
+        mCbBinarize.setOnCheckedChangeListener((buttonView, isChecked) -> mEtBinarizeThreshold.setEnabled(isChecked));
     }
 
     @OnClick({R.id.btn_save, R.id.btn_create_no_logo, R.id.btn_create_with_logo, R.id.btn_background_image, R.id.btn_remove_background_image, R.id.btn_create})

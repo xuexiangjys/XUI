@@ -53,6 +53,7 @@ public class FragmentCacheAdapter extends FragmentStatePagerAdapter {
         return this;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         return mFragmentList.get(position);

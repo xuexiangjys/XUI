@@ -78,43 +78,42 @@ public class RadiusImageViewFragment extends BaseFragment {
                 .addItem(getResources().getString(R.string.circularImageView_modify_7))
                 .addItem(getResources().getString(R.string.circularImageView_modify_8))
                 .addItem(getResources().getString(R.string.circularImageView_modify_9))
-                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
-                        dialog.dismiss();
-                        reset();
-                        switch (position) {
-                            case 0:
-                                mRadiusImageView.setBorderColor(Color.BLACK);
-                                mRadiusImageView.setBorderWidth(DensityUtils.dp2px(getContext(), 4));
-                                break;
-                            case 1:
-                                mRadiusImageView.setSelectedBorderWidth(DensityUtils.dp2px(getContext(), 6));
-                                mRadiusImageView.setSelectedBorderColor(Color.GREEN);
-                                break;
-                            case 2:
-                                mRadiusImageView.setSelectedMaskColor(ContextCompat.getColor(getContext(), R.color.radiusImageView_selected_mask_color));
-                                break;
-                            case 3:
-                                if (mRadiusImageView.isSelected()) {
-                                    mRadiusImageView.setSelected(false);
-                                } else {
-                                    mRadiusImageView.setSelected(true);
-                                }
-                                break;
-                            case 4:
-                                mRadiusImageView.setCornerRadius(DensityUtils.dp2px(getContext(), 20));
-                                break;
-                            case 5:
-                                mRadiusImageView.setCircle(true);
-                                break;
-                            case 6:
-                                mRadiusImageView.setOval(true);
-                            case 7:
-                                mRadiusImageView.setTouchSelectModeEnabled(false);
-                            default:
-                                break;
-                        }
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    reset();
+                    switch (position) {
+                        case 0:
+                            mRadiusImageView.setBorderColor(Color.BLACK);
+                            mRadiusImageView.setBorderWidth(DensityUtils.dp2px(getContext(), 4));
+                            break;
+                        case 1:
+                            mRadiusImageView.setSelectedBorderWidth(DensityUtils.dp2px(getContext(), 6));
+                            mRadiusImageView.setSelectedBorderColor(Color.GREEN);
+                            break;
+                        case 2:
+                            mRadiusImageView.setSelectedMaskColor(ContextCompat.getColor(getContext(), R.color.radiusImageView_selected_mask_color));
+                            break;
+                        case 3:
+                            if (mRadiusImageView.isSelected()) {
+                                mRadiusImageView.setSelected(false);
+                            } else {
+                                mRadiusImageView.setSelected(true);
+                            }
+                            break;
+                        case 4:
+                            mRadiusImageView.setCornerRadius(DensityUtils.dp2px(getContext(), 20));
+                            break;
+                        case 5:
+                            mRadiusImageView.setCircle(true);
+                            break;
+                        case 6:
+                            mRadiusImageView.setOval(true);
+                            break;
+                        case 7:
+                            mRadiusImageView.setTouchSelectModeEnabled(false);
+                            break;
+                        default:
+                            break;
                     }
                 })
                 .build()

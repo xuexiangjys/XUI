@@ -46,7 +46,7 @@ public final class ChinaDateUtils {
      * 注意:  从1月到12月对应的是第16位到第5位。
      * 17-20: 非闰年为0，大于0表示闰月月份，仅当存在闰月的情况下有意义。
      */
-    final private static long[] lunarInfo = new long[]{
+    final private static long[] LUNAR_INFO = new long[]{
             0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,//1900-1909
             0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,//1910-1919
             0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970,//1920-1929
@@ -69,13 +69,13 @@ public final class ChinaDateUtils {
             0x0e968, 0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0, 0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252,//2090-2099
             0x0d520};//2100
 
-    private final static String[] nStr1 = new String[]{"", "正", "二", "三", "四",
+    private final static String[] NUMBER_MONTH = new String[]{"", "正", "二", "三", "四",
             "五", "六", "七", "八", "九", "十", "冬", "腊"};
-    private final static String[] Gan = new String[]{"甲", "乙", "丙", "丁", "戊",
+    private final static String[] NUMBER_1 = new String[]{"甲", "乙", "丙", "丁", "戊",
             "己", "庚", "辛", "壬", "癸"};
-    private final static String[] Zhi = new String[]{"子", "丑", "寅", "卯", "辰",
+    private final static String[] NUMBER_2 = new String[]{"子", "丑", "寅", "卯", "辰",
             "巳", "午", "未", "申", "酉", "戌", "亥"};
-    private final static String[] Animals = new String[]{"鼠", "牛", "虎", "兔",
+    private final static String[] ANIMALS = new String[]{"鼠", "牛", "虎", "兔",
             "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"};
 
     /**
@@ -87,8 +87,9 @@ public final class ChinaDateUtils {
     private static int lYearDays(int y) {
         int i, sum = 348;
         for (i = 0x8000; i > 0x8; i >>= 1) {
-            if ((lunarInfo[y - 1900] & i) != 0)
+            if ((LUNAR_INFO[y - 1900] & i) != 0) {
                 sum += 1;
+            }
         }
         return (sum + leapDays(y));
     }
@@ -101,12 +102,14 @@ public final class ChinaDateUtils {
      */
     public static int leapDays(int y) {
         if (leapMonth(y) != 0) {
-            if ((lunarInfo[y - 1900] & 0x10000) != 0)
+            if ((LUNAR_INFO[y - 1900] & 0x10000) != 0) {
                 return 30;
-            else
+            } else {
                 return 29;
-        } else
+            }
+        } else {
             return 0;
+        }
     }
 
     /**
@@ -116,7 +119,7 @@ public final class ChinaDateUtils {
      * @return 农历
      */
     public static int leapMonth(int y) {
-        return (int) (lunarInfo[y - 1900] & 0xf);
+        return (int) (LUNAR_INFO[y - 1900] & 0xf);
     }
 
     /**
@@ -127,10 +130,11 @@ public final class ChinaDateUtils {
      * @return 农历
      */
     public static int monthDays(int y, int m) {
-        if ((lunarInfo[y - 1900] & (0x10000 >> m)) == 0)
+        if ((LUNAR_INFO[y - 1900] & (0x10000 >> m)) == 0) {
             return 29;
-        else
+        } else {
             return 30;
+        }
     }
 
     /**
@@ -140,7 +144,7 @@ public final class ChinaDateUtils {
      * @return
      */
     public static String AnimalsYear(int y) {
-        return Animals[(y - 4) % 12];
+        return ANIMALS[(y - 4) % 12];
     }
 
     /**
@@ -150,7 +154,7 @@ public final class ChinaDateUtils {
      * @return 干支
      */
     private static String cyclicalm(int num) {
-        return (Gan[num % 10] + Zhi[num % 12]);
+        return (NUMBER_1[num % 10] + NUMBER_2[num % 12]);
     }
 
     /**
@@ -176,7 +180,7 @@ public final class ChinaDateUtils {
     public static long[] calElement(int y, int m, int d) {
         long[] nongDate = new long[7];
         int i = 0, temp = 0, leap = 0;
-        Date baseDate = new GregorianCalendar(0 + 1900, 0, 31).getTime();
+        Date baseDate = new GregorianCalendar(1900, 0, 31).getTime();
         Date objDate = new GregorianCalendar(y, m - 1, d).getTime();
         long offset = (objDate.getTime() - baseDate.getTime()) / 86400000L;
         nongDate[5] = offset + 40;
@@ -205,11 +209,13 @@ public final class ChinaDateUtils {
                 temp = monthDays((int) nongDate[0], i);
             }
             // 解除闰月
-            if (nongDate[6] == 1 && i == (leap + 1))
+            if (nongDate[6] == 1 && i == (leap + 1)) {
                 nongDate[6] = 0;
+            }
             offset -= temp;
-            if (nongDate[6] == 0)
+            if (nongDate[6] == 0) {
                 nongDate[4]++;
+            }
         }
         if (offset == 0 && leap > 0 && i == leap + 1) {
             if (nongDate[6] == 1) {
@@ -232,22 +238,29 @@ public final class ChinaDateUtils {
 
     public static String getChinaDate(int day) {
         String a = "";
-        if (day == 10)
+        if (day == 10) {
             return "初十";
-        if (day == 20)
+        }
+        if (day == 20) {
             return "二十";
-        if (day == 30)
+        }
+        if (day == 30) {
             return "三十";
-        int two = (int) ((day) / 10);
-        if (two == 0)
+        }
+        int two = (day) / 10;
+        if (two == 0) {
             a = "初";
-        if (two == 1)
+        }
+        if (two == 1) {
             a = "十";
-        if (two == 2)
+        }
+        if (two == 2) {
             a = "廿";
-        if (two == 3)
+        }
+        if (two == 3) {
             a = "三";
-        int one = (int) (day % 10);
+        }
+        int one = day % 10;
         switch (one) {
             case 1:
                 a += "一";
@@ -276,6 +289,8 @@ public final class ChinaDateUtils {
             case 9:
                 a += "九";
                 break;
+            default:
+                break;
         }
         return a;
     }
@@ -294,7 +309,7 @@ public final class ChinaDateUtils {
             sToday.append('(');
             sToday.append(AnimalsYear(year));
             sToday.append(")年");
-            sToday.append(nStr1[(int) l[1]]);
+            sToday.append(NUMBER_MONTH[(int) l[1]]);
             sToday.append("月");
             sToday.append(getChinaDate((int) (l[2])));
             return sToday.toString();
@@ -314,7 +329,7 @@ public final class ChinaDateUtils {
             sToday.append('(');
             sToday.append(AnimalsYear(year));
             sToday.append(")年");
-            sToday.append(nStr1[(int) l[1]]);
+            sToday.append(NUMBER_MONTH[(int) l[1]]);
             sToday.append("月");
             sToday.append(getChinaDate((int) (l[2])));
             return sToday.toString();
@@ -333,7 +348,7 @@ public final class ChinaDateUtils {
      * 子丑寅卯辰巳无为申酉戌亥
      */
     public static String getLunarYearText(int lunarYear) {
-        return Gan[(lunarYear - 4) % 10] + Zhi[(lunarYear - 4) % 12] + "年";
+        return NUMBER_1[(lunarYear - 4) % 10] + NUMBER_2[(lunarYear - 4) % 12] + "年";
     }
 
 
@@ -353,11 +368,11 @@ public final class ChinaDateUtils {
      */
     public static ArrayList<String> getMonths(int year) {
         ArrayList<String> baseMonths = new ArrayList<>();
-        for (int i = 1; i < nStr1.length; i++) {
-            baseMonths.add(nStr1[i] + "月");
+        for (int i = 1; i < NUMBER_MONTH.length; i++) {
+            baseMonths.add(NUMBER_MONTH[i] + "月");
         }
         if (leapMonth(year) != 0) {
-            baseMonths.add(leapMonth(year), "闰" + nStr1[leapMonth(year)] + "月");
+            baseMonths.add(leapMonth(year), "闰" + NUMBER_MONTH[leapMonth(year)] + "月");
         }
         return baseMonths;
     }

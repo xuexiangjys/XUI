@@ -21,8 +21,10 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialog;
 
 import com.xuexiang.xui.R;
@@ -30,8 +32,8 @@ import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.ResUtils;
 
 /**
- *  基类Dialog
- *  触摸Dialog屏幕以外的区域，dialog消失同时隐藏键盘
+ * 基类Dialog
+ * 触摸Dialog屏幕以外的区域，dialog消失同时隐藏键盘
  *
  * @author xuexiang
  * @since 2018/12/6 下午3:29
@@ -81,10 +83,13 @@ public class BaseDialog extends AppCompatDialog {
      */
     public BaseDialog setDialogSize(int width, int height) {
         // 获取对话框当前的参数值
-        WindowManager.LayoutParams p = getWindow().getAttributes();
-        p.width = width;
-        p.height = height;
-        getWindow().setAttributes(p);
+        Window window = getWindow();
+        if (window != null) {
+            WindowManager.LayoutParams p = window.getAttributes();
+            p.width = width;
+            p.height = height;
+            window.setAttributes(p);
+        }
         return this;
     }
 
@@ -93,16 +98,16 @@ public class BaseDialog extends AppCompatDialog {
         return mContentView.findViewById(resId);
     }
 
-    public String getString(int resId){
+    public String getString(int resId) {
         return getContext().getResources().getString(resId);
     }
 
-    public Drawable getDrawable(int resId){
+    public Drawable getDrawable(int resId) {
         return ResUtils.getDrawable(getContext(), resId);
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent ev) {
+    public boolean onTouchEvent(@NonNull MotionEvent ev) {
         KeyboardUtils.dispatchTouchEvent(ev, this);
         return super.onTouchEvent(ev);
     }

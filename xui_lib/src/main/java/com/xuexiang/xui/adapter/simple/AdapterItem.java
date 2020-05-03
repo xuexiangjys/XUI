@@ -3,6 +3,8 @@ package com.xuexiang.xui.adapter.simple;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xui.utils.ResUtils;
 
 /**
@@ -73,6 +75,7 @@ public class AdapterItem {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return mTitle.toString();

@@ -35,7 +35,7 @@ public class DeviceUtils {
     private final static String ZTEC2016 = "zte c2016";
     private final static String ZUKZ1 = "zuk z1";
     private final static String ESSENTIAL = "essential";
-    private final static String MEIZUBOARD[] = {"m9", "M9", "mx", "MX"};
+    private final static String[] MEIZUBOARD = {"m9", "M9", "mx", "MX"};
     private static String sMiuiVersionName;
     private static String sFlymeVersionName;
     private static boolean sIsTabletChecked = false;
@@ -129,27 +129,27 @@ public class DeviceUtils {
     public static boolean isFlymeVersionHigher5_2_4() {
         //查不到默认高于5.2.4
         boolean isHigher = true;
-        if (sFlymeVersionName != null && !sFlymeVersionName.equals("")) {
+        if (sFlymeVersionName != null && !"".equals(sFlymeVersionName)) {
             Pattern pattern = Pattern.compile("(\\d+\\.){2}\\d");
             Matcher matcher = pattern.matcher(sFlymeVersionName);
             if (matcher.find()) {
                 String versionString = matcher.group();
-                if (versionString != null && !versionString.equals("")) {
+                if (versionString != null && !"".equals(versionString)) {
                     String[] version = versionString.split("\\.");
                     if (version.length == 3) {
-                        if (Integer.valueOf(version[0]) < 5) {
+                        if (Integer.parseInt(version[0]) < 5) {
                             isHigher = false;
-                        } else if (Integer.valueOf(version[0]) > 5) {
+                        } else if (Integer.parseInt(version[0]) > 5) {
                             isHigher = true;
                         } else {
-                            if (Integer.valueOf(version[1]) < 2) {
+                            if (Integer.parseInt(version[1]) < 2) {
                                 isHigher = false;
-                            } else if (Integer.valueOf(version[1]) > 2) {
+                            } else if (Integer.parseInt(version[1]) > 2) {
                                 isHigher = true;
                             } else {
-                                if (Integer.valueOf(version[2]) < 4) {
+                                if (Integer.parseInt(version[2]) < 4) {
                                     isHigher = false;
-                                } else if (Integer.valueOf(version[2]) >= 5) {
+                                } else if (Integer.parseInt(version[2]) >= 5) {
                                     isHigher = true;
                                 }
                             }
@@ -171,7 +171,7 @@ public class DeviceUtils {
      * https://dev.mi.com/doc/?p=254
      */
     public static boolean isXiaomi() {
-        return Build.MANUFACTURER.toLowerCase().equals("xiaomi");
+        return "xiaomi".equals(Build.MANUFACTURER.toLowerCase());
     }
 
     public static boolean isVivo() {

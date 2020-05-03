@@ -50,29 +50,14 @@ public class TitleBarFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        mTitleBar.setLeftClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                XToastUtils.toast("点击返回");
-            }
-        }).setCenterClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("点击标题");
-            }
-        }).addAction(new TitleBar.ImageAction(R.drawable.ic_add_white_24dp) {
+        mTitleBar.setLeftClickListener(view -> XToastUtils.toast("点击返回")).setCenterClickListener(v -> XToastUtils.toast("点击标题")).addAction(new TitleBar.ImageAction(R.drawable.ic_add_white_24dp) {
             @Override
             public void performAction(View view) {
                 XToastUtils.toast("点击更多！");
             }
         });
 
-        mTitleBar1.setLeftClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("点击返回");
-            }
-        })
+        mTitleBar1.setLeftClickListener(v -> XToastUtils.toast("点击返回"))
                 .addAction(new TitleBar.TextAction("更多") {
                     @Override
                     public void performAction(View view) {

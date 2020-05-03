@@ -197,7 +197,9 @@ public class StatusBarUtils {
      * @param activity 需要被处理的 Activity
      */
     public static boolean setStatusBarLightMode(Activity activity) {
-        if (activity == null) return false;
+        if (activity == null) {
+            return false;
+        }
         // 无语系列：ZTK C2016只能时间和电池图标变色。。。。
         if (DeviceUtils.isZTKC2016()) {
             return false;
@@ -246,7 +248,9 @@ public class StatusBarUtils {
      * 支持 4.4 以上版本 MIUI 和 Flyme，以及 6.0 以上版本的其他 Android
      */
     public static boolean setStatusBarDarkMode(Activity activity) {
-        if (activity == null) return false;
+        if (activity == null) {
+            return false;
+        }
         if (mStatuBarType == STATUSBAR_TYPE_DEFAULT) {
             // 默认状态，不需要处理
             return true;

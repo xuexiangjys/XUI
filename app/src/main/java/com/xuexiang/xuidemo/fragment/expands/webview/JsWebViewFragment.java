@@ -21,7 +21,6 @@ import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
-import android.webkit.ValueCallback;
 import android.widget.FrameLayout;
 
 import com.xuexiang.xaop.annotation.SingleClick;
@@ -81,12 +80,7 @@ public class JsWebViewFragment extends BaseWebViewFragment {
                 break;
             case R.id.btn_js_more_param:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroidMoreParams", new ValueCallback<String>() {
-                        @Override
-                        public void onReceiveValue(String value) {
-                            Log.e("xuexiang", "这里是调用JS方法的返回值:" + value);
-                        }
-                    }, getJson(), "say！", " Hello! AgentWeb");
+                    mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroidMoreParams", value -> Log.e("xuexiang", "这里是调用JS方法的返回值:" + value), getJson(), "say！", " Hello! AgentWeb");
                 }
                 break;
             case R.id.btn_clear:
@@ -116,7 +110,7 @@ public class JsWebViewFragment extends BaseWebViewFragment {
     /**
      * 注入到JS里的对象接口
      */
-    public class AndroidInterface {
+    public static class AndroidInterface {
 
         @JavascriptInterface
         public void callAndroid(final String msg) {

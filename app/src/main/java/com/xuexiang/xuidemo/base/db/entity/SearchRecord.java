@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.base.db.entity;
 
+import androidx.annotation.NonNull;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -71,6 +73,7 @@ public class SearchRecord {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "QueryRecord{" +

@@ -18,7 +18,6 @@ package com.xuexiang.xuidemo.fragment.components.textview;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
 import androidx.core.content.ContextCompat;
 
@@ -82,25 +81,17 @@ public class GroupListViewFragment extends BaseFragment {
 
         XUICommonListItemView itemWithSwitch = mGroupListView.createItemView("Item 5");
         itemWithSwitch.setAccessoryType(XUICommonListItemView.ACCESSORY_TYPE_SWITCH);
-        itemWithSwitch.getSwitch().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                XToastUtils.toast("checked = " + isChecked);
-            }
-        });
+        itemWithSwitch.getSwitch().setOnCheckedChangeListener((buttonView, isChecked) -> XToastUtils.toast("checked = " + isChecked));
 
         XUICommonListItemView itemWithCustom = mGroupListView.createItemView("Item 6");
         itemWithCustom.setAccessoryType(XUICommonListItemView.ACCESSORY_TYPE_CUSTOM);
         MiniLoadingView loadingView = new MiniLoadingView(getActivity());
         itemWithCustom.addAccessoryCustomView(loadingView);
 
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v instanceof XUICommonListItemView) {
-                    CharSequence text = ((XUICommonListItemView) v).getText();
-                    XToastUtils.toast(text + " is Clicked");
-                }
+        View.OnClickListener onClickListener = v -> {
+            if (v instanceof XUICommonListItemView) {
+                CharSequence text = ((XUICommonListItemView) v).getText();
+                XToastUtils.toast(text + " is Clicked");
             }
         };
 

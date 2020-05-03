@@ -17,6 +17,8 @@
 
 package com.xuexiang.xui.widget.slideback;
 
+import androidx.annotation.NonNull;
+
 /**
  * 侧滑信息
  *
@@ -139,6 +141,7 @@ public class SlideInfo {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "SlideInfo{" +

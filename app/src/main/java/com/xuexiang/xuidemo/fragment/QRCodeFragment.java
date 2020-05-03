@@ -114,48 +114,45 @@ public class QRCodeFragment extends BaseFragment implements View.OnClickListener
                 .addItem("发送给朋友")
                 .addItem("保存图片")
                 .addItem("识别图中的二维码")
-                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
-                        dialog.dismiss();
-                        boolean result = checkFile(imgPath, bitmap);
-                        switch (position) {
-                            case 0:
-                                if (result) {
-                                    SocialShareUtils.sharePicture(getActivity(), PathUtils.getUriForFile(FileUtils.getFileByPath(imgPath)));
-                                } else {
-                                    XToastUtils.toast("图片发送失败!");
-                                }
-                                break;
-                            case 1:
-                                if (result) {
-                                    XToastUtils.toast("图片保存成功:" + imgPath);
-                                } else {
-                                    XToastUtils.toast("图片保存失败!");
-                                }
-                                break;
-                            case 2:
-                                if (result) {
-                                    XQRCode.analyzeQRCode(imgPath, new QRCodeAnalyzeUtils.AnalyzeCallback() {
-                                        @Override
-                                        public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-                                            if (NetworkUtils.isUrlValid(result)) {
-                                                goWeb(result);
-                                            }
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    boolean result = checkFile(imgPath, bitmap);
+                    switch (position) {
+                        case 0:
+                            if (result) {
+                                SocialShareUtils.sharePicture(getActivity(), PathUtils.getUriForFile(FileUtils.getFileByPath(imgPath)));
+                            } else {
+                                XToastUtils.toast("图片发送失败!");
+                            }
+                            break;
+                        case 1:
+                            if (result) {
+                                XToastUtils.toast("图片保存成功:" + imgPath);
+                            } else {
+                                XToastUtils.toast("图片保存失败!");
+                            }
+                            break;
+                        case 2:
+                            if (result) {
+                                XQRCode.analyzeQRCode(imgPath, new QRCodeAnalyzeUtils.AnalyzeCallback() {
+                                    @Override
+                                    public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
+                                        if (NetworkUtils.isUrlValid(result)) {
+                                            goWeb(result);
                                         }
+                                    }
 
-                                        @Override
-                                        public void onAnalyzeFailed() {
-                                            XToastUtils.toast("解析二维码失败！");
-                                        }
-                                    });
-                                } else {
-                                    XToastUtils.toast("二维码识别失败!");
-                                }
-                                break;
-                            default:
-                                break;
-                        }
+                                    @Override
+                                    public void onAnalyzeFailed() {
+                                        XToastUtils.toast("解析二维码失败！");
+                                    }
+                                });
+                            } else {
+                                XToastUtils.toast("二维码识别失败!");
+                            }
+                            break;
+                        default:
+                            break;
                     }
                 })
                 .build()

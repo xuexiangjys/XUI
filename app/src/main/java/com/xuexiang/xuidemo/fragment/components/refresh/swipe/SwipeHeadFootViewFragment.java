@@ -2,12 +2,9 @@ package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
 import android.view.View;
 
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
-import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
-import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
@@ -50,12 +47,7 @@ public class SwipeHeadFootViewFragment extends BaseFragment {
 
         banner = headerView.findViewById(R.id.sib_simple_usage);
         banner.setSource(DemoDataProvider.getBannerList())
-                .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
-                    @Override
-                    public void onItemClick(View view, BannerItem item, int position) {
-                        XToastUtils.toast("headBanner position--->" + position);
-                    }
-                }).startScroll();
+                .setOnItemClickListener((view, item, position) -> XToastUtils.toast("headBanner position--->" + position)).startScroll();
         recyclerView.addHeaderView(headerView);
 
         View footerView = getLayoutInflater().inflate(R.layout.include_foot_view, recyclerView, false);
@@ -63,12 +55,9 @@ public class SwipeHeadFootViewFragment extends BaseFragment {
 
         final SimpleRecyclerAdapter adapter = new SimpleRecyclerAdapter(DemoDataProvider.getDemoData1());
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new SmartViewHolder.OnItemClickListener() {
-            @Override
-            public void onItemClick(View itemView, int position) {
-                //需要注意的是，因为加了一个HeaderView，所以position都被自动加了1,因此获取内容时需要减1
-                XToastUtils.toast("点击了第" + position + "个条目：" + adapter.getItem(position - 1));
-            }
+        adapter.setOnItemClickListener((itemView, position) -> {
+            //需要注意的是，因为加了一个HeaderView，所以position都被自动加了1,因此获取内容时需要减1
+            XToastUtils.toast("点击了第" + position + "个条目：" + adapter.getItem(position - 1));
         });
     }
 

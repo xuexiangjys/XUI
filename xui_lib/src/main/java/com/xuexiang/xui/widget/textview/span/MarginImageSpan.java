@@ -20,6 +20,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.NonNull;
+
 /**
  * 支持设置图片左右间距的 ImageSpan
  *
@@ -44,7 +46,7 @@ public class MarginImageSpan extends AlignMiddleImageSpan {
     }
 
     @Override
-    public int getSize(Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fm) {
+    public int getSize(@NonNull Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fm) {
         if (mSpanMarginLeft != 0 || mSpanMarginRight != 0) {
             super.getSize(paint, text, start, end, fm);
             Drawable d = getDrawable();
@@ -55,8 +57,8 @@ public class MarginImageSpan extends AlignMiddleImageSpan {
     }
 
     @Override
-    public void draw(Canvas canvas, CharSequence text, int start, int end,
-                     float x, int top, int y, int bottom, Paint paint) {
+    public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end,
+                     float x, int top, int y, int bottom, @NonNull Paint paint) {
         canvas.save();
         canvas.translate(0, mOffsetY);
         // marginRight不用专门处理，只靠getSize()中改变即可

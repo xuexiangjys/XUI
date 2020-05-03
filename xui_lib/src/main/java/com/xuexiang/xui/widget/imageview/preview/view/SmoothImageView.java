@@ -494,13 +494,13 @@ public class SmoothImageView extends PhotoView {
         //开始时以CenterCrop方式显示，缩放图片使图片的一边等于起始区域的一边，另一边大于起始区域
         float startScaleX = (float) thumbRect.width() / bitmapWidth;
         float startScaleY = (float) thumbRect.height() / bitmapHeight;
-        startTransform.scale = startScaleX > startScaleY ? startScaleX : startScaleY;
+        startTransform.scale = Math.max(startScaleX, startScaleY);
 
         //结束时以fitCenter方式显示，缩放图片使图片的一边等于View的一边，另一边大于View
         float endScaleX = (float) getWidth() / bitmapWidth;
         float endScaleY = (float) getHeight() / bitmapHeight;
         endTransform = new Transform();
-        endTransform.scale = endScaleX < endScaleY ? endScaleX : endScaleY;
+        endTransform.scale = Math.min(endScaleX, endScaleY);
         endTransform.alpha = 255;
         int endBitmapWidth = (int) (endTransform.scale * bitmapWidth);
         int endBitmapHeight = (int) (endTransform.scale * bitmapHeight);
@@ -528,7 +528,7 @@ public class SmoothImageView extends PhotoView {
 
     }
 
-    private class Transform implements Cloneable {
+    private static class Transform implements Cloneable {
         float left, top, width, height;
         int alpha;
         float scale;

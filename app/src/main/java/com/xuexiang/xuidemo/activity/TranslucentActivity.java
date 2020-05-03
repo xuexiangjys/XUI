@@ -1,15 +1,12 @@
 package com.xuexiang.xuidemo.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.xuexiang.xui.utils.StatusBarUtils;
-import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
-import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.XToastUtils;
@@ -37,12 +34,7 @@ public class TranslucentActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         sibSimpleUsage.setSource(DemoDataProvider.getBannerList())
-                .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
-                    @Override
-                    public void onItemClick(View view, BannerItem item, int position) {
-                        XToastUtils.toast("headBanner position--->" + position);
-                    }
-                }).startScroll();
+                .setOnItemClickListener((view, item, position) -> XToastUtils.toast("headBanner position--->" + position)).startScroll();
 
     }
 

@@ -4,12 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.xuexiang.xui.R;
-import com.xuexiang.xui.UIConsts;
-import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.adapter.simple.AdapterItem;
 import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
-import com.xuexiang.xui.utils.ResUtils;
 
 import java.util.List;
 

@@ -21,8 +21,11 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.res.Configuration;
 import android.os.Build;
+
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +35,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.internal.MDTintHelper;
@@ -57,6 +61,7 @@ class DefaultRvAdapter extends RecyclerView.Adapter<DefaultRvAdapter.DefaultVH> 
         this.callback = callback;
     }
 
+    @NonNull
     @Override
     public DefaultVH onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
@@ -101,6 +106,8 @@ class DefaultRvAdapter extends RecyclerView.Adapter<DefaultRvAdapter.DefaultVH> 
                 checkbox.setEnabled(!disabled);
                 break;
             }
+            default:
+                break;
         }
 
         holder.title.setText(dialog.builder.items.get(index));
@@ -202,8 +209,8 @@ class DefaultRvAdapter extends RecyclerView.Adapter<DefaultRvAdapter.DefaultVH> 
 
         DefaultVH(View itemView, DefaultRvAdapter adapter) {
             super(itemView);
-            control = (CompoundButton) itemView.findViewById(R.id.md_control);
-            title = (TextView) itemView.findViewById(R.id.md_title);
+            control = itemView.findViewById(R.id.md_control);
+            title = itemView.findViewById(R.id.md_title);
             this.adapter = adapter;
             itemView.setOnClickListener(this);
             if (adapter.dialog.builder.listLongCallback != null) {

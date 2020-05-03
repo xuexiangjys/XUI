@@ -89,7 +89,7 @@ public class NineGridImageView<T> extends ViewGroup {
         int totalWidth = width - getPaddingLeft() - getPaddingRight();
         if (mImgDataList != null && mImgDataList.size() > 0) {
             if (mImgDataList.size() == 1 && mSingleImgSize != -1) {
-                mGridSize = mSingleImgSize > totalWidth ? totalWidth : mSingleImgSize;
+                mGridSize = Math.min(mSingleImgSize, totalWidth);
             } else {
                 mImageViewList.get(0).setScaleType(ImageView.ScaleType.CENTER_CROP);
                 mGridSize = (totalWidth - mGap * (mColumnCount - 1)) / mColumnCount;

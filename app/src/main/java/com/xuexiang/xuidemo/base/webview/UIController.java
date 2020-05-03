@@ -29,10 +29,7 @@ import com.just.agentweb.core.web.AgentWebUIControllerImplBase;
  */
 public class UIController extends AgentWebUIControllerImplBase {
 
-    private Activity mActivity;
-
     public UIController(Activity activity) {
-        mActivity = activity;
     }
 
     @Override

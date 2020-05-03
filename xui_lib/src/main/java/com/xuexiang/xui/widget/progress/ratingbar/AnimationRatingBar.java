@@ -41,12 +41,12 @@ public class AnimationRatingBar extends RatingBar {
         mHandler = new Handler();
     }
 
-    protected void postRunnable(Runnable runnable, long ANIMATION_DELAY) {
+    protected void postRunnable(Runnable runnable, long animationDelay) {
         if (mHandler == null) {
             mHandler = new Handler();
         }
 
-        long timeMillis = SystemClock.uptimeMillis() + ANIMATION_DELAY;
+        long timeMillis = SystemClock.uptimeMillis() + animationDelay;
         mHandler.postAtTime(runnable, mRunnableToken, timeMillis);
     }
 

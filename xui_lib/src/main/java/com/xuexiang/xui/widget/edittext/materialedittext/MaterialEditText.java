@@ -250,11 +250,6 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     private Typeface accentTypeface;
 
     /**
-     * The font used on the view (EditText content)
-     */
-    private Typeface typeface;
-
-    /**
      * Text for the floatLabel if different from the hint
      */
     private CharSequence floatingLabelText;
@@ -406,7 +401,10 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
         String fontPathForView = typedArray.getString(R.styleable.MaterialEditText_met_typeface);
         if (fontPathForView != null && !isInEditMode()) {
-            typeface = XUI.getDefaultTypeface(fontPathForView);
+            /**
+             * The font used on the view (EditText content)
+             */
+            Typeface typeface = XUI.getDefaultTypeface(fontPathForView);
             setTypeface(typeface);
         }
         floatingLabelText = typedArray.getString(R.styleable.MaterialEditText_met_floatingLabelText);
@@ -498,7 +496,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             setText(null);
             resetHintTextColor();
             setText(text);
-            setSelection(text.length());
+            setSelection(text != null ? text.length() : 0);
             floatingLabelFraction = 1;
             floatingLabelShown = true;
         } else {
@@ -1311,7 +1309,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
 
         CharSequence text = getText();
-        boolean isEmpty = text.length() == 0;
+        boolean isEmpty = TextUtils.isEmpty(text);
 
         boolean isValid = true;
         for (METValidator validator : validators) {

@@ -177,6 +177,8 @@ public class LinkageWebView extends WebView implements ILinkageScroll, NestedScr
                     }
                 }
                 break;
+            default:
+                break;
         }
         super.onTouchEvent(event);
         return true;

@@ -20,7 +20,6 @@ package com.xuexiang.xuidemo.utils.sdkinit;
 import android.app.Application;
 
 import com.xuexiang.xaop.XAOP;
-import com.xuexiang.xaop.util.PermissionUtils;
 import com.xuexiang.xormlite.XUIDataBaseRepository;
 import com.xuexiang.xormlite.logs.DBLog;
 import com.xuexiang.xpage.AppPageConfig;
@@ -34,8 +33,6 @@ import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.common.StringUtils;
-
-import java.util.List;
 
 /**
  * X系列基础库的初始化
@@ -103,12 +100,7 @@ public final class XBasicLibInit {
         //日志打印切片开启
         XAOP.debug(MyApp.isDebug());
         //设置动态申请权限切片 申请权限被拒绝的事件响应监听
-        XAOP.setOnPermissionDeniedListener(new PermissionUtils.OnPermissionDeniedListener() {
-            @Override
-            public void onDenied(List<String> permissionsDenied) {
-                XToastUtils.error("权限申请被拒绝:" + StringUtils.listToString(permissionsDenied, ","));
-            }
-        });
+        XAOP.setOnPermissionDeniedListener(permissionsDenied -> XToastUtils.error("权限申请被拒绝:" + StringUtils.listToString(permissionsDenied, ",")));
     }
 
     /**

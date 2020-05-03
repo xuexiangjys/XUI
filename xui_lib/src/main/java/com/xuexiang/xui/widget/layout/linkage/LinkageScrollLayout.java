@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.Scroller;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.NestedScrollingParent;
 import androidx.core.view.NestedScrollingParentHelper;
 import androidx.core.view.ViewCompat;
@@ -291,6 +292,8 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
             case MotionEvent.ACTION_UP:
                 mPosIndicator.onRelease(x, y);
                 break;
+            default:
+                break;
         }
 
         return dispatchTouchEventSupper(ev);
@@ -321,6 +324,8 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 mIsIntercept = false;
+                break;
+            default:
                 break;
         }
 
@@ -355,6 +360,8 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
                     parentFling(-yVelocity);
                     UILog.dTag(TAG, "#dispatchTouchEvent# ACTION_UP, yVelocity: " + yVelocity);
                 }
+                break;
+            default:
                 break;
         }
         return true;
@@ -497,7 +504,7 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
         for (int i = 0; i < count; i++) {
             View target = getChildAt(i);
             ViewEdge viewEdge = mEdgeList.get(target);
-            if (viewEdge.topEdge == edge) {
+            if (viewEdge != null && viewEdge.topEdge == edge) {
                 return target;
             }
         }
@@ -516,11 +523,13 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
         if (mFlingOrientation == FLING_ORIENTATION_UP) {
             // 从上往下遍历
             int count = getChildCount();
+            ViewEdge targetEdge;
             for (int i = 0; i < count; i++) {
                 View target = getChildAt(i);
                 LinkageScrollHandler targetLinkageHandler
                         = getLinkageScrollHandler(target);
-                int topEdge = mEdgeList.get(target).topEdge;
+                targetEdge = mEdgeList.get(target);
+                int topEdge = targetEdge != null ? targetEdge.topEdge : 0;
                 if (topEdge <= scrollY
                         || !isTargetScrollable(target)
                         || !targetLinkageHandler.canScrollVertically(1)) {
@@ -530,11 +539,13 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
             }
         } else if (mFlingOrientation == FLING_ORIENTATION_DOWN) {
             // 从下往上遍历
+            ViewEdge targetEdge;
             for (int i = getChildCount() - 1; i >= 0; i--) {
                 View target = getChildAt(i);
                 LinkageScrollHandler targetLinkageHandler
                         = getLinkageScrollHandler(target);
-                int topEdge = mEdgeList.get(target).topEdge;
+                targetEdge = mEdgeList.get(target);
+                int topEdge = targetEdge != null ? targetEdge.topEdge : 0;
                 if (topEdge >= scrollY
                         || !isTargetScrollable(target)
                         || !targetLinkageHandler.canScrollVertically(-1)) {
@@ -700,7 +711,7 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
     }
 
     @Override
-    public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {
+    public boolean onStartNestedScroll(@NonNull View child, @NonNull View target, int nestedScrollAxes) {
         UILog.dTag(TAG, "#onStartNestedScroll# nestedScrollAxes: " + nestedScrollAxes);
         return (nestedScrollAxes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
     }
@@ -715,7 +726,7 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
      * @param axes
      */
     @Override
-    public void onNestedScrollAccepted(View child, View target, int axes) {
+    public void onNestedScrollAccepted(@NonNull View child, @NonNull View target, int axes) {
         UILog.dTag(TAG, "#onNestedScrollAccepted# axes: " + axes);
         mParentHelper.onNestedScrollAccepted(child, target, axes);
 
@@ -724,13 +735,13 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
     }
 
     @Override
-    public void onStopNestedScroll(View child) {
+    public void onStopNestedScroll(@NonNull View child) {
         UILog.dTag(TAG, "#onStopNestedScroll# child: " + child);
         mParentHelper.onStopNestedScroll(child);
     }
 
     @Override
-    public void onNestedScroll(View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+    public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
 //        Log.d(TAG, "#onNestedScroll# dyConsumed: " + dyConsumed + ", dyUnconsumed: " + dyUnconsumed);
         // target消费一部分，parent消费剩下的
         if (dyConsumed != 0 && dyUnconsumed != 0) {
@@ -739,7 +750,7 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
     }
 
     @Override
-    public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
+    public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed) {
         UILog.dTag(TAG, "#onNestedPreScroll# dy: " + dy);
 
         // 1. parent处理scroll
@@ -823,8 +834,10 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
         index = Math.min(index, getChildCount() - 1);
         View target = getChildAt(index);
         ViewEdge viewEdge = mEdgeList.get(target);
-        // 滚动到某个子view
-        scrollTo(0, viewEdge.topEdge, false);
+        if (viewEdge != null) {
+            // 滚动到某个子view
+            scrollTo(0, viewEdge.topEdge, false);
+        }
     }
 
     /**
@@ -883,12 +896,12 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
     }
 
     @Override
-    public boolean onNestedFling(View target, float velocityX, float velocityY, boolean consumed) {
+    public boolean onNestedFling(@NonNull View target, float velocityX, float velocityY, boolean consumed) {
         return false;
     }
 
     @Override
-    public boolean onNestedPreFling(View target, float velocityX, float velocityY) {
+    public boolean onNestedPreFling(@NonNull View target, float velocityX, float velocityY) {
         UILog.dTag(TAG, "#onNestedPreFling# velocityY: " + velocityY);
         int scrollY = getScrollY();
         ViewEdge targetEdge = getTargetEdge(target);
@@ -946,7 +959,7 @@ public class LinkageScrollLayout extends ViewGroup implements NestedScrollingPar
     /**
      * view的上边沿和下边沿
      */
-    private class ViewEdge {
+    private static class ViewEdge {
 
         public int topEdge;
         public int bottomEdge;

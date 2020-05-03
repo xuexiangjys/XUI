@@ -282,7 +282,6 @@ public class TabSegment extends HorizontalScrollView {
             return;
         }
         className = getFullClassName(context, className);
-        //noinspection TryWithIdenticalCatches
         try {
             ClassLoader classLoader;
             if (isInEditMode()) {

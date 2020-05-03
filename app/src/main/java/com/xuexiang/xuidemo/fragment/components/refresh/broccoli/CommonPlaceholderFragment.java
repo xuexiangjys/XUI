@@ -10,7 +10,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
@@ -18,7 +17,6 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsListAdapter;
-import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
@@ -74,33 +72,22 @@ public class CommonPlaceholderFragment extends BaseFragment {
         refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull final RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mNewsListAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
-                        refreshLayout.finishLoadMore();
-                    }
+                refreshLayout.getLayout().postDelayed(() -> {
+                    mNewsListAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
+                    refreshLayout.finishLoadMore();
                 }, 1000);
             }
 
             @Override
             public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mNewsListAdapter.refresh(DemoDataProvider.getDemoNewInfos());
-                        refreshLayout.finishRefresh();
-                    }
+                refreshLayout.getLayout().postDelayed(() -> {
+                    mNewsListAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+                    refreshLayout.finishRefresh();
                 }, 3000);
             }
         });
 
-        mNewsListAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
-            @Override
-            public void onItemClick(View itemView, NewInfo item, int position) {
-                Utils.goWeb(getContext(), item.getDetailUrl());
-            }
-        });
+        mNewsListAdapter.setOnItemClickListener((itemView, item, position) -> Utils.goWeb(getContext(), item.getDetailUrl()));
 
         //设置刷新加载时禁止所有列表操作
         refreshLayout.setDisableContentWhenRefresh(true);

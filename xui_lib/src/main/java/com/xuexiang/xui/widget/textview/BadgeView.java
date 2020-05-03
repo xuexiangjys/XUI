@@ -87,7 +87,6 @@ public class BadgeView extends AppCompatTextView {
         setHideOnNull(true);
     }
 
-    @SuppressWarnings("deprecation")
     public void setBackground(int dipRadius, int badgeColor) {
         int radius = dip2Px(dipRadius);
         float[] radiusArray = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
@@ -114,14 +113,9 @@ public class BadgeView extends AppCompatTextView {
         setText(getText());
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see android.widget.TextView#setText(java.lang.CharSequence, android.widget.TextView.BufferType)
-     */
     @Override
     public void setText(CharSequence text, BufferType type) {
-        if (isHideOnNull() && (text == null || text.toString().equalsIgnoreCase("0"))) {
+        if (isHideOnNull() && (text == null || "0".equalsIgnoreCase(text.toString()))) {
             setVisibility(View.GONE);
         } else {
             setVisibility(View.VISIBLE);

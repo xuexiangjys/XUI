@@ -148,7 +148,9 @@ public final class LabelViewHelper {
         }
 
         float begin_w_offset = (1.4142135f * actualDistance) / 2 - mTextBound.width() / 2;
-        if (begin_w_offset < 0) begin_w_offset = 0;
+        if (begin_w_offset < 0) {
+            begin_w_offset = 0;
+        }
 
         canvas.drawTextOnPath(mText, mTextPath, begin_w_offset, mTextBound.height() / 2, mTextPaint);
     }
@@ -227,6 +229,8 @@ public final class LabelViewHelper {
                 mTextPath.lineTo(endPosX, startPosY + middle);
                 mTextPath.close();
 
+                break;
+            default:
                 break;
         }
     }
@@ -362,7 +366,9 @@ public final class LabelViewHelper {
     }
 
     public void setLabelTextStyle(View view, int textStyle) {
-        if (mTextStyle == textStyle) return;
+        if (mTextStyle == textStyle) {
+            return;
+        }
         mTextStyle = textStyle;
         view.invalidate();
     }

@@ -309,8 +309,8 @@ public class XSeekBar extends View {
             float startX = mLineStartX;
             float stopY = 0;
             float startY = 0;
-            float divider = Float.valueOf(mRulerInterval) / 10f;
-            float scaleLength = (float) mLineLength / (float) ((mMax - mMin) / divider) / divider;
+            float divider = (float) mRulerInterval / 10f;
+            float scaleLength = (float) mLineLength / ((mMax - mMin) / divider) / divider;
 
             boolean isMinHasText = false;
             boolean isMaxHasText = false;

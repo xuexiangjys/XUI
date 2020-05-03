@@ -81,14 +81,11 @@ public class SelectorColorDialog extends CustomMaterialDialog {
             public View getView(final int position, View convertView, ViewGroup parent) {
                 View v = new View(context);
                 v.setBackgroundColor(colors[position]);
-                v.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (mOnColorSelectedListener != null) {
-                            mOnColorSelectedListener.onColorSelected(colors[position]);
-                        }
-                        dismiss();
+                v.setOnClickListener(v1 -> {
+                    if (mOnColorSelectedListener != null) {
+                        mOnColorSelectedListener.onColorSelected(colors[position]);
                     }
+                    dismiss();
                 });
                 GridView.LayoutParams lp = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT,
                         (int) (ScreenUtils.getScreenWidth() / 5f));

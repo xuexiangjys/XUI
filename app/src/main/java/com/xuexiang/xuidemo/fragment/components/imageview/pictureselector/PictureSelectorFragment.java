@@ -84,12 +84,7 @@ public class PictureSelectorFragment extends BaseFragment implements ImageSelect
         recyclerView.setAdapter(mAdapter = new ImageSelectGridAdapter(getActivity(), this));
         mAdapter.setSelectList(mSelectList);
         mAdapter.setSelectMax(8);
-        mAdapter.setOnItemClickListener(new ImageSelectGridAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                PictureSelector.create(PictureSelectorFragment.this).themeStyle(R.style.XUIPictureStyle).openExternalPreview(position, mSelectList);
-            }
-        });
+        mAdapter.setOnItemClickListener((position, v) -> PictureSelector.create(PictureSelectorFragment.this).themeStyle(R.style.XUIPictureStyle).openExternalPreview(position, mSelectList));
     }
 
     @OnClick({R.id.button, R.id.button_no_camera, R.id.button_one_photo, R.id.button_photo_gif})

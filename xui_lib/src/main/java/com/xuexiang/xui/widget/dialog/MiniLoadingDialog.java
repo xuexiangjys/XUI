@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
-import com.xuexiang.xui.utils.ResUtils;
-import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.progress.loading.IMessageLoader;
 import com.xuexiang.xui.widget.progress.loading.LoadingCancelListener;
 import com.xuexiang.xui.widget.progress.loading.MiniLoadingView;

@@ -325,7 +325,6 @@ public class ViewTooltip {
 
         private static final int MARGIN_SCREEN_BORDER_TOOLTIP = 30;
         private final int ARROW_HEIGHT = 15;
-        private final int ARROW_WIDTH = 15;
         protected View mChildView;
         private int mBubbleColor = Color.parseColor("#B2299EE3");
         private Path mBubblePath;
@@ -396,6 +395,8 @@ public class ViewTooltip {
                     break;
                 case RIGHT:
                     setPadding(mPaddingLeft + ARROW_HEIGHT, mPaddingTop, mPaddingRight, mPaddingBottom);
+                    break;
+                default:
                     break;
             }
             postInvalidate();
@@ -567,6 +568,8 @@ public class ViewTooltip {
                     case CENTER:
                         spacingY = (int) (-1f * maxHeight / 2f + minHeight / 2f);
                         break;
+                    default:
+                        break;
                 }
 
                 if (mPosition == Position.LEFT) {
@@ -633,6 +636,7 @@ public class ViewTooltip {
             path.moveTo(left + topLeftDiameter / 2f, top);
             //LEFT, TOP
 
+            int ARROW_WIDTH = 15;
             if (mPosition == Position.BOTTOM) {
                 path.lineTo(centerX - ARROW_WIDTH, top);
                 path.lineTo(centerX, myRect.top);

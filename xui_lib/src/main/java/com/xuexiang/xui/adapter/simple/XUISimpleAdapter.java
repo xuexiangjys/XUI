@@ -86,8 +86,8 @@ public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
     public static XUISimpleAdapter create(Context context, String[] data) {
         if (data != null && data.length > 0) {
             List<AdapterItem> lists = new ArrayList<>();
-            for (int i = 0; i < data.length; i++) {
-                lists.add(new AdapterItem(data[i]));
+            for (String datum : data) {
+                lists.add(new AdapterItem(datum));
             }
             return new XUISimpleAdapter(context, lists);
         } else {

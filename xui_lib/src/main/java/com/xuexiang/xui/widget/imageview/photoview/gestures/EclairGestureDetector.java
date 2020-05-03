@@ -77,6 +77,8 @@ public class EclairGestureDetector extends CupcakeGestureDetector {
                     mLastTouchY = ev.getY(newPointerIndex);
                 }
                 break;
+            default:
+                break;
         }
 
         mActivePointerIndex = ev

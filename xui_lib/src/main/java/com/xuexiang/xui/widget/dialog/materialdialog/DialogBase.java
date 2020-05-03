@@ -88,7 +88,7 @@ class DialogBase extends Dialog implements DialogInterface.OnShowListener {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent ev) {
+    public boolean onTouchEvent(@NonNull MotionEvent ev) {
         KeyboardUtils.dispatchTouchEvent(ev, this);
         return super.onTouchEvent(ev);
     }

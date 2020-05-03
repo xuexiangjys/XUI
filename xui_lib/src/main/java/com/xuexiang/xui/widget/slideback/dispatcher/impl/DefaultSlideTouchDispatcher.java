@@ -38,10 +38,22 @@ import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_RIGHT;
  */
 public class DefaultSlideTouchDispatcher implements ISlideTouchEventDispatcher {
 
-    protected boolean mIsSideSlideLeft = false;  // 是否从左边边缘开始滑动
-    protected boolean mIsSideSlideRight = false;  // 是否从右边边缘开始滑动
-    protected float mDownX = 0; // 按下的X轴坐标
-    protected float mMoveXLength = 0; // 位移的X轴距离
+    /**
+     * 是否从左边边缘开始滑动
+     */
+    protected boolean mIsSideSlideLeft = false;
+    /**
+     * 是否从右边边缘开始滑动
+     */
+    protected boolean mIsSideSlideRight = false;
+    /**
+     * 按下的X轴坐标
+     */
+    protected float mDownX = 0;
+    /**
+     * 位移的X轴距离
+     */
+    protected float mMoveXLength = 0;
 
     protected SlideInfo mSlideInfo;
     protected SlideCallBack mCallBack;
@@ -66,7 +78,8 @@ public class DefaultSlideTouchDispatcher implements ISlideTouchEventDispatcher {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN: // 按下
+            case MotionEvent.ACTION_DOWN:
+                // 按下
                 // 更新按下点的X轴坐标
                 mDownX = event.getRawX();
 
@@ -77,7 +90,8 @@ public class DefaultSlideTouchDispatcher implements ISlideTouchEventDispatcher {
                     mIsSideSlideRight = true;
                 }
                 break;
-            case MotionEvent.ACTION_MOVE: // 移动
+            case MotionEvent.ACTION_MOVE:
+                // 移动
                 if (mIsSideSlideLeft || mIsSideSlideRight) {
                     // 从边缘开始滑动
                     // 获取X轴位移距离
@@ -99,7 +113,8 @@ public class DefaultSlideTouchDispatcher implements ISlideTouchEventDispatcher {
                     }
                 }
                 break;
-            case MotionEvent.ACTION_UP: // 抬起
+            case MotionEvent.ACTION_UP:
+                // 抬起
                 // 是从边缘开始滑动 且 抬起点的X轴坐标大于某值(默认3倍最大滑动长度) 且 回调不为空
                 if ((mIsSideSlideLeft || mIsSideSlideRight) && mMoveXLength / mSlideInfo.getDragRate() >= mSlideInfo.getMaxSlideLength() && null != mCallBack) {
                     // 区分左右
@@ -116,6 +131,8 @@ public class DefaultSlideTouchDispatcher implements ISlideTouchEventDispatcher {
                 // 从边缘开始滑动结束
                 mIsSideSlideLeft = false;
                 mIsSideSlideRight = false;
+                break;
+            default:
                 break;
         }
         return mIsSideSlideLeft || mIsSideSlideRight;

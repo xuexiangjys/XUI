@@ -4,13 +4,11 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.View;
 import android.widget.TextView;
 
 import com.xuexiang.xaop.annotation.IOThread;
 import com.xuexiang.xfloatview.XFloatView;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.app.AppUtils;
 import com.xuexiang.xutil.common.StringUtils;
 
@@ -74,15 +72,12 @@ public class AppSwitchView extends XFloatView {
      */
     @Override
     protected void initListener() {
-        setOnFloatViewClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (StringUtils.isEmpty(mPackageName)) {
-                    AppUtils.launchApp(getContext().getPackageName());
-                } else {
-                    if (!isAppForeground(mPackageName)) {
-                        AppUtils.launchApp(mPackageName);
-                    }
+        setOnFloatViewClickListener(v -> {
+            if (StringUtils.isEmpty(mPackageName)) {
+                AppUtils.launchApp(getContext().getPackageName());
+            } else {
+                if (!isAppForeground(mPackageName)) {
+                    AppUtils.launchApp(mPackageName);
                 }
             }
         });
@@ -120,12 +115,9 @@ public class AppSwitchView extends XFloatView {
             mTvAppName.setText(String.format("应用：%s", appName));
             mTvPackageName.setText(String.format("包名：%s", packageName));
         } else {
-            mMainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mTvAppName.setText(String.format("应用：%s", appName));
-                    mTvPackageName.setText(String.format("包名：%s", packageName));
-                }
+            mMainHandler.post(() -> {
+                mTvAppName.setText(String.format("应用：%s", appName));
+                mTvPackageName.setText(String.format("包名：%s", packageName));
             });
         }
     }

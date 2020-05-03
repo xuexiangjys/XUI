@@ -69,7 +69,7 @@ public class PickerOptions {
     /**
      * x轴偏移量
      */
-    public int x_offset_one, x_offset_two, x_offset_three;
+    public int xOffsetOne, xOffsetTwo, xOffsetThree;
     /**
      * 是否循环，默认否
      */
@@ -119,11 +119,11 @@ public class PickerOptions {
     /**
      * 单位
      */
-    public String label_year, label_month, label_day, label_hours, label_minutes, label_seconds;
+    public String labelYear, labelMonth, labelDay, labelHours, labelMinutes, labelSeconds;
     /**
      * x轴偏移量
      */
-    public int x_offset_year, x_offset_month, x_offset_day, x_offset_hours, x_offset_minutes, x_offset_seconds;
+    public int xOffsetYear, xOffsetMonth, xOffsetDay, xOffsetHours, xOffsetMinutes, xOffsetSeconds;
 
 
     public PickerOptions(int buildType) {

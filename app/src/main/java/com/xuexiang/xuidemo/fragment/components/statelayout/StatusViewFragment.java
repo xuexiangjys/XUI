@@ -45,28 +45,19 @@ public class StatusViewFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        mStatusView.setOnErrorClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("点击错误状态视图");
-                mStatusView.dismiss();
-            }
+        mStatusView.setOnErrorClickListener(v -> {
+            XToastUtils.toast("点击错误状态视图");
+            mStatusView.dismiss();
         });
 
-        mStatusView.setOnLoadingClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("点击正在加载状态视图");
-                mStatusView.dismiss();
-            }
+        mStatusView.setOnLoadingClickListener(v -> {
+            XToastUtils.toast("点击正在加载状态视图");
+            mStatusView.dismiss();
         });
 
-        mStatusView.setOnCustomClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("点击自定义状态视图");
-                mStatusView.dismiss();
-            }
+        mStatusView.setOnCustomClickListener(v -> {
+            XToastUtils.toast("点击自定义状态视图");
+            mStatusView.dismiss();
         });
     }
 
@@ -88,6 +79,8 @@ public class StatusViewFragment extends BaseFragment {
                 break;
             case R.id.custom:
                 mStatusView.setStatus(Status.CUSTOM);
+                break;
+            default:
                 break;
         }
     }

@@ -37,20 +37,16 @@ class MultiTouchListener implements OnTouchListener {
 
     private static final int INVALID_POINTER_ID = -1;
     private final GestureDetector mGestureListener;
-    private boolean isRotateEnabled = true;
     private boolean isTranslateEnabled = true;
-    private boolean isScaleEnabled = true;
-    private float minimumScale = 0.5f;
-    private float maximumScale = 10.0f;
     private int mActivePointerId = INVALID_POINTER_ID;
-    private float mPrevX, mPrevY, mPrevRawX, mPrevRawY;
+    private float mPrevX;
+    private float mPrevY;
     private ScaleGestureDetector mScaleGestureDetector;
 
     private int[] location = new int[2];
     private Rect outRect;
     private View deleteView;
     private ImageView photoEditImageView;
-    private RelativeLayout parentView;
 
     private OnMultiTouchListener onMultiTouchListener;
     private OnGestureControl mOnGestureControl;
@@ -64,7 +60,6 @@ class MultiTouchListener implements OnTouchListener {
         mScaleGestureDetector = new ScaleGestureDetector(new ScaleGestureListener());
         mGestureListener = new GestureDetector(new GestureListener());
         this.deleteView = deleteView;
-        this.parentView = parentView;
         this.photoEditImageView = photoEditImageView;
         this.mOnPhotoEditorListener = onPhotoEditorListener;
         if (deleteView != null) {
@@ -144,8 +139,8 @@ class MultiTouchListener implements OnTouchListener {
             case MotionEvent.ACTION_DOWN:
                 mPrevX = event.getX();
                 mPrevY = event.getY();
-                mPrevRawX = event.getRawX();
-                mPrevRawY = event.getRawY();
+                float mPrevRawX = event.getRawX();
+                float mPrevRawY = event.getRawY();
                 mActivePointerId = event.getPointerId(0);
                 if (deleteView != null) {
                     deleteView.setVisibility(View.VISIBLE);
@@ -235,20 +230,24 @@ class MultiTouchListener implements OnTouchListener {
         @Override
         public boolean onScale(View view, ScaleGestureDetector detector) {
             TransformInfo info = new TransformInfo();
+            boolean isScaleEnabled = true;
             info.deltaScale = isScaleEnabled ? detector.getScaleFactor() : 1.0f;
+            boolean isRotateEnabled = true;
             info.deltaAngle = isRotateEnabled ? Vector2D.getAngle(mPrevSpanVector, detector.getCurrentSpanVector()) : 0.0f;
             info.deltaX = isTranslateEnabled ? detector.getFocusX() - mPivotX : 0.0f;
             info.deltaY = isTranslateEnabled ? detector.getFocusY() - mPivotY : 0.0f;
             info.pivotX = mPivotX;
             info.pivotY = mPivotY;
+            float minimumScale = 0.5f;
             info.minimumScale = minimumScale;
+            float maximumScale = 10.0f;
             info.maximumScale = maximumScale;
             move(view, info);
             return !mIsTextPinchZoomable;
         }
     }
 
-    private class TransformInfo {
+    private static class TransformInfo {
         float deltaX;
         float deltaY;
         float deltaScale;

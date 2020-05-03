@@ -65,7 +65,6 @@
 
             <com.xuexiang.xui.widget.edittext.PasswordEditText
                 android:id="@+id/input_password2"
-                fontPath="fonts/Roboto-Thin.ttf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -74,6 +73,7 @@
                 android:hint="重复密码"
                 android:inputType="textPassword"
                 android:textAlignment="viewStart"
+                app:fontPath="fonts/Roboto-Thin.ttf"
                 app:pet_enableIconAlpha="true"
                 app:pet_hoverShowsPw="true" />
 

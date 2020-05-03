@@ -82,6 +82,8 @@ public class ShadowButton extends BaseShadowButton {
                 mPressedPaint.setAlpha(0);
                 invalidate();
                 break;
+            default:
+                break;
         }
         return super.onTouchEvent(event);
     }

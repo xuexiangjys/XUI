@@ -35,7 +35,7 @@ class ScaleGestureDetector {
      * If you want to listen for all the different gestures then implement
      * this interface. If you only want to listen for a subset it might
      * be easier to extend {@link SimpleOnScaleGestureListener}.
-     *
+     * <p>
      * An application will receive events in the following order:
      */
     interface OnScaleGestureListener {
@@ -44,13 +44,13 @@ class ScaleGestureDetector {
          * Reported by pointer motion.
          *
          * @param detector The detector reporting the event - use this to
-         *          retrieve extended info about event state.
+         *                 retrieve extended info about event state.
          * @return Whether or not the detector should consider this event
-         *          as handled. If an event was not handled, the detector
-         *          will continue to accumulate movement until an event is
-         *          handled. This can be useful if an application, for example,
-         *          only wants to update scaling factors if the change is
-         *          greater than 0.01.
+         * as handled. If an event was not handled, the detector
+         * will continue to accumulate movement until an event is
+         * handled. This can be useful if an application, for example,
+         * only wants to update scaling factors if the change is
+         * greater than 0.01.
          */
         boolean onScale(View view, ScaleGestureDetector detector);
 
@@ -59,25 +59,25 @@ class ScaleGestureDetector {
          * new pointers going down.
          *
          * @param detector The detector reporting the event - use this to
-         *          retrieve extended info about event state.
+         *                 retrieve extended info about event state.
          * @return Whether or not the detector should continue recognizing
-         *          this gesture. For example, if a gesture is beginning
-         *          with a focal point outside of a region where it makes
-         *          sense, onScaleBegin() may return false to ignore the
-         *          rest of the gesture.
+         * this gesture. For example, if a gesture is beginning
+         * with a focal point outside of a region where it makes
+         * sense, onScaleBegin() may return false to ignore the
+         * rest of the gesture.
          */
         boolean onScaleBegin(View view, ScaleGestureDetector detector);
 
         /**
          * Responds to the end of a scale gesture. Reported by existing
          * pointers going up.
-         *
+         * <p>
          * Once a scale has ended, {@link ScaleGestureDetector#getFocusX()}
          * and {@link ScaleGestureDetector#getFocusY()} will return the location
          * of the pointer remaining on the screen.
          *
          * @param detector The detector reporting the event - use this to
-         *          retrieve extended info about event state.
+         *                 retrieve extended info about event state.
          */
         void onScaleEnd(View view, ScaleGestureDetector detector);
     }
@@ -88,14 +88,17 @@ class ScaleGestureDetector {
      */
     static class SimpleOnScaleGestureListener implements OnScaleGestureListener {
 
+        @Override
         public boolean onScale(View view, ScaleGestureDetector detector) {
             return false;
         }
 
+        @Override
         public boolean onScaleBegin(View view, ScaleGestureDetector detector) {
             return true;
         }
 
+        @Override
         public void onScaleEnd(View view, ScaleGestureDetector detector) {
             // Intentionally empty
         }
@@ -156,19 +159,20 @@ class ScaleGestureDetector {
             handled = false;
         } else if (!mGestureInProgress) {
             switch (action) {
-                case MotionEvent.ACTION_DOWN: {
+                case MotionEvent.ACTION_DOWN:
                     mActiveId0 = event.getPointerId(0);
                     mActive0MostRecent = true;
-                }
-                break;
+                    break;
 
                 case MotionEvent.ACTION_UP:
                     reset();
                     break;
 
-                case MotionEvent.ACTION_POINTER_DOWN: {
+                case MotionEvent.ACTION_POINTER_DOWN:
                     // We have a new multi-finger gesture
-                    if (mPrevEvent != null) mPrevEvent.recycle();
+                    if (mPrevEvent != null) {
+                        mPrevEvent.recycle();
+                    }
                     mPrevEvent = MotionEvent.obtain(event);
                     mTimeDelta = 0;
 
@@ -186,12 +190,13 @@ class ScaleGestureDetector {
 
                     mGestureInProgress = mListener.onScaleBegin(view, this);
                     break;
-                }
+                default:
+                    break;
             }
         } else {
             // Transform gesture in progress - attempt to handle it
             switch (action) {
-                case MotionEvent.ACTION_POINTER_DOWN: {
+                case MotionEvent.ACTION_POINTER_DOWN:
                     // End the old gesture and begin a new one with the most recent two fingers.
                     mListener.onScaleEnd(view, this);
                     final int oldActive0 = mActiveId0;
@@ -213,10 +218,9 @@ class ScaleGestureDetector {
                     setContext(view, event);
 
                     mGestureInProgress = mListener.onScaleBegin(view, this);
-                }
-                break;
+                    break;
 
-                case MotionEvent.ACTION_POINTER_UP: {
+                case MotionEvent.ACTION_POINTER_UP:
                     final int pointerCount = event.getPointerCount();
                     final int actionIndex = event.getActionIndex();
                     final int actionId = event.getPointerId(actionIndex);
@@ -270,8 +274,7 @@ class ScaleGestureDetector {
                         mActiveId0 = activeId;
                         mActive0MostRecent = true;
                     }
-                }
-                break;
+                    break;
 
                 case MotionEvent.ACTION_CANCEL:
                     mListener.onScaleEnd(view, this);
@@ -282,7 +285,7 @@ class ScaleGestureDetector {
                     reset();
                     break;
 
-                case MotionEvent.ACTION_MOVE: {
+                case MotionEvent.ACTION_MOVE:
                     setContext(view, event);
 
                     // Only accept the event if our relative pressure is within
@@ -296,8 +299,9 @@ class ScaleGestureDetector {
                             mPrevEvent = MotionEvent.obtain(event);
                         }
                     }
-                }
-                break;
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -391,6 +395,7 @@ class ScaleGestureDetector {
 
     /**
      * Returns {@code true} if a two-finger scale gesture is in progress.
+     *
      * @return {@code true} if a scale gesture is in progress, {@code false} otherwise.
      */
     boolean isInProgress() {

@@ -54,7 +54,6 @@ import uk.co.chrisjenx.calligraphy.HasTypeface;
  */
 public class EasyIndicator extends LinearLayout implements View.OnClickListener, ViewPager.OnPageChangeListener, HasTypeface {
     private View mIndicator;
-    private int mPosition;
     private ViewPager mViewPager;
     /**
      * 选项卡点击监听
@@ -292,7 +291,7 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         TextView tv = (TextView) v;
-        mPosition = (int) v.getTag();
+        int mPosition = (int) v.getTag();
         if (mViewPager != null) {
             mViewPager.setCurrentItem(mPosition);
         } else {
@@ -307,9 +306,9 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     }
 
     private void setSelectorColor(TextView tv) {
-        for (int i = 0; i < tvs.length; i++) {
-            tvs[i].setTextColor(indicator_normal_color);
-            tvs[i].setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_textSize);
+        for (TextView textView : tvs) {
+            textView.setTextColor(indicator_normal_color);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_textSize);
         }
         tv.setTextColor(indicator_selected_color);
         tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_select_textSize);

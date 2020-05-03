@@ -17,12 +17,9 @@
 
 package com.xuexiang.xuidemo.fragment.components.flowlayout;
 
-import android.view.View;
-
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.FlexboxLayoutAdapter;
@@ -86,37 +83,23 @@ public class FlexboxLayoutFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        mAdapter1.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<String>() {
-            @Override
-            public void onItemClick(View itemView, String item, int position) {
-                XToastUtils.toast("点击了：" + item);
+        mAdapter1.setOnItemClickListener((itemView, item, position) -> XToastUtils.toast("点击了：" + item));
+
+        mAdapter2.setOnItemClickListener((itemView, item, position) -> {
+            if (mAdapter2.select(position)) {
+                XToastUtils.toast("选中的内容：" + mAdapter2.getSelectContent());
             }
         });
 
-        mAdapter2.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<String>() {
-            @Override
-            public void onItemClick(View itemView, String item, int position) {
-                if (mAdapter2.select(position)) {
-                    XToastUtils.toast("选中的内容：" + mAdapter2.getSelectContent());
-                }
+        mAdapter3.setOnItemClickListener((itemView, item, position) -> {
+            if (mAdapter3.select(position)) {
+                XToastUtils.toast("选中的内容：" + mAdapter3.getSelectContent());
             }
         });
 
-        mAdapter3.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<String>() {
-            @Override
-            public void onItemClick(View itemView, String item, int position) {
-                if (mAdapter3.select(position)) {
-                    XToastUtils.toast("选中的内容：" + mAdapter3.getSelectContent());
-                }
-            }
-        });
-
-        mAdapter4.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<String>() {
-            @Override
-            public void onItemClick(View itemView, String item, int position) {
-                mAdapter4.select(position);
-                XToastUtils.toast("选中的内容：" + StringUtils.listToString(mAdapter4.getMultiContent(), ","));
-            }
+        mAdapter4.setOnItemClickListener((itemView, item, position) -> {
+            mAdapter4.select(position);
+            XToastUtils.toast("选中的内容：" + StringUtils.listToString(mAdapter4.getMultiContent(), ","));
         });
     }
 }

@@ -45,7 +45,7 @@ public final class LunarCalendarUtils {
     /**
      * 公历每月前的天数
      */
-    private static final int DAYS_BEFORE_MONTH[] = {0, 31, 59, 90, 120, 151, 181,
+    private static final int[] DAYS_BEFORE_MONTH = {0, 31, 59, 90, 120, 151, 181,
             212, 243, 273, 304, 334, 365};
 
     /**
@@ -58,7 +58,7 @@ public final class LunarCalendarUtils {
      * 1001 0101 0101 1010 1011 1111
      * 闰九月  农历正月初一对应公历1月31号
      */
-    private static final int LUNAR_INFO[] = {
+    private static final int[] LUNAR_INFO = {
             0x84B6BF,/*1900*/
             0x04AE53, 0x0A5748, 0x5526BD, 0x0D2650, 0x0D9544, 0x46AAB9, 0x056A4D, 0x09AD42, 0x24AEB6, 0x04AE4A,/*1901-1910*/
             0x6A4DBE, 0x0A4D52, 0x0D2546, 0x5D52BA, 0x0B544E, 0x0D6A43, 0x296D37, 0x095B4B, 0x749BC1, 0x049754,/*1911-1920*/
@@ -171,14 +171,16 @@ public final class LunarCalendarUtils {
 
         dayOffset = (LUNAR_INFO[year - MIN_YEAR] & 0x001F) - 1;
 
-        if (((LUNAR_INFO[year - MIN_YEAR] & 0x0060) >> 5) == 2)
+        if (((LUNAR_INFO[year - MIN_YEAR] & 0x0060) >> 5) == 2) {
             dayOffset += 31;
+        }
 
         for (i = 1; i < month; i++) {
-            if ((LUNAR_INFO[year - MIN_YEAR] & (0x80000 >> (i - 1))) == 0)
+            if ((LUNAR_INFO[year - MIN_YEAR] & (0x80000 >> (i - 1))) == 0) {
                 dayOffset += 29;
-            else
+            } else {
                 dayOffset += 30;
+            }
         }
 
         dayOffset += monthDay;
@@ -187,19 +189,21 @@ public final class LunarCalendarUtils {
         // 这一年有闰月
         if (leapMonth != 0) {
             if (month > leapMonth || (month == leapMonth && isLeapMonth)) {
-                if ((LUNAR_INFO[year - MIN_YEAR] & (0x80000 >> (month - 1))) == 0)
+                if ((LUNAR_INFO[year - MIN_YEAR] & (0x80000 >> (month - 1))) == 0) {
                     dayOffset += 29;
-                else
+                } else {
                     dayOffset += 30;
+                }
             }
         }
 
         if (dayOffset > 366 || (year % 4 != 0 && dayOffset > 365)) {
             year += 1;
-            if (year % 4 == 1)
+            if (year % 4 == 1) {
                 dayOffset -= 366;
-            else
+            } else {
                 dayOffset -= 365;
+            }
         }
 
         int[] solarInfo = new int[3];
@@ -221,16 +225,18 @@ public final class LunarCalendarUtils {
                 if (year % 4 == 0 && i > 2) {
                     iPos += 1;
                 }
-                if (dayOffset > iPos)
+                if (dayOffset > iPos) {
                     solarInfo[2] = dayOffset - iPos;
-                else if (dayOffset == iPos) {
-                    if (year % 4 == 0 && i == 2)
+                } else if (dayOffset == iPos) {
+                    if (year % 4 == 0 && i == 2) {
                         solarInfo[2] = DAYS_BEFORE_MONTH[i] - DAYS_BEFORE_MONTH[i - 1] + 1;
-                    else
+                    } else {
                         solarInfo[2] = DAYS_BEFORE_MONTH[i] - DAYS_BEFORE_MONTH[i - 1];
+                    }
 
-                } else
+                } else {
                     solarInfo[2] = dayOffset;
+                }
                 break;
             }
         }
@@ -239,7 +245,7 @@ public final class LunarCalendarUtils {
         return solarInfo;
     }
 
-    public static final int[] solarToLunar(int year, int month, int monthDay) {
+    public static int[] solarToLunar(int year, int month, int monthDay) {
         int[] lunarDate = new int[4];
 
         int index = year - solar_1_1[0];
@@ -406,8 +412,9 @@ public final class LunarCalendarUtils {
         }
         int monthInfo = LUNAR_INFO[year - MIN_YEAR] & 0x0FFF80;
         for (i = 0x80000; i > 0x7; i >>= 1) {
-            if ((monthInfo & i) != 0)
+            if ((monthInfo & i) != 0) {
                 sum += 1;
+            }
         }
         return sum;
     }
@@ -420,10 +427,11 @@ public final class LunarCalendarUtils {
      * @return 传回农历 year年month月的总天数
      */
     private static int daysInLunarMonth(int year, int month) {
-        if ((LUNAR_INFO[year - MIN_YEAR] & (0x100000 >> month)) == 0)
+        if ((LUNAR_INFO[year - MIN_YEAR] & (0x100000 >> month)) == 0) {
             return 29;
-        else
+        } else {
             return 30;
+        }
     }
 
     /**

@@ -80,6 +80,8 @@ public class EChartsAndroidFragment extends BaseWebViewFragment {
             case R.id.btn_pie_chart:
                 initPieChart();
                 break;
+            default:
+                break;
         }
     }
 
@@ -99,7 +101,7 @@ public class EChartsAndroidFragment extends BaseWebViewFragment {
     /**
      * 注入到JS里的对象接口
      */
-    public class ChartInterface {
+    public static class ChartInterface {
 
         @JavascriptInterface
         public String makeBarChartOptions() {

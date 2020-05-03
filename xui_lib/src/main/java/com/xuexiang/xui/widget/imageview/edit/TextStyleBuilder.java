@@ -47,7 +47,7 @@ public class TextStyleBuilder {
      *
      * @param size Size to apply on text
      */
-    public void withTextSize(@NonNull float size) {
+    public void withTextSize(float size) {
         values.put(TextStyle.SIZE, size);
     }
 
@@ -56,7 +56,7 @@ public class TextStyleBuilder {
      *
      * @param color Color to apply on text
      */
-    public void withTextColor(@NonNull int color) {
+    public void withTextColor(int color) {
         values.put(TextStyle.COLOR, color);
     }
 
@@ -74,7 +74,7 @@ public class TextStyleBuilder {
      *
      * @param gravity Gravity style to apply on text
      */
-    public void withGravity(@NonNull int gravity) {
+    public void withGravity(int gravity) {
         values.put(TextStyle.GRAVITY, gravity);
     }
 
@@ -83,7 +83,7 @@ public class TextStyleBuilder {
      *
      * @param background Background color to apply on text, this method overrides the preview set on {@link TextStyleBuilder#withBackgroundDrawable(Drawable)}
      */
-    public void withBackgroundColor(@NonNull int background) {
+    public void withBackgroundColor(int background) {
         values.put(TextStyle.BACKGROUND, background);
     }
 
@@ -101,7 +101,7 @@ public class TextStyleBuilder {
      *
      * @param textAppearance Text style to apply on text
      */
-    public void withTextAppearance(@NonNull int textAppearance) {
+    public void withTextAppearance(int textAppearance) {
         values.put(TextStyle.TEXT_APPEARANCE, textAppearance);
     }
 
@@ -113,49 +113,45 @@ public class TextStyleBuilder {
     void applyStyle(@NonNull TextView textView) {
         for (Map.Entry<TextStyle, Object> entry : values.entrySet()) {
             switch (entry.getKey()) {
-                case SIZE: {
+                case SIZE:
                     final float size = (float) entry.getValue();
                     applyTextSize(textView, size);
-                }
-                break;
+                    break;
 
-                case COLOR: {
+                case COLOR:
                     final int color = (int) entry.getValue();
                     applyTextColor(textView, color);
-                }
-                break;
+                    break;
 
-                case FONT_FAMILY: {
+                case FONT_FAMILY:
                     final Typeface typeface = (Typeface) entry.getValue();
                     applyFontFamily(textView, typeface);
-                }
-                break;
+                    break;
 
-                case GRAVITY: {
+                case GRAVITY:
                     final int gravity = (int) entry.getValue();
                     applyGravity(textView, gravity);
-                }
-                break;
+                    break;
 
-                case BACKGROUND: {
+                case BACKGROUND:
                     if (entry.getValue() instanceof Drawable) {
                         final Drawable bg = (Drawable) entry.getValue();
                         applyBackgroundDrawable(textView, bg);
 
                     } else if (entry.getValue() instanceof Integer) {
-                        final int color = (Integer) entry.getValue();
-                        applyBackgroundColor(textView, color);
+                        final int bgColor = (Integer) entry.getValue();
+                        applyBackgroundColor(textView, bgColor);
                     }
-                }
-                break;
+                    break;
 
-                case TEXT_APPEARANCE: {
+                case TEXT_APPEARANCE:
                     if (entry.getValue() instanceof Integer) {
                         final int styleAppearance = (Integer) entry.getValue();
                         applyTextAppearance(textView, styleAppearance);
                     }
-                }
-                break;
+                    break;
+                default:
+                    break;
             }
         }
     }

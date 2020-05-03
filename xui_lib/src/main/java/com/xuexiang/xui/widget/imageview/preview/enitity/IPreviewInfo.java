@@ -20,8 +20,6 @@ import android.graphics.Rect;
 import android.os.Parcelable;
 import androidx.annotation.Nullable;
 
-import java.io.Serializable;
-
 /**
  * 图片预览接口
  *

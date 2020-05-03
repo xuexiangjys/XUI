@@ -1,7 +1,5 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
-import android.view.View;
-
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -61,28 +59,15 @@ public class ToolbarBehaviorFragment extends BaseFragment {
     @Override
     protected void initViews() {
         toolbar.inflateMenu(R.menu.menu_search);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> popToBack());
 
-        fabScrolling.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("分享");
-            }
-        });
+        fabScrolling.setOnClickListener(v -> XToastUtils.toast("分享"));
 
-        appbarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
-                    StatusBarUtils.setStatusBarDarkMode(getActivity());
-                } else {
-                    StatusBarUtils.setStatusBarLightMode(getActivity());
-                }
+        appbarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+            if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
+                StatusBarUtils.setStatusBarDarkMode(getActivity());
+            } else {
+                StatusBarUtils.setStatusBarLightMode(getActivity());
             }
         });
     }

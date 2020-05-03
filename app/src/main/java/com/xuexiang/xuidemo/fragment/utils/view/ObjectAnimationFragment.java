@@ -22,19 +22,10 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
-import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.graphics.PointF;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnticipateInterpolator;
-import android.view.animation.AnticipateOvershootInterpolator;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.CycleInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
 import com.xuexiang.xaop.annotation.SingleClick;
@@ -182,15 +173,12 @@ public class ObjectAnimationFragment extends BaseFragment {
     private void doValueAnimator(View view) {
         //值的变化，与控件无关
         ValueAnimator animator = ValueAnimator.ofFloat(1, 0, 1);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float value = (float) animation.getAnimatedValue();
-                view.setScaleX(value);
-                view.setScaleY(value);
-                view.setAlpha(value);
-                view.setRotation(360 * (1 - value));
-            }
+        animator.addUpdateListener(animation -> {
+            float value = (float) animation.getAnimatedValue();
+            view.setScaleX(value);
+            view.setScaleY(value);
+            view.setAlpha(value);
+            view.setRotation(360 * (1 - value));
         });
         animator.setDuration(2000).start();
     }
@@ -206,24 +194,18 @@ public class ObjectAnimationFragment extends BaseFragment {
         animator.setDuration(3000);
         animator.setObjectValues(new PointF(0, 0));
         final PointF pointF = new PointF();
-        animator.setEvaluator(new TypeEvaluator() {
-            @Override
-            public Object evaluate(float fraction, Object startValue, Object endValue) {
-                //fraction是运动中的匀速变化的值
-                //根据重力计算实际的运动y=vt=0.5*g*t*t
-                //g越大效果越明显
-                pointF.x = 100 * (fraction * 5);
-                pointF.y = 0.5f * 300f * (fraction * 5) * (fraction * 5);
-                return pointF;
-            }
+        animator.setEvaluator((fraction, startValue, endValue) -> {
+            //fraction是运动中的匀速变化的值
+            //根据重力计算实际的运动y=vt=0.5*g*t*t
+            //g越大效果越明显
+            pointF.x = 100 * (fraction * 5);
+            pointF.y = 0.5f * 300f * (fraction * 5) * (fraction * 5);
+            return pointF;
         });
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                PointF p = (PointF) animation.getAnimatedValue();
-                view.setX(p.x);
-                view.setY(p.y);
-            }
+        animator.addUpdateListener(animation -> {
+            PointF p = (PointF) animation.getAnimatedValue();
+            view.setX(p.x);
+            view.setY(p.y);
         });
         animator.addListener(new AnimatorListenerAdapter() {
             @Override

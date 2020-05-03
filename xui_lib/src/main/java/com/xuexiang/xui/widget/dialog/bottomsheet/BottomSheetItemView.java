@@ -1,6 +1,8 @@
 package com.xuexiang.xui.widget.dialog.bottomsheet;
 
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.ViewStub;
@@ -54,6 +56,7 @@ public class BottomSheetItemView extends XUIAlphaLinearLayout {
         return mSubScript;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return mTextView.getText().toString();

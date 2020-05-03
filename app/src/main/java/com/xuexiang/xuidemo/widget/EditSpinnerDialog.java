@@ -1,12 +1,10 @@
 package com.xuexiang.xuidemo.widget;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.UIConsts;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.KeyboardUtils;
-import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.spinner.editspinner.EditSpinner;
 import com.xuexiang.xuidemo.R;
@@ -43,24 +41,16 @@ public class EditSpinnerDialog {
                 .customView(R.layout.layout_dialog_spinner, false)
                 .negativeText(builder.negativeText)
                 .positiveText(builder.positiveText)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        KeyboardUtils.hideSoftInput(mEditSpinner);
-                        if (mListener != null) {
-                            mListener.OnEdit(mEditSpinner.getText());
-                        }
+                .onPositive((dialog, which) -> {
+                    KeyboardUtils.hideSoftInput(mEditSpinner);
+                    if (mListener != null) {
+                        mListener.onEdit(mEditSpinner.getText());
                     }
                 })
-                .onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        KeyboardUtils.hideSoftInput(mEditSpinner);
-                    }
-                })
+                .onNegative((dialog, which) -> KeyboardUtils.hideSoftInput(mEditSpinner))
                 .cancelable(builder.enableCancel)
                 .build();
-        mEditSpinner = (EditSpinner) mDialog.findViewById(R.id.editSpinner);
+        mEditSpinner = mDialog.findViewById(R.id.editSpinner);
         mEditSpinner.setEditTextWidth(builder.width);
         if (builder.defaultItems != null) {
             mEditSpinner.setItems(builder.defaultItems);
@@ -209,7 +199,7 @@ public class EditSpinnerDialog {
          *
          * @param value
          */
-        void OnEdit(String value);
+        void onEdit(String value);
     }
 
 }

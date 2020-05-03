@@ -87,7 +87,7 @@ public class DemoDataProvider {
         return list;
     }
 
-    public static List<Object> getUsertGuides() {
+    public static List<Object> getUserGuides() {
         List<Object> list = new ArrayList<>();
         list.add(R.drawable.guide_img_1);
         list.add(R.drawable.guide_img_2);
@@ -96,7 +96,7 @@ public class DemoDataProvider {
         return list;
     }
 
-    public static Class<? extends ViewPager.PageTransformer> transformers[] = new Class[]{
+    public static Class<? extends ViewPager.PageTransformer>[] transformers = new Class[]{
             DepthTransformer.class,
             FadeSlideTransformer.class,
             FlowTransformer.class,

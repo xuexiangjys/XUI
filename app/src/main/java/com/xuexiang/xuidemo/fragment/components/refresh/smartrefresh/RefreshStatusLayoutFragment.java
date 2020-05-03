@@ -16,15 +16,9 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh;
 
-import android.view.View;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.statelayout.StatefulLayout;
@@ -70,77 +64,51 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
         mRecyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         //下拉刷新
-        mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Status status = getRefreshStatus();
-                        switch(status) {
-                            case SUCCESS:
-                                mAdapter.refresh(DemoDataProvider.getDemoData());
-                                mRefreshLayout.resetNoMoreData();//setNoMoreData(false);
-                                mLlStateful.showContent();
-                                mRefreshLayout.setEnableLoadMore(true);
-                                break;
-                            case EMPTY:
-                                mLlStateful.showEmpty();
-                                mRefreshLayout.setEnableLoadMore(false);
-                                break;
-                            case ERROR:
-                                showError();
-                                break;
-                            case NO_NET:
-                                showOffline();
-                                break;
-                            default:
-                                break;
-                        }
-                        refreshLayout.finishRefresh();
+        mRefreshLayout.setOnRefreshListener(refreshLayout -> refreshLayout.getLayout().postDelayed(() -> {
+            Status status = getRefreshStatus();
+            switch (status) {
+                case SUCCESS:
+                    mAdapter.refresh(DemoDataProvider.getDemoData());
+                    mRefreshLayout.resetNoMoreData();//setNoMoreData(false);
+                    mLlStateful.showContent();
+                    mRefreshLayout.setEnableLoadMore(true);
+                    break;
+                case EMPTY:
+                    mLlStateful.showEmpty();
+                    mRefreshLayout.setEnableLoadMore(false);
+                    break;
+                case ERROR:
+                    showError();
+                    break;
+                case NO_NET:
+                    showOffline();
+                    break;
+                default:
+                    break;
+            }
+            refreshLayout.finishRefresh();
 
-                    }
-                }, 2000);
-            }
-        });
+        }, 2000));
         //上拉加载
-        mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull final RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mAdapter.getItemCount() > 30) {
-                            XToastUtils.toast("数据全部加载完毕");
-                            refreshLayout.finishLoadMoreWithNoMoreData();//将不会再次触发加载更多事件
-                        } else {
-                            mAdapter.loadMore(DemoDataProvider.getDemoData());
-                            refreshLayout.finishLoadMore();
-                        }
-                    }
-                }, 2000);
+        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> refreshLayout.getLayout().postDelayed(() -> {
+            if (mAdapter.getItemCount() > 30) {
+                XToastUtils.toast("数据全部加载完毕");
+                refreshLayout.finishLoadMoreWithNoMoreData();//将不会再次触发加载更多事件
+            } else {
+                mAdapter.loadMore(DemoDataProvider.getDemoData());
+                refreshLayout.finishLoadMore();
             }
-        });
+        }, 2000));
         mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
     }
 
     private void showOffline() {
-        mLlStateful.showOffline(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mRefreshLayout.autoRefresh();
-            }
-        });
+        mLlStateful.showOffline(v -> mRefreshLayout.autoRefresh());
         mRefreshLayout.setEnableLoadMore(false);
     }
 
     private void showError() {
-        mLlStateful.showError(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mRefreshLayout.autoRefresh();
-            }
-        });
+        mLlStateful.showError(v -> mRefreshLayout.autoRefresh());
         mRefreshLayout.setEnableLoadMore(false);
     }
 

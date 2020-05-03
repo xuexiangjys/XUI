@@ -19,9 +19,7 @@ package com.xuexiang.xuidemo.fragment.utils.view;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;

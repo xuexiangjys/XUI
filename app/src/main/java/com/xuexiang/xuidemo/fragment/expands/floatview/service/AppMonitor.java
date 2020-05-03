@@ -33,10 +33,6 @@ public class AppMonitor extends Thread {
 
     private int mUid;
 
-    private String mAppName;
-
-    private String mAppPackageName;
-
     /**
      * 构造器
      */
@@ -81,8 +77,8 @@ public class AppMonitor extends Thread {
                 try {
                     mUid = process.uid;
                     PackageInfo packageInfo = process.getPackageInfo(mContext, 0);
-                    mAppName = packageInfo.applicationInfo.loadLabel(AppUtils.getPackageManager()).toString();
-                    mAppPackageName = process.getPackageName();
+                    String mAppName = packageInfo.applicationInfo.loadLabel(AppUtils.getPackageManager()).toString();
+                    String mAppPackageName = process.getPackageName();
 
                     if (mOnAppListener != null) {
                         mOnAppListener.onAppChanged(mAppName, mAppPackageName);

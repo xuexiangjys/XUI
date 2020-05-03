@@ -25,6 +25,7 @@ import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
@@ -329,7 +330,9 @@ public class OverFlyingLayoutManager extends RecyclerView.LayoutManager implemen
      */
     public void setMaxVisibleItemCount(int mMaxVisibleItemCount) {
         assertNotInLayoutOrScroll(null);
-        if (this.mMaxVisibleItemCount == mMaxVisibleItemCount) return;
+        if (this.mMaxVisibleItemCount == mMaxVisibleItemCount) {
+            return;
+        }
         this.mMaxVisibleItemCount = mMaxVisibleItemCount;
         removeAllViews();
     }
@@ -496,32 +499,32 @@ public class OverFlyingLayoutManager extends RecyclerView.LayoutManager implemen
     }
 
     @Override
-    public int computeHorizontalScrollOffset(RecyclerView.State state) {
+    public int computeHorizontalScrollOffset(@NonNull RecyclerView.State state) {
         return computeScrollOffset();
     }
 
     @Override
-    public int computeVerticalScrollOffset(RecyclerView.State state) {
+    public int computeVerticalScrollOffset(@NonNull RecyclerView.State state) {
         return computeScrollOffset();
     }
 
     @Override
-    public int computeHorizontalScrollExtent(RecyclerView.State state) {
+    public int computeHorizontalScrollExtent(@NonNull RecyclerView.State state) {
         return computeScrollExtent();
     }
 
     @Override
-    public int computeVerticalScrollExtent(RecyclerView.State state) {
+    public int computeVerticalScrollExtent(@NonNull RecyclerView.State state) {
         return computeScrollExtent();
     }
 
     @Override
-    public int computeHorizontalScrollRange(RecyclerView.State state) {
+    public int computeHorizontalScrollRange(@NonNull RecyclerView.State state) {
         return computeScrollRange();
     }
 
     @Override
-    public int computeVerticalScrollRange(RecyclerView.State state) {
+    public int computeVerticalScrollRange(@NonNull RecyclerView.State state) {
         return computeScrollRange();
     }
 
@@ -752,8 +755,9 @@ public class OverFlyingLayoutManager extends RecyclerView.LayoutManager implemen
     }
 
     protected float propertyChangeWhenScroll(View itemView) {
-        if (mOrientation == VERTICAL)
+        if (mOrientation == VERTICAL) {
             return itemView.getTop() - mSpaceMain;
+        }
         return itemView.getLeft() - mSpaceMain;
     }
 
@@ -763,7 +767,9 @@ public class OverFlyingLayoutManager extends RecyclerView.LayoutManager implemen
 
     public int getCurrentPosition() {
         int position = getCurrentPositionOffset();
-        if (!mInfinite) return Math.abs(position);
+        if (!mInfinite) {
+            return Math.abs(position);
+        }
         position = !mReverseLayout ?
                 //take care of position = getItemCount()
                 (position >= 0 ?
@@ -803,8 +809,9 @@ public class OverFlyingLayoutManager extends RecyclerView.LayoutManager implemen
      * @return the dy between center and current position
      */
     public int getOffsetToCenter() {
-        if (mInfinite)
+        if (mInfinite) {
             return (int) ((getCurrentPositionOffset() * mInterval - mOffset) * getDistanceRatio());
+        }
         return (int) ((getCurrentPosition() *
                 (!mReverseLayout ? mInterval : -mInterval) - mOffset) * getDistanceRatio());
     }

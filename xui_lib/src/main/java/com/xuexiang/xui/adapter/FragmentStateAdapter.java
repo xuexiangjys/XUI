@@ -102,6 +102,7 @@ public class FragmentStateAdapter<T extends Fragment> extends FragmentStatePager
         return this;
     }
 
+    @NonNull
     @Override
     public T getItem(int position) {
         return mFragmentList.get(position);

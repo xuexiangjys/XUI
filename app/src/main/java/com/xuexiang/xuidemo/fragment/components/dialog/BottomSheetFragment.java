@@ -1,10 +1,7 @@
 package com.xuexiang.xuidemo.fragment.components.dialog;
 
-import android.view.View;
-
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
-import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheetItemView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.utils.XToastUtils;
@@ -57,12 +54,9 @@ public class BottomSheetFragment extends BaseSimpleListFragment {
                 .addItem("Item 2")
                 .addItem("Item 3")
                 .setIsCenter(true)
-                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
-                        dialog.dismiss();
-                        XToastUtils.toast("Item " + (position + 1));
-                    }
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    XToastUtils.toast("Item " + (position + 1));
                 })
                 .build()
                 .show();
@@ -81,13 +75,10 @@ public class BottomSheetFragment extends BaseSimpleListFragment {
                 .addItem(R.drawable.icon_more_operation_share_weibo, "分享到微博", TAG_SHARE_WEIBO, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
                 .addItem(R.drawable.icon_more_operation_share_chat, "分享到私信", TAG_SHARE_CHAT, BottomSheet.BottomGridSheetBuilder.FIRST_LINE)
                 .addItem(R.drawable.icon_more_operation_save, "保存到本地", TAG_SHARE_LOCAL, BottomSheet.BottomGridSheetBuilder.SECOND_LINE)
-                .setOnSheetItemClickListener(new BottomSheet.BottomGridSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, BottomSheetItemView itemView) {
-                        dialog.dismiss();
-                        int tag = (int) itemView.getTag();
-                        XToastUtils.toast("tag:" + tag + ", content:" + itemView.toString());
-                    }
+                .setOnSheetItemClickListener((dialog, itemView) -> {
+                    dialog.dismiss();
+                    int tag = (int) itemView.getTag();
+                    XToastUtils.toast("tag:" + tag + ", content:" + itemView.toString());
                 }).build().show();
 
 

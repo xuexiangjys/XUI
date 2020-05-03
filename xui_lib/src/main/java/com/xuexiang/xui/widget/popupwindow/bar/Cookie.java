@@ -50,7 +50,6 @@ final class Cookie extends LinearLayout {
      */
     public static final long DEFAULT_COOKIE_DURATION = 2000;
 
-    private Animation mSlideInAnimation;
     private Animation mSlideOutAnimation;
 
     private LinearLayout mLayoutCookie;
@@ -212,7 +211,7 @@ final class Cookie extends LinearLayout {
     }
 
     private void createInAnim() {
-        mSlideInAnimation = AnimationUtils.loadAnimation(getContext(),
+        Animation mSlideInAnimation = AnimationUtils.loadAnimation(getContext(),
                 mGravity == Gravity.BOTTOM ? R.anim.cookiebar_slide_in_from_bottom : R.anim.cookiebar_slide_in_from_top);
         mSlideInAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override

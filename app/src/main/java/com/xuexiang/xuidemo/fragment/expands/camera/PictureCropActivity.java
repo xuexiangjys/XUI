@@ -37,14 +37,10 @@ import com.xuexiang.xutil.common.StringUtils;
 import com.xuexiang.xutil.display.ImageUtils;
 import com.xuexiang.xutil.file.FileUtils;
 
-import java.io.File;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-
-import static com.xuexiang.xuidemo.utils.Utils.JPEG;
 
 /**
  * 图片裁剪页面

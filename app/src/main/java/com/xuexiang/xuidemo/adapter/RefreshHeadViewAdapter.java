@@ -1,7 +1,5 @@
 package com.xuexiang.xuidemo.adapter;
 
-import android.view.View;
-
 import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
@@ -9,7 +7,6 @@ import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
-import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 
@@ -74,22 +71,12 @@ public class RefreshHeadViewAdapter extends BaseRecyclerAdapter<String> {
         if (getItemViewType(position) == TYPE_BANNER_HEAD) {
             headBanner = holder.findViewById(R.id.sib_simple_usage);
             headBanner.setSource(mData)
-                    .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
-                        @Override
-                        public void onItemClick(View view, BannerItem item, int position) {
-                            XToastUtils.toast("headBanner position--->" + position);
-                        }
-                    }).startScroll();
+                    .setOnItemClickListener((view, item12, position12) -> XToastUtils.toast("headBanner position--->" + position12)).startScroll();
 
         } else if (getItemViewType(position) == TYPE_BANNER_FOOT) {
             footBanner = holder.findViewById(R.id.sib_simple_usage);
             footBanner.setSource(mData)
-                    .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
-                        @Override
-                        public void onItemClick(View view, BannerItem item, int position) {
-                            XToastUtils.toast("headBanner position--->" + position);
-                        }
-                    }).startScroll();
+                    .setOnItemClickListener((view, item1, position1) -> XToastUtils.toast("headBanner position--->" + position1)).startScroll();
         } else {
             holder.text(android.R.id.text1, ResUtils.getResources().getString(R.string.item_example_number_title, position));
             holder.text(android.R.id.text2, ResUtils.getResources().getString(R.string.item_example_number_abstract, position) + "：" + item);

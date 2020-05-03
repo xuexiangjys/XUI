@@ -221,68 +221,65 @@ public class BasicPieChartFragment extends BaseChartFragment implements OnChartV
                 .addItem(getResources().getString(R.string.chart_animate_y))
                 .addItem(getResources().getString(R.string.chart_animate_xy))
                 .addItem(getResources().getString(R.string.chart_save))
-                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
-                        dialog.dismiss();
-                        switch (position) {
-                            case 0:
-                                chart.setDrawEntryLabels(!chart.isDrawEntryLabelsEnabled());
-                                chart.invalidate();
-                                break;
-                            case 1:
-                                for (IDataSet<?> set : chart.getData().getDataSets()) {
-                                    set.setDrawValues(!set.isDrawValuesEnabled());
-                                }
-                                chart.invalidate();
-                                break;
-                            case 2:
-                                for (IDataSet set : chart.getData().getDataSets()) {
-                                    set.setDrawIcons(!set.isDrawIconsEnabled());
-                                }
-                                chart.invalidate();
-                                break;
-                            case 3:
-                                chart.setUsePercentValues(!chart.isUsePercentValuesEnabled());
-                                chart.invalidate();
-                                break;
-                            case 4:
-                                chart.setDrawHoleEnabled(!chart.isDrawHoleEnabled());
-                                chart.invalidate();
-                                break;
-                            case 5:
-                                chart.setDrawCenterText(!chart.isDrawCenterTextEnabled());
-                                chart.invalidate();
-                                break;
-                            case 6:
-                                boolean toSet = !chart.isDrawRoundedSlicesEnabled() || !chart.isDrawHoleEnabled();
-                                chart.setDrawRoundedSlices(toSet);
-                                if (toSet && !chart.isDrawHoleEnabled()) {
-                                    chart.setDrawHoleEnabled(true);
-                                }
-                                if (toSet && chart.isDrawSlicesUnderHoleEnabled()) {
-                                    chart.setDrawSlicesUnderHole(false);
-                                }
-                                chart.invalidate();
-                                break;
-                            case 7:
-                                chart.spin(1000, chart.getRotationAngle(), chart.getRotationAngle() + 360, Easing.EaseInOutCubic);
-                                break;
-                            case 8:
-                                chart.animateX(1400);
-                                break;
-                            case 9:
-                                chart.animateY(1400);
-                                break;
-                            case 10:
-                                chart.animateXY(1400, 1400);
-                                break;
-                            case 11:
-                                saveToGallery(chart, "BasicPieChart");
-                                break;
-                            default:
-                                break;
-                        }
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    switch (position) {
+                        case 0:
+                            chart.setDrawEntryLabels(!chart.isDrawEntryLabelsEnabled());
+                            chart.invalidate();
+                            break;
+                        case 1:
+                            for (IDataSet<?> set : chart.getData().getDataSets()) {
+                                set.setDrawValues(!set.isDrawValuesEnabled());
+                            }
+                            chart.invalidate();
+                            break;
+                        case 2:
+                            for (IDataSet set : chart.getData().getDataSets()) {
+                                set.setDrawIcons(!set.isDrawIconsEnabled());
+                            }
+                            chart.invalidate();
+                            break;
+                        case 3:
+                            chart.setUsePercentValues(!chart.isUsePercentValuesEnabled());
+                            chart.invalidate();
+                            break;
+                        case 4:
+                            chart.setDrawHoleEnabled(!chart.isDrawHoleEnabled());
+                            chart.invalidate();
+                            break;
+                        case 5:
+                            chart.setDrawCenterText(!chart.isDrawCenterTextEnabled());
+                            chart.invalidate();
+                            break;
+                        case 6:
+                            boolean toSet = !chart.isDrawRoundedSlicesEnabled() || !chart.isDrawHoleEnabled();
+                            chart.setDrawRoundedSlices(toSet);
+                            if (toSet && !chart.isDrawHoleEnabled()) {
+                                chart.setDrawHoleEnabled(true);
+                            }
+                            if (toSet && chart.isDrawSlicesUnderHoleEnabled()) {
+                                chart.setDrawSlicesUnderHole(false);
+                            }
+                            chart.invalidate();
+                            break;
+                        case 7:
+                            chart.spin(1000, chart.getRotationAngle(), chart.getRotationAngle() + 360, Easing.EaseInOutCubic);
+                            break;
+                        case 8:
+                            chart.animateX(1400);
+                            break;
+                        case 9:
+                            chart.animateY(1400);
+                            break;
+                        case 10:
+                            chart.animateXY(1400, 1400);
+                            break;
+                        case 11:
+                            saveToGallery(chart, "BasicPieChart");
+                            break;
+                        default:
+                            break;
                     }
                 })
                 .build()

@@ -9,7 +9,6 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.BaseChartFragment;
 
 import java.util.ArrayList;

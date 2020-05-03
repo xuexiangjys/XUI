@@ -71,10 +71,14 @@ public class NineGridRecycleAdapter extends XRecyclerAdapter<NineGridInfo, NineG
     }
 
 
-    public class NineGridHolder extends RecyclerView.ViewHolder {
+    public static class NineGridHolder extends RecyclerView.ViewHolder {
         private NineGridImageView<ImageViewInfo> mNglContent;
         private TextView mTvContent;
-        private NineGridImageViewAdapter<ImageViewInfo> mAdapter = new NineGridImageViewAdapter<ImageViewInfo>() {
+
+        public NineGridHolder(View itemView) {
+            super(itemView);
+            mTvContent = itemView.findViewById(R.id.tv_content);
+            mNglContent = itemView.findViewById(R.id.ngl_images);
             /**
              * 图片加载
              *
@@ -82,24 +86,27 @@ public class NineGridRecycleAdapter extends XRecyclerAdapter<NineGridInfo, NineG
              * @param imageView
              * @param imageViewInfo 图片信息
              */
-            @Override
-            protected void onDisplayImage(Context context, ImageView imageView, ImageViewInfo imageViewInfo) {
-                Glide.with(imageView.getContext())
-                        .load(imageViewInfo.getUrl())
-                        .apply(GlideMediaLoader.getRequestOptions())
-                        .into(imageView);
-            }
+            NineGridImageViewAdapter<ImageViewInfo> mAdapter = new NineGridImageViewAdapter<ImageViewInfo>() {
+                /**
+                 * 图片加载
+                 *
+                 * @param context
+                 * @param imageView
+                 * @param imageViewInfo 图片信息
+                 */
+                @Override
+                protected void onDisplayImage(Context context, ImageView imageView, ImageViewInfo imageViewInfo) {
+                    Glide.with(imageView.getContext())
+                            .load(imageViewInfo.getUrl())
+                            .apply(GlideMediaLoader.getRequestOptions())
+                            .into(imageView);
+                }
 
-            @Override
-            protected ImageView generateImageView(Context context) {
-                return super.generateImageView(context);
-            }
-        };
-
-        public NineGridHolder(View itemView) {
-            super(itemView);
-            mTvContent = itemView.findViewById(R.id.tv_content);
-            mNglContent = itemView.findViewById(R.id.ngl_images);
+                @Override
+                protected ImageView generateImageView(Context context) {
+                    return super.generateImageView(context);
+                }
+            };
             mNglContent.setAdapter(mAdapter);
             mNglContent.setItemImageClickListener(new ItemImageClickListener<ImageViewInfo>() {
                 @SingleClick

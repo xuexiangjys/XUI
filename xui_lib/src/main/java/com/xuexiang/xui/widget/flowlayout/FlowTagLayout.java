@@ -517,7 +517,8 @@ public class FlowTagLayout extends ViewGroup {
      *
      * @param items A list of items
      */
-    public <T> BaseTagAdapter setItems(@NonNull T... items) {
+    @SafeVarargs
+    public final <T> BaseTagAdapter setItems(@NonNull T... items) {
         return setItems(Arrays.asList(items));
     }
 
@@ -583,7 +584,8 @@ public class FlowTagLayout extends ViewGroup {
      * @param selectedItems 选中的内容集合
      * @return
      */
-    public <T> FlowTagLayout setSelectedItems(T... selectedItems) {
+    @SafeVarargs
+    public final <T> FlowTagLayout setSelectedItems(T... selectedItems) {
         setSelectedItems(Arrays.asList(selectedItems));
         return this;
     }

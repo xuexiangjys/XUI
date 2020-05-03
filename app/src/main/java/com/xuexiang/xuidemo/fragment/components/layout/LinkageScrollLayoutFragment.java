@@ -17,16 +17,12 @@
 
 package com.xuexiang.xuidemo.fragment.components.layout;
 
-import android.view.View;
-
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
-import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
-import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.xuexiang.xui.widget.layout.linkage.LinkageScrollLayout;
 import com.xuexiang.xui.widget.layout.linkage.view.LinkageRecyclerView;
 import com.xuexiang.xuidemo.DemoDataProvider;
@@ -68,12 +64,7 @@ public class LinkageScrollLayoutFragment extends BaseFragment {
     @Override
     protected void initViews() {
         sibSimpleUsage.setSource(DemoDataProvider.getBannerList())
-                .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
-                    @Override
-                    public void onItemClick(View view, BannerItem item, int position) {
-                        XToastUtils.toast("headBanner position--->" + position);
-                    }
-                }).startScroll();
+                .setOnItemClickListener((view, item, position) -> XToastUtils.toast("headBanner position--->" + position)).startScroll();
         WidgetUtils.initRecyclerView(recyclerView, 0);
         recyclerView.setAdapter(mNewsListAdapter = new NewsCardViewListAdapter());
 
@@ -85,19 +76,15 @@ public class LinkageScrollLayoutFragment extends BaseFragment {
     @Override
     protected void initListeners() {
         //下拉刷新
-        refreshLayout.setOnRefreshListener(refreshLayout -> {
-            refreshLayout.getLayout().postDelayed(() -> {
-                mNewsListAdapter.refresh(DemoDataProvider.getDemoNewInfos());
-                refreshLayout.finishRefresh();
-            }, 1000);
-        });
+        refreshLayout.setOnRefreshListener(refreshLayout -> refreshLayout.getLayout().postDelayed(() -> {
+            mNewsListAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+            refreshLayout.finishRefresh();
+        }, 1000));
         //上拉加载
-        refreshLayout.setOnLoadMoreListener(refreshLayout -> {
-            refreshLayout.getLayout().postDelayed(() -> {
-                mNewsListAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
-                refreshLayout.finishLoadMore();
-            }, 1000);
-        });
+        refreshLayout.setOnLoadMoreListener(refreshLayout -> refreshLayout.getLayout().postDelayed(() -> {
+            mNewsListAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
+            refreshLayout.finishLoadMore();
+        }, 1000));
         refreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
 
         mNewsListAdapter.setOnItemClickListener((itemView, item, position) -> Utils.goWeb(getContext(), item.getDetailUrl()));

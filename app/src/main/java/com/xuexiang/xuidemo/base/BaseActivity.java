@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
-import com.mikepenz.iconics.context.IconicsContextWrapper;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;

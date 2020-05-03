@@ -1,11 +1,9 @@
 package com.xuexiang.xuidemo.activity;
 
-import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -53,7 +51,7 @@ import butterknife.BindView;
  */
 public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSelectedListener, ClickUtils.OnClick2ExitListener {
     private static final int POS_COMPONENTS = 0;
-    private static final int POS_UTILITYS = 1;
+    private static final int POS_UTILITIES = 1;
     private static final int POS_EXPANDS = 2;
     private static final int POS_ABOUT = 3;
     private static final int POS_LOGOUT = 5;
@@ -63,7 +61,6 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
 
 
     private SlidingRootNav mSlidingRootNav;
-    private LinearLayout mLLMenu;
     private String[] mMenuTitles;
     private Drawable[] mMenuIcons;
     private DrawerAdapter mAdapter;
@@ -178,26 +175,16 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                 .withMenuLayout(R.layout.menu_left_drawer)
                 .inject();
 
-        mLLMenu = mSlidingRootNav.getLayout().findViewById(R.id.ll_menu);
+        LinearLayout mLLMenu = mSlidingRootNav.getLayout().findViewById(R.id.ll_menu);
         final AppCompatImageView ivQrcode = mSlidingRootNav.getLayout().findViewById(R.id.iv_qrcode);
-        ivQrcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewPage(QRCodeFragment.class);
-            }
-        });
+        ivQrcode.setOnClickListener(v -> openNewPage(QRCodeFragment.class));
 
         final AppCompatImageView ivSetting = mSlidingRootNav.getLayout().findViewById(R.id.iv_setting);
-        ivSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewPage(SettingFragment.class);
-            }
-        });
+        ivSetting.setOnClickListener(v -> openNewPage(SettingFragment.class));
 
         mAdapter = new DrawerAdapter(Arrays.asList(
                 createItemFor(POS_COMPONENTS).setChecked(true),
-                createItemFor(POS_UTILITYS),
+                createItemFor(POS_UTILITIES),
                 createItemFor(POS_EXPANDS),
                 createItemFor(POS_ABOUT),
                 new SpaceItem(48),
@@ -248,7 +235,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     public void onItemSelected(int position) {
         switch (position) {
             case POS_COMPONENTS:
-            case POS_UTILITYS:
+            case POS_UTILITIES:
             case POS_EXPANDS:
                 if (mTabLayout != null) {
                     TabLayout.Tab tab = mTabLayout.getTabAt(position);
@@ -266,21 +253,13 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                         this,
                         getString(R.string.lab_logout_confirm),
                         getString(R.string.lab_yes),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                TokenUtils.handleLogoutSuccess();
-                                finish();
-                            }
+                        (dialog, which) -> {
+                            dialog.dismiss();
+                            TokenUtils.handleLogoutSuccess();
+                            finish();
                         },
                         getString(R.string.lab_no),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        }
+                        (dialog, which) -> dialog.dismiss()
                 );
                 break;
             default:

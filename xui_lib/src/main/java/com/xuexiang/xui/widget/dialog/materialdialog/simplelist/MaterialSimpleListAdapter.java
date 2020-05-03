@@ -18,6 +18,8 @@
 package com.xuexiang.xui.widget.dialog.materialdialog.simplelist;
 
 import android.graphics.PorterDuff;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,6 +89,7 @@ public class MaterialSimpleListAdapter
         return mDialog;
     }
 
+    @NonNull
     @Override
     public SimpleListVH onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view =
@@ -96,7 +99,7 @@ public class MaterialSimpleListAdapter
     }
 
     @Override
-    public void onBindViewHolder(SimpleListVH holder, int position) {
+    public void onBindViewHolder(@NonNull SimpleListVH holder, int position) {
         if (mDialog != null) {
             final MaterialSimpleListItem item = mItems.get(position);
             if (item.getIcon() != null) {
@@ -137,8 +140,8 @@ public class MaterialSimpleListAdapter
 
         SimpleListVH(View itemView, MaterialSimpleListAdapter adapter) {
             super(itemView);
-            mIcon = (ImageView) itemView.findViewById(android.R.id.icon);
-            mTitle = (TextView) itemView.findViewById(android.R.id.title);
+            mIcon = itemView.findViewById(android.R.id.icon);
+            mTitle = itemView.findViewById(android.R.id.title);
             mAdapter = adapter;
             itemView.setOnClickListener(this);
         }

@@ -20,7 +20,6 @@ package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 import android.animation.ArgbEvaluator;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.widget.Space;
 
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.viewpager.widget.ViewPager;
@@ -35,7 +34,6 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.widget.StickyNavigationLayout;
-import com.xuexiang.xutil.display.Colors;
 
 import butterknife.BindView;
 
@@ -90,7 +88,7 @@ public class NestedScrollingFragment extends BaseFragment {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        stickyNavigationLayout.setOnScrollChangeListener(moveRatio -> initTitleBar(moveRatio));
+        stickyNavigationLayout.setOnScrollChangeListener(this::initTitleBar);
     }
 
     private void initTitleBar(float moveRatio) {

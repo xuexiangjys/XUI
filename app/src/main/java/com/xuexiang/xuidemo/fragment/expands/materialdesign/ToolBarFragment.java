@@ -1,6 +1,5 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -96,23 +95,17 @@ public class ToolBarFragment extends BaseFragment {
         toolBar4.setOnMenuItemClickListener(menuItemClickListener);
     }
 
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            XToastUtils.toast("点击了NavigationIcon");
-        }
-    };
+    private View.OnClickListener onClickListener = v -> XToastUtils.toast("点击了NavigationIcon");
 
-    Toolbar.OnMenuItemClickListener menuItemClickListener = new Toolbar.OnMenuItemClickListener() {
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            XToastUtils.toast("点击了:" + item.getTitle());
-            switch (item.getItemId()){
-                case R.id.item_setting:
-                    //点击设置
-                    break;
-            }
-            return false;
+    Toolbar.OnMenuItemClickListener menuItemClickListener = item -> {
+        XToastUtils.toast("点击了:" + item.getTitle());
+        switch (item.getItemId()){
+            case R.id.item_setting:
+                //点击设置
+                break;
+            default:
+                break;
         }
+        return false;
     };
 }

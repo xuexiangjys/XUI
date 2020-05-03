@@ -16,7 +16,6 @@
 
 package com.xuexiang.xuidemo.fragment.expands.qrcode;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -68,19 +67,11 @@ public class CustomCaptureFragment extends XPageFragment {
         // 为二维码扫描界面设置定制化界面
         CaptureFragment captureFragment = XQRCode.getCaptureFragment(R.layout.layout_custom_camera);
         captureFragment.setAnalyzeCallback(analyzeCallback);
-        captureFragment.setCameraInitCallBack(new CaptureFragment.CameraInitCallBack() {
-            @Override
-            public void callBack(Exception e) {
-                if (e != null) {
-                    CaptureActivity.showNoPermissionTip(getActivity(), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            popToBack();
-                        }
-                    });
-                } else {
-                    mIsOpen = XQRCode.isFlashLightOpen();
-                }
+        captureFragment.setCameraInitCallBack(e -> {
+            if (e != null) {
+                CaptureActivity.showNoPermissionTip(getActivity(), (dialog, which) -> popToBack());
+            } else {
+                mIsOpen = XQRCode.isFlashLightOpen();
             }
         });
         getChildFragmentManager().beginTransaction().replace(R.id.fl_my_container, captureFragment).commit();

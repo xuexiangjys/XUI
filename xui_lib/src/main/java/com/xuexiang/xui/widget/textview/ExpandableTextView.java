@@ -282,9 +282,9 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
     }
 
     private void findViews() {
-        mTv = (TextView) findViewById(R.id.expandable_text);
+        mTv = findViewById(R.id.expandable_text);
         mTv.setOnClickListener(this);
-        mButton = (ImageButton) findViewById(R.id.expand_collapse);
+        mButton = findViewById(R.id.expand_collapse);
         mButton.setImageDrawable(mCollapsed ? mExpandDrawable : mCollapseDrawable);
         mButton.setOnClickListener(this);
     }

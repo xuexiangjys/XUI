@@ -94,7 +94,7 @@ public class XUISimpleExpandablePopup<T extends XUISimpleExpandablePopup> extend
      */
     public XUIExpandableListPopup setOnExpandableItemClickListener(final OnExpandableItemClickListener onExpandableItemClickListener) {
         setOnExpandableItemClickListener(true, onExpandableItemClickListener);
-        return (T) this;
+        return this;
     }
 
     /**

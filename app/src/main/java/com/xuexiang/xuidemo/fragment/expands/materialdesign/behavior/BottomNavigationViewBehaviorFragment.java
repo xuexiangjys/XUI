@@ -18,7 +18,6 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -55,12 +54,7 @@ public class BottomNavigationViewBehaviorFragment extends BaseFragment implement
     protected TitleBar initTitle() {
         toolbar.setNavigationIcon(R.drawable.ic_navigation_back_white);
         toolbar.setTitle("BottomNavigationView");
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> popToBack());
         return null;
     }
 
@@ -94,12 +88,7 @@ public class BottomNavigationViewBehaviorFragment extends BaseFragment implement
     protected void initListeners() {
         viewPager.addOnPageChangeListener(this);
         bottomNavigation.setOnNavigationItemSelectedListener(this);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("新建");
-            }
-        });
+        fab.setOnClickListener(v -> XToastUtils.toast("新建"));
     }
 
     @Override

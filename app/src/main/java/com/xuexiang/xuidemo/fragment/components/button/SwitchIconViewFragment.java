@@ -18,8 +18,6 @@
 package com.xuexiang.xuidemo.fragment.components.button;
 
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.button.SwitchIconView;

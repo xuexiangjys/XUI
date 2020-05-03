@@ -22,6 +22,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.customview.widget.ViewDragHelper;
 
 import com.xuexiang.xui.widget.layout.XUIFrameLayout;
@@ -45,17 +46,17 @@ public class ShadowAdjustLayout extends XUIFrameLayout {
 
         mViewDragHelper = ViewDragHelper.create(this, new ViewDragHelper.Callback() {
             @Override
-            public boolean tryCaptureView(View child, int pointerId) {
+            public boolean tryCaptureView(@NonNull View child, int pointerId) {
                 return child.getId() == R.id.layout_for_test;
             }
 
             @Override
-            public int clampViewPositionHorizontal(View child, int left, int dx) {
+            public int clampViewPositionHorizontal(@NonNull View child, int left, int dx) {
                 return left;
             }
 
             @Override
-            public int clampViewPositionVertical(View child, int top, int dy) {
+            public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
                 return top;
             }
         });

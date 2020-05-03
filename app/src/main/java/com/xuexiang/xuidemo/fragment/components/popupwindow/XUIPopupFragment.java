@@ -1,9 +1,7 @@
 package com.xuexiang.xuidemo.fragment.components.popupwindow;
 
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -89,12 +87,7 @@ public class XUIPopupFragment extends BaseFragment {
             textView.setTextColor(ContextCompat.getColor(getContext(), R.color.xui_config_color_content_text));
             textView.setTypeface(XUI.getDefaultTypeface());
             mNormalPopup.setContentView(textView);
-            mNormalPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                @Override
-                public void onDismiss() {
-                    mBtnCommonPopup.setText("显示普通浮层");
-                }
-            });
+            mNormalPopup.setOnDismissListener(() -> mBtnCommonPopup.setText("显示普通浮层"));
         }
     }
 
@@ -111,19 +104,11 @@ public class XUIPopupFragment extends BaseFragment {
 
             XUISimpleAdapter adapter = XUISimpleAdapter.create(getContext(), listItems);
             mListPopup = new XUIListPopup(getContext(), adapter);
-            mListPopup.create(DensityUtils.dp2px(200), DensityUtils.dp2px(150), new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    XToastUtils.toast("Item " + (i + 1));
-                    mListPopup.dismiss();
-                }
+            mListPopup.create(DensityUtils.dp2px(200), DensityUtils.dp2px(150), (adapterView, view, i, l) -> {
+                XToastUtils.toast("Item " + (i + 1));
+                mListPopup.dismiss();
             });
-            mListPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                @Override
-                public void onDismiss() {
-                    mBtnListPopup.setText("显示列表浮层");
-                }
-            });
+            mListPopup.setOnDismissListener(() -> mBtnListPopup.setText("显示列表浮层"));
         }
     }
 }

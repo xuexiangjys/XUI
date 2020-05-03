@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.adapter.entity;
 
+import androidx.annotation.NonNull;
+
 /**
  * 新闻信息
  *
@@ -165,6 +167,7 @@ public class NewInfo {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "NewInfo{" +

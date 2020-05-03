@@ -173,7 +173,7 @@ app_release.keyPassword = "xuexiang"
 ext.app_release = app_release
 
 //默认添加代码仓库路径
-def addRepos(RepositoryHandler handler) {
+static def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.jcenter()
     handler.mavenCentral()
