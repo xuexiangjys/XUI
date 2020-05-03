@@ -108,7 +108,9 @@ public class NineGridImageView<T> extends ViewGroup {
      * 根据照片数量和span类型来对子视图进行动态排版布局
      */
     private void layoutChildrenView() {
-        if (mImgDataList == null) return;
+        if (mImgDataList == null) {
+            return;
+        }
         int showChildrenCount = getNeedShowCount(mImgDataList.size());
         //对不跨行不跨列的进行排版布局,单张或者2张默认进行普通排版
         if (mSpanType == NOSPAN || showChildrenCount <= 2) {
@@ -135,7 +137,9 @@ public class NineGridImageView<T> extends ViewGroup {
     }
 
     private void layoutForNoSpanChildrenView(int childrenCount) {
-        if (childrenCount <= 0) return;
+        if (childrenCount <= 0) {
+            return;
+        }
         int row, column, left, top, right, bottom;
         for (int i = 0; i < childrenCount; i++) {
             ImageView childrenView = (ImageView) getChildAt(i);
@@ -645,18 +649,18 @@ public class NineGridImageView<T> extends ViewGroup {
                 imageView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mAdapter.onItemImageClick(getContext(), (ImageView) v, position, mImgDataList);
+                        mAdapter.onItemImageClick((ImageView) v, position, mImgDataList);
                         if (mItemImageClickListener != null) {
-                            mItemImageClickListener.onItemImageClick(getContext(), (ImageView) v, position, mImgDataList);
+                            mItemImageClickListener.onItemImageClick((ImageView) v, position, mImgDataList);
                         }
                     }
                 });
                 imageView.setOnLongClickListener(new OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        boolean consumedEvent = mAdapter.onItemImageLongClick(getContext(), (ImageView) v, position, mImgDataList);
+                        boolean consumedEvent = mAdapter.onItemImageLongClick((ImageView) v, position, mImgDataList);
                         if (mItemImageLongClickListener != null) {
-                            consumedEvent = mItemImageLongClickListener.onItemImageLongClick(getContext(), (ImageView) v, position, mImgDataList) || consumedEvent;
+                            consumedEvent = mItemImageLongClickListener.onItemImageLongClick((ImageView) v, position, mImgDataList) || consumedEvent;
                         }
                         return consumedEvent;
                     }

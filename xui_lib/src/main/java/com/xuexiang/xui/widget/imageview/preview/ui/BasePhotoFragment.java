@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.CallSuper;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
@@ -47,6 +48,7 @@ import com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar;
  * @since 2018/12/5 上午11:24
  */
 public class BasePhotoFragment extends Fragment {
+    private static final String GIF = ".gif";
     /**
      * 预览图片 类型
      */
@@ -71,6 +73,18 @@ public class BasePhotoFragment extends Fragment {
         return inflater.inflate(R.layout.preview_fragment_image_photo, container, false);
     }
 
+    /**
+     * 构造方法
+     *
+     * @param fragmentClass   预览fragment的类
+     * @param item            图片预览接口
+     * @param currentIndex    当前索引
+     * @param isSingleFling
+     * @param isDrag          是否可拖拽
+     * @param sensitivity     灵敏度
+     * @param progressColorId 进度条的颜色
+     * @return
+     */
     public static BasePhotoFragment newInstance(Class<? extends BasePhotoFragment> fragmentClass,
                                                 IPreviewInfo item, boolean currentIndex,
                                                 boolean isSingleFling,
@@ -96,7 +110,7 @@ public class BasePhotoFragment extends Fragment {
 
     @CallSuper
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
         initArgs();
@@ -218,7 +232,7 @@ public class BasePhotoFragment extends Fragment {
             mRootView.setTag(mPreviewInfo.getUrl());
             //是否展示动画
             isTransPhoto = bundle.getBoolean(KEY_TRANS_PHOTO, false);
-            if (mPreviewInfo.getUrl().toLowerCase().contains(".gif")) {
+            if (mPreviewInfo.getUrl().toLowerCase().contains(GIF)) {
                 mImageView.setZoomable(false);
                 //加载图
                 MediaLoader.get().displayGifImage(this, mPreviewInfo.getUrl(), mImageView, mISimpleTarget);
@@ -238,7 +252,7 @@ public class BasePhotoFragment extends Fragment {
                 @Override
                 public void onViewTap(View view, float x, float y) {
                     if (mImageView.checkMinScale()) {
-                        ((PreviewActivity) getActivity()).transformOut();
+                        transformOut();
                     }
                 }
             });
@@ -247,7 +261,7 @@ public class BasePhotoFragment extends Fragment {
                 @Override
                 public void onPhotoTap(View view, float x, float y) {
                     if (mImageView.checkMinScale()) {
-                        ((PreviewActivity) getActivity()).transformOut();
+                        transformOut();
                     }
                 }
 
@@ -277,9 +291,16 @@ public class BasePhotoFragment extends Fragment {
         mImageView.setTransformOutListener(new SmoothImageView.OnTransformOutListener() {
             @Override
             public void onTransformOut() {
-                ((PreviewActivity) getActivity()).transformOut();
+                transformOut();
             }
         });
+    }
+
+    private void transformOut() {
+        PreviewActivity activity = ((PreviewActivity) getActivity());
+        if (activity != null) {
+            activity.transformOut();
+        }
     }
 
     public static int getColorWithAlpha(float alpha, int baseColor) {

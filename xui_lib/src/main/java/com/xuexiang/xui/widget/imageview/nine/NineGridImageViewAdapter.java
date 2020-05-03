@@ -41,24 +41,22 @@ public abstract class NineGridImageViewAdapter<T> {
     /**
      * 图片点击
      *
-     * @param context
      * @param imageView
      * @param index     索引
      * @param list      数据集合
      */
-    protected void onItemImageClick(Context context, ImageView imageView, int index, List<T> list) {
+    protected void onItemImageClick(ImageView imageView, int index, List<T> list) {
     }
 
     /**
      * 图片长按
      *
-     * @param context
      * @param imageView
      * @param index     索引
      * @param list      数据集合
      * @return
      */
-    protected boolean onItemImageLongClick(Context context, ImageView imageView, int index, List<T> list) {
+    protected boolean onItemImageLongClick(ImageView imageView, int index, List<T> list) {
         return false;
     }
 

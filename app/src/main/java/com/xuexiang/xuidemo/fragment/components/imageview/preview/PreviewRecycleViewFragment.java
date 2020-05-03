@@ -141,6 +141,7 @@ public class PreviewRecycleViewFragment extends BaseFragment {
         });
 
         mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<ImageViewInfo>() {
+            @SingleClick
             @Override
             public void onItemClick(View itemView, ImageViewInfo item, int position) {
                 computeBoundsBackward(mGridLayoutManager.findFirstVisibleItemPosition());

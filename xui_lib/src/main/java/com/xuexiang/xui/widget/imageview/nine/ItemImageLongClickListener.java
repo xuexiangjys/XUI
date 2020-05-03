@@ -16,8 +16,8 @@
 
 package com.xuexiang.xui.widget.imageview.nine;
 
-import android.content.Context;
 import android.widget.ImageView;
+
 import java.util.List;
 
 /**
@@ -27,5 +27,13 @@ import java.util.List;
  * @since 2018/12/9 下午10:38
  */
 public interface ItemImageLongClickListener<T> {
-    boolean onItemImageLongClick(Context context, ImageView imageView, int index, List<T> list);
+    /**
+     * 长按图片
+     *
+     * @param imageView
+     * @param index     索引
+     * @param list      图片列表
+     * @return 是否消费了事件
+     */
+    boolean onItemImageLongClick(ImageView imageView, int index, List<T> list);
 }

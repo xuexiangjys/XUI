@@ -39,12 +39,10 @@ public interface IPreviewInfo extends Parcelable {
      */
     Rect getBounds();
 
-
     /**
      * @return 获取视频链接
      */
     @Nullable
     String getVideoUrl();
-
 
 }

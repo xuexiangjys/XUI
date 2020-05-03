@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xui.adapter.recyclerview.XRecyclerAdapter;
 import com.xuexiang.xui.widget.imageview.nine.ItemImageClickListener;
 import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
@@ -101,10 +102,11 @@ public class NineGridRecycleAdapter extends XRecyclerAdapter<NineGridInfo, NineG
             mNglContent = itemView.findViewById(R.id.ngl_images);
             mNglContent.setAdapter(mAdapter);
             mNglContent.setItemImageClickListener(new ItemImageClickListener<ImageViewInfo>() {
+                @SingleClick
                 @Override
-                public void onItemImageClick(Context context, ImageView imageView, int index, List<ImageViewInfo> list) {
+                public void onItemImageClick(ImageView imageView, int index, List<ImageViewInfo> list) {
                     computeBoundsBackward(list);//组成数据
-                    PreviewBuilder.from((Activity) context)
+                    PreviewBuilder.from((Activity) imageView.getContext())
                             .setImgs(list)
                             .setCurrentIndex(index)
                             .setProgressColor(SettingSPUtils.getInstance().isUseCustomTheme() ? R.color.custom_color_main_theme : R.color.xui_config_color_main_theme)
