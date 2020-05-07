@@ -49,12 +49,6 @@ public class StickyHeadContainer extends ViewGroup {
 
     public StickyHeadContainer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 屏蔽点击事件
-            }
-        });
     }
 
     @Override
@@ -63,12 +57,15 @@ public class StickyHeadContainer extends ViewGroup {
         int desireWidth;
 
         int count = getChildCount();
-
-        if (count != 1) {
-            throw new IllegalArgumentException("只允许容器添加1个子View！");
+        if (count > 1) {
+            throw new IllegalArgumentException("you must set only one child view！");
         }
 
         final View child = getChildAt(0);
+        if (child == null) {
+            return;
+        }
+
         // 测量子元素并考虑外边距
         measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
         // 获取子元素的布局参数
@@ -92,6 +89,9 @@ public class StickyHeadContainer extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
 
         final View child = getChildAt(0);
+        if (child == null) {
+            return;
+        }
         MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
 
         final int paddingLeft = getPaddingLeft();
@@ -156,13 +156,17 @@ public class StickyHeadContainer extends ViewGroup {
     public void scrollChild(int offset) {
         if (mLastOffset != offset) {
             mOffset = offset;
-            ViewCompat.offsetTopAndBottom(getChildAt(0), mOffset - mLastOffset);
+            View child = getChildAt(0);
+            if (child != null) {
+                ViewCompat.offsetTopAndBottom(child, mOffset - mLastOffset);
+            }
         }
         mLastOffset = mOffset;
     }
 
     protected int getChildHeight() {
-        return getChildAt(0).getMeasuredHeight();
+        View child = getChildAt(0);
+        return child != null ? child.getMeasuredHeight() : 0;
     }
 
     protected void onPositionChanged(int stickyHeadPosition) {

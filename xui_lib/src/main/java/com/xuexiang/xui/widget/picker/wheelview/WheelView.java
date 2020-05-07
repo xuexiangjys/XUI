@@ -456,9 +456,9 @@ public class WheelView extends View implements HasTypeface {
             float endX;
 
             if (TextUtils.isEmpty(label)) {//隐藏Label的情况
-                startX = (measuredWidth - maxTextWidth) / 2 - 12;
+                startX = (measuredWidth - maxTextWidth) / 2F - 12;
             } else {
-                startX = (measuredWidth - maxTextWidth) / 4 - 12;
+                startX = (measuredWidth - maxTextWidth) / 4F - 12;
             }
 
             if (startX <= 0) {//如果超过了WheelView的边缘

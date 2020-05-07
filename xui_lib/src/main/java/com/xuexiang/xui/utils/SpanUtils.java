@@ -1308,7 +1308,7 @@ public final class SpanUtils {
                 if (mVerticalAlignment == ALIGN_TOP) {
                     c.drawBitmap(mBitmap, x, itop, p);
                 } else if (mVerticalAlignment == ALIGN_CENTER) {
-                    c.drawBitmap(mBitmap, x, itop + delta / 2, p);
+                    c.drawBitmap(mBitmap, x, itop + delta / 2F, p);
                 } else {
                     c.drawBitmap(mBitmap, x, itop + delta, p);
                 }

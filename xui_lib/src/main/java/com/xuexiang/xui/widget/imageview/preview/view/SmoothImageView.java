@@ -504,8 +504,8 @@ public class SmoothImageView extends PhotoView {
         endTransform.alpha = 255;
         int endBitmapWidth = (int) (endTransform.scale * bitmapWidth);
         int endBitmapHeight = (int) (endTransform.scale * bitmapHeight);
-        endTransform.left = (getWidth() - endBitmapWidth) / 2;
-        endTransform.top = (getHeight() - endBitmapHeight) / 2;
+        endTransform.left = (getWidth() - endBitmapWidth) / 2F;
+        endTransform.top = (getHeight() - endBitmapHeight) / 2F;
         endTransform.width = endBitmapWidth;
         endTransform.height = endBitmapHeight;
 

@@ -108,7 +108,7 @@ public class RoundDrawable extends GradientDrawable {
         super.onBoundsChange(r);
         if (mRadiusAdjustBounds) {
             // 修改圆角为短边的一半
-            setCornerRadius(Math.min(r.width(), r.height()) / 2);
+            setCornerRadius(Math.min(r.width(), r.height()) / 2F);
         }
     }
 

@@ -112,15 +112,15 @@ public class MiniLoadingView extends View {
         int width = mSize / 12, height = mSize / 6;
         mPaint.setStrokeWidth(width);
 
-        canvas.rotate(rotateDegrees, mSize / 2, mSize / 2);
-        canvas.translate(mSize / 2, mSize / 2);
+        canvas.rotate(rotateDegrees, mSize / 2F, mSize / 2F);
+        canvas.translate(mSize / 2F, mSize / 2F);
 
         for (int i = 0; i < LINE_COUNT; i++) {
             canvas.rotate(DEGREE_PER_LINE);
             mPaint.setAlpha((int) (255f * (i + 1) / LINE_COUNT));
-            canvas.translate(0, -mSize / 2 + width / 2);
+            canvas.translate(0, -mSize / 2F + width / 2F);
             canvas.drawLine(0, 0, 0, height, mPaint);
-            canvas.translate(0, mSize / 2 - width / 2);
+            canvas.translate(0, mSize / 2F - width / 2F);
         }
     }
 

@@ -290,15 +290,15 @@ public class XRangeSlider extends View {
         getTextBounds(max, mMaxTextRect);
 
 
-        float minXBubble = mMinPosition - mBubbleBitmap.getWidth() / 2;
-        float maxXBubble = mMaxPosition - mBubbleBitmap.getWidth() / 2;
+        float minXBubble = mMinPosition - mBubbleBitmap.getWidth() / 2F;
+        float maxXBubble = mMaxPosition - mBubbleBitmap.getWidth() / 2F;
         int maxTextLengthBubble = mBubbleBitmap.getWidth() + 5;
         if (mIsTouching && mTouchingMaxTarget.size() > 0) {
             if (Math.abs(maxXBubble - minXBubble) <= maxTextLengthBubble) {
                 maxXBubble = minXBubble + maxTextLengthBubble;
 
-                if (maxXBubble > mLineEndX - maxTextLengthBubble / 2) {
-                    maxXBubble = mLineEndX - maxTextLengthBubble / 2;
+                if (maxXBubble > mLineEndX - maxTextLengthBubble / 2F) {
+                    maxXBubble = mLineEndX - maxTextLengthBubble / 2F;
                 }
             }
         }
@@ -317,14 +317,14 @@ public class XRangeSlider extends View {
 
             if (!mIsTouchingMin) {
                 maxXBubble = minXBubble + maxTextLengthBubble;
-                if (maxXBubble > mLineEndX - maxTextLengthBubble / 2) {
-                    maxXBubble = mLineEndX - maxTextLengthBubble / 2;
+                if (maxXBubble > mLineEndX - maxTextLengthBubble / 2F) {
+                    maxXBubble = mLineEndX - maxTextLengthBubble / 2F;
                     minXBubble = maxXBubble - maxTextLengthBubble;
                 }
             } else {
                 minXBubble = maxXBubble - maxTextLengthBubble;
-                if (minXBubble < mLineStartX + maxTextLengthBubble / 2) {
-                    minXBubble = mLineStartX + maxTextLengthBubble / 2;
+                if (minXBubble < mLineStartX + maxTextLengthBubble / 2F) {
+                    minXBubble = mLineStartX + maxTextLengthBubble / 2F;
                     maxXBubble = minXBubble + maxTextLengthBubble;
                 }
             }
@@ -335,28 +335,28 @@ public class XRangeSlider extends View {
         //bubble
         if (mIsShowBubble) {
 
-            float top = mMiddleY - mSliderIcon.getHeight() / 2 - mBubbleBitmap.getHeight() - mNumberMarginBottom;
-            yText = top + mBubbleBitmap.getHeight() / 2 + mMinTextRect.height() / 2 - 6;
+            float top = mMiddleY - mSliderIcon.getHeight() / 2F - mBubbleBitmap.getHeight() - mNumberMarginBottom;
+            yText = top + mBubbleBitmap.getHeight() / 2F + mMinTextRect.height() / 2F - 6;
 
             canvas.drawBitmap(mBubbleBitmap, maxXBubble, top, mPaint);
             canvas.drawBitmap(mBubbleBitmap, minXBubble, top, mPaint);
 
         } else {
-            yText = mMiddleY - mSliderIcon.getHeight() / 2 - mNumberMarginBottom;
+            yText = mMiddleY - mSliderIcon.getHeight() / 2F - mNumberMarginBottom;
         }
 
         //text
 
-        float minX = mMinPosition - mMinTextRect.width() / 2;
-        float maxX = mMaxPosition - mMaxTextRect.width() / 2 - 6;
+        float minX = mMinPosition - mMinTextRect.width() / 2F;
+        float maxX = mMaxPosition - mMaxTextRect.width() / 2F - 6;
         int maxTextLength = mIsShowBubble ? mBubbleBitmap.getWidth() : getMaxTextLength() + 5;
 
         if (mIsTouching && mTouchingMaxTarget.size() > 0) {
             if (Math.abs(maxX - minX) <= maxTextLength) {
                 maxX = minX + maxTextLength;
 
-                if (maxX > mLineEndX - maxTextLength / 2) {
-                    maxX = mLineEndX - maxTextLength / 2;
+                if (maxX > mLineEndX - maxTextLength / 2F) {
+                    maxX = mLineEndX - maxTextLength / 2F;
                 }
             }
         }
@@ -374,14 +374,14 @@ public class XRangeSlider extends View {
         if (Math.abs(maxX - minX) <= maxTextLength) {
             if (!mIsTouchingMin) {
                 maxX = minX + maxTextLength;
-                if (maxX > mLineEndX - maxTextLength / 2) {
-                    maxX = mLineEndX - maxTextLength / 2;
+                if (maxX > mLineEndX - maxTextLength / 2F) {
+                    maxX = mLineEndX - maxTextLength / 2F;
                     minX = maxX - maxTextLength;
                 }
             } else {
                 minX = maxX - maxTextLength;
-                if (minX < mLineStartX + maxTextLength / 2) {
-                    minX = mLineStartX + maxTextLength / 2;
+                if (minX < mLineStartX + maxTextLength / 2F) {
+                    minX = mLineStartX + maxTextLength / 2F;
                     maxX = minX + maxTextLength;
                 }
             }
@@ -413,14 +413,14 @@ public class XRangeSlider extends View {
             for (int i = mMin; i <= mMax; i++) {
                 if (i % mRulerInterval == 0) {
                     //draw big scale
-                    startY = mMiddleY + mSliderIcon.getHeight() / 2 + mRulerMarginTop;
+                    startY = mMiddleY + mSliderIcon.getHeight() / 2F + mRulerMarginTop;
                     stopY = startY + mRulerDividerHeight * 3;
 
 
                     mPaint.setColor(mRulerTextColor);
                     mPaint.setTextSize(mRulerTextSize);
                     getRulerTextBounds(String.valueOf(i), mRulerTextRect);
-                    canvas.drawText(String.valueOf(i), startX - mRulerTextRect.width() / 2, stopY + mRulerTextRect.height() + mRuleTextMarginTop, mPaint);
+                    canvas.drawText(String.valueOf(i), startX - mRulerTextRect.width() / 2F, stopY + mRulerTextRect.height() + mRuleTextMarginTop, mPaint);
 
                     if (i == mMin) {
                         isMinHasText = true;
@@ -436,7 +436,7 @@ public class XRangeSlider extends View {
 
                 } else if (i % (mRulerInterval / 2) == 0) {
                     //draw middle scale
-                    startY = mMiddleY + mSliderIcon.getHeight() / 2 + mRulerMarginTop;
+                    startY = mMiddleY + mSliderIcon.getHeight() / 2F + mRulerMarginTop;
                     stopY = startY + mRulerDividerHeight * 2;
                     mPaint.setStrokeWidth(DEFAULT_MIDDLE_SCALE_WITH);
 
@@ -446,7 +446,7 @@ public class XRangeSlider extends View {
 
                 } else {
                     //draw small scale
-                    startY = mMiddleY + mSliderIcon.getHeight() / 2 + mRulerMarginTop;
+                    startY = mMiddleY + mSliderIcon.getHeight() / 2F + mRulerMarginTop;
                     stopY = startY + mRulerDividerHeight;
                     mPaint.setStrokeWidth(DEFAULT_SMALL_SCALE_WITH);
 
@@ -462,14 +462,14 @@ public class XRangeSlider extends View {
                     mPaint.setTextSize(mRulerTextSize);
                     getRulerTextBounds(String.valueOf(i), mRulerTextRect);
 
-                    float x = startX - mRulerTextRect.width() / 2;
+                    float x = startX - mRulerTextRect.width() / 2F;
                     //修正最大值与最小值文本与满刻度文本太靠近时显示重叠问题
                     if (i == mMax && i % mRulerInterval == 1) {
                         x = startX + DEFAULT_TEXT_MIN_SPACE;
                     }
 
                     if (i == mMin && i % mRulerInterval == mRulerInterval - 1) {
-                        x = startX - mRulerTextRect.width() / 2 - DEFAULT_TEXT_MIN_SPACE;
+                        x = startX - mRulerTextRect.width() / 2F - DEFAULT_TEXT_MIN_SPACE;
                     }
 
                     canvas.drawText(String.valueOf(i), x, startY + mRulerDividerHeight * 3 + mRulerTextRect.height() + mRuleTextMarginTop, mPaint);
@@ -491,15 +491,15 @@ public class XRangeSlider extends View {
 
         if (mIsTouching) {
             if (mLastTouchedMin) {
-                canvas.drawBitmap(mSliderIconFocus, mMinPosition - mSliderIconFocus.getWidth() / 2, mMiddleY - mSliderIconFocus.getWidth() / 2, mPaint);
-                canvas.drawBitmap(mSliderIcon, mMaxPosition - mSliderIcon.getWidth() / 2, mMiddleY - mSliderIcon.getWidth() / 2, mPaint);
+                canvas.drawBitmap(mSliderIconFocus, mMinPosition - mSliderIconFocus.getWidth() / 2F, mMiddleY - mSliderIconFocus.getWidth() / 2F, mPaint);
+                canvas.drawBitmap(mSliderIcon, mMaxPosition - mSliderIcon.getWidth() / 2F, mMiddleY - mSliderIcon.getWidth() / 2F, mPaint);
             } else {
-                canvas.drawBitmap(mSliderIcon, mMinPosition - mSliderIcon.getWidth() / 2, mMiddleY - mSliderIcon.getWidth() / 2, mPaint);
-                canvas.drawBitmap(mSliderIconFocus, mMaxPosition - mSliderIconFocus.getWidth() / 2, mMiddleY - mSliderIconFocus.getWidth() / 2, mPaint);
+                canvas.drawBitmap(mSliderIcon, mMinPosition - mSliderIcon.getWidth() / 2F, mMiddleY - mSliderIcon.getWidth() / 2F, mPaint);
+                canvas.drawBitmap(mSliderIconFocus, mMaxPosition - mSliderIconFocus.getWidth() / 2F, mMiddleY - mSliderIconFocus.getWidth() / 2F, mPaint);
             }
         } else {
-            canvas.drawBitmap(mSliderIcon, mMaxPosition - mSliderIcon.getWidth() / 2, mMiddleY - mSliderIcon.getWidth() / 2, mPaint);
-            canvas.drawBitmap(mSliderIcon, mMinPosition - mSliderIcon.getWidth() / 2, mMiddleY - mSliderIcon.getWidth() / 2, mPaint);
+            canvas.drawBitmap(mSliderIcon, mMaxPosition - mSliderIcon.getWidth() / 2F, mMiddleY - mSliderIcon.getWidth() / 2F, mPaint);
+            canvas.drawBitmap(mSliderIcon, mMinPosition - mSliderIcon.getWidth() / 2F, mMiddleY - mSliderIcon.getWidth() / 2F, mPaint);
         }
     }
 

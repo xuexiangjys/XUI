@@ -60,12 +60,10 @@ public class ShadowButton extends BaseShadowButton {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         if (mShapeType == 0) {
-            canvas.drawCircle(mWidth / 2, mHeight / 2, mWidth / 2.1038f,
+            canvas.drawCircle(mWidth / 2F, mHeight / 2F, mWidth / 2.1038f,
                     mPressedPaint);
         } else {
-            RectF rectF = new RectF();
-            rectF.set(0, 0, mWidth, mHeight);
-            canvas.drawRoundRect(rectF, mRadius, mRadius, mPressedPaint);
+            canvas.drawRoundRect(mRectF, mRadius, mRadius, mPressedPaint);
         }
     }
 

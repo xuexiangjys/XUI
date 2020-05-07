@@ -482,10 +482,10 @@ public class SwitchButton extends CompoundButton {
         }
 
         if (mThumbRadius == -1) {
-            mThumbRadius = Math.min(mThumbWidth, mThumbHeight) / 2;
+            mThumbRadius = Math.min(mThumbWidth, mThumbHeight) / 2F;
         }
         if (mBackRadius == -1) {
-            mBackRadius = Math.min(mBackWidth, mBackHeight) / 2;
+            mBackRadius = Math.min(mBackWidth, mBackHeight) / 2F;
         }
 
         int contentWidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
@@ -500,14 +500,14 @@ public class SwitchButton extends CompoundButton {
             thumbTop = getPaddingTop() + Math.max(0, mThumbMargin.top);
         } else {
             // center vertical in content area
-            thumbTop = getPaddingTop() + Math.max(0, mThumbMargin.top) + (contentHeight - drawingHeight + 1) / 2;
+            thumbTop = getPaddingTop() + Math.max(0, mThumbMargin.top) + (contentHeight - drawingHeight + 1) / 2F;
         }
 
         float thumbLeft;
         if (contentWidth <= mBackWidth) {
             thumbLeft = getPaddingLeft() + Math.max(0, mThumbMargin.left);
         } else {
-            thumbLeft = getPaddingLeft() + Math.max(0, mThumbMargin.left) + (contentWidth - drawingWidth + 1) / 2;
+            thumbLeft = getPaddingLeft() + Math.max(0, mThumbMargin.left) + (contentWidth - drawingWidth + 1) / 2F;
         }
 
         mThumbRectF.set(thumbLeft, thumbTop, thumbLeft + mThumbWidth, thumbTop + mThumbHeight);
@@ -696,7 +696,7 @@ public class SwitchButton extends CompoundButton {
             case MotionEvent.ACTION_MOVE:
                 float x = event.getX();
                 setProgress(getProgress() + (x - mLastX) / mSafeRectF.width());
-                if (!mCatch && (Math.abs(deltaX) > mTouchSlop / 2 || Math.abs(deltaY) > mTouchSlop / 2)) {
+                if (!mCatch && (Math.abs(deltaX) > mTouchSlop / 2F || Math.abs(deltaY) > mTouchSlop / 2F)) {
                     if (deltaY == 0 || Math.abs(deltaX) > Math.abs(deltaY)) {
                         catchView();
                     } else if (Math.abs(deltaY) > Math.abs(deltaX)) {

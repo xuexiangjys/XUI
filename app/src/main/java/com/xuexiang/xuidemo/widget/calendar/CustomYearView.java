@@ -54,14 +54,14 @@ public class CustomYearView extends YearView {
                 .getResources()
                 .getStringArray(com.haibin.calendarview.R.array.month_string_array)[month - 1];
         canvas.drawText(text,
-                x + mItemWidth / 2 - mTextPadding,
+                x + mItemWidth / 2F - mTextPadding,
                 y + mMonthTextBaseLine,
                 mMonthTextPaint);
         if (month == 2 && isLeapYear(year)) {
             float w = getTextWidth(mMonthTextPaint, text);
 
             canvas.drawText("闰年",
-                    x + mItemWidth / 2 - mTextPadding + w + dipToPx(getContext(), 6),
+                    x + mItemWidth / 2F - mTextPadding + w + dipToPx(getContext(), 6),
                     y + mMonthTextBaseLine,
                     mLeapYearTextPaint);
         }
@@ -86,7 +86,7 @@ public class CustomYearView extends YearView {
     protected void onDrawWeek(Canvas canvas, int week, int x, int y, int width, int height) {
         String text = getContext().getResources().getStringArray(com.haibin.calendarview.R.array.year_view_week_string_array)[week];
         canvas.drawText(text,
-                x + width / 2,
+                x + width / 2F,
                 y + mWeekTextBaseLine,
                 mWeekTextPaint);
     }

@@ -84,7 +84,7 @@ public class StickyItemDecoration extends RecyclerView.ItemDecoration {
         calculateStickyHeadPosition(parent);
 
         if (mEnableStickyHead && mFirstVisiblePosition >= mStickyHeadPosition && mStickyHeadPosition != -1) {
-            View belowView = parent.findChildViewUnder(canvas.getWidth() / 2, mStickyHeadContainer.getChildHeight() + 0.01f);
+            View belowView = parent.findChildViewUnder(canvas.getWidth() / 2F, mStickyHeadContainer.getChildHeight() + 0.01f);
             mStickyHeadContainer.onPositionChanged(mStickyHeadPosition);
             int topOffset = belowView != null ? belowView.getTop() : 0;
             int offset;
@@ -222,46 +222,69 @@ public class StickyItemDecoration extends RecyclerView.ItemDecoration {
             mAdapter = adapter;
             // 适配器为null或者不同，清空缓存
             mStickyHeadPosition = -1;
-            if (mAdapter == null) {
-                return;
+            try {
+                if (mAdapter != null) {
+                    mAdapter.registerAdapterDataObserver(mAdapterDataObserver);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-                @Override
-                public void onChanged() {
-                    reset();
-                }
-
-                @Override
-                public void onItemRangeChanged(int positionStart, int itemCount) {
-                    reset();
-                }
-
-                @Override
-                public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
-                    reset();
-                }
-
-                @Override
-                public void onItemRangeInserted(int positionStart, int itemCount) {
-                    reset();
-                }
-
-                @Override
-                public void onItemRangeRemoved(int positionStart, int itemCount) {
-                    reset();
-                }
-
-                @Override
-                public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-                    reset();
-                }
-            });
-
         }
     }
 
+    private RecyclerView.AdapterDataObserver mAdapterDataObserver = new RecyclerView.AdapterDataObserver() {
+        @Override
+        public void onChanged() {
+            reset();
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            reset();
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
+            reset();
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            reset();
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            reset();
+        }
+
+        @Override
+        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            reset();
+        }
+    };
+
     private void reset() {
-        mStickyHeadContainer.reset();
+        if (mStickyHeadContainer != null) {
+            mStickyHeadContainer.reset();
+        }
+    }
+
+    /**
+     * 主动释放资源
+     */
+    public void recycle() {
+        if (mStickyHeadContainer != null) {
+            mStickyHeadContainer.recycle();
+        }
+        try {
+            if (mAdapter != null) {
+                mAdapter.unregisterAdapterDataObserver(mAdapterDataObserver);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mOnStickyChangedListener = null;
     }
 
     /**

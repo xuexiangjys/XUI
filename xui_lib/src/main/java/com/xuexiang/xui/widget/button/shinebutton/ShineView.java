@@ -179,8 +179,8 @@ public class ShineView extends View {
                     mPaint.setStrokeWidth((mShineSize) * (mShineDistanceMultiple - mValue));
                     mPaintSmall.setStrokeWidth(((float) mShineSize / 3 * 2) * (mShineDistanceMultiple - mValue));
                 } else {
-                    mPaint.setStrokeWidth((mBtnWidth / 2) * (mShineDistanceMultiple - mValue));
-                    mPaintSmall.setStrokeWidth((mBtnWidth / 3) * (mShineDistanceMultiple - mValue));
+                    mPaint.setStrokeWidth((mBtnWidth / 2F) * (mShineDistanceMultiple - mValue));
+                    mPaintSmall.setStrokeWidth((mBtnWidth / 3F) * (mShineDistanceMultiple - mValue));
                 }
                 mRectF.set(mCenterAnimX - (mBtnWidth / (3 - mShineDistanceMultiple) * mValue), mCenterAnimY - (mBtnHeight / (3 - mShineDistanceMultiple) * mValue), mCenterAnimX + (mBtnWidth / (3 - mShineDistanceMultiple) * mValue), mCenterAnimY + (mBtnHeight / (3 - mShineDistanceMultiple) * mValue));
                 mSmallRectF.set(mCenterAnimX - (mBtnWidth / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimY - (mBtnHeight / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimX + (mBtnWidth / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue), mCenterAnimY + (mBtnHeight / ((3 - mShineDistanceMultiple) + mDistanceOffset) * mValue));

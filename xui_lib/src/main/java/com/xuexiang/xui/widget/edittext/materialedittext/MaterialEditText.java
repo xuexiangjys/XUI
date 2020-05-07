@@ -1629,9 +1629,9 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
                 ellipsisStartX = startX;
             }
             int signum = isRTL() ? -1 : 1;
-            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize / 2, startY + bottomEllipsisSize / 2, bottomEllipsisSize / 2, paint);
-            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize * 5 / 2, startY + bottomEllipsisSize / 2, bottomEllipsisSize / 2, paint);
-            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize * 9 / 2, startY + bottomEllipsisSize / 2, bottomEllipsisSize / 2, paint);
+            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize / 2F, startY + bottomEllipsisSize / 2F, bottomEllipsisSize / 2F, paint);
+            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize * 5 / 2F, startY + bottomEllipsisSize / 2F, bottomEllipsisSize / 2F, paint);
+            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize * 9 / 2F, startY + bottomEllipsisSize / 2F, bottomEllipsisSize / 2F, paint);
         }
     }
 

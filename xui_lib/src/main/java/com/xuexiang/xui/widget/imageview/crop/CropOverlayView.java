@@ -706,23 +706,23 @@ public class CropOverlayView extends View {
 
         if (mCornerBitmap != null) {
             // Top left
-            canvas.drawBitmap(mCornerBitmap, left - mCornerWidth / 2, top
-                    - mCornerHeight / 2, null);
+            canvas.drawBitmap(mCornerBitmap, left - mCornerWidth / 2F, top
+                    - mCornerHeight / 2F, null);
 
             // Top right
 
-            canvas.drawBitmap(mCornerBitmap, right - mCornerWidth / 2, top
-                    - mCornerHeight / 2, null);
+            canvas.drawBitmap(mCornerBitmap, right - mCornerWidth / 2F, top
+                    - mCornerHeight / 2F, null);
 
             // Bottom left
 
-            canvas.drawBitmap(mCornerBitmap, left - mCornerWidth / 2, bottom
-                    - mCornerHeight / 2, null);
+            canvas.drawBitmap(mCornerBitmap, left - mCornerWidth / 2F, bottom
+                    - mCornerHeight / 2F, null);
 
             // Bottom right
 
-            canvas.drawBitmap(mCornerBitmap, right - mCornerWidth / 2, bottom
-                    - mCornerHeight / 2, null);
+            canvas.drawBitmap(mCornerBitmap, right - mCornerWidth / 2F, bottom
+                    - mCornerHeight / 2F, null);
 
         } else {
             // Top left

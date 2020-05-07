@@ -42,6 +42,6 @@ public class CustomMarkerView extends MarkerView {
 
     @Override
     public MPPointF getOffset() {
-        return new MPPointF(-(getWidth() / 2), -getHeight());
+        return new MPPointF(-(getWidth() / 2F), -getHeight());
     }
 }

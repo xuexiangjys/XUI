@@ -147,12 +147,12 @@ public final class LabelViewHelper {
             mTextPaint.setTypeface(XUI.getDefaultTypeface(mTextFont));
         }
 
-        float begin_w_offset = (1.4142135f * actualDistance) / 2 - mTextBound.width() / 2;
+        float begin_w_offset = (1.4142135f * actualDistance) / 2 - mTextBound.width() / 2F;
         if (begin_w_offset < 0) {
             begin_w_offset = 0;
         }
 
-        canvas.drawTextOnPath(mText, mTextPath, begin_w_offset, mTextBound.height() / 2, mTextPaint);
+        canvas.drawTextOnPath(mText, mTextPath, begin_w_offset, mTextBound.height() / 2F, mTextPaint);
     }
 
     /**
@@ -167,7 +167,7 @@ public final class LabelViewHelper {
         float startPosY = measuredHeight - mDistance - mHeight;
         float endPosY = measuredHeight;
 
-        float middle = mHeight / 2;
+        float middle = mHeight / 2F;
 
         switch (mOrientation) {
             case LEFT_TOP: // LEFT_TOP
