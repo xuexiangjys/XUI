@@ -98,6 +98,14 @@ public class StickyItemDecoration extends RecyclerView.ItemDecoration {
             } else {
                 mOnStickyChangedListener.onScrolling(offset);
             }
+            // 滑动到底部,不够滑动切换了
+            if (!parent.canScrollVertically(1) && offset != 0) {
+                if (mOnStickyChangedListener == null) {
+                    mStickyHeadContainer.onNotEnoughHighScroll();
+                } else {
+                    mOnStickyChangedListener.onNotEnoughHighScroll();
+                }
+            }
         } else {
             if (mOnStickyChangedListener == null) {
                 mStickyHeadContainer.onInVisible();

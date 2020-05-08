@@ -149,7 +149,7 @@ public class StickyHeadContainer extends ViewGroup {
     }
 
     /**
-     * 滚动
+     * 滚动中
      *
      * @param offset
      */
@@ -162,6 +162,13 @@ public class StickyHeadContainer extends ViewGroup {
             }
         }
         mLastOffset = mOffset;
+    }
+
+    /**
+     * 当高度不够切换时，默认就放弃粘顶效果
+     */
+    public void onNotEnoughHighScroll() {
+        onInVisible();
     }
 
     protected int getChildHeight() {

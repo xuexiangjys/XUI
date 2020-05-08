@@ -142,7 +142,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     }
 
     private boolean checkPosition(int position) {
-        return position >= 0 && position <= mData.size() - 1;
+        return position >= 0 && position < mData.size();
     }
 
     public boolean isEmpty() {
@@ -169,8 +169,10 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      * @return
      */
     public XRecyclerAdapter add(int pos, T item) {
-        mData.add(pos, item);
-        notifyItemInserted(pos);
+        if (pos >= 0 && pos <= getItemCount()) {
+            mData.add(pos, item);
+            notifyItemInserted(pos);
+        }
         return this;
     }
 
@@ -193,8 +195,10 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      * @return
      */
     public XRecyclerAdapter delete(int pos) {
-        mData.remove(pos);
-        notifyItemRemoved(pos);
+        if (checkPosition(pos)) {
+            mData.remove(pos);
+            notifyItemRemoved(pos);
+        }
         return this;
     }
 
@@ -206,8 +210,10 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      * @return
      */
     public XRecyclerAdapter refresh(int pos, T item) {
-        mData.set(pos, item);
-        notifyItemChanged(pos);
+        if (checkPosition(pos)) {
+            mData.set(pos, item);
+            notifyItemChanged(pos);
+        }
         return this;
     }
 

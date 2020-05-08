@@ -21,8 +21,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/xui_config_color_white"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
     android:tag="sticky"
     app:xui_shadowElevation="0dp">
 

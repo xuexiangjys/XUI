@@ -27,6 +27,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.sticky.StickyHeadContainer;
 import com.xuexiang.xui.adapter.recyclerview.sticky.StickyItemDecoration;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.StickyListAdapter;
@@ -58,6 +59,18 @@ public class StickyItemDecorationFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_sticky_item_decoration;
+    }
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("清除") {
+            @Override
+            public void performAction(View view) {
+                mAdapter.clear();
+            }
+        });
+        return titleBar;
     }
 
     @Override

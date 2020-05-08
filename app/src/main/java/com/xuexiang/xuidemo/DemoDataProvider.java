@@ -424,6 +424,8 @@ public class DemoDataProvider {
             list.add(new StickyItem(page));
             list.addAll(temp);
         }
+        list.add(new StickyItem("测试"));
+        list.addAll(temp.subList(0, 3));
         return list;
     }
 

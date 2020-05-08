@@ -35,4 +35,9 @@ public interface OnStickyChangedListener {
      * 不可见
      */
     void onInVisible();
+
+    /**
+     * 当高度不够滑动切换时
+     */
+    void onNotEnoughHighScroll();
 }
