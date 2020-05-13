@@ -26,6 +26,8 @@ import com.xuexiang.xui.utils.ResUtils;
  * @since 2019/1/14 下午10:06
  */
 public class ClearEditText extends AppCompatEditText implements OnFocusChangeListener, TextWatcher {
+
+    public static final int RIGHT_INDEX = 2;
     /**
      * 增大点击区域
      */
@@ -99,7 +101,7 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (getCompoundDrawables()[2] != null) {
+        if (getCompoundDrawables()[RIGHT_INDEX] != null) {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 boolean touchable = isTouchable(event);
                 if (touchable) {

@@ -54,8 +54,16 @@ public abstract class AbstractSearchFilter extends Filter {
         return mSuggestions;
     }
 
+    /**
+     * 过滤搜索结果的监听
+     */
     public interface OnFilterResultListener {
 
+        /**
+         * 过滤结果
+         *
+         * @param results 搜索结果
+         */
         void publishResults(List<String> results);
     }
 

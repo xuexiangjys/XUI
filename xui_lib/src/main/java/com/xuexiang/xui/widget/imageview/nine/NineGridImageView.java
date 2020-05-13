@@ -536,7 +536,7 @@ public class NineGridImageView<T> extends ViewGroup {
      * @param imagesSize 图片数量
      * @param gridParam  单元格的行数和列数
      */
-    private void generatUnitRowAndColumnForSpanType(int imagesSize, int[] gridParam) {
+    private void generateUnitRowAndColumnForSpanType(int imagesSize, int[] gridParam) {
         if (imagesSize <= 2) {
             gridParam[0] = 1;
             gridParam[1] = imagesSize;
@@ -684,7 +684,7 @@ public class NineGridImageView<T> extends ViewGroup {
         int[] gridParam = new int[2];
         switch (showStyle) {
             case STYLE_FILL:
-                generatUnitRowAndColumnForSpanType(imagesSize, gridParam);
+                generateUnitRowAndColumnForSpanType(imagesSize, gridParam);
                 break;
             default:
             case STYLE_GRID:

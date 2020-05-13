@@ -193,7 +193,7 @@
     </string-array>
 
     <string-array name="query_suggestions">
-        <item>A very very long suggestion that would span multiple lines.</item>
+        <item>A very long suggestion that would span multiple lines.</item>
         <item>Android</item>
         <item>iOS</item>
         <item>SCALA</item>

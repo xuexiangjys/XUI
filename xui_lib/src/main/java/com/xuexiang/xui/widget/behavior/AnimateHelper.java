@@ -31,10 +31,20 @@ public interface AnimateHelper {
      */
     int STATE_HIDE = 0;
 
+    /**
+     * 显示
+     */
     void show();
 
+    /**
+     * 隐藏
+     */
     void hide();
 
+    /**
+     * 设置开始的y轴位置
+     * @param y
+     */
     void setStartY(float y);
 
     /**

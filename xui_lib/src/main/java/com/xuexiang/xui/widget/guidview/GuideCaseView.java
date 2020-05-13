@@ -583,11 +583,7 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
     @Override
     public void onGlobalLayout() {
-        if (Build.VERSION.SDK_INT < 16) {
-            mView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        } else {
-            mView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        }
+        mView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
         focus();
     }
 

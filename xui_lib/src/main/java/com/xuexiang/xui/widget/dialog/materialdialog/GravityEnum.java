@@ -30,8 +30,17 @@ import android.view.View;
  * @since 2018/11/14 下午4:44
  */
 public enum GravityEnum {
+    /**
+     * 头部对齐
+     */
     START,
+    /**
+     * 居中对齐
+     */
     CENTER,
+    /**
+     * 尾部对齐
+     */
     END;
 
     private static final boolean HAS_RTL =

@@ -292,7 +292,7 @@ public final class LabelViewHelper {
     }
 
     public void setLabelOrientation(View view, int orientation) {
-        if (mOrientation != orientation && orientation <= 4 && orientation >= 1) {
+        if (mOrientation != orientation && orientation <= RIGHT_BOTTOM && orientation >= LEFT_TOP) {
             mOrientation = orientation;
             view.invalidate();
         }

@@ -264,7 +264,6 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
 
     @Override
     public void setError(CharSequence error) {
-//        super.setError(error);
         mErrorMsg = error;
         if (TextUtils.isEmpty(error)) {
             setErrorIconVisible(false);

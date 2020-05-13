@@ -342,7 +342,7 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
         protected void applyTransformation(float interpolatedTime, Transformation t) {
             final int newHeight = (int) ((mEndHeight - mStartHeight) * interpolatedTime + mStartHeight);
             mTv.setMaxHeight(newHeight - mMarginBetweenTxtAndBottom);
-            if (Float.compare(mAnimAlphaStart, 1.0f) != 0) {
+            if (Float.compare(mAnimAlphaStart, 1.0F) != 0) {
                 applyAlphaAnimation(mTv, mAnimAlphaStart + interpolatedTime * (1.0f - mAnimAlphaStart));
             }
             mTargetView.getLayoutParams().height = newHeight;

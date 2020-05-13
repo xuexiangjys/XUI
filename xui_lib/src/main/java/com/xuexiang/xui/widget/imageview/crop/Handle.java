@@ -19,20 +19,49 @@ package com.xuexiang.xui.widget.imageview.crop;
 
 import android.graphics.Rect;
 
-
 /**
- * Enum representing a pressable, draggable Handle on the crop window.
+ * 裁剪窗口上可按可拖动的句柄的枚举
+ *
+ * @author xuexiang
+ * @since 2020/5/13 7:58 PM
  */
 public enum Handle {
 
+    /**
+     * 边框左侧顶部
+     */
     TOP_LEFT(new CornerHandleHelper(Edge.TOP, Edge.LEFT)),
+    /**
+     * 边框右侧顶部
+     */
     TOP_RIGHT(new CornerHandleHelper(Edge.TOP, Edge.RIGHT)),
+    /**
+     * 边框左侧底部
+     */
     BOTTOM_LEFT(new CornerHandleHelper(Edge.BOTTOM, Edge.LEFT)),
+    /**
+     * 边框右侧底部
+     */
     BOTTOM_RIGHT(new CornerHandleHelper(Edge.BOTTOM, Edge.RIGHT)),
+    /**
+     * 边框左侧
+     */
     LEFT(new VerticalHandleHelper(Edge.LEFT)),
+    /**
+     * 边框顶部
+     */
     TOP(new HorizontalHandleHelper(Edge.TOP)),
+    /**
+     * 边框右侧
+     */
     RIGHT(new VerticalHandleHelper(Edge.RIGHT)),
+    /**
+     * 边框底部
+     */
     BOTTOM(new HorizontalHandleHelper(Edge.BOTTOM)),
+    /**
+     * 中心
+     */
     CENTER(new CenterHandleHelper());
 
     // Member Variables ////////////////////////////////////////////////////////

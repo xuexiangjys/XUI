@@ -71,6 +71,11 @@ abstract public class BaseBehavior extends CoordinatorLayout.Behavior<View> {
         }
     }
 
+    /**
+     * 开始准备滑动的初始化准备
+     *
+     * @param child
+     */
     protected abstract void onNestPreScrollInit(View child);
 
     public void show() {
