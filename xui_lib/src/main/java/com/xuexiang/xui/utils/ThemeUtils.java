@@ -2,6 +2,7 @@ package com.xuexiang.xui.utils;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -284,6 +285,16 @@ public final class ThemeUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * 当前是否是处于深色模式
+     *
+     * @return 是否是深色模式
+     */
+    public static boolean isNightMode() {
+        int mode = ResUtils.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return mode == Configuration.UI_MODE_NIGHT_YES;
     }
 
     //=================//
