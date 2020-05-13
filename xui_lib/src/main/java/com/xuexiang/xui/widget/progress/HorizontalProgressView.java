@@ -546,7 +546,7 @@ public class HorizontalProgressView extends View {
      * update the oval progress track
      */
     private void updateTheTrack() {
-        mRect = new RectF(getPaddingLeft() + mStartProgress * (getWidth() - getPaddingLeft() - getPaddingRight() + 60) / 100, getHeight() / 2 - getPaddingTop(),
+        mRect = new RectF(getPaddingLeft() + mStartProgress * (getWidth() - getPaddingLeft() - getPaddingRight() + 60) / 100, getHeight() / 2F - getPaddingTop(),
                 (getWidth() - getPaddingRight() - 20) * ((moveProgress) / 100),
                 getHeight() / 2F + getPaddingTop() + mTrackWidth);
         mTrackRect = new RectF(getPaddingLeft(), getHeight() / 2F - getPaddingTop(),

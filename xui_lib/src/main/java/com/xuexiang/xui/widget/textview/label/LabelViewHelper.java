@@ -124,7 +124,7 @@ public final class LabelViewHelper {
             return;
         }
 
-        float actualDistance = mDistance + mHeight / 2;
+        float actualDistance = mDistance + mHeight / 2F;
         calcOffset(measuredWidth, measuredHeight);
 
         mRectPaint.setColor(mBackgroundColor);
