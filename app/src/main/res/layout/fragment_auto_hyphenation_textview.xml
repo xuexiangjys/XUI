@@ -20,12 +20,38 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:breakStrategy="high_quality"
-        android:hyphenationFrequency="full"
-        android:text="@string/large_text" />
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/large_text" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:breakStrategy="high_quality"
+                android:hyphenationFrequency="full"
+                android:text="@string/large_text" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </LinearLayout>
