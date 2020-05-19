@@ -2,7 +2,7 @@
     <string name="app_name">XUIDemo</string>
     <string name="app_browser_name">XUI浏览器</string>
     <!--华文行楷字体路径，其实可以不设置-->
-    <!--<string name="default_app_font_path">fonts/hwxk.ttf</string>-->
+    <string name="default_app_font_path">fonts/hwxk.ttf</string>
 
     <string name="style_default">默认样式</string>
     <string name="style_md_ios">Material Design &#038; iOS Style</string>

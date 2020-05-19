@@ -49,7 +49,7 @@ import com.xuexiang.xui.widget.textview.AutoMoveTextView;
 
 import java.util.LinkedList;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 标题栏

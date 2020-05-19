@@ -27,7 +27,7 @@ import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectChangeListe
 
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 条件滚轮

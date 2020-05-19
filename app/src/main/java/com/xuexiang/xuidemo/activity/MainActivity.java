@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.guidview.GuideCaseQueue;
 import com.xuexiang.xui.widget.guidview.GuideCaseView;
@@ -111,6 +112,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         expand.setText("拓展");
         expand.setIcon(SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_expand : R.drawable.selector_icon_tabbar_expand);
         mTabLayout.addTab(expand);
+
+        WidgetUtils.setTabLayoutTextFont(mTabLayout);
 
         switchPage(ComponentsFragment.class);
 

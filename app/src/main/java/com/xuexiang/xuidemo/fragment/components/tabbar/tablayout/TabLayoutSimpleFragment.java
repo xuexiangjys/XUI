@@ -22,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
@@ -67,6 +68,10 @@ public class TabLayoutSimpleFragment extends BaseFragment implements TabLayout.O
         mTabLayout.addOnTabSelectedListener(this);
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
+
+        WidgetUtils.setTabLayoutTextFont(mTabLayout);
+        WidgetUtils.setTabLayoutTextFont(mTabLayout1);
+
     }
 
     @Override

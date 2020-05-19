@@ -18,13 +18,14 @@ android {
 }
 
 dependencies {
-    compileOnly deps.androidx.appcompat
+    implementation deps.androidx.appcompat
     compileOnly deps.androidx.recyclerview
     compileOnly deps.androidx.design
 
     compileOnly deps.glide
 
-    api 'uk.co.chrisjenx:calligraphy:2.3.0'
+    api 'io.github.inflationx:calligraphy3:3.1.1'
+    api 'io.github.inflationx:viewpump:2.0.3'
 }
 
 apply from: '../JitPackUpload.gradle'

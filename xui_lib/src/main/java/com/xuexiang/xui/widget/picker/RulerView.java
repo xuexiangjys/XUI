@@ -27,7 +27,7 @@ import com.xuexiang.xui.utils.ResUtils;
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 刻度尺控件

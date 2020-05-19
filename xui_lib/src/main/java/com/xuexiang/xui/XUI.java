@@ -11,8 +11,10 @@ import androidx.annotation.Nullable;
 
 import com.xuexiang.xui.logs.UILog;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.TypefaceUtils;
+import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.calligraphy3.TypefaceUtils;
+import io.github.inflationx.viewpump.ViewPump;
 
 /**
  * UI全局设置
@@ -29,6 +31,8 @@ public class XUI {
     private static boolean sIsTabletChecked;
 
     private static int sScreenType;
+
+    private static String sDefaultFontAssetPath;
 
     private XUI() {
 
@@ -51,6 +55,7 @@ public class XUI {
     }
 
     //=======================初始化设置===========================//
+
     /**
      * 初始化
      *
@@ -64,10 +69,16 @@ public class XUI {
      * 设置默认字体
      */
     public XUI initFontStyle(String defaultFontAssetPath) {
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath(defaultFontAssetPath)
-                .setFontAttrId(R.attr.fontPath)
-                .build());
+        if (!TextUtils.isEmpty(defaultFontAssetPath)) {
+            sDefaultFontAssetPath = defaultFontAssetPath;
+            ViewPump.init(ViewPump.builder()
+                    .addInterceptor(new CalligraphyInterceptor(
+                            new CalligraphyConfig.Builder()
+                                    .setDefaultFontPath(defaultFontAssetPath)
+                                    .setFontAttrId(R.attr.fontPath)
+                                    .build()))
+                    .build());
+        }
         return this;
     }
 
@@ -83,6 +94,7 @@ public class XUI {
     }
 
     //=======================日志调试===========================//
+
     /**
      * 设置调试模式
      *
@@ -104,14 +116,14 @@ public class XUI {
     }
 
     //=======================字体===========================//
+
     /**
      * @return 获取默认字体
      */
     @Nullable
     public static Typeface getDefaultTypeface() {
-        String fontPath = CalligraphyConfig.get().getFontPath();
-        if (!TextUtils.isEmpty(fontPath)) {
-            return TypefaceUtils.load(getContext().getAssets(), fontPath);
+        if (!TextUtils.isEmpty(sDefaultFontAssetPath)) {
+            return TypefaceUtils.load(getContext().getAssets(), sDefaultFontAssetPath);
         }
         return null;
     }
@@ -123,7 +135,7 @@ public class XUI {
     @Nullable
     public static Typeface getDefaultTypeface(String fontPath) {
         if (TextUtils.isEmpty(fontPath)) {
-            fontPath = CalligraphyConfig.get().getFontPath();
+            fontPath = sDefaultFontAssetPath;
         }
         if (!TextUtils.isEmpty(fontPath)) {
             return TypefaceUtils.load(getContext().getAssets(), fontPath);
@@ -135,6 +147,7 @@ public class XUI {
 
     /**
      * 检验设备屏幕的尺寸
+     *
      * @param context
      * @return
      */
@@ -154,6 +167,7 @@ public class XUI {
 
     /**
      * 判断是否平板设备
+     *
      * @return true:平板,false:手机
      */
     public static int getScreenType() {
@@ -167,6 +181,7 @@ public class XUI {
 
     /**
      * 是否是平板
+     *
      * @return
      */
     public static boolean isTablet() {
@@ -175,13 +190,14 @@ public class XUI {
 
     /**
      * 初始化主题
+     *
      * @param activity
      */
     public static void initTheme(Activity activity) {
         int screenType = getScreenType();
         if (screenType == UIConsts.ScreenType.PHONE) {
             activity.setTheme(R.style.XUITheme_Phone);
-        } else if (screenType == UIConsts.ScreenType.SMALL_TABLET){
+        } else if (screenType == UIConsts.ScreenType.SMALL_TABLET) {
             activity.setTheme(R.style.XUITheme_Tablet_Small);
         } else {
             activity.setTheme(R.style.XUITheme_Tablet_Big);
