@@ -19,13 +19,13 @@ package com.xuexiang.xui.widget.imageview.preview.ui;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-
-import android.text.TextUtils;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.xuexiang.xui.R;
 
@@ -63,12 +63,26 @@ public class VideoPlayerActivity extends FragmentActivity {
             }
         });
         mVideoView.start();
+
+        findViewById(R.id.rl_root).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                recycle();
+            }
+        });
+    }
+
+    private void recycle() {
+        if (mVideoView != null) {
+            mVideoView.stopPlayback();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (!mVideoView.isPlaying()) {
+        if (mVideoView != null && !mVideoView.isPlaying()) {
             mVideoView.start();
         }
     }
@@ -76,13 +90,17 @@ public class VideoPlayerActivity extends FragmentActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mVideoView.pause();
+        if (mVideoView != null) {
+            mVideoView.pause();
+        }
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mVideoView.stopPlayback();
+    protected void onStop() {
+        if (isFinishing()) {
+            recycle();
+        }
+        super.onStop();
     }
 
     /***

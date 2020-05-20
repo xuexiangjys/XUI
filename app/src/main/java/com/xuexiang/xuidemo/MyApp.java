@@ -62,7 +62,7 @@ public class MyApp extends Application {
         XUI.init(this);
         XUI.debug(MyApp.isDebug());
 //        //设置默认字体为华文行楷
-//        XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
+        XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
         PictureFileUtils.setAppName("xui");
 
         //字体图标库

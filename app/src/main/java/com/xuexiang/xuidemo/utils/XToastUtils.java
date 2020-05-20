@@ -39,6 +39,7 @@ public final class XToastUtils {
     static {
         XToast.Config.get()
                 .setAlpha(200)
+                .setToastTypeface(XUI.getDefaultTypeface())
                 .allowQueue(false);
     }
 
