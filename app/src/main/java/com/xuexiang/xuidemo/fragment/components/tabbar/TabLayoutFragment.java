@@ -20,6 +20,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.TabLayoutCacheFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.TabLayoutSimpleFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.TabLayoutViewPager2Fragment;
 
 /**
  * @author xuexiang
@@ -32,7 +33,8 @@ public class TabLayoutFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 TabLayoutSimpleFragment.class,
-                TabLayoutCacheFragment.class
+                TabLayoutCacheFragment.class,
+                TabLayoutViewPager2Fragment.class
         };
     }
 }

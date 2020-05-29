@@ -33,4 +33,16 @@
         app:sThumbResource="@drawable/thumb"
         app:sTrackResource="@drawable/track" />
 
+    <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+        android:id="@+id/stv_switch_custom_font"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:sDividerLineType="both"
+        app:sLeftTextString="自定义字体"
+        app:sRightViewType="switchBtn"
+        app:sSwitchIsChecked="false"
+        app:sThumbResource="@drawable/thumb"
+        app:sTrackResource="@drawable/track" />
+
 </LinearLayout>
