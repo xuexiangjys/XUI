@@ -17,9 +17,6 @@
 
 package com.xuexiang.xuidemo.fragment;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -29,9 +26,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
-import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.app.AppUtils;
-import com.xuexiang.xutil.app.IntentUtils;
 
 import butterknife.BindView;
 
@@ -77,19 +72,8 @@ public class SettingFragment extends BaseFragment {
             DialogLoader.getInstance().showTipDialog(getContext(), -1, "切换字体", "切换字体需重启App后生效, 点击“重启”应用将自动重启！", "重启", (dialog, which) -> {
                 SettingSPUtils.getInstance().setIsUseCustomFont(isChecked);
                 //重启app
-                rebootApp();
+                AppUtils.rebootApp(500);
             });
         });
-    }
-
-    private void rebootApp() {
-        Intent intent = IntentUtils.getLaunchAppIntent(XUtil.getContext().getPackageName());
-        PendingIntent restartIntent = PendingIntent.getActivity(XUtil.getContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
-        AlarmManager mgr = (AlarmManager) XUtil.getContext().getSystemService(Context.ALARM_SERVICE);
-        if (mgr != null) {
-            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 500, restartIntent);
-        }
-        //退出程序
-        AppUtils.exitApp();
     }
 }

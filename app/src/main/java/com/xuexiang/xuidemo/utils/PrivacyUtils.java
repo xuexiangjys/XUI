@@ -79,7 +79,7 @@ public final class PrivacyUtils {
                             showPrivacyDialog(context, submitListener);
                         }, ResUtils.getString(R.string.lab_exit_app), (dialog12, which1) -> {
                             dialog12.dismiss();
-                            XUtil.get().exitApp();
+                            XUtil.exitApp();
                         });
                     });
                 }).build();

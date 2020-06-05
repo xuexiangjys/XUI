@@ -76,24 +76,9 @@ public final class Utils {
      * 同步首页状态,未启动就启动
      */
     public static void syncMainPageStatus() {
-        if (!Utils.isActivityExist(MainActivity.class)) {
+        if (!XUtil.getActivityLifecycleHelper().isActivityExist(MainActivity.class)) {
             ActivityUtils.startActivity(MainActivity.class);
         }
-    }
-
-    /**
-     * 某一个Activity是否存在
-     *
-     * @return
-     */
-    public static boolean isActivityExist(@NonNull Class<? extends Activity> clazz) {
-        Stack<Activity> stack = XUtil.get().getActivityLifecycleHelper().getActivityStack();
-        for (Activity activity : stack) {
-            if (activity.getClass().equals(clazz)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

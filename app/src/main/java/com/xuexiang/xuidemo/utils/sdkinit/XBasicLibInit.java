@@ -63,7 +63,6 @@ public final class XBasicLibInit {
      * @param application
      */
     private static void initUtils(Application application) {
-        XUtil.init(application);
         XUtil.debug(MyApp.isDebug());
         //百度定位
         LocationService.get().init(application);
