@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +15,14 @@
   ~
   -->
 
-<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <shortcut
         android:icon="@drawable/ic_action_setting"
         android:shortcutId="shortcut_setting"
-        android:shortcutShortLabel="@string/shortcut_label_setting">
+        android:shortcutShortLabel="@string/shortcut_label_setting"
+        tools:targetApi="n_mr1">
 
         <intent
             android:action="android.intent.action.VIEW"
@@ -32,10 +33,11 @@
     <shortcut
         android:icon="@drawable/ic_action_search"
         android:shortcutId="shortcut_search"
-        android:shortcutShortLabel="@string/shortcut_label_search">
+        android:shortcutShortLabel="@string/shortcut_label_search"
+        tools:targetApi="n_mr1">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.xuexiang.xuidemo.activity.SearchViewActivity"
+            android:targetClass="com.xuexiang.xuidemo.activity.SearchComponentActivity"
             android:targetPackage="com.xuexiang.xuidemo" />
     </shortcut>
 

@@ -232,10 +232,10 @@ public class OptionsPickerBuilder {
         return this;
     }
 
-    public OptionsPickerBuilder setTextXOffset(int xoffset_one, int xoffset_two, int xoffset_three) {
-        mPickerOptions.x_offset_one = xoffset_one;
-        mPickerOptions.x_offset_two = xoffset_two;
-        mPickerOptions.x_offset_three = xoffset_three;
+    public OptionsPickerBuilder setTextXOffset(int xoffsetOne, int xoffsetTwo, int xoffsetThree) {
+        mPickerOptions.xOffsetOne = xoffsetOne;
+        mPickerOptions.xOffsetTwo = xoffsetTwo;
+        mPickerOptions.xOffsetThree = xoffsetThree;
         return this;
     }
 

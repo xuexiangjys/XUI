@@ -1,6 +1,5 @@
 package com.xuexiang.xuidemo.fragment.components.edittext;
 
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -45,12 +44,9 @@ public class MaterialEditTextFragment extends BaseFragment {
     private void initEnableBt() {
         final EditText basicEt = findViewById(R.id.basicEt);
         final Button enableBt = findViewById(R.id.enableBt);
-        enableBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                basicEt.setEnabled(!basicEt.isEnabled());
-                enableBt.setText(basicEt.isEnabled() ? "DISABLE" : "ENABLE");
-            }
+        enableBt.setOnClickListener(v -> {
+            basicEt.setEnabled(!basicEt.isEnabled());
+            enableBt.setText(basicEt.isEnabled() ? "DISABLE" : "ENABLE");
         });
     }
 
@@ -62,26 +58,11 @@ public class MaterialEditTextFragment extends BaseFragment {
     private void initSetErrorEt() {
         final EditText bottomTextEt = findViewById(R.id.bottomTextEt);
         final Button setErrorBt = findViewById(R.id.setErrorBt);
-        setErrorBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomTextEt.setError("1-line Error!");
-            }
-        });
+        setErrorBt.setOnClickListener(v -> bottomTextEt.setError("1-line Error!"));
         final Button setError2Bt = findViewById(R.id.setError2Bt);
-        setError2Bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomTextEt.setError("2-line\nError!");
-            }
-        });
+        setError2Bt.setOnClickListener(v -> bottomTextEt.setError("2-line\nError!"));
         final Button setError3Bt = findViewById(R.id.setError3Bt);
-        setError3Bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomTextEt.setError("So Many Errors! So Many Errors! So Many Errors! So Many Errors! So Many Errors! So Many Errors! So Many Errors! So Many Errors!");
-            }
-        });
+        setError3Bt.setOnClickListener(v -> bottomTextEt.setError("So Many Errors! So Many Errors! So Many Errors! So Many Errors! So Many Errors! So Many Errors! So Many Errors! So Many Errors!"));
     }
 
     private void initValidationEt() {
@@ -90,14 +71,11 @@ public class MaterialEditTextFragment extends BaseFragment {
         etNotAllowEmpty2.setAllowEmpty(false, "your name not allow empty！");
         validationEt.addValidator(new RegexpValidator("Only Integer Valid!", "\\d+"));
         final Button validateBt = findViewById(R.id.validateBt);
-        validateBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validationEt.validate();
-                et_phone_number.validate();
-                etNotAllowEmpty1.validate();
-                etNotAllowEmpty2.validate();
-            }
+        validateBt.setOnClickListener(v -> {
+            validationEt.validate();
+            et_phone_number.validate();
+            etNotAllowEmpty1.validate();
+            etNotAllowEmpty2.validate();
         });
     }
 

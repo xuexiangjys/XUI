@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 14
-        versionName "1.1.3"
+        versionCode 15
+        versionName "1.1.4"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -99,24 +99,24 @@ dependencies {
 //    implementation deps.glide
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0-beta01'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.1.3'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.3'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
-    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.7'
-    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.7'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.8'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.8'
     //切片
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.5x'
     //页面路由
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.2.9'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.3.0'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime
@@ -191,12 +191,15 @@ dependencies {
     implementation "com.mikepenz:iconics-views:4.0.1-b02"
     //相机拍摄
     implementation 'com.github.xuexiangjys:CameraView:1.0.3'
-
     //另一款相机拍摄库，使用更简单
     implementation 'com.wonderkiln:camerakit:0.13.1'
 
+    //阿里巴巴组件
+    implementation 'com.alibaba.android:vlayout:1.2.36'
+    implementation 'com.alibaba.android:ultraviewpager:1.0.7.8'
+    implementation 'com.alibaba.android:tangram:3.3.6'
     //版本更新
-    implementation 'com.github.xuexiangjys:XUpdate:1.1.4'
+    implementation 'com.github.xuexiangjys:XUpdate:1.1.6'
     implementation 'com.zhy:okhttputils:2.6.2'
     //腾讯的键值对存储mmkv
     implementation 'com.tencent:mmkv:1.0.22'

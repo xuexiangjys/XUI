@@ -144,7 +144,7 @@ public class WheelTime {
         wv_month.setGravity(gravity);
 
         // 日
-        wv_day = (WheelView) view.findViewById(R.id.day);
+        wv_day = view.findViewById(R.id.day);
         // 判断大小月及是否闰年,用来确定"日"的数据
         if (ChinaDateUtils.leapMonth(year) == 0) {
             wv_day.setAdapter(new ArrayWheelAdapter<>(ChinaDateUtils.getLunarDays(ChinaDateUtils.monthDays(year, month))));

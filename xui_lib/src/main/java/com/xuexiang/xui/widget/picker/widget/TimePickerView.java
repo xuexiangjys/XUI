@@ -64,7 +64,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
             //顶部标题
             TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
-            LinearLayout ll_content = (LinearLayout) findViewById(R.id.ll_content);
+            LinearLayout llContent = (LinearLayout) findViewById(R.id.ll_content);
 
             //确定和取消按钮
             Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
@@ -90,7 +90,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
                     tvTitle.setVisibility(View.GONE);
                 }
             }
-            ll_content.setBackgroundColor(mPickerOptions.bgColorTitle);
+            llContent.setBackgroundColor(mPickerOptions.bgColorTitle);
 
             //设置文字大小
             btnSubmit.setTextSize(mPickerOptions.textSizeSubmitCancel);
@@ -154,10 +154,10 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         }
 
         setTime();
-        wheelTime.setLabels(mPickerOptions.label_year, mPickerOptions.label_month, mPickerOptions.label_day
-                , mPickerOptions.label_hours, mPickerOptions.label_minutes, mPickerOptions.label_seconds);
-        wheelTime.setTextXOffset(mPickerOptions.x_offset_year, mPickerOptions.x_offset_month, mPickerOptions.x_offset_day,
-                mPickerOptions.x_offset_hours, mPickerOptions.x_offset_minutes, mPickerOptions.x_offset_seconds);
+        wheelTime.setLabels(mPickerOptions.labelYear, mPickerOptions.labelMonth, mPickerOptions.labelDay
+                , mPickerOptions.labelHours, mPickerOptions.labelMinutes, mPickerOptions.labelSeconds);
+        wheelTime.setTextXOffset(mPickerOptions.xOffsetYear, mPickerOptions.xOffsetMonth, mPickerOptions.xOffsetDay,
+                mPickerOptions.xOffsetHours, mPickerOptions.xOffsetMinutes, mPickerOptions.xOffsetSeconds);
 
         setOutSideCancelable(mPickerOptions.cancelable);
         wheelTime.setCyclic(mPickerOptions.cyclic);
@@ -289,8 +289,8 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             seconds = calendar.get(Calendar.SECOND);
 
             wheelTime.setLunarMode(lunar);
-            wheelTime.setLabels(mPickerOptions.label_year, mPickerOptions.label_month, mPickerOptions.label_day,
-                    mPickerOptions.label_hours, mPickerOptions.label_minutes, mPickerOptions.label_seconds);
+            wheelTime.setLabels(mPickerOptions.labelYear, mPickerOptions.labelMonth, mPickerOptions.labelDay,
+                    mPickerOptions.labelHours, mPickerOptions.labelMinutes, mPickerOptions.labelSeconds);
             wheelTime.setPicker(year, month, day, hours, minute, seconds);
         } catch (ParseException e) {
             e.printStackTrace();

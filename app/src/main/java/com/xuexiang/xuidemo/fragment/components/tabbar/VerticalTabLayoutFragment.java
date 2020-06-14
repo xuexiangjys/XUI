@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -90,12 +91,7 @@ public class VerticalTabLayoutFragment extends BaseFragment {
 
             @Override
             public void onTabUnselected(final TabView tab, int position) {
-                XUtil.getMainHandler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        XToastUtils.toast("选择取消 " + tab.getTitle().getContent());
-                    }
-                }, 500);
+                XUtil.getMainHandler().postDelayed(() -> XToastUtils.toast("选择取消 " + tab.getTitle().getContent()), 500);
             }
 
             @Override
@@ -116,12 +112,9 @@ public class VerticalTabLayoutFragment extends BaseFragment {
         tabLayout2.getTabAt(3)
                 .setBadge(new TabView.TabBadge.Builder().setBadgeGravity(Gravity.START | Gravity.TOP)
                 .setBadgeNumber(999)
-                .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
-                    @Override
-                    public void onDragStateChanged(int dragState, Badge badge, View targetView) {
-                        if (dragState == STATE_SUCCEED) {
-                            badge.setBadgeNumber(-1).stroke(0xFFFFFFFF,1,true);
-                        }
+                .setOnDragStateChangedListener((dragState, badge, targetView) -> {
+                    if (dragState == Badge.OnDragStateChangedListener.STATE_SUCCEED) {
+                        badge.setBadgeNumber(-1).stroke(0xFFFFFFFF,1,true);
                     }
                 }).build());
     }
@@ -131,7 +124,7 @@ public class VerticalTabLayoutFragment extends BaseFragment {
     }
 
 
-    private class MyTabAdapter implements TabAdapter {
+    private static class MyTabAdapter implements TabAdapter {
         List<MenuBean> menus;
 
         public MyTabAdapter() {
@@ -150,10 +143,7 @@ public class VerticalTabLayoutFragment extends BaseFragment {
         @Override
         public TabView.TabBadge getBadge(int position) {
             return new TabView.TabBadge.Builder().setBadgeNumber(999).setBackgroundColor(0xff2faae5)
-                    .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
-                        @Override
-                        public void onDragStateChanged(int dragState, Badge badge, View targetView) {
-                        }
+                    .setOnDragStateChangedListener((dragState, badge, targetView) -> {
                     }).build();
         }
 
@@ -203,10 +193,7 @@ public class VerticalTabLayoutFragment extends BaseFragment {
             if (position == 5) {
                 return new TabView.TabBadge.Builder().setBadgeNumber(666)
                         .setExactMode(true)
-                        .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
-                            @Override
-                            public void onDragStateChanged(int dragState, Badge badge, View targetView) {
-                            }
+                        .setOnDragStateChangedListener((dragState, badge, targetView) -> {
                         }).build();
             }
             return null;
@@ -231,10 +218,11 @@ public class VerticalTabLayoutFragment extends BaseFragment {
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
         }
 
+        @NonNull
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             TextView textView = new TextView(getContext());
@@ -246,12 +234,12 @@ public class VerticalTabLayoutFragment extends BaseFragment {
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View) object);
         }
     }
 
-    class MenuBean {
+    static class MenuBean {
         public int mSelectIcon;
         public int mNormalIcon;
         public String mTitle;

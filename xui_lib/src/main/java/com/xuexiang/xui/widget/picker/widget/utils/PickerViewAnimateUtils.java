@@ -45,6 +45,8 @@ public class PickerViewAnimateUtils {
         switch (gravity) {
             case Gravity.BOTTOM:
                 return isInAnimation ? R.anim.picker_view_slide_in_bottom : R.anim.picker_view_slide_out_bottom;
+            default:
+                break;
         }
         return INVALID;
     }

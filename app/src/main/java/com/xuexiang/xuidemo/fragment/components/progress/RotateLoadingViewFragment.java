@@ -1,6 +1,5 @@
 package com.xuexiang.xuidemo.fragment.components.progress;
 
-import android.view.View;
 import android.widget.Button;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -37,18 +36,15 @@ public class RotateLoadingViewFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        mBtSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mLoadingView.isStart()) {
-                    mBtSwitch.setText(R.string.tip_start);
-                    mLoadingView.stop();
-                    mAutoLoadingView.stop();
-                } else {
-                    mBtSwitch.setText(R.string.tip_stop);
-                    mLoadingView.start();
-                    mAutoLoadingView.start();
-                }
+        mBtSwitch.setOnClickListener(v -> {
+            if (mLoadingView.isStart()) {
+                mBtSwitch.setText(R.string.tip_start);
+                mLoadingView.stop();
+                mAutoLoadingView.stop();
+            } else {
+                mBtSwitch.setText(R.string.tip_stop);
+                mLoadingView.start();
+                mAutoLoadingView.start();
             }
         });
     }

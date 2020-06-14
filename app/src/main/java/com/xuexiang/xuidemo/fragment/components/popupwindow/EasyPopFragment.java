@@ -49,20 +49,14 @@ public class EasyPopFragment extends BaseFragment {
 
         TextView tvZan = mCirclePop.getView(R.id.tv_zan);
         TextView tvComment = mCirclePop.getView(R.id.tv_comment);
-        tvZan.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 XToastUtils.toast("点赞");
-                 mCirclePop.dismiss();
-             }
-         });
+        tvZan.setOnClickListener(v -> {
+            XToastUtils.toast("点赞");
+            mCirclePop.dismiss();
+        });
 
-        tvComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("评论");
-                mCirclePop.dismiss();
-            }
+        tvComment.setOnClickListener(v -> {
+            XToastUtils.toast("评论");
+            mCirclePop.dismiss();
         });
     }
 

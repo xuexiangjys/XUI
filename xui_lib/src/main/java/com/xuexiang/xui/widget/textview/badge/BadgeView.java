@@ -202,7 +202,9 @@ public class BadgeView extends View implements Badge {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (mActivityRoot == null) findViewRoot(mTargetView);
+        if (mActivityRoot == null) {
+            findViewRoot(mTargetView);
+        }
     }
 
     private void findViewRoot(View view) {
@@ -255,6 +257,8 @@ public class BadgeView extends View implements Badge {
                     mDragging = false;
                     onPointerUp();
                 }
+                break;
+            default:
                 break;
         }
         return mDragging || super.onTouchEvent(event);
@@ -309,6 +313,8 @@ public class BadgeView extends View implements Badge {
             case 4:
                 x = DensityUtils.dp2px(getContext(), 1);
                 y = DensityUtils.dp2px(getContext(), 1.5f);
+                break;
+            default:
                 break;
         }
         mBadgeBackgroundPaint.setShadowLayer(showShadow ? DensityUtils.dp2px(getContext(), 2f)
@@ -531,8 +537,7 @@ public class BadgeView extends View implements Badge {
     }
 
     private void findBadgeCenter() {
-        float rectWidth = mBadgeTextRect.height() > mBadgeTextRect.width() ?
-                mBadgeTextRect.height() : mBadgeTextRect.width();
+        float rectWidth = Math.max(mBadgeTextRect.height(), mBadgeTextRect.width());
         switch (mBadgeGravity) {
             case Gravity.START | Gravity.TOP:
                 mBadgeCenter.x = mGravityOffsetX + mBadgePadding + rectWidth / 2f;
@@ -569,6 +574,8 @@ public class BadgeView extends View implements Badge {
             case Gravity.CENTER | Gravity.END:
                 mBadgeCenter.x = mWidth - (mGravityOffsetX + mBadgePadding + rectWidth / 2f);
                 mBadgeCenter.y = mHeight / 2f;
+                break;
+            default:
                 break;
         }
         initRowBadgeCenter();
@@ -837,8 +844,9 @@ public class BadgeView extends View implements Badge {
 
 
     private void updateListener(int state) {
-        if (mDragStateChangedListener != null)
+        if (mDragStateChangedListener != null) {
             mDragStateChangedListener.onDragStateChanged(state, this, mTargetView);
+        }
     }
 
     @Override
@@ -850,11 +858,13 @@ public class BadgeView extends View implements Badge {
 
     @Override
     public PointF getDragCenter() {
-        if (mDraggable && mDragging) return mDragCenter;
+        if (mDraggable && mDragging) {
+            return mDragCenter;
+        }
         return null;
     }
 
-    private class BadgeContainer extends ViewGroup {
+    private static class BadgeContainer extends ViewGroup {
 
         @Override
         protected void dispatchRestoreInstanceState(SparseArray<Parcelable> container) {

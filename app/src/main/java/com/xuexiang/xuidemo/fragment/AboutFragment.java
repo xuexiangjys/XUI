@@ -16,7 +16,6 @@
 
 package com.xuexiang.xuidemo.fragment;
 
-import android.view.View;
 import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -56,35 +55,10 @@ public class AboutFragment extends BaseFragment {
         mVersionTextView.setText(String.format("版本号：%s", AppUtils.getAppVersionName()));
 
         XUIGroupListView.newSection(getContext())
-                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_homepage)), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Utils.goWeb(getContext(), "https://xuexiangjys.github.io/XUI/");
-                    }
-                })
-                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_wiki)), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/wiki/");
-                    }
-                })
-                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_github)), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/");
-                    }
-                })
-                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_update)), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Utils.checkUpdate(getContext(), true);
-                    }
-                }).addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_sponsor)), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        openPage(SponsorFragment.class);
-                    }
-                })
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_homepage)), v -> Utils.goWeb(getContext(), "https://xuexiangjys.github.io/XUI/"))
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_wiki)), v -> Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/wiki/"))
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_github)), v -> Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/"))
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_update)), v -> Utils.checkUpdate(getContext(), true)).addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_sponsor)), v -> openPage(SponsorFragment.class))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_add_qq_group)), v -> Utils.goWeb(getContext(), getString(R.string.url_add_qq_group)))
                 .addTo(mAboutGroupListView);
 

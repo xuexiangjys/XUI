@@ -20,7 +20,6 @@ package com.xuexiang.xuidemo.fragment.expands.camera;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
@@ -318,24 +317,16 @@ public class CameraViewActivity extends AppCompatActivity implements
             return new AlertDialog.Builder(getActivity())
                     .setMessage(args.getInt(ARG_MESSAGE))
                     .setPositiveButton(android.R.string.ok,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    String[] permissions = args.getStringArray(ARG_PERMISSIONS);
-                                    if (permissions == null) {
-                                        throw new IllegalArgumentException();
-                                    }
-                                    ActivityCompat.requestPermissions(getActivity(),
-                                            permissions, args.getInt(ARG_REQUEST_CODE));
+                            (dialog, which) -> {
+                                String[] permissions = args.getStringArray(ARG_PERMISSIONS);
+                                if (permissions == null) {
+                                    throw new IllegalArgumentException();
                                 }
+                                ActivityCompat.requestPermissions(getActivity(),
+                                        permissions, args.getInt(ARG_REQUEST_CODE));
                             })
                     .setNegativeButton(android.R.string.cancel,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    XToastUtils.toast(args.getInt(ARG_NOT_GRANTED_MESSAGE));
-                                }
-                            })
+                            (dialog, which) -> XToastUtils.toast(args.getInt(ARG_NOT_GRANTED_MESSAGE)))
                     .create();
         }
 

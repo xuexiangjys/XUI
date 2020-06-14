@@ -27,7 +27,7 @@ import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectChangeListe
 
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 条件滚轮
@@ -37,9 +37,9 @@ import uk.co.chrisjenx.calligraphy.HasTypeface;
  */
 public class WheelOptions<T> implements HasTypeface {
     private View view;
-    private WheelView wv_option1;
-    private WheelView wv_option2;
-    private WheelView wv_option3;
+    private WheelView wvOption1;
+    private WheelView wvOption2;
+    private WheelView wvOption3;
 
     private List<T> mOptions1Items;
     private List<List<T>> mOptions2Items;
@@ -47,8 +47,7 @@ public class WheelOptions<T> implements HasTypeface {
 
     private boolean linkage = true;//默认联动
     private boolean isRestoreItem; //切换时，还原第一项
-    private OnItemSelectedListener wheelListener_option1;
-    private OnItemSelectedListener wheelListener_option2;
+    private OnItemSelectedListener wheelListenerOption2;
 
     private OnOptionsSelectChangeListener optionsSelectChangeListener;
 
@@ -74,9 +73,9 @@ public class WheelOptions<T> implements HasTypeface {
         super();
         this.isRestoreItem = isRestoreItem;
         this.view = view;
-        wv_option1 = view.findViewById(R.id.options1);// 初始化时显示的数据
-        wv_option2 = view.findViewById(R.id.options2);
-        wv_option3 = view.findViewById(R.id.options3);
+        wvOption1 = view.findViewById(R.id.options1);// 初始化时显示的数据
+        wvOption2 = view.findViewById(R.id.options2);
+        wvOption3 = view.findViewById(R.id.options3);
     }
 
 
@@ -88,42 +87,52 @@ public class WheelOptions<T> implements HasTypeface {
         this.mOptions3Items = options3Items;
 
         // 选项1
-        wv_option1.setAdapter(new ArrayWheelAdapter(mOptions1Items));// 设置显示数据
-        wv_option1.setCurrentItem(0);// 初始化时显示的数据
+        // 设置显示数据
+        wvOption1.setAdapter(new ArrayWheelAdapter<>(mOptions1Items));
+        // 初始化时显示的数据
+        wvOption1.setCurrentItem(0);
         // 选项2
         if (mOptions2Items != null) {
-            wv_option2.setAdapter(new ArrayWheelAdapter(mOptions2Items.get(0)));// 设置显示数据
+            // 设置显示数据
+            wvOption2.setAdapter(new ArrayWheelAdapter<>(mOptions2Items.get(0)));
         }
-        wv_option2.setCurrentItem(wv_option2.getCurrentItem());// 初始化时显示的数据
+        // 初始化时显示的数据
+        wvOption2.setCurrentItem(wvOption2.getCurrentItem());
         // 选项3
         if (mOptions3Items != null) {
-            wv_option3.setAdapter(new ArrayWheelAdapter(mOptions3Items.get(0).get(0)));// 设置显示数据
+            // 设置显示数据
+            wvOption3.setAdapter(new ArrayWheelAdapter<>(mOptions3Items.get(0).get(0)));
         }
-        wv_option3.setCurrentItem(wv_option3.getCurrentItem());
-        wv_option1.setIsOptions(true);
-        wv_option2.setIsOptions(true);
-        wv_option3.setIsOptions(true);
+        wvOption3.setCurrentItem(wvOption3.getCurrentItem());
+        wvOption1.setIsOptions(true);
+        wvOption2.setIsOptions(true);
+        wvOption3.setIsOptions(true);
 
         if (this.mOptions2Items == null) {
-            wv_option2.setVisibility(View.GONE);
+            wvOption2.setVisibility(View.GONE);
         } else {
-            wv_option2.setVisibility(View.VISIBLE);
+            wvOption2.setVisibility(View.VISIBLE);
         }
         if (this.mOptions3Items == null) {
-            wv_option3.setVisibility(View.GONE);
+            wvOption3.setVisibility(View.GONE);
         } else {
-            wv_option3.setVisibility(View.VISIBLE);
+            wvOption3.setVisibility(View.VISIBLE);
         }
 
         // 联动监听器
-        wheelListener_option1 = new OnItemSelectedListener() {
+        //只有1级联动数据
+        //检查数组越界
+        //上一个opt2的选中位置
+        //新opt2的位置，判断如果旧位置没有超过数据范围，则沿用旧位置，否则选中最后一项
+        //只有2级联动数据，滑动第1项回调
+        OnItemSelectedListener wheelListenerOption1 = new OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(int index) {
                 int opt2Select = 0;
                 if (mOptions2Items == null) {//只有1级联动数据
                     if (optionsSelectChangeListener != null) {
-                        optionsSelectChangeListener.onOptionsSelectChanged(wv_option1.getCurrentItem(), 0, 0);
+                        optionsSelectChangeListener.onOptionsSelectChanged(wvOption1.getCurrentItem(), 0, 0);
                     }
                 } else {
                     //检查数组越界
@@ -131,15 +140,15 @@ public class WheelOptions<T> implements HasTypeface {
                         return;
                     }
                     if (!isRestoreItem) {
-                        opt2Select = wv_option2.getCurrentItem();//上一个opt2的选中位置
+                        opt2Select = wvOption2.getCurrentItem();//上一个opt2的选中位置
                         //新opt2的位置，判断如果旧位置没有超过数据范围，则沿用旧位置，否则选中最后一项
-                        opt2Select = opt2Select >= mOptions2Items.get(index).size() - 1 ? mOptions2Items.get(index).size() - 1 : opt2Select;
+                        opt2Select = Math.min(opt2Select, mOptions2Items.get(index).size() - 1);
                     }
-                    wv_option2.setAdapter(new ArrayWheelAdapter(mOptions2Items.get(index)));
-                    wv_option2.setCurrentItem(opt2Select);
+                    wvOption2.setAdapter(new ArrayWheelAdapter<>(mOptions2Items.get(index)));
+                    wvOption2.setCurrentItem(opt2Select);
 
                     if (mOptions3Items != null) {
-                        wheelListener_option2.onItemSelected(opt2Select);
+                        wheelListenerOption2.onItemSelected(opt2Select);
                     } else {//只有2级联动数据，滑动第1项回调
                         if (optionsSelectChangeListener != null) {
                             optionsSelectChangeListener.onOptionsSelectChanged(index, opt2Select, 0);
@@ -149,35 +158,34 @@ public class WheelOptions<T> implements HasTypeface {
             }
         };
 
-        wheelListener_option2 = new OnItemSelectedListener() {
+        wheelListenerOption2 = new OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(int index) {
                 if (mOptions3Items != null) {
-                    int opt1Select = wv_option1.getCurrentItem();
+                    int opt1Select = wvOption1.getCurrentItem();
                     //检查数组越界
                     if (opt1Select >= mOptions2Items.size()) {
                         return;
                     }
-                    opt1Select = opt1Select >= mOptions3Items.size() - 1 ? mOptions3Items.size() - 1 : opt1Select;
-                    index = index >= mOptions2Items.get(opt1Select).size() - 1 ? mOptions2Items.get(opt1Select).size() - 1 : index;
+                    opt1Select = Math.min(opt1Select, mOptions3Items.size() - 1);
+                    index = Math.min(index, mOptions2Items.get(opt1Select).size() - 1);
                     int opt3 = 0;
                     if (!isRestoreItem) {
                         // wv_option3.getCurrentItem() 上一个opt3的选中位置
                         //新opt3的位置，判断如果旧位置没有超过数据范围，则沿用旧位置，否则选中最后一项
-                        opt3 = wv_option3.getCurrentItem() >= mOptions3Items.get(opt1Select).get(index).size() - 1 ?
-                                mOptions3Items.get(opt1Select).get(index).size() - 1 : wv_option3.getCurrentItem();
+                        opt3 = Math.min(wvOption3.getCurrentItem(), mOptions3Items.get(opt1Select).get(index).size() - 1);
                     }
-                    wv_option3.setAdapter(new ArrayWheelAdapter(mOptions3Items.get(wv_option1.getCurrentItem()).get(index)));
-                    wv_option3.setCurrentItem(opt3);
+                    wvOption3.setAdapter(new ArrayWheelAdapter(mOptions3Items.get(wvOption1.getCurrentItem()).get(index)));
+                    wvOption3.setCurrentItem(opt3);
 
                     //3级联动数据实时回调
                     if (optionsSelectChangeListener != null) {
-                        optionsSelectChangeListener.onOptionsSelectChanged(wv_option1.getCurrentItem(), index, opt3);
+                        optionsSelectChangeListener.onOptionsSelectChanged(wvOption1.getCurrentItem(), index, opt3);
                     }
                 } else {//只有2级联动数据，滑动第2项回调
                     if (optionsSelectChangeListener != null) {
-                        optionsSelectChangeListener.onOptionsSelectChanged(wv_option1.getCurrentItem(), index, 0);
+                        optionsSelectChangeListener.onOptionsSelectChanged(wvOption1.getCurrentItem(), index, 0);
                     }
                 }
             }
@@ -185,16 +193,16 @@ public class WheelOptions<T> implements HasTypeface {
 
         // 添加联动监听
         if (options1Items != null && linkage) {
-            wv_option1.setOnItemSelectedListener(wheelListener_option1);
+            wvOption1.setOnItemSelectedListener(wheelListenerOption1);
         }
         if (options2Items != null && linkage) {
-            wv_option2.setOnItemSelectedListener(wheelListener_option2);
+            wvOption2.setOnItemSelectedListener(wheelListenerOption2);
         }
         if (options3Items != null && linkage && optionsSelectChangeListener != null) {
-            wv_option3.setOnItemSelectedListener(new OnItemSelectedListener() {
+            wvOption3.setOnItemSelectedListener(new OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(int index) {
-                    optionsSelectChangeListener.onOptionsSelectChanged(wv_option1.getCurrentItem(), wv_option2.getCurrentItem(), index);
+                    optionsSelectChangeListener.onOptionsSelectChanged(wvOption1.getCurrentItem(), wvOption2.getCurrentItem(), index);
                 }
             });
         }
@@ -210,53 +218,53 @@ public class WheelOptions<T> implements HasTypeface {
     public void setNPicker(List<T> options1Items, List<T> options2Items, List<T> options3Items) {
 
         // 选项1
-        wv_option1.setAdapter(new ArrayWheelAdapter<>(options1Items));// 设置显示数据
-        wv_option1.setCurrentItem(0);// 初始化时显示的数据
+        wvOption1.setAdapter(new ArrayWheelAdapter<>(options1Items));// 设置显示数据
+        wvOption1.setCurrentItem(0);// 初始化时显示的数据
         // 选项2
         if (options2Items != null) {
-            wv_option2.setAdapter(new ArrayWheelAdapter<>(options2Items));// 设置显示数据
+            wvOption2.setAdapter(new ArrayWheelAdapter<>(options2Items));// 设置显示数据
         }
-        wv_option2.setCurrentItem(wv_option2.getCurrentItem());// 初始化时显示的数据
+        wvOption2.setCurrentItem(wvOption2.getCurrentItem());// 初始化时显示的数据
         // 选项3
         if (options3Items != null) {
-            wv_option3.setAdapter(new ArrayWheelAdapter<>(options3Items));// 设置显示数据
+            wvOption3.setAdapter(new ArrayWheelAdapter<>(options3Items));// 设置显示数据
         }
-        wv_option3.setCurrentItem(wv_option3.getCurrentItem());
-        wv_option1.setIsOptions(true);
-        wv_option2.setIsOptions(true);
-        wv_option3.setIsOptions(true);
+        wvOption3.setCurrentItem(wvOption3.getCurrentItem());
+        wvOption1.setIsOptions(true);
+        wvOption2.setIsOptions(true);
+        wvOption3.setIsOptions(true);
 
         if (optionsSelectChangeListener != null) {
-            wv_option1.setOnItemSelectedListener(new OnItemSelectedListener() {
+            wvOption1.setOnItemSelectedListener(new OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(int index) {
-                    optionsSelectChangeListener.onOptionsSelectChanged(index, wv_option2.getCurrentItem(), wv_option3.getCurrentItem());
+                    optionsSelectChangeListener.onOptionsSelectChanged(index, wvOption2.getCurrentItem(), wvOption3.getCurrentItem());
                 }
             });
         }
 
         if (options2Items == null) {
-            wv_option2.setVisibility(View.GONE);
+            wvOption2.setVisibility(View.GONE);
         } else {
-            wv_option2.setVisibility(View.VISIBLE);
+            wvOption2.setVisibility(View.VISIBLE);
             if (optionsSelectChangeListener != null) {
-                wv_option2.setOnItemSelectedListener(new OnItemSelectedListener() {
+                wvOption2.setOnItemSelectedListener(new OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(int index) {
-                        optionsSelectChangeListener.onOptionsSelectChanged(wv_option1.getCurrentItem(), index, wv_option3.getCurrentItem());
+                        optionsSelectChangeListener.onOptionsSelectChanged(wvOption1.getCurrentItem(), index, wvOption3.getCurrentItem());
                     }
                 });
             }
         }
         if (options3Items == null) {
-            wv_option3.setVisibility(View.GONE);
+            wvOption3.setVisibility(View.GONE);
         } else {
-            wv_option3.setVisibility(View.VISIBLE);
+            wvOption3.setVisibility(View.VISIBLE);
             if (optionsSelectChangeListener != null) {
-                wv_option3.setOnItemSelectedListener(new OnItemSelectedListener() {
+                wvOption3.setOnItemSelectedListener(new OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(int index) {
-                        optionsSelectChangeListener.onOptionsSelectChanged(wv_option1.getCurrentItem(), wv_option2.getCurrentItem(), index);
+                        optionsSelectChangeListener.onOptionsSelectChanged(wvOption1.getCurrentItem(), wvOption2.getCurrentItem(), index);
                     }
                 });
             }
@@ -264,39 +272,39 @@ public class WheelOptions<T> implements HasTypeface {
     }
 
     public void setTextContentSize(int textSize) {
-        wv_option1.setTextSize(textSize);
-        wv_option2.setTextSize(textSize);
-        wv_option3.setTextSize(textSize);
+        wvOption1.setTextSize(textSize);
+        wvOption2.setTextSize(textSize);
+        wvOption3.setTextSize(textSize);
     }
 
     private void setTextColorOut() {
-        wv_option1.setTextColorOut(textColorOut);
-        wv_option2.setTextColorOut(textColorOut);
-        wv_option3.setTextColorOut(textColorOut);
+        wvOption1.setTextColorOut(textColorOut);
+        wvOption2.setTextColorOut(textColorOut);
+        wvOption3.setTextColorOut(textColorOut);
     }
 
     private void setTextColorCenter() {
-        wv_option1.setTextColorCenter(textColorCenter);
-        wv_option2.setTextColorCenter(textColorCenter);
-        wv_option3.setTextColorCenter(textColorCenter);
+        wvOption1.setTextColorCenter(textColorCenter);
+        wvOption2.setTextColorCenter(textColorCenter);
+        wvOption3.setTextColorCenter(textColorCenter);
     }
 
     private void setDividerColor() {
-        wv_option1.setDividerColor(dividerColor);
-        wv_option2.setDividerColor(dividerColor);
-        wv_option3.setDividerColor(dividerColor);
+        wvOption1.setDividerColor(dividerColor);
+        wvOption2.setDividerColor(dividerColor);
+        wvOption3.setDividerColor(dividerColor);
     }
 
     private void setDividerType() {
-        wv_option1.setDividerType(dividerType);
-        wv_option2.setDividerType(dividerType);
-        wv_option3.setDividerType(dividerType);
+        wvOption1.setDividerType(dividerType);
+        wvOption2.setDividerType(dividerType);
+        wvOption3.setDividerType(dividerType);
     }
 
     private void setLineSpacingMultiplier() {
-        wv_option1.setLineSpacingMultiplier(lineSpacingMultiplier);
-        wv_option2.setLineSpacingMultiplier(lineSpacingMultiplier);
-        wv_option3.setLineSpacingMultiplier(lineSpacingMultiplier);
+        wvOption1.setLineSpacingMultiplier(lineSpacingMultiplier);
+        wvOption2.setLineSpacingMultiplier(lineSpacingMultiplier);
+        wvOption3.setLineSpacingMultiplier(lineSpacingMultiplier);
 
     }
 
@@ -309,23 +317,23 @@ public class WheelOptions<T> implements HasTypeface {
      */
     public void setLabels(String label1, String label2, String label3) {
         if (label1 != null) {
-            wv_option1.setLabel(label1);
+            wvOption1.setLabel(label1);
         }
         if (label2 != null) {
-            wv_option2.setLabel(label2);
+            wvOption2.setLabel(label2);
         }
         if (label3 != null) {
-            wv_option3.setLabel(label3);
+            wvOption3.setLabel(label3);
         }
     }
 
     /**
      * 设置x轴偏移量
      */
-    public void setTextXOffset(int x_offset_one, int x_offset_two, int x_offset_three) {
-        wv_option1.setTextXOffset(x_offset_one);
-        wv_option2.setTextXOffset(x_offset_two);
-        wv_option3.setTextXOffset(x_offset_three);
+    public void setTextXOffset(int xOffsetOne, int xOffsetTwo, int xOffsetThree) {
+        wvOption1.setTextXOffset(xOffsetOne);
+        wvOption2.setTextXOffset(xOffsetTwo);
+        wvOption3.setTextXOffset(xOffsetThree);
     }
 
     /**
@@ -334,9 +342,9 @@ public class WheelOptions<T> implements HasTypeface {
      * @param cyclic 是否循环
      */
     public void setCyclic(boolean cyclic) {
-        wv_option1.setCyclic(cyclic);
-        wv_option2.setCyclic(cyclic);
-        wv_option3.setCyclic(cyclic);
+        wvOption1.setCyclic(cyclic);
+        wvOption2.setCyclic(cyclic);
+        wvOption3.setCyclic(cyclic);
     }
 
     /**
@@ -346,14 +354,14 @@ public class WheelOptions<T> implements HasTypeface {
      */
     @Override
     public void setTypeface(Typeface font) {
-        if (wv_option1 != null) {
-            wv_option1.setTypeface(font);
+        if (wvOption1 != null) {
+            wvOption1.setTypeface(font);
         }
-        if (wv_option2 != null) {
-            wv_option2.setTypeface(font);
+        if (wvOption2 != null) {
+            wvOption2.setTypeface(font);
         }
-        if (wv_option3 != null) {
-            wv_option3.setTypeface(font);
+        if (wvOption3 != null) {
+            wvOption3.setTypeface(font);
         }
     }
 
@@ -363,9 +371,9 @@ public class WheelOptions<T> implements HasTypeface {
      * @param cyclic1,cyclic2,cyclic3 是否循环
      */
     public void setCyclic(boolean cyclic1, boolean cyclic2, boolean cyclic3) {
-        wv_option1.setCyclic(cyclic1);
-        wv_option2.setCyclic(cyclic2);
-        wv_option3.setCyclic(cyclic3);
+        wvOption1.setCyclic(cyclic1);
+        wvOption2.setCyclic(cyclic2);
+        wvOption3.setCyclic(cyclic3);
     }
 
 
@@ -377,18 +385,18 @@ public class WheelOptions<T> implements HasTypeface {
      */
     public int[] getCurrentItems() {
         int[] currentItems = new int[3];
-        currentItems[0] = wv_option1.getCurrentItem();
+        currentItems[0] = wvOption1.getCurrentItem();
 
         if (mOptions2Items != null && mOptions2Items.size() > 0) {//非空判断
-            currentItems[1] = wv_option2.getCurrentItem() > (mOptions2Items.get(currentItems[0]).size() - 1) ? 0 : wv_option2.getCurrentItem();
+            currentItems[1] = wvOption2.getCurrentItem() > (mOptions2Items.get(currentItems[0]).size() - 1) ? 0 : wvOption2.getCurrentItem();
         } else {
-            currentItems[1] = wv_option2.getCurrentItem();
+            currentItems[1] = wvOption2.getCurrentItem();
         }
 
         if (mOptions3Items != null && mOptions3Items.size() > 0) {//非空判断
-            currentItems[2] = wv_option3.getCurrentItem() > (mOptions3Items.get(currentItems[0]).get(currentItems[1]).size() - 1) ? 0 : wv_option3.getCurrentItem();
+            currentItems[2] = wvOption3.getCurrentItem() > (mOptions3Items.get(currentItems[0]).get(currentItems[1]).size() - 1) ? 0 : wvOption3.getCurrentItem();
         } else {
-            currentItems[2] = wv_option3.getCurrentItem();
+            currentItems[2] = wvOption3.getCurrentItem();
         }
 
         return currentItems;
@@ -398,23 +406,23 @@ public class WheelOptions<T> implements HasTypeface {
         if (linkage) {
             itemSelected(option1, option2, option3);
         } else {
-            wv_option1.setCurrentItem(option1);
-            wv_option2.setCurrentItem(option2);
-            wv_option3.setCurrentItem(option3);
+            wvOption1.setCurrentItem(option1);
+            wvOption2.setCurrentItem(option2);
+            wvOption3.setCurrentItem(option3);
         }
     }
 
     private void itemSelected(int opt1Select, int opt2Select, int opt3Select) {
         if (mOptions1Items != null) {
-            wv_option1.setCurrentItem(opt1Select);
+            wvOption1.setCurrentItem(opt1Select);
         }
         if (mOptions2Items != null) {
-            wv_option2.setAdapter(new ArrayWheelAdapter(mOptions2Items.get(opt1Select)));
-            wv_option2.setCurrentItem(opt2Select);
+            wvOption2.setAdapter(new ArrayWheelAdapter(mOptions2Items.get(opt1Select)));
+            wvOption2.setCurrentItem(opt2Select);
         }
         if (mOptions3Items != null) {
-            wv_option3.setAdapter(new ArrayWheelAdapter(mOptions3Items.get(opt1Select).get(opt2Select)));
-            wv_option3.setCurrentItem(opt3Select);
+            wvOption3.setAdapter(new ArrayWheelAdapter(mOptions3Items.get(opt1Select).get(opt2Select)));
+            wvOption3.setCurrentItem(opt3Select);
         }
     }
 
@@ -475,9 +483,9 @@ public class WheelOptions<T> implements HasTypeface {
      */
 
     public void isCenterLabel(boolean isCenterLabel) {
-        wv_option1.isCenterLabel(isCenterLabel);
-        wv_option2.isCenterLabel(isCenterLabel);
-        wv_option3.isCenterLabel(isCenterLabel);
+        wvOption1.isCenterLabel(isCenterLabel);
+        wvOption2.isCenterLabel(isCenterLabel);
+        wvOption3.isCenterLabel(isCenterLabel);
     }
 
     public void setOptionsSelectChangeListener(OnOptionsSelectChangeListener optionsSelectChangeListener) {

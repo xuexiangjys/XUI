@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -14,7 +12,7 @@
         android:layout_width="?attr/stf_tip_img_size"
         android:layout_height="?attr/stf_tip_img_size"
         android:tint="?attr/colorAccent"
-        app:srcCompat="@drawable/stf_ic_offline"/>
+        app:srcCompat="@drawable/stf_ic_offline" />
 
     <TextView
         android:id="@+id/no_network_view_tv"
@@ -25,5 +23,5 @@
     <TextView
         style="@style/TextStyle.Explain"
         android:padding="5dp"
-        android:text="@string/stf_retry"/>
+        android:text="@string/stf_retry" />
 </LinearLayout>

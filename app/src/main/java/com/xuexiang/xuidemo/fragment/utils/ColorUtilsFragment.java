@@ -93,12 +93,7 @@ public class ColorUtilsFragment extends BaseFragment {
 
         // 获取随机颜色
         getRandomColor();
-        mVRandom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getRandomColor();
-            }
-        });
+        mVRandom.setOnClickListener(v -> getRandomColor());
     }
 
     private void getRandomColor() {

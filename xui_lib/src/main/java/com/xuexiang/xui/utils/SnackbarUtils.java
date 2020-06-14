@@ -294,7 +294,7 @@ public class SnackbarUtils {
      */
     public SnackbarUtils alpha(float alpha) {
         if (getSnackbar() != null) {
-            alpha = alpha >= 1.0f ? 1.0f : (alpha <= 0.0f ? 0.0f : alpha);
+            alpha = alpha >= 1.0f ? 1.0f : (Math.max(alpha, 0.0f));
             getSnackbar().getView().setAlpha(alpha);
         }
         return this;
@@ -664,8 +664,8 @@ public class SnackbarUtils {
      */
     public SnackbarUtils above(View targetView, int contentViewTop, int marginLeft, int marginRight) {
         if (getSnackbar() != null) {
-            marginLeft = marginLeft <= 0 ? 0 : marginLeft;
-            marginRight = marginRight <= 0 ? 0 : marginRight;
+            marginLeft = Math.max(marginLeft, 0);
+            marginRight = Math.max(marginRight, 0);
             int[] locations = new int[2];
             targetView.getLocationOnScreen(locations);
             UILog.dTag(TAG, "距离屏幕左侧:" + locations[0] + "==距离屏幕顶部:" + locations[1]);
@@ -685,8 +685,8 @@ public class SnackbarUtils {
     //CoordinatorLayout
     public SnackbarUtils aboveCoordinatorLayout(View targetView, int contentViewTop, int marginLeft, int marginRight) {
         if (getSnackbar() != null) {
-            marginLeft = marginLeft <= 0 ? 0 : marginLeft;
-            marginRight = marginRight <= 0 ? 0 : marginRight;
+            marginLeft = Math.max(marginLeft, 0);
+            marginRight = Math.max(marginRight, 0);
             int[] locations = new int[2];
             targetView.getLocationOnScreen(locations);
             UILog.dTag(TAG, "距离屏幕左侧:" + locations[0] + "==距离屏幕顶部:" + locations[1]);
@@ -715,8 +715,8 @@ public class SnackbarUtils {
      */
     public SnackbarUtils bellow(View targetView, int contentViewTop, int marginLeft, int marginRight) {
         if (getSnackbar() != null) {
-            marginLeft = marginLeft <= 0 ? 0 : marginLeft;
-            marginRight = marginRight <= 0 ? 0 : marginRight;
+            marginLeft = Math.max(marginLeft, 0);
+            marginRight = Math.max(marginRight, 0);
             int[] locations = new int[2];
             targetView.getLocationOnScreen(locations);
             int snackbarHeight = calculateSnackBarHeight();
@@ -745,8 +745,8 @@ public class SnackbarUtils {
 
     public SnackbarUtils bellowCoordinatorLayout(View targetView, int contentViewTop, int marginLeft, int marginRight) {
         if (getSnackbar() != null) {
-            marginLeft = marginLeft <= 0 ? 0 : marginLeft;
-            marginRight = marginRight <= 0 ? 0 : marginRight;
+            marginLeft = Math.max(marginLeft, 0);
+            marginRight = Math.max(marginRight, 0);
             int[] locations = new int[2];
             targetView.getLocationOnScreen(locations);
             int snackbarHeight = calculateSnackBarHeight();

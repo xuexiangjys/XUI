@@ -160,8 +160,8 @@ ext.deps = deps
 
 def build_versions = [:]
 build_versions.min_sdk = 19
-build_versions.target_sdk = 28
-build_versions.build_tools = "28.0.3"
+build_versions.target_sdk = 29
+build_versions.build_tools = "29.0.3"
 ext.build_versions = build_versions
 
 def app_release = [:]
@@ -173,7 +173,7 @@ app_release.keyPassword = "xuexiang"
 ext.app_release = app_release
 
 //默认添加代码仓库路径
-def addRepos(RepositoryHandler handler) {
+static def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.jcenter()
     handler.mavenCentral()

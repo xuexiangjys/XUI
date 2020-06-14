@@ -16,7 +16,6 @@
 
 package com.xuexiang.xui.widget.imageview.nine;
 
-import android.content.Context;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -28,5 +27,12 @@ import java.util.List;
  * @since 2018/12/9 下午10:38
  */
 public interface ItemImageClickListener<T> {
-    void onItemImageClick(Context context, ImageView imageView, int index, List<T> list);
+    /**
+     * 九宫格条目点击
+     *
+     * @param imageView
+     * @param index     索引
+     * @param list      图片列表
+     */
+    void onItemImageClick(ImageView imageView, int index, List<T> list);
 }

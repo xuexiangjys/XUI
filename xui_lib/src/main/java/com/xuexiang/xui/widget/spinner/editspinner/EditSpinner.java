@@ -45,12 +45,13 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 最大行数
      */
-    private final static int DEFAULT_MAX_LINE = 1;
+    private static final int DEFAULT_MAX_LINE = 1;
+    private static final int TOGGLE_POPUP_WINDOW_INTERVAL = 200;
     private EditText mEditText;
     private ImageView mIvArrow;
     private ListPopupWindow mPopupWindow;
     private BaseEditSpinnerAdapter mAdapter;
-    private long popupWindowHideTime;
+    private long mPopupWindowHideTime;
     private Animation mAnimation;
     private Animation mResetAnimation;
     private AdapterView.OnItemClickListener mOnItemClickListener;
@@ -177,7 +178,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
         mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                popupWindowHideTime = System.currentTimeMillis();
+                mPopupWindowHideTime = System.currentTimeMillis();
                 mIvArrow.startAnimation(mResetAnimation);
             }
         });
@@ -195,7 +196,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     }
 
     private void togglePopupWindow() {
-        if (System.currentTimeMillis() - popupWindowHideTime > 200) {
+        if (System.currentTimeMillis() - mPopupWindowHideTime > TOGGLE_POPUP_WINDOW_INTERVAL) {
             if (mAdapter == null || mPopupWindow == null) {
                 return;
             }
@@ -228,7 +229,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     public final void afterTextChanged(Editable s) {
         String key = s.toString();
         mEditText.setSelection(key.length());
-        if (!TextUtils.isEmpty(key) ) {
+        if (!TextUtils.isEmpty(key)) {
             if (mIsShowFilterData) {
                 showFilterData(key);
             }
@@ -267,6 +268,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置默认可选项集合
+     *
      * @param data
      * @return
      */
@@ -281,6 +283,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置默认可选项集合
+     *
      * @param data
      * @return
      */
@@ -295,6 +298,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置下拉框条目点击监听
+     *
      * @param listener
      * @return
      */
@@ -305,6 +309,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置默认内容
+     *
      * @param text
      * @return
      */
@@ -319,6 +324,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框字体的颜色
+     *
      * @param colors
      * @return
      */
@@ -334,6 +340,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框字体的颜色
+     *
      * @param color
      * @return
      */
@@ -349,6 +356,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框的背景颜色
+     *
      * @param backgroundSelector
      * @return
      */
@@ -361,6 +369,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置是否显示key为醒目的颜色
+     *
      * @param isFilterKey
      * @return
      */
@@ -375,6 +384,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框的字体大小
+     *
      * @param textSize
      * @return
      */
@@ -390,6 +400,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框的提示信息
+     *
      * @param hint
      * @return
      */
@@ -409,6 +420,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置箭头图片
+     *
      * @param res
      * @return
      */
@@ -421,6 +433,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置下拉框适配器
+     *
      * @param adapter
      * @return
      */
@@ -432,6 +445,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框最大的行数
+     *
      * @param maxLine
      * @return
      */
@@ -445,6 +459,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框的高度
+     *
      * @param dp
      * @return
      */
@@ -457,6 +472,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框的宽度
+     *
      * @param dp
      * @return
      */
@@ -469,6 +485,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置enable
+     *
      * @param enabled
      * @return
      */
@@ -484,6 +501,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框的最大字符长度
+     *
      * @param maxLength
      * @return
      */
@@ -497,6 +515,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入框的最大字符宽度
+     *
      * @param maxEms
      * @return
      */
@@ -509,6 +528,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 增加文字监听
+     *
      * @param watcher
      * @return
      */
@@ -521,6 +541,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 设置输入的类型
+     *
      * @param type
      * @return
      */
@@ -533,6 +554,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     /**
      * 获取输入框控件
+     *
      * @return
      */
     public EditText getEditText() {

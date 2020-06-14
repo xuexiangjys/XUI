@@ -71,11 +71,13 @@ abstract class HandleHelper {
         final Edge primaryEdge = activeEdges.primary;
         final Edge secondaryEdge = activeEdges.secondary;
 
-        if (primaryEdge != null)
+        if (primaryEdge != null) {
             primaryEdge.adjustCoordinate(x, y, imageRect, snapRadius, UNFIXED_ASPECT_RATIO_CONSTANT);
+        }
 
-        if (secondaryEdge != null)
+        if (secondaryEdge != null) {
             secondaryEdge.adjustCoordinate(x, y, imageRect, snapRadius, UNFIXED_ASPECT_RATIO_CONSTANT);
+        }
     }
 
     /**

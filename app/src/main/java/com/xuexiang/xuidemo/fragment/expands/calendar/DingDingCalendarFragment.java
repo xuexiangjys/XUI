@@ -18,15 +18,12 @@
 package com.xuexiang.xuidemo.fragment.expands.calendar;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.codbking.calendar.CaledarAdapter;
 import com.codbking.calendar.CalendarDate;
 import com.codbking.calendar.CalendarDateView;
-import com.codbking.calendar.CalendarView;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
@@ -66,43 +63,30 @@ public class DingDingCalendarFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        calendarDateView.setAdapter(new CaledarAdapter() {
-            @Override
-            public View getView(View convertView, ViewGroup parentView, CalendarDate calendarDate) {
-                TextView textView;
-                if (convertView == null) {
-                    convertView = LayoutInflater.from(parentView.getContext()).inflate(R.layout.adapter_calendar_item, null);
-                    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(DensityUtils.dp2px(48), DensityUtils.dp2px(48));
-                    convertView.setLayoutParams(params);
-                }
-
-                textView = convertView.findViewById(R.id.tv_text);
-                textView.setBackgroundResource(R.drawable.bg_calendar_ding_ding_item);
-
-                textView.setText(String.valueOf(calendarDate.day));
-                if (calendarDate.monthFlag != 0) {
-                    textView.setTextColor(0xFF9299A1);
-                } else {
-                    textView.setTextColor(0xFFFFFFFF);
-                }
-
-                return convertView;
+        calendarDateView.setAdapter((convertView, parentView, calendarDate) -> {
+            TextView textView;
+            if (convertView == null) {
+                convertView = LayoutInflater.from(parentView.getContext()).inflate(R.layout.adapter_calendar_item, null);
+                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(DensityUtils.dp2px(48), DensityUtils.dp2px(48));
+                convertView.setLayoutParams(params);
             }
+
+            textView = convertView.findViewById(R.id.tv_text);
+            textView.setBackgroundResource(R.drawable.bg_calendar_ding_ding_item);
+
+            textView.setText(String.valueOf(calendarDate.day));
+            if (calendarDate.monthFlag != 0) {
+                textView.setTextColor(0xFF9299A1);
+            } else {
+                textView.setTextColor(0xFFFFFFFF);
+            }
+
+            return convertView;
         });
 
-        calendarDateView.setOnCalendarSelectedListener(new CalendarView.OnCalendarSelectedListener() {
-            @Override
-            public void onCalendarSelected(View view, int position, CalendarDate calendarDate) {
-                tvTitle.setText(String.format("%d/%d/%d", calendarDate.year, calendarDate.month, calendarDate.day));
-            }
-        });
+        calendarDateView.setOnCalendarSelectedListener((view, position, calendarDate) -> tvTitle.setText(String.format("%d/%d/%d", calendarDate.year, calendarDate.month, calendarDate.day)));
 
-        calendarDateView.setOnMonthChangedListener(new CalendarDateView.OnMonthChangedListener() {
-            @Override
-            public void onMonthChanged(View view, int postion, CalendarDate date) {
-                tvTitle.setText(String.format("%d/%d/%d", date.year, date.month, date.day));
-            }
-        });
+        calendarDateView.setOnMonthChangedListener((view, postion, date) -> tvTitle.setText(String.format("%d/%d/%d", date.year, date.month, date.day)));
 
         CalendarDate data = CalendarDate.get(new Date());
         tvTitle.setText(String.format("%d/%d/%d", data.year, data.month, data.day));

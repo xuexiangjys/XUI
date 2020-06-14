@@ -23,7 +23,6 @@ import androidx.annotation.Nullable;
 import com.xuexiang.xupdate.entity.UpdateEntity;
 import com.xuexiang.xupdate.proxy.impl.DefaultUpdateDownloader;
 import com.xuexiang.xupdate.service.OnFileDownloadListener;
-import com.xuexiang.xutil.app.ActivityUtils;
 
 /**
  * 重写DefaultUpdateDownloader，在取消下载时，弹出提示

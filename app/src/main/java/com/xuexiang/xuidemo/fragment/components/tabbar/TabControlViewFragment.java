@@ -57,12 +57,7 @@ public class TabControlViewFragment extends BaseFragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        mTabControlView.setOnTabSelectionChangedListener(new TabControlView.OnTabSelectionChangedListener() {
-            @Override
-            public void newSelection(String title, String value) {
-                XToastUtils.toast("选中了：" + title + ", 选中的值为：" + value);
-            }
-        });
+        mTabControlView.setOnTabSelectionChangedListener((title, value) -> XToastUtils.toast("选中了：" + title + ", 选中的值为：" + value));
     }
 
     private void initMultiTabControlView() {
@@ -72,12 +67,7 @@ public class TabControlViewFragment extends BaseFragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        mMultiTabControlView.setOnMultiTabSelectionChangedListener(new MultiTabControlView.OnMultiTabSelectionChangedListener() {
-            @Override
-            public void newSelection(String title, String value, boolean isChecked) {
-                XToastUtils.toast((isChecked ? "选中了：" : "取消了：") + title + ", 值为：" + value);
-            }
-        });
+        mMultiTabControlView.setOnMultiTabSelectionChangedListener((title, value, isChecked) -> XToastUtils.toast((isChecked ? "选中了：" : "取消了：") + title + ", 值为：" + value));
     }
 
 }

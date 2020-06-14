@@ -32,8 +32,7 @@ import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.edittext.ClearEditText;
 import com.xuexiang.xui.widget.edittext.PasswordEditText;
-
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 打造万能的布局满足市面常见的样式

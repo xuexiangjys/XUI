@@ -22,6 +22,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.BroccoliFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.RefreshHeadViewFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.SmartRefreshLayoutFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.StickyRecyclerViewFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.SwipeRecyclerViewFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.SwipeRefreshLayoutFragment;
 
@@ -29,7 +30,7 @@ import com.xuexiang.xuidemo.fragment.components.refresh.SwipeRefreshLayoutFragme
  * @author xuexiang
  * @since 2018/12/6 下午6:09
  */
-@Page(name = "下拉刷新", extra = R.drawable.ic_widget_refresh)
+@Page(name = "列表刷新", extra = R.drawable.ic_widget_refresh)
 public class RefreshLayoutFragment extends ComponentContainerFragment {
     /**
      * 获取页面的类集合[使用@Page注解进行注册的页面]
@@ -43,7 +44,8 @@ public class RefreshLayoutFragment extends ComponentContainerFragment {
                 SwipeRecyclerViewFragment.class,
                 SwipeRefreshLayoutFragment.class,
                 RefreshHeadViewFragment.class,
-                BroccoliFragment.class
+                BroccoliFragment.class,
+                StickyRecyclerViewFragment.class
         };
     }
 }

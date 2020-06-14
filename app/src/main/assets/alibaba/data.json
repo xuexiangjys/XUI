@@ -1,0 +1,303 @@
+[
+  {
+    "type": "container-oneColumn",
+    "items": [
+      {
+        "type": "InterfaceCell",
+        "text": "接口方式自定义View",
+        "style": {
+          "height": 140,
+          "margin": [
+            30,
+            10,
+            30,
+            10
+          ]
+        }
+      },
+      {
+        "type": "InterfaceCell",
+        "text": "接口方式自定义View"
+      }
+    ],
+    "style": {
+      "margin": [
+        10,
+        10,
+        10,
+        10
+      ]
+    }
+  },
+  {
+    "type": "container-twoColumn",
+    "items": [
+      {
+        "type": "InterfaceCell",
+        "text": "接口方式自定义View"
+      },
+      {
+        "type": "InterfaceCell",
+        "text": "接口方式自定义View"
+      },
+      {
+        "type": "AnnotationCell",
+        "text": "注解方式自定义View"
+      },
+      {
+        "type": "AnnotationCell",
+        "text": "注解方式自定义View"
+      }
+    ],
+    "style": {
+      "padding": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "vGap": 10,
+      "hGap": 10
+    }
+  },
+  {
+    "type": "container-threeColumn",
+    "items": [
+      {
+        "type": "CustomCell",
+        "text": "自定义model",
+        "randomColor": true,
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png"
+      },
+      {
+        "type": "CustomCell",
+        "text": "自定义model",
+        "randomColor": false,
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png"
+      },
+      {
+        "type": "CustomCell",
+        "text": "自定义model",
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png"
+      }
+    ],
+    "style": {
+      "cols": [
+        30,
+        40
+      ]
+    }
+  },
+  {
+    "type": "container-fourColumn",
+    "items": [
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      }
+    ],
+    "style": {
+      "aspectRatio": "4",
+      "bgImgUrl": "https://gw.alicdn.com/tps/TB1dkjfOXXXXXb0aXXXXXXXXXXX-1125-220.png"
+    }
+  },
+  {
+    "type": "container-fiveColumn",
+    "items": [
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      },
+      {
+        "type": "NoBackground",
+        "text": "无背景自定义View"
+      }
+    ],
+    "style": {
+      "bgColor": "#299ee3"
+    }
+  },
+  {
+    "type": "container-scrollFix",
+    "items": [
+      {
+        "type": "CustomCell",
+        "text": "滚动固定View",
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "style": {
+          "width": "120"
+        }
+      }
+    ],
+    "style": {
+      "x": 20,
+      "y": 20,
+      "showType": "showOnEnter"
+    }
+  },
+  {
+    "type": "container-float",
+    "items": [
+      {
+        "type": "InterfaceCell",
+        "text": "浮动View",
+        "style": {
+          "width": "120"
+        }
+      }
+    ],
+    "style": {
+      "align": "bottom_right",
+      "x": 20,
+      "y": 20
+    }
+  },
+  {
+    "type": "container-fix",
+    "items": [
+      {
+        "type": "AnnotationCell",
+        "text": "固定View",
+        "style": {
+          "width": "120"
+        }
+      }
+    ],
+    "style": {
+      "align": "top_right",
+      "x": 20,
+      "y": 20
+    }
+  },
+  {
+    "type": "container-banner",
+    "items": [
+      {
+        "type": "InterfaceCell",
+        "text": "轮播滚动View"
+      },
+      {
+        "type": "InterfaceCell",
+        "text": "轮播滚动View"
+      },
+      {
+        "type": "InterfaceCell",
+        "text": "轮播滚动View"
+      },
+      {
+        "type": "InterfaceCell",
+        "text": "轮播滚动View"
+      }
+    ],
+    "style": {
+      "itemRatio": 2.4,
+      "pageRatio": 1,
+      "autoScroll": 3000,
+      "specialInterval": {
+        "0": 2000,
+        "1": 1000
+      },
+      "infinite": true,
+      "indicatorImg1": "https://img.alicdn.com/tps/TB16i4qNXXXXXbBXFXXXXXXXXXX-32-4.png",
+      "indicatorImg2": "https://img.alicdn.com/tps/TB1XRNFNXXXXXXKXXXXXXXXXXXX-32-4.png",
+      "indicatorGravity": "center",
+      "indicatorPosition": "inside",
+      "indicatorGap": 5,
+      "indicatorMargin": 8,
+      "indicatorHeight": 2,
+      "scrollMarginLeft": 50,
+      "scrollMarginRight": 50,
+      "hGap": 10
+    }
+  },
+  {
+    "type": "container-scroll",
+    "items": [
+      {
+        "type": "AnnotationCell",
+        "text": "横向滚动View"
+      },
+      {
+        "type": "AnnotationCell",
+        "text": "横向滚动View"
+      },
+      {
+        "type": "AnnotationCell",
+        "text": "横向滚动View"
+      },
+      {
+        "type": "AnnotationCell",
+        "text": "横向滚动View"
+      }
+    ],
+    "style": {
+      "pageWidth": 150,
+      "pageHeight": -1,
+      "hasIndicator": true,
+      "indicatorColor": "#FF0000",
+      "defaultIndicatorColor": "#666666"
+    }
+  },
+  {
+    "type": "container-waterfall",
+    "items": [
+      {
+        "type": "CustomCell",
+        "text": "瀑布流",
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png"
+      },
+      {
+        "type": "CustomCell",
+        "text": "瀑布流",
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "style": {
+          "ratio": 1
+        }
+      },
+      {
+        "type": "CustomCell",
+        "text": "瀑布流",
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "style": {
+          "ratio": 1
+        }
+      },
+      {
+        "type": "CustomCell",
+        "text": "瀑布流",
+        "imageUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "style": {
+          "ratio": 1
+        }
+      }
+    ],
+    "style": {
+      "margin": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "vGap": 10,
+      "hGap": 10,
+      "bgColor": "#CC00FF00",
+      "column": 2
+    }
+  }
+]

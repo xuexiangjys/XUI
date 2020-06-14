@@ -20,6 +20,7 @@ import android.content.res.Configuration;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xaop.annotation.SingleClick;
@@ -35,7 +36,6 @@ import com.xuexiang.xuidemo.fragment.AboutFragment;
 import com.xuexiang.xuidemo.fragment.SearchComponentFragment;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -50,8 +50,6 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-
-    private WidgetItemAdapter mWidgetItemAdapter;
 
     @Override
     protected TitleBar initTitle() {
@@ -98,7 +96,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
     private void initRecyclerView() {
         WidgetUtils.initGridRecyclerView(mRecyclerView, 3, DensityUtils.dp2px(2));
 
-        mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
+        WidgetItemAdapter mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
         mWidgetItemAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mWidgetItemAdapter);
     }
@@ -115,12 +113,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
      * @return
      */
     private List<PageInfo> sortPageInfo(List<PageInfo> pageInfoList) {
-        Collections.sort(pageInfoList, new Comparator<PageInfo>() {
-            @Override
-            public int compare(PageInfo o1, PageInfo o2) {
-                return o1.getClassPath().compareTo(o2.getClassPath());
-            }
-        });
+        Collections.sort(pageInfoList, (o1, o2) -> o1.getClassPath().compareTo(o2.getClassPath()));
         return pageInfoList;
     }
 
@@ -137,7 +130,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         //屏幕旋转时刷新一下title
         super.onConfigurationChanged(newConfig);
         ViewGroup root = (ViewGroup) getRootView();

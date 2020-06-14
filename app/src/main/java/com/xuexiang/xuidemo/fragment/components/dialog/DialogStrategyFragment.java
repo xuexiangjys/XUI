@@ -17,15 +17,11 @@
 
 package com.xuexiang.xuidemo.fragment.components.dialog;
 
-import android.content.DialogInterface;
 import android.text.InputType;
-
-import androidx.annotation.NonNull;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
-import com.xuexiang.xui.widget.dialog.strategy.InputCallback;
 import com.xuexiang.xui.widget.dialog.strategy.InputInfo;
 import com.xuexiang.xui.widget.dialog.strategy.impl.AlertDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.impl.MaterialDialogStrategy;
@@ -85,20 +81,14 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         getContext(),
                         getString(R.string.tip_bluetooth_permission),
                         getString(R.string.lab_yes),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                XToastUtils.toast("同意打开蓝牙！");
-                                dialog.dismiss();
-                            }
+                        (dialog, which) -> {
+                            XToastUtils.toast("同意打开蓝牙！");
+                            dialog.dismiss();
                         },
                         getString(R.string.lab_no),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                XToastUtils.toast("不同意打开蓝牙！");
-                                dialog.dismiss();
-                            }
+                        (dialog, which) -> {
+                            XToastUtils.toast("不同意打开蓝牙！");
+                            dialog.dismiss();
                         }
                 );
                 break;
@@ -112,20 +102,12 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                                 | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                                 | InputType.TYPE_TEXT_FLAG_CAP_WORDS,
                                 getString(R.string.hint_please_input_password)),
-                        new InputCallback() {
-                            @Override
-                            public void onInput(@NonNull DialogInterface dialog, CharSequence input) {
-                                XToastUtils.toast(input.toString());
-                            }
-                        },
+                        (dialog, input) -> XToastUtils.toast(input.toString()),
                         getString(R.string.lab_continue),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                if (dialog instanceof MaterialDialog) {
-                                    XToastUtils.toast("你输入了:" + ((MaterialDialog)dialog).getInputEditText().getText().toString());
-                                }
+                        (dialog, which) -> {
+                            dialog.dismiss();
+                            if (dialog instanceof MaterialDialog) {
+                                XToastUtils.toast("你输入了:" + ((MaterialDialog)dialog).getInputEditText().getText().toString());
                             }
                         },
                         getString(R.string.lab_change),
@@ -135,12 +117,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                 DialogLoader.getInstance().showContextMenuDialog(getContext(),
                         getString(R.string.tip_options),
                         R.array.menu_values,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                XToastUtils.toast("选择了第" + (which + 1) + "个");
-                            }
-                        });
+                        (dialog, which) -> XToastUtils.toast("选择了第" + (which + 1) + "个"));
                 break;
             case 6:
                 DialogLoader.getInstance().showSingleChoiceDialog(
@@ -148,11 +125,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         getString(R.string.tip_router_setting),
                         R.array.router_choice_entry,
                         0,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                XToastUtils.toast("选择了第" + (which + 1) + "个");
-                            }},
+                        (dialog, which) -> XToastUtils.toast("选择了第" + (which + 1) + "个"),
                         getString(R.string.lab_yes),
                         getString(R.string.lab_no));
                 break;

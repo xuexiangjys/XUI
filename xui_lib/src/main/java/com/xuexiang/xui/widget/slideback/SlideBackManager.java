@@ -113,32 +113,32 @@ public class SlideBackManager implements OnSlideUpdateListener {
     /**
      * 控件高度 默认屏高/4
      */
-    public SlideBackManager viewHeight(float backViewHeightDP) {
-        mSlideInfo.setBackViewHeight(dp2px(backViewHeightDP));
+    public SlideBackManager viewHeight(float backViewHeightDp) {
+        mSlideInfo.setBackViewHeight(dp2px(backViewHeightDp));
         return this;
     }
 
     /**
      * 箭头大小 默认5dp
      */
-    public SlideBackManager arrowSize(float arrowSizeDP) {
-        mSlideInfo.setArrowSize(dp2px(arrowSizeDP));
+    public SlideBackManager arrowSize(float arrowSizeDp) {
+        mSlideInfo.setArrowSize(dp2px(arrowSizeDp));
         return this;
     }
 
     /**
      * 最大拉动距离（控件最大宽度） 默认屏宽/12
      */
-    public SlideBackManager maxSlideLength(float maxSlideLengthDP) {
-        mSlideInfo.setMaxSlideLength(dp2px(maxSlideLengthDP));
+    public SlideBackManager maxSlideLength(float maxSlideLengthDp) {
+        mSlideInfo.setMaxSlideLength(dp2px(maxSlideLengthDp));
         return this;
     }
 
     /**
      * 侧滑响应距离 默认控件最大宽度/2
      */
-    public SlideBackManager sideSlideLength(float sideSlideLengthDP) {
-        mSlideInfo.setSideSlideLength(dp2px(sideSlideLengthDP));
+    public SlideBackManager sideSlideLength(float sideSlideLengthDp) {
+        mSlideInfo.setSideSlideLength(dp2px(sideSlideLengthDp));
         return this;
     }
 

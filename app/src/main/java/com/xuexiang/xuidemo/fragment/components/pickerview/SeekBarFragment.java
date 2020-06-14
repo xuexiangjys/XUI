@@ -87,11 +87,6 @@ public class SeekBarFragment extends BaseFragment {
 
 
         xsb.setDefaultValue(50);
-        xsb.setOnSeekBarListener(new XSeekBar.OnSeekBarListener() {
-            @Override
-            public void onValueChanged(XSeekBar seekBar, int newValue) {
-                tvXsb.setText(String.valueOf(newValue));
-            }
-        });
+        xsb.setOnSeekBarListener((seekBar, newValue) -> tvXsb.setText(String.valueOf(newValue)));
     }
 }

@@ -90,8 +90,8 @@ public class SimpleItem extends DrawerItem<SimpleItem.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            icon = (ImageView) itemView.findViewById(R.id.icon);
-            title = (TextView) itemView.findViewById(R.id.title);
+            icon = itemView.findViewById(R.id.icon);
+            title = itemView.findViewById(R.id.title);
         }
     }
 }

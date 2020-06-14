@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -40,7 +41,7 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
 
     private PagerAdapter mPagerAdapter = new PagerAdapter() {
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
         }
 
@@ -58,7 +59,7 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View) object);
         }
     };
@@ -104,12 +105,7 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
         mTabbar.setContainer(mViewPager);
 
         if (mTabbar.getMiddleView() != null) {
-            mTabbar.getMiddleView().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    XToastUtils.toast("中间点击");
-                }
-            });
+            mTabbar.getMiddleView().setOnClickListener(v -> XToastUtils.toast("中间点击"));
         }
 
         mTabbar.showBadge(2,"", true);

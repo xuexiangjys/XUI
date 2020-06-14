@@ -54,7 +54,6 @@ public class PageConfigProcessor extends AbstractProcessor {
      */
     private Filer mFiler;
     private Types mTypes;
-    private Elements mElements;
 
     private Logger mLogger;
 
@@ -76,7 +75,7 @@ public class PageConfigProcessor extends AbstractProcessor {
         super.init(processingEnv);
         mFiler = processingEnv.getFiler();
         mTypes = processingEnv.getTypeUtils();
-        mElements = processingEnv.getElementUtils();
+        Elements mElements = processingEnv.getElementUtils();
         mLogger = new Logger(processingEnv.getMessager());
 
         // Attempt to get user configuration [moduleName]
@@ -329,7 +328,9 @@ public class PageConfigProcessor extends AbstractProcessor {
     }
 
     public static String upperFirstLetter(final String s) {
-        if (StringUtils.isEmpty(s) || !Character.isLowerCase(s.charAt(0))) return s;
+        if (StringUtils.isEmpty(s) || !Character.isLowerCase(s.charAt(0))) {
+            return s;
+        }
         return (char) (s.charAt(0) - 32) + s.substring(1);
     }
 }

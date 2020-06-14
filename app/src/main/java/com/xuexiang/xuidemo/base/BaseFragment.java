@@ -2,7 +2,6 @@ package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
 import android.os.Parcelable;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -31,7 +30,7 @@ public abstract class BaseFragment extends XPageFragment {
     /**
      * 消息加载框
      */
-    private IMessageLoader mIMessageLoader;
+    private IMessageLoader mMessageLoader;
 
     @Override
     protected void initPage() {
@@ -41,28 +40,23 @@ public abstract class BaseFragment extends XPageFragment {
     }
 
     protected TitleBar initTitle() {
-        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
+        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), v -> popToBack());
     }
 
     public IMessageLoader getMessageLoader() {
-        if (mIMessageLoader == null) {
-            mIMessageLoader = WidgetUtils.getMiniLoadingDialog(getContext());
+        if (mMessageLoader == null) {
+            mMessageLoader = WidgetUtils.getMiniLoadingDialog(getContext());
         }
-        return mIMessageLoader;
+        return mMessageLoader;
     }
 
     public IMessageLoader getMessageLoader(String message) {
-        if (mIMessageLoader == null) {
-            mIMessageLoader = WidgetUtils.getMiniLoadingDialog(getContext(), message);
+        if (mMessageLoader == null) {
+            mMessageLoader = WidgetUtils.getMiniLoadingDialog(getContext(), message);
         } else {
-            mIMessageLoader.updateMessage(message);
+            mMessageLoader.updateMessage(message);
         }
-        return mIMessageLoader;
+        return mMessageLoader;
     }
 
     @Override
@@ -70,17 +64,26 @@ public abstract class BaseFragment extends XPageFragment {
 
     }
 
+    /**
+     * 关闭当前fragment所在的activity,请谨慎使用！！！
+     */
+    protected void finishActivity() {
+        if (getActivity() != null && !getActivity().isFinishing()) {
+            getActivity().finish();
+        }
+    }
+
     @Override
     public void onDestroyView() {
-        if (mIMessageLoader != null) {
-            mIMessageLoader.dismiss();
-            mIMessageLoader = null;
+        if (mMessageLoader != null) {
+            mMessageLoader.dismiss();
+            mMessageLoader = null;
         }
         super.onDestroyView();
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         //屏幕旋转时刷新一下title
         super.onConfigurationChanged(newConfig);
         ViewGroup root = (ViewGroup) getRootView();

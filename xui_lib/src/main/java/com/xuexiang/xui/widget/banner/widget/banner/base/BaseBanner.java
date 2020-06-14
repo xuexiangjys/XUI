@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -34,7 +35,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 轮播条
@@ -96,10 +97,6 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
      */
     private Class<? extends ViewPager.PageTransformer> mTransformerClass;
 
-    /**
-     * 显示器(小点)的最顶层父容器
-     */
-    private RelativeLayout mRlBottomBarParent;
     private int mItemWidth;
     private int mItemHeight;
 
@@ -222,7 +219,10 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
         addView(mViewPager, lp);
 
         //top parent of indicators
-        mRlBottomBarParent = new RelativeLayout(context);
+        /**
+         * 显示器(小点)的最顶层父容器
+         */
+        RelativeLayout mRlBottomBarParent = new RelativeLayout(context);
         addView(mRlBottomBarParent, lp);
 
         //container of indicators and title
@@ -436,7 +436,9 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
         if (isLoopViewPager()) {
             ((LoopViewPager) mViewPager).getPageAdapterWrapper().notifyDataSetChanged();
         } else {
-            mViewPager.getAdapter().notifyDataSetChanged();
+            if (mViewPager.getAdapter() != null) {
+                mViewPager.getAdapter().notifyDataSetChanged();
+            }
         }
     }
 
@@ -605,6 +607,7 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
             return mDatas != null ? mDatas.size() : 0;
         }
 
+        @NonNull
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             View inflate = onCreateItemView(position);
@@ -622,17 +625,17 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
             container.removeView((View) object);
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
         }
 
         @Override
-        public int getItemPosition(Object object) {
+        public int getItemPosition(@NonNull Object object) {
             return POSITION_NONE;
         }
     }
@@ -677,11 +680,7 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
             return false;
         }
 
-        if (!mIsOnePageLoop && mDatas.size() == 1) {
-            return false;
-        }
-
-        return true;
+        return mIsOnePageLoop || mDatas.size() != 1;
     }
 
     //listener

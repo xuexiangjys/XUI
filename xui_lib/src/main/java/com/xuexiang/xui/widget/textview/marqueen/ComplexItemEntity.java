@@ -1,5 +1,7 @@
 package com.xuexiang.xui.widget.textview.marqueen;
 
+import androidx.annotation.NonNull;
+
 /**
  * 复合字幕条目对象
  *
@@ -54,6 +56,7 @@ public class ComplexItemEntity {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "主标题:" + title + ", 副标题:" + subTitle + ", 时间:" + time;

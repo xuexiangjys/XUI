@@ -57,7 +57,7 @@ public class ImageSelectGridAdapter extends RecyclerView.Adapter<ImageSelectGrid
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivSelectPic;
         LinearLayout llDelete;
@@ -90,8 +90,9 @@ public class ImageSelectGridAdapter extends RecyclerView.Adapter<ImageSelectGrid
     /**
      * 创建ViewHolder
      */
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = mInflater.inflate(R.layout.adapter_select_image_grid_item, viewGroup, false);
         return new ViewHolder(view);
     }
@@ -105,7 +106,7 @@ public class ImageSelectGridAdapter extends RecyclerView.Adapter<ImageSelectGrid
      * 设置值
      */
     @Override
-    public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int position) {
         //少于8张，显示继续添加的图标
         if (getItemViewType(position) == TYPE_CAMERA) {
             viewHolder.ivSelectPic.setImageResource(R.drawable.ic_add_image);

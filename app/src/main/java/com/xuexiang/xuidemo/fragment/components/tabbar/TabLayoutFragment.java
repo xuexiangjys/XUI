@@ -16,121 +16,25 @@
 
 package com.xuexiang.xuidemo.fragment.components.tabbar;
 
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
-import com.xuexiang.xuidemo.utils.XToastUtils;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import butterknife.BindView;
-
-import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
+import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.TabLayoutCacheFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.TabLayoutSimpleFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.TabLayoutViewPager2Fragment;
 
 /**
  * @author xuexiang
  * @since 2018/12/27 上午11:45
  */
 @Page(name = "TabLayout\nMaterial Design 组件")
-public class TabLayoutFragment extends BaseFragment implements TabLayout.OnTabSelectedListener {
-
-    @BindView(R.id.tab1)
-    TabLayout mTabLayout1;
-
-    @BindView(R.id.tab_layout)
-    TabLayout mTabLayout;
-    @BindView(R.id.view_pager)
-    ViewPager mViewPager;
-
-    private Map<ContentPage, View> mPageMap = new HashMap<>();
-
-    private PagerAdapter mPagerAdapter = new PagerAdapter() {
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-
-        @Override
-        public int getCount() {
-            return ContentPage.size();
-        }
-
-        @Override
-        public Object instantiateItem(final ViewGroup container, int position) {
-            ContentPage page = ContentPage.getPage(position);
-            View view = getPageView(page);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            container.addView(view, params);
-            return view;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-        }
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return ContentPage.getPageNames()[position];
-        }
-    };
-
-    private View getPageView(ContentPage page) {
-        View view = mPageMap.get(page);
-        if (view == null) {
-            TextView textView = new TextView(getContext());
-            textView.setTextAppearance(getContext(), R.style.TextStyle_Content_Match);
-            textView.setGravity(Gravity.CENTER);
-            textView.setText(String.format("这个是%s页面的内容", page.name()));
-            view = textView;
-            mPageMap.put(page, view);
-        }
-        return view;
-    }
+public class TabLayoutFragment extends ComponentContainerFragment {
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_tablayout;
-    }
-
-    @Override
-    protected void initViews() {
-        for (String page : MultiPage.getPageNames()) {
-            mTabLayout1.addTab(mTabLayout1.newTab().setText(page));
-        }
-        mTabLayout1.setTabMode(MODE_SCROLLABLE);
-        mTabLayout1.addOnTabSelectedListener(this);
-
-        mTabLayout.addOnTabSelectedListener(this);
-        mViewPager.setAdapter(mPagerAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
-    }
-
-    @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-        XToastUtils.toast("选中了:" + tab.getText());
-    }
-
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
-
-    }
-
-    @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
+    protected Class[] getPagesClasses() {
+        return new Class[]{
+                TabLayoutSimpleFragment.class,
+                TabLayoutCacheFragment.class,
+                TabLayoutViewPager2Fragment.class
+        };
     }
 }

@@ -11,6 +11,7 @@ import com.mikepenz.iconics.Iconics;
 import com.xuexiang.xormlite.annotation.DataBase;
 import com.xuexiang.xormlite.enums.DataBaseType;
 import com.xuexiang.xui.XUI;
+import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.sdkinit.ANRWatchDogInit;
 import com.xuexiang.xuidemo.utils.sdkinit.AutoCameraStrategy;
 import com.xuexiang.xuidemo.utils.sdkinit.BuglyInit;
@@ -40,9 +41,9 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initUI();
         //初始化基础库
         XBasicLibInit.init(this);
+        initUI();
         //三方SDK初始化
         XUpdateInit.init(this);
         TbsInit.init(this);
@@ -61,8 +62,10 @@ public class MyApp extends Application {
     private void initUI() {
         XUI.init(this);
         XUI.debug(MyApp.isDebug());
-//        //设置默认字体为华文行楷
-//        XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
+        if (SettingSPUtils.getInstance().isUseCustomFont()) {
+            //设置默认字体为华文行楷
+           XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
+        }
         PictureFileUtils.setAppName("xui");
 
         //字体图标库

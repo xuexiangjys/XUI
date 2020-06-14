@@ -461,7 +461,7 @@ public class VerticalTabLayout extends ScrollView {
             addOnTabSelectedListener(new OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabView tab, int position) {
-                    if (mViewPager != null && mViewPager.getAdapter().getCount() >= position) {
+                    if (mViewPager != null && mViewPager.getAdapter() != null && position >= 0 && position < mViewPager.getAdapter().getCount()) {
                         mViewPager.setCurrentItem(position);
                     }
                 }
@@ -508,8 +508,11 @@ public class VerticalTabLayout extends ScrollView {
             if (mPagerAdapter instanceof TabAdapter) {
                 setTabAdapter((TabAdapter) mPagerAdapter);
             } else {
+                CharSequence pageTitle;
+                String title;
                 for (int i = 0; i < adapterCount; i++) {
-                    String title = mPagerAdapter.getPageTitle(i) == null ? "tab" + i : mPagerAdapter.getPageTitle(i).toString();
+                    pageTitle = mPagerAdapter.getPageTitle(i);
+                    title = pageTitle != null ? pageTitle.toString() : "tab" + i;
                     addTab(new XTabView(mContext).setTitle(
                             new XTabView.TabTitle.Builder().setContent(title).build()));
                 }
@@ -684,7 +687,6 @@ public class VerticalTabLayout extends ScrollView {
     }
 
     private class OnTabPageChangeListener implements ViewPager.OnPageChangeListener {
-        private int mPreviousScrollState;
         private int mScrollState;
         boolean mUpdateIndicator;
 
@@ -693,7 +695,7 @@ public class VerticalTabLayout extends ScrollView {
 
         @Override
         public void onPageScrollStateChanged(int state) {
-            mPreviousScrollState = mScrollState;
+            int mPreviousScrollState = mScrollState;
             mScrollState = state;
             mUpdateIndicator = !(mScrollState == SCROLL_STATE_SETTLING
                     && mPreviousScrollState == SCROLL_STATE_IDLE);

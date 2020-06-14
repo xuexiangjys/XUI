@@ -8,8 +8,6 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Region;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
@@ -36,22 +34,11 @@ public class RippleShadowShadowButton extends BaseShadowButton {
     private RectF mRectF;
     private Path mPath;
     private Timer mTimer;
-    private TimerTask mTask;
-    private Handler mHandler = new Handler() {
 
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == MSG_DRAW_COMPLETE) {
-                invalidate();
-            }
-        }
-    };
+    private TimerTask mTask;
 
     private int mRippleAlpha;
-    // private final static int HALF_ALPHA = 127;
-    private final static int RIPPLR_ALPHA = 47;
-    private final static int MSG_DRAW_COMPLETE = 101;
+    private final static int RIPPLE_ALPHA = 47;
 
     public RippleShadowShadowButton(Context context) {
         super(context);
@@ -73,7 +60,7 @@ public class RippleShadowShadowButton extends BaseShadowButton {
         }
         final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ShadowButton);
         mRippleColor = typedArray.getColor(R.styleable.ShadowButton_sb_ripple_color, getResources().getColor(R.color.default_shadow_button_ripple_color));
-        mRippleAlpha = typedArray.getInteger(R.styleable.ShadowButton_sb_ripple_alpha, RIPPLR_ALPHA);
+        mRippleAlpha = typedArray.getInteger(R.styleable.ShadowButton_sb_ripple_alpha, RIPPLE_ALPHA);
         mRippleDuration = typedArray.getInteger(R.styleable.ShadowButton_sb_ripple_duration, 1000);
         mShapeType = typedArray.getInt(R.styleable.ShadowButton_sb_shape_type, 1);
         mRoundRadius = typedArray.getDimensionPixelSize(R.styleable.ShadowButton_sb_radius, getResources().getDimensionPixelSize(R.dimen.default_shadow_button_radius));
@@ -114,9 +101,9 @@ public class RippleShadowShadowButton extends BaseShadowButton {
         if (canvas != null && pointX >= 0 && pointY >= 0) {
             int rbX = canvas.getWidth();
             int rbY = canvas.getHeight();
-            float x_max = Math.max(pointX, Math.abs(rbX - pointX));
-            float y_max = Math.max(pointY, Math.abs(rbY - pointY));
-            float longDis = (float) Math.sqrt(x_max * x_max + y_max * y_max);
+            float xMax = Math.max(pointX, Math.abs(rbX - pointX));
+            float yMax = Math.max(pointY, Math.abs(rbY - pointY));
+            float longDis = (float) Math.sqrt(xMax * xMax + yMax * yMax);
             if (mRippleRadius > longDis) {
                 onCompleteDrawRipple();
                 return;
@@ -152,7 +139,7 @@ public class RippleShadowShadowButton extends BaseShadowButton {
         mTask = new TimerTask() {
             @Override
             public void run() {
-                mHandler.sendEmptyMessage(MSG_DRAW_COMPLETE);
+                postInvalidate();
             }
         };
         mTimer = new Timer();
@@ -163,7 +150,6 @@ public class RippleShadowShadowButton extends BaseShadowButton {
      * Stop draw ripple effect
      */
     private void onCompleteDrawRipple() {
-        mHandler.removeMessages(MSG_DRAW_COMPLETE);
         if (mTimer != null) {
             if (mTask != null) {
                 mTask.cancel();
@@ -171,6 +157,12 @@ public class RippleShadowShadowButton extends BaseShadowButton {
             mTimer.cancel();
         }
         mRippleRadius = 0;
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        onCompleteDrawRipple();
+        super.onDetachedFromWindow();
     }
 
     public int getRoundRadius() {

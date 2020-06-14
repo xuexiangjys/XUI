@@ -149,12 +149,12 @@ public abstract class RecyclerViewBannerBase<L extends RecyclerView.LayoutManage
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 onBannerScrolled(recyclerView, dx, dy);
             }
 
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 onBannerScrollStateChanged(recyclerView, newState);
 
             }
@@ -281,6 +281,8 @@ public abstract class RecyclerViewBannerBase<L extends RecyclerView.LayoutManage
             case MotionEvent.ACTION_CANCEL:
                 setPlaying(true);
                 break;
+            default:
+                break;
         }
         //解决recyclerView嵌套问题
         try {
@@ -346,8 +348,9 @@ public abstract class RecyclerViewBannerBase<L extends RecyclerView.LayoutManage
             this.currentPosition = currentPosition;
         }
 
+        @NonNull
         @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
             ImageView bannerPoint = new ImageView(getContext());
             RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,

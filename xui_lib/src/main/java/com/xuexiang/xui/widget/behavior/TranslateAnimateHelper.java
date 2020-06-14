@@ -48,6 +48,7 @@ public class TranslateAnimateHelper implements AnimateHelper {
         return new TranslateAnimateHelper(target);
     }
 
+    @Override
     public void show() {
         if (mMode == MODE_TITLE) {
             showTitle();

@@ -31,7 +31,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
-import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
@@ -89,8 +88,8 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
     }
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        getDelegate().setContentView(layoutResID);
+    public void setContentView(@LayoutRes int layoutResId) {
+        getDelegate().setContentView(layoutResId);
     }
 
     @Override

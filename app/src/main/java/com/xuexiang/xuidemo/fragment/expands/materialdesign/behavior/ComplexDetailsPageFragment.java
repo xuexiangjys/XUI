@@ -17,8 +17,6 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
-import android.view.View;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
@@ -80,12 +78,7 @@ public class ComplexDetailsPageFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> popToBack());
 
         FragmentAdapter<BaseFragment> adapter = new FragmentAdapter<>(getChildFragmentManager());
         tabLayout.setTabMode(MODE_FIXED);
@@ -100,22 +93,14 @@ public class ComplexDetailsPageFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        fabScrolling.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XToastUtils.toast("新建");
-            }
-        });
-        appbarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
-                    StatusBarUtils.setStatusBarDarkMode(getActivity());
-                    fabScrolling.hide();
-                } else {
-                    StatusBarUtils.setStatusBarLightMode(getActivity());
-                    fabScrolling.show();
-                }
+        fabScrolling.setOnClickListener(v -> XToastUtils.toast("新建"));
+        appbarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+            if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
+                StatusBarUtils.setStatusBarDarkMode(getActivity());
+                fabScrolling.hide();
+            } else {
+                StatusBarUtils.setStatusBarLightMode(getActivity());
+                fabScrolling.show();
             }
         });
     }

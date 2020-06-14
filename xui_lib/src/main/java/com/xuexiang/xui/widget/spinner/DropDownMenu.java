@@ -35,13 +35,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.R;
-import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.DeviceUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 

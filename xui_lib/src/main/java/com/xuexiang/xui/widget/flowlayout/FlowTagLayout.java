@@ -17,6 +17,7 @@ import com.xuexiang.xui.utils.ResUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -406,9 +407,9 @@ public class FlowTagLayout extends ViewGroup {
                         //更新点击状态
                         mCheckedTagArray.put(index, true);
                         childView.setSelected(true);
-                        setSelectedIndexs(Arrays.asList(index));
+                        setSelectedIndexs(Collections.singletonList(index));
                         if (mOnTagSelectListener != null) {
-                            mOnTagSelectListener.onItemSelect(FlowTagLayout.this, index, Arrays.asList(index));
+                            mOnTagSelectListener.onItemSelect(FlowTagLayout.this, index, Collections.singletonList(index));
                         }
                     }
                 } else if (mTagCheckMode == FLOW_TAG_CHECKED_MULTI) {
@@ -517,7 +518,8 @@ public class FlowTagLayout extends ViewGroup {
      *
      * @param items A list of items
      */
-    public <T> BaseTagAdapter setItems(@NonNull T... items) {
+    @SafeVarargs
+    public final <T> BaseTagAdapter setItems(@NonNull T... items) {
         return setItems(Arrays.asList(items));
     }
 
@@ -583,7 +585,8 @@ public class FlowTagLayout extends ViewGroup {
      * @param selectedItems 选中的内容集合
      * @return
      */
-    public <T> FlowTagLayout setSelectedItems(T... selectedItems) {
+    @SafeVarargs
+    public final <T> FlowTagLayout setSelectedItems(T... selectedItems) {
         setSelectedItems(Arrays.asList(selectedItems));
         return this;
     }

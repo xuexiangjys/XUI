@@ -16,6 +16,7 @@
 
 package com.xuexiang.xuidemo.adapter;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,7 @@ public class CommonRecyclerViewAdapter extends RecyclerView.Adapter<CommonRecycl
         notifyItemRemoved(position);
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
@@ -123,7 +125,7 @@ public class CommonRecyclerViewAdapter extends RecyclerView.Adapter<CommonRecycl
 
             mAdapter = adapter;
 
-            mTextView = (TextView) itemView.findViewById(R.id.textView);
+            mTextView = itemView.findViewById(R.id.textView);
         }
 
         public void setText(String text) {

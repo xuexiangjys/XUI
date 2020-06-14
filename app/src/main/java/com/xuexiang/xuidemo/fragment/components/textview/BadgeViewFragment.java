@@ -102,17 +102,17 @@ public class BadgeViewFragment extends BaseFragment implements CompoundButton.On
     protected void initViews() {
         initBadge();
 
-        radioButtons.add((RadioButton) findViewById(R.id.rb_st));
-        radioButtons.add((RadioButton) findViewById(R.id.rb_sb));
-        RadioButton rb_et = findViewById(R.id.rb_et);
-        lastRadioButton = rb_et;
-        radioButtons.add(rb_et);
-        radioButtons.add((RadioButton) findViewById(R.id.rb_eb));
-        radioButtons.add((RadioButton) findViewById(R.id.rb_ct));
-        radioButtons.add((RadioButton) findViewById(R.id.rb_ce));
-        radioButtons.add((RadioButton) findViewById(R.id.rb_cb));
-        radioButtons.add((RadioButton) findViewById(R.id.rb_cs));
-        radioButtons.add((RadioButton) findViewById(R.id.rb_c));
+        radioButtons.add(findViewById(R.id.rb_st));
+        radioButtons.add(findViewById(R.id.rb_sb));
+        RadioButton rbEt = findViewById(R.id.rb_et);
+        lastRadioButton = rbEt;
+        radioButtons.add(rbEt);
+        radioButtons.add(findViewById(R.id.rb_eb));
+        radioButtons.add(findViewById(R.id.rb_ct));
+        radioButtons.add(findViewById(R.id.rb_ce));
+        radioButtons.add(findViewById(R.id.rb_cb));
+        radioButtons.add(findViewById(R.id.rb_cs));
+        radioButtons.add(findViewById(R.id.rb_c));
 
 
     }
@@ -184,24 +184,18 @@ public class BadgeViewFragment extends BaseFragment implements CompoundButton.On
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_badge_color:
-                new SelectorColorDialog(getContext(), new SelectorColorDialog.OnColorSelectedListener() {
-                    @Override
-                    public void onColorSelected(int color) {
-                        ivBadgeColor.setBackgroundColor(color);
-                        for (Badge badge : mBadges) {
-                            badge.setBadgeBackgroundColor(color);
-                        }
+                new SelectorColorDialog(getContext(), color -> {
+                    ivBadgeColor.setBackgroundColor(color);
+                    for (Badge badge : mBadges) {
+                        badge.setBadgeBackgroundColor(color);
                     }
                 }).show();
                 break;
             case R.id.iv_number_color:
-                new SelectorColorDialog(getContext(), new SelectorColorDialog.OnColorSelectedListener() {
-                    @Override
-                    public void onColorSelected(int color) {
-                        ivNumberColor.setBackgroundColor(color);
-                        for (Badge badge : mBadges) {
-                            badge.setBadgeTextColor(color);
-                        }
+                new SelectorColorDialog(getContext(), color -> {
+                    ivNumberColor.setBackgroundColor(color);
+                    for (Badge badge : mBadges) {
+                        badge.setBadgeTextColor(color);
                     }
                 }).show();
                 break;
@@ -209,6 +203,8 @@ public class BadgeViewFragment extends BaseFragment implements CompoundButton.On
                 for (Badge badge : mBadges) {
                     badge.hide(true);
                 }
+                break;
+            default:
                 break;
         }
     }
@@ -285,6 +281,8 @@ public class BadgeViewFragment extends BaseFragment implements CompoundButton.On
                 case R.id.rb_c:
                     badge.setBadgeGravity(Gravity.CENTER);
                     break;
+                default:
+                    break;
             }
         }
     }
@@ -298,26 +296,25 @@ public class BadgeViewFragment extends BaseFragment implements CompoundButton.On
                     badge.setExactMode(isChecked);
                 } else if (buttonView == switchDraggable) {
                     badge.setOnDragStateChangedListener(isChecked ?
-                            new Badge.OnDragStateChangedListener() {
-                                @Override
-                                public void onDragStateChanged(int dragState, Badge badge, View targetView) {
-                                    switch (dragState) {
-                                        case STATE_START:
-                                            tvDragState.setText("STATE_START");
-                                            break;
-                                        case STATE_DRAGGING:
-                                            tvDragState.setText("STATE_DRAGGING");
-                                            break;
-                                        case STATE_DRAGGING_OUT_OF_RANGE:
-                                            tvDragState.setText("STATE_DRAGGING_OUT_OF_RANGE");
-                                            break;
-                                        case STATE_SUCCEED:
-                                            tvDragState.setText("STATE_SUCCEED");
-                                            break;
-                                        case STATE_CANCELED:
-                                            tvDragState.setText("STATE_CANCELED");
-                                            break;
-                                    }
+                            (Badge.OnDragStateChangedListener) (dragState, badge1, targetView) -> {
+                                switch (dragState) {
+                                    case Badge.OnDragStateChangedListener.STATE_START:
+                                        tvDragState.setText("STATE_START");
+                                        break;
+                                    case Badge.OnDragStateChangedListener.STATE_DRAGGING:
+                                        tvDragState.setText("STATE_DRAGGING");
+                                        break;
+                                    case Badge.OnDragStateChangedListener.STATE_DRAGGING_OUT_OF_RANGE:
+                                        tvDragState.setText("STATE_DRAGGING_OUT_OF_RANGE");
+                                        break;
+                                    case Badge.OnDragStateChangedListener.STATE_SUCCEED:
+                                        tvDragState.setText("STATE_SUCCEED");
+                                        break;
+                                    case Badge.OnDragStateChangedListener.STATE_CANCELED:
+                                        tvDragState.setText("STATE_CANCELED");
+                                        break;
+                                    default:
+                                        break;
                                 }
                             } : null);
                 } else if (buttonView == switchShadow) {

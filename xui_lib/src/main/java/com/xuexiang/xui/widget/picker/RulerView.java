@@ -27,7 +27,7 @@ import com.xuexiang.xui.utils.ResUtils;
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 刻度尺控件
@@ -334,8 +334,8 @@ public class RulerView extends View implements HasTypeface {
             case MotionEvent.ACTION_MOVE:
                 //滑动时候,通过假设的滑动距离,做超出左边界以及右边界的限制。
                 mMoveX = currentX - mDownX + mLastMoveX;
-                if (mMoveX >= mWidth / 2) {
-                    mMoveX = mWidth / 2;
+                if (mMoveX >= mWidth / 2F) {
+                    mMoveX = mWidth / 2F;
                 } else if (mMoveX <= getWhichScaleMoveX(mMaxScale)) {
                     mMoveX = getWhichScaleMoveX(mMaxScale);
                 }
@@ -369,8 +369,8 @@ public class RulerView extends View implements HasTypeface {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 mMoveX += (int) animation.getAnimatedValue();
-                if (mMoveX >= mWidth / 2) {
-                    mMoveX = mWidth / 2;
+                if (mMoveX >= mWidth / 2F) {
+                    mMoveX = mWidth / 2F;
                 } else if (mMoveX <= getWhichScaleMoveX(mMaxScale)) {
                     mMoveX = getWhichScaleMoveX(mMaxScale);
                 }
@@ -391,7 +391,7 @@ public class RulerView extends View implements HasTypeface {
     }
 
     private float getWhichScaleMoveX(float scale) {
-        return mWidth / 2 - mScaleGap * mScaleCount * (scale - mMinScale);
+        return mWidth / 2F - mScaleGap * mScaleCount * (scale - mMinScale);
     }
 
     private void drawScaleAndNum(Canvas canvas) {
@@ -439,14 +439,14 @@ public class RulerView extends View implements HasTypeface {
         int rulerRight = 0;                                    //准备开始绘制当前屏幕,从最左面开始
 
         if (mIsUp) {   //这部分代码主要是计算手指抬起时，惯性滑动结束时，刻度需要停留的位置
-            num2 = ((mMoveX - mWidth / 2 % mScaleGap) % mScaleGap);     //计算滑动位置距离整点刻度的小数部分距离
+            num2 = ((mMoveX - mWidth / 2F % mScaleGap) % mScaleGap);     //计算滑动位置距离整点刻度的小数部分距离
             if (num2 <= 0) {
                 num2 = mScaleGap - Math.abs(num2);
             }
             int leftScroll = (int) Math.abs(num2);                        //当前滑动位置距离左边整点刻度的距离
             int rightScroll = (int) (mScaleGap - Math.abs(num2));         //当前滑动位置距离右边整点刻度的距离
 
-            float moveX2 = num2 <= mScaleGap / 2 ? mMoveX - leftScroll : mMoveX + rightScroll; //最终计算出当前位置到整点刻度位置需要滑动的距离
+            float moveX2 = num2 <= mScaleGap / 2F ? mMoveX - leftScroll : mMoveX + rightScroll; //最终计算出当前位置到整点刻度位置需要滑动的距离
 
             if (mValueAnimator != null && !mValueAnimator.isRunning()) {      //手指抬起，并且当前没有惯性滑动在进行，创建一个惯性滑动
                 mValueAnimator = ValueAnimator.ofFloat(mMoveX, moveX2);
@@ -481,7 +481,7 @@ public class RulerView extends View implements HasTypeface {
         canvas.translate(num2, 0);
 
         //这里是滑动时候不断回调给使用者的结果值
-        mCurrentScale = new WeakReference<>(new BigDecimal(((mWidth / 2 - mMoveX) / (mScaleGap * mScaleCount) + mMinScale) * mScaleLimit)).get().setScale(1, BigDecimal.ROUND_HALF_UP).floatValue();
+        mCurrentScale = new WeakReference<>(new BigDecimal(((mWidth / 2F - mMoveX) / (mScaleGap * mScaleCount) + mMinScale) * mScaleLimit)).get().setScale(1, BigDecimal.ROUND_HALF_UP).floatValue();
 
         mResultText = String.valueOf(mCurrentScale);
 
@@ -492,19 +492,19 @@ public class RulerView extends View implements HasTypeface {
         //绘制当前屏幕可见刻度,不需要裁剪屏幕,while循环只会执行·屏幕宽度/刻度宽度·次,大部分的绘制都是if(curDis<mWidth)这样子内存暂用相对来说会比较高。。
         while (rulerRight < mWidth) {
             if (num1 % mScaleCount == 0) {    //绘制整点刻度以及文字
-                if ((mMoveX >= 0 && rulerRight < mMoveX - mScaleGap) || mWidth / 2 - rulerRight <= getWhichScaleMoveX(mMaxScale + 1) - mMoveX) {
+                if ((mMoveX >= 0 && rulerRight < mMoveX - mScaleGap) || mWidth / 2F - rulerRight <= getWhichScaleMoveX(mMaxScale + 1) - mMoveX) {
                     //当滑动出范围的话，不绘制，去除左右边界
                 } else {
                     //绘制刻度，绘制刻度数字
                     canvas.drawLine(0, 0, 0, mMidScaleHeight, mMidScalePaint);
                     mScaleNumPaint.getTextBounds(num1 / mScaleGap + mMinScale + "", 0, (num1 / mScaleGap + mMinScale + "").length(), mScaleNumRect);
-                    canvas.drawText((num1 / mScaleCount + mMinScale) * mScaleLimit + "", -mScaleNumRect.width() / 2, mLagScaleHeight +
-                            (mRulerHeight - mLagScaleHeight) / 2 + mScaleNumRect.height(), mScaleNumPaint);
+                    canvas.drawText((num1 / mScaleCount + mMinScale) * mScaleLimit + "", -mScaleNumRect.width() / 2F, mLagScaleHeight +
+                            (mRulerHeight - mLagScaleHeight) / 2F + mScaleNumRect.height(), mScaleNumPaint);
 
                 }
 
             } else {   //绘制小数刻度
-                if ((mMoveX >= 0 && rulerRight < mMoveX) || mWidth / 2 - rulerRight < getWhichScaleMoveX(mMaxScale) - mMoveX) {
+                if ((mMoveX >= 0 && rulerRight < mMoveX) || mWidth / 2F - rulerRight < getWhichScaleMoveX(mMaxScale) - mMoveX) {
                     //当滑动出范围的话，不绘制，去除左右边界
                 } else {
                     //绘制小数刻度
@@ -518,7 +518,7 @@ public class RulerView extends View implements HasTypeface {
 
         canvas.restore();
         //绘制屏幕中间用来选中刻度的最大刻度
-        canvas.drawLine(mWidth / 2, 0, mWidth / 2, mLagScaleHeight, mLagScalePaint);
+        canvas.drawLine(mWidth / 2F, 0, mWidth / 2F, mLagScaleHeight, mLagScalePaint);
 
     }
 
@@ -527,9 +527,9 @@ public class RulerView extends View implements HasTypeface {
         if (!mShowScaleResult) {   //判断用户是否设置需要显示当前刻度值，如果否则取消绘制
             return;
         }
-        canvas.translate(0, -mResultNumRect.height() - mRulerToResultGap / 2);  //移动画布到正确的位置来绘制结果值
+        canvas.translate(0, -mResultNumRect.height() - mRulerToResultGap / 2F);  //移动画布到正确的位置来绘制结果值
         mResultNumPaint.getTextBounds(resultText, 0, resultText.length(), mResultNumRect);
-        canvas.drawText(resultText, mWidth / 2 - mResultNumRect.width() / 2, mResultNumRect.height(), //绘制当前刻度结果值
+        canvas.drawText(resultText, mWidth / 2F - mResultNumRect.width() / 2F, mResultNumRect.height(), //绘制当前刻度结果值
                 mResultNumPaint);
         int resultNumRight = mWidth / 2 + mResultNumRect.width() / 2 + 10;
         canvas.drawText(mUnit, resultNumRight, mKgRect.height() + 2, mUnitPaint);            //在当前刻度结果值的又面10px的位置绘制单位

@@ -57,12 +57,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
     private void initNormalFlowTagLayout() {
         FlowTagAdapter tagAdapter = new FlowTagAdapter(getContext());
         mNormalFlowTagLayout.setAdapter(tagAdapter);
-        mNormalFlowTagLayout.setOnTagClickListener(new FlowTagLayout.OnTagClickListener() {
-            @Override
-            public void onItemClick(FlowTagLayout parent, View view, int position) {
-                XToastUtils.toast("点击了：" + parent.getAdapter().getItem(position));
-            }
-        });
+        mNormalFlowTagLayout.setOnTagClickListener((parent, view, position) -> XToastUtils.toast("点击了：" + parent.getAdapter().getItem(position)));
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
     }
 
@@ -70,12 +65,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         FlowTagAdapter tagAdapter = new FlowTagAdapter(getContext());
         mSingleFlowTagLayout.setAdapter(tagAdapter);
         mSingleFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);
-        mSingleFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
-            @Override
-            public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
-                XToastUtils.toast(getSelectedText(parent, selectedList));
-            }
-        });
+        mSingleFlowTagLayout.setOnTagSelectListener((parent, position, selectedList) -> XToastUtils.toast(getSelectedText(parent, selectedList)));
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
         tagAdapter.setSelectedPositions(2, 3, 4);
 
@@ -85,12 +75,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         FlowTagAdapter tagAdapter = new FlowTagAdapter(getContext());
         mSingleCancelableFlowTagLayout.setAdapter(tagAdapter);
         mSingleCancelableFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);
-        mSingleCancelableFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
-            @Override
-            public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
-                XToastUtils.toast(getSelectedText(parent, selectedList));
-            }
-        });
+        mSingleCancelableFlowTagLayout.setOnTagSelectListener((parent, position, selectedList) -> XToastUtils.toast(getSelectedText(parent, selectedList)));
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
         tagAdapter.setSelectedPositions(2, 3, 4);
 
@@ -100,12 +85,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         FlowTagAdapter tagAdapter = new FlowTagAdapter(getContext());
         mMultiFlowTagLayout.setAdapter(tagAdapter);
         mMultiFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_MULTI);
-        mMultiFlowTagLayout.setOnTagSelectListener(new FlowTagLayout.OnTagSelectListener() {
-            @Override
-            public void onItemSelect(FlowTagLayout parent, int position, List<Integer> selectedList) {
-                XToastUtils.toast(getSelectedText(parent, selectedList));
-            }
-        });
+        mMultiFlowTagLayout.setOnTagSelectListener((parent, position, selectedList) -> XToastUtils.toast(getSelectedText(parent, selectedList)));
         tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
         tagAdapter.setSelectedPositions(2, 3, 4);
 

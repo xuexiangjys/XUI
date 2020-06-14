@@ -63,7 +63,7 @@ public final class DrawableUtils {
     /**
      * 节省每次创建时产生的开销，但要注意多线程操作synchronized
      */
-    private static final Canvas sCanvas = new Canvas();
+    private static final Canvas CANVAS = new Canvas();
 
     /**
      * 从一个view创建Bitmap。
@@ -97,8 +97,8 @@ public final class DrawableUtils {
         Bitmap bitmap = createBitmapSafely((int) (view.getWidth() * scale),
                 (int) (viewHeight * scale), Bitmap.Config.ARGB_8888, 1);
         if (bitmap != null) {
-            synchronized (sCanvas) {
-                Canvas canvas = sCanvas;
+            synchronized (CANVAS) {
+                Canvas canvas = CANVAS;
                 canvas.setBitmap(bitmap);
                 canvas.save();
                 // 防止 View 上面有些区域空白导致最终 Bitmap 上有些区域变黑
@@ -126,8 +126,8 @@ public final class DrawableUtils {
         int bottom = viewHeight;
 
         if (bitmap != null) {
-            synchronized (sCanvas) {
-                Canvas canvas = sCanvas;
+            synchronized (CANVAS) {
+                Canvas canvas = CANVAS;
                 canvas.setBitmap(bitmap);
                 // 防止 View 上面有些区域空白导致最终 Bitmap 上有些区域变黑
                 canvas.drawColor(Color.WHITE);

@@ -96,8 +96,8 @@ class BitmapUtil {
         int x = 0, y = 0;
         int w = glSurfaceView.getWidth();
         int h = glSurfaceView.getHeight();
-        int bitmapBuffer[] = new int[w * h];
-        int bitmapSource[] = new int[w * h];
+        int[] bitmapBuffer = new int[w * h];
+        int[] bitmapSource = new int[w * h];
         IntBuffer intBuffer = IntBuffer.wrap(bitmapBuffer);
         intBuffer.position(0);
 

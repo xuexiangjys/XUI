@@ -103,8 +103,9 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
     public static void removeKeyboardToggleListener(SoftKeyboardToggleListener listener) {
         if (sListenerMap.containsKey(listener)) {
             KeyboardUtils k = sListenerMap.get(listener);
-            k.removeListener();
-
+            if (k != null) {
+                k.removeListener();
+            }
             sListenerMap.remove(listener);
         }
     }
@@ -114,7 +115,10 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      */
     public static void removeAllKeyboardToggleListeners() {
         for (SoftKeyboardToggleListener l : sListenerMap.keySet()) {
-            sListenerMap.get(l).removeListener();
+            KeyboardUtils k = sListenerMap.get(l);
+            if (k != null) {
+                k.removeListener();
+            }
         }
         sListenerMap.clear();
     }
@@ -344,8 +348,6 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
 
     /**
      * 修复软键盘内存泄漏
-     * <p>在{@link Activity#onDestroy()}中使用</p>
-     *
      * @param context context
      */
     public static void fixSoftInputLeaks(final Context context) {
@@ -358,17 +360,14 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
             return;
         }
         String[] strArr = new String[]{"mCurRootView", "mServedView", "mNextServedView"};
-        for (int i = 0; i < strArr.length; i++) {
+        for (String s : strArr) {
             try {
-                Field declaredField = imm.getClass().getDeclaredField(strArr[i]);
-                if (declaredField == null) {
-                    continue;
-                }
+                Field declaredField = imm.getClass().getDeclaredField(s);
                 if (!declaredField.isAccessible()) {
                     declaredField.setAccessible(true);
                 }
                 Object obj = declaredField.get(imm);
-                if (obj == null || !(obj instanceof View)) {
+                if (!(obj instanceof View)) {
                     continue;
                 }
                 View view = (View) obj;

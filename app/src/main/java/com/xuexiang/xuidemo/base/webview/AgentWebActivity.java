@@ -52,7 +52,16 @@ public class AgentWebActivity extends BaseAppCompatActivity {
                 .callBack(this::finish)
                 .register();
 
-        Uri uri = getIntent().getData();
+        loadWeb(getIntent());
+    }
+
+    /**
+     * 加载web页面
+     *
+     * @param intent
+     */
+    private void loadWeb(Intent intent) {
+        Uri uri = intent.getData();
         if (uri != null) {
             XRouter.getInstance().build(uri).navigation(this, new NavCallback() {
                 @Override
@@ -61,7 +70,7 @@ public class AgentWebActivity extends BaseAppCompatActivity {
                 }
             });
         } else {
-            String url = getIntent().getStringExtra(KEY_URL);
+            String url = intent.getStringExtra(KEY_URL);
             if (url != null) {
                 openFragment(url);
             } else {
@@ -100,10 +109,17 @@ public class AgentWebActivity extends BaseAppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        loadWeb(getIntent());
+    }
 
     @Override
     protected void onDestroy() {
         SlideBack.unregister(this);
         super.onDestroy();
     }
+
 }

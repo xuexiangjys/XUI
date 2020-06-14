@@ -65,7 +65,6 @@ import java.util.List;
 public class MaterialSearchView extends FrameLayout implements Filter.FilterListener {
     public static final int REQUEST_VOICE = 9999;
 
-    private MenuItem mMenuItem;
     private boolean mIsSearchOpen = false;
     private int mAnimationDuration;
     private boolean mClearingFocus;
@@ -521,8 +520,7 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
      * @param menuItem
      */
     public void setMenuItem(MenuItem menuItem) {
-        this.mMenuItem = menuItem;
-        mMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 showSearch();

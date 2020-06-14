@@ -58,14 +58,10 @@ public class MaterialSpinner extends AppCompatTextView {
     private int mPopupWindowHeight;
     private int mSelectedIndex;
     private int mBackgroundColor;
-    private int mBackgroundSelector;
     private int mArrowColor;
     private int mArrowColorDisabled;
     private int mTextColor;
-    private int mEntriesID;
-    private Drawable mDropDownBg;
     private boolean mIsInDialog;
-    private int mPopAnimStyle;
     private int mDropDownOffset;
 
     public MaterialSpinner(Context context) {
@@ -93,6 +89,10 @@ public class MaterialSpinner extends AppCompatTextView {
         int defaultColor = getTextColors().getDefaultColor();
         boolean rtl = ResUtils.isRtl();
 
+        int mPopAnimStyle;
+        Drawable mDropDownBg;
+        int mEntriesID;
+        int mBackgroundSelector;
         try {
             mBackgroundColor = typedArray.getColor(R.styleable.MaterialSpinner_ms_background_color, Color.WHITE);
             mBackgroundSelector = typedArray.getResourceId(R.styleable.MaterialSpinner_ms_background_selector, 0);
@@ -425,7 +425,8 @@ public class MaterialSpinner extends AppCompatTextView {
      * @param items A list of items
      * @param <T>   The item type
      */
-    public <T> MaterialSpinner setItems(@NonNull T... items) {
+    @SafeVarargs
+    public final <T> MaterialSpinner setItems(@NonNull T... items) {
         setItems(Arrays.asList(items));
         return this;
     }
@@ -572,8 +573,8 @@ public class MaterialSpinner extends AppCompatTextView {
      * @return window显示的左上角的xOff, yOff坐标
      */
     private int[] calculatePopWindowPos(final View anchorView) {
-        final int windowPos[] = new int[2];
-        final int anchorLoc[] = new int[2];
+        final int[] windowPos = new int[2];
+        final int[] anchorLoc = new int[2];
         // 获取锚点View在屏幕上的左上角坐标位置
         anchorView.getLocationOnScreen(anchorLoc);
         final int anchorHeight = anchorView.getHeight();
@@ -605,7 +606,7 @@ public class MaterialSpinner extends AppCompatTextView {
      */
     private int calculatePopWindowYOffset(final View anchorView) {
         int windowYOffset;
-        final int anchorLoc[] = new int[2];
+        final int[] anchorLoc = new int[2];
         // 获取锚点View在屏幕上的左上角坐标位置
         anchorView.getLocationOnScreen(anchorLoc);
         final int anchorHeight = anchorView.getHeight();

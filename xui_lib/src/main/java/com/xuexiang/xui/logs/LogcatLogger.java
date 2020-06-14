@@ -74,7 +74,7 @@ public class LogcatLogger implements ILogger {
                 logSub(priority, tag, sub);
                 index = lastIndex;
             }
-            logSub(priority, tag, message.substring(index, message.length()));
+            logSub(priority, tag, message.substring(index));
         } else {
             logSub(priority, tag, message);
         }

@@ -77,44 +77,41 @@ public class ViewAnimationFragment extends BaseFragment {
                 .addItem("Slide（上进上出） 动画")
                 .addItem("Slide（左进右出） 动画")
                 .addItem("背景闪烁（黄色）")
-                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
-                        dialog.dismiss();
-                        switch (position) {
-                            case 0:
-                                if (mPopupView.getVisibility() == View.GONE) {
-                                    mPopupView.setText("以 Fade 动画显示本浮层");
-                                    ViewUtils.fadeIn(mPopupView, 500, null);
-                                } else {
-                                    mPopupView.setText("以 Fade 动画隐藏本浮层");
-                                    ViewUtils.fadeOut(mPopupView, 500, null);
-                                }
-                                break;
-                            case 1:
-                                if (mPopupView.getVisibility() == View.GONE) {
-                                    mPopupView.setText("以 Slide（上进上出）动画显示本浮层");
-                                    ViewUtils.slideIn(mPopupView, 500, null, TOP_TO_BOTTOM);
-                                } else {
-                                    mPopupView.setText("以 Slide（上进上出）动画隐藏本浮层");
-                                    ViewUtils.slideOut(mPopupView, 500, null, BOTTOM_TO_TOP);
-                                }
-                                break;
-                            case 2:
-                                if (mPopupView.getVisibility() == View.GONE) {
-                                    mPopupView.setText("以 Slide（左进右出）动画显示本浮层");
-                                    ViewUtils.slideIn(mPopupView, 500, null, LEFT_TO_RIGHT);
-                                } else {
-                                    mPopupView.setText("以 Slide（左进右出）动画隐藏本浮层");
-                                    ViewUtils.slideOut(mPopupView, 500, null, LEFT_TO_RIGHT);
-                                }
-                                break;
-                            case 3:
-                                ViewUtils.playBackgroundBlinkAnimation(mContainer, ContextCompat.getColor(getContext(), R.color.xui_config_color_pure_yellow));
-                                break;
-                            default:
-                                break;
-                        }
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    switch (position) {
+                        case 0:
+                            if (mPopupView.getVisibility() == View.GONE) {
+                                mPopupView.setText("以 Fade 动画显示本浮层");
+                                ViewUtils.fadeIn(mPopupView, 500, null);
+                            } else {
+                                mPopupView.setText("以 Fade 动画隐藏本浮层");
+                                ViewUtils.fadeOut(mPopupView, 500, null);
+                            }
+                            break;
+                        case 1:
+                            if (mPopupView.getVisibility() == View.GONE) {
+                                mPopupView.setText("以 Slide（上进上出）动画显示本浮层");
+                                ViewUtils.slideIn(mPopupView, 500, null, TOP_TO_BOTTOM);
+                            } else {
+                                mPopupView.setText("以 Slide（上进上出）动画隐藏本浮层");
+                                ViewUtils.slideOut(mPopupView, 500, null, BOTTOM_TO_TOP);
+                            }
+                            break;
+                        case 2:
+                            if (mPopupView.getVisibility() == View.GONE) {
+                                mPopupView.setText("以 Slide（左进右出）动画显示本浮层");
+                                ViewUtils.slideIn(mPopupView, 500, null, LEFT_TO_RIGHT);
+                            } else {
+                                mPopupView.setText("以 Slide（左进右出）动画隐藏本浮层");
+                                ViewUtils.slideOut(mPopupView, 500, null, LEFT_TO_RIGHT);
+                            }
+                            break;
+                        case 3:
+                            ViewUtils.playBackgroundBlinkAnimation(mContainer, ContextCompat.getColor(getContext(), R.color.xui_config_color_pure_yellow));
+                            break;
+                        default:
+                            break;
                     }
                 })
                 .build()

@@ -71,6 +71,10 @@ public final class UILog {
         sIsDebug = isDebug;
     }
 
+    public static boolean isDebug() {
+        return sIsDebug;
+    }
+
     /**
      * 设置打印日志的等级（只打印改等级以上的日志）
      *

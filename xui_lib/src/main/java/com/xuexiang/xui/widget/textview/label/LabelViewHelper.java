@@ -124,7 +124,7 @@ public final class LabelViewHelper {
             return;
         }
 
-        float actualDistance = mDistance + mHeight / 2;
+        float actualDistance = mDistance + mHeight / 2F;
         calcOffset(measuredWidth, measuredHeight);
 
         mRectPaint.setColor(mBackgroundColor);
@@ -147,10 +147,12 @@ public final class LabelViewHelper {
             mTextPaint.setTypeface(XUI.getDefaultTypeface(mTextFont));
         }
 
-        float begin_w_offset = (1.4142135f * actualDistance) / 2 - mTextBound.width() / 2;
-        if (begin_w_offset < 0) begin_w_offset = 0;
+        float begin_w_offset = (1.4142135f * actualDistance) / 2 - mTextBound.width() / 2F;
+        if (begin_w_offset < 0) {
+            begin_w_offset = 0;
+        }
 
-        canvas.drawTextOnPath(mText, mTextPath, begin_w_offset, mTextBound.height() / 2, mTextPaint);
+        canvas.drawTextOnPath(mText, mTextPath, begin_w_offset, mTextBound.height() / 2F, mTextPaint);
     }
 
     /**
@@ -165,7 +167,7 @@ public final class LabelViewHelper {
         float startPosY = measuredHeight - mDistance - mHeight;
         float endPosY = measuredHeight;
 
-        float middle = mHeight / 2;
+        float middle = mHeight / 2F;
 
         switch (mOrientation) {
             case LEFT_TOP: // LEFT_TOP
@@ -228,6 +230,8 @@ public final class LabelViewHelper {
                 mTextPath.close();
 
                 break;
+            default:
+                break;
         }
     }
 
@@ -288,7 +292,7 @@ public final class LabelViewHelper {
     }
 
     public void setLabelOrientation(View view, int orientation) {
-        if (mOrientation != orientation && orientation <= 4 && orientation >= 1) {
+        if (mOrientation != orientation && orientation <= RIGHT_BOTTOM && orientation >= LEFT_TOP) {
             mOrientation = orientation;
             view.invalidate();
         }
@@ -362,7 +366,9 @@ public final class LabelViewHelper {
     }
 
     public void setLabelTextStyle(View view, int textStyle) {
-        if (mTextStyle == textStyle) return;
+        if (mTextStyle == textStyle) {
+            return;
+        }
         mTextStyle = textStyle;
         view.invalidate();
     }

@@ -134,8 +134,8 @@ public abstract class BaseTagAdapter<T, H> extends BaseListAdapter<T, H> impleme
      */
     public BaseTagAdapter setSelectedPositions(int[] ps) {
         mPositions.clear();
-        for (int i = 0; i < ps.length; i++) {
-            mPositions.add(ps[i]);
+        for (int p : ps) {
+            mPositions.add(p);
         }
         notifyDataSetChanged();
         return this;

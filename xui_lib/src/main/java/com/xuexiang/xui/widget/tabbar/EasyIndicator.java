@@ -23,12 +23,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-
-import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager.widget.PagerAdapter;
-
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -39,12 +33,17 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 简单的索引器
@@ -54,7 +53,6 @@ import uk.co.chrisjenx.calligraphy.HasTypeface;
  */
 public class EasyIndicator extends LinearLayout implements View.OnClickListener, ViewPager.OnPageChangeListener, HasTypeface {
     private View mIndicator;
-    private int mPosition;
     private ViewPager mViewPager;
     /**
      * 选项卡点击监听
@@ -292,7 +290,7 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         TextView tv = (TextView) v;
-        mPosition = (int) v.getTag();
+        int mPosition = (int) v.getTag();
         if (mViewPager != null) {
             mViewPager.setCurrentItem(mPosition);
         } else {
@@ -307,9 +305,9 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     }
 
     private void setSelectorColor(TextView tv) {
-        for (int i = 0; i < tvs.length; i++) {
-            tvs[i].setTextColor(indicator_normal_color);
-            tvs[i].setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_textSize);
+        for (TextView textView : tvs) {
+            textView.setTextColor(indicator_normal_color);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_textSize);
         }
         tv.setTextColor(indicator_selected_color);
         tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_select_textSize);

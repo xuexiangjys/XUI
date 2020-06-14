@@ -4,10 +4,6 @@ import android.view.View;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.simple.AdapterItem;
-import com.xuexiang.xui.adapter.simple.ExpandableItem;
-import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
-import com.xuexiang.xui.adapter.simple.XUISimpleExpandableListAdapter;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.popupwindow.popup.XUISimpleExpandablePopup;
 import com.xuexiang.xui.widget.popupwindow.popup.XUISimplePopup;
@@ -68,34 +64,19 @@ public class PopupWindowStyleFragment extends BaseFragment {
 
     private void initListPopup() {
         mListPopup = new XUISimplePopup(getContext(), DemoDataProvider.dpiItems)
-                .create(DensityUtils.dip2px(getContext(), 170), new XUISimplePopup.OnPopupItemClickListener() {
-                    @Override
-                    public void onItemClick(XUISimpleAdapter adapter, AdapterItem item, int position) {
-                        XToastUtils.toast(item.getTitle().toString());
-                    }
-                })
+                .create(DensityUtils.dip2px(getContext(), 170), (adapter, item, position) -> XToastUtils.toast(item.getTitle().toString()))
                 .setHasDivider(true);
     }
 
     private void initExpandableListPopup() {
         mExpandableListPopup = new XUISimpleExpandablePopup(getContext(), DemoDataProvider.expandableItems)
                 .create(DensityUtils.dip2px(getContext(), 200), DensityUtils.dip2px(getContext(), 200))
-                .setOnExpandableItemClickListener(false, new XUISimpleExpandablePopup.OnExpandableItemClickListener() {
-                    @Override
-                    public void onExpandableItemClick(XUISimpleExpandableListAdapter adapter, ExpandableItem group, int groupPosition, int childPosition) {
-                        XToastUtils.toast(group.getChildItem(childPosition).getTitle());
-                    }
-                });
+                .setOnExpandableItemClickListener(false, (adapter, group, groupPosition, childPosition) -> XToastUtils.toast(group.getChildItem(childPosition).getTitle()));
     }
 
     private void initMenuPopup() {
         mMenuPopup = new XUISimplePopup(getContext(), DemoDataProvider.menuItems)
-                .create(new XUISimplePopup.OnPopupItemClickListener() {
-                    @Override
-                    public void onItemClick(XUISimpleAdapter adapter, AdapterItem item, int position) {
-                        XToastUtils.toast(item.getTitle().toString());
-                    }
-                });
+                .create((adapter, item, position) -> XToastUtils.toast(item.getTitle().toString()));
     }
 
     @SingleClick

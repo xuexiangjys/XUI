@@ -28,6 +28,8 @@ public class ShadowImageView extends AppCompatImageView {
     private int mShapeType;
     private int mRadius;
 
+    private RectF mRectF;
+
     public ShadowImageView(Context context) {
         super(context);
         init(context, null);
@@ -68,6 +70,7 @@ public class ShadowImageView extends AppCompatImageView {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
+        mRectF = new RectF(0, 0, mWidth, mHeight);
     }
 
     @Override
@@ -77,11 +80,9 @@ public class ShadowImageView extends AppCompatImageView {
             return;
         }
         if (mShapeType == 0) {
-            canvas.drawCircle(mWidth / 2, mHeight / 2, mWidth / 2.1038f, mPaint);
+            canvas.drawCircle(mWidth / 2F, mHeight / 2F, mWidth / 2.1038f, mPaint);
         } else {
-            RectF rectF = new RectF();
-            rectF.set(0, 0, mWidth, mHeight);
-            canvas.drawRoundRect(rectF, mRadius, mRadius, mPaint);
+            canvas.drawRoundRect(mRectF, mRadius, mRadius, mPaint);
         }
     }
 

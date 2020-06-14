@@ -21,6 +21,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.utils.view.ObjectAnimationFragment;
 import com.xuexiang.xuidemo.fragment.utils.view.ViewAnimationFragment;
+import com.xuexiang.xuidemo.fragment.utils.view.ViewCustomAnimationFragment;
 import com.xuexiang.xuidemo.fragment.utils.view.ViewPaddingFragment;
 
 /**
@@ -34,7 +35,8 @@ public class ViewUtilsFragment extends ComponentContainerFragment {
         return new Class[]{
                 ViewAnimationFragment.class,
                 ViewPaddingFragment.class,
-                ObjectAnimationFragment.class
+                ObjectAnimationFragment.class,
+                ViewCustomAnimationFragment.class
         };
     }
 }

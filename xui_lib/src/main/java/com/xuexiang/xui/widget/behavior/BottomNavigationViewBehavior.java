@@ -18,6 +18,8 @@
 package com.xuexiang.xui.widget.behavior;
 
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
@@ -35,14 +37,14 @@ public class BottomNavigationViewBehavior extends BaseBehavior {
     }
 
     @Override
-    public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
+    public boolean layoutDependsOn(@NonNull CoordinatorLayout parent, @NonNull View child, @NonNull View dependency) {
 
 
         return true;
     }
 
     @Override
-    public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
+    public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull View child, @NonNull View dependency) {
         if (canInit) {
             canInit = false;
             mAnimateHelper = TranslateAnimateHelper.get(child);

@@ -190,4 +190,11 @@
         <item name="android:textColor">@color/xui_config_color_white</item>
     </style>
 
+    <style name="XUILayout">
+        <item name="xui_borderWidth">0dp</item>
+        <item name="xui_radius">8dp</item>
+        <item name="xui_shadowElevation">4dp</item>
+        <item name="android:background">@color/xui_config_color_white</item>
+    </style>
+
 </resources>

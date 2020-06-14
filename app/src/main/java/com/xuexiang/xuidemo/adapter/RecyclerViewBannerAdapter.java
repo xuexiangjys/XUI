@@ -20,7 +20,6 @@ package com.xuexiang.xuidemo.adapter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -98,12 +97,9 @@ public class RecyclerViewBannerAdapter extends BaseRecyclerAdapter<String> {
             imageView.setImageDrawable(mColorDrawable);
         }
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mOnBannerItemClickListener != null) {
-                    mOnBannerItemClickListener.onItemClick(position);
-                }
+        imageView.setOnClickListener(v -> {
+            if (mOnBannerItemClickListener != null) {
+                mOnBannerItemClickListener.onItemClick(position);
             }
         });
     }

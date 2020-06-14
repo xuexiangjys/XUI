@@ -47,7 +47,6 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
     private boolean mIsValid = true;
 
     private Drawable mErrorDrawable;
-    private int mIconSize;
 
     /**
      * 出错提示
@@ -99,7 +98,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
                         mErrorDrawable = ResUtils.getDrawable(R.drawable.xui_ic_default_tip_btn);
                     }
                 }
-                mIconSize = typedArray.getDimensionPixelSize(R.styleable.ValidatorEditText_vet_errorIconSize, 0);
+                int mIconSize = typedArray.getDimensionPixelSize(R.styleable.ValidatorEditText_vet_errorIconSize, 0);
                 if (mIconSize != 0) {
                     mErrorDrawable.setBounds(0, 0, mIconSize, mIconSize);
                 } else {
@@ -225,11 +224,11 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
         }
 
         CharSequence text = getText();
-        boolean isEmpty = text.length() == 0;
+        boolean isEmpty = TextUtils.isEmpty(text);
 
         boolean isValid = true;
         for (METValidator validator : mValidators) {
-            isValid = isValid && validator.isValid(text, isEmpty);
+            isValid = validator.isValid(text, isEmpty);
             if (!isValid) {
                 setError(validator.getErrorMessage());
                 break;
@@ -265,7 +264,6 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
 
     @Override
     public void setError(CharSequence error) {
-//        super.setError(error);
         mErrorMsg = error;
         if (TextUtils.isEmpty(error)) {
             setErrorIconVisible(false);
@@ -296,7 +294,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
     private void onValidateError(String errorMessage) {
         setErrorIconVisible(true);
         if (mOnValidateListener != null) {
-            mOnValidateListener.onValidateError(getText().toString(), errorMessage);
+            mOnValidateListener.onValidateError(getText() != null ? getText().toString() : "", errorMessage);
         }
     }
 

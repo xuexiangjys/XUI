@@ -44,17 +44,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class LabelView extends AppCompatTextView {
 
-    private float _offsetx;
-    private float _offsety;
-    private float _anchorx;
-    private float _anchory;
-    private float _angel;
-    private int _labelViewContainerID;
-    private Animation _animation = new Animation() {
+    private float mOffsetX;
+    private float mOffsetY;
+    private float mAnchorX;
+    private float mAnchorY;
+    private float mAngel;
+    private int mLabelViewContainerID;
+    private Animation mAnimation = new Animation() {
+        @Override
         protected void applyTransformation(float interpolatedTime, Transformation t) {
             Matrix tran = t.getMatrix();
-            tran.postTranslate(_offsetx, _offsety);
-            tran.postRotate(_angel, _anchorx, _anchory);
+            tran.postTranslate(mOffsetX, mOffsetY);
+            tran.postRotate(mAngel, mAnchorX, mAnchorY);
         }
     };
 
@@ -75,16 +76,15 @@ public class LabelView extends AppCompatTextView {
 
         init();
 
-        _animation.setFillBefore(true);
-        _animation.setFillAfter(true);
-        _animation.setFillEnabled(true);
+        mAnimation.setFillBefore(true);
+        mAnimation.setFillAfter(true);
+        mAnimation.setFillEnabled(true);
 
     }
 
 
     private void init() {
-
-        if (!(getLayoutParams() instanceof ViewGroup.LayoutParams)) {
+        if (getLayoutParams() == null) {
             LayoutParams layoutParams =
                     new LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
@@ -94,7 +94,7 @@ public class LabelView extends AppCompatTextView {
 
         // the default value
         //setPadding(dip2Px(40), dip2Px(2), dip2Px(40), dip2Px(2));
-        _labelViewContainerID = -1;
+        mLabelViewContainerID = -1;
 
         setGravity(android.view.Gravity.CENTER);
         setTextColor(Color.WHITE);
@@ -115,6 +115,7 @@ public class LabelView extends AppCompatTextView {
 
         ViewTreeObserver vto = getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
             public void onGlobalLayout() {
                 getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 calcOffset(getMeasuredWidth(), d, g, v.getMeasuredWidth(), false);
@@ -134,12 +135,14 @@ public class LabelView extends AppCompatTextView {
     }
 
     public void remove() {
-        if (getParent() == null || _labelViewContainerID == -1) {
+        if (getParent() == null || mLabelViewContainerID == -1) {
             return;
         }
 
         ViewGroup frameContainer = (ViewGroup) getParent();
-        assert (frameContainer.getChildCount() == 2);
+        if (frameContainer.getChildCount() != 2) {
+            throw new AssertionError();
+        }
         View target = frameContainer.getChildAt(0);
 
         ViewGroup parentContainer = (ViewGroup) frameContainer.getParent();
@@ -152,7 +155,7 @@ public class LabelView extends AppCompatTextView {
                 View view = parentContainer.getChildAt(i);
                 RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) view.getLayoutParams();
                 for (int j = 0; j < para.getRules().length; j++) {
-                    if (para.getRules()[j] == _labelViewContainerID) {
+                    if (para.getRules()[j] == mLabelViewContainerID) {
                         para.getRules()[j] = target.getId();
                     }
                 }
@@ -165,12 +168,12 @@ public class LabelView extends AppCompatTextView {
         parentContainer.removeViewAt(groupIndex);
         frameContainer.removeView(target);
         frameContainer.removeView(this);
-        parentContainer.addView(target,groupIndex);
-        _labelViewContainerID = -1;
+        parentContainer.addView(target, groupIndex);
+        mLabelViewContainerID = -1;
     }
 
     private boolean replaceLayout(View target) {
-        if (getParent() != null || target == null || target.getParent() == null || _labelViewContainerID != -1) {
+        if (getParent() != null || target == null || target.getParent() == null || mLabelViewContainerID != -1) {
             return false;
         }
 
@@ -181,7 +184,7 @@ public class LabelView extends AppCompatTextView {
         } else if (target.getParent() instanceof ViewGroup) {
 
             int groupIndex = parentContainer.indexOfChild(target);
-            _labelViewContainerID = generateViewId();
+            mLabelViewContainerID = generateViewId();
 
             // relativeLayout need copy rule
             if (target.getParent() instanceof RelativeLayout) {
@@ -193,7 +196,7 @@ public class LabelView extends AppCompatTextView {
                     RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) view.getLayoutParams();
                     for (int j = 0; j < para.getRules().length; j++) {
                         if (para.getRules()[j] == target.getId()) {
-                            para.getRules()[j] = _labelViewContainerID;
+                            para.getRules()[j] = mLabelViewContainerID;
                         }
                     }
                     view.setLayoutParams(para);
@@ -211,7 +214,7 @@ public class LabelView extends AppCompatTextView {
             // add target and label in dummy layout
             labelViewContainer.addView(target);
             labelViewContainer.addView(this);
-            labelViewContainer.setId(_labelViewContainerID);
+            labelViewContainer.setId(mLabelViewContainerID);
 
             // add dummy layout in parent container
             parentContainer.addView(labelViewContainer, groupIndex, targetLayoutParam);
@@ -226,35 +229,37 @@ public class LabelView extends AppCompatTextView {
 
         float edge = (float) ((labelWidth - 2 * d) / (2 * 1.414));
         if (gravity == Gravity.LEFT_TOP) {
-            _anchorx = -edge;
-            _offsetx = _anchorx;
-            _angel = -45;
+            mAnchorX = -edge;
+            mOffsetX = mAnchorX;
+            mAngel = -45;
         } else if (gravity == Gravity.RIGHT_TOP) {
-            _offsetx = tw + edge - labelWidth;
-            _anchorx = tw + edge;
-            _angel = 45;
+            mOffsetX = tw + edge - labelWidth;
+            mAnchorX = tw + edge;
+            mAngel = 45;
         }
 
-        _anchory = (float) (1.414 * d + edge);
-        _offsety = _anchory;
+        mAnchorY = (float) (1.414 * d + edge);
+        mOffsetY = mAnchorY;
 
         clearAnimation();
-        startAnimation(_animation);
+        startAnimation(mAnimation);
     }
 
     private int dip2Px(float dip) {
         return (int) (dip * getContext().getResources().getDisplayMetrics().density + 0.5f);
     }
 
-    private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
+    private static final AtomicInteger NEXT_GENERATED_ID = new AtomicInteger(1);
 
     public static int generateViewId() {
         for (; ; ) {
-            final int result = sNextGeneratedId.get();
+            final int result = NEXT_GENERATED_ID.get();
             // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
             int newValue = result + 1;
-            if (newValue > 0x00FFFFFF) newValue = 1; // Roll over to 1, not 0.
-            if (sNextGeneratedId.compareAndSet(result, newValue)) {
+            if (newValue > 0x00FFFFFF) {
+                newValue = 1; // Roll over to 1, not 0.
+            }
+            if (NEXT_GENERATED_ID.compareAndSet(result, newValue)) {
                 return result;
             }
         }

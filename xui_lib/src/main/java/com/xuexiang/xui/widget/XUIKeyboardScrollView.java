@@ -20,7 +20,6 @@ package com.xuexiang.xui.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.widget.ScrollView;
 
 import com.xuexiang.xui.R;

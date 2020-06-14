@@ -21,7 +21,7 @@ import android.app.Application;
 
 import com.xuexiang.xuidemo.MyApp;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateDownloader;
-import com.xuexiang.xuidemo.utils.update.OKHttpUpdateHttpService;
+import com.xuexiang.xuidemo.utils.update.OkHttpUpdateHttpServiceImpl;
 import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xupdate.utils.UpdateUtils;
 
@@ -49,7 +49,7 @@ public final class XUpdateInit {
                 .param("versionCode", UpdateUtils.getVersionCode(application))
                 .param("appKey", application.getPackageName())
                 //这个必须设置！实现网络请求功能。
-                .setIUpdateHttpService(new OKHttpUpdateHttpService())
+                .setIUpdateHttpService(new OkHttpUpdateHttpServiceImpl())
                 .setIUpdateDownLoader(new CustomUpdateDownloader())
                 //这个必须初始化
                 .init(application);

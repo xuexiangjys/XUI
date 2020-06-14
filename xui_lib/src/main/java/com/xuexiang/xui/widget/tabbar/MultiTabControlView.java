@@ -45,7 +45,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 
@@ -509,8 +509,10 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
 
     private String getTitleByValue(String value) {
         if (mItemMap.containsValue(value)) {
+            String title;
             for (String key : mItemMap.keySet()) {
-                if (mItemMap.get(key).equalsIgnoreCase(value)) {
+                title = mItemMap.get(key);
+                if (title != null && title.equalsIgnoreCase(value)) {
                     return key;
                 }
             }

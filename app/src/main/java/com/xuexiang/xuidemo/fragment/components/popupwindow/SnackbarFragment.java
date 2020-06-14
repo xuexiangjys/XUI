@@ -65,17 +65,14 @@ public class SnackbarFragment extends BaseFragment {
             case R.id.btn_indefinite:
                 SnackbarUtils.Indefinite(view, "显示时长:无限 + info").info()
                         .actionColor(ResUtils.getColor(R.color.xui_config_color_white))
-                        .setAction("确定", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                XToastUtils.toast("点击了确定！");
-                            }
-                        }).show();
+                        .setAction("确定", v -> XToastUtils.toast("点击了确定！")).show();
                 break;
             case R.id.btn_length_custom:
                 SnackbarUtils.Custom(view, "显示时长:自定义 3秒 + info", 3 * 1000)
                         .info()
                         .show();
+                break;
+            default:
                 break;
         }
     }
@@ -130,11 +127,8 @@ public class SnackbarFragment extends BaseFragment {
             case R.id.btn_action_color:
                 SnackbarUtils.Short(view, "设置按钮文字的颜色:白色")
                         .actionColor(Color.WHITE)
-                        .setAction("确定", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+                        .setAction("确定", v -> {
 
-                            }
                         })
                         .show();
                 break;
@@ -153,12 +147,7 @@ public class SnackbarFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.btn_action:
                 SnackbarUtils.Long(view, "设置按钮文字及点击监听")
-                        .setAction("按钮文字", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                XToastUtils.toast("点击了按钮!");
-                            }
-                        }).show();
+                        .setAction("按钮文字", v -> XToastUtils.toast("点击了按钮!")).show();
                 break;
             case R.id.btn_callback:
                 SnackbarUtils.Short(view, "设置显示及隐藏监听")

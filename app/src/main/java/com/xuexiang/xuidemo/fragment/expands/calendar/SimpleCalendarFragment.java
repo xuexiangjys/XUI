@@ -33,12 +33,10 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
-import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.widget.CustomRefreshFooter;
@@ -124,36 +122,25 @@ public class SimpleCalendarFragment extends BaseFragment implements CalendarView
 
     @Override
     protected void initListeners() {
-        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
-            @Override
-            public void onItemClick(View itemView, NewInfo item, int position) {
-                Utils.goWeb(getContext(), item.getDetailUrl());
-            }
-        });
+        mAdapter.setOnItemClickListener((itemView, item, position) -> Utils.goWeb(getContext(), item.getDetailUrl()));
 
         calendarView.setOnCalendarSelectListener(this);
 
         refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
-                        refreshLayout.finishRefresh();
-                    }
+                refreshLayout.getLayout().postDelayed(() -> {
+                    mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+                    refreshLayout.finishRefresh();
                 }, 1000);
 
             }
 
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
-                        refreshLayout.finishLoadMore();
-                    }
+                refreshLayout.getLayout().postDelayed(() -> {
+                    mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
+                    refreshLayout.finishLoadMore();
                 }, 1000);
 
             }

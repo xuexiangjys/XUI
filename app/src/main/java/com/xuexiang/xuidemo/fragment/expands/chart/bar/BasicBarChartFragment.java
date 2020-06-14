@@ -238,44 +238,41 @@ public class BasicBarChartFragment extends BaseChartFragment implements OnChartV
                 .addItem(getResources().getString(R.string.chart_animate_y))
                 .addItem(getResources().getString(R.string.chart_animate_xy))
                 .addItem(getResources().getString(R.string.chart_save))
-                .setOnSheetItemClickListener(new BottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
-                    @Override
-                    public void onClick(BottomSheet dialog, View itemView, int position, String tag) {
-                        dialog.dismiss();
-                        switch (position) {
-                            case 0:
-                                for (IBarDataSet set : chart.getData().getDataSets()) {
-                                    ((BarDataSet) set).setBarBorderWidth(set.getBarBorderWidth() == 1.f ? 0.f : 1.f);
-                                }
-                                chart.invalidate();
-                                break;
-                            case 1:
-                                for (IDataSet<?> set : chart.getData().getDataSets()) {
-                                    set.setDrawValues(!set.isDrawValuesEnabled());
-                                }
-                                chart.invalidate();
-                                break;
-                            case 2:
-                                for (IDataSet set : chart.getData().getDataSets()) {
-                                    set.setDrawIcons(!set.isDrawIconsEnabled());
-                                }
-                                chart.invalidate();
-                                break;
-                            case 3:
-                                chart.animateX(2000);
-                                break;
-                            case 4:
-                                chart.animateY(2000);
-                                break;
-                            case 5:
-                                chart.animateXY(2000, 2000);
-                                break;
-                            case 6:
-                                saveToGallery(chart, "BasicBarChart");
-                                break;
-                            default:
-                                break;
-                        }
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    switch (position) {
+                        case 0:
+                            for (IBarDataSet set : chart.getData().getDataSets()) {
+                                ((BarDataSet) set).setBarBorderWidth(set.getBarBorderWidth() == 1.f ? 0.f : 1.f);
+                            }
+                            chart.invalidate();
+                            break;
+                        case 1:
+                            for (IDataSet<?> set : chart.getData().getDataSets()) {
+                                set.setDrawValues(!set.isDrawValuesEnabled());
+                            }
+                            chart.invalidate();
+                            break;
+                        case 2:
+                            for (IDataSet set : chart.getData().getDataSets()) {
+                                set.setDrawIcons(!set.isDrawIconsEnabled());
+                            }
+                            chart.invalidate();
+                            break;
+                        case 3:
+                            chart.animateX(2000);
+                            break;
+                        case 4:
+                            chart.animateY(2000);
+                            break;
+                        case 5:
+                            chart.animateXY(2000, 2000);
+                            break;
+                        case 6:
+                            saveToGallery(chart, "BasicBarChart");
+                            break;
+                        default:
+                            break;
                     }
                 })
                 .build()

@@ -45,15 +45,15 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
     /**
      * 默认加载图片
      */
-    private Drawable mPlaceHolder;
+    protected Drawable mPlaceHolder;
     /**
      * 是否允许进行缓存
      */
-    private boolean mEnableCache;
+    protected boolean mEnableCache;
     /**
      * 加载图片的高／宽比率
      */
-    private double mScale;
+    protected double mScale;
 
     public BaseImageBanner(Context context) {
         super(context);

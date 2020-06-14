@@ -17,6 +17,7 @@
 
 package com.xuexiang.xui.widget.banner.recycler.layout;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -28,10 +29,12 @@ public class CenterScrollListener extends RecyclerView.OnScrollListener {
     private boolean mAutoSet = false;
 
     @Override
-    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+    public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
         super.onScrollStateChanged(recyclerView, newState);
         final RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
-      
+        if (layoutManager == null) {
+            return;
+        }
         final OverFlyingLayoutManager.OnPageChangeListener onPageChangeListener = ((OverFlyingLayoutManager) layoutManager).onPageChangeListener;
         if (onPageChangeListener != null) {
             onPageChangeListener.onPageScrollStateChanged(newState);
@@ -47,10 +50,11 @@ public class CenterScrollListener extends RecyclerView.OnScrollListener {
                 final int delta;
                 delta = ((OverFlyingLayoutManager) layoutManager).getOffsetToCenter();
                 if (delta != 0) {
-                    if (((OverFlyingLayoutManager) layoutManager).getOrientation() == OverFlyingLayoutManager.VERTICAL)
+                    if (((OverFlyingLayoutManager) layoutManager).getOrientation() == OverFlyingLayoutManager.VERTICAL) {
                         recyclerView.smoothScrollBy(0, delta);
-                    else
+                    } else {
                         recyclerView.smoothScrollBy(delta, 0);
+                    }
                     mAutoSet = true;
                 } else {
                     if (onPageChangeListener != null) {

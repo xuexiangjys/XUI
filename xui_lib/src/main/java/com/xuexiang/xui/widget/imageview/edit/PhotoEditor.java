@@ -201,7 +201,7 @@ public class PhotoEditor implements BrushViewChangeListener {
      * @param inputText text to update {@link TextView}
      * @param colorCode color to update on {@link TextView}
      */
-    public void editText(@NonNull View view, String inputText, @NonNull int colorCode) {
+    public void editText(@NonNull View view, String inputText, int colorCode) {
         editText(view, null, inputText, colorCode);
     }
 
@@ -213,7 +213,7 @@ public class PhotoEditor implements BrushViewChangeListener {
      * @param inputText    text to update {@link TextView}
      * @param colorCode    color to update on {@link TextView}
      */
-    public void editText(@NonNull View view, @Nullable Typeface textTypeface, String inputText, @NonNull int colorCode) {
+    public void editText(@NonNull View view, @Nullable Typeface textTypeface, String inputText, int colorCode) {
         final TextStyleBuilder styleBuilder = new TextStyleBuilder();
         styleBuilder.withTextColor(colorCode);
         if (textTypeface != null) {

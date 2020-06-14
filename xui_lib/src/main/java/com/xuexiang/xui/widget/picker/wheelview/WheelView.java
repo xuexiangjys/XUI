@@ -49,7 +49,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * 3D滚轮控件
@@ -155,7 +155,7 @@ public class WheelView extends View implements HasTypeface {
     private static final float SCALE_CONTENT = 0.8F;//非中间文字则用此控制高度，压扁形成3d错觉
     private float CENTER_CONTENT_OFFSET;//偏移量
 
-    private final float DEFAULT_TEXT_TARGET_SKEWX = 0.5f;
+    private static final float DEFAULT_TEXT_TARGET_SKEWX = 0.5f;
 
     public WheelView(Context context) {
         this(context, null);
@@ -164,20 +164,23 @@ public class WheelView extends View implements HasTypeface {
     public WheelView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        textSize = getResources().getDimensionPixelSize(R.dimen.default_wheel_view_text_size);//默认大小
+        //默认大小
+        textSize = getResources().getDimensionPixelSize(R.dimen.default_wheel_view_text_size);
 
         DisplayMetrics dm = getResources().getDisplayMetrics();
-        float density = dm.density; // 屏幕密度比（0.75/1.0/1.5/2.0/3.0）
+        // 屏幕密度比（0.75/1.0/1.5/2.0/3.0）
+        float density = dm.density;
 
-        if (density < 1) {//根据密度不同进行适配
+        //根据密度不同进行适配
+        if (density < 1F) {
             CENTER_CONTENT_OFFSET = 2.4F;
-        } else if (1 <= density && density < 2) {
+        } else if (1F <= density && density < 1.5F) {
             CENTER_CONTENT_OFFSET = 3.6F;
-        } else if (1 <= density && density < 2) {
+        } else if (1.5F <= density && density < 2F) {
             CENTER_CONTENT_OFFSET = 4.5F;
-        } else if (2 <= density && density < 3) {
+        } else if (2F <= density && density < 3F) {
             CENTER_CONTENT_OFFSET = 6.0F;
-        } else if (density >= 3) {
+        } else if (density >= 3F) {
             CENTER_CONTENT_OFFSET = density * 2.5F;
         }
 
@@ -397,7 +400,7 @@ public class WheelView extends View implements HasTypeface {
 
         //可见的item数组
         @SuppressLint("DrawAllocation")
-        Object visibles[] = new Object[itemsVisible];
+        Object[] visibles = new Object[itemsVisible];
         //滚动的Y值高度除去每行Item的高度，得到滚动了多少个item，即change数
         //滚动偏移值,用于记录滚动了多少个item
         int change = (int) (totalScrollY / itemHeight);
@@ -453,9 +456,9 @@ public class WheelView extends View implements HasTypeface {
             float endX;
 
             if (TextUtils.isEmpty(label)) {//隐藏Label的情况
-                startX = (measuredWidth - maxTextWidth) / 2 - 12;
+                startX = (measuredWidth - maxTextWidth) / 2F - 12;
             } else {
-                startX = (measuredWidth - maxTextWidth) / 4 - 12;
+                startX = (measuredWidth - maxTextWidth) / 4F - 12;
             }
 
             if (startX <= 0) {//如果超过了WheelView的边缘
@@ -611,7 +614,7 @@ public class WheelView extends View implements HasTypeface {
             return ((IPickerViewItem) item).getPickerViewText();
         } else if (item instanceof Integer) {
             //如果为整形则最少保留两位数.
-            return String.format(Locale.getDefault(), "%02d", (int) item);
+            return String.format(Locale.getDefault(), "%02d", item);
         }
         return item.toString();
     }
@@ -620,18 +623,23 @@ public class WheelView extends View implements HasTypeface {
         Rect rect = new Rect();
         paintCenterText.getTextBounds(content, 0, content.length(), rect);
         switch (mGravity) {
-            case Gravity.CENTER://显示内容居中
-                if (isOptions || label == null || label.equals("") || !isCenterLabel) {
+            case Gravity.CENTER:
+                //显示内容居中
+                if (isOptions || label == null || "".equals(label) || !isCenterLabel) {
                     drawCenterContentStart = (int) ((measuredWidth - rect.width()) * 0.5);
-                } else {//只显示中间label时，时间选择器内容偏左一点，留出空间绘制单位标签
+                } else {
+                    //只显示中间label时，时间选择器内容偏左一点，留出空间绘制单位标签
                     drawCenterContentStart = (int) ((measuredWidth - rect.width()) * 0.25);
                 }
                 break;
             case Gravity.LEFT:
                 drawCenterContentStart = 0;
                 break;
-            case Gravity.RIGHT://添加偏移量
+            case Gravity.RIGHT:
+                //添加偏移量
                 drawCenterContentStart = measuredWidth - rect.width() - (int) CENTER_CONTENT_OFFSET;
+                break;
+            default:
                 break;
         }
     }
@@ -641,7 +649,7 @@ public class WheelView extends View implements HasTypeface {
         paintOuterText.getTextBounds(content, 0, content.length(), rect);
         switch (mGravity) {
             case Gravity.CENTER:
-                if (isOptions || label == null || label.equals("") || !isCenterLabel) {
+                if (isOptions || label == null || "".equals(label) || !isCenterLabel) {
                     drawOutContentStart = (int) ((measuredWidth - rect.width()) * 0.5);
                 } else {//只显示中间label时，时间选择器内容偏左一点，留出空间绘制单位标签
                     drawOutContentStart = (int) ((measuredWidth - rect.width()) * 0.25);
@@ -652,6 +660,8 @@ public class WheelView extends View implements HasTypeface {
                 break;
             case Gravity.RIGHT:
                 drawOutContentStart = measuredWidth - rect.width() - (int) CENTER_CONTENT_OFFSET;
+                break;
+            default:
                 break;
         }
     }

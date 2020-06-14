@@ -15,14 +15,13 @@
         android:id="@+id/mini_loading_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/xui_loading_margin_size"
+        android:layout_margin="?attr/xui_mini_loading_margin_size"
         app:mlv_loading_view_color="@color/xui_config_color_white"
         app:mlv_loading_view_size="?attr/xui_mini_loading_view_size" />
 
     <TextView
         android:id="@+id/tv_tip_message"
         style="@style/TextStyle.Explain"
-        android:layout_marginTop="?attr/xui_mini_loading_margin_size"
         android:text="@string/xui_tip_loading_message"
         android:textColor="@color/xui_config_color_white"
         android:textSize="?attr/xui_loading_text_size" />

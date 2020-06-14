@@ -2,6 +2,8 @@ package com.xuexiang.xui.widget.textview.marqueen;
 
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Date;
  * @since 2019/1/14 下午10:04
  */
 public class DisplayEntity {
+    private static final String TIME_PLACE_HOLDER = "$";
     /**
      * ID
      */
@@ -72,6 +75,7 @@ public class DisplayEntity {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return updateMessage();
@@ -81,10 +85,10 @@ public class DisplayEntity {
      * 更新消息
      */
     private String updateMessage() {
-        if (isValid() && mTime != 0 && mMessage.contains("$") ) {
+        if (isValid() && mTime != 0 && mMessage.contains(TIME_PLACE_HOLDER)) {
             //$是时间的占位符，需要动态替换掉
-            String internal = String.valueOf(calculateNumberofMinutes(mTime));
-            return mMessage.replace("$", internal);
+            String internal = String.valueOf(calculateNumberOfMinutes(mTime));
+            return mMessage.replace(TIME_PLACE_HOLDER, internal);
         } else {
             return mMessage;
         }
@@ -92,12 +96,12 @@ public class DisplayEntity {
 
     /**
      * 计算时间距离
+     *
      * @param date 时间
      * @return
      */
-    public int calculateNumberofMinutes(long date) {
-        int result = (int) ((getCurrentDate().getTime() - date) / (1000 * 60));
-        return result;
+    public int calculateNumberOfMinutes(long date) {
+        return (int) ((getCurrentDate().getTime() - date) / (1000 * 60));
     }
 
     public Date getCurrentDate() {
@@ -106,6 +110,7 @@ public class DisplayEntity {
 
     /**
      * 是否有效
+     *
      * @return
      */
     public boolean isValid() {

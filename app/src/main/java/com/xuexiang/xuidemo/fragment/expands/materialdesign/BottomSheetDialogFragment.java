@@ -36,7 +36,6 @@ import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -116,12 +115,7 @@ public class BottomSheetDialogFragment extends BaseSimpleListFragment {
      * @return
      */
     private List<PageInfo> sortPageInfo(List<PageInfo> pageInfoList) {
-        Collections.sort(pageInfoList, new Comparator<PageInfo>() {
-            @Override
-            public int compare(PageInfo o1, PageInfo o2) {
-                return o1.getClassPath().compareTo(o2.getClassPath());
-            }
-        });
+        Collections.sort(pageInfoList, (o1, o2) -> o1.getClassPath().compareTo(o2.getClassPath()));
         return pageInfoList;
     }
 

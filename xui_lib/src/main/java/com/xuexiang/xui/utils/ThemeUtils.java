@@ -1,7 +1,9 @@
 package com.xuexiang.xui.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -14,12 +16,17 @@ import androidx.annotation.ArrayRes;
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
+import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * 主题工具
@@ -284,6 +291,59 @@ public final class ThemeUtils {
             }
         }
         return false;
+    }
+
+    //========================深色模式==============================//
+    /**
+     * 系统默认模式
+     */
+    public static final int DEFAULT_MODE = 0;
+    /**
+     * 浅色模式
+     */
+    public static final int LIGHT_MODE = 1;
+    /**
+     * 深色模式
+     */
+    public static final int DARK_MODE = 2;
+
+    @IntDef({DEFAULT_MODE, LIGHT_MODE, DARK_MODE})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface Theme {
+    }
+
+    /**
+     * 当前是否是处于深色模式
+     *
+     * @return 是否是深色模式
+     */
+    public static boolean isNightMode() {
+        int mode = ResUtils.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return mode == Configuration.UI_MODE_NIGHT_YES;
+    }
+
+    /**
+     * 设置应用的主题（深色模式）
+     *
+     * @param theme 主题类型
+     */
+    @SuppressLint("WrongConstant")
+    public static void applyTheme(@Theme int theme) {
+        switch (theme) {
+            case LIGHT_MODE:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            case DARK_MODE:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+            case DEFAULT_MODE:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                }
+                break;
+        }
     }
 
     //=================//

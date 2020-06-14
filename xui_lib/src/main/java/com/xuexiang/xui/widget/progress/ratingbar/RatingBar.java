@@ -370,6 +370,10 @@ public class RatingBar extends LinearLayout implements IRatingBar {
                 }
 
                 handleClickEvent(eventX);
+                break;
+            default:
+                break;
+
         }
 
         getParent().requestDisallowInterceptTouchEvent(true);

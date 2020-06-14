@@ -26,6 +26,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
@@ -70,6 +71,7 @@ public class MaterialSimpleListItem {
         return builder.tag;
     }
 
+    @NonNull
     @Override
     public String toString() {
         if (getContent() != null) {

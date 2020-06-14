@@ -24,6 +24,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -117,7 +118,13 @@ public class LoadingViewLayout extends LinearLayout implements IMessageLoader {
     @Override
     public void updateMessage(String tipMessage) {
         if (mTvTipMessage != null) {
-            mTvTipMessage.setText(tipMessage);
+            if (!TextUtils.isEmpty(tipMessage)) {
+                mTvTipMessage.setText(tipMessage);
+                mTvTipMessage.setVisibility(View.VISIBLE);
+            } else {
+                mTvTipMessage.setText("");
+                mTvTipMessage.setVisibility(View.GONE);
+            }
         }
     }
 

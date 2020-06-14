@@ -26,7 +26,6 @@ class GuideImageView extends AppCompatImageView {
     private Bitmap mBitmap;
     private Paint mBackgroundPaint, mErasePaint, mCircleBorderPaint;
     private int mBackgroundColor = Color.TRANSPARENT;
-    private int mFocusBorderColor = Color.TRANSPARENT;
     private int mFocusBorderSize;
     private int mRoundRectRadius = 20;
     private Calculator mCalculator;
@@ -76,6 +75,7 @@ class GuideImageView extends AppCompatImageView {
         mPath = new Path();
         mCircleBorderPaint = new Paint();
         mCircleBorderPaint.setAntiAlias(true);
+        int mFocusBorderColor = Color.TRANSPARENT;
         mCircleBorderPaint.setColor(mFocusBorderColor);
         mCircleBorderPaint.setStrokeWidth(mFocusBorderSize);
         mCircleBorderPaint.setStyle(Paint.Style.STROKE);

@@ -131,12 +131,14 @@ public class GuideViewDialog extends AlertDialog {
      */
     public GuideViewDialog setDialogSize(int width, int height) {
         Window win = getWindow();
-        WindowManager.LayoutParams params = win.getAttributes();
-        //设置宽
-        params.width = width;
-        //设置高
-        params.height = height;
-        win.setAttributes(params);
+        if (win != null) {
+            WindowManager.LayoutParams params = win.getAttributes();
+            //设置宽
+            params.width = width;
+            //设置高
+            params.height = height;
+            win.setAttributes(params);
+        }
         return this;
     }
 
@@ -147,9 +149,11 @@ public class GuideViewDialog extends AlertDialog {
      */
     public GuideViewDialog setGravity(int gravity) {
         Window win = getWindow();
-        WindowManager.LayoutParams params = win.getAttributes();
-        params.gravity = gravity;
-        win.setAttributes(params);
+        if (win != null) {
+            WindowManager.LayoutParams params = win.getAttributes();
+            params.gravity = gravity;
+            win.setAttributes(params);
+        }
         return this;
     }
 

@@ -55,7 +55,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import uk.co.chrisjenx.calligraphy.HasTypeface;
+import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
  * Material Design 输入框
@@ -250,11 +250,6 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     private Typeface accentTypeface;
 
     /**
-     * The font used on the view (EditText content)
-     */
-    private Typeface typeface;
-
-    /**
      * Text for the floatLabel if different from the hint
      */
     private CharSequence floatingLabelText;
@@ -268,7 +263,11 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
      * Underline's color
      */
     private int underlineColor;
-
+    /**
+     * Underline's height
+     */
+    private int underlineHeight;
+    private int underlineHeightFocused;
     /**
      * Whether to validate as soon as the text has changed. False by default
      */
@@ -402,7 +401,10 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
         String fontPathForView = typedArray.getString(R.styleable.MaterialEditText_met_typeface);
         if (fontPathForView != null && !isInEditMode()) {
-            typeface = XUI.getDefaultTypeface(fontPathForView);
+            /**
+             * The font used on the view (EditText content)
+             */
+            Typeface typeface = XUI.getDefaultTypeface(fontPathForView);
             setTypeface(typeface);
         }
         floatingLabelText = typedArray.getString(R.styleable.MaterialEditText_met_floatingLabelText);
@@ -416,6 +418,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         bottomTextSize = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_bottomTextSize, getResources().getDimensionPixelSize(R.dimen.default_bottom_text_size));
         hideUnderline = typedArray.getBoolean(R.styleable.MaterialEditText_met_hideUnderline, false);
         underlineColor = typedArray.getColor(R.styleable.MaterialEditText_met_underlineColor, -1);
+        underlineHeight = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_underlineHeight, getPixel(1));
+        underlineHeightFocused = typedArray.getDimensionPixelSize(R.styleable.MaterialEditText_met_underlineHeightFocused, getPixel(2));
         autoValidate = typedArray.getBoolean(R.styleable.MaterialEditText_met_autoValidate, false);
         iconLeftBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconLeft, -1));
         iconRightBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconRight, -1));
@@ -492,7 +496,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             setText(null);
             resetHintTextColor();
             setText(text);
-            setSelection(text.length());
+            setSelection(text != null ? text.length() : 0);
             floatingLabelFraction = 1;
             floatingLabelShown = true;
         } else {
@@ -1305,7 +1309,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
 
         CharSequence text = getText();
-        boolean isEmpty = text.length() == 0;
+        boolean isEmpty = TextUtils.isEmpty(text);
 
         boolean isValid = true;
         for (METValidator validator : validators) {
@@ -1541,19 +1545,19 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             lineStartY += bottomSpacing;
             if (!isInternalValid()) { // not valid
                 paint.setColor(errorColor);
-                canvas.drawRect(startX, lineStartY, endX, lineStartY + getPixel(2), paint);
+                canvas.drawRect(startX, lineStartY, endX, lineStartY + underlineHeightFocused, paint);
             } else if (!isEnabled()) { // disabled
                 paint.setColor(underlineColor != -1 ? underlineColor : baseColor & 0x00ffffff | 0x44000000);
                 float interval = getPixel(1);
                 for (float xOffset = 0; xOffset < getWidth(); xOffset += interval * 3) {
-                    canvas.drawRect(startX + xOffset, lineStartY, startX + xOffset + interval, lineStartY + getPixel(1), paint);
+                    canvas.drawRect(startX + xOffset, lineStartY, startX + xOffset + interval, lineStartY + underlineHeight, paint);
                 }
             } else if (hasFocus()) { // focused
                 paint.setColor(primaryColor);
-                canvas.drawRect(startX, lineStartY, endX, lineStartY + getPixel(2), paint);
+                canvas.drawRect(startX, lineStartY, endX, lineStartY + underlineHeightFocused, paint);
             } else { // normal
                 paint.setColor(underlineColor != -1 ? underlineColor : baseColor & 0x00ffffff | 0x1E000000);
-                canvas.drawRect(startX, lineStartY, endX, lineStartY + getPixel(1), paint);
+                canvas.drawRect(startX, lineStartY, endX, lineStartY + underlineHeight, paint);
             }
         }
         return lineStartY;
@@ -1625,9 +1629,9 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
                 ellipsisStartX = startX;
             }
             int signum = isRTL() ? -1 : 1;
-            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize / 2, startY + bottomEllipsisSize / 2, bottomEllipsisSize / 2, paint);
-            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize * 5 / 2, startY + bottomEllipsisSize / 2, bottomEllipsisSize / 2, paint);
-            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize * 9 / 2, startY + bottomEllipsisSize / 2, bottomEllipsisSize / 2, paint);
+            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize / 2F, startY + bottomEllipsisSize / 2F, bottomEllipsisSize / 2F, paint);
+            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize * 5 / 2F, startY + bottomEllipsisSize / 2F, bottomEllipsisSize / 2F, paint);
+            canvas.drawCircle(ellipsisStartX + signum * bottomEllipsisSize * 9 / 2F, startY + bottomEllipsisSize / 2F, bottomEllipsisSize / 2F, paint);
         }
     }
 

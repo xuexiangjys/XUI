@@ -290,6 +290,8 @@ class ImageFilterView extends GLSurfaceView implements GLSurfaceView.Renderer {
                     mEffect = effectFactory.createEffect(EFFECT_VIGNETTE);
                     mEffect.setParameter("scale", .5f);
                     break;
+                default:
+                    break;
             }
         }
     }

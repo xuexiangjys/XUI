@@ -519,6 +519,8 @@ public class RadiusImageView extends AppCompatImageView {
             case MotionEvent.ACTION_CANCEL:
                 this.setSelected(false);
                 break;
+            default:
+                break;
         }
         return super.onTouchEvent(event);
     }

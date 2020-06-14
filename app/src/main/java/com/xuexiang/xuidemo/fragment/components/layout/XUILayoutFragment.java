@@ -151,28 +151,25 @@ public class XUILayoutFragment extends BaseFragment {
         mAlphaSeekBar.setProgress((int) (mShadowAlpha * 100));
         mElevationSeekBar.setProgress(mShadowElevationDp);
 
-        mHideRadiusGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.hide_radius_none:
-                        mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_NONE);
-                        break;
-                    case R.id.hide_radius_left:
-                        mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_LEFT);
-                        break;
-                    case R.id.hide_radius_top:
-                        mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_TOP);
-                        break;
-                    case R.id.hide_radius_bottom:
-                        mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_BOTTOM);
-                        break;
-                    case R.id.hide_radius_right:
-                        mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_RIGHT);
-                        break;
-                    default:
-                        break;
-                }
+        mHideRadiusGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.hide_radius_none:
+                    mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_NONE);
+                    break;
+                case R.id.hide_radius_left:
+                    mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_LEFT);
+                    break;
+                case R.id.hide_radius_top:
+                    mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_TOP);
+                    break;
+                case R.id.hide_radius_bottom:
+                    mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_BOTTOM);
+                    break;
+                case R.id.hide_radius_right:
+                    mTestLayout.setRadius(mRadius, XUILayoutHelper.HIDE_RADIUS_SIDE_RIGHT);
+                    break;
+                default:
+                    break;
             }
         });
     }

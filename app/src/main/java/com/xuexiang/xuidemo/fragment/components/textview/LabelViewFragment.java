@@ -57,6 +57,8 @@ public class LabelViewFragment extends BaseFragment {
             case R.id.tv_label:
                 tvLabel.setLabelOrientation((int) (Math.random() * 4 + 1));
                 break;
+            default:
+                break;
         }
     }
 }

@@ -291,14 +291,14 @@ public class XSeekBar extends View {
         float yText;
         //bubble
         if (mIsShowBubble) {
-            float top = mMiddleY - mSliderIcon.getHeight() / 2 - mBubbleBitmap.getHeight() - mNumberMarginBottom;
-            yText = top + mBubbleBitmap.getHeight() / 2 + mMaxTextRect.height() / 2 - 6;
-            canvas.drawBitmap(mBubbleBitmap, mMaxPosition - mBubbleBitmap.getWidth() / 2, top, mPaint);
+            float top = mMiddleY - mSliderIcon.getHeight() / 2F - mBubbleBitmap.getHeight() - mNumberMarginBottom;
+            yText = top + mBubbleBitmap.getHeight() / 2F + mMaxTextRect.height() / 2F - 6;
+            canvas.drawBitmap(mBubbleBitmap, mMaxPosition - mBubbleBitmap.getWidth() / 2F, top, mPaint);
         } else {
-            yText = mMiddleY - mSliderIcon.getHeight() / 2 - mNumberMarginBottom;
+            yText = mMiddleY - mSliderIcon.getHeight() / 2F - mNumberMarginBottom;
         }
         //text
-        float maxX = mMaxPosition - mMaxTextRect.width() / 2;
+        float maxX = mMaxPosition - mMaxTextRect.width() / 2F;
         mPaint.setTextSize(mNumberTextSize);
         mPaint.setColor(mNumberTextColor);
         canvas.drawText(max, maxX, yText, mPaint);
@@ -309,8 +309,8 @@ public class XSeekBar extends View {
             float startX = mLineStartX;
             float stopY = 0;
             float startY = 0;
-            float divider = Float.valueOf(mRulerInterval) / 10f;
-            float scaleLength = (float) mLineLength / (float) ((mMax - mMin) / divider) / divider;
+            float divider = (float) mRulerInterval / 10f;
+            float scaleLength = (float) mLineLength / ((mMax - mMin) / divider) / divider;
 
             boolean isMinHasText = false;
             boolean isMaxHasText = false;
@@ -318,13 +318,13 @@ public class XSeekBar extends View {
             for (int i = mMin; i <= mMax; i++) {
                 if (i % mRulerInterval == 0) {
                     //draw big scale
-                    startY = mMiddleY + mSliderIcon.getHeight() / 2 + mRulerMarginTop;
+                    startY = mMiddleY + mSliderIcon.getHeight() / 2F + mRulerMarginTop;
                     stopY = startY + mRulerDividerHeight * 3;
 
                     mPaint.setColor(mRulerTextColor);
                     mPaint.setTextSize(mRulerTextSize);
                     getRulerTextBounds(String.valueOf(i), mRulerTextRect);
-                    canvas.drawText(String.valueOf(i), startX - mRulerTextRect.width() / 2, stopY + mRulerTextRect.height() + mRulerTextMarginTop, mPaint);
+                    canvas.drawText(String.valueOf(i), startX - mRulerTextRect.width() / 2F, stopY + mRulerTextRect.height() + mRulerTextMarginTop, mPaint);
 
                     if (i == mMin) {
                         isMinHasText = true;
@@ -341,7 +341,7 @@ public class XSeekBar extends View {
 
                 } else if (i % (mRulerInterval / 2) == 0 && mRulerInterval % 10 == 0) {
                     //draw middle scale
-                    startY = mMiddleY + mSliderIcon.getHeight() / 2 + mRulerMarginTop;
+                    startY = mMiddleY + mSliderIcon.getHeight() / 2F + mRulerMarginTop;
                     stopY = startY + mRulerDividerHeight * 2;
                     mPaint.setStrokeWidth(DEFAULT_MIDDLE_SCALE_WITH);
 
@@ -351,7 +351,7 @@ public class XSeekBar extends View {
 
                 } else {
                     //draw small scale
-                    startY = mMiddleY + mSliderIcon.getHeight() / 2 + mRulerMarginTop;
+                    startY = mMiddleY + mSliderIcon.getHeight() / 2F + mRulerMarginTop;
                     stopY = startY + mRulerDividerHeight;
                     mPaint.setStrokeWidth(DEFAULT_SMALL_SCALE_WITH);
 
@@ -368,14 +368,14 @@ public class XSeekBar extends View {
                     mPaint.setTextSize(mRulerTextSize);
                     getRulerTextBounds(String.valueOf(i), mRulerTextRect);
 
-                    float x = startX - mRulerTextRect.width() / 2;
+                    float x = startX - mRulerTextRect.width() / 2F;
                     //修正最大值与最小值文本与满刻度文本太靠近时显示重叠问题
                     if (i == mMax && i % mRulerInterval == 1) {
                         x = startX + DEFAULT_TEXT_MIN_SPACE;
                     }
 
                     if (i == mMin && i % mRulerInterval == mRulerInterval - 1) {
-                        x = startX - mRulerTextRect.width() / 2 - DEFAULT_TEXT_MIN_SPACE;
+                        x = startX - mRulerTextRect.width() / 2F - DEFAULT_TEXT_MIN_SPACE;
                     }
 
                     canvas.drawText(String.valueOf(i), x, startY + mRulerDividerHeight * 3 + mRulerTextRect.height() + mRulerTextMarginTop, mPaint);
@@ -390,9 +390,9 @@ public class XSeekBar extends View {
         mPaint.setColor(mInsideRangeColor);
         canvas.drawCircle(mMaxPosition, mMiddleY, DensityUtils.dp2px(3), mPaint);
         if (!mIsTouching) {
-            canvas.drawBitmap(mSliderIcon, mMaxPosition - mSliderIcon.getWidth() / 2, mMiddleY - mSliderIcon.getWidth() / 2, mPaint);
+            canvas.drawBitmap(mSliderIcon, mMaxPosition - mSliderIcon.getWidth() / 2F, mMiddleY - mSliderIcon.getWidth() / 2F, mPaint);
         } else {
-            canvas.drawBitmap(mSliderIconFocus, mMaxPosition - mSliderIcon.getWidth() / 2, mMiddleY - mSliderIcon.getWidth() / 2, mPaint);
+            canvas.drawBitmap(mSliderIconFocus, mMaxPosition - mSliderIcon.getWidth() / 2F, mMiddleY - mSliderIcon.getWidth() / 2F, mPaint);
         }
     }
 

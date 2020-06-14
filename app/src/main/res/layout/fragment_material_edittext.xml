@@ -306,7 +306,9 @@
                     android:hint="please input your name"
                     android:inputType="text"
                     app:met_allowEmpty="false"
-                    app:met_clearButton="true" />
+                    app:met_clearButton="true"
+                    app:met_underlineHeight="2dp"
+                    app:met_underlineHeightFocused="4dp" />
 
                 <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
                     android:id="@+id/et_not_allow_empty2"

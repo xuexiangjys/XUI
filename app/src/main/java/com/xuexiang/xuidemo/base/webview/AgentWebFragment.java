@@ -46,6 +46,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.PopupMenu;
@@ -85,10 +86,8 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 
     private ImageView mBackImageView;
     private View mLineView;
-    private ImageView mFinishImageView;
     private TextView mTitleTextView;
     protected AgentWeb mAgentWeb;
-    private ImageView mMoreImageView;
     private PopupMenu mPopupMenu;
     public static final String TAG = AgentWebFragment.class.getSimpleName();
     private DownloadingService mDownloadingService;
@@ -114,7 +113,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAgentWeb = AgentWeb.with(this)
                 //传入AgentWeb的父控件。
@@ -180,11 +179,11 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
     protected void initView(View view) {
         mBackImageView = view.findViewById(R.id.iv_back);
         mLineView = view.findViewById(R.id.view_line);
-        mFinishImageView = view.findViewById(R.id.iv_finish);
+        ImageView mFinishImageView = view.findViewById(R.id.iv_finish);
         mTitleTextView = view.findViewById(R.id.toolbar_title);
         mBackImageView.setOnClickListener(mOnClickListener);
         mFinishImageView.setOnClickListener(mOnClickListener);
-        mMoreImageView = view.findViewById(R.id.iv_more);
+        ImageView mMoreImageView = view.findViewById(R.id.iv_more);
         mMoreImageView.setOnClickListener(mOnClickListener);
         pageNavigator(View.GONE);
     }
@@ -215,11 +214,11 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
                 case R.id.iv_back:
                     // true表示AgentWeb处理了该事件
                     if (!mAgentWeb.back()) {
-                        AgentWebFragment.this.getActivity().finish();
+                        closeWebView();
                     }
                     break;
                 case R.id.iv_finish:
-                    AgentWebFragment.this.getActivity().finish();
+                    closeWebView();
                     break;
                 case R.id.iv_more:
                     showPoPup(v);
@@ -229,8 +228,13 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 
             }
         }
-
     };
+
+    private void closeWebView() {
+        if (getActivity() != null && !getActivity().isFinishing()) {
+            getActivity().finish();
+        }
+    }
 
     //========================================//
 
@@ -329,7 +333,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
          */
         @Override
         public void onProgress(String url, long loaded, long length, long usedTime) {
-            int mProgress = (int) ((loaded) / Float.valueOf(length) * 100);
+            int mProgress = (int) ((loaded) / (float) length * 100);
             LogUtils.i(TAG, "onProgress:" + mProgress);
             super.onProgress(url, loaded, length, usedTime);
         }
@@ -457,13 +461,9 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
             //intent:// scheme的处理 如果返回false ， 则交给 DefaultWebClient 处理 ， 默认会打开该Activity  ， 如果Activity不存在则跳到应用市场上去.  true 表示拦截
             //例如优酷视频播放 ，intent://play?...package=com.youku.phone;end;
             //优酷想唤起自己应用播放该视频 ， 下面拦截地址返回 true  则会在应用内 H5 播放 ，禁止优酷唤起播放该视频， 如果返回 false ， DefaultWebClient  会根据intent 协议处理 该地址 ， 首先匹配该应用存不存在 ，如果存在 ， 唤起该应用播放 ， 如果不存在 ， 则跳到应用市场下载该应用 .
-            if (url.startsWith("intent://") && url.contains("com.youku.phone")) {
-                return true;
-            }
+            return url.startsWith("intent://") && url.contains("com.youku.phone");
 			/*else if (isAlipay(view, mUrl))   //1.2.5开始不用调用该方法了 ，只要引入支付宝sdk即可 ， DefaultWebClient 默认会处理相应url调起支付宝
 			    return true;*/
-
-            return false;
         }
 
         @Override
@@ -481,10 +481,9 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-
-            if (timer.get(url) != null) {
+            Long startTime = timer.get(url);
+            if (startTime != null) {
                 long overTime = System.currentTimeMillis();
-                Long startTime = timer.get(url);
                 Log.i(TAG, "  page mUrl:" + url + "  used time:" + (overTime - startTime));
             }
 
@@ -715,11 +714,8 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
                     return true;
                 }
                 // 执行 DefaultWebClient#shouldOverrideUrlLoading
-                if (super.shouldOverrideUrlLoading(view, url)) {
-                    return true;
-                }
+                return super.shouldOverrideUrlLoading(view, url);
                 // do you work
-                return false;
             }
 
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

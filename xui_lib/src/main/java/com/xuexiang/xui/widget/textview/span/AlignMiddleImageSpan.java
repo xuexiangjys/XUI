@@ -22,6 +22,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.style.ImageSpan;
 
+import androidx.annotation.NonNull;
+
 /**
  * 支持垂直居中的ImageSpan
  *
@@ -69,7 +71,7 @@ public class AlignMiddleImageSpan extends ImageSpan {
     }
 
     @Override
-    public int getSize(Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fm) {
+    public int getSize(@NonNull Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fm) {
         if (mAvoidSuperChangeFontMetrics) {
             Drawable d = getDrawable();
             Rect rect = d.getBounds();
@@ -84,8 +86,8 @@ public class AlignMiddleImageSpan extends ImageSpan {
     }
 
     @Override
-    public void draw(Canvas canvas, CharSequence text, int start, int end,
-                     float x, int top, int y, int bottom, Paint paint) {
+    public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end,
+                     float x, int top, int y, int bottom, @NonNull Paint paint) {
         if (mVerticalAlignment == ALIGN_MIDDLE) {
             Drawable d = getDrawable();
             canvas.save();

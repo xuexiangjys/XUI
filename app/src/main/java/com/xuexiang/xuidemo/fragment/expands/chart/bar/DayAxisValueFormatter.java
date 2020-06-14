@@ -63,6 +63,8 @@ public class DayAxisValueFormatter extends ValueFormatter {
                 case 31:
                     appendix = "st";
                     break;
+                default:
+                    break;
             }
 
             return dayOfMonth == 0 ? "" : dayOfMonth + appendix + " " + monthName;

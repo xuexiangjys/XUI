@@ -16,6 +16,7 @@
 
 package com.xuexiang.xui.adapter;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -26,7 +27,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Fragment的适配器
+ * Fragment的适配器,详情参考{@link FragmentPagerAdapter}
  *
  * @author xuexiang
  * @since 2018/12/26 下午2:11
@@ -37,18 +38,30 @@ public class FragmentAdapter<T extends Fragment> extends FragmentPagerAdapter {
 
     private List<String> mTitleList = new ArrayList<>();
 
-    public FragmentAdapter(FragmentManager fm) {
+    public FragmentAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
-    public FragmentAdapter(FragmentManager fm, List<T> fragments) {
+    public FragmentAdapter(@NonNull FragmentManager fm, T[] fragments) {
+        this(fm, Arrays.asList(fragments));
+    }
+
+    public FragmentAdapter(@NonNull FragmentManager fm, List<T> fragments) {
         super(fm);
         setFragments(fragments);
     }
 
-    public FragmentAdapter(FragmentManager fm, T[] fragments) {
-        super(fm);
-        setFragments(Arrays.asList(fragments));
+    public FragmentAdapter(@NonNull FragmentManager fm, int behavior) {
+        super(fm, behavior);
+    }
+
+    public FragmentAdapter(@NonNull FragmentManager fm, int behavior, T[] fragments) {
+        this(fm, behavior, Arrays.asList(fragments));
+    }
+
+    public FragmentAdapter(@NonNull FragmentManager fm, int behavior, List<T> fragments) {
+        super(fm, behavior);
+        setFragments(fragments);
     }
 
     public FragmentAdapter setFragments(List<T> fragments) {
@@ -89,6 +102,7 @@ public class FragmentAdapter<T extends Fragment> extends FragmentPagerAdapter {
         return this;
     }
 
+    @NonNull
     @Override
     public T getItem(int position) {
         return mFragmentList.get(position);

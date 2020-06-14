@@ -4,7 +4,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.Toolbar;
-import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
@@ -36,12 +35,7 @@ public class TabLayoutBehaviorFragment extends BaseFragment {
     @Override
     protected TitleBar initTitle() {
         toolbar.setTitle("TabLayout");
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> popToBack());
         return null;
     }
 
@@ -86,17 +80,9 @@ public class TabLayoutBehaviorFragment extends BaseFragment {
             }
         });
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SnackbarUtils.Long(v, "是否确认新建?")
-                        .setAction("是", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+        fab.setOnClickListener(v -> SnackbarUtils.Long(v, "是否确认新建?")
+                .setAction("是", v1 -> {
 
-                            }
-                        }).show();
-            }
-        });
+                }).show());
     }
 }

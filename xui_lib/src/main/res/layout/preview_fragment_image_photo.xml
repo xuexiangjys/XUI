@@ -23,10 +23,11 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btnVideo"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:alpha="0"
+        android:padding="48dp"
         android:src="@drawable/xui_icon_video"
         android:visibility="gone" />
 

@@ -78,6 +78,8 @@ public class MarqueeTextView extends AppCompatTextView {
 
     private OnMarqueeListener mOnMarqueeListener;
 
+    private final Object mLock = new Object();
+
     public MarqueeTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
@@ -286,7 +288,7 @@ public class MarqueeTextView extends AppCompatTextView {
     private boolean removeByDisplayEntity(DisplayEntity displayEntity) {
         if (getDisplaySize() > 0) {
             Iterator<DisplayEntity> it = mDisplayList.iterator();
-            synchronized (it) {
+            synchronized (mLock) {
                 while (it.hasNext()) {
                     DisplayEntity matchEntity = it.next();
                     if (TextUtils.isEmpty(displayEntity.getID())) {

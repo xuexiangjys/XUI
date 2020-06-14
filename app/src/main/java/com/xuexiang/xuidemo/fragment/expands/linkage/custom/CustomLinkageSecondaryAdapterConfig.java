@@ -35,7 +35,6 @@ import com.xuexiang.xuidemo.R;
  */
 public class CustomLinkageSecondaryAdapterConfig implements ILinkageSecondaryAdapterConfig<CustomGroupedItem.ItemInfo> {
 
-    private Context mContext;
     private OnSecondaryItemClickListener mItemClickListener;
     private static final int SPAN_COUNT = 2;
 
@@ -50,7 +49,6 @@ public class CustomLinkageSecondaryAdapterConfig implements ILinkageSecondaryAda
 
     @Override
     public void setContext(Context context) {
-        mContext = context;
     }
 
     @Override

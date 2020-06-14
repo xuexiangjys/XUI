@@ -3,6 +3,8 @@ package com.xuexiang.xui.adapter.simple;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xui.utils.ResUtils;
 
 /**
@@ -48,13 +50,11 @@ public class AdapterItem {
     }
 
     public AdapterItem(Context context, int titleId, int drawableId) {
-        mTitle = context.getResources().getText(titleId);
-        mIcon = context.getResources().getDrawable(drawableId);
+        this(ResUtils.getString(titleId), ResUtils.getDrawable(context, drawableId));
     }
 
     public AdapterItem(Context context, CharSequence title, int drawableId) {
-        mTitle = title;
-        mIcon = context.getResources().getDrawable(drawableId);
+        this(title, ResUtils.getDrawable(context, drawableId));
     }
 
     public CharSequence getTitle() {
@@ -75,6 +75,7 @@ public class AdapterItem {
         return this;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return mTitle.toString();

@@ -5,17 +5,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-
-import androidx.annotation.ColorInt;
-import androidx.annotation.IntDef;
-import androidx.core.view.ViewCompat;
-
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntDef;
+import androidx.core.view.ViewCompat;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -61,6 +60,16 @@ public class StatusBarUtils {
 
     private StatusBarUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+    /**
+     * 设置沉浸式状态栏样式
+     *
+     * @param activity
+     * @param isDark   是否是深色的状态栏
+     */
+    public static void initStatusBarStyle(Activity activity, boolean isDark) {
+        initStatusBarStyle(activity, isDark, Color.TRANSPARENT);
     }
 
     /**
@@ -188,7 +197,9 @@ public class StatusBarUtils {
      * @param activity 需要被处理的 Activity
      */
     public static boolean setStatusBarLightMode(Activity activity) {
-        if (activity == null) return false;
+        if (activity == null) {
+            return false;
+        }
         // 无语系列：ZTK C2016只能时间和电池图标变色。。。。
         if (DeviceUtils.isZTKC2016()) {
             return false;
@@ -237,7 +248,9 @@ public class StatusBarUtils {
      * 支持 4.4 以上版本 MIUI 和 Flyme，以及 6.0 以上版本的其他 Android
      */
     public static boolean setStatusBarDarkMode(Activity activity) {
-        if (activity == null) return false;
+        if (activity == null) {
+            return false;
+        }
         if (mStatuBarType == STATUSBAR_TYPE_DEFAULT) {
             // 默认状态，不需要处理
             return true;

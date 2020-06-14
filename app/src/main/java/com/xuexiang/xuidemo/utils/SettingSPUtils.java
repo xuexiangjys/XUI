@@ -42,6 +42,7 @@ public class SettingSPUtils extends BaseSPUtil {
 
     private final String IS_USE_CUSTOM_THEME_KEY = "is_use_custom_theme_key";
 
+    private final String IS_USE_CUSTOM_FONT_KEY = "is_use_custom_font_key";
 
     /**
      * 是否是第一次启动
@@ -75,6 +76,15 @@ public class SettingSPUtils extends BaseSPUtil {
     public void setIsUseCustomTheme(boolean isUseCustomTheme) {
         putBoolean(IS_USE_CUSTOM_THEME_KEY, isUseCustomTheme);
     }
+
+    public boolean isUseCustomFont() {
+        return getBoolean(IS_USE_CUSTOM_FONT_KEY, false);
+    }
+
+    public void setIsUseCustomFont(boolean isUseCustomFont) {
+        putBoolean(IS_USE_CUSTOM_FONT_KEY, isUseCustomFont);
+    }
+
 
 
 }

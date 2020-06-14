@@ -282,9 +282,9 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
     }
 
     private void findViews() {
-        mTv = (TextView) findViewById(R.id.expandable_text);
+        mTv = findViewById(R.id.expandable_text);
         mTv.setOnClickListener(this);
-        mButton = (ImageButton) findViewById(R.id.expand_collapse);
+        mButton = findViewById(R.id.expand_collapse);
         mButton.setImageDrawable(mCollapsed ? mExpandDrawable : mCollapseDrawable);
         mButton.setOnClickListener(this);
     }
@@ -342,7 +342,7 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
         protected void applyTransformation(float interpolatedTime, Transformation t) {
             final int newHeight = (int) ((mEndHeight - mStartHeight) * interpolatedTime + mStartHeight);
             mTv.setMaxHeight(newHeight - mMarginBetweenTxtAndBottom);
-            if (Float.compare(mAnimAlphaStart, 1.0f) != 0) {
+            if (Float.compare(mAnimAlphaStart, 1.0F) != 0) {
                 applyAlphaAnimation(mTv, mAnimAlphaStart + interpolatedTime * (1.0f - mAnimAlphaStart));
             }
             mTargetView.getLayoutParams().height = newHeight;

@@ -28,13 +28,11 @@ import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.adapter.recyclerview.XLinearLayoutManager;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
-import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
@@ -65,7 +63,6 @@ public class ComplexCalendarFragment extends BaseFragment implements CalendarVie
     @BindView(R.id.calendarLayout)
     CalendarLayout mCalendarLayout;
 
-    private NewsCardViewListAdapter mAdapter;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
@@ -106,14 +103,10 @@ public class ComplexCalendarFragment extends BaseFragment implements CalendarVie
         recyclerView.setLayoutManager(new XLinearLayoutManager(recyclerView.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        NewsCardViewListAdapter mAdapter;
         recyclerView.setAdapter(mAdapter = new NewsCardViewListAdapter());
         mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
-        mAdapter.setOnItemClickListener(new RecyclerViewHolder.OnItemClickListener<NewInfo>() {
-            @Override
-            public void onItemClick(View itemView, NewInfo item, int position) {
-                Utils.goWeb(getContext(), item.getDetailUrl());
-            }
-        });
+        mAdapter.setOnItemClickListener((itemView, item, position) -> Utils.goWeb(getContext(), item.getDetailUrl()));
     }
 
     @Override

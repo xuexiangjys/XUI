@@ -7,7 +7,6 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.picker.widget.OptionsPickerView;
 import com.xuexiang.xui.widget.picker.widget.builder.OptionsPickerBuilder;
-import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectListener;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
@@ -91,13 +90,10 @@ public class OptionsPickerViewFragment extends BaseFragment {
      * 性别选择
      */
     private void showSexPickerView() {
-        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
-            @Override
-            public boolean onOptionsSelect(View v, int options1, int options2, int options3) {
-                btnSexPicker.setText(mSexOption[options1]);
-                sexSelectOption = options1;
-                return false;
-            }
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), (v, options1, options2, options3) -> {
+            btnSexPicker.setText(mSexOption[options1]);
+            sexSelectOption = options1;
+            return false;
         })
                 .setTitleText(getString(R.string.title_sex_select))
                 .setSelectOptions(sexSelectOption)
@@ -111,14 +107,11 @@ public class OptionsPickerViewFragment extends BaseFragment {
      * 班级选择
      */
     private void showClassPickerView() {
-        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
-            @Override
-            public boolean onOptionsSelect(View v, int options1, int options2, int options3) {
-                btnClassPicker.setText(String.format("%s%s", mGradeOption[options1], mClassOption[options2]));
-                gradeSelectOption = options1;
-                classSelectOption = options2;
-                return false;
-            }
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), (v, options1, options2, options3) -> {
+            btnClassPicker.setText(String.format("%s%s", mGradeOption[options1], mClassOption[options2]));
+            gradeSelectOption = options1;
+            classSelectOption = options2;
+            return false;
         })
                 .setTitleText(getString(R.string.title_grade_class_select))
                 .setSelectOptions(gradeSelectOption, classSelectOption)
@@ -131,13 +124,10 @@ public class OptionsPickerViewFragment extends BaseFragment {
      * 星座选择
      */
     private void showConstellationPickerView() {
-        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
-            @Override
-            public boolean onOptionsSelect(View v, int options1, int options2, int options3) {
-                btnConstellationPicker.setText(mConstellationOption[options1]);
-                constellationSelectOption = options1;
-                return false;
-            }
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), (v, options1, options2, options3) -> {
+            btnConstellationPicker.setText(mConstellationOption[options1]);
+            constellationSelectOption = options1;
+            return false;
         })
                 .setTitleText(getString(R.string.title_constellation_select))
                 .setSelectOptions(constellationSelectOption)
@@ -150,13 +140,10 @@ public class OptionsPickerViewFragment extends BaseFragment {
      * 民族选择
      */
     private void showNativePickerView() {
-        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
-            @Override
-            public boolean onOptionsSelect(View v, int options1, int options2, int options3) {
-                btnNationPicker.setText(mNationOption[options1]);
-                nativeSelectOption = options1;
-                return false;
-            }
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), (v, options1, options2, options3) -> {
+            btnNationPicker.setText(mNationOption[options1]);
+            nativeSelectOption = options1;
+            return false;
         })
                 .setTitleText(getString(R.string.title_nation_select))
                 .setSelectOptions(nativeSelectOption)

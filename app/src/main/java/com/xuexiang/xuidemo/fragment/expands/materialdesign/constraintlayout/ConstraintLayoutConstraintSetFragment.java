@@ -20,8 +20,6 @@ package com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout;
 import android.os.Build;
 import android.transition.TransitionManager;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;

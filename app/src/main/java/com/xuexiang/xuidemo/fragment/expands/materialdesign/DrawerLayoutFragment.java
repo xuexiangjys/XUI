@@ -87,8 +87,8 @@ public class DrawerLayoutFragment extends BaseFragment implements NavigationView
     protected void initViews() {
         navView.setItemIconTintList(null);
         View headerView = navView.getHeaderView(0);
-        LinearLayout nav_header = headerView.findViewById(R.id.nav_header);
-        nav_header.setOnClickListener(this);
+        LinearLayout navHeader = headerView.findViewById(R.id.nav_header);
+        navHeader.setOnClickListener(this);
 
         //主页
         FragmentAdapter<BaseFragment> adapter = new FragmentAdapter<>(getChildFragmentManager());
@@ -107,12 +107,9 @@ public class DrawerLayoutFragment extends BaseFragment implements NavigationView
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                XToastUtils.toast("点击了:" + menuItem.getTitle());
-                return true;
-            }
+        navView.setNavigationItemSelectedListener(menuItem -> {
+            XToastUtils.toast("点击了:" + menuItem.getTitle());
+            return true;
         });
         fab.setOnClickListener(this);
 

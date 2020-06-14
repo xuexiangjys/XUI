@@ -71,15 +71,12 @@ public class ExpandableListAdapter extends BaseRecyclerAdapter<String> {
         ExpandableLayout expandableLayout = holder.findViewById(R.id.expandable_layout);
         AppCompatImageView ivIndicator = holder.findViewById(R.id.iv_indicator);
         expandableLayout.setInterpolator(new OvershootInterpolator());
-        expandableLayout.setOnExpansionChangedListener(new ExpandableLayout.OnExpansionChangedListener() {
-            @Override
-            public void onExpansionChanged(float expansion, int state) {
-                if (mRecyclerView != null && state == ExpandableLayout.State.EXPANDING) {
-                    mRecyclerView.smoothScrollToPosition(position);
-                }
-                if (ivIndicator != null) {
-                    ivIndicator.setRotation(expansion * 90);
-                }
+        expandableLayout.setOnExpansionChangedListener((expansion, state) -> {
+            if (mRecyclerView != null && state == ExpandableLayout.State.EXPANDING) {
+                mRecyclerView.smoothScrollToPosition(position);
+            }
+            if (ivIndicator != null) {
+                ivIndicator.setRotation(expansion * 90);
             }
         });
 

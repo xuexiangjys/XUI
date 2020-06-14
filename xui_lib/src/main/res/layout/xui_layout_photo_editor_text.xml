@@ -46,6 +46,7 @@
         android:layout_height="15dp"
         android:layout_gravity="top|start"
         android:elevation="1dp"
-        app:srcCompat="@drawable/pe_ic_remove" />
+        app:srcCompat="@drawable/pe_ic_remove"
+        tools:targetApi="lollipop" />
 
 </FrameLayout>

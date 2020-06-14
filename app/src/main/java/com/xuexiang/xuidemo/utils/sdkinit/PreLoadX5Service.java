@@ -17,10 +17,11 @@
 
 package com.xuexiang.xuidemo.utils.sdkinit;
 
-import android.app.Service;
+import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-import android.os.IBinder;
+
+import androidx.annotation.Nullable;
 
 import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
@@ -38,7 +39,13 @@ import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
  * @author xuexiang
  * @since 2019-07-31 9:29
  */
-public class PreLoadX5Service extends Service {
+public class PreLoadX5Service extends IntentService {
+
+    private static final String SERVICE_NAME = "PreLoadX5Service";
+
+    public PreLoadX5Service() {
+        super(SERVICE_NAME);
+    }
 
     /**
      * 开始预加载
@@ -51,13 +58,7 @@ public class PreLoadX5Service extends Service {
     }
 
     @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
+    protected void onHandleIntent(@Nullable Intent intent) {
         preInit();
     }
 

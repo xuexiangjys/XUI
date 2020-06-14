@@ -2,6 +2,7 @@ package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.View;
@@ -42,12 +43,7 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
     }
 
     protected TitleBar initTitle() {
-        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popToBack();
-            }
-        });
+        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), v -> popToBack());
     }
 
     @Override
@@ -106,7 +102,7 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
 
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         //屏幕旋转时刷新一下title
         super.onConfigurationChanged(newConfig);
         ViewGroup root = (ViewGroup) getRootView();

@@ -19,17 +19,11 @@ package com.xuexiang.xuidemo.adapter.dropdownmenu;
 
 import android.content.Context;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.xuexiang.xui.adapter.listview.BaseListAdapter;
-import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xuidemo.R;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

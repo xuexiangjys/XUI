@@ -52,12 +52,7 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
     @Override
     protected void initListeners() {
         //下拉刷新
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadData();
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this::loadData);
         refresh(); //第一次进入触发自动刷新，演示效果
     }
 
@@ -67,13 +62,10 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
     }
 
     private void loadData() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter.refresh(DemoDataProvider.getDemoData());
-                if (swipeRefreshLayout != null) {
-                    swipeRefreshLayout.setRefreshing(false);
-                }
+        new Handler().postDelayed(() -> {
+            mAdapter.refresh(DemoDataProvider.getDemoData());
+            if (swipeRefreshLayout != null) {
+                swipeRefreshLayout.setRefreshing(false);
             }
         }, 1000);
     }

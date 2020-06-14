@@ -37,6 +37,7 @@ import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.RadiusImageBanner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -136,10 +137,7 @@ public class ViewPagerBannerFragment extends BaseFragment implements BaseBanner.
      */
     private void sib_simple_usage() {
         sib_simple_usage.setSource(mData)
-                .setOnItemClickListener(new BaseBanner.OnItemClickListener<BannerItem>() {
-                    @Override
-                    public void onItemClick(View view, BannerItem t, int position) {
-                    }
+                .setOnItemClickListener((view, t, position) -> {
                 })
                 .setIsOnePageLoop(false).startScroll();
 
@@ -262,18 +260,11 @@ public class ViewPagerBannerFragment extends BaseFragment implements BaseBanner.
      */
     private void stb() {
 
-        ArrayList<String> titles = new ArrayList<>();
-        for (String title : DemoDataProvider.titles) {
-            titles.add(title);
-        }
+        List<String> titles = new ArrayList<>();
+        Collections.addAll(titles, DemoDataProvider.titles);
         stb
                 .setSource(titles)
-                .setOnItemClickListener(new BaseBanner.OnItemClickListener<String>() {
-                    @Override
-                    public void onItemClick(View view, String item, int position) {
-                        XToastUtils.toast("position--->" + position);
-                    }
-                })
+                .setOnItemClickListener((view, item, position) -> XToastUtils.toast("position--->" + position))
                 .startScroll();
 
     }
@@ -288,13 +279,10 @@ public class ViewPagerBannerFragment extends BaseFragment implements BaseBanner.
         new MaterialDialog.Builder(getContext())
                 .title(R.string.tip_please_select_transfer_type)
                 .items(itemList.toArray(contents))
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        Bundle param = new Bundle();
-                        param.putInt(POSITION, position);
-                        openPage(UserGuideFragment.class, param);
-                    }
+                .itemsCallback((dialog, itemView, position, text) -> {
+                    Bundle param = new Bundle();
+                    param.putInt(POSITION, position);
+                    openPage(UserGuideFragment.class, param);
                 })
                 .show();
 

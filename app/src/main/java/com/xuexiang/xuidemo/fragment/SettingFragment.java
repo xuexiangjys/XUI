@@ -18,14 +18,15 @@
 package com.xuexiang.xuidemo.fragment;
 
 import android.content.Intent;
-import android.widget.CompoundButton;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
+import com.xuexiang.xutil.app.AppUtils;
 
 import butterknife.BindView;
 
@@ -34,10 +35,11 @@ import butterknife.BindView;
  * @since 2019-09-17 17:51
  */
 @Page(name = "设置")
-public class SettingFragment extends BaseFragment implements CompoundButton.OnCheckedChangeListener {
+public class SettingFragment extends BaseFragment {
     @BindView(R.id.stv_switch_custom_theme)
     SuperTextView stvSwitchCustomTheme;
-
+    @BindView(R.id.stv_switch_custom_font)
+    SuperTextView stvSwitchCustomFont;
     /**
      * 布局的资源id
      *
@@ -54,23 +56,24 @@ public class SettingFragment extends BaseFragment implements CompoundButton.OnCh
     @Override
     protected void initViews() {
         stvSwitchCustomTheme.setSwitchIsChecked(SettingSPUtils.getInstance().isUseCustomTheme());
-        stvSwitchCustomTheme.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
-            @Override
-            public void onClick(SuperTextView superTextView) {
-                stvSwitchCustomTheme.setSwitchIsChecked(!stvSwitchCustomTheme.getSwitchIsChecked(), false);
-            }
+        stvSwitchCustomTheme.setOnSuperTextViewClickListener(superTextView -> stvSwitchCustomTheme.setSwitchIsChecked(!stvSwitchCustomTheme.getSwitchIsChecked(), false));
+        stvSwitchCustomTheme.setSwitchCheckedChangeListener((buttonView, isChecked) -> {
+            SettingSPUtils.getInstance().setIsUseCustomTheme(isChecked);
+            popToBack();
+            //重启主页面
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
-        stvSwitchCustomTheme.setSwitchCheckedChangeListener(this);
-    }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        SettingSPUtils.getInstance().setIsUseCustomTheme(isChecked);
-        popToBack();
-
-        //重启主页面
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        stvSwitchCustomFont.setSwitchIsChecked(SettingSPUtils.getInstance().isUseCustomFont());
+        stvSwitchCustomFont.setOnSuperTextViewClickListener(superTextView -> stvSwitchCustomFont.setSwitchIsChecked(!stvSwitchCustomFont.getSwitchIsChecked(), false));
+        stvSwitchCustomFont.setSwitchCheckedChangeListener((buttonView, isChecked) -> {
+            DialogLoader.getInstance().showTipDialog(getContext(), -1, "切换字体", "切换字体需重启App后生效, 点击“重启”应用将自动重启！", "重启", (dialog, which) -> {
+                SettingSPUtils.getInstance().setIsUseCustomFont(isChecked);
+                //重启app
+                AppUtils.rebootApp(500);
+            });
+        });
     }
 }

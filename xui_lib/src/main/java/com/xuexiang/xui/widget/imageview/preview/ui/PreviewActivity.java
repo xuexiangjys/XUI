@@ -24,6 +24,7 @@ import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import androidx.annotation.CallSuper;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -300,6 +301,7 @@ public class PreviewActivity extends FragmentActivity {
             super(fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             return fragments.get(position);
@@ -311,7 +313,7 @@ public class PreviewActivity extends FragmentActivity {
         }
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
             super.destroyItem(container, position, object);
         }
     }

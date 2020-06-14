@@ -20,8 +20,6 @@ import android.graphics.Rect;
 import android.os.Parcelable;
 import androidx.annotation.Nullable;
 
-import java.io.Serializable;
-
 /**
  * 图片预览接口
  *
@@ -39,12 +37,10 @@ public interface IPreviewInfo extends Parcelable {
      */
     Rect getBounds();
 
-
     /**
      * @return 获取视频链接
      */
     @Nullable
     String getVideoUrl();
-
 
 }

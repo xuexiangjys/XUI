@@ -5,6 +5,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.MultipleStatusViewFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.StatefulLayoutFragment;
+import com.xuexiang.xuidemo.fragment.components.statelayout.StatusLoaderFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.StatusViewFragment;
 
 /**
@@ -21,7 +22,8 @@ public class StateLayoutFragment extends ComponentContainerFragment {
         return new Class[] {
                 StatefulLayoutFragment.class,
                 MultipleStatusViewFragment.class,
-                StatusViewFragment.class
+                StatusViewFragment.class,
+                StatusLoaderFragment.class
         };
     }
 }

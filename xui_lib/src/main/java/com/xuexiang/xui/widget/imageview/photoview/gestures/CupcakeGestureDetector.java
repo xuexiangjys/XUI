@@ -67,7 +67,7 @@ public class CupcakeGestureDetector implements IGestureDetector {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN: {
+            case MotionEvent.ACTION_DOWN:
                 mVelocityTracker = VelocityTracker.obtain();
                 if (null != mVelocityTracker) {
                     mVelocityTracker.addMovement(ev);
@@ -79,9 +79,7 @@ public class CupcakeGestureDetector implements IGestureDetector {
                 mLastTouchY = getActiveY(ev);
                 mIsDragging = false;
                 break;
-            }
-
-            case MotionEvent.ACTION_MOVE: {
+            case MotionEvent.ACTION_MOVE:
                 final float x = getActiveX(ev);
                 final float y = getActiveY(ev);
                 final float dx = x - mLastTouchX, dy = y - mLastTouchY;
@@ -102,18 +100,14 @@ public class CupcakeGestureDetector implements IGestureDetector {
                     }
                 }
                 break;
-            }
-
-            case MotionEvent.ACTION_CANCEL: {
+            case MotionEvent.ACTION_CANCEL:
                 // Recycle Velocity Tracker
                 if (null != mVelocityTracker) {
                     mVelocityTracker.recycle();
                     mVelocityTracker = null;
                 }
                 break;
-            }
-
-            case MotionEvent.ACTION_UP: {
+            case MotionEvent.ACTION_UP:
                 if (mIsDragging) {
                     if (null != mVelocityTracker) {
                         mLastTouchX = getActiveX(ev);
@@ -141,9 +135,9 @@ public class CupcakeGestureDetector implements IGestureDetector {
                     mVelocityTracker = null;
                 }
                 break;
-            }
+            default:
+                break;
         }
-
         return true;
     }
 }

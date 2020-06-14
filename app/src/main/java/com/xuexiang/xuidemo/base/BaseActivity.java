@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
-import com.mikepenz.iconics.context.IconicsContextWrapper;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
@@ -16,7 +15,7 @@ import com.xuexiang.xuidemo.utils.Utils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
 /**
  * 基础容器Activity
@@ -45,7 +44,7 @@ public class BaseActivity extends XPageActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         //注入字体
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
     }
 
     @Override

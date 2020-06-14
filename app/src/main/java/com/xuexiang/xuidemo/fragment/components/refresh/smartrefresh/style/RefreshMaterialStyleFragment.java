@@ -60,7 +60,9 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
      */
     @Override
     public void onItemClick(View itemView, int position) {
-        if (!RefreshState.None.equals(mRefreshLayout.getState())) return;
+        if (!RefreshState.None.equals(mRefreshLayout.getState())) {
+            return;
+        }
 
         switch (Item.values()[position]) {
             case 内容不偏移:
@@ -87,6 +89,8 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
             case 橙色主题:
                 setThemeColor(android.R.color.holo_orange_light);
                 break;
+            default:
+                break;
         }
         mRefreshLayout.autoRefresh();
     }
@@ -95,7 +99,9 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
         mRefreshLayout.setPrimaryColorsId(colorPrimary, android.R.color.white);
         mTitleBar.setBackgroundColor(ContextCompat.getColor(getContext(), colorPrimary));
         if (Build.VERSION.SDK_INT >= 21) {
-            getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(getContext(), colorPrimary));
+            if (getActivity() != null) {
+                getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(getContext(), colorPrimary));
+            }
         }
     }
 

@@ -83,9 +83,7 @@ public class LinkageRecyclerViewSimpleFragment extends BaseFragment {
                     },
                 (secondaryHolder, item) -> {
                     //二级列表点击
-                    secondaryHolder.getView(R.id.level_2_item).setOnClickListener(v -> {
-                        SnackbarUtils.Short(v, item.info.getTitle()).show();
-                    });
+                    secondaryHolder.getView(R.id.level_2_item).setOnClickListener(v -> SnackbarUtils.Short(v, item.info.getTitle()).show());
                 },
                 (headerHolder, item) -> {
                     //TODO

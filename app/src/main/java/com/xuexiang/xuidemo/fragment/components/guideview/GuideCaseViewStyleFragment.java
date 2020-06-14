@@ -9,7 +9,6 @@ import android.view.animation.AnimationUtils;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.guidview.FocusShape;
 import com.xuexiang.xui.widget.guidview.GuideCaseView;
-import com.xuexiang.xui.widget.guidview.OnViewInflateListener;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
@@ -135,17 +134,7 @@ public class GuideCaseViewStyleFragment extends BaseFragment {
     public void focusWithCustomView(View view) {
         guideCaseView = new GuideCaseView.Builder(getActivity())
                 .focusOn(view)
-                .customView(R.layout.layout_custom_guide_case_view, new OnViewInflateListener() {
-                    @Override
-                    public void onViewInflated(View view) {
-                        view.findViewById(R.id.btn_action_close).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                guideCaseView.hide();
-                            }
-                        });
-                    }
-                })
+                .customView(R.layout.layout_custom_guide_case_view, view12 -> view12.findViewById(R.id.btn_action_close).setOnClickListener(view1 -> guideCaseView.hide()))
                 .closeOnTouch(false)
                 .build();
         guideCaseView.show();

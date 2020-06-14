@@ -190,7 +190,7 @@ public class VerifyCodeEditText extends RelativeLayout {
         }
         for (int i = 0; i < mPwdTextViews.length; i++) {
             PwdTextView tv = mPwdTextViews[i];
-            if (tv.getText().toString().trim().equals("")) {
+            if ("".equals(tv.getText().toString().trim())) {
                 if (mIsPwd) {
                     tv.drawPassword(mPwdRadius);
                 }
@@ -215,7 +215,7 @@ public class VerifyCodeEditText extends RelativeLayout {
     private void onKeyDelete() {
         for (int i = mPwdTextViews.length - 1; i >= 0; i--) {
             PwdTextView tv = mPwdTextViews[i];
-            if (!tv.getText().toString().trim().equals("")) {
+            if (!"".equals(tv.getText().toString().trim())) {
                 if (mIsPwd) {
                     tv.clearPassword();
                 }

@@ -19,17 +19,23 @@ package com.xuexiang.xui.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Build;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.adapter.recyclerview.DividerItemDecoration;
 import com.xuexiang.xui.adapter.recyclerview.GridDividerItemDecoration;
 import com.xuexiang.xui.adapter.recyclerview.XGridLayoutManager;
@@ -74,7 +80,7 @@ public final class WidgetUtils {
      */
     public static void initSpinnerStyle(Spinner spinner, String[] items) {
         setSpinnerDropDownVerticalOffset(spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(spinner.getContext(), R.layout.xui_layout_spinner_selected_item, R.id.spinner_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(spinner.getContext(), R.layout.xui_layout_spinner_selected_item, R.id.spinner_item, items);
         adapter.setDropDownViewResource(R.layout.xui_layout_spinner_drop_down_item);
         spinner.setAdapter(adapter);
     }
@@ -93,6 +99,42 @@ public final class WidgetUtils {
             spinner.setDropDownVerticalOffset(itemHeight + dropdownOffset);
         }
     }
+
+    //===============TabLayout=============//
+
+    /**
+     * 设置TabLayout选项卡的字体
+     *
+     * @param tabLayout 选项卡
+     */
+    public static void setTabLayoutTextFont(TabLayout tabLayout) {
+        setTabLayoutTextFont(tabLayout, XUI.getDefaultTypeface());
+    }
+
+    /**
+     * 设置TabLayout选项卡的字体
+     *
+     * @param tabLayout 选项卡
+     * @param typeface  字体
+     */
+    public static void setTabLayoutTextFont(TabLayout tabLayout, Typeface typeface) {
+        if (tabLayout == null || typeface == null) {
+            return;
+        }
+        ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+        for (int i = 0; i < tabsCount; i++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(i);
+            int tabCount = vgTab.getChildCount();
+            for (int j = 0; j < tabCount; j++) {
+                View tabViewChild = vgTab.getChildAt(j);
+                if (tabViewChild instanceof TextView) {
+                    ((TextView) tabViewChild).setTypeface(typeface, Typeface.NORMAL);
+                }
+            }
+        }
+    }
+
 
     //===============recyclerView=============//
 

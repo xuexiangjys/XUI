@@ -18,13 +18,9 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 
 import androidx.annotation.MainThread;
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xuexiang.rxutil2.rxjava.DisposablePool;
 import com.xuexiang.rxutil2.rxjava.RxJavaUtils;
 import com.xuexiang.xpage.annotation.Page;
@@ -76,24 +72,11 @@ public class RefreshCustomStyleFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
-        mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                handleRefresh();
-            }
-        });
-        mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                refreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter.loadMore(DemoDataProvider.getDemoData());
-                        refreshLayout.finishLoadMore();
-                    }
-                }, 2000);
-            }
-        });
+        mRefreshLayout.setOnRefreshListener(refreshLayout -> handleRefresh());
+        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> refreshLayout.getLayout().postDelayed(() -> {
+            mAdapter.loadMore(DemoDataProvider.getDemoData());
+            refreshLayout.finishLoadMore();
+        }, 2000));
         mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
 
 

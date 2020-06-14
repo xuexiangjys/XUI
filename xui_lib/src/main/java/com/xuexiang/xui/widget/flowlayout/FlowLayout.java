@@ -76,8 +76,8 @@ public class FlowLayout extends ViewGroup {
 
     }
 
-    private List<List<View>> mAllViews = new ArrayList<List<View>>();
-    private List<Integer> mLineHeight = new ArrayList<Integer>();
+    private List<List<View>> mAllViews = new ArrayList<>();
+    private List<Integer> mLineHeight = new ArrayList<>();
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -89,7 +89,7 @@ public class FlowLayout extends ViewGroup {
         int lineWidth = 0;
         int lineHeight = 0;
 
-        List<View> lineViews = new ArrayList<View>();
+        List<View> lineViews = new ArrayList<>();
 
         int cCount = getChildCount();
 
@@ -107,7 +107,7 @@ public class FlowLayout extends ViewGroup {
 
                 lineWidth = 0;
                 lineHeight = childHeight + lp.topMargin + lp.bottomMargin;
-                lineViews = new ArrayList<View>();
+                lineViews = new ArrayList<>();
             }
             lineWidth += childWidth + lp.leftMargin + lp.rightMargin;
             lineHeight = Math.max(lineHeight, childHeight + lp.topMargin

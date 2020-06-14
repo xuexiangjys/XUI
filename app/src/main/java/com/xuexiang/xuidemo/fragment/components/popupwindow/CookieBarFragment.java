@@ -59,24 +59,14 @@ public class CookieBarFragment extends BaseFragment {
                         .setIcon(R.mipmap.ic_launcher)
                         .setMessage(R.string.cookie_message)
                         .setLayoutGravity(Gravity.BOTTOM)
-                        .setAction(R.string.cookie_action, new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                XToastUtils.toast("点击消失！");
-                            }
-                        })
+                        .setAction(R.string.cookie_action, view13 -> XToastUtils.toast("点击消失！"))
                         .show();
                 break;
             case R.id.btn_top_with_icon:
                 CookieBar.builder(getActivity())
                         .setMessage(R.string.cookie_message)
                         .setDuration(-1)
-                        .setActionWithIcon(R.drawable.ic_action_close, new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                XToastUtils.toast("点击消失！");
-                            }
-                        })
+                        .setActionWithIcon(R.drawable.ic_action_close, view12 -> XToastUtils.toast("点击消失！"))
                         .show();
                 break;
             case R.id.btn_custom:
@@ -87,13 +77,10 @@ public class CookieBarFragment extends BaseFragment {
                         .setBackgroundColor(R.color.colorPrimary)
                         .setActionColor(android.R.color.white)
                         .setTitleColor(android.R.color.white)
-                        .setAction(R.string.cookie_action, new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                XToastUtils.toast("点击消失！");
-                            }
-                        })
+                        .setAction(R.string.cookie_action, view1 -> XToastUtils.toast("点击消失！"))
                         .show();
+                break;
+            default:
                 break;
         }
     }

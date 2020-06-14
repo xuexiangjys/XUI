@@ -236,8 +236,8 @@ public class SmoothCheckBox extends View implements Checkable {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         mWidth = getMeasuredWidth();
         mStrokeWidth = (mStrokeWidth == 0 ? getMeasuredWidth() / 10 : mStrokeWidth);
-        mStrokeWidth = mStrokeWidth > getMeasuredWidth() / 5 ? getMeasuredWidth() / 5 : mStrokeWidth;
-        mStrokeWidth = (mStrokeWidth < 3) ? 3 : mStrokeWidth;
+        mStrokeWidth = Math.min(mStrokeWidth, getMeasuredWidth() / 5);
+        mStrokeWidth = Math.max(mStrokeWidth, 3);
         mCenterPoint.x = mWidth / 2;
         mCenterPoint.y = getMeasuredHeight() / 2;
 
@@ -312,7 +312,7 @@ public class SmoothCheckBox extends View implements Checkable {
                 mTickPath.lineTo(stopX, stopY);
                 canvas.drawPath(mTickPath, mTickPaint);
 
-                float step = (mWidth / 20) < 3 ? 3 : (mWidth / 20);
+                float step = Math.max((mWidth / 20), 3);
                 mDrewDistance += step;
             } else {
                 mTickPath.reset();

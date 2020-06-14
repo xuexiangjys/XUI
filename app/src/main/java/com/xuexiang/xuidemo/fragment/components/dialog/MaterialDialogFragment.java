@@ -17,14 +17,9 @@
 
 package com.xuexiang.xuidemo.fragment.components.dialog;
 
-import android.content.DialogInterface;
 import android.text.InputType;
-import android.view.View;
-
-import androidx.annotation.NonNull;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.widget.dialog.materialdialog.DialogAction;
 import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.dialog.materialdialog.simplelist.MaterialSimpleListAdapter;
@@ -164,21 +159,11 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                         getString(R.string.hint_please_input_password),
                         "",
                         false,
-                        (new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                                XToastUtils.toast(input.toString());
-                            }
-                        }))
+                        ((dialog, input) -> XToastUtils.toast(input.toString())))
                 .inputRange(3, 5)
                 .positiveText(R.string.lab_continue)
                 .negativeText(R.string.lab_change)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        XToastUtils.toast("你输入了:" + dialog.getInputEditText().getText().toString());
-                    }
-                })
+                .onPositive((dialog, which) -> XToastUtils.toast("你输入了:" + dialog.getInputEditText().getText().toString()))
                 .cancelable(false)
                 .show();
     }
@@ -190,12 +175,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
         new MaterialDialog.Builder(getContext())
                 .title(R.string.tip_options)
                 .items(R.array.menu_values)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        XToastUtils.toast(position + ": " + text);
-                    }
-                })
+                .itemsCallback((dialog, itemView, position, text) -> XToastUtils.toast(position + ": " + text))
                 .show();
     }
 
@@ -208,12 +188,9 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                 .items(R.array.router_choice_entry)
                 .itemsCallbackSingleChoice(
                         0,
-                        new MaterialDialog.ListCallbackSingleChoice() {
-                            @Override
-                            public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
-                                XToastUtils.toast(which + ": " + text);
-                                return true;
-                            }
+                        (dialog, itemView, which, text) -> {
+                            XToastUtils.toast(which + ": " + text);
+                            return true;
                         })
                 .positiveText(R.string.lab_choice)
                 .negativeText(R.string.lab_cancel)
@@ -229,16 +206,13 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                 .items(R.array.router_choice_entry)
                 .itemsCallbackMultiChoice(
                         new Integer[]{0, 1},
-                        new MaterialDialog.ListCallbackMultiChoice() {
-                            @Override
-                            public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[] text) {
-                                StringBuilder sb = new StringBuilder("选中：\n");
-                                for (int i = 0; i < which.length; i ++){
-                                    sb.append(which[i]).append(":").append(text[i]).append("\n");
-                                }
-                                XToastUtils.toast(sb.toString());
-                                return true;
+                        (dialog, which, text) -> {
+                            StringBuilder sb = new StringBuilder("选中：\n");
+                            for (int i = 0; i < which.length; i ++){
+                                sb.append(which[i]).append(":").append(text[i]).append("\n");
                             }
+                            XToastUtils.toast(sb.toString());
+                            return true;
                         })
                 .positiveText(R.string.lab_choice)
                 .negativeText(R.string.lab_cancel)
@@ -255,20 +229,12 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                 .content(R.string.content_downloading)
                 .contentGravity(GravityEnum.CENTER)
                 .progress(false, 150, true)
-                .cancelListener(new DialogInterface.OnCancelListener() {
-                                    @Override
-                                    public void onCancel(DialogInterface dialog) {
-                                        if (thread != null) {
-                                            thread.interrupt();
-                                        }
-                                    }
-                                })
-                .showListener(new DialogInterface.OnShowListener() {
-                                  @Override
-                                  public void onShow(DialogInterface dialog) {
-                                      updateProgress((MaterialDialog) dialog);
-                                  }
-                              })
+                .cancelListener(dialog -> {
+                    if (thread != null) {
+                        thread.interrupt();
+                    }
+                })
+                .showListener(dialog -> updateProgress((MaterialDialog) dialog))
                 .negativeText(R.string.lab_cancel)
                 .show();
     }
@@ -279,29 +245,23 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
      */
     private void updateProgress(MaterialDialog dialogInterface) {
         final MaterialDialog dialog = dialogInterface;
-        startThread(new Runnable() {
-            @Override
-            public void run() {
-                while (dialog.getCurrentProgress() != dialog.getMaxProgress()
-                        && !Thread.currentThread().isInterrupted()) {
-                    if (dialog.isCancelled()) {
-                        break;
-                    }
-                    try {
-                        Thread.sleep(50);
-                    } catch (InterruptedException e) {
-                        break;
-                    }
-                    dialog.incrementProgress(1);
+        startThread(() -> {
+            while (dialog.getCurrentProgress() != dialog.getMaxProgress()
+                    && !Thread.currentThread().isInterrupted()) {
+                if (dialog.isCancelled()) {
+                    break;
                 }
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        thread = null;
-                        dialog.setContent(R.string.tip_download_finished);
-                    }
-                });
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    break;
+                }
+                dialog.incrementProgress(1);
             }
+            getActivity().runOnUiThread(() -> {
+                thread = null;
+                dialog.setContent(R.string.tip_download_finished);
+            });
         });
     }
 
@@ -344,12 +304,7 @@ public class MaterialDialogFragment extends BaseSimpleListFragment {
                 .iconPaddingDp(8)
                 .build());
         final MaterialSimpleListAdapter adapter = new MaterialSimpleListAdapter(list)
-                .setOnItemClickListener(new MaterialSimpleListAdapter.OnItemClickListener() {
-                    @Override
-                    public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
-                        XToastUtils.toast(item.getContent().toString());
-                    }
-                });
+                .setOnItemClickListener((dialog, index, item) -> XToastUtils.toast(item.getContent().toString()));
         new MaterialDialog.Builder(getContext()).adapter(adapter, null).show();
     }
 
