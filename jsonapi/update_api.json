@@ -2,11 +2,11 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 14,
-  "VersionName": "1.1.3",
-  "UploadTime": "2020-03-02 00:00:00",
-  "ModifyContent": "\r\n1、修复AS3.6编译问题。\n2、优化了部分组件功能。\n3、新增隐私弹窗演示。",
+  "VersionCode": 15,
+  "VersionName": "1.1.4",
+  "UploadTime": "2020-06-14 08:00:00",
+  "ModifyContent": "\r\n1、修复部分已知问题。\n2、优化了部分组件功能。\n3、新增更多使用演示。",
   "DownloadUrl": "https://xuexiangjys.oss-cn-shanghai.aliyuncs.com/apk/xuidemo.apk",
-  "ApkSize": 11952,
-  "ApkMd5": "E394EA280B4EFB8C1F855D4CC2E36C30"
+  "ApkSize": 12393,
+  "ApkMd5": "60752D2FBAB08E941B8BD4F6C9579690"
 }
