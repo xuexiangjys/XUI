@@ -133,6 +133,16 @@ XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
 
 （2）在项目的基础Activity中加入如下代码注入字体.
 
+注意：1.1.4版本之后使用如下设置注入
+```
+@Override
+protected void attachBaseContext(Context newBase) {
+    //注入字体
+    super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
+}
+```
+
+注意：1.1.3版本及之前的版本使用如下设置注入
 ```
 @Override
 protected void attachBaseContext(Context newBase) {
