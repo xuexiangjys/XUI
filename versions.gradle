@@ -11,6 +11,7 @@ versions.arch_core = "2.0.0"
 versions.room = "2.1.0-alpha03"
 versions.lifecycle = "2.0.0"
 versions.support = "28.0.0"
+versions.androidx = "1.1.0"
 versions.dagger = "2.16"
 versions.junit = "4.12"
 versions.espresso = "3.0.2"
@@ -52,10 +53,10 @@ support.core_utils = "com.android.support:support-core-utils:$versions.support"
 deps.support = support
 
 def androidx = [:]
-androidx.annotations = "androidx.annotation:annotation:1.1.0"
-androidx.appcompat = 'androidx.appcompat:appcompat:1.1.0'
-androidx.recyclerview = 'androidx.recyclerview:recyclerview:1.0.0'
-androidx.design = 'com.google.android.material:material:1.1.0-alpha10'
+androidx.annotations = "androidx.annotation:annotation:$versions.androidx"
+androidx.appcompat = "androidx.appcompat:appcompat:$versions.androidx"
+androidx.recyclerview = "androidx.recyclerview:recyclerview:$versions.androidx"
+androidx.design = "com.google.android.material:material:$versions.androidx"
 androidx.multidex = 'androidx.multidex:multidex:2.0.1'
 deps.androidx = androidx
 
