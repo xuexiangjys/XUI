@@ -32,6 +32,11 @@ import androidx.annotation.DrawableRes;
 public interface IDialogStrategy {
 
     /**
+     * 无图标
+     */
+    int NO_ICON = -1;
+
+    /**
      * 显示简要的提示对话框
      *
      * @param context
