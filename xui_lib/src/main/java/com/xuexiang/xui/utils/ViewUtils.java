@@ -33,6 +33,7 @@ import android.graphics.LightingColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -60,6 +61,7 @@ import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
 
 import java.util.ArrayList;
@@ -1028,6 +1030,51 @@ public final class ViewUtils {
                 m.preConcat(view.getMatrix());
             }
         }
+    }
+
+    /**
+     * 设置控件的字体
+     *
+     * @param view     控件
+     * @param typeface 字体
+     */
+    public static void setViewTextFont(View view, Typeface typeface) {
+        if (view == null || typeface == null) {
+            return;
+        }
+        if (view instanceof TextView) {
+            ((TextView) view).setTypeface(typeface);
+        } else if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                setViewTextFont(viewGroup.getChildAt(i), typeface);
+            }
+        }
+    }
+
+    /**
+     * 设置控件的字体
+     *
+     * @param typeface 字体
+     * @param views    控件集合
+     */
+    public static void setViewsFont(Typeface typeface, View... views) {
+        if (typeface == null || views == null || views.length == 0) {
+            return;
+        }
+
+        for (View view : views) {
+            setViewTextFont(view, typeface);
+        }
+    }
+
+    /**
+     * 设置控件的字体
+     *
+     * @param views 控件集合
+     */
+    public static void setViewsFont(View... views) {
+        setViewsFont(XUI.getDefaultTypeface(), views);
     }
 
     /**

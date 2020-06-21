@@ -1269,8 +1269,8 @@ public class MaterialDialog extends DialogBase
             this.buttonsGravity =
                     ThemeUtils.resolveGravityEnum(context, R.attr.md_buttons_gravity, this.buttonsGravity);
 
-            final String mediumFont = ThemeUtils.resolveString(context, R.attr.md_medium_font);
-            final String regularFont = ThemeUtils.resolveString(context, R.attr.md_regular_font);
+            final String mediumFont = ThemeUtils.resolveString(context, R.attr.md_medium_font, XUI.getDefaultFontAssetPath());
+            final String regularFont = ThemeUtils.resolveString(context, R.attr.md_regular_font, XUI.getDefaultFontAssetPath());
             try {
                 typeface(mediumFont, regularFont);
             } catch (Throwable ignored) {

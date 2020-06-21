@@ -129,12 +129,11 @@ public final class WidgetUtils {
             for (int j = 0; j < tabCount; j++) {
                 View tabViewChild = vgTab.getChildAt(j);
                 if (tabViewChild instanceof TextView) {
-                    ((TextView) tabViewChild).setTypeface(typeface, Typeface.NORMAL);
+                    ((TextView) tabViewChild).setTypeface(typeface);
                 }
             }
         }
     }
-
 
     //===============recyclerView=============//
 
