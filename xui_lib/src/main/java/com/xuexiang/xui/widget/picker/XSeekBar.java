@@ -29,6 +29,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewParent;
 
 import androidx.annotation.NonNull;
 
@@ -430,8 +431,7 @@ public class XSeekBar extends View {
         final int actionIndex = event.getActionIndex();
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
-
-                mIsTouching = true;
+                updateTouchStatus(true);
 
                 if (mLastTouchedMin) {
                     if (!checkTouchingMinTarget(actionIndex, event)
@@ -448,8 +448,7 @@ public class XSeekBar extends View {
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP:
-
-                mIsTouching = false;
+                updateTouchStatus(false);
 
                 mTouchingMinTarget.remove(event.getPointerId(actionIndex));
                 mTouchingMaxTarget.remove(event.getPointerId(actionIndex));
@@ -458,7 +457,7 @@ public class XSeekBar extends View {
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                mIsTouching = true;
+                updateTouchStatus(true);
 
                 for (int i = 0; i < event.getPointerCount(); i++) {
                     if (mTouchingMinTarget.contains(event.getPointerId(i))) {
@@ -480,7 +479,7 @@ public class XSeekBar extends View {
                 break;
 
             case MotionEvent.ACTION_POINTER_DOWN:
-                mIsTouching = true;
+                updateTouchStatus(true);
 
                 for (int i = 0; i < event.getPointerCount(); i++) {
                     if (mLastTouchedMin) {
@@ -497,7 +496,7 @@ public class XSeekBar extends View {
                 break;
 
             case MotionEvent.ACTION_CANCEL:
-                mIsTouching = false;
+                updateTouchStatus(false);
 
                 mTouchingMinTarget.clear();
                 mTouchingMaxTarget.clear();
@@ -509,6 +508,19 @@ public class XSeekBar extends View {
         }
 
         return true;
+    }
+
+    /**
+     * 更新触摸状态
+     *
+     * @param isTouching 是否触摸
+     */
+    private void updateTouchStatus(boolean isTouching) {
+        mIsTouching = isTouching;
+        ViewParent parent = getParent();
+        if (parent != null) {
+            parent.requestDisallowInterceptTouchEvent(isTouching);
+        }
     }
 
     /**
