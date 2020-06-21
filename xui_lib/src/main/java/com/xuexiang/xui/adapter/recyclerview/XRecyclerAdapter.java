@@ -162,6 +162,19 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     }
 
     /**
+     * 重置数据源，并不进行刷新操作！！
+     *
+     * @param collection 数据源
+     */
+    public XRecyclerAdapter resetDataSource(Collection<T> collection) {
+        if (collection != null) {
+            mData.clear();
+            mData.addAll(collection);
+        }
+        return this;
+    }
+
+    /**
      * 给指定位置添加一项
      *
      * @param pos

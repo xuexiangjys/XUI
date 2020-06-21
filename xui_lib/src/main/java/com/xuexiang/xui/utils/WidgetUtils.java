@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -44,6 +45,8 @@ import com.xuexiang.xui.widget.dialog.LoadingDialog;
 import com.xuexiang.xui.widget.dialog.MiniLoadingDialog;
 import com.xuexiang.xui.widget.progress.loading.IMessageLoader;
 import com.xuexiang.xui.widget.progress.loading.LoadingViewLayout;
+
+import java.util.List;
 
 import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
 
@@ -240,6 +243,26 @@ public final class WidgetUtils {
         recyclerView.setLayoutManager(new XLinearLayoutManager(recyclerView.getContext()).setScrollEnabled(canScroll));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), VERTICAL, dividerHeight, dividerColor));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+
+    /**
+     * 获取局部变化的值集合
+     *
+     * @param payloads 变化载体
+     * @return 局部变化的值集合
+     */
+    public static Bundle getChangePayload(List<Object> payloads) {
+        if (payloads == null || payloads.isEmpty()) {
+            return null;
+        }
+
+        for (Object payload : payloads) {
+            if (payload instanceof Bundle) {
+                return (Bundle) payload;
+            }
+        }
+        return null;
     }
 
     //===============Loading=============//

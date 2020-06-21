@@ -1,7 +1,5 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
-import android.os.Handler;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -37,7 +35,6 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
     FloatingActionButton fab;
 
     private NewsCardViewListAdapter mAdapter;
-    private Handler mHandler = new Handler();
     private boolean mEnableLoadMore;
 
     @Override
@@ -80,7 +77,7 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
     }
 
     private void loadData() {
-        mHandler.postDelayed(() -> {
+        swipeRefreshLayout.postDelayed(() -> {
             mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
             if (swipeRefreshLayout != null) {
                 swipeRefreshLayout.setRefreshing(false);
@@ -114,7 +111,7 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
     private SwipeRecyclerView.LoadMoreListener mLoadMoreListener = new SwipeRecyclerView.LoadMoreListener() {
         @Override
         public void onLoadMore() {
-            mHandler.postDelayed(() -> {
+            swipeRefreshLayout.postDelayed(() -> {
                 mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
                 if (recyclerView != null) {
                     recyclerView.loadMoreFinish(false, true);
@@ -122,11 +119,5 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
             }, 1000);
         }
     };
-
-    @Override
-    public void onDestroyView() {
-        mHandler.removeCallbacksAndMessages(null);
-        super.onDestroyView();
-    }
 
 }
