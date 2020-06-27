@@ -98,6 +98,11 @@ public class NewInfo implements Cloneable {
         return this;
     }
 
+    public NewInfo setID(long ID) {
+        this.ID = ID;
+        return this;
+    }
+
     public long getID() {
         return ID;
     }
