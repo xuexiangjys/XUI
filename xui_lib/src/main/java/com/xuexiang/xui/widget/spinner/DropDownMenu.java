@@ -35,7 +35,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.R;
-import com.xuexiang.xui.utils.DeviceUtils;
+import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
@@ -249,7 +249,7 @@ public class DropDownMenu extends LinearLayout {
         }
 
         mPopupMenuViews = new FrameLayout(getContext());
-        mPopupMenuViews.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (DeviceUtils.getScreenSize(getContext()).y * mMenuHeightPercent)));
+        mPopupMenuViews.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (DensityUtils.getDisplaySize(getContext(), true).y * mMenuHeightPercent)));
         mPopupMenuViews.setVisibility(GONE);
         mContainerView.addView(mPopupMenuViews, 2);
 

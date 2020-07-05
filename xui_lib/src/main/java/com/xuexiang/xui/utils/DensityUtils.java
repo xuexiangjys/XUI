@@ -1,7 +1,13 @@
 package com.xuexiang.xui.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Point;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+
+import com.xuexiang.xui.XUI;
 
 /**
  * 屏幕密度工具类
@@ -136,5 +142,104 @@ public final class DensityUtils {
 
         return (int) (((xdpi + ydpi) / 2.0F) + 0.5F);
     }
+
+    /**
+     * 获取应用窗口的尺寸
+     *
+     * @param activity 应用窗口
+     * @param isReal   是否是真实的尺寸
+     * @return 应用窗口的尺寸
+     */
+    public static Point getAppSize(Activity activity, boolean isReal) {
+        return getDisplaySize(activity, isReal);
+    }
+
+    /**
+     * 获取屏幕的尺寸
+     *
+     * @param isReal 是否是真实的尺寸
+     * @return 屏幕的尺寸
+     */
+    public static Point getScreenSize(boolean isReal) {
+        return getDisplaySize(XUI.getContext(), isReal);
+    }
+
+    /**
+     * 获取上下文所在的尺寸
+     *
+     * @param context 上下文
+     * @param isReal  是否是真实的尺寸
+     * @return 上下文所在的尺寸
+     */
+    public static Point getDisplaySize(Context context, boolean isReal) {
+        WindowManager windowManager;
+        if (context instanceof Activity) {
+            windowManager = ((Activity) context).getWindowManager();
+        } else {
+            windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        }
+        if (windowManager == null) {
+            return null;
+        }
+        Display display = windowManager.getDefaultDisplay();
+        Point point = new Point();
+        if (isReal) {
+            display.getRealSize(point);
+            return point;
+        } else {
+            display.getSize(point);
+            return point;
+        }
+    }
+
+    /**
+     * 获取应用窗口的度量信息
+     *
+     * @param activity 应用窗口
+     * @param isReal   是否是真实的度量信息
+     * @return 应用窗口的度量信息
+     */
+    public static DisplayMetrics getAppMetrics(Activity activity, boolean isReal) {
+        return getDisplayMetrics(activity, isReal);
+    }
+
+    /**
+     * 获取屏幕的度量信息
+     *
+     * @param isReal 是否是真实的度量信息
+     * @return 屏幕的度量信息
+     */
+    public static DisplayMetrics getScreenMetrics(boolean isReal) {
+        return getDisplayMetrics(XUI.getContext(), isReal);
+    }
+
+    /**
+     * 获取上下文所在的度量信息
+     *
+     * @param context 上下文
+     * @param isReal  是否是真实的度量信息
+     * @return 上下文所在的度量信息
+     */
+    public static DisplayMetrics getDisplayMetrics(Context context, boolean isReal) {
+        WindowManager windowManager;
+        if (context instanceof Activity) {
+            windowManager = ((Activity) context).getWindowManager();
+        } else {
+            windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        }
+        if (windowManager == null) {
+            return null;
+        }
+        Display display = windowManager.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        if (isReal) {
+            display.getRealMetrics(metrics);
+            return metrics;
+        } else {
+            display.getMetrics(metrics);
+            return metrics;
+        }
+    }
+
 
 }
