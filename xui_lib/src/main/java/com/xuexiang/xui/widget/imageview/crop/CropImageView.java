@@ -488,7 +488,7 @@ public class CropImageView extends FrameLayout {
     /**
      * Sets the both the X and Y values of the aspectRatio.
      * 设置固定比例剪切的比例
-     * 现将setFixedAspectRatio(true)设置
+     * 先将setFixedAspectRatio(true)设置
      * <p>
      * 例如：cropImage.setAspectRatio(40, 30);是以40:30的宽高比例剪切
      *
