@@ -352,7 +352,6 @@ public final class DrawableUtils {
 
     /////////////// VectorDrawable /////////////////////
 
-
     /**
      * 获取支持RTL布局的drawable【如果是RTL布局就旋转180度】
      *
@@ -360,12 +359,21 @@ public final class DrawableUtils {
      * @return
      */
     public static Drawable getSupportRTLDrawable(Drawable src) {
+        return getSupportRTLDrawable(src, false);
+    }
+
+    /**
+     * 获取支持RTL布局的drawable【如果是RTL布局就旋转180度】
+     *
+     * @param src 原drawable
+     * @return
+     */
+    public static Drawable getSupportRTLDrawable(Drawable src, boolean recycle) {
         if (ResUtils.isRtl()) {
-            return rotate(src, 180, 0, 0, true);
+            return rotate(src, 180, 0, 0, recycle);
         }
         return src;
     }
-
 
     /**
      * Return the rotated drawable.
@@ -401,6 +409,9 @@ public final class DrawableUtils {
                                 final float py,
                                 final boolean recycle) {
         if (isEmptyBitmap(src)) {
+            return null;
+        }
+        if (src.isRecycled()) {
             return null;
         }
         if (degrees == 0) {

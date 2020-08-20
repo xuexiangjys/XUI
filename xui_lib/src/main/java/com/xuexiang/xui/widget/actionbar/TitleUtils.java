@@ -161,7 +161,7 @@ public final class TitleUtils {
      * @return
      */
     public static TitleBar initTitleBarStyle(TitleBar titleBar, String title) {
-        titleBar.setLeftImageDrawable(DrawableUtils.getSupportRTLDrawable(ThemeUtils.resolveDrawable(titleBar.getContext(), R.attr.xui_actionbar_ic_navigation_back)))
+        titleBar.setLeftImageDrawable(ThemeUtils.resolveDrawable(titleBar.getContext(), R.attr.xui_actionbar_ic_navigation_back))
                 .setTitle(title);
         return titleBar;
     }

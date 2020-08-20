@@ -3,6 +3,7 @@ package com.xuexiang.xui.widget.edittext;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -27,7 +28,6 @@ import com.xuexiang.xui.utils.ResUtils;
  */
 public class ClearEditText extends AppCompatEditText implements OnFocusChangeListener, TextWatcher {
 
-    public static final int RIGHT_INDEX = 2;
     /**
      * 增大点击区域
      */
@@ -36,6 +36,8 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      * 删除按钮的引用
      */
     private Drawable mClearDrawable;
+
+    private boolean mIsRTL;
 
     public ClearEditText(Context context) {
         this(context, null);
@@ -89,6 +91,7 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         } else {
             mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
         }
+        mIsRTL = isRtl();
         setClearIconVisible(false);
         setOnFocusChangeListener(this);
         addTextChangedListener(this);
@@ -101,7 +104,7 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (getCompoundDrawables()[RIGHT_INDEX] != null) {
+        if (getCompoundDrawables()[mIsRTL ? 0 : 2] != null) {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 boolean touchable = isTouchable(event);
                 if (touchable) {
@@ -114,9 +117,11 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
     }
 
     private boolean isTouchable(MotionEvent event) {
-        return event.getX() > getWidth()
-                - getPaddingRight() - mClearDrawable.getIntrinsicWidth() - mExtraClickArea
-                && event.getX() < getWidth() - getPaddingRight() + mExtraClickArea;
+        if (mIsRTL) {
+            return event.getX() > getPaddingLeft() - mExtraClickArea && event.getX() < getPaddingLeft() + mClearDrawable.getIntrinsicWidth() + mExtraClickArea;
+        } else {
+            return event.getX() > getWidth() - getPaddingRight() - mClearDrawable.getIntrinsicWidth() - mExtraClickArea && event.getX() < getWidth() - getPaddingRight() + mExtraClickArea;
+        }
     }
 
     /**
@@ -139,8 +144,9 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      */
     protected void setClearIconVisible(boolean visible) {
         Drawable right = visible ? mClearDrawable : null;
-        setCompoundDrawables(getCompoundDrawables()[0],
-                getCompoundDrawables()[1], right, getCompoundDrawables()[3]);
+        setCompoundDrawables(mIsRTL
+                        ? right : getCompoundDrawables()[0],
+                getCompoundDrawables()[1], mIsRTL ? getCompoundDrawables()[2] : right, getCompoundDrawables()[3]);
     }
 
     /**
@@ -176,5 +182,13 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         this.setAnimation(shakeAnimation(5));
     }
 
-
+    /**
+     * Check if layout direction is RTL
+     *
+     * @return {@code true} if the layout direction is right-to-left
+     */
+    private boolean isRtl() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
+                getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+    }
 }

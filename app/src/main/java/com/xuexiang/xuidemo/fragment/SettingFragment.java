@@ -19,6 +19,7 @@ package com.xuexiang.xuidemo.fragment;
 
 import android.content.Intent;
 
+import com.xuexiang.xaop.cache.XMemoryCache;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
@@ -40,6 +41,7 @@ public class SettingFragment extends BaseFragment {
     SuperTextView stvSwitchCustomTheme;
     @BindView(R.id.stv_switch_custom_font)
     SuperTextView stvSwitchCustomFont;
+
     /**
      * 布局的资源id
      *
@@ -59,6 +61,7 @@ public class SettingFragment extends BaseFragment {
         stvSwitchCustomTheme.setOnSuperTextViewClickListener(superTextView -> stvSwitchCustomTheme.setSwitchIsChecked(!stvSwitchCustomTheme.getSwitchIsChecked(), false));
         stvSwitchCustomTheme.setSwitchCheckedChangeListener((buttonView, isChecked) -> {
             SettingSPUtils.getInstance().setIsUseCustomTheme(isChecked);
+            XMemoryCache.getInstance().clear();
             popToBack();
             //重启主页面
             Intent intent = new Intent(getContext(), MainActivity.class);
