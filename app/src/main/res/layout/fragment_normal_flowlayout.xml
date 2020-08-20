@@ -17,36 +17,36 @@
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Gray"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp" />
 
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Blue"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Green"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Green"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:enabled="false" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Auto"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:text="自适应按钮" />
 
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Auto"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:enabled="false"
             android:text="不可点击" />
@@ -68,36 +68,36 @@
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Gray"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp" />
 
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Blue"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Green"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Green"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:enabled="false" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Auto"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:text="自适应按钮" />
 
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             style="@style/RoundButton.Auto"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:enabled="false"
             android:text="不可点击" />

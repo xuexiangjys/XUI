@@ -157,10 +157,6 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) throws Exception {
-        if (isInEditMode()) {
-            return;
-        }
-
         TypedArray attributes = context.getTheme().obtainStyledAttributes(
                 attrs,
                 R.styleable.TabControlView,

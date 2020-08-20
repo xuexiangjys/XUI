@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         style="@style/TextStyle.Content"
@@ -14,7 +14,11 @@
         android:id="@+id/expand_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:background="@color/app_color_theme_1"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
         app:etv_maxCollapsedLines="5">
 
         <TextView
@@ -22,17 +26,21 @@
             style="@style/TextStyle.Content"
             android:layout_width="match_parent"
             android:gravity="center_vertical"
-            android:singleLine ="false"/>
+            android:singleLine="false" />
 
         <ImageButton
             android:id="@id/expand_collapse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="?attr/xui_config_content_spacing_vertical"
-            android:layout_gravity="right|bottom"
-            android:background="@android:color/transparent"/>
+            android:layout_gravity="end|bottom"
+            android:background="@android:color/transparent" />
 
     </com.xuexiang.xui.widget.textview.ExpandableTextView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:background="@color/app_color_theme_2" />
 
 </LinearLayout>

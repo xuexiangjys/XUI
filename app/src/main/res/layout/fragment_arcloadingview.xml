@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,7 +28,7 @@
                 <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_loading_dialog"
                     style="@style/Button.Primary"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:text="loading弹窗" />
 
             </LinearLayout>
@@ -47,7 +47,7 @@
                 <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_test_dialog"
                     style="@style/Button.Primary"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:text="测试弹窗" />
 
             </LinearLayout>
@@ -101,6 +101,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

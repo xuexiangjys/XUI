@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:orientation="vertical"
-            android:paddingLeft="?attr/xui_config_content_spacing_horizontal"
-            android:paddingRight="?attr/xui_config_content_spacing_horizontal">
+            android:paddingStart="?attr/xui_config_content_spacing_horizontal"
+            android:paddingEnd="?attr/xui_config_content_spacing_horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -142,9 +142,9 @@
                     android:id="@+id/shadow_color_red"
                     style="@style/Button.Primary.wrap"
                     android:layout_marginEnd="10dp"
-                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
                     android:paddingTop="4dp"
-                    android:paddingRight="10dp"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="4dp"
                     android:text="#ff0000"
                     android:textColor="#ff0000" />
@@ -152,9 +152,9 @@
                 <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/shadow_color_blue"
                     style="@style/Button.Primary.wrap"
-                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
                     android:paddingTop="4dp"
-                    android:paddingRight="10dp"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="4dp"
                     android:text="#0000ff"
                     android:textColor="#0000ff" />

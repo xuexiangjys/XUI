@@ -49,7 +49,7 @@
     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
         android:id="@+id/bottomLeft"
         style="@style/RoundButton.Auto"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="32dp"
         android:text="左下角" />
@@ -57,7 +57,7 @@
     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
         android:id="@+id/bottomRight"
         style="@style/RoundButton.Auto"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="32dp"
         android:text="右下角" />

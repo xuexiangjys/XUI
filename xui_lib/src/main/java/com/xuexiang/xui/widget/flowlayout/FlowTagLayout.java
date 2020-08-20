@@ -97,10 +97,6 @@ public class FlowTagLayout extends ViewGroup {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
-        if (isInEditMode()) {
-            return;
-        }
-
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FlowTagLayout);
         mTagCheckMode = typedArray.getInt(R.styleable.FlowTagLayout_ftl_check_mode, FLOW_TAG_CHECKED_NONE);
         mSingleCancelable = typedArray.getBoolean(R.styleable.FlowTagLayout_ftl_single_cancelable, false);

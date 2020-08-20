@@ -23,9 +23,9 @@
     android:background="@color/cookie_bar_default_bg_color"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="?attr/xui_config_content_spacing_horizontal"
+    android:paddingStart="?attr/xui_config_content_spacing_horizontal"
     android:paddingTop="36dp"
-    android:paddingRight="?attr/xui_config_content_spacing_horizontal"
+    android:paddingEnd="?attr/xui_config_content_spacing_horizontal"
     android:paddingBottom="?attr/xui_config_content_spacing_horizontal">
 
     <androidx.appcompat.widget.AppCompatImageView

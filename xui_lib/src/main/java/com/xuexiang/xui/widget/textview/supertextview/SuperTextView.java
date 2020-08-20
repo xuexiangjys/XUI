@@ -32,6 +32,7 @@ import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.edittext.ClearEditText;
 import com.xuexiang.xui.widget.edittext.PasswordEditText;
+
 import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
@@ -1176,20 +1177,20 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         }
     }
 
-
     /**
      * 初始化上边分割线view
      *
-     * @param marginLeft  左间距
-     * @param marginRight 右间距
+     * @param marginStart 起始的间距
+     * @param marginEnd   结束的间距
      */
-    private void initTopDividerLineView(int marginLeft, int marginRight) {
+    private void initTopDividerLineView(int marginStart, int marginEnd) {
         if (mTopDividerLineView == null) {
             if (mTopDividerLineParams == null) {
                 mTopDividerLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
             mTopDividerLineParams.addRule(ALIGN_PARENT_TOP, TRUE);
-            mTopDividerLineParams.setMargins(marginLeft, 0, marginRight, 0);
+            mTopDividerLineParams.setMarginStart(marginStart);
+            mTopDividerLineParams.setMarginEnd(marginEnd);
             mTopDividerLineView = new View(mContext);
             mTopDividerLineView.setLayoutParams(mTopDividerLineParams);
             mTopDividerLineView.setBackgroundColor(mDividerLineColor);
@@ -1200,17 +1201,17 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     /**
      * 初始化底部分割线view
      *
-     * @param marginLeft  左间距
-     * @param marginRight 右间距
+     * @param marginStart 起始的间距
+     * @param marginEnd   结束的间距
      */
-    private void initBottomDividerLineView(int marginLeft, int marginRight) {
+    private void initBottomDividerLineView(int marginStart, int marginEnd) {
         if (mBottomDividerLineView == null) {
             if (mBottomDividerLineParams == null) {
                 mBottomDividerLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
             mBottomDividerLineParams.addRule(ALIGN_PARENT_BOTTOM, TRUE);
-            mBottomDividerLineParams.setMargins(marginLeft, 0, marginRight, 0);
-
+            mBottomDividerLineParams.setMarginStart(marginStart);
+            mBottomDividerLineParams.setMarginEnd(marginEnd);
             mBottomDividerLineView = new View(mContext);
             mBottomDividerLineView.setLayoutParams(mBottomDividerLineParams);
             mBottomDividerLineView.setBackgroundColor(mDividerLineColor);

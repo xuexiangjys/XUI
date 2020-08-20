@@ -119,42 +119,38 @@ public abstract class PorterImageView extends AppCompatImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (!isInEditMode()) {
-            int saveCount = canvas.saveLayer(0.0f, 0.0f, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);
-            try {
-                if (mInvalidated) {
-                    Drawable drawable = getDrawable();
-                    if (drawable != null) {
-                        mInvalidated = false;
-                        Matrix imageMatrix = getImageMatrix();
-                        if (imageMatrix == null) {
-                            drawable.draw(mDrawableCanvas);
-                        } else {
-                            int drawableSaveCount = mDrawableCanvas.getSaveCount();
-                            mDrawableCanvas.save();
-                            mDrawableCanvas.concat(imageMatrix);
-                            drawable.draw(mDrawableCanvas);
-                            mDrawableCanvas.restoreToCount(drawableSaveCount);
-                        }
-
-                        mDrawablePaint.reset();
-                        mDrawablePaint.setFilterBitmap(false);
-                        mDrawablePaint.setXfermode(PORTER_DUFF_XFERMODE);
-                        mDrawableCanvas.drawBitmap(mMaskBitmap, 0.0f, 0.0f, mDrawablePaint);
+        int saveCount = canvas.saveLayer(0.0f, 0.0f, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);
+        try {
+            if (mInvalidated) {
+                Drawable drawable = getDrawable();
+                if (drawable != null) {
+                    mInvalidated = false;
+                    Matrix imageMatrix = getImageMatrix();
+                    if (imageMatrix == null) {
+                        drawable.draw(mDrawableCanvas);
+                    } else {
+                        int drawableSaveCount = mDrawableCanvas.getSaveCount();
+                        mDrawableCanvas.save();
+                        mDrawableCanvas.concat(imageMatrix);
+                        drawable.draw(mDrawableCanvas);
+                        mDrawableCanvas.restoreToCount(drawableSaveCount);
                     }
-                }
 
-                if (!mInvalidated) {
-                    mDrawablePaint.setXfermode(null);
-                    canvas.drawBitmap(mDrawableBitmap, 0.0f, 0.0f, mDrawablePaint);
+                    mDrawablePaint.reset();
+                    mDrawablePaint.setFilterBitmap(false);
+                    mDrawablePaint.setXfermode(PORTER_DUFF_XFERMODE);
+                    mDrawableCanvas.drawBitmap(mMaskBitmap, 0.0f, 0.0f, mDrawablePaint);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                canvas.restoreToCount(saveCount);
             }
-        } else {
-            super.onDraw(canvas);
+
+            if (!mInvalidated) {
+                mDrawablePaint.setXfermode(null);
+                canvas.drawBitmap(mDrawableBitmap, 0.0f, 0.0f, mDrawablePaint);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            canvas.restoreToCount(saveCount);
         }
     }
 

@@ -31,8 +31,8 @@
     android:layout_weight="1"
     android:orientation="vertical"
     android:paddingBottom="@dimen/md_content_padding_bottom"
-    android:paddingLeft="?attr/md_dialog_frame_margin"
-    android:paddingRight="?attr/md_dialog_frame_margin"
+    android:paddingStart="?attr/md_dialog_frame_margin"
+    android:paddingEnd="?attr/md_dialog_frame_margin"
     android:paddingTop="@dimen/md_content_padding_top">
 
     <include layout="@layout/md_layout_stub_progress"/>

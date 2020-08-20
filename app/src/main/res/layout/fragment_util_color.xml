@@ -19,7 +19,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/contentWrap"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -116,8 +116,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:max="100"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp" />
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp" />
 
                 <View
                     android:layout_width="@dimen/color_utils_square_length"
@@ -172,6 +172,6 @@
 
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

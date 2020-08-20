@@ -43,9 +43,6 @@ public class ButtonView extends AppCompatTextView {
     }
 
     private void setAttributeSet(Context context, AttributeSet attrs) {
-        if (isInEditMode()) {
-            return;
-        }
         TypedArray typedArray = context.obtainStyledAttributes(attrs,
                 R.styleable.ButtonView);
         mNormalSolidColor = typedArray.getColor(

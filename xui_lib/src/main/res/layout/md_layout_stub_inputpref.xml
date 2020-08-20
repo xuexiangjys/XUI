@@ -6,8 +6,8 @@
   android:gravity="start"
   android:orientation="vertical"
   android:paddingBottom="@dimen/md_content_padding_bottom"
-  android:paddingLeft="?attr/md_dialog_frame_margin"
-  android:paddingRight="?attr/md_dialog_frame_margin"
+  android:paddingStart="?attr/md_dialog_frame_margin"
+  android:paddingEnd="?attr/md_dialog_frame_margin"
   android:paddingTop="@dimen/md_content_padding_top">
 
   <TextView
@@ -19,8 +19,8 @@
     android:layout_marginTop="4dp"
     android:focusable="true"
     android:fontFamily="sans-serif"
-    android:paddingLeft="2dp"
-    android:paddingRight="2dp"
+    android:paddingStart="2dp"
+    android:paddingEnd="2dp"
     android:textSize="?attr/md_content_textsize"
     tools:ignore="UnusedAttribute"
     tools:text="Message" />

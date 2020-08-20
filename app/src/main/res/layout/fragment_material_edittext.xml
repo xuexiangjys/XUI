@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbarStyle="outsideOverlay">
@@ -20,9 +20,9 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:orientation="vertical"
-                android:paddingLeft="72dp"
+                android:paddingStart="72dp"
                 android:paddingTop="16dp"
-                android:paddingRight="16dp"
+                android:paddingEnd="16dp"
                 android:paddingBottom="16dp">
 
                 <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
@@ -55,9 +55,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin">
 
                 <TextView
@@ -83,7 +83,7 @@
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/enableBt"
                         style="@style/RoundButton.Auto"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:text="DISABLE" />
                 </LinearLayout>
 
@@ -255,21 +255,21 @@
                         android:id="@+id/setErrorBt"
                         style="@style/RoundButton.Auto"
                         android:layout_width="50dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:text="1" />
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/setError2Bt"
                         style="@style/RoundButton.Auto"
                         android:layout_width="50dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:text="2" />
 
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/setError3Bt"
                         style="@style/RoundButton.Auto"
                         android:layout_width="50dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:text="3" />
 
                 </LinearLayout>
@@ -334,7 +334,7 @@
                     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                         android:id="@+id/validateBt"
                         style="@style/RoundButton.Auto"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:text="VALIDATE" />
 
                 </LinearLayout>
@@ -486,5 +486,5 @@
 
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

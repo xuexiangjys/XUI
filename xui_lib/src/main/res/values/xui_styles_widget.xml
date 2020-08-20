@@ -34,8 +34,8 @@
         <item name="android:stateListAnimator">@null</item>
         <item name="android:background">@null</item>
         <item name="android:minWidth">@dimen/md_button_min_width</item>
-        <item name="android:paddingLeft">@dimen/md_button_textpadding_horizontal</item>
-        <item name="android:paddingRight">@dimen/md_button_textpadding_horizontal</item>
+        <item name="android:paddingStart">@dimen/md_button_textpadding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/md_button_textpadding_horizontal</item>
     </style>
 
     <style name="MD_Light" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -140,7 +140,7 @@
         <item name="android:spinnerMode">dropdown</item>
         <item name="android:background">@drawable/xui_config_bg_spinner</item>
         <item name="android:popupBackground">@drawable/ms_drop_down_bg_radius</item>
-        <item name="android:paddingRight">@dimen/default_spinner_icon_padding_size</item>
+        <item name="android:paddingEnd">@dimen/default_spinner_icon_padding_size</item>
     </style>
 
     <!--*********************************************
@@ -174,16 +174,16 @@
     </style>
 
     <style name="XUICommonListItemView">
-        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:background">?attr/xui_list_item_bg_with_border_none_selector</item>
         <item name="xui_commonList_titleColor">@color/xui_config_color_gray_1</item>
         <item name="xui_commonList_detailColor">@color/xui_config_color_gray_5</item>
     </style>
 
     <style name="XUIGroupListSectionView">
-        <item name="android:paddingLeft">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:paddingRight">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:paddingTop">
             @dimen/xui_group_list_section_header_footer_padding_vertical
         </item>
@@ -218,8 +218,8 @@
         <item name="android:textColor">@color/xui_config_color_white</item>
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
-        <item name="android:paddingLeft">?attr/xui_tab_sign_count_view_padding_horizontal</item>
-        <item name="android:paddingRight">?attr/xui_tab_sign_count_view_padding_horizontal</item>
+        <item name="android:paddingStart">?attr/xui_tab_sign_count_view_padding_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_tab_sign_count_view_padding_horizontal</item>
         <item name="android:minWidth">?attr/xui_tab_sign_count_view_minSize</item>
         <item name="android:minHeight">?attr/xui_tab_sign_count_view_minSize</item>
     </style>
@@ -283,8 +283,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:paddingLeft">?attr/search_icon_padding</item>
-        <item name="android:paddingRight">?attr/search_icon_padding</item>
+        <item name="android:paddingStart">?attr/search_icon_padding</item>
+        <item name="android:paddingEnd">?attr/search_icon_padding</item>
     </style>
 
     <!--BottomSheet-->
@@ -323,8 +323,8 @@
         <item name="android:background">?attr/xui_bottom_sheet_title_bg</item>
         <item name="android:ellipsize">middle</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingLeft">?attr/xui_bottom_sheet_list_item_padding_horizontal</item>
-        <item name="android:paddingRight">?attr/xui_bottom_sheet_list_item_padding_horizontal</item>
+        <item name="android:paddingStart">?attr/xui_bottom_sheet_list_item_padding_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_bottom_sheet_list_item_padding_horizontal</item>
         <item name="android:singleLine">true</item>
     </style>
 
@@ -400,7 +400,7 @@
     </style>
 
     <style name="EditText.Material">
-        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingStart">0dp</item>
 
         <item name="met_textColor">?attr/xui_config_color_input_text</item>
         <item name="met_textColorHint">?attr/xui_config_color_hint_text</item>

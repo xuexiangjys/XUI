@@ -130,9 +130,6 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (isInEditMode()) {
-            return;
-        }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleBar, defStyleAttr, 0);
         mBarHeight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_barHeight, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_height));
         mImmersive = typedArray.getBoolean(R.styleable.TitleBar_tb_immersive, ThemeUtils.resolveBoolean(context, R.attr.xui_actionbar_immersive));

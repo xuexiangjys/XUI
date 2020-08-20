@@ -175,9 +175,6 @@ public class PhotoViewAttacher implements IPhotoView, View.OnTouchListener,
         // Make sure we using MATRIX Scale Type
         setImageViewScaleTypeMatrix(imageView);
 
-        if (imageView.isInEditMode()) {
-            return;
-        }
         // Create Gesture Detectors...
         mScaleDragDetector = VersionedGestureDetector.newInstance(
                 imageView.getContext(), this);

@@ -356,10 +356,6 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (isInEditMode()) {
-            return;
-        }
-
         iconSize = getPixel(32);
         iconOuterWidth = getPixel(18);
         iconOuterHeight = getPixel(32);
@@ -395,15 +391,12 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         helperTextColor = typedArray.getColor(R.styleable.MaterialEditText_met_helperTextColor, -1);
         minBottomTextLines = typedArray.getInt(R.styleable.MaterialEditText_met_minBottomTextLines, 0);
         String fontPathForAccent = typedArray.getString(R.styleable.MaterialEditText_met_accentTypeface);
-        if (fontPathForAccent != null && !isInEditMode()) {
+        if (fontPathForAccent != null) {
             accentTypeface = XUI.getDefaultTypeface(fontPathForAccent);
             textPaint.setTypeface(accentTypeface);
         }
         String fontPathForView = typedArray.getString(R.styleable.MaterialEditText_met_typeface);
-        if (fontPathForView != null && !isInEditMode()) {
-            /**
-             * The font used on the view (EditText content)
-             */
+        if (fontPathForView != null) {
             Typeface typeface = XUI.getDefaultTypeface(fontPathForView);
             setTypeface(typeface);
         }

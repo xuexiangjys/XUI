@@ -22,8 +22,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="?attr/xui_bottom_sheet_grid_line_padding_horizontal"
-            android:paddingRight="?attr/xui_bottom_sheet_grid_line_padding_horizontal"
+            android:paddingStart="?attr/xui_bottom_sheet_grid_line_padding_horizontal"
+            android:paddingEnd="?attr/xui_bottom_sheet_grid_line_padding_horizontal"
             android:paddingBottom="?attr/xui_bottom_sheet_grid_line_vertical_space" />
     </HorizontalScrollView>
 
@@ -39,8 +39,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="?attr/xui_bottom_sheet_grid_line_padding_horizontal"
-            android:paddingRight="?attr/xui_bottom_sheet_grid_line_padding_horizontal" />
+            android:paddingStart="?attr/xui_bottom_sheet_grid_line_padding_horizontal"
+            android:paddingEnd="?attr/xui_bottom_sheet_grid_line_padding_horizontal" />
     </HorizontalScrollView>
 
     <LinearLayout

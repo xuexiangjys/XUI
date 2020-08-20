@@ -5,8 +5,8 @@
     android:background="@drawable/xui_config_list_item_selector"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp">
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/item_icon"
