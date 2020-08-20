@@ -2,12 +2,15 @@ package com.xuexiang.xui.widget.actionbar;
 
 import android.app.Activity;
 import android.content.Context;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
 /**
@@ -158,7 +161,7 @@ public final class TitleUtils {
      * @return
      */
     public static TitleBar initTitleBarStyle(TitleBar titleBar, String title) {
-        titleBar.setLeftImageDrawable(ThemeUtils.resolveDrawable(titleBar.getContext(), R.attr.xui_actionbar_ic_navigation_back))
+        titleBar.setLeftImageDrawable(DrawableUtils.getSupportRTLDrawable(ThemeUtils.resolveDrawable(titleBar.getContext(), R.attr.xui_actionbar_ic_navigation_back)))
                 .setTitle(title);
         return titleBar;
     }

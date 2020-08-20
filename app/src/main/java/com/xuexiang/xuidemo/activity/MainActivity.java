@@ -36,6 +36,7 @@ import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.system.DeviceUtils;
+import com.yarolegovich.slidingrootnav.SlideGravity;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
@@ -172,6 +173,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         mMenuIcons = ResUtils.getDrawableArray(this, R.array.menu_icons);
 
         mSlidingRootNav = new SlidingRootNavBuilder(this)
+                .withGravity(ResUtils.isRtl() ? SlideGravity.RIGHT : SlideGravity.LEFT)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)

@@ -9,6 +9,7 @@ import com.jpeng.jptabbar.anno.Titles;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
@@ -58,6 +59,7 @@ public class BaseActivity extends XPageActivity {
         if (isSupportSlideBack()) {
             SlideBack.with(this)
                     .haveScroll(true)
+                    .edgeMode(ResUtils.isRtl() ? SlideBack.EDGE_RIGHT : SlideBack.EDGE_LEFT)
                     .callBack(this::popPage)
                     .register();
         }
@@ -74,7 +76,7 @@ public class BaseActivity extends XPageActivity {
      * 初始化状态栏的样式
      */
     protected void initStatusBarStyle() {
-        
+
     }
 
     /**
