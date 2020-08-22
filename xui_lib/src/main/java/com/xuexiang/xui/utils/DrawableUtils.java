@@ -431,6 +431,17 @@ public final class DrawableUtils {
     }
 
     /**
+     * 获取图片
+     *
+     * @param context 上下文
+     * @param resId   图片资源
+     * @return 图片
+     */
+    public static Bitmap getBitmapByDrawableId(Context context, @DrawableRes int resId) {
+        return drawable2Bitmap(ResUtils.getDrawable(context, resId));
+    }
+
+    /**
      * Drawable to bitmap.
      *
      * @param drawable The drawable.

@@ -38,6 +38,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
@@ -418,7 +419,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         iconRightBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconRight, -1));
 
         showClearButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_clearButton, false);
-        clearButtonBitmaps = generateIconBitmaps(R.drawable.met_icon_clear);
+        clearButtonBitmaps = generateIconBitmaps(DrawableUtils.getBitmapByDrawableId(getContext(), R.drawable.xui_ic_default_clear_btn));
         showPasswordButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_passWordButton, false);
         boolean isAsteriskStyle = typedArray.getBoolean(R.styleable.MaterialEditText_met_isAsteriskStyle, false);
         if (isAsteriskStyle) {
@@ -430,8 +431,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             handleSwitchPasswordInputVisibility();
         }
 
-        showPwIconBitmaps = generateIconBitmaps(R.drawable.met_icon_visibility);
-        hidePwIconBitmaps = generateIconBitmaps(R.drawable.met_icon_visibility_off);
+        showPwIconBitmaps = generateIconBitmaps(DrawableUtils.getBitmapByDrawableId(getContext(), R.drawable.pet_icon_visibility_24dp));
+        hidePwIconBitmaps = generateIconBitmaps(DrawableUtils.getBitmapByDrawableId(getContext(), R.drawable.pet_icon_visibility_off_24dp));
 
         String regexp = typedArray.getString(R.styleable.MaterialEditText_met_regexp);
         if (!TextUtils.isEmpty(regexp)) {
@@ -588,7 +589,6 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(getResources(), origin, options);
         int size = Math.max(options.outWidth, options.outHeight);
         options.inSampleSize = size > iconSize ? size / iconSize : 1;
         options.inJustDecodeBounds = false;
@@ -884,8 +884,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         int destBottomLines;
         textPaint.setTextSize(bottomTextSize);
         if (tempErrorText != null || helperText != null) {
-            Layout.Alignment alignment = (getGravity() & Gravity.RIGHT) == Gravity.RIGHT || isRTL() ?
-                    Layout.Alignment.ALIGN_OPPOSITE : (getGravity() & Gravity.LEFT) == Gravity.LEFT ?
+            Layout.Alignment alignment = (getGravity() & Gravity.END) == Gravity.END || isRTL() ?
+                    Layout.Alignment.ALIGN_OPPOSITE : (getGravity() & Gravity.START) == Gravity.START ?
                     Layout.Alignment.ALIGN_NORMAL : Layout.Alignment.ALIGN_CENTER;
             textLayout = new StaticLayout(tempErrorText != null ? tempErrorText : helperText, textPaint, getWidth() - getBottomTextLeftOffset() - getBottomTextRightOffset() - getPaddingLeft() - getPaddingRight(), alignment, 1.0f, 0.0f, true);
             destBottomLines = Math.max(textLayout.getLineCount(), minBottomTextLines);
@@ -1628,13 +1628,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private boolean isRTL() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return false;
-        }
-        Configuration config = getResources().getConfiguration();
-        return config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+        return getLayoutDirection() == LAYOUT_DIRECTION_RTL;
     }
 
     private int getBottomTextLeftOffset() {

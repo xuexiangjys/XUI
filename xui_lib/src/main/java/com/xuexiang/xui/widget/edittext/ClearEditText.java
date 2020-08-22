@@ -52,7 +52,6 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         initAttrs(context, attrs, defStyle);
     }
 
-
     public ClearEditText setExtraClickAreaSize(int extraClickArea) {
         mExtraClickArea = extraClickArea;
         return this;
@@ -182,13 +181,8 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         this.setAnimation(shakeAnimation(5));
     }
 
-    /**
-     * Check if layout direction is RTL
-     *
-     * @return {@code true} if the layout direction is right-to-left
-     */
     private boolean isRtl() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
-                getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+        return getLayoutDirection() == LAYOUT_DIRECTION_RTL;
     }
+
 }

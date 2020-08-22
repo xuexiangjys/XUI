@@ -95,7 +95,7 @@ public class PasswordEditText extends AppCompatEditText {
             setTypeface(Typeface.DEFAULT);
         }
 
-        mIsRTL = isRTLLanguage();
+        mIsRTL = isRtl();
 
         addTextChangedListener(new TextWatcher() {
             @Override
@@ -163,12 +163,8 @@ public class PasswordEditText extends AppCompatEditText {
         return this;
     }
 
-    private boolean isRTLLanguage() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return false;
-        }
-        Configuration config = getResources().getConfiguration();
-        return config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+    private boolean isRtl() {
+        return getLayoutDirection() == LAYOUT_DIRECTION_RTL;
     }
 
     @Override
