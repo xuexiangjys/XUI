@@ -27,6 +27,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -227,7 +228,7 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
                 params.weight = 1.0F;
             }
             if (i > 0) {
-                params.setMargins(-mStrokeWidth, 0, 0, 0);
+                params.setMarginStart(-mStrokeWidth);
             }
             cb.setLayoutParams(params);
 
@@ -237,10 +238,18 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
             //Create state list for background
             if (i == 0) {
                 //Left
-                updateCheckBox(cb, R.drawable.tcv_left_option, R.drawable.tcv_left_option_selected);
+                if (isRtl()) {
+                    updateCheckBox(cb, R.drawable.tcv_right_option, R.drawable.tcv_right_option_selected);
+                } else {
+                    updateCheckBox(cb, R.drawable.tcv_left_option, R.drawable.tcv_left_option_selected);
+                }
             } else if (i == (mItemMap.size() - 1)) {
                 //Right
-                updateCheckBox(cb, R.drawable.tcv_right_option, R.drawable.tcv_right_option_selected);
+                if (isRtl()) {
+                    updateCheckBox(cb, R.drawable.tcv_left_option, R.drawable.tcv_left_option_selected);
+                } else {
+                    updateCheckBox(cb, R.drawable.tcv_right_option, R.drawable.tcv_right_option_selected);
+                }
             } else {
                 //Middle
                 updateCheckBox(cb, R.drawable.tcv_middle_option, R.drawable.tcv_middle_option_selected);
@@ -278,6 +287,11 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
                 setIsChecked(selection, true);
             }
         }
+    }
+
+    private boolean isRtl() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
+                getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
     }
 
     /**

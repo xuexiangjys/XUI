@@ -243,9 +243,6 @@ public class CircleProgressView extends View {
 
         mScaleZonePath = new Path();
 
-        /**
-         * if set the scale zone mode for progress view, should not let the circle be filled
-         */
         drawScaleZones(isGraduated);
     }
 

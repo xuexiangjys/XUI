@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xaop.annotation.SingleClick;
+import com.xuexiang.xaop.cache.XMemoryCache;
 import com.xuexiang.xpage.base.XPageContainerListFragment;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.PageOption;
@@ -116,6 +117,7 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         //屏幕旋转时刷新一下title
         super.onConfigurationChanged(newConfig);
+        XMemoryCache.getInstance().clear();
         ViewGroup root = (ViewGroup) getRootView();
         if (root.getChildAt(0) instanceof TitleBar) {
             root.removeViewAt(0);

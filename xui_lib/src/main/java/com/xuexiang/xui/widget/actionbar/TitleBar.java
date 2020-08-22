@@ -180,7 +180,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mLeftText.setTextColor(mSideTextColor);
         mLeftText.setText(mLeftTextString);
         if (mLeftImageResource != null) {
-            mLeftText.setCompoundDrawablesWithIntrinsicBounds(mLeftImageResource, null, null, null);
+            mLeftText.setCompoundDrawablesRelativeWithIntrinsicBounds(mLeftImageResource, null, null, null);
         }
         mLeftText.setSingleLine();
 
@@ -261,7 +261,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     public TitleBar setLeftImageResource(int resId) {
         if (mLeftText != null) {
-            mLeftText.setCompoundDrawablesWithIntrinsicBounds(resId, 0, 0, 0);
+            mLeftText.setCompoundDrawablesRelativeWithIntrinsicBounds(resId, 0, 0, 0);
         }
         return this;
     }
@@ -275,7 +275,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     public TitleBar setLeftImageDrawable(Drawable leftImageDrawable) {
         mLeftImageResource = leftImageDrawable;
         if (mLeftText != null) {
-            mLeftText.setCompoundDrawablesWithIntrinsicBounds(mLeftImageResource, null, null, null);
+            mLeftText.setCompoundDrawablesRelativeWithIntrinsicBounds(mLeftImageResource, null, null, null);
         }
         return this;
     }
@@ -410,7 +410,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      * @return
      */
     public TitleBar setLeftTextPadding(int paddingStart, int paddingEnd) {
-        mLeftText.setPadding(paddingStart, 0, paddingEnd, 0);
+        mLeftText.setPaddingRelative(paddingStart, 0, paddingEnd, 0);
         return this;
     }
 
@@ -745,7 +745,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
             view = text;
         }
 
-        view.setPadding(action.leftPadding() != -1 ? action.leftPadding() : mActionPadding, 0, action.rightPadding() != -1 ? action.rightPadding() : mActionPadding, 0);
+        view.setPaddingRelative(action.leftPadding() != -1 ? action.leftPadding() : mActionPadding, 0, action.rightPadding() != -1 ? action.rightPadding() : mActionPadding, 0);
         view.setTag(action);
         view.setOnClickListener(this);
         return view;
@@ -956,15 +956,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         }
     }
 
-
-    /**
-     * Check if layout direction is RTL
-     *
-     * @return {@code true} if the layout direction is right-to-left
-     */
     private boolean isRtl() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
-                getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+        return getLayoutDirection() == LAYOUT_DIRECTION_RTL;
     }
 
     public XUIAlphaTextView getLeftText() {

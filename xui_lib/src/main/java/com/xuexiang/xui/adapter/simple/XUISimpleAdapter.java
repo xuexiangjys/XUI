@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
 
-    private int mPaddingLeftPx;
+    private int mPaddingStartPx;
 
     public XUISimpleAdapter(Context context) {
         super(context);
@@ -40,8 +40,8 @@ public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
         holder.mTvTitle = convertView.findViewById(R.id.tv_title);
         holder.mIvIcon = convertView.findViewById(R.id.iv_icon);
 
-        if (mPaddingLeftPx != 0) {
-            holder.mLLContentView.setPadding(mPaddingLeftPx, 0, 0, 0);
+        if (mPaddingStartPx != 0) {
+            holder.mLLContentView.setPaddingRelative(mPaddingStartPx, 0, 0, 0);
             holder.mLLContentView.setGravity(Gravity.CENTER_VERTICAL);
         } else {
             holder.mLLContentView.setGravity(Gravity.CENTER);
@@ -66,13 +66,25 @@ public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
 
     }
 
+    @Deprecated
     public XUISimpleAdapter setPaddingLeftPx(int paddingLeftPx) {
-        mPaddingLeftPx = paddingLeftPx;
+        mPaddingStartPx = paddingLeftPx;
         return this;
     }
 
+    @Deprecated
     public XUISimpleAdapter setPaddingLeftDp(int paddingLeftDp) {
-        mPaddingLeftPx = DensityUtils.dp2px(paddingLeftDp);
+        mPaddingStartPx = DensityUtils.dp2px(paddingLeftDp);
+        return this;
+    }
+
+    public XUISimpleAdapter setPaddingStartPx(int paddingStartPx) {
+        mPaddingStartPx = paddingStartPx;
+        return this;
+    }
+
+    public XUISimpleAdapter setPaddingStartDp(int paddingStartDp) {
+        mPaddingStartPx = DensityUtils.dp2px(paddingStartDp);
         return this;
     }
 

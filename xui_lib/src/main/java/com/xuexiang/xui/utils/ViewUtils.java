@@ -834,6 +834,18 @@ public final class ViewUtils {
     }
 
     /**
+     * 对 View 设置 paddingStart
+     *
+     * @param view  需要被设置的 View
+     * @param value 设置的值
+     */
+    public static void setPaddingStart(View view, int value) {
+        if (value != view.getPaddingStart()) {
+            view.setPaddingRelative(value, view.getPaddingTop(), view.getPaddingEnd(), view.getPaddingBottom());
+        }
+    }
+
+    /**
      * 对 View 设置 paddingTop
      *
      * @param view  需要被设置的 View
@@ -854,6 +866,18 @@ public final class ViewUtils {
     public static void setPaddingRight(View view, int value) {
         if (value != view.getPaddingRight()) {
             view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), value, view.getPaddingBottom());
+        }
+    }
+
+    /**
+     * 对 View 设置 paddingEnd
+     *
+     * @param view  需要被设置的 View
+     * @param value 设置的值
+     */
+    public static void setPaddingEnd(View view, int value) {
+        if (value != view.getPaddingEnd()) {
+            view.setPaddingRelative(view.getPaddingStart(), view.getPaddingTop(), value, view.getPaddingBottom());
         }
     }
 

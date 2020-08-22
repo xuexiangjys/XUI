@@ -327,13 +327,12 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
         LayoutParams ll = (LayoutParams) mIndicator
                 .getLayoutParams();
         if (mCurrIndex == position) {
-            ll.leftMargin = (int) (mCurrIndex * mIndicator.getMeasuredWidth() + positionOffset
-                    * mIndicator.getMeasuredWidth());
+            ll.setMarginStart((int) (mCurrIndex * mIndicator.getMeasuredWidth() + positionOffset
+                    * mIndicator.getMeasuredWidth()));
         } else if (mCurrIndex > position) {
-            ll.leftMargin = (int) (mCurrIndex * mIndicator.getMeasuredWidth() - (1 - positionOffset)
-                    * mIndicator.getMeasuredWidth());
+            ll.setMarginStart((int) (mCurrIndex * mIndicator.getMeasuredWidth() - (1 - positionOffset)
+                    * mIndicator.getMeasuredWidth()));
         }
-
         mIndicator.setLayoutParams(ll);
     }
 

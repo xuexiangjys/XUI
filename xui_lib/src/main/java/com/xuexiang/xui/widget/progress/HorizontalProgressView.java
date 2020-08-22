@@ -188,6 +188,7 @@ public class HorizontalProgressView extends View {
 
         typedArray.recycle();
         moveProgress = mStartProgress;
+        setAnimateType(mAnimateType);
     }
 
     private void init() {
@@ -210,11 +211,8 @@ public class HorizontalProgressView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-
         mShader = new LinearGradient(getPaddingLeft() - 50, (getHeight() - getPaddingTop()) - 50, getWidth() - getPaddingRight(), getHeight() / 2F + getPaddingTop() + mTrackWidth,
                 mStartColor, mEndColor, Shader.TileMode.CLAMP);
-
-
     }
 
     /**
@@ -247,9 +245,6 @@ public class HorizontalProgressView extends View {
 
             String progressText = ((int) moveProgress) + "%";
             if (isTextMoved) {
-                /**
-                 * draw the animated text of progress, should think about the offsets, or text will be covered.
-                 */
                 canvas.drawText(progressText,
                         (getWidth() - getPaddingLeft() - getPaddingRight() - DensityUtils.dp2px(getContext(), 28)) * (moveProgress / 100) + DensityUtils.dp2px(getContext(), 10),
                         getHeight() / 2F - getPaddingTop() - mTextPaddingBottomOffset, mTextPaint);
@@ -560,12 +555,14 @@ public class HorizontalProgressView extends View {
     public interface HorizontalProgressUpdateListener {
         /**
          * 进度条开始更新
+         *
          * @param view
          */
         void onHorizontalProgressStart(View view);
 
         /**
          * 进度条更新中
+         *
          * @param view
          * @param progress
          */
@@ -573,6 +570,7 @@ public class HorizontalProgressView extends View {
 
         /**
          * 进度条更新结束
+         *
          * @param view
          */
         void onHorizontalProgressFinished(View view);

@@ -32,7 +32,7 @@
         <TextView
             android:id="@+id/tv_title"
             style="@style/TextStyle.Content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="start|center_vertical"
             android:padding="16dp" />
 
         <androidx.appcompat.widget.AppCompatImageView

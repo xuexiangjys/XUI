@@ -141,7 +141,7 @@
         <!--fragment的页面容器-->
         <activity
             android:name=".base.BaseActivity"
-            android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard|locale|layoutDirection"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".widget.iconfont.IconFontActivity"

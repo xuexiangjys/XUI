@@ -351,6 +351,8 @@ public final class ThemeUtils {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                 }
                 break;
+            default:
+                break;
         }
     }
 

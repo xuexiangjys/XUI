@@ -267,7 +267,7 @@ public class DropDownMenu extends LinearLayout {
         tab.setTextSize(TypedValue.COMPLEX_UNIT_PX, mMenuTextSize);
         tab.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0F));
         tab.setTextColor(mMenuTextUnselectedColor);
-        tab.setCompoundDrawablesWithIntrinsicBounds(null, null, mMenuUnselectedIcon, null);
+        setArrowIconEnd(tab, mMenuUnselectedIcon);
         tab.setText(tabTexts.get(index));
         tab.setPadding(mMenuTextPaddingHorizontal, mMenuTextPaddingVertical, mMenuTextPaddingHorizontal, mMenuTextPaddingVertical);
         //添加点击事件
@@ -318,7 +318,7 @@ public class DropDownMenu extends LinearLayout {
     public void closeMenu() {
         if (mCurrentTabPosition != -1) {
             ((TextView) mTabMenuView.getChildAt(mCurrentTabPosition)).setTextColor(mMenuTextUnselectedColor);
-            ((TextView) mTabMenuView.getChildAt(mCurrentTabPosition)).setCompoundDrawablesWithIntrinsicBounds(null, null, mMenuUnselectedIcon, null);
+            setArrowIconEnd((TextView) mTabMenuView.getChildAt(mCurrentTabPosition), mMenuUnselectedIcon);
             mPopupMenuViews.setVisibility(View.GONE);
             mPopupMenuViews.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.ddm_menu_out));
             mMaskView.setVisibility(GONE);
@@ -365,13 +365,21 @@ public class DropDownMenu extends LinearLayout {
                     }
                     mCurrentTabPosition = i;
                     ((TextView) mTabMenuView.getChildAt(i)).setTextColor(mMenuTextSelectedColor);
-                    ((TextView) mTabMenuView.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(null, null, mMenuSelectedIcon, null);
+                    setArrowIconEnd((TextView) mTabMenuView.getChildAt(i), mMenuSelectedIcon);
                 }
             } else {
                 ((TextView) mTabMenuView.getChildAt(i)).setTextColor(mMenuTextUnselectedColor);
-                ((TextView) mTabMenuView.getChildAt(i)).setCompoundDrawablesWithIntrinsicBounds(null, null, mMenuUnselectedIcon, null);
+                setArrowIconEnd((TextView) mTabMenuView.getChildAt(i), mMenuUnselectedIcon);
                 mPopupMenuViews.getChildAt(i / 2).setVisibility(View.GONE);
             }
         }
     }
+
+    private void setArrowIconEnd(TextView view, Drawable arrowIcon) {
+        if (view == null) {
+            return;
+        }
+        view.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, arrowIcon, null);
+    }
+
 }

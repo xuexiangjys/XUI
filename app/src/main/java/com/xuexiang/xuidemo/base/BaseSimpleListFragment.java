@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 
 import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xaop.annotation.MemoryCache;
+import com.xuexiang.xaop.cache.XMemoryCache;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.base.XPageSimpleListFragment;
@@ -73,6 +74,7 @@ public abstract class BaseSimpleListFragment extends XPageSimpleListFragment {
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         //屏幕旋转时刷新一下title
         super.onConfigurationChanged(newConfig);
+        XMemoryCache.getInstance().clear();
         ViewGroup root = (ViewGroup) getRootView();
         if (root.getChildAt(0) instanceof TitleBar) {
             root.removeViewAt(0);

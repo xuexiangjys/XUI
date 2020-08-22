@@ -385,16 +385,16 @@ public class ViewTooltip {
             mPosition = position;
             switch (position) {
                 case TOP:
-                    setPadding(mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom + ARROW_HEIGHT);
+                    setPaddingRelative(mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom + ARROW_HEIGHT);
                     break;
                 case BOTTOM:
-                    setPadding(mPaddingLeft, mPaddingTop + ARROW_HEIGHT, mPaddingRight, mPaddingBottom);
+                    setPaddingRelative(mPaddingLeft, mPaddingTop + ARROW_HEIGHT, mPaddingRight, mPaddingBottom);
                     break;
                 case LEFT:
-                    setPadding(mPaddingLeft, mPaddingTop, mPaddingRight + ARROW_HEIGHT, mPaddingBottom);
+                    setPaddingRelative(mPaddingLeft, mPaddingTop, mPaddingRight + ARROW_HEIGHT, mPaddingBottom);
                     break;
                 case RIGHT:
-                    setPadding(mPaddingLeft + ARROW_HEIGHT, mPaddingTop, mPaddingRight, mPaddingBottom);
+                    setPaddingRelative(mPaddingLeft + ARROW_HEIGHT, mPaddingTop, mPaddingRight, mPaddingBottom);
                     break;
                 default:
                     break;
