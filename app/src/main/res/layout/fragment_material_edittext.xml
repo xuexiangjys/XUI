@@ -481,6 +481,7 @@
                     android:hint="Material Design Icon"
                     app:met_clearButton="true"
                     app:met_iconLeft="@drawable/icon_phone"
+                    app:met_iconRight="@drawable/icon_phone"
                     app:met_iconPadding="5dp"
                     app:met_maxCharacters="5" />
 
