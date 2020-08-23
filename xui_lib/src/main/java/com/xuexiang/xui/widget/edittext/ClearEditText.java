@@ -37,8 +37,6 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      */
     private Drawable mClearDrawable;
 
-    private boolean mIsRTL;
-
     public ClearEditText(Context context) {
         this(context, null);
     }
@@ -80,7 +78,7 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
 
         if (mClearDrawable == null) {
             //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
-            mClearDrawable = getCompoundDrawables()[2];
+            mClearDrawable = getCompoundDrawablesRelative()[2];
             if (mClearDrawable == null) {
                 mClearDrawable = ResUtils.getVectorDrawable(context, R.drawable.xui_ic_default_clear_btn);
             }
@@ -90,7 +88,6 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
         } else {
             mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
         }
-        mIsRTL = isRtl();
         setClearIconVisible(false);
         setOnFocusChangeListener(this);
         addTextChangedListener(this);
@@ -103,7 +100,7 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (getCompoundDrawables()[mIsRTL ? 0 : 2] != null) {
+        if (getCompoundDrawablesRelative()[2] != null) {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 boolean touchable = isTouchable(event);
                 if (touchable) {
@@ -116,7 +113,7 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
     }
 
     private boolean isTouchable(MotionEvent event) {
-        if (mIsRTL) {
+        if (isRtl()) {
             return event.getX() > getPaddingLeft() - mExtraClickArea && event.getX() < getPaddingLeft() + mClearDrawable.getIntrinsicWidth() + mExtraClickArea;
         } else {
             return event.getX() > getWidth() - getPaddingRight() - mClearDrawable.getIntrinsicWidth() - mExtraClickArea && event.getX() < getWidth() - getPaddingRight() + mExtraClickArea;
@@ -142,10 +139,8 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      * @param visible
      */
     protected void setClearIconVisible(boolean visible) {
-        Drawable right = visible ? mClearDrawable : null;
-        setCompoundDrawables(mIsRTL
-                        ? right : getCompoundDrawables()[0],
-                getCompoundDrawables()[1], mIsRTL ? getCompoundDrawables()[2] : right, getCompoundDrawables()[3]);
+        Drawable end = visible ? mClearDrawable : null;
+        setCompoundDrawablesRelative(getCompoundDrawablesRelative()[0], getCompoundDrawablesRelative()[1], end, getCompoundDrawablesRelative()[3]);
     }
 
     /**

@@ -62,8 +62,6 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
      */
     private boolean mIsShowErrorIcon = true;
 
-    private boolean mIsRTL;
-
     /**
      * 增大点击区域
      */
@@ -102,7 +100,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
         mErrorDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ValidatorEditText_vet_errorIcon);
         if (mErrorDrawable == null) {
             //获取EditText的DrawableRight,假如没有设置我们就使用默认的图片
-            mErrorDrawable = getCompoundDrawables()[2];
+            mErrorDrawable = getCompoundDrawablesRelative()[2];
             if (mErrorDrawable == null) {
                 mErrorDrawable = ResUtils.getDrawable(getContext(), R.drawable.xui_ic_default_tip_btn);
             }
@@ -115,8 +113,6 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
         }
         mPosition = typedArray.getInt(R.styleable.ValidatorEditText_vet_tipPosition, 2);
         typedArray.recycle();
-
-        mIsRTL = isRtl();
     }
 
     private void initView() {
@@ -157,7 +153,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (getCompoundDrawables()[mIsRTL ? 0 : 2] != null) {
+        if (getCompoundDrawablesRelative()[2] != null) {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 if (isTouchable(event)) {
                     showErrorMsg();
@@ -173,7 +169,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
     }
 
     private boolean isTouchable(MotionEvent event) {
-        if (mIsRTL) {
+        if (isRtl()) {
             return event.getX() > getPaddingStart() - mExtraClickArea && event.getX() < getPaddingStart() + mErrorDrawable.getIntrinsicWidth() + mExtraClickArea;
         } else {
             return event.getX() > getWidth() - getPaddingEnd() - mErrorDrawable.getIntrinsicWidth() - mExtraClickArea && event.getX() < getWidth() - getPaddingEnd() + mExtraClickArea;
@@ -330,9 +326,9 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
      * @param visible
      */
     private void setErrorIconVisible(boolean visible) {
-        Drawable right = visible && mIsShowErrorIcon ? mErrorDrawable : null;
-        setCompoundDrawables(mIsRTL ? right : getCompoundDrawables()[0],
-                getCompoundDrawables()[1], mIsRTL ? getCompoundDrawables()[2] : right, getCompoundDrawables()[3]);
+        Drawable end = visible && mIsShowErrorIcon ? mErrorDrawable : null;
+        setCompoundDrawablesRelative(getCompoundDrawablesRelative()[0],
+                getCompoundDrawablesRelative()[1], end, getCompoundDrawablesRelative()[3]);
     }
 
     public static ViewTooltip.Position parsePosition(int value) {
