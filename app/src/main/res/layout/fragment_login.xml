@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         android:orientation="vertical">
 
         <FrameLayout
@@ -51,7 +51,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="start|center_vertical"
                 android:tint="?attr/colorAccent"
                 app:srcCompat="@drawable/ic_phone" />
 
@@ -75,13 +75,12 @@
             android:id="@+id/fl_verify_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp">
+            android:layout_marginTop="12dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="start|center_vertical"
                 android:tint="?attr/colorAccent"
                 app:srcCompat="@drawable/ic_password" />
 
@@ -126,6 +125,7 @@
             <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                 android:id="@+id/tv_other_login"
                 style="@style/TextStyle.Explain"
+                android:layout_gravity="start"
                 android:paddingStart="10dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
