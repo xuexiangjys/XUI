@@ -18,6 +18,7 @@ package com.xuexiang.xui.widget.tabbar;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -617,6 +618,12 @@ public class MultiTabControlView extends LinearLayout implements HasTypeface {
                 mOptions.get(i).setTypeface(typeface);
             }
         }
+    }
+
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        update();
     }
 
     /**

@@ -76,13 +76,37 @@ public final class WidgetUtils {
     //===============Spinner=============//
 
     /**
+     * Spinner统一风格和选择项
+     *
+     * @param spinner 下拉选择框
+     * @param items   选择项
+     */
+    public static void initSpinnerStyle(@NonNull Spinner spinner, @NonNull String[] items) {
+        initSpinnerStyle(spinner);
+        initSpinnerItem(spinner, items);
+    }
+
+    /**
      * Spinner统一风格
      *
-     * @param items
-     * @param spinner
+     * @param spinner 下拉选择框
      */
-    public static void initSpinnerStyle(Spinner spinner, String[] items) {
+    public static void initSpinnerStyle(@NonNull Spinner spinner) {
+        // 带下拉箭头的背景
+        spinner.setBackground(ResUtils.getDrawable(spinner.getContext(), R.drawable.xui_config_bg_spinner));
+        ViewUtils.setPaddingEnd(spinner, ResUtils.getDimensionPixelSize(R.dimen.default_spinner_icon_padding_size));
+        // 下拉选择菜单的背景
+        spinner.setPopupBackgroundDrawable(ResUtils.getDrawable(spinner.getContext(), R.drawable.ms_drop_down_bg_radius));
         setSpinnerDropDownVerticalOffset(spinner);
+    }
+
+    /**
+     * 初始化Spinner下拉框的选择项
+     *
+     * @param spinner 下拉选择框
+     * @param items   选择项
+     */
+    public static void initSpinnerItem(@NonNull Spinner spinner, @NonNull String[] items) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(spinner.getContext(), R.layout.xui_layout_spinner_selected_item, R.id.spinner_item, items);
         adapter.setDropDownViewResource(R.layout.xui_layout_spinner_drop_down_item);
         spinner.setAdapter(adapter);
@@ -91,9 +115,9 @@ public final class WidgetUtils {
     /**
      * 设置系统Spinner的下拉偏移
      *
-     * @param spinner
+     * @param spinner 下拉选择框
      */
-    public static void setSpinnerDropDownVerticalOffset(Spinner spinner) {
+    public static void setSpinnerDropDownVerticalOffset(@NonNull Spinner spinner) {
         int itemHeight = ThemeUtils.resolveDimension(spinner.getContext(), R.attr.ms_item_height_size);
         int dropdownOffset = ThemeUtils.resolveDimension(spinner.getContext(), R.attr.ms_dropdown_offset);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -270,21 +294,21 @@ public final class WidgetUtils {
     /**
      * 获取loading加载框
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return loading加载框
      */
-    public static LoadingDialog getLoadingDialog(Context context) {
+    public static LoadingDialog getLoadingDialog(@NonNull Context context) {
         return new LoadingDialog(context);
     }
 
     /**
      * 获取loading加载框
      *
-     * @param context
+     * @param context 上下文
      * @param message 提示文字
-     * @return
+     * @return loading加载框
      */
-    public static LoadingDialog getLoadingDialog(Context context, String message) {
+    public static LoadingDialog getLoadingDialog(@NonNull Context context, @NonNull String message) {
         return new LoadingDialog(context, message);
     }
 
@@ -293,9 +317,9 @@ public final class WidgetUtils {
      *
      * @param loadingDialog loading加载框
      * @param message       提示文字
-     * @return
+     * @return loading加载框
      */
-    public static LoadingDialog updateLoadingMessage(LoadingDialog loadingDialog, Context context, String message) {
+    public static LoadingDialog updateLoadingMessage(LoadingDialog loadingDialog, @NonNull Context context, @NonNull String message) {
         if (loadingDialog == null) {
             loadingDialog = getLoadingDialog(context);
         }
@@ -308,11 +332,11 @@ public final class WidgetUtils {
     /**
      * 获取IMessageLoader
      *
-     * @param isDialog
-     * @param context
-     * @return
+     * @param isDialog 是否是弹窗
+     * @param context  上下文
+     * @return 消息加载者
      */
-    public static IMessageLoader getMessageLoader(boolean isDialog, Context context) {
+    public static IMessageLoader getMessageLoader(boolean isDialog, @NonNull Context context) {
         return isDialog ? new LoadingDialog(context) : new LoadingViewLayout(context);
     }
 
@@ -320,21 +344,21 @@ public final class WidgetUtils {
     /**
      * 获取MiniLoadingDialog加载框
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return MiniLoadingDialog加载框
      */
-    public static MiniLoadingDialog getMiniLoadingDialog(Context context) {
+    public static MiniLoadingDialog getMiniLoadingDialog(@NonNull Context context) {
         return new MiniLoadingDialog(context);
     }
 
     /**
      * 获取MiniLoadingDialog加载框
      *
-     * @param context
+     * @param context 上下文
      * @param message 提示文字
-     * @return
+     * @return MiniLoadingDialog加载框
      */
-    public static MiniLoadingDialog getMiniLoadingDialog(Context context, String message) {
+    public static MiniLoadingDialog getMiniLoadingDialog(@NonNull Context context, @NonNull String message) {
         return new MiniLoadingDialog(context, message);
     }
 

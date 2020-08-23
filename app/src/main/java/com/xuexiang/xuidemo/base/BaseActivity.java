@@ -1,7 +1,10 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
@@ -55,14 +58,7 @@ public class BaseActivity extends XPageActivity {
         super.onCreate(savedInstanceState);
         mUnbinder = ButterKnife.bind(this);
 
-        // 侧滑回调
-        if (isSupportSlideBack()) {
-            SlideBack.with(this)
-                    .haveScroll(true)
-                    .edgeMode(ResUtils.isRtl() ? SlideBack.EDGE_RIGHT : SlideBack.EDGE_LEFT)
-                    .callBack(this::popPage)
-                    .register();
-        }
+        registerSlideBack();
     }
 
     /**
@@ -78,15 +74,6 @@ public class BaseActivity extends XPageActivity {
     protected void initStatusBarStyle() {
 
     }
-
-    /**
-     * @return 是否支持侧滑返回
-     */
-    protected boolean isSupportSlideBack() {
-        CoreSwitchBean page = getIntent().getParcelableExtra(CoreSwitchBean.KEY_SWITCH_BEAN);
-        return page == null || page.getBundle() == null || page.getBundle().getBoolean(KEY_SUPPORT_SLIDE_BACK, true);
-    }
-
 
     /**
      * 打开fragment
@@ -126,10 +113,48 @@ public class BaseActivity extends XPageActivity {
     @Override
     protected void onRelease() {
         mUnbinder.unbind();
-        if (isSupportSlideBack()) {
-            SlideBack.unregister(this);
-        }
+        unregisterSlideBack();
         super.onRelease();
     }
 
+    /**
+     * @return 是否支持侧滑返回
+     */
+    protected boolean isSupportSlideBack() {
+        CoreSwitchBean page = getIntent().getParcelableExtra(CoreSwitchBean.KEY_SWITCH_BEAN);
+        return page == null || page.getBundle() == null || page.getBundle().getBoolean(KEY_SUPPORT_SLIDE_BACK, true);
+    }
+
+    /**
+     * 注册侧滑回调
+     */
+    protected void registerSlideBack() {
+        if (isSupportSlideBack()) {
+            SlideBack.with(this)
+                    .haveScroll(true)
+                    .edgeMode(ResUtils.isRtl() ? SlideBack.EDGE_RIGHT : SlideBack.EDGE_LEFT)
+                    .callBack(this::popPage)
+                    .register();
+        }
+    }
+
+    /**
+     * 注销侧滑回调
+     */
+    protected void unregisterSlideBack() {
+        if (isSupportSlideBack()) {
+            SlideBack.unregister(this);
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        resetSlideBack();
+    }
+
+    private void resetSlideBack() {
+        unregisterSlideBack();
+        registerSlideBack();
+    }
 }

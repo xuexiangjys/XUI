@@ -114,23 +114,15 @@ public class MaterialSpinner extends AppCompatTextView {
         }
 
         int left, right, bottom, top;
-        left = right = bottom = top = ThemeUtils.resolveDimension(getContext(), R.attr.ms_padding_top_size);
-        if (rtl) {
-            right = ThemeUtils.resolveDimension(getContext(), R.attr.ms_padding_left_size);
-        } else {
-            left = ThemeUtils.resolveDimension(getContext(), R.attr.ms_padding_left_size);
-        }
+        right = bottom = top = ThemeUtils.resolveDimension(getContext(), R.attr.ms_padding_top_size);
+        left = ThemeUtils.resolveDimension(getContext(), R.attr.ms_padding_left_size);
 
         mDropDownOffset = ThemeUtils.resolveDimension(getContext(), R.attr.ms_dropdown_offset);
 
         setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         setClickable(true);
-        setPadding(left, top, right, bottom);
+        setPaddingRelative(left, top, right, bottom);
         setBackgroundResource(R.drawable.ms_background_selector);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && rtl) {
-            setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            setTextDirection(View.TEXT_DIRECTION_RTL);
-        }
 
         if (!mHideArrow) {
             if (mArrowDrawable == null) {
@@ -139,11 +131,7 @@ public class MaterialSpinner extends AppCompatTextView {
             mArrowDrawable.setColorFilter(mArrowColor, PorterDuff.Mode.SRC_IN);
             int arrowSize = ThemeUtils.resolveDimension(getContext(), R.attr.ms_arrow_size);
             mArrowDrawable.setBounds(0, 0, arrowSize, arrowSize);
-            if (rtl) {
-                setCompoundDrawablesWithIntrinsicBounds(mArrowDrawable, null, null, null);
-            } else {
-                setCompoundDrawablesWithIntrinsicBounds(null, null, mArrowDrawable, null);
-            }
+            setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, mArrowDrawable, null);
         }
 
         mListView = new ListView(context);
