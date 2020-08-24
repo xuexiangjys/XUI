@@ -26,13 +26,16 @@
                 android:id="@+id/clearEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:hint="请输入内容..."
+                android:textAlignment="viewStart" />
 
             <com.xuexiang.xui.widget.edittext.ClearEditText
                 android:id="@+id/clearEditText1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:hint="请输入内容..."
                 app:cet_clearIcon="@drawable/icon_clear"
                 app:cet_clearIconSize="@dimen/default_clear_icon_size" />
 
@@ -49,7 +52,8 @@
                 android:layout_margin="5dp"
                 android:layout_marginTop="16dp"
                 android:gravity="start"
-                android:textAlignment="viewStart">
+                android:textAlignment="viewStart"
+                android:textDirection="locale">
 
                 <com.xuexiang.xui.widget.edittext.PasswordEditText
                     android:id="@+id/input_password"
@@ -58,6 +62,7 @@
                     android:gravity="start"
                     android:hint="输入密码"
                     android:inputType="textPassword"
+                    android:layoutDirection="locale"
                     android:textAlignment="viewStart"
                     app:pet_enableIconAlpha="true"
                     app:pet_isAsteriskStyle="true" />
@@ -72,6 +77,7 @@
                 android:gravity="start"
                 android:hint="重复密码"
                 android:inputType="textPassword"
+                android:layoutDirection="locale"
                 android:textAlignment="viewStart"
                 app:fontPath="fonts/Roboto-Thin.ttf"
                 app:pet_enableIconAlpha="true"

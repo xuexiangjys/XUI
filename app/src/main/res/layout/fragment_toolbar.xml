@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:theme="@style/ToolbarTheme"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:theme="@style/ToolbarTheme">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="end"
             android:text="View"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -49,8 +49,8 @@
         android:id="@+id/tool_bar_4"
         style="@style/ToolbarStyle"
         android:layout_marginTop="10dp"
-        app:navigationIcon="@drawable/ic_navigation_back_white"
-        android:theme="@style/ToolbarTheme">
+        android:theme="@style/ToolbarTheme"
+        app:navigationIcon="@drawable/ic_navigation_back_white">
 
         <EditText
             android:id="@+id/edit_search"

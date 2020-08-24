@@ -194,7 +194,7 @@
                     style="?android:progressBarStyleLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|bottom"
+                    android:layout_gravity="start|bottom"
                     android:indeterminate="true" />
 
                 <ProgressBar
@@ -208,7 +208,7 @@
                     style="?android:progressBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="end|bottom"
                     android:indeterminate="true" />
             </FrameLayout>
 
@@ -226,7 +226,7 @@
                     style="@style/Widget.MaterialProgressBar.ProgressBar.Large"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|bottom"
+                    android:layout_gravity="start|bottom"
                     android:indeterminate="true" />
 
                 <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
@@ -240,7 +240,7 @@
                     style="@style/Widget.MaterialProgressBar.ProgressBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="end|bottom"
                     android:indeterminate="true" />
             </FrameLayout>
 

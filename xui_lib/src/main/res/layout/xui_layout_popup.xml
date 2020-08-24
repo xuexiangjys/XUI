@@ -15,7 +15,7 @@
         android:id="@+id/arrow_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|left"
+        android:layout_gravity="top|start"
         android:layout_marginTop="?attr/xui_popup_arrow_up_margin_top"
         app:srcCompat="?attr/xui_popup_arrow_up" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/arrow_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
+        android:layout_gravity="bottom|start"
         android:layout_marginBottom="?attr/xui_popup_arrow_down_margin_bottom"
         app:srcCompat="?attr/xui_popup_arrow_down" />
 
