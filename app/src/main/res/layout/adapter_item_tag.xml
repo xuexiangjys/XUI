@@ -11,8 +11,8 @@
         android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"
         android:background="@drawable/bg_rect_round_tag_btn"
         android:paddingBottom="5dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:paddingTop="5dp"
         android:textColor="@color/selector_tag_color" />
 

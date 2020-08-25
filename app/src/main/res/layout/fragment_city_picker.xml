@@ -68,8 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
-                android:paddingLeft="32dp"
-                android:paddingRight="32dp"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
                 android:text="默认主题"
                 android:textSize="16sp" />
 

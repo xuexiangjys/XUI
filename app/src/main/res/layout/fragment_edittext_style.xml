@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipChildren="false"
@@ -40,7 +40,7 @@
                 <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                     android:id="@+id/bt_disenable"
                     style="@style/RoundButton.Auto"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:text="不允许输入" />
             </LinearLayout>
@@ -67,7 +67,7 @@
                 <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                     android:id="@+id/bt_check_vaild"
                     style="@style/RoundButton.Auto"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:text="手动校验" />
             </LinearLayout>
@@ -98,5 +98,5 @@
                 app:vet_tipPosition="top" />
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

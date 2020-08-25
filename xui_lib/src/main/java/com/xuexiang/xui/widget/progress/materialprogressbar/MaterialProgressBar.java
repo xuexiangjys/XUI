@@ -145,10 +145,8 @@ public class MaterialProgressBar extends ProgressBar {
         switch (mProgressStyle) {
             case PROGRESS_STYLE_CIRCULAR:
                 if (isIndeterminate() || setBothDrawables) {
-                    if (!isInEditMode()) {
-                        setIndeterminateDrawable(new IndeterminateCircularProgressDrawable(
-                                context));
-                    }
+                    setIndeterminateDrawable(new IndeterminateCircularProgressDrawable(
+                            context));
                 }
                 if (!isIndeterminate() || setBothDrawables) {
                     setProgressDrawable(new CircularProgressDrawable(
@@ -157,10 +155,8 @@ public class MaterialProgressBar extends ProgressBar {
                 break;
             case PROGRESS_STYLE_HORIZONTAL:
                 if (isIndeterminate() || setBothDrawables) {
-                    if (!isInEditMode()) {
-                        setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(
-                                context));
-                    }
+                    setIndeterminateDrawable(new IndeterminateHorizontalProgressDrawable(
+                            context));
                 }
                 if (!isIndeterminate() || setBothDrawables) {
                     setProgressDrawable(new HorizontalProgressDrawable(context));
@@ -240,7 +236,7 @@ public class MaterialProgressBar extends ProgressBar {
      * {@code true}.
      *
      * @param useIntrinsicPadding Whether the current drawable should use its intrinsic padding.
-     * {@link IntrinsicPaddingDrawable}.
+     *                            {@link IntrinsicPaddingDrawable}.
      */
     public void setUseIntrinsicPadding(boolean useIntrinsicPadding) {
         Drawable drawable = getCurrentDrawable();

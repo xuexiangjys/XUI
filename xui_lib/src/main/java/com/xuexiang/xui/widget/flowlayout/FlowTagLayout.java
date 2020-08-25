@@ -97,10 +97,6 @@ public class FlowTagLayout extends ViewGroup {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
-        if (isInEditMode()) {
-            return;
-        }
-
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FlowTagLayout);
         mTagCheckMode = typedArray.getInt(R.styleable.FlowTagLayout_ftl_check_mode, FLOW_TAG_CHECKED_NONE);
         mSingleCancelable = typedArray.getBoolean(R.styleable.FlowTagLayout_ftl_single_cancelable, false);
@@ -157,12 +153,12 @@ public class FlowTagLayout extends ViewGroup {
             int childHeight = childView.getMeasuredHeight();
 
             //因为子View可能设置margin，这里要加上margin的距离
-            MarginLayoutParams mlp = (MarginLayoutParams) childView.getLayoutParams();
-            int realChildWidth = childWidth + mlp.leftMargin + mlp.rightMargin;
-            int realChildHeight = childHeight + mlp.topMargin + mlp.bottomMargin;
+            MarginLayoutParams lp = (MarginLayoutParams) childView.getLayoutParams();
+            int realChildWidth = childWidth + lp.leftMargin + lp.rightMargin;
+            int realChildHeight = childHeight + lp.topMargin + lp.bottomMargin;
 
             //如果当前一行的宽度加上要加入的子view的宽度大于父容器给的宽度，就换行
-            if ((lineWidth + realChildWidth) > sizeWidth) {
+            if ((lineWidth + realChildWidth) > sizeWidth - getPaddingLeft() - getPaddingRight()) {
                 //换行
                 resultWidth = Math.max(lineWidth, realChildWidth);
                 resultHeight += realChildHeight;
@@ -193,9 +189,8 @@ public class FlowTagLayout extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int flowWidth = getWidth();
 
-        int childLeft = 0;
-        int childTop = 0;
-
+        int childLeft = getPaddingStart();
+        int childTop = getPaddingTop();
         //遍历子控件，记录每个子view的位置
         for (int i = 0, childCount = getChildCount(); i < childCount; i++) {
             View childView = getChildAt(i);
@@ -208,24 +203,36 @@ public class FlowTagLayout extends ViewGroup {
             //获取到测量的宽和高
             int childWidth = childView.getMeasuredWidth();
             int childHeight = childView.getMeasuredHeight();
-
             //因为子View可能设置margin，这里要加上margin的距离
-            MarginLayoutParams mlp = (MarginLayoutParams) childView.getLayoutParams();
-
-            if (childLeft + mlp.leftMargin + childWidth + mlp.rightMargin > flowWidth) {
+            MarginLayoutParams lp = (MarginLayoutParams) childView.getLayoutParams();
+            int realChildWidth = childWidth + lp.leftMargin + lp.rightMargin;
+            int realChildHeight = childHeight + lp.topMargin + lp.bottomMargin;
+            if (childLeft + realChildWidth > flowWidth - getPaddingLeft() - getPaddingRight()) {
                 //换行处理
-                childTop += (mlp.topMargin + childHeight + mlp.bottomMargin);
-                childLeft = 0;
+                childTop += realChildHeight;
+                childLeft = getPaddingStart();
             }
             //布局
-            int left = childLeft + mlp.leftMargin;
-            int top = childTop + mlp.topMargin;
-            int right = childLeft + mlp.leftMargin + childWidth;
-            int bottom = childTop + mlp.topMargin + childHeight;
-            childView.layout(left, top, right, bottom);
-
-            childLeft += (mlp.leftMargin + childWidth + mlp.rightMargin);
+            if (isRtl()) {
+                int end = flowWidth - (childLeft + lp.getMarginStart());
+                int top = childTop + lp.topMargin;
+                int start = end - childWidth;
+                int bottom = top + childHeight;
+                childView.layout(start, top, end, bottom);
+            } else {
+                int left = childLeft + lp.getMarginStart();
+                int top = childTop + lp.topMargin;
+                int right = left + childWidth;
+                int bottom = top + childHeight;
+                childView.layout(left, top, right, bottom);
+            }
+            childLeft += realChildWidth;
         }
+    }
+
+
+    private boolean isRtl() {
+        return getLayoutDirection() == LAYOUT_DIRECTION_RTL;
     }
 
     @Override

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -14,8 +14,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="?attr/xui_config_content_spacing_horizontal"
-            android:paddingLeft="?attr/xui_config_content_spacing_horizontal"
-            android:paddingRight="?attr/xui_config_content_spacing_horizontal"
+            android:paddingStart="?attr/xui_config_content_spacing_horizontal"
+            android:paddingEnd="?attr/xui_config_content_spacing_horizontal"
             android:paddingTop="?attr/xui_config_content_spacing_horizontal">
 
             <TextView
@@ -187,6 +187,6 @@
                     app:mpb_showProgressBackground="true" />
             </FrameLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

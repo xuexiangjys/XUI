@@ -27,8 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:text="尺寸 (px)" />
 
     <EditText
@@ -45,8 +45,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:text="边缘宽度 (px)" />
 
     <EditText
@@ -63,8 +63,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:text="数据点的缩放比例 (0,1.0f)" />
 
     <EditText
@@ -90,8 +90,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:text="深色 (true-dots, #dddddd)" />
 
     <EditText
@@ -109,8 +109,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:text="浅色 (false-dots, #dddddd)" />
 
     <EditText
@@ -160,8 +160,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:text="二值化中值 (0,255)" />
 
     <EditText

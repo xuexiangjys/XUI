@@ -230,10 +230,10 @@ public class SuperButton extends AppCompatButton {
                 setGravity(Gravity.CENTER);
                 break;
             case 1:
-                setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+                setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
                 break;
             case 2:
-                setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+                setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
                 break;
             case 3:
                 setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
@@ -725,6 +725,7 @@ public class SuperButton extends AppCompatButton {
     }
 
     private IAlphaViewHelper mAlphaViewHelper;
+
     private IAlphaViewHelper getAlphaViewHelper() {
         if (mAlphaViewHelper == null) {
             mAlphaViewHelper = new XUIAlphaViewHelper(this);
@@ -754,6 +755,7 @@ public class SuperButton extends AppCompatButton {
 
     /**
      * 是否使用渐变色
+     *
      * @return
      */
     private boolean isUseGradientColor() {

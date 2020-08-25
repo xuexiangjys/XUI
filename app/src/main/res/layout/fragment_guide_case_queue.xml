@@ -7,40 +7,40 @@
     <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/step1"
         style="@style/Button.Primary.wrap"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:text="步骤1" />
 
     <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/step2"
         style="@style/Button.Primary.wrap"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
         android:text="步骤2" />
 
 
     <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/step3"
         style="@style/Button.Primary.wrap"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
         android:text="步骤3" />
 
     <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/step4"
         style="@style/Button.Primary.wrap"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
         android:text="步骤4" />
 
     <com.xuexiang.xui.widget.alpha.XUIAlphaButton
         android:id="@+id/changePicture"
         style="@style/Button.Primary.wrap"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:text="更换图片" />
 
 </LinearLayout>

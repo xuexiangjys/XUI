@@ -31,6 +31,7 @@ import com.tmall.wireless.tangram.structure.CellRender;
 import com.tmall.wireless.tangram.support.ExposureSupport;
 import com.xuexiang.xui.utils.ColorUtils;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 
@@ -78,6 +79,8 @@ public class CustomAnnotationView extends LinearLayout {
         mTextView = new TextView(getContext());
         mTextView.setPadding(0, padding, 0, 0);
         addView(mTextView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+        ViewUtils.setViewsFont(this);
     }
 
 

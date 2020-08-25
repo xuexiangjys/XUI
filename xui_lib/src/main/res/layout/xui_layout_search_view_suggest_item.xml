@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:focusable="false"
-        android:paddingLeft="?attr/search_view_text_padding"
-        android:paddingRight="?attr/search_view_text_padding"
+        android:paddingStart="?attr/search_view_text_padding"
+        android:paddingEnd="?attr/search_view_text_padding"
         android:textColor="?attr/search_view_text_color_hint"
         android:textSize="?attr/search_view_text_size" />
 
@@ -37,8 +37,8 @@
         android:layout_centerVertical="true"
         android:background="@android:color/transparent"
         android:focusable="false"
-        android:paddingLeft="?attr/search_icon_padding"
-        android:paddingRight="?attr/search_icon_padding"
+        android:paddingStart="?attr/search_icon_padding"
+        android:paddingEnd="?attr/search_icon_padding"
         app:srcCompat="?attr/search_view_ic_suggestion" />
 
 </RelativeLayout>

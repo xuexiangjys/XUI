@@ -46,9 +46,6 @@ public class BaseShadowButton extends AppCompatButton {
 	}
 
 	protected void init(final Context context, final AttributeSet attrs) {
-		if (isInEditMode()) {
-			return;
-		}
 		final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ShadowButton);
 		mShapeType = typedArray.getInt(R.styleable.ShadowButton_sb_shape_type, SHAPE_TYPE_RECTANGLE);
 		mRadius = typedArray.getDimensionPixelSize(R.styleable.ShadowButton_sb_radius, getResources().getDimensionPixelSize(R.dimen.default_shadow_button_radius));

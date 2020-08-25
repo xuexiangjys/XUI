@@ -1,11 +1,13 @@
 package com.xuexiang.xuidemo.activity;
 
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +38,7 @@ import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.system.DeviceUtils;
+import com.yarolegovich.slidingrootnav.SlideGravity;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
@@ -77,9 +80,16 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         //登记一下
         MobclickAgent.onProfileSignIn(DeviceUtils.getAndroidID());
 
+        initData();
+
         initSlidingMenu(savedInstanceState);
 
         initViews();
+    }
+
+    private void initData() {
+        mMenuTitles = ResUtils.getStringArray(R.array.menu_titles);
+        mMenuIcons = ResUtils.getDrawableArray(this, R.array.menu_icons);
     }
 
     @Override
@@ -147,6 +157,12 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         });
     }
 
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        initSlidingMenu(null);
+    }
 
     public void openMenu() {
         if (mSlidingRootNav != null) {
@@ -168,10 +184,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     }
 
     private void initSlidingMenu(Bundle savedInstanceState) {
-        mMenuTitles = ResUtils.getStringArray(R.array.menu_titles);
-        mMenuIcons = ResUtils.getDrawableArray(this, R.array.menu_icons);
-
         mSlidingRootNav = new SlidingRootNavBuilder(this)
+                .withGravity(ResUtils.isRtl() ? SlideGravity.RIGHT : SlideGravity.LEFT)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)

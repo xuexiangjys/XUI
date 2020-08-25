@@ -25,6 +25,8 @@ import com.xuexiang.xuidemo.fragment.components.refresh.SmartRefreshLayoutFragme
 import com.xuexiang.xuidemo.fragment.components.refresh.StickyRecyclerViewFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.SwipeRecyclerViewFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.SwipeRefreshLayoutFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.diffutil.DiffUtilRefreshFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.sortedlist.SortedListRefreshFragment;
 
 /**
  * @author xuexiang
@@ -45,7 +47,9 @@ public class RefreshLayoutFragment extends ComponentContainerFragment {
                 SwipeRefreshLayoutFragment.class,
                 RefreshHeadViewFragment.class,
                 BroccoliFragment.class,
-                StickyRecyclerViewFragment.class
+                StickyRecyclerViewFragment.class,
+                DiffUtilRefreshFragment.class,
+                SortedListRefreshFragment.class
         };
     }
 }

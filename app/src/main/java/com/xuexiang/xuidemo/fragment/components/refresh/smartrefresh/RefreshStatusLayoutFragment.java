@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.statelayout.StatefulLayout;
 import com.xuexiang.xuidemo.DemoDataProvider;
@@ -64,6 +65,7 @@ public class RefreshStatusLayoutFragment extends BaseFragment {
         mRecyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         //下拉刷新
+        ViewUtils.setViewsFont(mRefreshLayout);
         mRefreshLayout.setOnRefreshListener(refreshLayout -> refreshLayout.getLayout().postDelayed(() -> {
             Status status = getRefreshStatus();
             switch (status) {

@@ -261,9 +261,6 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
     }
 
     private void initAttr(AttributeSet attrs) {
-        if (isInEditMode()) {
-            return;
-        }
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ExpandableTextView);
         mMaxCollapsedLines = typedArray.getInt(R.styleable.ExpandableTextView_etv_maxCollapsedLines, MAX_COLLAPSED_LINES);
         mAnimationDuration = typedArray.getInt(R.styleable.ExpandableTextView_etv_animDuration, DEFAULT_ANIM_DURATION);

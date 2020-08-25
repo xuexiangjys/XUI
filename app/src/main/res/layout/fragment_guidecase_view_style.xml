@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:orientation="vertical">
 
             <com.xuexiang.xui.widget.button.roundbutton.RoundButton
@@ -29,14 +29,14 @@
             <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                 android:id="@+id/btn_large_circle"
                 style="@style/RoundButton.Auto"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:text="大圆聚焦" />
 
             <com.xuexiang.xui.widget.button.roundbutton.RoundButton
                 android:id="@+id/btn_rect_position"
                 style="@style/RoundButton.Auto"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:text="坐标聚焦" />
 
@@ -65,6 +65,6 @@
                 android:text="自定义布局" />
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

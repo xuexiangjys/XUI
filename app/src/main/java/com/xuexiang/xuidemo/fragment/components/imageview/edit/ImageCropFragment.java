@@ -72,7 +72,10 @@ public class ImageCropFragment extends BaseFragment {
         // 触摸时显示网格
         mCropImageView.setGuidelines(CropImageType.CROPIMAGE_GRID_ON);
         // 自由剪切
-        mCropImageView.setFixedAspectRatio(false);
+//        mCropImageView.setFixedAspectRatio(false);
+        // 固定比例剪切
+        mCropImageView.setFixedAspectRatio(true);
+        mCropImageView.setAspectRatio(40, 30);
 
         btnRotate.setEnabled(false);
         btnCrop.setEnabled(false);

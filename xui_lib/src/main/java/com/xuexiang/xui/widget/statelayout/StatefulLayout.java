@@ -68,9 +68,6 @@ public class StatefulLayout extends LinearLayout {
     }
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (isInEditMode()) {
-            return;
-        }
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.StatefulLayout, defStyleAttr, 0);
         mAnimationEnabled = array.getBoolean(R.styleable.StatefulLayout_stf_animationEnabled, UIConfig.getInstance().getStateLayoutConfig().animationEnabled);
         int inAnimationResId = array.getResourceId(R.styleable.StatefulLayout_stf_inAnimation, -1);
@@ -130,9 +127,6 @@ public class StatefulLayout extends LinearLayout {
         super.onFinishInflate();
         if (getChildCount() > 1) {
             throw new IllegalStateException(MSG_ONE_CHILD);
-        }
-        if (isInEditMode()) {
-            return; // hide state views in designer
         }
         attachTemplate();
     }

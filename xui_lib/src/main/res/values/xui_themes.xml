@@ -811,20 +811,23 @@
 
     </style>
 
-    <!--**********************************************
+    <!--********************************************
     *                 字体设置                      *
     **********************************************-->
     <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
         <item name="fontPath">@string/default_app_font_path</item>
+        <item name="android:textDirection">locale</item>
     </style>
 
     <style name="TextAppearance.FontPath" parent="TextAppearanceBase">
         <item name="fontPath">@string/default_app_font_path</item>
+        <item name="android:textDirection">locale</item>
     </style>
 
     <!-- Custom Class Styles -->
     <style name="TextField" parent="android:Widget.Holo.Light.TextView">
         <item name="fontPath">@string/default_app_font_path</item>
+        <item name="android:textDirection">locale</item>
     </style>
 
     <!--*********************************************
@@ -859,7 +862,11 @@
 
     <style name="ButtonBase" parent="android:Widget.Holo.Light.Button" />
 
-    <style name="EditTextBase" parent="android:Widget.Holo.Light.EditText" />
+    <style name="EditTextBase" parent="android:Widget.Holo.Light.EditText">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textDirection">locale</item>
+    </style>
 
     <style name="AutoCompleteTextViewBase" parent="android:Widget.Holo.Light.AutoCompleteTextView" />
 

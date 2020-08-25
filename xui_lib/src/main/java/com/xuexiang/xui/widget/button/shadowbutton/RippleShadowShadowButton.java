@@ -55,9 +55,6 @@ public class RippleShadowShadowButton extends BaseShadowButton {
     @Override
     protected void init(final Context context, final AttributeSet attrs) {
         super.init(context, attrs);
-        if (isInEditMode()) {
-            return;
-        }
         final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ShadowButton);
         mRippleColor = typedArray.getColor(R.styleable.ShadowButton_sb_ripple_color, getResources().getColor(R.color.default_shadow_button_ripple_color));
         mRippleAlpha = typedArray.getInteger(R.styleable.ShadowButton_sb_ripple_alpha, RIPPLE_ALPHA);

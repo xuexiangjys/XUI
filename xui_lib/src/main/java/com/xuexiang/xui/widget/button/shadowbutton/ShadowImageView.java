@@ -46,9 +46,6 @@ public class ShadowImageView extends AppCompatImageView {
     }
 
     private void init(final Context context, final AttributeSet attrs) {
-        if (isInEditMode()) {
-            return;
-        }
         final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ShadowButton);
         mPressedColor = typedArray.getColor(R.styleable.ShadowButton_sb_color_pressed, getResources().getColor(R.color.default_shadow_button_color_pressed));
         mPaintAlpha = typedArray.getInteger(R.styleable.ShadowButton_sb_alpha_pressed, mPaintAlpha);

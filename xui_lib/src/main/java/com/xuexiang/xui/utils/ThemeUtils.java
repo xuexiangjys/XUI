@@ -9,6 +9,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -172,6 +173,13 @@ public final class ThemeUtils {
         TypedValue v = new TypedValue();
         context.getTheme().resolveAttribute(attr, v, true);
         return (String) v.string;
+    }
+
+    public static String resolveString(Context context, @AttrRes int attr, String defaultValue) {
+        TypedValue v = new TypedValue();
+        context.getTheme().resolveAttribute(attr, v, true);
+        String value = (String) v.string;
+        return TextUtils.isEmpty(value) ? defaultValue : value;
     }
 
     public static String resolveString(Resources.Theme theme, @AttrRes int attr) {
@@ -342,6 +350,8 @@ public final class ThemeUtils {
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                 }
+                break;
+            default:
                 break;
         }
     }

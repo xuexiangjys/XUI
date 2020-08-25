@@ -18,6 +18,7 @@ package com.xuexiang.xui.widget.tabbar;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -27,6 +28,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -57,7 +59,7 @@ public class TabControlView extends RadioGroup implements HasTypeface {
     private Context mContext;
 
     /**
-     *
+     * Tab选中的监听
      */
     private OnTabSelectionChangedListener mListener;
 
@@ -148,10 +150,6 @@ public class TabControlView extends RadioGroup implements HasTypeface {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) throws Exception {
-        if (isInEditMode()) {
-            return;
-        }
-
         TypedArray attributes = context.getTheme().obtainStyledAttributes(
                 attrs,
                 R.styleable.TabControlView,
@@ -219,7 +217,7 @@ public class TabControlView extends RadioGroup implements HasTypeface {
                 params.weight = 1.0F;
             }
             if (i > 0) {
-                params.setMargins(-mStrokeWidth, 0, 0, 0);
+                params.setMarginStart(-mStrokeWidth);
             }
 
             rb.setLayoutParams(params);
@@ -230,10 +228,18 @@ public class TabControlView extends RadioGroup implements HasTypeface {
             //Create state list for background
             if (i == 0) {
                 //Left
-                updateRadioButton(rb, R.drawable.tcv_left_option, R.drawable.tcv_left_option_selected);
+                if (isRtl()) {
+                    updateRadioButton(rb, R.drawable.tcv_right_option, R.drawable.tcv_right_option_selected);
+                } else {
+                    updateRadioButton(rb, R.drawable.tcv_left_option, R.drawable.tcv_left_option_selected);
+                }
             } else if (i == (mItemMap.size() - 1)) {
                 //Right
-                updateRadioButton(rb, R.drawable.tcv_right_option, R.drawable.tcv_right_option_selected);
+                if (isRtl()) {
+                    updateRadioButton(rb, R.drawable.tcv_left_option, R.drawable.tcv_left_option_selected);
+                } else {
+                    updateRadioButton(rb, R.drawable.tcv_right_option, R.drawable.tcv_right_option_selected);
+                }
             } else {
                 //Middle
                 updateRadioButton(rb, R.drawable.tcv_middle_option, R.drawable.tcv_middle_option_selected);
@@ -273,6 +279,11 @@ public class TabControlView extends RadioGroup implements HasTypeface {
                 this.check(radioButton.getId());
             }
         }
+    }
+
+    private boolean isRtl() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
+                getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
     }
 
     /**
@@ -572,6 +583,12 @@ public class TabControlView extends RadioGroup implements HasTypeface {
                 mOptions.get(i).setTypeface(typeface);
             }
         }
+    }
+
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        update();
     }
 
     /**

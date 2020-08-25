@@ -22,23 +22,22 @@
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_goods_img"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
         android:src="@drawable/bg_food_sample"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_goods_img_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/tag_new_good"
-        app:layout_constraintLeft_toLeftOf="@+id/iv_goods_img"
+        app:layout_constraintStart_toStartOf="@+id/iv_goods_img"
         app:layout_constraintTop_toTopOf="@+id/iv_goods_img" />
 
     <TextView
@@ -46,7 +45,7 @@
         style="@style/TextStyle.Title"
         android:layout_marginStart="10dp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@+id/iv_goods_img"
+        app:layout_constraintStart_toEndOf="@+id/iv_goods_img"
         app:layout_constraintTop_toTopOf="@+id/iv_goods_img"
         tools:text="水果" />
 
@@ -57,7 +56,7 @@
         android:text="好吃的食物，增肥神器，有求必应"
         android:textColor="@color/colorGray"
         android:textSize="10sp"
-        app:layout_constraintLeft_toLeftOf="@+id/iv_goods_name"
+        app:layout_constraintStart_toStartOf="@+id/iv_goods_name"
         app:layout_constraintTop_toBottomOf="@+id/iv_goods_name" />
 
     <TextView
@@ -67,7 +66,7 @@
         android:text="月售1023 好评率90%"
         android:textColor="@color/colorGray"
         android:textSize="10sp"
-        app:layout_constraintLeft_toLeftOf="@+id/iv_goods_name"
+        app:layout_constraintStart_toStartOf="@+id/iv_goods_name"
         app:layout_constraintTop_toBottomOf="@+id/iv_goods_detail" />
 
     <TextView
@@ -79,16 +78,16 @@
         android:textColor="@color/color_red"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@+id/iv_goods_name"
+        app:layout_constraintStart_toStartOf="@+id/iv_goods_name"
         app:layout_constraintTop_toBottomOf="@+id/iv_goods_comment" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_goods_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:src="@drawable/btn_add_food"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

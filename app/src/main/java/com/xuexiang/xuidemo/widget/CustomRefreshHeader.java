@@ -36,6 +36,8 @@ import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.internal.ArrowDrawable;
 import com.scwang.smartrefresh.layout.internal.ProgressDrawable;
 import com.scwang.smartrefresh.layout.util.DensityUtil;
+import com.xuexiang.xui.XUI;
+import com.xuexiang.xui.utils.ViewUtils;
 
 /**
  * 自定义下拉刷新头
@@ -84,6 +86,8 @@ public class CustomRefreshHeader extends LinearLayout implements RefreshHeader {
         addView(new Space(context), DensityUtil.dp2px(20), DensityUtil.dp2px(20));
         addView(mHeaderText, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         setMinimumHeight(DensityUtil.dp2px(60));
+
+        ViewUtils.setViewsFont(XUI.getDefaultTypeface(), mHeaderText);
     }
 
     @Override

@@ -32,8 +32,8 @@
         android:baselineAligned="false"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
 
         <com.xuexiang.xui.widget.imageview.RadiusImageView
             android:id="@+id/iv_avatar"
@@ -60,8 +60,8 @@
         style="@style/TextStyle.Explain"
         android:layout_width="240dp"
         android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         android:text="这个家伙很懒，什么也没有留下～～" />
 
     <Space

@@ -38,6 +38,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
@@ -356,12 +357,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (isInEditMode()) {
-            return;
-        }
-
         iconSize = getPixel(32);
-        iconOuterWidth = getPixel(18);
+        iconOuterWidth = getPixel(24);
         iconOuterHeight = getPixel(32);
 
         bottomSpacing = getResources().getDimensionPixelSize(R.dimen.default_edittext_components_spacing);
@@ -395,15 +392,12 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         helperTextColor = typedArray.getColor(R.styleable.MaterialEditText_met_helperTextColor, -1);
         minBottomTextLines = typedArray.getInt(R.styleable.MaterialEditText_met_minBottomTextLines, 0);
         String fontPathForAccent = typedArray.getString(R.styleable.MaterialEditText_met_accentTypeface);
-        if (fontPathForAccent != null && !isInEditMode()) {
+        if (fontPathForAccent != null) {
             accentTypeface = XUI.getDefaultTypeface(fontPathForAccent);
             textPaint.setTypeface(accentTypeface);
         }
         String fontPathForView = typedArray.getString(R.styleable.MaterialEditText_met_typeface);
-        if (fontPathForView != null && !isInEditMode()) {
-            /**
-             * The font used on the view (EditText content)
-             */
+        if (fontPathForView != null) {
             Typeface typeface = XUI.getDefaultTypeface(fontPathForView);
             setTypeface(typeface);
         }
@@ -425,7 +419,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         iconRightBitmaps = generateIconBitmaps(typedArray.getResourceId(R.styleable.MaterialEditText_met_iconRight, -1));
 
         showClearButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_clearButton, false);
-        clearButtonBitmaps = generateIconBitmaps(R.drawable.met_icon_clear);
+        clearButtonBitmaps = generateIconBitmaps(DrawableUtils.getBitmapByDrawableId(getContext(), R.drawable.xui_ic_default_clear_btn));
         showPasswordButton = typedArray.getBoolean(R.styleable.MaterialEditText_met_passWordButton, false);
         boolean isAsteriskStyle = typedArray.getBoolean(R.styleable.MaterialEditText_met_isAsteriskStyle, false);
         if (isAsteriskStyle) {
@@ -437,8 +431,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             handleSwitchPasswordInputVisibility();
         }
 
-        showPwIconBitmaps = generateIconBitmaps(R.drawable.met_icon_visibility);
-        hidePwIconBitmaps = generateIconBitmaps(R.drawable.met_icon_visibility_off);
+        showPwIconBitmaps = generateIconBitmaps(DrawableUtils.getBitmapByDrawableId(getContext(), R.drawable.pet_icon_visibility_24dp));
+        hidePwIconBitmaps = generateIconBitmaps(DrawableUtils.getBitmapByDrawableId(getContext(), R.drawable.pet_icon_visibility_off_24dp));
 
         String regexp = typedArray.getString(R.styleable.MaterialEditText_met_regexp);
         if (!TextUtils.isEmpty(regexp)) {
@@ -595,7 +589,6 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(getResources(), origin, options);
         int size = Math.max(options.outWidth, options.outHeight);
         options.inSampleSize = size > iconSize ? size / iconSize : 1;
         options.inJustDecodeBounds = false;
@@ -812,8 +805,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         textPaint.setTextSize(bottomTextSize);
         Paint.FontMetrics textMetrics = textPaint.getFontMetrics();
         extraPaddingBottom = (int) ((textMetrics.descent - textMetrics.ascent) * currentBottomLines) + (hideUnderline ? bottomSpacing : bottomSpacing * 2);
-        extraPaddingLeft = iconLeftBitmaps == null ? 0 : (iconOuterWidth + iconPadding);
-        extraPaddingRight = iconRightBitmaps == null ? 0 : (iconOuterWidth + iconPadding);
+        extraPaddingLeft = getStartIcon() == null ? 0 : (iconOuterWidth + iconPadding);
+        extraPaddingRight = getEndIcon() == null ? 0 : (iconOuterWidth + iconPadding);
         correctPaddings();
     }
 
@@ -853,11 +846,11 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         int buttonsWidthLeft = 0, buttonsWidthRight = 0;
         int buttonsWidth = iconOuterWidth * getButtonsCount();
         if (isRTL()) {
-            buttonsWidthLeft = buttonsWidth / 2;
+            buttonsWidthLeft = buttonsWidth;
         } else {
-            buttonsWidthRight = buttonsWidth / 2;
+            buttonsWidthRight = buttonsWidth;
         }
-        super.setPadding(innerPaddingLeft + extraPaddingLeft + buttonsWidthLeft, innerPaddingTop + extraPaddingTop, innerPaddingRight + extraPaddingRight + buttonsWidthRight, innerPaddingBottom + extraPaddingBottom);
+        super.setPaddingRelative(innerPaddingLeft + extraPaddingLeft + buttonsWidthLeft, innerPaddingTop + extraPaddingTop, innerPaddingRight + extraPaddingRight + buttonsWidthRight, innerPaddingBottom + extraPaddingBottom);
     }
 
     private int getButtonsCount() {
@@ -891,8 +884,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         int destBottomLines;
         textPaint.setTextSize(bottomTextSize);
         if (tempErrorText != null || helperText != null) {
-            Layout.Alignment alignment = (getGravity() & Gravity.RIGHT) == Gravity.RIGHT || isRTL() ?
-                    Layout.Alignment.ALIGN_OPPOSITE : (getGravity() & Gravity.LEFT) == Gravity.LEFT ?
+            Layout.Alignment alignment = (getGravity() & Gravity.END) == Gravity.END || isRTL() ?
+                    Layout.Alignment.ALIGN_OPPOSITE : (getGravity() & Gravity.START) == Gravity.START ?
                     Layout.Alignment.ALIGN_NORMAL : Layout.Alignment.ALIGN_CENTER;
             textLayout = new StaticLayout(tempErrorText != null ? tempErrorText : helperText, textPaint, getWidth() - getBottomTextLeftOffset() - getBottomTextRightOffset() - getPaddingLeft() - getPaddingRight(), alignment, 1.0f, 0.0f, true);
             destBottomLines = Math.max(textLayout.getLineCount(), minBottomTextLines);
@@ -1445,8 +1438,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
 
-        int startX = getScrollX() + (iconLeftBitmaps == null ? 0 : (iconOuterWidth + iconPadding));
-        int endX = getScrollX() + (iconRightBitmaps == null ? getWidth() : getWidth() - iconOuterWidth - iconPadding) - getPaddingRight();
+        int startX = getScrollX() + (getStartIcon() == null ? 0 : iconOuterWidth + iconPadding);
+        int endX = getScrollX() + (getEndIcon() == null ? getWidth() : getWidth() - iconOuterWidth - iconPadding);
         int lineStartY = getScrollY() + getHeight() - getPaddingBottom();
 
         // draw the icon(s)
@@ -1467,7 +1460,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         if ((hasFocus() && hasCharactersCounter()) || !isCharactersCountValid()) {
             textPaint.setColor(isCharactersCountValid() ? (baseColor & 0x00ffffff | 0x44000000) : errorColor);
             String charactersCounterText = getCharactersCounterText();
-            canvas.drawText(charactersCounterText, isRTL() ? startX : endX - textPaint.measureText(charactersCounterText), lineStartY + bottomSpacing + relativeHeight, textPaint);
+            canvas.drawText(charactersCounterText, isRTL() ? startX : endX + getPaddingEnd() - textPaint.measureText(charactersCounterText), lineStartY + bottomSpacing + relativeHeight, textPaint);
         }
 
         // draw the bottom text
@@ -1483,6 +1476,14 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         super.onDraw(canvas);
     }
 
+    private Bitmap[] getStartIcon() {
+        return isRTL() ? iconRightBitmaps : iconLeftBitmaps;
+    }
+
+    private Bitmap[] getEndIcon() {
+        return isRTL() ? iconLeftBitmaps : iconRightBitmaps;
+    }
+
     /**
      * 画图标
      *
@@ -1493,14 +1494,14 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
      */
     private void drawIcons(@NonNull Canvas canvas, int startX, int endX, int lineStartY) {
         paint.setAlpha(255);
-        if (iconLeftBitmaps != null) {
-            Bitmap icon = iconLeftBitmaps[!isInternalValid() ? 3 : !isEnabled() ? 2 : hasFocus() ? 1 : 0];
+        if (getStartIcon() != null) {
+            Bitmap icon = getStartIcon()[!isInternalValid() ? 3 : !isEnabled() ? 2 : hasFocus() ? 1 : 0];
             int iconLeft = startX - iconPadding - iconOuterWidth + (iconOuterWidth - icon.getWidth()) / 2;
             int iconTop = lineStartY + bottomSpacing - iconOuterHeight + (iconOuterHeight - icon.getHeight()) / 2;
             canvas.drawBitmap(icon, iconLeft, iconTop, paint);
         }
-        if (iconRightBitmaps != null) {
-            Bitmap icon = iconRightBitmaps[!isInternalValid() ? 3 : !isEnabled() ? 2 : hasFocus() ? 1 : 0];
+        if (getEndIcon() != null) {
+            Bitmap icon = getEndIcon()[!isInternalValid() ? 3 : !isEnabled() ? 2 : hasFocus() ? 1 : 0];
             int iconRight = endX + iconPadding + (iconOuterWidth - icon.getWidth()) / 2;
             int iconTop = lineStartY + bottomSpacing - iconOuterHeight + (iconOuterHeight - icon.getHeight()) / 2;
             canvas.drawBitmap(icon, iconRight, iconTop, paint);
@@ -1518,14 +1519,13 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     private void drawActionButton(@NonNull Canvas canvas, int startX, int endX, int lineStartY) {
         if (hasFocus() && isEnabled() && !TextUtils.isEmpty(getText()) && (showClearButton || showPasswordButton)) {
             paint.setAlpha(255);
-            int buttonLeft = isRTL() ? startX : (endX - iconOuterWidth);
+            int buttonLeft = isRTL() ? startX : endX - iconOuterWidth;
             Bitmap actionButtonBitmap;
             if (showClearButton) {
                 actionButtonBitmap = clearButtonBitmaps[0];
             } else {
                 actionButtonBitmap = passwordVisible ? showPwIconBitmaps[0] : hidePwIconBitmaps[0];
             }
-            buttonLeft += (iconOuterWidth - actionButtonBitmap.getWidth()) / 2;
             int iconTop = lineStartY + bottomSpacing - iconOuterHeight + (iconOuterHeight - actionButtonBitmap.getHeight()) / 2;
             canvas.drawBitmap(actionButtonBitmap, buttonLeft, iconTop, paint);
         }
@@ -1635,13 +1635,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private boolean isRTL() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return false;
-        }
-        Configuration config = getResources().getConfiguration();
-        return config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+        return getLayoutDirection() == LAYOUT_DIRECTION_RTL;
     }
 
     private int getBottomTextLeftOffset() {
@@ -1743,16 +1738,11 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
     private boolean insideActionButton(MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
-        int startX = getScrollX() + (iconLeftBitmaps == null ? 0 : (iconOuterWidth + iconPadding));
-        int endX = getScrollX() + (iconRightBitmaps == null ? getWidth() : getWidth() - iconOuterWidth - iconPadding);
-        int buttonLeft;
-        if (isRTL()) {
-            buttonLeft = startX;
-        } else {
-            buttonLeft = endX - iconOuterWidth;
-        }
+        int startX = getStartIcon() == null ? 0 : iconOuterWidth + iconPadding;
+        int endX = getEndIcon() == null ? getWidth() : getWidth() - iconOuterWidth - iconPadding;
+        int buttonLeft = isRTL() ? startX : endX - iconOuterWidth;
         int buttonTop = getScrollY() + getHeight() - getPaddingBottom() + bottomSpacing - iconOuterHeight;
-        return (x >= buttonLeft - iconOuterWidth && x < buttonLeft + iconOuterWidth && y >= buttonTop && y < buttonTop + iconOuterHeight);
+        return (x >= buttonLeft && x < buttonLeft + iconOuterWidth && y >= buttonTop && y < buttonTop + iconOuterHeight);
     }
 
     /**

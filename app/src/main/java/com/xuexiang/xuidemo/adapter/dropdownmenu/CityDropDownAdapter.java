@@ -55,10 +55,10 @@ public class CityDropDownAdapter extends BaseListAdapter<String, CityDropDownAda
         if (mSelectPosition != -1) {
             if (mSelectPosition == position) {
                 holder.mText.setSelected(true);
-                holder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, ResUtils.getVectorDrawable(holder.mText.getContext(), R.drawable.ic_checked_right), null);
+                holder.mText.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ResUtils.getVectorDrawable(holder.mText.getContext(), R.drawable.ic_checked_right), null);
             } else {
                 holder.mText.setSelected(false);
-                holder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+                holder.mText.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
             }
         }
     }

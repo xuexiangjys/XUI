@@ -32,6 +32,7 @@ import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.edittext.ClearEditText;
 import com.xuexiang.xui.widget.edittext.PasswordEditText;
+
 import io.github.inflationx.calligraphy3.HasTypeface;
 
 /**
@@ -668,7 +669,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             mLeftIconIV = new AppCompatImageView(mContext);
         }
         mLeftImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        mLeftImgParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, TRUE);
+        mLeftImgParams.addRule(RelativeLayout.ALIGN_PARENT_START, TRUE);
         mLeftImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         if (mLeftIconHeight != 0 && mLeftIconWidth != 0) {
             mLeftImgParams.width = mLeftIconWidth;
@@ -680,6 +681,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mLeftIconIV.setPadding(mLeftIconPadding, mLeftIconPadding, mLeftIconPadding, mLeftIconPadding);
         if (mLeftIconRes != null) {
             mLeftImgParams.setMargins(mLeftIconMarginLeft, 0, 0, 0);
+            mLeftImgParams.setMarginStart(mLeftIconMarginLeft);
             mLeftIconIV.setImageDrawable(mLeftIconRes);
         }
         if (mLeftIconTint != null) {
@@ -702,13 +704,13 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
 
         switch (mRightViewType) {
             case TYPE_CHECKBOX:
-                mRightImgParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightCheckBoxId);
+                mRightImgParams.addRule(RelativeLayout.START_OF, R.id.sRightCheckBoxId);
                 break;
             case TYPE_SWITCH:
-                mRightImgParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightSwitchId);
+                mRightImgParams.addRule(RelativeLayout.START_OF, R.id.sRightSwitchId);
                 break;
             default:
-                mRightImgParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+                mRightImgParams.addRule(RelativeLayout.ALIGN_PARENT_END, TRUE);
 
         }
 
@@ -723,6 +725,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mRightIconIV.setPadding(mRightIconPadding, mRightIconPadding, mRightIconPadding, mRightIconPadding);
         if (mRightIconRes != null) {
             mRightImgParams.setMargins(0, 0, mRightIconMarginRight, 0);
+            mRightImgParams.setMarginEnd(mRightIconMarginRight);
             mRightIconIV.setImageDrawable(mRightIconRes);
         }
         if (mRightIconTint != null) {
@@ -741,7 +744,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             mLeftView = initBaseView(R.id.sLeftViewId);
         }
         mLeftBaseViewParams = getParams(mLeftBaseViewParams);
-        mLeftBaseViewParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftImgId);
+        mLeftBaseViewParams.addRule(RelativeLayout.END_OF, R.id.sLeftImgId);
         mLeftBaseViewParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         if (mLeftViewWidth != 0) {
             mLeftBaseViewParams.width = mLeftViewWidth;
@@ -787,10 +790,12 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             mCenterEditTextParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
             mCenterEditTextParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
             if (mCenterGravity != GRAVITY_CENTER) {
-                mCenterEditTextParams.addRule(RIGHT_OF, R.id.sLeftViewId);
-                mCenterEditTextParams.addRule(LEFT_OF, R.id.sRightViewId);
+                mCenterEditTextParams.addRule(END_OF, R.id.sLeftViewId);
+                mCenterEditTextParams.addRule(START_OF, R.id.sRightViewId);
             }
             mCenterEditTextParams.setMargins(mCenterViewMarginLeft, 0, mCenterViewMarginRight, 0);
+            mCenterEditTextParams.setMarginStart(mCenterViewMarginLeft);
+            mCenterEditTextParams.setMarginEnd(mCenterViewMarginRight);
             mCenterEditText.setId(R.id.sCenterEditTextId);
             mCenterEditText.setLayoutParams(mCenterEditTextParams);
 
@@ -807,7 +812,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             if (mEditTextInputType != -1) {
                 mCenterEditText.setInputType(mEditTextInputType);
             }
-
             addView(mCenterEditText);
         } else {
             if (mCenterView == null) {
@@ -819,12 +823,13 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
 
             //默认情况下  中间的View整体剧中显示，设置左对齐或者右对齐的话使用下边属性
             if (mCenterGravity != GRAVITY_CENTER) {
-                mCenterBaseViewParams.addRule(RIGHT_OF, R.id.sLeftViewId);
-                mCenterBaseViewParams.addRule(LEFT_OF, R.id.sRightViewId);
+                mCenterBaseViewParams.addRule(END_OF, R.id.sLeftViewId);
+                mCenterBaseViewParams.addRule(START_OF, R.id.sRightViewId);
             }
 
             mCenterBaseViewParams.setMargins(mCenterViewMarginLeft, 0, mCenterViewMarginRight, 0);
-
+            mCenterBaseViewParams.setMarginStart(mCenterViewMarginLeft);
+            mCenterBaseViewParams.setMarginEnd(mCenterViewMarginRight);
             mCenterView.setLayoutParams(mCenterBaseViewParams);
             mCenterView.setCenterSpaceHeight(mCenterSpaceHeight);
 
@@ -852,9 +857,10 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mRightBaseViewParams = getParams(mRightBaseViewParams);
         mRightBaseViewParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
 
-        mRightBaseViewParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightImgId);
+        mRightBaseViewParams.addRule(RelativeLayout.START_OF, R.id.sRightImgId);
         mRightBaseViewParams.setMargins(mRightViewMarginLeft, 0, mRightViewMarginRight, 0);
-
+        mRightBaseViewParams.setMarginStart(mRightViewMarginLeft);
+        mRightBaseViewParams.setMarginEnd(mRightViewMarginRight);
         mRightView.setLayoutParams(mRightBaseViewParams);
         mRightView.setCenterSpaceHeight(mCenterSpaceHeight);
 
@@ -897,9 +903,10 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         //右边checkbox
         LayoutParams mRightCheckBoxParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
-        mRightCheckBoxParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
+        mRightCheckBoxParams.addRule(ALIGN_PARENT_END, TRUE);
         mRightCheckBoxParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         mRightCheckBoxParams.setMargins(0, 0, mRightCheckBoxMarginRight, 0);
+        mRightCheckBoxParams.setMarginEnd(mRightCheckBoxMarginRight);
         mRightCheckBox.setId(R.id.sRightCheckBoxId);
         mRightCheckBox.setLayoutParams(mRightCheckBoxParams);
         if (mRightCheckBoxBg != null) {
@@ -920,9 +927,10 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         }
         LayoutParams mRightSwitchParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
-        mRightSwitchParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
+        mRightSwitchParams.addRule(ALIGN_PARENT_END, TRUE);
         mRightSwitchParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         mRightSwitchParams.setMargins(0, 0, mRightSwitchMarginRight, 0);
+        mRightSwitchParams.setMarginEnd(mRightSwitchMarginRight);
         mRightSwitch.setId(R.id.sRightSwitchId);
         mRightSwitch.setLayoutParams(mRightSwitchParams);
 
@@ -1072,13 +1080,13 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private void setGravity(BaseTextView baseTextView, int gravity) {
         switch (gravity) {
             case GRAVITY_LEFT_CENTER:
-                baseTextView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+                baseTextView.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
                 break;
             case GRAVITY_CENTER:
                 baseTextView.setGravity(Gravity.CENTER);
                 break;
             case GRAVITY_RIGHT_CENTER:
-                baseTextView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+                baseTextView.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
                 break;
             default:
                 break;
@@ -1176,20 +1184,20 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         }
     }
 
-
     /**
      * 初始化上边分割线view
      *
-     * @param marginLeft  左间距
-     * @param marginRight 右间距
+     * @param marginStart 起始的间距
+     * @param marginEnd   结束的间距
      */
-    private void initTopDividerLineView(int marginLeft, int marginRight) {
+    private void initTopDividerLineView(int marginStart, int marginEnd) {
         if (mTopDividerLineView == null) {
             if (mTopDividerLineParams == null) {
                 mTopDividerLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
             mTopDividerLineParams.addRule(ALIGN_PARENT_TOP, TRUE);
-            mTopDividerLineParams.setMargins(marginLeft, 0, marginRight, 0);
+            mTopDividerLineParams.setMarginStart(marginStart);
+            mTopDividerLineParams.setMarginEnd(marginEnd);
             mTopDividerLineView = new View(mContext);
             mTopDividerLineView.setLayoutParams(mTopDividerLineParams);
             mTopDividerLineView.setBackgroundColor(mDividerLineColor);
@@ -1200,17 +1208,17 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     /**
      * 初始化底部分割线view
      *
-     * @param marginLeft  左间距
-     * @param marginRight 右间距
+     * @param marginStart 起始的间距
+     * @param marginEnd   结束的间距
      */
-    private void initBottomDividerLineView(int marginLeft, int marginRight) {
+    private void initBottomDividerLineView(int marginStart, int marginEnd) {
         if (mBottomDividerLineView == null) {
             if (mBottomDividerLineParams == null) {
                 mBottomDividerLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
             mBottomDividerLineParams.addRule(ALIGN_PARENT_BOTTOM, TRUE);
-            mBottomDividerLineParams.setMargins(marginLeft, 0, marginRight, 0);
-
+            mBottomDividerLineParams.setMarginStart(marginStart);
+            mBottomDividerLineParams.setMarginEnd(marginEnd);
             mBottomDividerLineView = new View(mContext);
             mBottomDividerLineView.setLayoutParams(mBottomDividerLineParams);
             mBottomDividerLineView.setBackgroundColor(mDividerLineColor);
@@ -1687,6 +1695,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      */
     public ImageView getLeftIconIV() {
         mLeftImgParams.setMargins(mLeftIconMarginLeft, 0, 0, 0);
+        mLeftImgParams.setMarginStart(mLeftIconMarginLeft);
         return mLeftIconIV;
     }
 
@@ -1697,6 +1706,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      */
     public ImageView getRightIconIV() {
         mRightImgParams.setMargins(0, 0, mRightIconMarginRight, 0);
+        mLeftImgParams.setMarginEnd(mRightIconMarginRight);
         return mRightIconIV;
     }
 
@@ -1876,6 +1886,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     public SuperTextView setLeftIcon(Drawable leftIcon) {
         if (mLeftIconIV != null) {
             mLeftImgParams.setMargins(mLeftIconMarginLeft, 0, 0, 0);
+            mLeftImgParams.setMarginStart(mLeftIconMarginLeft);
             mLeftIconIV.setImageDrawable(leftIcon);
         }
         return this;
@@ -1890,6 +1901,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     public SuperTextView setLeftIcon(int resId) {
         if (mLeftIconIV != null) {
             mLeftImgParams.setMargins(mLeftIconMarginLeft, 0, 0, 0);
+            mLeftImgParams.setMarginStart(mLeftIconMarginLeft);
             mLeftIconIV.setImageResource(resId);
         }
         return this;
@@ -1904,6 +1916,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     public SuperTextView setRightIcon(Drawable rightIcon) {
         if (mRightIconIV != null) {
             mRightImgParams.setMargins(0, 0, mRightIconMarginRight, 0);
+            mRightImgParams.setMarginEnd(mRightIconMarginRight);
             mRightIconIV.setImageDrawable(rightIcon);
         }
         return this;
@@ -1918,6 +1931,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     public SuperTextView setRightIcon(int resId) {
         if (mRightIconIV != null) {
             mRightImgParams.setMargins(0, 0, mRightIconMarginRight, 0);
+            mRightImgParams.setMarginEnd(mRightIconMarginRight);
             mRightIconIV.setImageResource(resId);
         }
         return this;

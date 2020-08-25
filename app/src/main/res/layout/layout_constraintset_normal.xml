@@ -37,7 +37,7 @@
             android:src="@drawable/img_beautiful_scenery"
             app:layout_constraintBottom_toBottomOf="@id/tv_title"
             app:layout_constraintDimensionRatio="w,16:9"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_title"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_constraintBottom_creator="1"
@@ -51,7 +51,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/lake_tahoe_title"
             android:textSize="30sp"
-            app:layout_constraintLeft_toRightOf="@id/iv_content"
+            app:layout_constraintStart_toEndOf="@id/iv_content"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -64,8 +64,8 @@
             android:layout_marginBottom="8dp"
             android:text="@string/lake_description"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_content"
             tools:layout_constraintBottom_creator="1"
             tools:layout_constraintLeft_creator="1"

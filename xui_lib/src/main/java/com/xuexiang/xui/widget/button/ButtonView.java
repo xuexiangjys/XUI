@@ -43,9 +43,6 @@ public class ButtonView extends AppCompatTextView {
     }
 
     private void setAttributeSet(Context context, AttributeSet attrs) {
-        if (isInEditMode()) {
-            return;
-        }
         TypedArray typedArray = context.obtainStyledAttributes(attrs,
                 R.styleable.ButtonView);
         mNormalSolidColor = typedArray.getColor(
@@ -137,11 +134,11 @@ public class ButtonView extends AppCompatTextView {
      */
     public ButtonView setTextDrawable(@NonNull Drawable textDrawable, int space) {
         setText(new SpanUtils()
-                    .appendImage(textDrawable, SpanUtils.ALIGN_BASELINE)
-                    .appendSpace(space, Color.TRANSPARENT)
-                    .append(getText())
-                    .setBackgroundColor(Color.TRANSPARENT)
-                    .create());
+                .appendImage(textDrawable, SpanUtils.ALIGN_BASELINE)
+                .appendSpace(space, Color.TRANSPARENT)
+                .append(getText())
+                .setBackgroundColor(Color.TRANSPARENT)
+                .create());
         return this;
     }
 
@@ -165,7 +162,7 @@ public class ButtonView extends AppCompatTextView {
      * @param rightBottomRadius 右下角弧度
      */
     public ButtonView setRadius(int leftTopRadius, int leftBottomRadius,
-                          int rightTopRadius, int rightBottomRadius) {
+                                int rightTopRadius, int rightBottomRadius) {
         gradientDrawable.setCornerRadii(new float[]{leftTopRadius,
                 leftTopRadius, rightTopRadius, rightTopRadius,
                 rightBottomRadius, rightBottomRadius, leftBottomRadius,

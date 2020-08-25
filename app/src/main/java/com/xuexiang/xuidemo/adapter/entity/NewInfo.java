@@ -2,14 +2,20 @@ package com.xuexiang.xuidemo.adapter.entity;
 
 import androidx.annotation.NonNull;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 /**
  * 新闻信息
  *
  * @author xuexiang
  * @since 2019/4/7 下午12:07
  */
-public class NewInfo {
+public class NewInfo implements Cloneable {
 
+    private static AtomicLong sAtomicLong = new AtomicLong();
+
+
+    private long ID;
     /**
      * 用户名
      */
@@ -76,6 +82,7 @@ public class NewInfo {
 
 
     public NewInfo(String tag, String title) {
+        ID = sAtomicLong.incrementAndGet();
         Tag = tag;
         Title = title;
 
@@ -84,7 +91,21 @@ public class NewInfo {
         Read = (int) (Math.random() * 500 + 50);
     }
 
+    public NewInfo resetContent() {
+        Praise = (int) (Math.random() * 100 + 5);
+        Comment = (int) (Math.random() * 50 + 5);
+        Read = (int) (Math.random() * 500 + 50);
+        return this;
+    }
 
+    public NewInfo setID(long ID) {
+        this.ID = ID;
+        return this;
+    }
+
+    public long getID() {
+        return ID;
+    }
 
     public String getUserName() {
         return UserName;
@@ -181,5 +202,16 @@ public class NewInfo {
                 ", Read=" + Read +
                 ", DetailUrl='" + DetailUrl + '\'' +
                 '}';
+    }
+
+    @NonNull
+    @Override
+    public NewInfo clone() {
+        try {
+            return (NewInfo) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return new NewInfo();
     }
 }

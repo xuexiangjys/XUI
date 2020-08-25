@@ -86,10 +86,6 @@ public class MarqueeTextView extends AppCompatTextView {
     }
 
     private void init(AttributeSet attrs) {
-        if (isInEditMode()) {
-            return;
-        }
-
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MarqueeTextView);
         mIsAutoFit = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoFit, false);
         mIsAutoDisplay = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoDisplay, false);

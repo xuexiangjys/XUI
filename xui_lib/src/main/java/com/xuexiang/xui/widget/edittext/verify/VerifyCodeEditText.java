@@ -33,25 +33,45 @@ public class VerifyCodeEditText extends RelativeLayout {
     private LinearLayout mLlContainer;
     private PwdEditText mEditText;
 
-    // 输入框数量
+    /**
+     * 输入框数量
+     */
     private int mEtNumber;
-    // 输入框的宽度
+    /**
+     * 输入框的宽度
+     */
     private int mEtWidth;
-    //输入框分割线
+    /**
+     * 输入框分割线
+     */
     private Drawable mEtDivider;
-    //输入框文字颜色
+    /**
+     * 输入框文字颜色
+     */
     private int mEtTextColor;
-    //输入框文字大小
+    /**
+     * 输入框文字大小
+     */
     private float mEtTextSize;
-    //输入框获取焦点时背景
+    /**
+     * 输入框获取焦点时背景
+     */
     private Drawable mBackgroundFocus;
-    //输入框没有焦点时背景
+    /**
+     * 输入框没有焦点时背景
+     */
     private Drawable mBackgroundNormal;
-    //是否是密码模式
+    /**
+     * 是否是密码模式
+     */
     private boolean mIsPwd;
-    //密码模式时圆的半径
+    /**
+     * 密码模式时圆的半径
+     */
     private float mPwdRadius;
-    //存储TextView的数据 数量由自定义控件的属性传入
+    /**
+     * 存储TextView的数据 数量由自定义控件的属性传入
+     */
     private PwdTextView[] mPwdTextViews;
 
     private InputNumberTextWatcher mTextWatcher = new InputNumberTextWatcher();
@@ -61,7 +81,7 @@ public class VerifyCodeEditText extends RelativeLayout {
     }
 
     public VerifyCodeEditText(Context context, AttributeSet attrs) {
-        this(context, attrs,  R.attr.VerifyCodeEditTextStyle);
+        this(context, attrs, R.attr.VerifyCodeEditTextStyle);
     }
 
     public VerifyCodeEditText(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -69,7 +89,13 @@ public class VerifyCodeEditText extends RelativeLayout {
         init(context, attrs, defStyleAttr);
     }
 
-    //初始化 布局和属性
+    /**
+     * 初始化 布局和属性
+     *
+     * @param context      上下文
+     * @param attrs        属性
+     * @param defStyleAttr 默认属性
+     */
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         LayoutInflater.from(context).inflate(R.layout.xui_layout_verify_code, this);
         mLlContainer = findViewById(R.id.ll_container);
@@ -77,7 +103,7 @@ public class VerifyCodeEditText extends RelativeLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.VerifyCodeEditText, defStyleAttr, 0);
         mEtNumber = typedArray.getInteger(R.styleable.VerifyCodeEditText_vcet_number, 4);
-        mEtWidth = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_width,  ResUtils.getDimensionPixelSize(R.dimen.default_vcet_width));
+        mEtWidth = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_width, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_width));
         mEtDivider = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.VerifyCodeEditText_vcet_divider);
         mEtTextSize = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_text_size));
         mEtTextColor = typedArray.getColor(R.styleable.VerifyCodeEditText_vcet_text_color, Color.BLACK);
@@ -90,15 +116,13 @@ public class VerifyCodeEditText extends RelativeLayout {
 
         // 当xml中未配置时 这里进行初始配置默认图片
         if (mEtDivider == null) {
-            mEtDivider = context.getResources().getDrawable(R.drawable.vcet_shape_divider);
+            mEtDivider = ResUtils.getDrawable(getContext(), R.drawable.vcet_shape_divider);
         }
-
         if (mBackgroundFocus == null) {
-            mBackgroundFocus = context.getResources().getDrawable(R.drawable.vcet_shape_bg_focus);
+            mBackgroundFocus = ResUtils.getDrawable(getContext(), R.drawable.vcet_shape_bg_focus);
         }
-
         if (mBackgroundNormal == null) {
-            mBackgroundNormal = context.getResources().getDrawable(R.drawable.vcet_shape_bg_normal);
+            mBackgroundNormal = ResUtils.getDrawable(getContext(), R.drawable.vcet_shape_bg_normal);
         }
 
         initUI();
@@ -124,11 +148,22 @@ public class VerifyCodeEditText extends RelativeLayout {
     }
 
 
-    //初始化TextView
+    /**
+     * 初始化TextView
+     *
+     * @param context           上下文
+     * @param etNumber          输入长度
+     * @param etWidth           输入框宽度
+     * @param etDividerDrawable 分割线
+     * @param etTextSize        输入文字大小
+     * @param etTextColor       输入文字颜色
+     */
     private void initTextViews(Context context, int etNumber, int etWidth, Drawable etDividerDrawable, float etTextSize, int etTextColor) {
         // 设置 editText 的输入长度
-        mEditText.setCursorVisible(false);//将光标隐藏
-        mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(etNumber)}); //最大输入长度
+        // 将光标隐藏
+        mEditText.setCursorVisible(false);
+        //最大输入长度
+        mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(etNumber)});
         // 设置分割线的宽度
         if (etDividerDrawable != null) {
             etDividerDrawable.setBounds(0, 0, etDividerDrawable.getMinimumWidth(), etDividerDrawable.getMinimumHeight());
@@ -153,7 +188,11 @@ public class VerifyCodeEditText extends RelativeLayout {
         }
     }
 
-    //初始化存储TextView 的容器
+    /**
+     * 初始化存储TextView 的容器
+     *
+     * @param mTextViews
+     */
     private void initEtContainer(TextView[] mTextViews) {
         for (TextView mTextView : mTextViews) {
             mLlContainer.addView(mTextView);
@@ -333,11 +372,14 @@ public class VerifyCodeEditText extends RelativeLayout {
          * 输入完成
          */
         void onComplete(String input);
+
         /**
          * 输入变化
+         *
          * @param input
          */
         void onChange(String input);
+
         /**
          * 输入清空
          */

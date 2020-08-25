@@ -473,16 +473,17 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
     /**
      * 设置上边分割线view
      *
-     * @param marginLeft  左间距
-     * @param marginRight 右间距
+     * @param marginStart 起始的间距
+     * @param marginEnd   结束的间距
      */
-    private void initTopLineView(int marginLeft, int marginRight) {
+    private void initTopLineView(int marginStart, int marginEnd) {
         if (mTopLineView == null) {
             if (mTopLineParams == null) {
                 mTopLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
             mTopLineParams.addRule(ALIGN_PARENT_TOP, TRUE);
-            mTopLineParams.setMargins(marginLeft, 0, marginRight, 0);
+            mTopLineParams.setMarginStart(marginStart);
+            mTopLineParams.setMarginEnd(marginEnd);
             mTopLineView = new View(mContext);
             mTopLineView.setLayoutParams(mTopLineParams);
             mTopLineView.setBackgroundColor(mDividerLineColor);
@@ -493,17 +494,17 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
     /**
      * 设置底部分割线view
      *
-     * @param marginLeft  左间距
-     * @param marginRight 右间距
+     * @param marginStart 起始的间距
+     * @param marginEnd   结束的间距
      */
-    private void initBottomLineView(int marginLeft, int marginRight) {
+    private void initBottomLineView(int marginStart, int marginEnd) {
         if (mBottomLineView == null) {
             if (mBottomLineParams == null) {
                 mBottomLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
             mBottomLineParams.addRule(ALIGN_PARENT_BOTTOM, TRUE);
-            mBottomLineParams.setMargins(marginLeft, 0, marginRight, 0);
-
+            mBottomLineParams.setMarginStart(marginStart);
+            mBottomLineParams.setMarginEnd(marginEnd);
             mBottomLineView = new View(mContext);
             mBottomLineView.setLayoutParams(mBottomLineParams);
             mBottomLineView.setBackgroundColor(mDividerLineColor);
@@ -517,13 +518,13 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
      */
     private void initLeftImageView() {
         mLeftImageView = new ImageView(mContext);
-        LayoutParams mLeftIVParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        mLeftIVParams.addRule(ALIGN_PARENT_LEFT, TRUE);
-        mLeftIVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        mLeftIVParams.setMargins(mLeftImageViewMarginLeft, 0, 0, 0);
+        LayoutParams leftIVParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        leftIVParams.addRule(ALIGN_PARENT_LEFT, TRUE);
+        leftIVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        leftIVParams.setMargins(mLeftImageViewMarginLeft, 0, 0, 0);
         mLeftImageView.setScaleType(ImageView.ScaleType.CENTER);
         mLeftImageView.setId(R.id.cLeftImageViewId);
-        mLeftImageView.setLayoutParams(mLeftIVParams);
+        mLeftImageView.setLayoutParams(leftIVParams);
         if (mLeft_IV_drawable != null) {
             mLeftImageView.setImageDrawable(mLeft_IV_drawable);
         }

@@ -26,5 +26,5 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/xui_group_list_section_header_footer_text_size"
         android:textColor="@color/xui_config_color_gray_3"
-        android:gravity="left" />
+        android:gravity="start" />
 </merge>

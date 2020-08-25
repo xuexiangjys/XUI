@@ -192,10 +192,6 @@ public class MDRootLayout extends ViewGroup {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (isInEditMode()) {
-            return;
-        }
-
         Resources r = context.getResources();
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MDRootLayout, defStyleAttr, 0);

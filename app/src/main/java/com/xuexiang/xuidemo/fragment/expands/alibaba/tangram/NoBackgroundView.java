@@ -28,6 +28,7 @@ import androidx.annotation.Nullable;
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.structure.view.ITangramViewLifeCycle;
 import com.tmall.wireless.tangram.support.ExposureSupport;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xutil.display.DensityUtils;
 
 import java.util.Locale;
@@ -65,6 +66,8 @@ public class NoBackgroundView extends LinearLayout implements ITangramViewLifeCy
         mTextView = new TextView(getContext());
         mTextView.setTextSize(12);
         addView(mTextView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+        ViewUtils.setViewsFont(this);
     }
 
     @Override

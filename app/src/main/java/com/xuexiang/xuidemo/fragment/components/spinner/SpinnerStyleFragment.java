@@ -1,8 +1,11 @@
 package com.xuexiang.xuidemo.fragment.components.spinner;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.view.View;
 import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xpage.annotation.Page;
@@ -90,7 +93,12 @@ public class SpinnerStyleFragment extends BaseFragment {
                 .setTextSize(mEditSpinner1.getEditText().getTextSize())
                 .setBackgroundSelector(R.drawable.selector_custom_spinner_bg)
         );
+    }
 
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        WidgetUtils.initSpinnerStyle(mSpinnerSystem);
     }
 
     @MemoryCache

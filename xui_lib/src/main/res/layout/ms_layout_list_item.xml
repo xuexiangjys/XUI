@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tv_tinted_spinner"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="start|center_vertical"
     android:ellipsize="marquee"
     android:gravity="center_vertical"
     android:minHeight="?attr/ms_item_height_size"
-    android:paddingBottom="?attr/ms_padding_top_size"
-    android:paddingLeft="?attr/ms_padding_left_size"
-    android:paddingRight="?attr/ms_padding_left_size"
     android:paddingStart="?attr/ms_padding_left_size"
     android:paddingTop="?attr/ms_padding_top_size"
-    android:singleLine="true"/>
+    android:paddingEnd="?attr/ms_padding_left_size"
+    android:paddingBottom="?attr/ms_padding_top_size"
+    android:singleLine="true" />
 

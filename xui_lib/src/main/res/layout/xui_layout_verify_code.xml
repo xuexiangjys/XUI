@@ -8,9 +8,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:gravity="center_vertical"
+        android:gravity="start|center_vertical"
         android:orientation="horizontal"
-        android:showDividers="middle">
+        android:showDividers="beginning|middle|end">
 
     </LinearLayout>
 

@@ -17,14 +17,17 @@
 
 package com.xuexiang.xuidemo.widget.iconfont;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.LayoutInflaterCompat;
 
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.utils.Utils;
 
@@ -61,23 +64,8 @@ public class IconFontActivity extends XPageActivity {
         super.onCreate(savedInstanceState);
         mUnbinder = ButterKnife.bind(this);
 
-        // 侧滑回调
-        if (isSupportSlideBack()) {
-            SlideBack.with(this)
-                    .haveScroll(true)
-                    .callBack(this::popPage)
-                    .register();
-        }
+        registerSlideBack();
     }
-
-    /**
-     * @return 是否支持侧滑返回
-     */
-    protected boolean isSupportSlideBack() {
-        CoreSwitchBean page = getIntent().getParcelableExtra(CoreSwitchBean.KEY_SWITCH_BEAN);
-        return page == null || page.getBundle() == null || page.getBundle().getBoolean(KEY_SUPPORT_SLIDE_BACK, true);
-    }
-
 
     /**
      * 打开fragment
@@ -117,10 +105,50 @@ public class IconFontActivity extends XPageActivity {
     @Override
     protected void onRelease() {
         mUnbinder.unbind();
+        unregisterSlideBack();
+        super.onRelease();
+    }
+
+    /**
+     * @return 是否支持侧滑返回
+     */
+    protected boolean isSupportSlideBack() {
+        CoreSwitchBean page = getIntent().getParcelableExtra(CoreSwitchBean.KEY_SWITCH_BEAN);
+        return page == null || page.getBundle() == null || page.getBundle().getBoolean(KEY_SUPPORT_SLIDE_BACK, true);
+    }
+
+
+    /**
+     * 注册侧滑回调
+     */
+    protected void registerSlideBack() {
+        if (isSupportSlideBack()) {
+            SlideBack.with(this)
+                    .haveScroll(true)
+                    .edgeMode(ResUtils.isRtl() ? SlideBack.EDGE_RIGHT : SlideBack.EDGE_LEFT)
+                    .callBack(this::popPage)
+                    .register();
+        }
+    }
+
+    /**
+     * 注销侧滑回调
+     */
+    protected void unregisterSlideBack() {
         if (isSupportSlideBack()) {
             SlideBack.unregister(this);
         }
-        super.onRelease();
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        resetSlideBack();
+    }
+
+    private void resetSlideBack() {
+        unregisterSlideBack();
+        registerSlideBack();
     }
 
 }

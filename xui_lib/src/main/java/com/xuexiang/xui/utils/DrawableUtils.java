@@ -23,6 +23,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
@@ -350,4 +351,135 @@ public final class DrawableUtils {
     }
 
     /////////////// VectorDrawable /////////////////////
+
+    /**
+     * 获取支持RTL布局的drawable【如果是RTL布局就旋转180度】
+     *
+     * @param src 原drawable
+     * @return
+     */
+    public static Drawable getSupportRTLDrawable(Drawable src) {
+        return getSupportRTLDrawable(src, false);
+    }
+
+    /**
+     * 获取支持RTL布局的drawable【如果是RTL布局就旋转180度】
+     *
+     * @param src 原drawable
+     * @return
+     */
+    public static Drawable getSupportRTLDrawable(Drawable src, boolean recycle) {
+        if (ResUtils.isRtl()) {
+            return rotate(src, 180, 0, 0, recycle);
+        }
+        return src;
+    }
+
+    /**
+     * Return the rotated drawable.
+     *
+     * @param src     The source of drawable.
+     * @param degrees The number of degrees.
+     * @param px      The x coordinate of the pivot point.
+     * @param py      The y coordinate of the pivot point.
+     * @param recycle True to recycle the source of drawable, false otherwise.
+     * @return the rotated drawable
+     */
+    public static Drawable rotate(final Drawable src,
+                                  final int degrees,
+                                  final float px,
+                                  final float py,
+                                  final boolean recycle) {
+        return bitmap2Drawable(rotate(drawable2Bitmap(src), degrees, px, py, recycle));
+    }
+
+    /**
+     * Return the rotated bitmap.
+     *
+     * @param src     The source of bitmap.
+     * @param degrees The number of degrees.
+     * @param px      The x coordinate of the pivot point.
+     * @param py      The y coordinate of the pivot point.
+     * @param recycle True to recycle the source of bitmap, false otherwise.
+     * @return the rotated bitmap
+     */
+    public static Bitmap rotate(final Bitmap src,
+                                final int degrees,
+                                final float px,
+                                final float py,
+                                final boolean recycle) {
+        if (isEmptyBitmap(src)) {
+            return null;
+        }
+        if (src.isRecycled()) {
+            return null;
+        }
+        if (degrees == 0) {
+            return src;
+        }
+        Matrix matrix = new Matrix();
+        matrix.setRotate(degrees, px, py);
+        Bitmap ret = Bitmap.createBitmap(src, 0, 0, src.getWidth(), src.getHeight(), matrix, true);
+        if (recycle && !src.isRecycled()) {
+            src.recycle();
+        }
+        return ret;
+    }
+
+    private static boolean isEmptyBitmap(final Bitmap src) {
+        return src == null || src.getWidth() == 0 || src.getHeight() == 0;
+    }
+
+    /**
+     * 获取图片
+     *
+     * @param context 上下文
+     * @param resId   图片资源
+     * @return 图片
+     */
+    public static Bitmap getBitmapByDrawableId(Context context, @DrawableRes int resId) {
+        return drawable2Bitmap(ResUtils.getDrawable(context, resId));
+    }
+
+    /**
+     * Drawable to bitmap.
+     *
+     * @param drawable The drawable.
+     * @return bitmap
+     */
+    public static Bitmap drawable2Bitmap(final Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+            if (bitmapDrawable.getBitmap() != null) {
+                return bitmapDrawable.getBitmap();
+            }
+        }
+        Bitmap bitmap;
+        if (drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
+            bitmap = Bitmap.createBitmap(1, 1,
+                    drawable.getOpacity() != PixelFormat.OPAQUE
+                            ? Bitmap.Config.ARGB_8888
+                            : Bitmap.Config.RGB_565);
+        } else {
+            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+                    drawable.getIntrinsicHeight(),
+                    drawable.getOpacity() != PixelFormat.OPAQUE
+                            ? Bitmap.Config.ARGB_8888
+                            : Bitmap.Config.RGB_565);
+        }
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bitmap;
+    }
+
+    /**
+     * Bitmap to drawable.
+     *
+     * @param bitmap The bitmap.
+     * @return drawable
+     */
+    public static Drawable bitmap2Drawable(final Bitmap bitmap) {
+        return bitmap == null ? null : new BitmapDrawable(ResUtils.getResources(), bitmap);
+    }
 }

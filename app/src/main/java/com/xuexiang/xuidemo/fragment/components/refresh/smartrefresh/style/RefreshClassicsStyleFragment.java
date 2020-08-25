@@ -33,6 +33,7 @@ import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
@@ -211,7 +212,7 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
             //触发自动刷新
             mRefreshLayout.autoRefresh();
         }
-
+        ViewUtils.setViewsFont(mRefreshLayout);
     }
 
 }

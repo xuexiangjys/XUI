@@ -23,6 +23,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -130,9 +131,6 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (isInEditMode()) {
-            return;
-        }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleBar, defStyleAttr, 0);
         mBarHeight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_barHeight, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_height));
         mImmersive = typedArray.getBoolean(R.styleable.TitleBar_tb_immersive, ThemeUtils.resolveBoolean(context, R.attr.xui_actionbar_immersive));
@@ -182,7 +180,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mLeftText.setTextColor(mSideTextColor);
         mLeftText.setText(mLeftTextString);
         if (mLeftImageResource != null) {
-            mLeftText.setCompoundDrawablesWithIntrinsicBounds(mLeftImageResource, null, null, null);
+            mLeftText.setCompoundDrawablesRelativeWithIntrinsicBounds(mLeftImageResource, null, null, null);
         }
         mLeftText.setSingleLine();
 
@@ -263,7 +261,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     public TitleBar setLeftImageResource(int resId) {
         if (mLeftText != null) {
-            mLeftText.setCompoundDrawablesWithIntrinsicBounds(resId, 0, 0, 0);
+            mLeftText.setCompoundDrawablesRelativeWithIntrinsicBounds(resId, 0, 0, 0);
         }
         return this;
     }
@@ -277,7 +275,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     public TitleBar setLeftImageDrawable(Drawable leftImageDrawable) {
         mLeftImageResource = leftImageDrawable;
         if (mLeftText != null) {
-            mLeftText.setCompoundDrawablesWithIntrinsicBounds(mLeftImageResource, null, null, null);
+            mLeftText.setCompoundDrawablesRelativeWithIntrinsicBounds(mLeftImageResource, null, null, null);
         }
         return this;
     }
@@ -412,7 +410,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      * @return
      */
     public TitleBar setLeftTextPadding(int paddingStart, int paddingEnd) {
-        mLeftText.setPadding(paddingStart, 0, paddingEnd, 0);
+        mLeftText.setPaddingRelative(paddingStart, 0, paddingEnd, 0);
         return this;
     }
 
@@ -747,7 +745,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
             view = text;
         }
 
-        view.setPadding(action.leftPadding() != -1 ? action.leftPadding() : mActionPadding, 0, action.rightPadding() != -1 ? action.rightPadding() : mActionPadding, 0);
+        view.setPaddingRelative(action.leftPadding() != -1 ? action.leftPadding() : mActionPadding, 0, action.rightPadding() != -1 ? action.rightPadding() : mActionPadding, 0);
         view.setTag(action);
         view.setOnClickListener(this);
         return view;
@@ -785,26 +783,33 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        mLeftText.layout(0, mStatusBarHeight, mLeftText.getMeasuredWidth(), mLeftText.getMeasuredHeight() + mStatusBarHeight);
-        mRightLayout.layout(mScreenWidth - mRightLayout.getMeasuredWidth(), mStatusBarHeight,
-                mScreenWidth, mRightLayout.getMeasuredHeight() + mStatusBarHeight);
-        if (mCenterGravity == CENTER_LEFT) {
-            mCenterLayout.layout(mLeftText.getMeasuredWidth(), mStatusBarHeight,
-                    mScreenWidth - mLeftText.getMeasuredWidth(), getMeasuredHeight());
-        } else if (mCenterGravity == CENTER_RIGHT) {
-            mCenterLayout.layout(mRightLayout.getMeasuredWidth(), mStatusBarHeight,
-                    mScreenWidth - mRightLayout.getMeasuredWidth(), getMeasuredHeight());
+        if (isRtl()) {
+            layoutChildView(mRightLayout, mCenterLayout, mLeftText);
         } else {
-            if (mLeftText.getMeasuredWidth() > mRightLayout.getMeasuredWidth()) {
-                mCenterLayout.layout(mLeftText.getMeasuredWidth(), mStatusBarHeight,
-                        mScreenWidth - mLeftText.getMeasuredWidth(), getMeasuredHeight());
+            layoutChildView(mLeftText, mCenterLayout, mRightLayout);
+        }
+        mDividerView.layout(0, getMeasuredHeight() - mDividerView.getMeasuredHeight(), getMeasuredWidth(), getMeasuredHeight());
+    }
+
+    private void layoutChildView(View leftView, View centerView, View rightView) {
+        leftView.layout(0, mStatusBarHeight, leftView.getMeasuredWidth(), leftView.getMeasuredHeight() + mStatusBarHeight);
+        rightView.layout(mScreenWidth - rightView.getMeasuredWidth(), mStatusBarHeight,
+                mScreenWidth, rightView.getMeasuredHeight() + mStatusBarHeight);
+        if (mCenterGravity == CENTER_LEFT) {
+            centerView.layout(leftView.getMeasuredWidth(), mStatusBarHeight,
+                    mScreenWidth - leftView.getMeasuredWidth(), getMeasuredHeight());
+        } else if (mCenterGravity == CENTER_RIGHT) {
+            centerView.layout(rightView.getMeasuredWidth(), mStatusBarHeight,
+                    mScreenWidth - rightView.getMeasuredWidth(), getMeasuredHeight());
+        } else {
+            if (leftView.getMeasuredWidth() > rightView.getMeasuredWidth()) {
+                centerView.layout(leftView.getMeasuredWidth(), mStatusBarHeight,
+                        mScreenWidth - leftView.getMeasuredWidth(), getMeasuredHeight());
             } else {
-                mCenterLayout.layout(mRightLayout.getMeasuredWidth(), mStatusBarHeight,
-                        mScreenWidth - mRightLayout.getMeasuredWidth(), getMeasuredHeight());
+                centerView.layout(rightView.getMeasuredWidth(), mStatusBarHeight,
+                        mScreenWidth - rightView.getMeasuredWidth(), getMeasuredHeight());
             }
         }
-
-        mDividerView.layout(0, getMeasuredHeight() - mDividerView.getMeasuredHeight(), getMeasuredWidth(), getMeasuredHeight());
     }
 
     /**
@@ -949,6 +954,10 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         if (mSubTitleText != null) {
             mSubTitleText.setTypeface(tf);
         }
+    }
+
+    private boolean isRtl() {
+        return getLayoutDirection() == LAYOUT_DIRECTION_RTL;
     }
 
     public XUIAlphaTextView getLeftText() {

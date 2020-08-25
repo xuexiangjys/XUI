@@ -39,9 +39,9 @@
                 android:id="@+id/md_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="?attr/md_dialog_frame_margin"
+                android:paddingStart="?attr/md_dialog_frame_margin"
                 android:paddingTop="@dimen/md_content_padding_top"
-                android:paddingRight="?attr/md_dialog_frame_margin"
+                android:paddingEnd="?attr/md_dialog_frame_margin"
                 android:paddingBottom="@dimen/md_content_padding_bottom"
                 android:textSize="?attr/md_content_textsize"
                 tools:text="Content" />
@@ -71,8 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginLeft="@dimen/md_notitle_vertical_padding"
-            android:layout_marginRight="@dimen/md_notitle_vertical_padding"
+            android:layout_marginStart="@dimen/md_notitle_vertical_padding"
+            android:layout_marginEnd="@dimen/md_notitle_vertical_padding"
             android:focusable="true"
             android:gravity="start|center_vertical"
             tools:text="Don't ask again" />

@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.text.TextUtils;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.xuexiang.xui.logs.UILog;
+import com.xuexiang.xui.utils.ViewUtils;
 
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
@@ -24,8 +26,6 @@ import io.github.inflationx.viewpump.ViewPump;
  */
 public class XUI {
 
-    private static volatile XUI sInstance = null;
-
     private static Application sContext;
 
     private static boolean sIsTabletChecked;
@@ -33,26 +33,6 @@ public class XUI {
     private static int sScreenType;
 
     private static String sDefaultFontAssetPath;
-
-    private XUI() {
-
-    }
-
-    /**
-     * 获取单例
-     *
-     * @return
-     */
-    public static XUI getInstance() {
-        if (sInstance == null) {
-            synchronized (XUI.class) {
-                if (sInstance == null) {
-                    sInstance = new XUI();
-                }
-            }
-        }
-        return sInstance;
-    }
 
     //=======================初始化设置===========================//
 
@@ -68,7 +48,7 @@ public class XUI {
     /**
      * 设置默认字体
      */
-    public XUI initFontStyle(String defaultFontAssetPath) {
+    public static void initFontStyle(String defaultFontAssetPath) {
         if (!TextUtils.isEmpty(defaultFontAssetPath)) {
             sDefaultFontAssetPath = defaultFontAssetPath;
             ViewPump.init(ViewPump.builder()
@@ -79,7 +59,6 @@ public class XUI {
                                     .build()))
                     .build());
         }
-        return this;
     }
 
     public static Context getContext() {
@@ -118,6 +97,15 @@ public class XUI {
     //=======================字体===========================//
 
     /**
+     * 设置控件的字体【用于遗漏的控件字体设置】
+     *
+     * @param views 控件集合
+     */
+    public static void setViewsFont(View... views) {
+        ViewUtils.setViewsFont(views);
+    }
+
+    /**
      * @return 获取默认字体
      */
     @Nullable
@@ -126,6 +114,13 @@ public class XUI {
             return TypefaceUtils.load(getContext().getAssets(), sDefaultFontAssetPath);
         }
         return null;
+    }
+
+    /**
+     * @return 默认字体的存储位置
+     */
+    public static String getDefaultFontAssetPath() {
+        return sDefaultFontAssetPath;
     }
 
     /**

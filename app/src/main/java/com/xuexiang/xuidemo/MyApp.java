@@ -64,7 +64,7 @@ public class MyApp extends Application {
         XUI.debug(MyApp.isDebug());
         if (SettingSPUtils.getInstance().isUseCustomFont()) {
             //设置默认字体为华文行楷
-           XUI.getInstance().initFontStyle("fonts/hwxk.ttf");
+            XUI.initFontStyle("fonts/hwxk.ttf");
         }
         PictureFileUtils.setAppName("xui");
 
@@ -80,7 +80,6 @@ public class MyApp extends Application {
     public static boolean isDebug() {
         return BuildConfig.DEBUG;
     }
-
 
 
 }

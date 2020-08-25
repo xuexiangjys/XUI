@@ -365,6 +365,9 @@ public class CropImageView extends FrameLayout {
      */
     public Bitmap cropImage(boolean isContinueCrop) {
         Bitmap bitmap = getCroppedImage();
+        if (bitmap == null) {
+            return null;
+        }
         setImageBitmap(bitmap);
         if (!isContinueCrop) {
             setCropOverlayViewVisibility(GONE);
@@ -379,6 +382,9 @@ public class CropImageView extends FrameLayout {
      * @return 剪切区域图
      */
     public Bitmap getCroppedImage() {
+        if (mBitmap == null) {
+            return null;
+        }
 
         final Rect displayedImageRect = ImageViewUtil.getBitmapRectCenterInside(mBitmap, mImageView);
 
@@ -488,7 +494,7 @@ public class CropImageView extends FrameLayout {
     /**
      * Sets the both the X and Y values of the aspectRatio.
      * 设置固定比例剪切的比例
-     * 现将setFixedAspectRatio(true)设置
+     * 先将setFixedAspectRatio(true)设置
      * <p>
      * 例如：cropImage.setAspectRatio(40, 30);是以40:30的宽高比例剪切
      *
@@ -517,6 +523,9 @@ public class CropImageView extends FrameLayout {
      *                旋转度数
      */
     public void rotateImage(int degrees) {
+        if (mBitmap == null) {
+            return;
+        }
         Matrix matrix = new Matrix();
         matrix.postRotate(degrees);
         mBitmap = Bitmap.createBitmap(mBitmap, 0, 0, mBitmap.getWidth(), mBitmap.getHeight(), matrix, true);
@@ -536,6 +545,9 @@ public class CropImageView extends FrameLayout {
      * @author jarlen
      */
     public void reverseImage(CropImageType.REVERSE_TYPE type) {
+        if (mBitmap == null) {
+            return;
+        }
         Matrix matrix = new Matrix();
 
         if (type == CropImageType.REVERSE_TYPE.UP_DOWN) {

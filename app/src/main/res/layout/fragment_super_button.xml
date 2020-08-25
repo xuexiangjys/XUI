@@ -133,7 +133,7 @@
                     android:id="@+id/super_btn1"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="左上圆角"
                     app:sCornersTopLeftRadius="20dp"
@@ -145,7 +145,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_toRightOf="@+id/super_btn1"
+                    android:layout_toEndOf="@+id/super_btn1"
                     android:text="右上圆角"
                     app:sCornersTopRightRadius="20dp"
                     app:sStrokeColor="@color/colorPrimary"
@@ -156,7 +156,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/super_btn1"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="左下圆角"
                     app:sCornersBottomLeftRadius="20dp"
@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/super_btn2"
                     android:layout_marginBottom="10dp"
-                    android:layout_toRightOf="@+id/super_btn3"
+                    android:layout_toEndOf="@+id/super_btn3"
                     android:text="右下圆角"
                     app:sCornersBottomRightRadius="20dp"
                     app:sStrokeColor="@color/colorPrimary"
@@ -377,14 +377,14 @@
                 <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                     style="@style/SuperButton.Primary.wrap"
                     android:layout_margin="5dp"
-                    android:text="点击改变透明度"/>
+                    android:text="点击改变透明度" />
 
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperButton
                     style="@style/SuperButton.Primary.wrap"
                     android:layout_margin="5dp"
-                    android:text="不可点击"
-                    android:enabled="false" />
+                    android:enabled="false"
+                    android:text="不可点击" />
 
             </LinearLayout>
 

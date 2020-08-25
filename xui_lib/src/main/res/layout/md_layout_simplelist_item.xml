@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,36 +16,34 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:background="?selectableItemBackground"
-  android:focusable="true"
-  android:gravity="start|center_vertical"
-  android:minHeight="?attr/md_simpleitem_height"
-  android:orientation="horizontal"
-  android:paddingEnd="?attr/md_dialog_frame_margin"
-  android:paddingLeft="?attr/md_dialog_frame_margin"
-  android:paddingRight="?attr/md_dialog_frame_margin"
-  android:paddingStart="?attr/md_dialog_frame_margin">
-
-  <androidx.appcompat.widget.AppCompatImageView
-    android:id="@android:id/icon"
-    android:layout_width="?attr/md_simplelist_icon"
-    android:layout_height="?attr/md_simplelist_icon"
-    android:layout_gravity="start|center_vertical"
-    android:layout_marginEnd="?attr/md_simplelist_icon_margin"
-    android:background="@color/xui_config_color_transparent"
-    android:scaleType="fitXY"
-    tools:background="#f5f5f5"
-    tools:ignore="ContentDescription" />
-
-  <TextView
-    android:id="@android:id/title"
-    android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
-    android:textSize="?attr/xui_config_size_content_text"
-    tools:text="Title" />
+    android:background="?selectableItemBackground"
+    android:focusable="true"
+    android:gravity="start|center_vertical"
+    android:minHeight="?attr/md_simpleitem_height"
+    android:orientation="horizontal"
+    android:paddingStart="?attr/md_dialog_frame_margin"
+    android:paddingEnd="?attr/md_dialog_frame_margin">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@android:id/icon"
+        android:layout_width="?attr/md_simplelist_icon"
+        android:layout_height="?attr/md_simplelist_icon"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginEnd="?attr/md_simplelist_icon_margin"
+        android:background="@color/xui_config_color_transparent"
+        android:scaleType="fitXY"
+        tools:background="#f5f5f5"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@android:id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="?attr/xui_config_size_content_text"
+        tools:text="Title" />
 
 </LinearLayout>

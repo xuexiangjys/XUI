@@ -107,10 +107,6 @@
     <dimen name="swb_md_thumb_shadow_size">21dp</dimen>
     <dimen name="swb_md_thumb_shadow_offset">2dp</dimen>
 
-    <!-- 自适应Textview-->
-    <dimen name="default_aftv_min_textsize">10sp</dimen>
-    <dimen name="default_aftv_max_textsize">14sp</dimen>
-
     <!-- SuperTextView-->
     <dimen name="default_stv_text_size">15sp</dimen>
     <dimen name="default_stv_margin">10dp</dimen>
@@ -244,7 +240,6 @@
     <dimen name="default_md_button_padding_horizontal_tablet_big">16dp</dimen>
 
     <dimen name="md_button_padding_vertical">4dp</dimen>
-    <dimen name="md_button_padding_horizontal_internalexternal">32dp</dimen>
     <!-- 16dp - 4dp (inset from background drawable) -->
     <dimen name="md_button_padding_frame_side">12dp</dimen>
     <dimen name="md_neutral_button_margin">12dp</dimen>

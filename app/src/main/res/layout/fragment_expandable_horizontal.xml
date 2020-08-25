@@ -52,8 +52,8 @@
                 android:layout_height="match_parent"
                 android:background="@color/app_color_theme_9"
                 android:gravity="center_vertical"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:text="这里是内容"
                 android:textColor="@color/xui_config_color_white" />
 

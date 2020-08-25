@@ -17,6 +17,7 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
 import android.view.ViewGroup;
 
@@ -24,14 +25,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.umeng.analytics.MobclickAgent;
+import com.xuexiang.xaop.annotation.MemoryCache;
+import com.xuexiang.xaop.cache.XMemoryCache;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.base.XPageSimpleListFragment;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xrouter.facade.service.SerializationService;
 import com.xuexiang.xrouter.launcher.XRouter;
+import com.xuexiang.xui.utils.DrawableUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.actionbar.TitleUtils;
+import com.xuexiang.xuidemo.R;
 
 import java.io.Serializable;
 
@@ -49,7 +55,13 @@ public abstract class BaseSimpleListFragment extends XPageSimpleListFragment {
     }
 
     protected TitleBar initTitle() {
-        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), v -> popToBack());
+        return TitleUtils.addTitleBarDynamic((ViewGroup) getRootView(), getPageTitle(), v -> popToBack())
+                .setLeftImageDrawable(getNavigationBackDrawable(R.attr.xui_actionbar_ic_navigation_back));
+    }
+
+    @MemoryCache
+    private Drawable getNavigationBackDrawable(int navigationBackId) {
+        return DrawableUtils.getSupportRTLDrawable(ThemeUtils.resolveDrawable(getContext(), navigationBackId));
     }
 
     @Override
@@ -62,6 +74,7 @@ public abstract class BaseSimpleListFragment extends XPageSimpleListFragment {
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         //屏幕旋转时刷新一下title
         super.onConfigurationChanged(newConfig);
+        XMemoryCache.getInstance().clear();
         ViewGroup root = (ViewGroup) getRootView();
         if (root.getChildAt(0) instanceof TitleBar) {
             root.removeViewAt(0);

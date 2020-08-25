@@ -1,11 +1,9 @@
 package com.xuexiang.xui.widget.edittext;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Editable;
@@ -13,7 +11,6 @@ import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
@@ -39,7 +36,6 @@ public class PasswordEditText extends AppCompatEditText {
     private Drawable mShowPwDrawable;
     private Drawable mHidePwDrawable;
     private boolean mPasswordVisible;
-    private boolean mIsRTL;
     private boolean mShowingIcon;
     private boolean mSetErrorCalled;
     private boolean mHoverShowsPw;
@@ -95,8 +91,6 @@ public class PasswordEditText extends AppCompatEditText {
             setTypeface(Typeface.DEFAULT);
         }
 
-        mIsRTL = isRTLLanguage();
-
         addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -110,9 +104,7 @@ public class PasswordEditText extends AppCompatEditText {
             public void afterTextChanged(Editable s) {
                 if (s.length() > 0) {
                     if (mSetErrorCalled) {
-                        // resets drawables after setError was called as this leads to icons
-                        // not changing anymore afterwards
-                        setCompoundDrawables(null, null, null, null);
+                        setCompoundDrawablesRelative(null, null, null, null);
                         mSetErrorCalled = false;
                         showPasswordVisibilityIndicator(true);
                     }
@@ -163,12 +155,8 @@ public class PasswordEditText extends AppCompatEditText {
         return this;
     }
 
-    private boolean isRTLLanguage() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return false;
-        }
-        Configuration config = getResources().getConfiguration();
-        return config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+    private boolean isRtl() {
+        return getLayoutDirection() == LAYOUT_DIRECTION_RTL;
     }
 
     @Override
@@ -234,7 +222,7 @@ public class PasswordEditText extends AppCompatEditText {
 
     private boolean isTouchable(MotionEvent event) {
         boolean touchable;
-        if (mIsRTL) {
+        if (isRtl()) {
             touchable = event.getX() > getPaddingLeft() - mExtraClickArea && event.getX() < getPaddingLeft() + mShowPwDrawable.getIntrinsicWidth() + mExtraClickArea;
         } else {
             touchable = event.getX() > getWidth() - getPaddingRight() - mShowPwDrawable.getIntrinsicWidth() - mExtraClickArea && event.getX() < getWidth() - getPaddingRight() + mExtraClickArea;
@@ -247,10 +235,10 @@ public class PasswordEditText extends AppCompatEditText {
         if (shouldShowIcon) {
             Drawable drawable = mPasswordVisible ? mShowPwDrawable : mHidePwDrawable;
             mShowingIcon = true;
-            setCompoundDrawablesWithIntrinsicBounds(mIsRTL ? drawable : null, null, mIsRTL ? null : drawable, null);
+            setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawable, null);
         } else {
             // reset drawable
-            setCompoundDrawables(null, null, null, null);
+            setCompoundDrawablesRelative(null, null, null, null);
             mShowingIcon = false;
         }
     }

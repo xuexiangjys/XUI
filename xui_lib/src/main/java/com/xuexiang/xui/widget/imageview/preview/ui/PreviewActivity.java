@@ -32,6 +32,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.CollectionUtils;
 import com.xuexiang.xui.widget.imageview.preview.MediaLoader;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
@@ -211,16 +212,17 @@ public class PreviewActivity extends FragmentActivity {
         mViewPager.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                mViewPager.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                BasePhotoFragment fragment = fragments.get(mCurrentIndex);
-                fragment.transformIn();
+                mViewPager.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                BasePhotoFragment fragment = CollectionUtils.getListItem(fragments, mCurrentIndex);
+                if (fragment != null) {
+                    fragment.transformIn();
+                }
             }
         });
-
     }
 
     private int getImgSize() {
-        return mImgUrls != null ? mImgUrls.size() : 0;
+        return CollectionUtils.getSize(mImgUrls);
     }
 
     /***退出预览的动画***/

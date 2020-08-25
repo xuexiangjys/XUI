@@ -47,7 +47,7 @@ public class XUISimpleExpandableListAdapter extends BaseExpandableListAdapter {
      */
     private List<ExpandableItem> mData;
 
-    private int mPaddingLeftPx;
+    private int mPaddingStartPx;
 
     private int mArrowUpResId = R.drawable.xui_ic_expand_arrow_up;
     private int mArrowDownResId = R.drawable.xui_ic_expand_arrow_down;
@@ -97,9 +97,9 @@ public class XUISimpleExpandableListAdapter extends BaseExpandableListAdapter {
             childViewHolder.ivIcon = convertView.findViewById(R.id.iv_icon);
             childViewHolder.tvTitle = convertView.findViewById(R.id.tv_child_name);
 
-            if (mPaddingLeftPx != 0) {
+            if (mPaddingStartPx != 0) {
                 int padding = ThemeUtils.resolveDimension(parent.getContext(), R.attr.xui_config_content_spacing_vertical);
-                childViewHolder.llContentView.setPadding(mPaddingLeftPx, padding, padding, padding);
+                childViewHolder.llContentView.setPaddingRelative(mPaddingStartPx, padding, padding, padding);
                 childViewHolder.llContentView.setGravity(Gravity.CENTER_VERTICAL);
             } else {
                 childViewHolder.llContentView.setGravity(Gravity.CENTER);
@@ -161,13 +161,25 @@ public class XUISimpleExpandableListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
+    @Deprecated
     public XUISimpleExpandableListAdapter setPaddingLeftPx(int paddingLeftPx) {
-        mPaddingLeftPx = paddingLeftPx;
+        mPaddingStartPx = paddingLeftPx;
         return this;
     }
 
+    @Deprecated
     public XUISimpleExpandableListAdapter setPaddingLeftDp(int paddingLeftDp) {
-        mPaddingLeftPx = DensityUtils.dp2px(paddingLeftDp);
+        mPaddingStartPx = DensityUtils.dp2px(paddingLeftDp);
+        return this;
+    }
+
+    public XUISimpleExpandableListAdapter setPaddingStartPx(int paddingStartPx) {
+        mPaddingStartPx = paddingStartPx;
+        return this;
+    }
+
+    public XUISimpleExpandableListAdapter setPaddingStartDp(int paddingStartDp) {
+        mPaddingStartPx = DensityUtils.dp2px(paddingStartDp);
         return this;
     }
 

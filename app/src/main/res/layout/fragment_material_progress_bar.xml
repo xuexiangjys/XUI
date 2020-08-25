@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -13,9 +13,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="?attr/xui_config_content_spacing_horizontal"
+            android:paddingStart="?attr/xui_config_content_spacing_horizontal"
             android:paddingTop="?attr/xui_config_content_spacing_horizontal"
-            android:paddingRight="?attr/xui_config_content_spacing_horizontal"
+            android:paddingEnd="?attr/xui_config_content_spacing_horizontal"
             android:paddingBottom="?attr/xui_config_content_spacing_horizontal">
 
             <!-- Determinate horizontal progress -->
@@ -194,7 +194,7 @@
                     style="?android:progressBarStyleLarge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|bottom"
+                    android:layout_gravity="start|bottom"
                     android:indeterminate="true" />
 
                 <ProgressBar
@@ -208,7 +208,7 @@
                     style="?android:progressBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="end|bottom"
                     android:indeterminate="true" />
             </FrameLayout>
 
@@ -226,7 +226,7 @@
                     style="@style/Widget.MaterialProgressBar.ProgressBar.Large"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|bottom"
+                    android:layout_gravity="start|bottom"
                     android:indeterminate="true" />
 
                 <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
@@ -240,7 +240,7 @@
                     style="@style/Widget.MaterialProgressBar.ProgressBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="end|bottom"
                     android:indeterminate="true" />
             </FrameLayout>
 
@@ -286,6 +286,6 @@
                     app:mpb_useIntrinsicPadding="false" />
             </FrameLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

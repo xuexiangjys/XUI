@@ -21,8 +21,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+
 import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
+
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
@@ -40,6 +42,22 @@ import com.xuexiang.xui.widget.dialog.strategy.InputInfo;
 public class AlertDialogStrategy implements IDialogStrategy {
 
     /**
+     * 获取对话框的构建者
+     *
+     * @param context 上下文
+     * @param icon    图标
+     * @return 对话框的构建者
+     */
+    private AlertDialog.Builder getBuilder(Context context, int icon) {
+        if (icon == NO_ICON) {
+            return new AlertDialog.Builder(context);
+        } else {
+            return new AlertDialog.Builder(context)
+                    .setIcon(icon);
+        }
+    }
+
+    /**
      * 显示简要的提示对话框
      *
      * @param context
@@ -51,8 +69,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
      */
     @Override
     public Dialog showTipDialog(Context context, int icon, String title, String content, String submitText, DialogInterface.OnClickListener listener) {
-        return new AlertDialog.Builder(context)
-                .setIcon(icon)
+        return getBuilder(context, icon)
                 .setTitle(title)
                 .setMessage(content)
                 .setPositiveButton(submitText, listener)
@@ -167,8 +184,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
         layoutParams.setMargins(DensityUtils.dp2px(context, 15), 0, DensityUtils.dp2px(context, 15), 0);
         etInput.setLayoutParams(layoutParams);
 
-        return new AlertDialog.Builder(context)
-                .setIcon(icon)
+        return getBuilder(context, icon)
                 .setTitle(title)
                 .setMessage(content)
                 .setView(linearLayout)

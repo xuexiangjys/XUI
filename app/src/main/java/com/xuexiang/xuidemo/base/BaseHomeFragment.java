@@ -68,6 +68,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
             public void performAction(View view) {
                 openNewPage(SearchComponentFragment.class);
             }
+
             @Override
             public int rightPadding() {
                 return DensityUtils.dp2px(10);

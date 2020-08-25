@@ -15,74 +15,71 @@
   ~
   -->
 
-<com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:orientation="vertical"
-  app:md_reduce_padding_no_title_no_buttons="false">
-
-  <include layout="@layout/md_layout_stub_titleframe"/>
-
-  <LinearLayout
+<com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/md_content_padding_bottom"
-    android:paddingLeft="?attr/md_dialog_frame_margin"
-    android:paddingRight="?attr/md_dialog_frame_margin"
-    android:paddingTop="@dimen/md_content_padding_top">
+    app:md_reduce_padding_no_title_no_buttons="false">
 
-    <TextView
-      android:id="@+id/md_content"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_horizontal"
-      android:layout_marginBottom="@dimen/md_content_padding_bottom"
-      android:layout_marginTop="4dp"
-      android:fontFamily="sans-serif"
-      android:textSize="?attr/md_content_textsize"
-      tools:ignore="UnusedAttribute"
-      tools:text="Message"/>
+    <include layout="@layout/md_layout_stub_titleframe" />
 
-    <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-
-      <EditText
-        android:id="@android:id/input"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:layout_marginLeft="-2dp"
-        android:layout_marginRight="-2dp"
-        android:focusable="true"
-        android:textSize="?attr/md_content_textsize"
-        tools:ignore="TextFields"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="?attr/md_dialog_frame_margin"
+        android:paddingTop="@dimen/md_content_padding_top"
+        android:paddingEnd="?attr/md_dialog_frame_margin"
+        android:paddingBottom="@dimen/md_content_padding_bottom">
 
-      <TextView
-        android:id="@+id/md_minMax"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@android:id/input"
-        android:layout_alignRight="@android:id/input"
-        android:layout_below="@android:id/input"
-        android:gravity="end"
-        android:minWidth="48dp"
-        android:paddingEnd="4dp"
-        android:paddingRight="4dp"
-        android:textAlignment="viewEnd"
-        android:textSize="12sp"
-        tools:ignore="RtlSymmetry,UnusedAttribute"
-        tools:text="50/100"/>
+        <TextView
+            android:id="@+id/md_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="@dimen/md_content_padding_bottom"
+            android:fontFamily="sans-serif"
+            android:textSize="?attr/md_content_textsize"
+            tools:ignore="UnusedAttribute"
+            tools:text="Message" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-  </LinearLayout>
+            <EditText
+                android:id="@android:id/input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-2dp"
+                android:layout_marginEnd="-2dp"
+                android:layout_marginBottom="1dp"
+                android:focusable="true"
+                android:textSize="?attr/md_content_textsize"
+                tools:ignore="TextFields" />
 
-  <include layout="@layout/md_layout_stub_actionbuttons"/>
+            <TextView
+                android:id="@+id/md_minMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@android:id/input"
+                android:layout_alignEnd="@android:id/input"
+                android:gravity="end"
+                android:minWidth="48dp"
+                android:paddingEnd="4dp"
+                android:textAlignment="viewEnd"
+                android:textSize="12sp"
+                tools:ignore="RtlSymmetry,UnusedAttribute"
+                tools:text="50/100" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/md_layout_stub_actionbuttons" />
 
 </com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout>
