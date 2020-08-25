@@ -89,7 +89,6 @@ public abstract class BaseFragment extends XPageFragment {
     public void onDestroyView() {
         if (mMessageLoader != null) {
             mMessageLoader.dismiss();
-            mMessageLoader = null;
         }
         super.onDestroyView();
     }

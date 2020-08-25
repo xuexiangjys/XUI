@@ -87,7 +87,11 @@ public class XUIPopupFragment extends BaseFragment {
             textView.setTextColor(ContextCompat.getColor(getContext(), R.color.xui_config_color_content_text));
             textView.setTypeface(XUI.getDefaultTypeface());
             mNormalPopup.setContentView(textView);
-            mNormalPopup.setOnDismissListener(() -> mBtnCommonPopup.setText("显示普通浮层"));
+            mNormalPopup.setOnDismissListener(() -> {
+                if (mBtnCommonPopup != null) {
+                    mBtnCommonPopup.setText("显示普通浮层");
+                }
+            });
         }
     }
 
@@ -108,7 +112,11 @@ public class XUIPopupFragment extends BaseFragment {
                 XToastUtils.toast("Item " + (i + 1));
                 mListPopup.dismiss();
             });
-            mListPopup.setOnDismissListener(() -> mBtnListPopup.setText("显示列表浮层"));
+            mListPopup.setOnDismissListener(() -> {
+                if (mBtnListPopup != null) {
+                    mBtnListPopup.setText("显示列表浮层");
+                }
+            });
         }
     }
 }

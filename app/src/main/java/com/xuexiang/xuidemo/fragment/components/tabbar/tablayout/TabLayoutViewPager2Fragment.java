@@ -31,6 +31,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
@@ -145,6 +146,9 @@ public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayo
     }
 
     private void refreshAdapter(boolean isShow) {
+        if (viewPager == null) {
+            return;
+        }
         if (isShow) {
             // 动态加载选项卡内容
             for (String page : MultiPage.getPageNames()) {
@@ -160,8 +164,8 @@ public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayo
 
 
     private void switchContainer(boolean isShow) {
-        tvTitle.setVisibility(isShow ? View.GONE : View.VISIBLE);
-        viewPager.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        ViewUtils.setVisibility(tvTitle, !isShow);
+        ViewUtils.setVisibility(viewPager, isShow);
     }
 
 

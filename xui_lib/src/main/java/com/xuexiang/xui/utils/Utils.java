@@ -33,8 +33,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +41,9 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
 
 import java.io.Closeable;
 import java.io.File;
