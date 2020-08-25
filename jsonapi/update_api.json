@@ -2,11 +2,11 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 15,
-  "VersionName": "1.1.4",
-  "UploadTime": "2020-06-14 08:00:00",
+  "VersionCode": 16,
+  "VersionName": "1.1.5",
+  "UploadTime": "2020-08-26 01:00:00",
   "ModifyContent": "\r\n1、修复部分已知问题。\n2、优化了部分组件功能。\n3、新增更多使用演示。",
   "DownloadUrl": "https://xuexiangjys.oss-cn-shanghai.aliyuncs.com/apk/xuidemo.apk",
-  "ApkSize": 12393,
-  "ApkMd5": "60752D2FBAB08E941B8BD4F6C9579690"
+  "ApkSize": 12677,
+  "ApkMd5": "256DF928FED3835C5B2833234E494C07"
 }
