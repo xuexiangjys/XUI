@@ -33,6 +33,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -41,11 +42,12 @@ import android.widget.ScrollView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.FloatRange;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.widget.NestedScrollView;
 
-import com.xuexiang.xui.logs.UILog;
+import java.security.InvalidParameterException;
 
 /**
  * Drawable工具类
@@ -171,7 +173,8 @@ public final class DrawableUtils {
         Canvas canvas = new Canvas(cutBitmap);
         Rect src = new Rect(leftCrop, topCrop, view.getWidth() - rightCrop, view.getHeight() - bottomCrop);
         Rect dest = new Rect(0, 0, view.getWidth() - rightCrop - leftCrop, view.getHeight() - topCrop - bottomCrop);
-        canvas.drawColor(Color.WHITE); // 防止 View 上面有些区域空白导致最终 Bitmap 上有些区域变黑
+        // 防止 View 上面有些区域空白导致最终 Bitmap 上有些区域变黑
+        canvas.drawColor(Color.WHITE);
         canvas.drawBitmap(originBitmap, src, dest, null);
         originBitmap.recycle();
         return cutBitmap;
@@ -246,37 +249,6 @@ public final class DrawableUtils {
     }
 
     /**
-     * 由一个drawable生成bitmap
-     */
-    public static Bitmap drawableToBitmap(Drawable drawable) {
-        if (drawable == null) {
-            return null;
-        } else if (drawable instanceof BitmapDrawable) {
-            return ((BitmapDrawable) drawable).getBitmap();
-        }
-
-        int intrinsicWidth = drawable.getIntrinsicWidth();
-        int intrinsicHeight = drawable.getIntrinsicHeight();
-
-        if (!(intrinsicWidth > 0 && intrinsicHeight > 0)) {
-            return null;
-        }
-
-        try {
-            Bitmap.Config config = drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
-                    : Bitmap.Config.RGB_565;
-            Bitmap bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, config);
-            Canvas canvas = new Canvas(bitmap);
-            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-            drawable.draw(canvas);
-            return bitmap;
-        } catch (OutOfMemoryError e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
      * 创建一张渐变图片，支持韵脚。
      *
      * @param startColor 渐变开始色
@@ -327,13 +299,134 @@ public final class DrawableUtils {
         return layerDrawable;
     }
 
+
+    /**
+     * 创建一张指定大小的圆形图片，并附带文字
+     *
+     * @param resources   Resources对象，用于创建BitmapDrawable
+     * @param size        图片的宽度
+     * @param filledColor 图片的填充色
+     * @param text        文字
+     * @param textSize    文字大小(px)
+     * @param textColor   文字颜色
+     * @return 指定大小的纯色图片
+     */
+    public static BitmapDrawable createCircleDrawableWithText(Resources resources, int size, @ColorInt int filledColor, String text, float textSize, @ColorInt int textColor) {
+        if (size <= 0) {
+            throw new InvalidParameterException("bitmap size must be > 0!");
+        }
+        if (textSize <= 0) {
+            throw new InvalidParameterException("text size must be > 0!");
+        }
+        Bitmap output = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+        canvas.drawColor(Color.TRANSPARENT);
+        // 画圆
+        int radius = size / 2;
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(filledColor);
+        canvas.drawCircle(radius, radius, radius, paint);
+        // 画文字
+        paint.setColor(textColor);
+        paint.setTextSize(textSize);
+        paint.setTextAlign(Paint.Align.CENTER);
+        float baseline = radius + getBaselineDistance(paint);
+        canvas.drawText(text, radius, baseline, paint);
+        return new BitmapDrawable(resources, output);
+    }
+
+    /**
+     * 获取画笔的基线距离
+     *
+     * @param paint 画笔
+     * @return 基线距离
+     */
+    public static float getBaselineDistance(@NonNull Paint paint) {
+        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        return (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
+    }
+
+    /////////////// StateListDrawable /////////////////////
+
+    /**
+     * 实体 得到随机色 状态选择器
+     *
+     * @param cornerRadius 圆角半径
+     * @return 状态选择器
+     */
+    public static StateListDrawable getDrawable(int cornerRadius) {
+        return getDrawable(cornerRadius, ColorUtils.getRandomColor());
+    }
+
+    /**
+     * 实体 按下的颜色加深
+     *
+     * @param cornerRadius 圆角半径
+     * @param normalColor  正常的颜色
+     * @return 状态选择器
+     */
+
+    public static StateListDrawable getDrawable(int cornerRadius, int normalColor) {
+        return getDrawable(cornerRadius, ColorUtils.darker(normalColor, 0.8F), normalColor);
+    }
+
+    /**
+     * 实体  状态选择器
+     *
+     * @param cornerRadius 圆角半径
+     * @param pressedColor 按下颜色
+     * @param normalColor  正常的颜色
+     * @return 状态选择器
+     */
+    public static StateListDrawable getDrawable(int cornerRadius, int pressedColor, int normalColor) {
+        return getStateListDrawable(getSolidRectDrawable(cornerRadius, pressedColor), getSolidRectDrawable(cornerRadius, normalColor));
+    }
+
+    /**
+     * 背景选择器
+     *
+     * @param pressedDrawable 按下状态的Drawable
+     * @param normalDrawable  正常状态的Drawable
+     * @return 状态选择器
+     */
+    public static StateListDrawable getStateListDrawable(Drawable pressedDrawable, Drawable normalDrawable) {
+        StateListDrawable stateListDrawable = new StateListDrawable();
+        stateListDrawable.addState(new int[]{android.R.attr.state_enabled, android.R.attr.state_pressed}, pressedDrawable);
+        stateListDrawable.addState(new int[]{android.R.attr.state_enabled}, normalDrawable);
+        //设置不能用的状态
+        //默认其他状态背景
+        GradientDrawable gray = getSolidRectDrawable(10, Color.GRAY);
+        stateListDrawable.addState(new int[]{}, gray);
+        return stateListDrawable;
+    }
+
+    /**
+     * 得到实心的drawable, 一般作为选中，点中的效果
+     *
+     * @param cornerRadius 圆角半径
+     * @param solidColor   实心颜色
+     * @return 得到实心效果
+     */
+    public static GradientDrawable getSolidRectDrawable(int cornerRadius, int solidColor) {
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        // 设置矩形的圆角半径
+        gradientDrawable.setCornerRadius(cornerRadius);
+        // 设置绘画图片色值
+        gradientDrawable.setColor(solidColor);
+        // 绘画的是矩形
+        gradientDrawable.setGradientType(GradientDrawable.RADIAL_GRADIENT);
+        return gradientDrawable;
+    }
+
     /////////////// VectorDrawable /////////////////////
+
     @Nullable
     public static Drawable getVectorDrawable(Context context, @DrawableRes int resVector) {
         try {
             return AppCompatResources.getDrawable(context, resVector);
         } catch (Exception e) {
-            UILog.dTag(TAG, "Error in getVectorDrawable. resVector=" + resVector + ", resName=" + context.getResources().getResourceName(resVector) + e.getMessage());
             return null;
         }
     }
@@ -341,11 +434,7 @@ public final class DrawableUtils {
     public static Bitmap vectorDrawableToBitmap(Context context, @DrawableRes int resVector) {
         Drawable drawable = getVectorDrawable(context, resVector);
         if (drawable != null) {
-            Bitmap b = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-            Canvas c = new Canvas(b);
-            drawable.setBounds(0, 0, c.getWidth(), c.getHeight());
-            drawable.draw(c);
-            return b;
+            return drawable2Bitmap(drawable);
         }
         return null;
     }
@@ -448,6 +537,9 @@ public final class DrawableUtils {
      * @return bitmap
      */
     public static Bitmap drawable2Bitmap(final Drawable drawable) {
+        if (drawable == null) {
+            return null;
+        }
         if (drawable instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
             if (bitmapDrawable.getBitmap() != null) {
