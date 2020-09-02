@@ -15,7 +15,7 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.sortedlist;
+package com.xuexiang.xuidemo.fragment.components.refresh.sample.sortedlist;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
-import com.xuexiang.xuidemo.fragment.components.refresh.diffutil.DiffUtilCallback;
+import com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback;
 import com.xuexiang.xutil.common.CollectionUtils;
 import com.xuexiang.xutil.common.logger.Logger;
 

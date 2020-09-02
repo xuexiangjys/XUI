@@ -15,40 +15,33 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.diffutil;
+package com.xuexiang.xuidemo.fragment.components.refresh.sample.sortedlist;
 
 import android.view.View;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.SortedList;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.xuexiang.rxutil2.rxjava.RxJavaUtils;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.common.logger.Logger;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
-import io.reactivex.functions.Function;
 
 /**
  * @author xuexiang
- * @since 2020/6/21 11:45 PM
+ * @since 2020/6/28 12:11 AM
  */
-@Page(name = "DiffUtil 局部刷新")
-public class DiffUtilRefreshFragment extends BaseFragment {
+@Page(name = "SortedList 自动数据排序刷新")
+public class SortedListRefreshFragment extends BaseFragment {
 
     @BindView(R.id.recyclerView)
     SwipeRecyclerView recyclerView;
@@ -56,11 +49,16 @@ public class DiffUtilRefreshFragment extends BaseFragment {
     SwipeRefreshLayout swipeRefreshLayout;
 
     /**
-     * 增加一个变量暂存newList
+     * 数据缓存
      */
-    private List<NewInfo> mNewDatas;
+    private SortedList<NewInfo> mData;
 
-    private NewsCardViewListAdapter mAdapter;
+    private SortedListAdapter mAdapter;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_diffutil_refresh;
+    }
 
     @Override
     protected TitleBar initTitle() {
@@ -79,44 +77,20 @@ public class DiffUtilRefreshFragment extends BaseFragment {
      * 模拟刷新
      */
     private void mockRefresh() {
-        if (mAdapter.getItemCount() == 0) {
+        if (mData == null || mData.size() == 0) {
             return;
         }
-        mNewDatas = new ArrayList<>();
-        for (NewInfo info : mAdapter.getData()) {
-            //clone一遍旧数据 ，模拟刷新操作
-            mNewDatas.add(info.clone().resetContent());
-        }
-        mNewDatas.get(0).setUserName("xuexiangjys" + (int)(Math.random() * 10 + 5));
-        int position = getRandomInsertPosition(mNewDatas.size());
-        Logger.e("动态插入的位置:" + position);
-        mNewDatas.add(position, new NewInfo("Android", "这个是刷新新增的内容")
+        int position = getRandomInsertPosition(mData.size());
+        Logger.e("动态更新的位置:" + position);
+        mData.add(new NewInfo("Android", "这个是刷新更新的内容")
                 .setSummary("这里是内容！～～～～～")
+                .setID(mData.get(position).getID())
                 .setDetailUrl("https://juejin.im/post/5b480b79e51d45190905ef44")
                 .setImageUrl("https://user-gold-cdn.xitu.io/2018/7/13/16492d9b7877dc21?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"));
-
-        RxJavaUtils.executeAsyncTask(mNewDatas, new Function<List<NewInfo>, DiffUtil.DiffResult>() {
-            @Override
-            public DiffUtil.DiffResult apply(List<NewInfo> newInfos) throws Exception {
-                return DiffUtil.calculateDiff(new DiffUtilCallback(mAdapter.getData(), newInfos), true);
-            }
-        }, diffResult -> {
-            if (mAdapter != null) {
-                diffResult.dispatchUpdatesTo(mAdapter);
-                mAdapter.resetDataSource(mNewDatas);
-            }
-        });
-
     }
-
 
     private int getRandomInsertPosition(int listSize) {
         return (int) (Math.random() * 100) % listSize;
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_diffutil_refresh;
     }
 
     @Override
@@ -124,14 +98,17 @@ public class DiffUtilRefreshFragment extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        recyclerView.setAdapter(mAdapter = new NewsCardViewListAdapter());
+        mAdapter = new SortedListAdapter();
+        mData = new SortedList<>(NewInfo.class, new SortedListCallback(mAdapter));
+        mAdapter.setDataSource(mData);
+        recyclerView.setAdapter(mAdapter);
+
         swipeRefreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);
         swipeRefreshLayout.setEnabled(true);
     }
 
     @Override
     protected void initListeners() {
-        mAdapter.setOnItemClickListener((itemView, item, position) -> Utils.goWeb(getContext(), item.getDetailUrl()));
         // 刷新监听。
         swipeRefreshLayout.setOnRefreshListener(mRefreshListener);
         refresh();
@@ -149,11 +126,10 @@ public class DiffUtilRefreshFragment extends BaseFragment {
 
     private void loadData() {
         swipeRefreshLayout.postDelayed(() -> {
-            mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+            mData.replaceAll(DemoDataProvider.getDemoNewInfos());
             if (swipeRefreshLayout != null) {
                 swipeRefreshLayout.setRefreshing(false);
             }
         }, 1000);
     }
-
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2020 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        tools:listitem="@layout/adapter_selection_child_list_item" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/selection_item_height"
+        android:background="@color/xui_config_color_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/spacing_24dp">
+
+        <TextView
+            style="@style/TextStyle.Title"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="start"
+            android:text="结果" />
+
+
+        <TextView
+            android:id="@+id/tv_selection_total1"
+            style="@style/TextStyle.Title"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            tools:text="0" />
+
+
+        <TextView
+            android:id="@+id/tv_selection_total2"
+            style="@style/TextStyle.Title"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            tools:text="0" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

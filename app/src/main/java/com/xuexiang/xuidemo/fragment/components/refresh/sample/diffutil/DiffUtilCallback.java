@@ -15,7 +15,7 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.diffutil;
+package com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil;
 
 import android.os.Bundle;
 
