@@ -60,6 +60,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
@@ -1099,6 +1100,29 @@ public final class ViewUtils {
      */
     public static void setViewsFont(View... views) {
         setViewsFont(XUI.getDefaultTypeface(), views);
+    }
+
+    /**
+     * 设置CollapsingToolbarLayout选项卡的字体
+     *
+     * @param collapsingToolbarLayout CollapsingToolbarLayout
+     */
+    public static void setToolbarLayoutTextFont(CollapsingToolbarLayout collapsingToolbarLayout) {
+        setToolbarLayoutTextFont(collapsingToolbarLayout, XUI.getDefaultTypeface());
+    }
+
+    /**
+     * 设置CollapsingToolbarLayout选项卡的字体
+     *
+     * @param collapsingToolbarLayout CollapsingToolbarLayout
+     * @param typeface                字体
+     */
+    public static void setToolbarLayoutTextFont(CollapsingToolbarLayout collapsingToolbarLayout, Typeface typeface) {
+        if (collapsingToolbarLayout == null || typeface == null) {
+            return;
+        }
+        collapsingToolbarLayout.setExpandedTitleTypeface(typeface);
+        collapsingToolbarLayout.setCollapsedTitleTypeface(typeface);
     }
 
     /**

@@ -91,6 +91,7 @@ public class ComplexDetailsPageFragment extends BaseFragment {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         ViewUtils.setViewsFont(tabLayout);
+        ViewUtils.setToolbarLayoutTextFont(collapseLayout);
     }
 
     @Override
