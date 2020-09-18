@@ -2,7 +2,6 @@ package com.xuexiang.xui.widget.flowlayout;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -68,10 +67,9 @@ public class FlowLayout extends ViewGroup {
                 realWidth = Math.max(lineWidth, realWidth);
                 realHeight += lineHeight;
             }
-
-            setMeasuredDimension(modeWidth == MeasureSpec.EXACTLY ? sizeWidth : realWidth,
-                    modeHeight == MeasureSpec.EXACTLY ? sizeHeight : realHeight);
         }
+        setMeasuredDimension(modeWidth == MeasureSpec.EXACTLY ? sizeWidth : realWidth,
+                modeHeight == MeasureSpec.EXACTLY ? sizeHeight : realHeight);
     }
 
     private List<List<View>> mAllViews = new ArrayList<>();
