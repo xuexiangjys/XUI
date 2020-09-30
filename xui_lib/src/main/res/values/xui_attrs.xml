@@ -1314,7 +1314,7 @@
         <!--是否显示指示器，默认true-->
         <attr name="ts_has_indicator" format="boolean" />
         <!--文字大小，默认16sp-->
-        <attr name="android:textSize" format="dimension" />
+        <attr name="android:textSize"  />
         <!--指示器是否在顶端，默认false-->
         <attr name="ts_indicator_top" format="boolean" />
         <!--指示器的模式，默认fixed-->
