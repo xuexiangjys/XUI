@@ -12,6 +12,7 @@
     <attr name="xui_switch_alpha_disabled" format="boolean" />
     <attr name="xui_alpha_pressed" format="float" />
     <attr name="xui_alpha_disabled" format="float" />
+    <attr name="default_xui_general_shadow_alpha" format="float" />
 
     <attr name="xui_general_shadow_elevation" format="dimension" />
     <attr name="xui_general_shadow_alpha" format="float" />
