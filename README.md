@@ -172,19 +172,19 @@ protected void attachBaseContext(Context newBase) {
 
 ### 演示程序截图
 
-![](./art/1_splash.png) &emsp; ![](./art/2_main.png) &emsp; ![](./art/3_about.png) &emsp; ![](./art/4_menu.png)
+![1_splash.png](https://img.rruu.net/image/5f7b65c2e3cce) &emsp; ![2_main.png](https://img.rruu.net/image/5f7b65c3073e5) &emsp; ![3_about.png](https://img.rruu.net/image/5f7b65c30ee6f) &emsp; ![4_menu.png](https://img.rruu.net/image/5f7b65c31862f)
 
-![](./art/5_dialog.png) &emsp; ![](./art/6_bottom_dialog.png) &emsp; ![](./art/7_picker.png) &emsp; ![](./art/8_webview.png)
+![5_dialog.png](https://img.rruu.net/image/5f7b65c31b2f3) &emsp; ![6_bottom_dialog.png](https://img.rruu.net/image/5f7b65c322c15) &emsp; ![7_picker.png](https://img.rruu.net/image/5f7b65c32e420) &emsp; ![8_webview.png](https://img.rruu.net/image/5f7b65c330c49)
 
-![](./art/9_flowlayout.png) &emsp; ![](./art/10_ninegrid.png) &emsp; ![](./art/11_radius_imageview.png) &emsp; ![](./art/12_badge_view.png)
+![9_flowlayout.png](https://img.rruu.net/image/5f7b65c330c6a) &emsp; ![10_ninegrid.png](https://img.rruu.net/image/5f7b65c33da98) &emsp; ![11_radius_imageview.png](https://img.rruu.net/image/5f7d827d31fe4) &emsp; ![12_badge_view.png](https://img.rruu.net/image/5f7d827ccb45c)
 
-![](./art/13_tabview.png) &emsp; ![](./art/14_citypicker.png) &emsp; ![](./art/15_refresh_layout.png) &emsp; ![](./art/16_spinner.png) &emsp;
+![13_tabview.png](https://img.rruu.net/image/5f7d827d0ddde) &emsp; ![14_citypicker.png](https://img.rruu.net/image/5f7d827d51eaf) &emsp; ![15_refresh_layout.png](https://img.rruu.net/image/5f7d827ddfb2e) &emsp; ![16_spinner.png](https://img.rruu.net/image/5f7d827dcd311) &emsp;
 
 ### Demo下载
 
 > 演示程序大概18M（主要是demo中集成了一个小视频拍摄的库比较大，大约13M左右，而XUI库目前只有644k大小），项目比较大，推荐使用蒲公英下载。
 
-![](./art/xui_size.png)
+![xui_size.png](https://img.rruu.net/image/5f7d8400bf84f)
 
 #### 蒲公英下载
 
@@ -192,13 +192,13 @@ protected void attachBaseContext(Context newBase) {
 
 [![蒲公英](https://img.shields.io/badge/downloads-蒲公英-blue.svg)](https://www.pgyer.com/XUIDemo)
 
-![](./art/download_pugongying.png)
+![download_pugongying.png](https://img.rruu.net/image/5f7d827de5af4)
 
 #### Github下载
 
 [![Github](https://img.shields.io/badge/downloads-Github-blue.svg)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
 
-![](./art/download_github.png)
+![download_github.png](https://img.rruu.net/image/5f7d827d5d755)
 
 ## 特别感谢
 
@@ -224,7 +224,7 @@ protected void attachBaseContext(Context newBase) {
 
 > 你的打赏是我维护的动力，我将会列出所有打赏人员的清单在下方作为凭证，打赏前请留下打赏项目的备注！
 
-![](./art/alipay.jpeg) &emsp; ![](./art/weixinpay.jpeg)
+![alipay.jpeg](https://img.rruu.net/image/5f47eeb8bcdf5) &emsp; ![weixinpay.jpeg](https://img.rruu.net/image/5f47eeb1c8a08)
 
 感谢下面小伙伴的打赏：
 
