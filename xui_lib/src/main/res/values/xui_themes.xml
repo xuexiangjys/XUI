@@ -50,6 +50,8 @@
         <item name="xui_config_color_stroke">@color/xui_config_color_edittext_stroke</item>
         <item name="xui_config_color_disable">@color/xui_config_color_edittext_disable</item>
         <item name="xui_config_color_pressed">@color/xui_config_color_background_pressed</item>
+        <item name="xui_btn_view_normal_color">@color/xui_btn_blue_normal_color</item>
+        <item name="xui_btn_view_touch_color">@color/xui_btn_blue_select_color</item>
 
         <!--无Title-->
         <item name="android:windowNoTitle">true</item>
@@ -84,8 +86,8 @@
         <!-- 按钮的style -->
         <item name="android:imageButtonStyle">@style/ImageButton</item>
         <item name="imageButtonStyle">@style/ImageButton</item>
-        <item name="android:buttonStyle">@style/Button</item>
-        <item name="buttonStyle">@style/Button</item>
+        <item name="android:buttonStyle">@style/Button.Primary.wrap</item>
+        <item name="buttonStyle">@style/Button.Primary.wrap</item>
 
         <!-- 输入框的style -->
         <item name="android:editTextColor">?attr/xui_config_color_input_text</item>

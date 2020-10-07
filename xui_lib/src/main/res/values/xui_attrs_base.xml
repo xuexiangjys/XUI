@@ -146,6 +146,8 @@
     <attr name="xui_btn_view_text_size" format="dimension" />
     <attr name="xui_btn_view_border_width" format="dimension" />
     <attr name="xui_btn_view_disable_color" format="color" />
+    <attr name="xui_btn_view_normal_color" format="color" />
+    <attr name="xui_btn_view_touch_color" format="color" />
 
     <attr name="xui_config_icon_drawable_padding" format="dimension" />
 

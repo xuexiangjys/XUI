@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./art/app_logo_xui.png" width="388" height="321" alt="Banner" />
+  <img src="https://cdn.jsdelivr.net/gh/BugF/IMG/2020/10/05/5f7b2469a6676.png" width="388" height="321" alt="Banner" />
 </p>
 
 # XUI
@@ -263,6 +263,9 @@ B*G | 1￥ | 微信
 *明 | 20￥ | 微信
 *化 | 8￥ | 微信
 *攀 | 16.80￥ | 支付宝
+**航 | 10￥ | 支付宝
+**飞 | 10.24￥ | 支付宝
+*瑟 | 1￥ | 微信
 
 ## 联系方式
 

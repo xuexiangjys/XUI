@@ -22,12 +22,12 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
-    <!--XUIAlphaButton-->
+    <!--主题按钮-->
     <style name="Button.Primary" parent="Button.Style">
         <item name="android:background">@drawable/xui_config_bg_primary_btn</item>
     </style>
 
-    <!--XUIAlphaButton-->
+    <!--主题按钮-->
     <style name="Button.Primary.wrap">
         <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
