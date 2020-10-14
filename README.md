@@ -228,7 +228,7 @@ protected void attachBaseContext(Context newBase) {
 
 > 你的打赏是我维护的动力，我将会列出所有打赏人员的清单在下方作为凭证，打赏前请留下打赏项目的备注！
 
-![alipay.jpeg](https://img.rruu.net/image/5f47eeb8bcdf5) &emsp; ![weixinpay.jpeg](https://img.rruu.net/image/5f47eeb1c8a08)
+![pay.png](https://img.rruu.net/image/5f871d00045da)
 
 感谢下面小伙伴的打赏：
 
@@ -276,4 +276,4 @@ B*G | 1￥ | 微信
 [![](https://img.shields.io/badge/XUI开源交流群-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
 [![](https://img.shields.io/badge/XUI开源交流2群-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
 
-![xui_qq.jpg](https://img.rruu.net/image/5f7d91a67efdc)
+![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
