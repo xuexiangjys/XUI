@@ -90,7 +90,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.androidx.multidex
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     //下拉刷新、CityPicker、XUI框架需要
 //    implementation deps.androidx.appcompat
@@ -99,7 +99,7 @@ dependencies {
 //    implementation deps.glide
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     //XUI框架
@@ -108,10 +108,10 @@ dependencies {
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
-    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.8'
-    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:1.1.8'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:2.0.0'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:2.0.0'
     //切片
-    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.5x'
+    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.1.0'
     //页面路由
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
@@ -161,14 +161,14 @@ dependencies {
     implementation 'com.github.xuexiangjys.AgentWeb:agentweb-filechooser:1.0.0'//选填
 
     //数据库
-    implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
-    annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
+    implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.2'
+    annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.2'
 
     //侧边栏菜单
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
 
     //XQRCode二维码扫描
-    implementation 'com.github.xuexiangjys:XQRCode:1.0.6'
+    implementation 'com.github.xuexiangjys:XQRCode:1.1.0'
     //CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.2"
     //XFloatView悬浮窗口
@@ -203,6 +203,9 @@ dependencies {
     implementation 'com.zhy:okhttputils:2.6.2'
     //腾讯的键值对存储mmkv
     implementation 'com.tencent:mmkv:1.0.22'
+    //腾讯x5TBS
+    implementation 'com.tencent.tbs.tbssdk:sdk:43967'
+
 
     //双列表联动
     implementation 'com.kunminx.linkage:linkage-recyclerview:1.9.2'
