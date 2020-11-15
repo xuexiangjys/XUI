@@ -207,6 +207,38 @@ public final class DrawableUtils {
         }
     }
 
+
+    /**
+     * 安全的创建bitmap。
+     * 如果新建 Bitmap 时产生了 OOM，可以主动进行一次 GC - System.gc()，然后再次尝试创建。
+     *
+     * @param source     原图片
+     * @param x          源中第一个像素的x坐标
+     * @param y          源中第一个像素的y坐标
+     * @param width      一行像素点的数量
+     * @param height     行数
+     * @param retryCount 创建 Bitmap 时产生 OOM 后，主动重试的次数。
+     * @return 返回创建的 Bitmap。
+     */
+    public static Bitmap createBitmapSafely(@NonNull Bitmap source, int x, int y, int width, int height, int retryCount) {
+        if (x < 0 || y < 0 || width <= 0 || height <= 0) {
+            return null;
+        }
+        try {
+            return Bitmap.createBitmap(source, x, y, width, height);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return null;
+        } catch (OutOfMemoryError e) {
+            e.printStackTrace();
+            if (retryCount > 0) {
+                System.gc();
+                return createBitmapSafely(source, x, y, width, height, retryCount - 1);
+            }
+            return null;
+        }
+    }
+
     /**
      * 创建一张指定大小的纯色图片，支持圆角
      *
