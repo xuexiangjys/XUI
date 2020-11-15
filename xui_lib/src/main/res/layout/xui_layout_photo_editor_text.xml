@@ -36,7 +36,7 @@
             android:textColor="#000000"
             android:textSize="18sp"
             tools:text="Burhanuddin"
-            tools:textColor="@android:color/black" />
+            tools:textColor="@color/xui_config_color_pure_black" />
 
     </FrameLayout>
 

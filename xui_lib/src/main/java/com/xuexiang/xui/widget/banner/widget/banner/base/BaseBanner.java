@@ -620,7 +620,6 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
                 }
             });
             container.addView(inflate);
-
             return inflate;
         }
 

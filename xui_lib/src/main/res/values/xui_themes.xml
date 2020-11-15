@@ -876,4 +876,17 @@
 
     <style name="TextAppearanceBase" parent="android:TextAppearance.Holo" />
 
+    <!--Translucent，XUI半透明主题-->
+    <style name="XUITheme.Translucent">
+        <item name="colorPrimaryDark">@color/xui_config_color_pure_black</item>
+        <item name="android:windowBackground">@color/xui_config_color_transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowNoTitle">true</item>　　　　　
+        <!--是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--是否有覆盖-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
 </resources>

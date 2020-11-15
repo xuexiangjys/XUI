@@ -23,7 +23,7 @@
     android:orientation="vertical"
     app:md_reduce_padding_no_title_no_buttons="false">
 
-    <include layout="@layout/md_layout_stub_titleframe" />
+    <include layout="@layout/xmd_layout_stub_title_frame" />
 
     <ScrollView
         android:id="@+id/md_contentScrollView"
@@ -45,6 +45,6 @@
 
     </ScrollView>
 
-    <include layout="@layout/md_layout_stub_actionbuttons" />
+    <include layout="@layout/xmd_layout_stub_action_buttons" />
 
 </com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout>

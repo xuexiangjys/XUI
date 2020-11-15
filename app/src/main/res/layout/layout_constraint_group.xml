@@ -49,7 +49,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/app_color_theme_1"
             android:text="我是group成员group_1"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             app:layout_constraintEnd_toEndOf="@id/sb_group"
             app:layout_constraintStart_toStartOf="@id/sb_group"
             app:layout_constraintTop_toBottomOf="@id/sb_group" />
@@ -61,7 +61,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/app_color_theme_1"
             android:text="我是group成员group_2"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             app:layout_constraintStart_toStartOf="@id/group_1"
             app:layout_constraintTop_toBottomOf="@id/group_1" />
 
@@ -89,7 +89,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/app_color_theme_2"
             android:text="我是group2成员group2_1"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             app:layout_constraintEnd_toEndOf="@id/sb_group2"
             app:layout_constraintStart_toStartOf="@id/sb_group2"
             app:layout_constraintTop_toBottomOf="@id/sb_group2" />
@@ -101,7 +101,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/app_color_theme_2"
             android:text="我是group2成员group2_2"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             app:layout_constraintStart_toStartOf="@id/group2_1"
             app:layout_constraintTop_toBottomOf="@id/group2_1" />
 

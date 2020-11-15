@@ -1026,11 +1026,11 @@ public class MaterialDialog extends DialogBase
         public static int getLayoutForType(ListType type) {
             switch (type) {
                 case REGULAR:
-                    return R.layout.md_layout_listitem;
+                    return R.layout.xmd_layout_listitem;
                 case SINGLE:
-                    return R.layout.md_layout_listitem_singlechoice;
+                    return R.layout.xmd_layout_listitem_single_choice;
                 case MULTI:
-                    return R.layout.md_layout_listitem_multichoice;
+                    return R.layout.xmd_layout_listitem_multi_choice;
                 default:
                     throw new IllegalArgumentException("Not a valid list type");
             }

@@ -21,7 +21,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <include layout="@layout/md_layout_stub_titleframe_lesspadding" />
+    <include layout="@layout/xmd_layout_stub_title_frame_less_padding" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,6 +79,6 @@
 
     </LinearLayout>
 
-    <include layout="@layout/md_layout_stub_actionbuttons" />
+    <include layout="@layout/xmd_layout_stub_action_buttons" />
 
 </com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout>

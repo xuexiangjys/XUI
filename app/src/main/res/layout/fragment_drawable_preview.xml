@@ -17,7 +17,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="@color/xui_config_color_pure_black"
     android:orientation="vertical">
 
     <com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView

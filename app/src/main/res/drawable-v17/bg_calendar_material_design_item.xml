@@ -22,5 +22,5 @@
             <solid android:color="@color/colorAccent"/>
         </shape>
     </item>
-    <item android:drawable="@android:color/transparent"/>
+    <item android:drawable="@color/xui_config_color_transparent"/>
 </selector>

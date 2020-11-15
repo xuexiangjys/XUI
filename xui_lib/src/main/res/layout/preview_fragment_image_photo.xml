@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:background="@color/xui_config_color_transparent">
 
     <com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView
         android:id="@+id/photoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent" />
+        android:background="@color/xui_config_color_transparent" />
 
     <com.xuexiang.xui.widget.progress.materialprogressbar.MaterialProgressBar
         android:id="@+id/loading"
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:indeterminate="true"
         android:visibility="visible"
         app:mpb_indeterminateTint="@color/xui_config_color_main_theme" />
@@ -25,10 +25,10 @@
         android:id="@+id/btnVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:alpha="0"
         android:padding="48dp"
         android:src="@drawable/xui_icon_video"
         android:visibility="gone" />
 
-</RelativeLayout>
+</FrameLayout>

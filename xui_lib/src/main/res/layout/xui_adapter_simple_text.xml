@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#555555"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
@@ -14,6 +13,6 @@
         android:gravity="center_vertical"
         android:paddingStart="25dp"
         android:singleLine="true"
-        android:textColor="#ffffff"/>
+        android:textColor="@color/xui_config_color_white" />
 
 </LinearLayout>

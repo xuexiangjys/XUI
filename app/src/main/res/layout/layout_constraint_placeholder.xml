@@ -44,7 +44,7 @@
             android:background="@color/app_color_theme_1"
             android:gravity="center"
             android:text="点击控件1"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
             android:background="@color/app_color_theme_2"
             android:gravity="center"
             android:text="点击控件2"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_1" />
@@ -72,7 +72,7 @@
             android:background="@color/app_color_theme_3"
             android:gravity="center"
             android:text="点击控件3"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_2" />

@@ -18,7 +18,7 @@
         android:id="@+id/et_input"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent"
+        android:background="@color/xui_config_color_transparent"
         android:inputType="number" />
 
 </RelativeLayout>

@@ -24,8 +24,8 @@ import android.view.View;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import com.xuexiang.xui.R;
 
@@ -35,7 +35,7 @@ import com.xuexiang.xui.R;
  * @author xuexiang
  * @since 2018/12/5 上午11:49
  */
-public class VideoPlayerActivity extends FragmentActivity {
+public class VideoPlayerActivity extends AppCompatActivity {
 
     public static final String KEY_URL = "com.xuexiang.xui.widget.preview.KEY_URL";
 

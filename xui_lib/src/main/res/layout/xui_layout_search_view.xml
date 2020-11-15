@@ -37,7 +37,7 @@
             android:id="@+id/search_top_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
+            android:background="@color/xui_config_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -84,8 +84,8 @@
             android:id="@+id/suggestion_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:divider="@android:color/transparent" />
+            android:background="@color/xui_config_color_white"
+            android:divider="@color/xui_config_color_transparent" />
     </LinearLayout>
 
 </FrameLayout>

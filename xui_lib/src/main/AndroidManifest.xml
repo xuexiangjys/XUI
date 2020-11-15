@@ -4,9 +4,10 @@
     <application>
         <activity
             android:name=".widget.imageview.preview.ui.PreviewActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".widget.imageview.preview.ui.VideoPlayerActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:theme="@style/XUITheme.Translucent" />
+        <activity
+            android:name=".widget.imageview.preview.ui.VideoPlayerActivity"
+            android:theme="@style/XUITheme.Translucent" />
     </application>
 
 </manifest>

@@ -214,14 +214,17 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/xui_config_color_transparent</item>
     </style>
 
     <!-- loading加载框样式 -->
     <style name="Dialog.Loading.Big_Tablet" parent="XUIDialog">
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_big</item>
-        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_big</item>
-        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_big</item>
+        <item name="xui_dialog_loading_padding_size">
+            @dimen/xui_dialog_loading_padding_size_tablet_big
+        </item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_big
+        </item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_big</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_big</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_big</item>
@@ -230,8 +233,11 @@
     <!-- loading加载框样式 -->
     <style name="Dialog.Loading.Small_Tablet" parent="XUIDialog">
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_tablet_small</item>
-        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_tablet_small</item>
-        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_small</item>
+        <item name="xui_dialog_loading_padding_size">
+            @dimen/xui_dialog_loading_padding_size_tablet_small
+        </item>
+        <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_tablet_small
+        </item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_tablet_small</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_tablet_small</item>
         <item name="xui_loading_margin_size">@dimen/xui_loading_margin_size_tablet_small</item>
@@ -240,7 +246,8 @@
     <!-- loading加载框样式 -->
     <style name="Dialog.Loading.Phone" parent="XUIDialog">
         <item name="xui_dialog_radius_size">@dimen/xui_dialog_radius_size_phone</item>
-        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_phone</item>
+        <item name="xui_dialog_loading_padding_size">@dimen/xui_dialog_loading_padding_size_phone
+        </item>
         <item name="xui_dialog_loading_min_size">@dimen/xui_dialog_loading_min_size_phone</item>
         <item name="xui_loading_view_size">@dimen/xui_loading_view_size_phone</item>
         <item name="xui_loading_view_width">@dimen/xui_loading_view_width_phone</item>
@@ -250,7 +257,7 @@
     <!--自定义弹窗样式-->
     <style name="XUIDialog.Custom">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">@color/xui_config_color_transparent</item>
         <!-- 去除黑色边框的关键设置项 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 屏幕背景是否变暗 -->

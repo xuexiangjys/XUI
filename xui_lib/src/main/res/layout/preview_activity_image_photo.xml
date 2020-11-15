@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:background="@color/xui_config_color_transparent">
 
     <com.xuexiang.xui.widget.imageview.preview.view.PhotoViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent" />
+        android:background="@color/xui_config_color_transparent" />
 
     <TextView
         android:id="@+id/tv_index"
@@ -19,7 +19,7 @@
         android:layout_margin="12dp"
         android:gravity="center"
         android:text="1/2"
-        android:textColor="@android:color/white"
+        android:textColor="@color/xui_config_color_white"
         android:textStyle="bold"
         android:visibility="gone"/>
 
@@ -30,7 +30,7 @@
         android:layout_gravity="bottom|center_vertical|center_horizontal"
         android:paddingBottom="10dp"
         android:visibility="gone"
-        app:bbv_selectedColor="@android:color/white"
+        app:bbv_selectedColor="@color/xui_config_color_white"
         app:bbv_selectedRadius="4dp"
         app:bbv_spacing="6dp"
         app:bbv_unSelectedColor="@android:color/darker_gray"

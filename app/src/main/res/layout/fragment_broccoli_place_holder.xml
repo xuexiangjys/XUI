@@ -31,7 +31,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
+            android:background="@color/xui_config_color_white"
             android:overScrollMode="never"
             tools:listitem="@layout/adapter_news_list_item" />
 
