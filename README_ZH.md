@@ -8,7 +8,7 @@
 [![Issue](https://img.shields.io/github/issues/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI/issues)
 [![Star](https://img.shields.io/github/stars/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI)
 
-## [英文](./ReadME.md) | [中文](./ReadME_ZH.md)
+## [英文](./README.md) | [中文](./README_ZH.md)
 
 一个简洁而又优雅的Android原生UI框架，解放你的双手！还不赶紧点击[使用说明文档](https://github.com/xuexiangjys/XUI/wiki)，体验一下吧！
 

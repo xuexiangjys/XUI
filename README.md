@@ -9,7 +9,7 @@
 [![Issue](https://img.shields.io/github/issues/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI/issues)
 [![Star](https://img.shields.io/github/stars/xuexiangjys/XUI.svg)](https://github.com/xuexiangjys/XUI)
 
-## [English](./ReadME.md) | [Chinese](./ReadME_ZH.md)
+## [English](./README.md) | [Chinese](./README_ZH.md)
 
 A simple and elegant Android native UI framework, free your hands! Click on the [instruction document](https://github.com/xuexiangjys/XUI/wiki) and experience it!
 
@@ -176,7 +176,7 @@ protected void attachBaseContext(Context newBase) {
 
 ## Demonstration
 
-### Screenshot of demo program
+### Screenshot
 
 ![1_splash.png](https://img.rruu.net/image/5f7b65c2e3cce) &emsp; ![2_main.png](https://img.rruu.net/image/5f7b65c3073e5) &emsp; ![3_about.png](https://img.rruu.net/image/5f7b65c30ee6f) &emsp;
 
@@ -281,8 +281,8 @@ B*G | 1￥ | WeChat
 
 ## Contact
 
-[![](https://img.shields.io/badge/XUI Communication Group-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
+[![](https://img.shields.io/badge/XUICommunicationGroup-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
 
-[![](https://img.shields.io/badge/XUI Communication Group2-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
+[![](https://img.shields.io/badge/XUICommunicationGroup2-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
 
 ![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
