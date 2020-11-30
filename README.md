@@ -29,7 +29,7 @@ Before using, please read the [instruction document](https://github.com/xuexiang
 
 In order to facilitate the rapid integration of X-Library, I provide a template project for your reference: [https://github.com/xuexiangjys/TemplateAppProject](https://github.com/xuexiangjys/TemplateAppProject)
 
-In addition, I have also produced several [video tutorials]（https://space.bilibili.com/483850585/channel/detail?cid=104998）for your reference.
+In addition, I have also produced several [video tutorials](https://space.bilibili.com/483850585/channel/detail?cid=104998) for your reference.
 
 ----
 
@@ -281,8 +281,8 @@ B*G | 1￥ | WeChat
 
 ## Contact
 
-[![](https://img.shields.io/badge/XUICommunicationGroup-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
+[![](https://img.shields.io/badge/XUIGroup1-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
 
-[![](https://img.shields.io/badge/XUICommunicationGroup2-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
+[![](https://img.shields.io/badge/XUIGroup2-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
 
 ![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
