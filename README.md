@@ -15,11 +15,13 @@ A simple and elegant Android native UI framework, free your hands! Click on the 
 
 > Covers most of the UI components：TextView、Button、EditText、ImageView、Spinner、Picker、Dialog、PopupWindow、ProgressBar、LoadingView、StateLayout、FlowLayout、Switch、Actionbar、TabBar、Banner、GuideView、BadgeView、MarqueeView、WebView、SearchView...etc. A series of components and colorful style themes。
 
-Before using, please read the [instruction document](https://github.com/xuexiangjys/XUI/wiki) carefully!!!
+Please read [【wisdom of asking questions】](https://xuexiangjys.blog.csdn.net/article/details/83344235) before raising the issue and strictly follow the [issue template](https://github.com/xuexiangjys/XUI/issues/new/choose) fill in and save everyone's time.
 
-Before using, please read the [instruction document](https://github.com/xuexiangjys/XUI/wiki) carefully!!!
+Please read the [instruction document](https://github.com/xuexiangjys/XUI/wiki) carefully before use, important things are to be repeated for three time!!！
 
-Before using, please read the [instruction document](https://github.com/xuexiangjys/XUI/wiki) carefully!!!
+please read the [instruction document](https://github.com/xuexiangjys/XUI/wiki) carefully before use, important things are to be repeated for three time!!！
+
+Please read the [instruction document](https://github.com/xuexiangjys/XUI/wiki) carefully before use, important things are to be repeated for three time!!！
 
 ## About me
 
@@ -36,10 +38,15 @@ In addition, I have also produced several [video tutorials](https://space.bilibi
 ## Features
 
 * Simple and elegant，the total size of the project library is less than 1M (about 644k after packaging).
+
 * Rich components，provides the vast majority of our developers in common functional components.
+
 * Easy to use，in order to facilitate rapid development and improve development efficiency, the API is optimized to provide one click access.
+
 * Uniform style，the framework provides a series of unified styles to make the UI look beautiful and harmonious.
+
 * High compatibility，the framework also provides three different sizes of device styles (4.5 inch, 7 inch and 10 inch) and is compatible with Android 17 at least, which makes UI compatibility stronger.
+
 * Strong expansibility，each component provides rich properties and style APIs, and different styles of UI can be built by setting different style properties.
 
 ----

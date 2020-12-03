@@ -519,6 +519,9 @@ public class StatusBarUtils {
      * @param activity
      */
     public static void fullScreen(Activity activity) {
+        if (activity == null) {
+            return;
+        }
         fullScreen(activity.getWindow());
     }
 
@@ -528,6 +531,9 @@ public class StatusBarUtils {
      * @param window
      */
     public static void fullScreen(Window window) {
+        if (window == null) {
+            return;
+        }
         if (Build.VERSION.SDK_INT >= KITKAT) {
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -545,6 +551,9 @@ public class StatusBarUtils {
      * @param navigationBarColor 导航栏的颜色
      */
     public static void cancelFullScreen(Activity activity, @ColorInt int statusBarColor, @ColorInt int navigationBarColor) {
+        if (activity == null) {
+            return;
+        }
         cancelFullScreen(activity.getWindow(), statusBarColor, navigationBarColor);
     }
 
@@ -556,6 +565,9 @@ public class StatusBarUtils {
      * @param navigationBarColor 导航栏的颜色
      */
     public static void cancelFullScreen(Window window, @ColorInt int statusBarColor, @ColorInt int navigationBarColor) {
+        if (window == null) {
+            return;
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
                     | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -576,6 +588,9 @@ public class StatusBarUtils {
      * @param activity
      */
     public static void cancelFullScreen(Activity activity) {
+        if (activity == null) {
+            return;
+        }
         cancelFullScreen(activity.getWindow());
     }
 
