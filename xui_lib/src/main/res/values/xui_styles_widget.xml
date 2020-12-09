@@ -535,14 +535,26 @@
         <item name="ddm_underlineHeight">@dimen/default_ddm_underline_height</item>
         <item name="ddm_maskColor">@color/default_ddm_mask_color</item>
         <item name="ddm_menuTextSize">@dimen/default_ddm_menu_text_size</item>
-        <item name="ddm_menuTextPaddingHorizontal">@dimen/default_ddm_menu_text_padding_horizontal</item>
-        <item name="ddm_menuTextPaddingVertical">@dimen/default_ddm_menu_text_padding_vertical</item>
+        <item name="ddm_menuTextPaddingHorizontal">@dimen/default_ddm_menu_text_padding_horizontal
+        </item>
+        <item name="ddm_menuTextPaddingVertical">@dimen/default_ddm_menu_text_padding_vertical
+        </item>
         <item name="ddm_menuTextSelectedColor">?attr/colorAccent</item>
         <item name="ddm_menuTextUnselectedColor">?attr/xui_config_color_content_text</item>
         <item name="ddm_menuSelectedIcon">@drawable/ddm_ic_arrow_up</item>
         <item name="ddm_menuUnselectedIcon">@drawable/ddm_ic_arrow_down</item>
         <item name="ddm_menuBackgroundColor">@color/xui_config_color_white</item>
         <item name="ddm_menuHeightPercent">0.5</item>
+    </style>
+
+    <!--  日志打印控件样式  -->
+    <style name="LoggerTextView" parent="AppTheme.Widget.TextView">
+        <item name="android:singleLine">false</item>
+        <item name="android:lineSpacingExtra">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:background">@color/xui_config_color_white</item>
+        <item name="android:textSize">?attr/xui_config_size_explain_text</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:padding">?attr/xui_config_content_spacing_horizontal</item>
     </style>
 
 </resources>
