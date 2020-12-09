@@ -22,7 +22,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
-import androidx.annotation.NonNull;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,6 +31,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.XUI;
 
@@ -208,15 +209,16 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * <p>需重写 onKeyDown</p>
      *
      * @param keyCode
-     * @return
+     * @return 是否拦截事件
+     * <p>
      * @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
-     * return KeyboardUtils.onDisableBackKeyDown(keyCode) && super.onKeyDown(keyCode, event) ;
+     * return KeyboardUtils.onDisableBackKeyDown(keyCode) && super.onKeyDown(keyCode, event);
      * }
+     * </p>
      */
     public static boolean onDisableBackKeyDown(int keyCode) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                return false;
             case KeyEvent.KEYCODE_HOME:
                 return false;
             default:
@@ -231,17 +233,11 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
      * <p>需重写 dispatchTouchEvent</p>
      *
-     * @param ev
+     * @param ev       点击事件
      * @param activity 窗口
-     * @return
      */
-    public static void dispatchTouchEvent(MotionEvent ev, Activity activity) {
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = activity.getCurrentFocus();
-            if (isShouldHideKeyboard(v, ev)) {
-                hideSoftInput(v);
-            }
-        }
+    public static void dispatchTouchEvent(MotionEvent ev, @NonNull Activity activity) {
+        dispatchTouchEvent(ev, activity.getWindow());
     }
 
     /**
@@ -249,17 +245,11 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
      * <p>需重写 dispatchTouchEvent</p>
      *
-     * @param ev
+     * @param ev     点击事件
      * @param dialog 窗口
-     * @return
      */
-    public static void dispatchTouchEvent(MotionEvent ev, Dialog dialog) {
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = dialog.getCurrentFocus();
-            if (isShouldHideKeyboard(v, ev)) {
-                hideSoftInput(v);
-            }
-        }
+    public static void dispatchTouchEvent(MotionEvent ev, @NonNull Dialog dialog) {
+        dispatchTouchEvent(ev, dialog.getWindow());
     }
 
     /**
@@ -267,32 +257,16 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
      * <p>需重写 dispatchTouchEvent</p>
      *
-     * @param ev
-     * @param focusView 聚焦的view
-     * @return
-     */
-    public static void dispatchTouchEvent(MotionEvent ev, View focusView) {
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            if (isShouldHideKeyboard(focusView, ev)) {
-                hideSoftInput(focusView);
-            }
-        }
-    }
-
-    /**
-     * 点击屏幕空白区域隐藏软键盘
-     * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
-     * <p>需重写 dispatchTouchEvent</p>
-     *
-     * @param ev
+     * @param ev     点击事件
      * @param window 窗口
-     * @return
      */
     public static void dispatchTouchEvent(MotionEvent ev, Window window) {
+        if (ev == null || window == null) {
+            return;
+        }
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = window.getCurrentFocus();
-            if (isShouldHideKeyboard(v, ev)) {
-                hideSoftInput(v);
+            if (isShouldHideKeyboard(window, ev)) {
+                hideSoftInputClearFocus(window.getCurrentFocus());
             }
         }
     }
@@ -300,22 +274,78 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
     /**
      * 根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘
      *
-     * @param v
-     * @param event
-     * @return
+     * @param view  窗口
+     * @param event 用户点击事件
+     * @return 是否隐藏键盘
      */
-    public static boolean isShouldHideKeyboard(View v, MotionEvent event) {
-        if (v != null && (v instanceof EditText)) {
-            int[] l = {0, 0};
-            v.getLocationInWindow(l);
-            int left = l[0],
-                    top = l[1],
-                    bottom = top + v.getHeight(),
-                    right = left + v.getWidth();
-            return !(event.getX() > left && event.getX() < right
-                    && event.getY() > top && event.getY() < bottom);
+    public static boolean isShouldHideKeyboard(View view, MotionEvent event) {
+        if ((view instanceof EditText) && event != null) {
+            return !isTouchView(view, event);
         }
         return false;
+    }
+
+    /**
+     * 根据用户点击的坐标获取用户在窗口上触摸到的View，判断这个View是否是EditText来判断是否隐藏键盘
+     *
+     * @param window 窗口
+     * @param event  用户点击事件
+     * @return 是否隐藏键盘
+     */
+    public static boolean isShouldHideKeyboard(Window window, MotionEvent event) {
+        if (window == null || event == null) {
+            return false;
+        }
+        if (!(window.getCurrentFocus() instanceof EditText)) {
+            return false;
+        }
+        View decorView = window.getDecorView();
+        if (decorView instanceof ViewGroup) {
+            return findTouchEditText((ViewGroup) decorView, event) == null;
+        }
+        return false;
+    }
+
+    private static View findTouchEditText(ViewGroup viewGroup, MotionEvent event) {
+        if (viewGroup == null) {
+            return null;
+        }
+        for (int i = 0; i < viewGroup.getChildCount(); i++) {
+            View child = viewGroup.getChildAt(i);
+            if (child == null || !child.isShown()) {
+                continue;
+            }
+            if (!isTouchView(child, event)) {
+                continue;
+            }
+            if (child instanceof EditText) {
+                return child;
+            } else if (child instanceof ViewGroup) {
+                return findTouchEditText((ViewGroup) child, event);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 判断view是否在触摸区域内
+     *
+     * @param view  view
+     * @param event 点击事件
+     * @return view是否在触摸区域内
+     */
+    private static boolean isTouchView(View view, MotionEvent event) {
+        if (view == null || event == null) {
+            return false;
+        }
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        int left = location[0];
+        int top = location[1];
+        int right = left + view.getMeasuredWidth();
+        int bottom = top + view.getMeasuredHeight();
+        return event.getY() >= top && event.getY() <= bottom && event.getX() >= left
+                && event.getX() <= right;
     }
 
     /**
@@ -324,12 +354,35 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * @param view 视图
      */
     public static void hideSoftInput(final View view) {
+        if (view == null) {
+            return;
+        }
         InputMethodManager imm =
                 (InputMethodManager) XUI.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) {
             return;
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    /**
+     * 动态隐藏软键盘并且清除当前view的焦点【记住，要在xml的父布局加上android:focusable="true" 和 android:focusableInTouchMode="true"】
+     *
+     * @param view 视图
+     */
+    public static void hideSoftInputClearFocus(final View view) {
+        if (view == null) {
+            return;
+        }
+        InputMethodManager imm =
+                (InputMethodManager) XUI.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm == null) {
+            return;
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if (view instanceof EditText) {
+            view.clearFocus();
+        }
     }
 
 
@@ -348,6 +401,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
 
     /**
      * 修复软键盘内存泄漏
+     *
      * @param context context
      */
     public static void fixSoftInputLeaks(final Context context) {
