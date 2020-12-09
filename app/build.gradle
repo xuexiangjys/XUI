@@ -201,6 +201,8 @@ dependencies {
     //版本更新
     implementation 'com.github.xuexiangjys:XUpdate:2.0.4'
     implementation 'com.zhy:okhttputils:2.6.2'
+    implementation deps.gson
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
     //腾讯的键值对存储mmkv
     implementation 'com.tencent:mmkv:1.0.22'
     //腾讯x5TBS
