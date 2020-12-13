@@ -2,6 +2,7 @@ package com.xuexiang.xui.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
@@ -21,6 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import static android.os.Build.VERSION_CODES.HONEYCOMB;
 import static android.os.Build.VERSION_CODES.KITKAT;
 
 /**
@@ -516,7 +518,7 @@ public class StatusBarUtils {
     /**
      * 全屏
      *
-     * @param activity
+     * @param activity 窗口
      */
     public static void fullScreen(Activity activity) {
         if (activity == null) {
@@ -528,13 +530,15 @@ public class StatusBarUtils {
     /**
      * 全屏
      *
-     * @param window
+     * @param window 窗口
      */
     public static void fullScreen(Window window) {
         if (window == null) {
             return;
         }
-        if (Build.VERSION.SDK_INT >= KITKAT) {
+        if (Build.VERSION.SDK_INT > HONEYCOMB && Build.VERSION.SDK_INT < KITKAT) { // lower api
+            window.getDecorView().setSystemUiVisibility(View.GONE);
+        } else if (Build.VERSION.SDK_INT >= KITKAT) {
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
@@ -546,7 +550,7 @@ public class StatusBarUtils {
     /**
      * 取消全屏
      *
-     * @param activity
+     * @param activity           窗口
      * @param statusBarColor     状态栏的颜色
      * @param navigationBarColor 导航栏的颜色
      */
@@ -560,7 +564,7 @@ public class StatusBarUtils {
     /**
      * 取消全屏
      *
-     * @param window
+     * @param window             窗口
      * @param statusBarColor     状态栏的颜色
      * @param navigationBarColor 导航栏的颜色
      */
@@ -585,7 +589,7 @@ public class StatusBarUtils {
     /**
      * 取消全屏
      *
-     * @param activity
+     * @param activity 窗口
      */
     public static void cancelFullScreen(Activity activity) {
         if (activity == null) {
@@ -597,13 +601,19 @@ public class StatusBarUtils {
     /**
      * 取消全屏
      *
-     * @param window
+     * @param window 窗口
      */
     public static void cancelFullScreen(Window window) {
         cancelFullScreen(window, -1, -1);
     }
 
 
+    /**
+     * 设置底部导航条的颜色
+     *
+     * @param activity 窗口
+     * @param color    颜色
+     */
     public static void setNavigationBarColor(Activity activity, int color) {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             //5.0以上可以直接设置 navigation颜色
@@ -624,6 +634,12 @@ public class StatusBarUtils {
 
     }
 
+    /**
+     * 获取底部导航条的高度
+     *
+     * @param context 上下文
+     * @return 底部导航条的高度
+     */
     public static int getNavigationBarHeight(Context context) {
         int height = 0;
         int id = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
@@ -631,6 +647,51 @@ public class StatusBarUtils {
             height = context.getResources().getDimensionPixelSize(id);
         }
         return height;
+    }
+
+    /**
+     * 全屏下显示弹窗
+     *
+     * @param dialog 弹窗
+     */
+    public static void showDialogInFullScreen(final Dialog dialog) {
+        if (dialog == null) {
+            return;
+        }
+        showWindowInFullScreen(dialog.getWindow(), new IWindowShower() {
+            @Override
+            public void show(Window window) {
+                dialog.show();
+            }
+        });
+    }
+
+    /**
+     * 全屏下显示窗口【包括dialog等】
+     *
+     * @param window 窗口
+     */
+    public static void showWindowInFullScreen(Window window, IWindowShower iWindowShower) {
+        if (window == null || iWindowShower == null) {
+            return;
+        }
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        iWindowShower.show(window);
+        StatusBarUtils.fullScreen(window);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+    }
+
+
+    /**
+     * 窗口显示接口
+     */
+    public interface IWindowShower {
+        /**
+         * 显示窗口
+         *
+         * @param window 窗口
+         */
+        void show(Window window);
     }
 
 }

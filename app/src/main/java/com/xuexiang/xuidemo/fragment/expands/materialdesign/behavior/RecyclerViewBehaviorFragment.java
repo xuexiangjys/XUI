@@ -77,6 +77,9 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
     }
 
     private void loadData() {
+        if (swipeRefreshLayout == null) {
+            return;
+        }
         swipeRefreshLayout.postDelayed(() -> {
             mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
             if (swipeRefreshLayout != null) {
@@ -111,6 +114,9 @@ public class RecyclerViewBehaviorFragment extends BaseFragment {
     private SwipeRecyclerView.LoadMoreListener mLoadMoreListener = new SwipeRecyclerView.LoadMoreListener() {
         @Override
         public void onLoadMore() {
+            if (swipeRefreshLayout == null) {
+                return;
+            }
             swipeRefreshLayout.postDelayed(() -> {
                 mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
                 if (recyclerView != null) {

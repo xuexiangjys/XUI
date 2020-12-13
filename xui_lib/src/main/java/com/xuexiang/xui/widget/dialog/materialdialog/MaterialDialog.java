@@ -36,6 +36,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
@@ -65,6 +66,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.internal.MDButton;
 import com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout;
@@ -476,12 +478,25 @@ public class MaterialDialog extends DialogBase
     @UiThread
     public void show() {
         try {
-            super.show();
+            if (builder.isFullScreen) {
+                StatusBarUtils.showWindowInFullScreen(getWindow(), new StatusBarUtils.IWindowShower() {
+                    @Override
+                    public void show(Window window) {
+                        showSuper();
+                    }
+                });
+            } else {
+                showSuper();
+            }
         } catch (WindowManager.BadTokenException e) {
             throw new DialogException(
                     "Bad window token, you cannot show a dialog "
                             + "before an Activity is created or after it's hidden.");
         }
+    }
+
+    private void showSuper() {
+        super.show();
     }
 
     /**
@@ -1217,6 +1232,7 @@ public class MaterialDialog extends DialogBase
         protected int btnSelectorNegative;
 
         protected Object tag;
+        protected boolean isFullScreen;
 
         public Builder(@NonNull Context context) {
             this.context = context;
@@ -2430,6 +2446,16 @@ public class MaterialDialog extends DialogBase
 
         public Builder tag(@Nullable Object tag) {
             this.tag = tag;
+            return this;
+        }
+
+        /**
+         * 是否是全屏下显示【解决全屏下显示Dialog导致全屏退出的问题】
+         *
+         * @param fullScreen 是否是全屏下显示
+         */
+        public Builder fullScreen(boolean fullScreen) {
+            isFullScreen = fullScreen;
             return this;
         }
 
