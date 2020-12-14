@@ -3,6 +3,7 @@ package com.xuexiang.xui.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -185,11 +186,10 @@ public final class DensityUtils {
         Point point = new Point();
         if (isReal) {
             display.getRealSize(point);
-            return point;
         } else {
             display.getSize(point);
-            return point;
         }
+        return point;
     }
 
     /**
@@ -234,11 +234,57 @@ public final class DensityUtils {
         DisplayMetrics metrics = new DisplayMetrics();
         if (isReal) {
             display.getRealMetrics(metrics);
-            return metrics;
         } else {
             display.getMetrics(metrics);
-            return metrics;
         }
+        return metrics;
+    }
+
+
+    /**
+     * 底部导航条是否开启
+     *
+     * @param context 上下文
+     * @return 底部导航条是否显示
+     */
+    public static boolean isNavigationBarExist(Context context) {
+        return getNavigationBarHeight(context) > 0;
+    }
+
+    /**
+     * 获取系统底部导航栏的高度
+     *
+     * @param context 上下文
+     * @return 系统状态栏的高度
+     */
+    public static int getNavigationBarHeight(Context context) {
+        WindowManager windowManager;
+        if (context instanceof Activity) {
+            windowManager = ((Activity) context).getWindowManager();
+        } else {
+            windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        }
+        if (windowManager == null) {
+            return 0;
+        }
+        Display defaultDisplay = windowManager.getDefaultDisplay();
+        DisplayMetrics realDisplayMetrics = new DisplayMetrics();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            defaultDisplay.getRealMetrics(realDisplayMetrics);
+        }
+        int realHeight = realDisplayMetrics.heightPixels;
+        int realWidth = realDisplayMetrics.widthPixels;
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        defaultDisplay.getMetrics(displayMetrics);
+
+        int displayHeight = displayMetrics.heightPixels;
+        int displayWidth = displayMetrics.widthPixels;
+
+        if (realHeight - displayHeight > 0) {
+            return realHeight - displayHeight;
+        }
+        return Math.max(realWidth - displayWidth, 0);
     }
 
 

@@ -5,7 +5,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- *
+ * 简单的ViewHolder
  *
  * @author xuexiang
  * @since 2019/1/14 下午10:16

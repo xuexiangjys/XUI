@@ -650,6 +650,16 @@ public class StatusBarUtils {
     }
 
     /**
+     * 底部导航条是否显示
+     *
+     * @param activity 窗口
+     * @return 底部导航条是否显示
+     */
+    public static boolean isNavigationBarExist(Activity activity) {
+        return DensityUtils.isNavigationBarExist(activity);
+    }
+
+    /**
      * 全屏下显示弹窗
      *
      * @param dialog 弹窗
@@ -675,7 +685,7 @@ public class StatusBarUtils {
         if (window == null || iWindowShower == null) {
             return;
         }
-        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
         iWindowShower.show(window);
         StatusBarUtils.fullScreen(window);
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);

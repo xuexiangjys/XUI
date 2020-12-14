@@ -47,27 +47,23 @@ import java.util.HashMap;
  */
 public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
 
-    private final static int MAGIC_NUMBER = 200;
-
     private SoftKeyboardToggleListener mCallback;
-    private View mRootView;
+    private ViewGroup mRootView;
     private Boolean prevValue = null;
-    private float mScreenDensity = 1;
     private static HashMap<SoftKeyboardToggleListener, KeyboardUtils> sListenerMap = new HashMap<>();
 
     public interface SoftKeyboardToggleListener {
+        /**
+         * 键盘显示状态监听回调
+         *
+         * @param isVisible 键盘是否显示
+         */
         void onToggleSoftKeyboard(boolean isVisible);
     }
 
     @Override
     public void onGlobalLayout() {
-        Rect r = new Rect();
-        mRootView.getWindowVisibleDisplayFrame(r);
-
-        int heightDiff = mRootView.getRootView().getHeight() - (r.bottom - r.top);
-        float dp = heightDiff / mScreenDensity;
-        boolean isVisible = dp > MAGIC_NUMBER;
-
+        boolean isVisible = isSoftInputShow(mRootView);
         if (mCallback != null && (prevValue == null || isVisible != prevValue)) {
             prevValue = isVisible;
             mCallback.onToggleSoftKeyboard(isVisible);
@@ -146,7 +142,6 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
 
     private void removeListener() {
         mCallback = null;
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mRootView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
         } else {
@@ -154,22 +149,16 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         }
     }
 
-    private KeyboardUtils(Activity act, SoftKeyboardToggleListener listener) {
+    private KeyboardUtils(Activity activity, SoftKeyboardToggleListener listener) {
         mCallback = listener;
-
-        mRootView = ((ViewGroup) act.findViewById(android.R.id.content)).getChildAt(0);
+        mRootView = (ViewGroup) activity.getWindow().getDecorView();
         mRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-
-        mScreenDensity = act.getResources().getDisplayMetrics().density;
     }
 
     private KeyboardUtils(ViewGroup viewGroup, SoftKeyboardToggleListener listener) {
         mCallback = listener;
-
         mRootView = viewGroup;
         mRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-
-        mScreenDensity = viewGroup.getResources().getDisplayMetrics().density;
     }
 
     /**
@@ -200,6 +189,45 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
     public static void setSoftInputAdjustPan(@NonNull Activity activity) {
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
                 | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+    }
+
+
+    /**
+     * 输入键盘是否在显示
+     *
+     * @param activity 应用窗口
+     */
+    public static boolean isSoftInputShow(Activity activity) {
+        return activity != null && isSoftInputShow(activity.getWindow());
+    }
+
+    /**
+     * 输入键盘是否在显示
+     *
+     * @param window 应用窗口
+     */
+    public static boolean isSoftInputShow(Window window) {
+        if (window != null && window.getDecorView() instanceof ViewGroup) {
+            return isSoftInputShow((ViewGroup) window.getDecorView());
+        }
+        return false;
+    }
+
+    /**
+     * 输入键盘是否在显示
+     *
+     * @param rootView 根布局
+     */
+    public static boolean isSoftInputShow(ViewGroup rootView) {
+        if (rootView == null) {
+            return false;
+        }
+        int viewHeight = rootView.getHeight();
+        //获取View可见区域的bottom
+        Rect rect = new Rect();
+        rootView.getWindowVisibleDisplayFrame(rect);
+        int space = viewHeight - rect.bottom - DensityUtils.getNavigationBarHeight(rootView.getContext());
+        return space > 0;
     }
 
     /**
