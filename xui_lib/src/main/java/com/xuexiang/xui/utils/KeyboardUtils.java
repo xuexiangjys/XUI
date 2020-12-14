@@ -324,6 +324,9 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         if (window == null || event == null) {
             return false;
         }
+        if (!isSoftInputShow(window)) {
+            return false;
+        }
         if (!(window.getCurrentFocus() instanceof EditText)) {
             return false;
         }
