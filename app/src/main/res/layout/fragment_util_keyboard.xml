@@ -65,13 +65,38 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_16"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_show_soft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="显示键盘" />
+
+
+            <Button
+                android:id="@+id/btn_hide_soft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_16"
+                android:text="隐藏键盘" />
+
+        </LinearLayout>
+
 
         <EditText
+            android:id="@+id/et_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_16" />
 
         <EditText
+            android:id="@+id/et_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_16" />

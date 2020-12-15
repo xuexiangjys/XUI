@@ -17,7 +17,10 @@
 
 package com.xuexiang.xuidemo.fragment.utils;
 
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
@@ -40,6 +43,14 @@ public class KeyBoardUtilsFragment extends BaseFragment implements KeyboardUtils
 
     @BindView(R.id.switch_status)
     SwitchButton switchStatus;
+    @BindView(R.id.btn_show_soft)
+    Button btnShowSoft;
+    @BindView(R.id.btn_hide_soft)
+    Button btnHideSoft;
+    @BindView(R.id.et_1)
+    EditText et1;
+    @BindView(R.id.et_2)
+    EditText et2;
 
     private boolean isFullScreen;
 
@@ -67,7 +78,7 @@ public class KeyBoardUtilsFragment extends BaseFragment implements KeyboardUtils
     }
 
     @SingleClick
-    @OnClick({R.id.btn_get_status, R.id.btn_switch_screen})
+    @OnClick({R.id.btn_get_status, R.id.btn_switch_screen, R.id.btn_show_soft, R.id.btn_hide_soft})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_get_status:
@@ -81,9 +92,30 @@ public class KeyBoardUtilsFragment extends BaseFragment implements KeyboardUtils
                 }
                 isFullScreen = !isFullScreen;
                 break;
+            case R.id.btn_show_soft:
+                KeyboardUtils.showSoftInputForce(getActivity());
+                break;
+            case R.id.btn_hide_soft:
+                KeyboardUtils.hideSoftInput(view);
+                break;
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onTouchDownAction(MotionEvent ev) {
+        // 不处理隐藏键盘的操作
+    }
+
+    private EditText getFocusEditText() {
+        if (getActivity() != null) {
+            View view = getActivity().getCurrentFocus();
+            if (view instanceof EditText) {
+                return (EditText) view;
+            }
+        }
+        return null;
     }
 
     @Override

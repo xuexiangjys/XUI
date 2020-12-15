@@ -389,7 +389,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
             return;
         }
         InputMethodManager imm =
-                (InputMethodManager) XUI.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) {
             return;
         }
@@ -406,7 +406,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
             return;
         }
         InputMethodManager imm =
-                (InputMethodManager) XUI.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null) {
             return;
         }
@@ -427,6 +427,36 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
             return;
         }
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+    }
+
+
+    /**
+     * 强制显示软键盘
+     *
+     * @param activity 活动窗口
+     */
+    public static void showSoftInputForce(Activity activity) {
+        if (!isSoftInputShow(activity)) {
+            toggleSoftInput();
+        }
+    }
+
+
+    /**
+     * 显示软键盘
+     *
+     * @param view 可输入控件，并且在焦点上方可显示
+     */
+    public static void showSoftInput(final EditText view) {
+        if (view == null) {
+            return;
+        }
+        InputMethodManager imm =
+                (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm == null) {
+            return;
+        }
+        imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
     }
 
 
