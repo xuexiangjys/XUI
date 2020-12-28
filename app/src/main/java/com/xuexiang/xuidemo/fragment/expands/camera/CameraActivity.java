@@ -32,6 +32,7 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.xuexiang.xaop.annotation.IOThread;
 import com.xuexiang.xaop.annotation.Permission;
+import com.xuexiang.xaop.annotation.Safe;
 import com.xuexiang.xui.widget.alpha.XUIAlphaImageView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.RotateSensorHelper;
@@ -208,22 +209,32 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
+        startCamera();
+    }
+
+    @Safe
+    private void startCamera() {
         if (mCameraView != null) {
             mCameraView.start();
         }
     }
 
+
     @Override
     protected void onPause() {
+        stopCamera();
+        super.onPause();
+    }
+
+
+    @Safe
+    private void stopCamera() {
         if (mCameraView != null) {
             mCameraView.stop();
         }
-        super.onPause();
     }
 
     @Override

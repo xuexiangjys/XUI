@@ -116,7 +116,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.0.2'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.0.3'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime
@@ -199,7 +199,7 @@ dependencies {
     implementation 'com.alibaba.android:ultraviewpager:1.0.7.8'
     implementation 'com.alibaba.android:tangram:3.3.6'
     //版本更新
-    implementation 'com.github.xuexiangjys:XUpdate:2.0.4'
+    implementation 'com.github.xuexiangjys:XUpdate:2.0.6'
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation deps.gson
     implementation deps.okhttp3

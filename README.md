@@ -285,6 +285,9 @@ B*G | 1￥ | WeChat
 *瑟 | 1￥ | WeChat
 *原 | 10.24￥ | Alipay
 *越 | 10.24￥ | WeChat
+**俊 | 80￥ | Alipay
+*尋 | 10.24￥ | WeChat
+爱生活 | 100￥ | QQ
 
 ## Contact
 
