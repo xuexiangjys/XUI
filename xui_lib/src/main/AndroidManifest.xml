@@ -2,6 +2,12 @@
     package="com.xuexiang.xui">
 
     <application>
+        <provider
+            android:name="com.xuexiang.xui.XUIInitProvider"
+            android:authorities="${applicationId}.xui-init-provider"
+            android:exported="false"
+            android:multiprocess="true" />
+
         <activity
             android:name=".widget.imageview.preview.ui.PreviewActivity"
             android:theme="@style/XUITheme.Translucent" />

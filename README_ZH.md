@@ -98,15 +98,7 @@ dependencies {
 
 ### 初始化XUI设置
 
-1.在Application最顶部初始化设置（必须）
-
-```
-XUI.init(this); //初始化UI框架
-XUI.debug(true);  //开启UI框架调试日志
-
-```
-
-2.调整应用的基础主题（必须）
+1.调整应用的基础主题（必须）
 
 > 必须设置应用的基础主题，否则组件将无法正常使用！必须保证所有用到XUI组件的窗口的主题都为XUITheme的子类，这非常重要！！！
 
@@ -138,7 +130,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-3.调整字体库（对字体无要求的可省略）
+2.调整字体库（对字体无要求的可省略）
 
 （1）设置你需要修改的字体库路径（assets下）
 ```

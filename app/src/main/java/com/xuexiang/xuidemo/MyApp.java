@@ -60,7 +60,6 @@ public class MyApp extends Application {
      * 初始化XUI 框架
      */
     private void initUI() {
-        XUI.init(this);
         XUI.debug(MyApp.isDebug());
         if (SettingSPUtils.getInstance().isUseCustomFont()) {
             //设置默认字体为华文行楷

@@ -39,7 +39,7 @@ public class XUI {
     /**
      * 初始化
      *
-     * @param context
+     * @param context 上下文
      */
     public static void init(Application context) {
         sContext = context;

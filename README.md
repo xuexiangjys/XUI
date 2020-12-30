@@ -100,17 +100,9 @@ dependencies {
 
 ### Initialization
 
-1.Initialize settings at the top of the application (required)
+1.Modify the basic theme of the application (required)
 
-```
-XUI.init(this); // Initialize UI framework
-XUI.debug(true);  // Open UI framework debugging log
-
-```
-
-2.Modify the basic theme of the application (required)
-
-> The basic theme of the application must be set, otherwise the component will not work normally! It is very important to ensure that the theme of all windows using Xui components is a subclass of `XUITheme`!!!
+> The basic theme of the application must be set, otherwise the component will not work normally! It is very important to ensure that the theme of all windows using XUI components is a subclass of `XUITheme`!!!
 
 Basic topic type：
 
@@ -141,7 +133,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-3.Adjust font library (omit if there is no requirement for font)
+2.Adjust font library (omit if there is no requirement for font)
 
 （1）Set the font library path you need to modify (under assets)
 

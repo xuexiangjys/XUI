@@ -24,14 +24,15 @@ public class UIConfig {
      */
     private Drawable mAppIcon;
 
-    
+
     private UIConfig() {
         mStateLayoutConfig = new StateLayoutConfig();
         mAppIcon = Utils.getAppIcon(XUI.getContext());
     }
-    
+
     /**
      * 获取单例
+     *
      * @return
      */
     public static UIConfig getInstance() {
@@ -49,8 +50,8 @@ public class UIConfig {
 
     /**
      * 设置StatefulLayout的默认配置信息
-     * @param config
-     * @return
+     *
+     * @param config 配置
      */
     public UIConfig setStatefulLayoutConfig(StateLayoutConfig config) {
         mStateLayoutConfig = config;
