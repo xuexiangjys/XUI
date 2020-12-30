@@ -30,6 +30,7 @@ import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -87,7 +88,7 @@ public class NestedScrollingFragment extends BaseFragment {
         viewPager.setOffscreenPageLimit(titles.length - 1);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-
+        ViewUtils.setViewsFont(tabLayout);
         stickyNavigationLayout.setOnScrollChangeListener(this::initTitleBar);
     }
 

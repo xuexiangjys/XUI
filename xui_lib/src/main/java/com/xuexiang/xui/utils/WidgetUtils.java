@@ -362,4 +362,5 @@ public final class WidgetUtils {
         return new MiniLoadingDialog(context, message);
     }
 
+
 }

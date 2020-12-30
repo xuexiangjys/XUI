@@ -37,6 +37,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.DrawableUtils;
 
 /**
  * 自定义图片裁剪控件
@@ -414,12 +415,14 @@ public class CropImageView extends FrameLayout {
 
         // Crop the subset from the original Bitmap.
 
-        return Bitmap.createBitmap(mBitmap,
+        return DrawableUtils.createBitmapSafely(mBitmap,
                 (int) actualCropX,
                 (int) actualCropY,
                 (int) actualCropWidth,
-                (int) actualCropHeight);
+                (int) actualCropHeight,
+                1);
     }
+
 
     /**
      * Gets the crop window's position relative to the source Bitmap (not the image

@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:background="@android:color/transparent" />
+            android:background="@color/xui_config_color_transparent" />
 
     </com.xuexiang.xui.widget.textview.ExpandableTextView>
 

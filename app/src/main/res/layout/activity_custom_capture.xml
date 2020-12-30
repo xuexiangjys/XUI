@@ -30,7 +30,7 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:text="二维码扫描"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             android:textSize="21sp" />
 
         <androidx.appcompat.widget.AppCompatImageView

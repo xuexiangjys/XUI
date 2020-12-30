@@ -3,14 +3,13 @@ package com.xuexiang.xui.widget.flowlayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.util.AttributeSet;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
@@ -177,12 +176,9 @@ public class FlowTagLayout extends ViewGroup {
                 resultWidth = Math.max(lineWidth, resultWidth);
                 resultHeight += lineHeight;
             }
-
-            setMeasuredDimension(modeWidth == MeasureSpec.EXACTLY ? sizeWidth : resultWidth,
-                    modeHeight == MeasureSpec.EXACTLY ? sizeHeight : resultHeight);
-
         }
-
+        setMeasuredDimension(modeWidth == MeasureSpec.EXACTLY ? sizeWidth : resultWidth,
+                modeHeight == MeasureSpec.EXACTLY ? sizeHeight : resultHeight);
     }
 
     @Override

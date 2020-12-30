@@ -1704,5 +1704,6 @@
     <attr name="XUIGroupListSectionViewStyle" format="reference" />
     <attr name="XUITipPointStyle" format="reference" />
     <attr name="XUITipNewStyle" format="reference" />
+    <attr name="LoggerTextViewStyle" format="reference" />
 
 </resources>

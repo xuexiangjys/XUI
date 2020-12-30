@@ -19,6 +19,7 @@
 <resources>
 
     <color name="custom_color_main_theme">@color/app_color_theme_1</color>
+    <color name="custom_btn_view_touch_color">#8FEF5362</color>
 
     <color name="custom_color_title_text">#1B1B4E</color>
     <color name="custom_color_content_text">#1B1B4E</color>

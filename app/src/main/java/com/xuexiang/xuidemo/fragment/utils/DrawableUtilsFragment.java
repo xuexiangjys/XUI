@@ -16,16 +16,21 @@
 
 package com.xuexiang.xuidemo.fragment.utils;
 
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.ColorUtils;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ViewUtils;
@@ -47,6 +52,8 @@ public class DrawableUtilsFragment extends BaseFragment {
 
     @BindView(R.id.solidImage)
     ImageView mSolidImageView;
+    @BindView(R.id.circleImage)
+    AppCompatImageView circleImage;
     @BindView(R.id.circleGradient)
     ImageView mCircleGradientView;
     @BindView(R.id.tintColor)
@@ -57,6 +64,9 @@ public class DrawableUtilsFragment extends BaseFragment {
     View mSeparatorView;
     @BindView(R.id.contentWrap)
     NestedScrollView contentWrap;
+    @BindView(R.id.btn_action)
+    Button btnAction;
+
 
     @Override
     protected int getLayoutId() {
@@ -76,6 +86,10 @@ public class DrawableUtilsFragment extends BaseFragment {
         BitmapDrawable solidImageBitmapDrawable = DrawableUtils.createDrawableWithSize(getResources(), commonShapeSize, commonShapeSize, commonShapeRadius, ContextCompat.getColor(getContext(), R.color.app_color_theme_3));
         mSolidImageView.setImageDrawable(solidImageBitmapDrawable);
 
+        // 创建一张指定大小的圆形图片，并带文字
+        BitmapDrawable circleImageBitmapDrawable = DrawableUtils.createCircleDrawableWithText(getResources(), commonShapeSize, ContextCompat.getColor(getContext(), R.color.app_color_theme_2), "薛", DensityUtils.sp2px(getContext(), 20), Color.WHITE);
+        circleImage.setImageDrawable(circleImageBitmapDrawable);
+
         // 创建一张圆形渐变图片，支持圆角
         GradientDrawable gradientCircleGradientDrawable = DrawableUtils.createCircleGradientDrawable(ContextCompat.getColor(getContext(), R.color.app_color_theme_4),
                 ContextCompat.getColor(getContext(), R.color.xui_config_color_transparent), commonShapeRadius, 0.5f, 0.5f);
@@ -89,6 +103,10 @@ public class DrawableUtilsFragment extends BaseFragment {
         DrawableUtils.setDrawableTintColor(tintColorBitmapDrawable, ContextCompat.getColor(getContext(), R.color.app_color_theme_7));
         mTintColorImageView.setImageDrawable(tintColorBitmapDrawable);
         mTintColorOriginImageView.setImageDrawable(tintColorOriginBitmapDrawable);
+
+        int color = ColorUtils.getRandomColor();
+        btnAction.setBackground(DrawableUtils.getDrawable(16, color));
+        btnAction.setTextColor(ColorUtils.isColorDark(color) ? Color.WHITE : Color.BLACK);
 
         // 创建带上分隔线或下分隔线的 Drawable
         LayerDrawable separatorLayerDrawable = DrawableUtils.createItemSeparatorBg(ContextCompat.getColor(getContext(), R.color.app_color_theme_7),

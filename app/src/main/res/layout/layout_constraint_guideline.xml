@@ -48,7 +48,7 @@
             android:background="@color/app_color_theme_1"
             android:gravity="center"
             android:text="使用Guideline实现距离顶端和左边20%的距离"
-            android:textColor="@android:color/white"
+            android:textColor="@color/xui_config_color_white"
             app:layout_constraintStart_toEndOf="@id/guide2"
             app:layout_constraintTop_toBottomOf="@id/guide1"
             app:layout_constraintWidth_max="100dp" />

@@ -28,6 +28,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.base.webview.XPageWebViewFragment;
 import com.xuexiang.xuidemo.fragment.expands.webview.JsWebViewFragment;
+import com.xuexiang.xuidemo.fragment.expands.webview.TBSX5Fragment;
 import com.xuexiang.xuidemo.fragment.expands.webview.TbsWebFileReaderFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.app.IntentUtils;
@@ -56,6 +57,7 @@ public class WebViewFragment extends BaseSimpleListFragment {
         lists.add("地图定位");
         lists.add("视频播放");
         lists.add("简单的JS通信");
+        lists.add("腾讯X5能力线上调试");
         lists.add("腾讯X5文件浏览器（点击选择文件）");
         lists.add("腾讯X5文件浏览器（加载在线pdf文档）");
         lists.add("腾讯X5文件浏览器（加载在线word文档）");
@@ -91,15 +93,18 @@ public class WebViewFragment extends BaseSimpleListFragment {
                 openPage(JsWebViewFragment.class);
                 break;
             case 8:
-                chooseFile();
+                TBSX5Fragment.openUrl(this, "http://debugtbs.qq.com/");
                 break;
             case 9:
-                TbsWebFileReaderFragment.show(this, "https://gitee.com/xuexiangjys/Resource/raw/master/file/test.pdf");
+                chooseFile();
                 break;
             case 10:
-                TbsWebFileReaderFragment.show(this, "https://gitee.com/xuexiangjys/Resource/raw/master/file/test.docx");
+                TbsWebFileReaderFragment.show(this, "https://gitee.com/xuexiangjys/Resource/raw/master/file/test.pdf");
                 break;
             case 11:
+                TbsWebFileReaderFragment.show(this, "https://gitee.com/xuexiangjys/Resource/raw/master/file/test.docx");
+                break;
+            case 12:
                 TbsWebFileReaderFragment.show(this, "https://gitee.com/xuexiangjys/Resource/raw/master/file/test.xlsx");
                 break;
             default:
@@ -148,7 +153,6 @@ public class WebViewFragment extends BaseSimpleListFragment {
         });
         return titleBar;
     }
-
 
 
 }

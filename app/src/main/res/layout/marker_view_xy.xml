@@ -18,7 +18,7 @@
         android:singleLine="true"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/white"
+        android:textColor="@color/xui_config_color_white"
         android:textSize="12sp" />
 
 </RelativeLayout>

@@ -25,8 +25,8 @@ import android.widget.TextView;
 
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -54,7 +54,7 @@ import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY
  * @author xuexiang
  * @since 2018/12/5 上午11:42
  */
-public class PreviewActivity extends FragmentActivity {
+public class PreviewActivity extends AppCompatActivity {
     public static final String KEY_IMAGE_PATHS = "com.xuexiang.xui.widget.preview.KEY_IMAGE_PATHS";
     public static final String KEY_POSITION = "com.xuexiang.xui.widget.preview.KEY_POSITION";
     public static final String KEY_TYPE = "com.xuexiang.xui.widget.preview.KEY_TYPE";

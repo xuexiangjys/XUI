@@ -1,34 +1,36 @@
 <resources>
-  <!-- Default screen margins, per the Android Design guidelines. -->
-  <dimen name="activity_horizontal_margin">16dp</dimen>
-  <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 
-  <dimen name="block_low_width">40dp</dimen>
-  <dimen name="block_low_height">8dp</dimen>
-  <dimen name="block_high_width">20dp</dimen>
-  <dimen name="block_high_height">196dp</dimen>
+    <dimen name="block_low_width">40dp</dimen>
+    <dimen name="block_low_height">8dp</dimen>
+    <dimen name="block_high_width">20dp</dimen>
+    <dimen name="block_high_height">196dp</dimen>
 
-  <dimen name="radius_16">16dp</dimen>
-  <dimen name="spacing_16">16dp</dimen>
+    <dimen name="radius_16">16dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
 
-  <dimen name="list_divider_height_negative">-1px</dimen>
+    <dimen name="list_divider_height_negative">-1px</dimen>
 
-  <dimen name="dp_70">70dp</dimen>
+    <dimen name="dp_70">70dp</dimen>
 
-  <!-- Utils 系列界面 -->
+    <!-- Utils 系列界面 -->
 
-  <!-- ColorUtils 颜色工具 -->
-  <dimen name="color_utils_square_length">46dp</dimen>
-  <dimen name="color_utils_square_margin">23dp</dimen>
-  <dimen name="color_utils_square_desc_marginTop">10dp</dimen>
+    <!-- ColorUtils 颜色工具 -->
+    <dimen name="color_utils_square_length">46dp</dimen>
+    <dimen name="color_utils_square_margin">23dp</dimen>
+    <dimen name="color_utils_square_desc_marginTop">10dp</dimen>
 
-  <!-- DrawableUtils Drawable 工具 -->
-  <dimen name="drawable_utils_column_marginBottom">35dp</dimen>
-  <dimen name="drawable_utils_item_marginHorizontal">20dp</dimen>
-  <dimen name="drawable_utils_common_shape_size">50dp</dimen>
+    <!-- DrawableUtils Drawable 工具 -->
+    <dimen name="drawable_utils_column_marginBottom">35dp</dimen>
+    <dimen name="drawable_utils_item_marginHorizontal">20dp</dimen>
+    <dimen name="drawable_utils_common_shape_size">50dp</dimen>
 
-  <!-- Expands 系列界面 -->
+    <!-- Expands 系列界面 -->
 
-  <dimen name="custom_section_height">36dp</dimen>
+    <dimen name="custom_section_height">36dp</dimen>
+    <dimen name="spacing_24dp">24dp</dimen>
+    <dimen name="selection_item_height">60dp</dimen>
 
 </resources>

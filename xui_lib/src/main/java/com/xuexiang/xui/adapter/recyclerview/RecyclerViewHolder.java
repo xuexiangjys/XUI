@@ -25,7 +25,7 @@ import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -300,8 +300,8 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
      */
     public RecyclerViewHolder checked(@IdRes int id, boolean checked) {
         View view = findView(id);
-        if (view instanceof CompoundButton) {
-            ((CheckBox) view).setChecked(checked);
+        if (view instanceof Checkable) {
+            ((Checkable) view).setChecked(checked);
         }
         return this;
     }
@@ -316,13 +316,14 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     public RecyclerViewHolder checkedListener(@IdRes int id, CompoundButton.OnCheckedChangeListener listener) {
         View view = findView(id);
         if (view instanceof CompoundButton) {
-            ((CheckBox) view).setOnCheckedChangeListener(listener);
+            ((CompoundButton) view).setOnCheckedChangeListener(listener);
         }
         return this;
     }
 
     /**
      * 设置控件是否选中
+     *
      * @param id
      * @param selected
      * @return

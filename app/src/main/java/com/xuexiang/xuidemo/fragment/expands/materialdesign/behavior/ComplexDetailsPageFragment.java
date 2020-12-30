@@ -27,6 +27,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.StatusBarUtils;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -89,6 +90,8 @@ public class ComplexDetailsPageFragment extends BaseFragment {
         viewPager.setOffscreenPageLimit(titles.length - 1);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        ViewUtils.setViewsFont(tabLayout);
+        ViewUtils.setToolbarLayoutTextFont(collapseLayout);
     }
 
     @Override

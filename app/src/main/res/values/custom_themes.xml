@@ -40,6 +40,8 @@
         <item name="xui_config_color_stroke">@color/xui_config_color_edittext_stroke</item>
         <item name="xui_config_color_disable">@color/xui_config_color_edittext_disable</item>
         <item name="xui_config_color_pressed">@color/xui_config_color_background_pressed</item>
+        <item name="xui_btn_view_normal_color">@color/custom_color_main_theme</item>
+        <item name="xui_btn_view_touch_color">@color/custom_btn_view_touch_color</item>
 
         <!--actionbar的样式-->
         <item name="xui_actionbar_color">@color/custom_color_main_theme</item>

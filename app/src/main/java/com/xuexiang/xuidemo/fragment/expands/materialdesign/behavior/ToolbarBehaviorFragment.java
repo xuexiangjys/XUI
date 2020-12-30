@@ -7,6 +7,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.StatusBarUtils;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -60,7 +61,7 @@ public class ToolbarBehaviorFragment extends BaseFragment {
     protected void initViews() {
         toolbar.inflateMenu(R.menu.menu_search);
         toolbar.setNavigationOnClickListener(v -> popToBack());
-
+        ViewUtils.setToolbarLayoutTextFont(collapseLayout);
         fabScrolling.setOnClickListener(v -> XToastUtils.toast("分享"));
 
         appbarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {

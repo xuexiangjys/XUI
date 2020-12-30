@@ -18,6 +18,7 @@ import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xrouter.facade.service.SerializationService;
 import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xui.utils.DrawableUtils;
+import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -289,5 +290,14 @@ public abstract class BaseFragment extends XPageFragment {
         return new PageOption(clazz)
                 .setRequestCode(requestCode)
                 .open(this);
+    }
+
+    @Override
+    protected void hideCurrentPageSoftInput() {
+        if (getActivity() == null) {
+            return;
+        }
+        // 记住，要在xml的父布局加上android:focusable="true" 和 android:focusableInTouchMode="true"
+        KeyboardUtils.hideSoftInputClearFocus(getActivity().getCurrentFocus());
     }
 }

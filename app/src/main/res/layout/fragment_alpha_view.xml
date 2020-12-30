@@ -57,7 +57,7 @@
             android:focusable="true"
             android:padding="20dp"
             android:text="点击确认"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/xui_config_color_white" />
 
 
     </com.xuexiang.xui.widget.alpha.XUIAlphaFrameLayout>

@@ -8,6 +8,6 @@
         android:id="@+id/chart1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white" />
+        android:background="@color/xui_config_color_white" />
 
 </LinearLayout>

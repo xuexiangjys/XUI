@@ -27,6 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -82,6 +83,7 @@ public class BottomNavigationViewBehaviorFragment extends BaseFragment implement
         }
         viewPager.setOffscreenPageLimit(titles.length - 1);
         viewPager.setAdapter(adapter);
+        ViewUtils.setViewsFont(bottomNavigation);
     }
 
     @Override

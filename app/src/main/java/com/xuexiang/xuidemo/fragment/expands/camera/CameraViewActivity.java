@@ -45,6 +45,7 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.cameraview.AspectRatio;
 import com.google.android.cameraview.CameraView;
 import com.xuexiang.xaop.annotation.IOThread;
+import com.xuexiang.xaop.annotation.Safe;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
@@ -259,9 +260,7 @@ public class CameraViewActivity extends AppCompatActivity implements
         super.onResume();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
-            if (mCameraView != null) {
-                mCameraView.start();
-            }
+            startCamera();
         } else if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.CAMERA)) {
             ConfirmationDialogFragment
@@ -278,10 +277,22 @@ public class CameraViewActivity extends AppCompatActivity implements
 
     @Override
     protected void onPause() {
+        stopCamera();
+        super.onPause();
+    }
+
+    @Safe
+    private void startCamera() {
+        if (mCameraView != null) {
+            mCameraView.start();
+        }
+    }
+
+    @Safe
+    private void stopCamera() {
         if (mCameraView != null) {
             mCameraView.stop();
         }
-        super.onPause();
     }
 
     @Override

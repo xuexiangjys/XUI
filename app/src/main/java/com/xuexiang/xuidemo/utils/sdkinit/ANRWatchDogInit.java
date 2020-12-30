@@ -73,7 +73,7 @@ public final class ANRWatchDogInit {
             }
             //当返回是0或者负数时，就会触发ANR监听回调
             return ret;
-        }).setANRListener(CUSTOM_LISTENER).start();
+        }).setANRListener(SILENT_LISTENER).start();
         Logger.d("ANR看门狗监听器启动...");
     }
 

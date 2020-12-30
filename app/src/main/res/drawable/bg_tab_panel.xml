@@ -22,7 +22,7 @@
     android:insetRight="@dimen/list_divider_height_negative">
 
     <shape>
-        <solid android:color="@android:color/white" />
+        <solid android:color="@color/xui_config_color_white" />
         <stroke
             android:width="@dimen/xui_list_divider_height_table"
             android:color="@color/xui_config_color_separator_dark_tablet" />

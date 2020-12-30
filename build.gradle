@@ -7,9 +7,9 @@ buildscript {
         classpath deps.android_gradle_plugin
         classpath deps.android_maven_gradle_plugin
 
-        classpath 'com.github.xuexiangjys.XAOP:xaop-plugin:1.0.3'
+        classpath 'com.github.xuexiangjys.XAOP:xaop-plugin:1.1.0'
 
-        classpath 'com.chenenyu:img-optimizer:1.1.1' // 图片压缩
+        classpath 'com.chenenyu:img-optimizer:1.2.0' // 图片压缩
         classpath 'com.github.xuexiangjys.XRouter:xrouter-plugin:1.0.1'
         //滴滴的质量优化框架
         if (isNeedPackage.toBoolean()) {

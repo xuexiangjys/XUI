@@ -30,6 +30,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -139,8 +140,8 @@ public class TabLayoutCacheFragment extends BaseFragment implements TabLayout.On
 
 
     private void switchContainer(boolean isShow) {
-        tvTitle.setVisibility(isShow ? View.GONE : View.VISIBLE);
-        viewPager.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        ViewUtils.setVisibility(tvTitle, isShow ? View.GONE : View.VISIBLE);
+        ViewUtils.setVisibility(viewPager, isShow ? View.VISIBLE : View.GONE);
     }
 
 

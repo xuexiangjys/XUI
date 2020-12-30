@@ -7,7 +7,7 @@
             <item>
                 <shape android:shape="oval">
                     <size android:width="@dimen/swb_md_thumb_ripple_size" android:height="@dimen/swb_md_thumb_ripple_size" />
-                    <solid android:color="@android:color/transparent" />
+                    <solid android:color="@color/xui_config_color_transparent" />
                 </shape>
             </item>
             <item android:bottom="@dimen/swb_md_thumb_shadow_inset_bottom" android:gravity="center" android:left="@dimen/swb_md_thumb_shadow_inset" android:right="@dimen/swb_md_thumb_shadow_inset" android:top="@dimen/swb_md_thumb_shadow_inset_top">
@@ -29,7 +29,7 @@
             <item>
                 <shape android:shape="oval">
                     <size android:width="@dimen/swb_md_thumb_ripple_size" android:height="@dimen/swb_md_thumb_ripple_size" />
-                    <solid android:color="@android:color/transparent" />
+                    <solid android:color="@color/xui_config_color_transparent" />
                 </shape>
             </item>
             <item android:bottom="@dimen/swb_md_thumb_shadow_inset_bottom" android:gravity="center" android:left="@dimen/swb_md_thumb_shadow_inset" android:right="@dimen/swb_md_thumb_shadow_inset" android:top="@dimen/swb_md_thumb_shadow_inset_top">
@@ -95,7 +95,7 @@
             <item>
                 <shape android:shape="oval">
                     <size android:width="@dimen/swb_md_thumb_ripple_size" android:height="@dimen/swb_md_thumb_ripple_size" />
-                    <solid android:color="@android:color/transparent" />
+                    <solid android:color="@color/xui_config_color_transparent" />
                 </shape>
             </item>
             <item android:bottom="@dimen/swb_md_thumb_shadow_inset_bottom" android:gravity="center" android:left="@dimen/swb_md_thumb_shadow_inset" android:right="@dimen/swb_md_thumb_shadow_inset" android:top="@dimen/swb_md_thumb_shadow_inset_top">
@@ -117,7 +117,7 @@
             <item>
                 <shape android:shape="oval">
                     <size android:width="@dimen/swb_md_thumb_ripple_size" android:height="@dimen/swb_md_thumb_ripple_size" />
-                    <solid android:color="@android:color/transparent" />
+                    <solid android:color="@color/xui_config_color_transparent" />
                 </shape>
             </item>
             <item android:bottom="@dimen/swb_md_thumb_shadow_inset_bottom" android:gravity="center" android:left="@dimen/swb_md_thumb_shadow_inset" android:right="@dimen/swb_md_thumb_shadow_inset" android:top="@dimen/swb_md_thumb_shadow_inset_top">

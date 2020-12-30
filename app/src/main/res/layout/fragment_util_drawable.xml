@@ -42,6 +42,18 @@
                 android:layout_marginBottom="@dimen/drawable_utils_column_marginBottom"
                 android:contentDescription="@string/common_example" />
 
+            <!-- 创建一张指定大小的圆形图片，并带文字 -->
+            <TextView
+                style="@style/TextStyle.Content.wrap"
+                android:text="@string/drawable_utils_circle_image_title" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/circleImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/drawable_utils_column_marginBottom"
+                android:contentDescription="@string/common_example" />
+
             <!-- 创建一张圆形渐变图片，支持圆角 -->
             <TextView
                 style="@style/TextStyle.Content.wrap"
@@ -99,9 +111,30 @@
                 android:layout_height="@dimen/drawable_utils_common_shape_size"
                 android:layout_marginBottom="@dimen/drawable_utils_column_marginBottom" />
 
+
+            <!-- 创建一个带选中状态的Drawable -->
+
+            <TextView
+                style="@style/TextStyle.Content.wrap"
+                android:text="@string/drawable_utils_create_state_list_drawable" />
+
+            <Button
+                android:id="@+id/btn_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:paddingStart="@dimen/spacing_16"
+                android:paddingTop="@dimen/margin8"
+                android:paddingEnd="@dimen/spacing_16"
+                android:paddingBottom="@dimen/margin8"
+                android:text="动态设置选中状态的按钮" />
+
+
             <!-- 从一个 View 创建 Bitmap -->
             <TextView
                 style="@style/TextStyle.Content.wrap"
+                android:layout_marginTop="@dimen/spacing_16"
                 android:text="@string/drawable_utils_create_from_view_title" />
 
             <com.xuexiang.xui.widget.alpha.XUIAlphaButton

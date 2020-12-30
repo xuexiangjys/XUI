@@ -77,7 +77,7 @@
     <color name="toast_default_text_color">@color/xui_config_color_white</color>
     <color name="toast_error_color">@color/xui_config_color_red</color>
     <color name="toast_info_color">#3F51B5</color>
-    <color name="toast_success_color">#388E3C</color>
+    <color name="toast_success_color">@color/xui_config_color_success</color>
     <color name="toast_warning_color">@color/xui_config_color_waring</color>
     <color name="toast_normal_tint_color">#353A3E</color>
 
@@ -132,6 +132,9 @@
     <color name="xui_config_color_blue">#1B88EE</color>
     <color name="xui_config_color_50_blue">#801B88EE</color>
     <color name="xui_config_color_pure_blue">#0000FF</color>
+
+    <color name="xui_config_color_error">@color/xui_config_color_red</color>
+    <color name="xui_config_color_success">#388E3C</color>
 
     <color name="xui_config_color_waring">#FEC005</color>
     <color name="xui_config_color_pure_yellow">#FFFF00</color>

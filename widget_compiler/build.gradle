@@ -1,14 +1,15 @@
 apply plugin: 'java'
 
 dependencies {
-    implementation 'com.google.auto.service:auto-service:1.0-rc4'
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
     //谷歌的帮助我们快速实现注解处理器
-    implementation 'com.squareup:javapoet:1.10.0'
+    implementation 'com.squareup:javapoet:1.13.0'
     //用来生成java文件的，避免字符串拼接的尴尬
-    implementation 'org.apache.commons:commons-lang3:3.4'
-    implementation 'org.apache.commons:commons-collections4:4.1'
+    implementation 'org.apache.commons:commons-lang3:3.11'
+    implementation 'org.apache.commons:commons-collections4:4.4'
 
-    implementation 'com.github.xuexiangjys.XPage:xpage-annotation:2.3.0'
+    implementation 'com.github.xuexiangjys.XPage:xpage-annotation:3.0.1'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8

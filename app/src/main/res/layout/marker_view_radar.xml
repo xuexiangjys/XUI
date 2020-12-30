@@ -17,7 +17,7 @@
         android:layout_marginEnd="5dp"
         android:text=""
         android:textSize="10sp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/xui_config_color_white"
         android:ellipsize="end"
         android:singleLine="true"
         android:textAppearance="?android:attr/textAppearanceSmall"

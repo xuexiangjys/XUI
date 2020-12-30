@@ -18,5 +18,5 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="?attr/xui_config_color_pressed" android:state_pressed="true"/>
-    <item android:drawable="@android:color/transparent"/>
+    <item android:drawable="@color/xui_config_color_transparent"/>
 </selector>

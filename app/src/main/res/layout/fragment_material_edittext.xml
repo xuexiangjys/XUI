@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -481,8 +483,8 @@
                     android:hint="Material Design Icon"
                     app:met_clearButton="true"
                     app:met_iconLeft="@drawable/icon_phone"
-                    app:met_iconRight="@drawable/icon_phone"
                     app:met_iconPadding="5dp"
+                    app:met_iconRight="@drawable/icon_phone"
                     app:met_maxCharacters="5" />
 
             </LinearLayout>

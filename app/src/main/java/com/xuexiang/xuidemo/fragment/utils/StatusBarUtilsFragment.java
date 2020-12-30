@@ -1,7 +1,12 @@
 package com.xuexiang.xuidemo.fragment.utils;
 
+import android.widget.CheckBox;
+
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.ColorUtils;
 import com.xuexiang.xui.utils.StatusBarUtils;
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
+import com.xuexiang.xui.widget.grouplist.XUICommonListItemView;
 import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.TranslucentActivity;
@@ -21,7 +26,8 @@ public class StatusBarUtilsFragment extends BaseFragment {
     @BindView(R.id.groupListView)
     XUIGroupListView groupListView;
 
-    boolean isFullScreen;
+    CheckBox checkBox;
+
     /**
      * 布局的资源id
      *
@@ -53,16 +59,44 @@ public class StatusBarUtilsFragment extends BaseFragment {
                 .addItemView(groupListView.createItemView("获取状态栏的实际高度"), v -> XToastUtils.toast("状态栏的实际高度：" + StatusBarUtils.getStatusBarHeight(getContext())))
                 .addTo(groupListView);
 
+
         XUIGroupListView.newSection(getContext())
-                .addItemView(groupListView.createItemView("切换全屏"), v -> {
-                    if (isFullScreen) {
-                        StatusBarUtils.cancelFullScreen(getActivity());
-                    } else {
-                        StatusBarUtils.fullScreen(getActivity());
-                    }
-                    isFullScreen = !isFullScreen;
+                .addItemView(groupListView.createItemView("获取底部导航条的实际高度"), v -> XToastUtils.toast("导航条的高度：" + StatusBarUtils.getNavigationBarHeight(getContext())))
+                .addItemView(groupListView.createItemView("设置底部导航条的颜色"), v -> StatusBarUtils.setNavigationBarColor(getActivity(), ColorUtils.getRandomColor()))
+                .addTo(groupListView);
+
+        XUICommonListItemView fullScreenSwitch = groupListView.createItemView("全屏切换");
+        fullScreenSwitch.setAccessoryType(XUICommonListItemView.ACCESSORY_TYPE_SWITCH);
+        checkBox = fullScreenSwitch.getSwitch();
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                StatusBarUtils.fullScreen(getActivity());
+            } else {
+                StatusBarUtils.cancelFullScreen(getActivity());
+            }
+        });
+
+        XUIGroupListView.newSection(getContext())
+                .addItemView(fullScreenSwitch, null)
+                .addItemView(groupListView.createItemView("全屏下弹起Dialog"), v -> {
+                    showSimpleTipDialog();
                 })
                 .addTo(groupListView);
     }
+
+
+    /**
+     * 简单的提示性对话框
+     */
+    private void showSimpleTipDialog() {
+        new MaterialDialog.Builder(getContext())
+                .iconRes(R.drawable.icon_tip)
+                .title(R.string.tip_infos)
+                .content(R.string.content_simple_confirm_dialog)
+                .positiveText(R.string.lab_submit)
+                .fullScreen(checkBox.isChecked())
+                .show();
+    }
+
 
 }
