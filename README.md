@@ -74,7 +74,7 @@ allprojects {
 dependencies {
   ...
   //androidx project
-  implementation 'com.github.xuexiangjys:XUI:1.1.5'
+  implementation 'com.github.xuexiangjys:XUI:1.1.6'
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.1.0'

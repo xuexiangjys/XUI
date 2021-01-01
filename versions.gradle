@@ -7,6 +7,8 @@ def versions = [:]
 versions.android_gradle_plugin = "3.6.1"
 versions.android_maven_gradle_plugin = "2.0"
 versions.gradle_bintray_plugin = "1.8.0"
+versions.booster = "3.1.0"
+versions.booster_all = "1.1.1"
 versions.support = "28.0.0"
 versions.androidx = "1.1.0"
 versions.junit = "4.12"
@@ -58,6 +60,38 @@ deps.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
 deps.rxbinding = "com.jakewharton.rxbinding2:rxbinding:$versions.rxbinding"
 deps.gson = "com.google.code.gson:gson:$versions.gson"
 deps.okhttp3 = "com.squareup.okhttp3:okhttp:$versions.okhttp3"
+
+def booster = [:]
+booster.gradle_plugin = "com.didiglobal.booster:booster-gradle-plugin:$versions.booster"
+booster.task_all = "com.didiglobal.booster:booster-task-all:$versions.booster_all"
+booster.transform_all = "com.didiglobal.booster:booster-transform-all:$versions.booster_all"
+//采用 cwebp 对资源进行压缩
+booster.task_compression_cwebp = "com.didiglobal.booster:booster-task-compression-cwebp:$versions.booster"
+//采用 pngquant 对资源进行压缩
+booster.task_compression_pngquant = "com.didiglobal.booster:booster-task-compression-pngquant:$versions.booster"
+//ap_ 文件压缩
+booster.task_processed_res = "com.didiglobal.booster:booster-task-compression-processed-res:$versions.booster"
+//去冗余资源
+booster.task_resource_deredundancy = "com.didiglobal.booster:booster-task-resource-deredundancy:$versions.booster"
+//检查 SNAPSHOT 版本
+booster.task_check_snapshot = "com.didiglobal.booster:booster-task-check-snapshot:$versions.booster"
+//性能瓶颈检测
+booster.transform_lint = "com.didiglobal.booster:booster-transform-lint:$versions.booster"
+//多线程优化
+booster.transform_thread = "com.didiglobal.booster:booster-transform-thread:$versions.booster"
+//资源索引内联
+booster.transform_r_inline = "com.didiglobal.booster:booster-transform-r-inline:$versions.booster"
+//WebView 预加载
+booster.transform_webview = "com.didiglobal.booster:booster-transform-webview:$versions.booster"
+//SharedPreferences 优化
+booster.transform_shared_preferences = "com.didiglobal.booster:booster-transform-shared-preferences:$versions.booster"
+//检查覆盖安装导致的 Resources 和 Assets 未加载的 Bug
+booster.transform_res_check = "com.didiglobal.booster:booster-transform-res-check:$versions.booster"
+//修复 Toast 在 Android 7.1 上的 Bug
+booster.transform_toast = "com.didiglobal.booster:booster-transform-toast:$versions.booster"
+//处理系统 Crash
+booster.transform_activity_thread = "com.didiglobal.booster:booster-transform-activity-thread:$versions.booster"
+deps.booster = booster
 
 ext.deps = deps
 
