@@ -81,4 +81,7 @@
     <color name="check_bg">#f2f2f2</color>
     <color name="un_press_color">#9C27B0</color>
 
+
+    <color name="config_color_select_bg">#FFF1F1F1</color>
+
 </resources>

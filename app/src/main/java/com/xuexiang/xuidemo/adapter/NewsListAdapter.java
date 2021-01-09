@@ -5,7 +5,7 @@ import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.base.BroccoliRecyclerAdapter;
+import com.xuexiang.xuidemo.adapter.base.broccoli.BroccoliRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.utils.PlaceholderHelper;
 

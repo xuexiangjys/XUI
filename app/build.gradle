@@ -207,7 +207,8 @@ dependencies {
     implementation 'com.tencent:mmkv:1.0.22'
     //腾讯x5TBS
     implementation 'com.tencent.tbs.tbssdk:sdk:43967'
-
+    //富文本
+    implementation 'com.zzhoujay.richtext:richtext:3.0.8'
 
     //双列表联动
     implementation 'com.kunminx.linkage:linkage-recyclerview:1.9.2'

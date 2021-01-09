@@ -36,6 +36,7 @@ import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xuidemo.widget.GuideTipsDialog;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.system.DeviceUtils;
 import com.yarolegovich.slidingrootnav.SlideGravity;
@@ -85,6 +86,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         initSlidingMenu(savedInstanceState);
 
         initViews();
+
+        GuideTipsDialog.showTips(this);
     }
 
     private void initData() {
