@@ -1,7 +1,7 @@
 package com.xuexiang.xuidemo.fragment;
 
-import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xpage.config.AppPageConfig;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xuidemo.base.BaseHomeFragment;

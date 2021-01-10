@@ -116,15 +116,13 @@ dependencies {
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.0.3'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.1.0'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime
     annotationProcessor deps.butterknife.compiler
-    //如果开启了内存泄漏监测leak,就需要加上这个依赖
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
-    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+    // LeakCanary内存泄漏检测
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 
     //弹性布局
     implementation 'com.google.android:flexbox:0.3.1'

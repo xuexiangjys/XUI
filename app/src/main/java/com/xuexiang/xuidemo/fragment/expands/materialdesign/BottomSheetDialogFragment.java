@@ -24,8 +24,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xpage.config.AppPageConfig;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
