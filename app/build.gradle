@@ -116,7 +116,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.1.0'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.1.1'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime

@@ -218,6 +218,7 @@
 
 # xpage
 -keep class com.xuexiang.xpage.annotation.** { *; }
+-keep class com.xuexiang.xpage.config.** { *; }
 
 # xaop
 -keep @com.xuexiang.xaop.annotation.* class * {*;}
