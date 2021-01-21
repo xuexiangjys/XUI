@@ -7,12 +7,16 @@
         android:title="收藏"
         app:showAsAction="ifRoom" />
 
+
     <item
         android:id="@+id/item_setting"
         android:title="设置选项"
         app:showAsAction="never" />
+
     <item
         android:id="@+id/item_model"
         android:title="夜间模式"
         app:showAsAction="never" />
+
+
 </menu>
