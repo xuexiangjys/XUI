@@ -281,4 +281,6 @@ B*G | 1￥ | 微信
 
 [![](https://img.shields.io/badge/XUI开源交流2群-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
 
+[![](https://img.shields.io/badge/XUI开源交流3群-1090612354-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=nOY3GGJY-jiwzhQpR8E06G-yrOUsxCP1)
+
 ![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
