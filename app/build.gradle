@@ -212,8 +212,8 @@ dependencies {
     implementation 'com.kunminx.linkage:linkage-recyclerview:1.9.2'
 
     //umeng统计
-    implementation 'com.umeng.umsdk:analytics:8.0.2'
-    implementation 'com.umeng.umsdk:common:2.0.2'
+    implementation 'com.umeng.umsdk:analytics:8.1.4'
+    implementation 'com.umeng.umsdk:common:2.1.8'
 
     //ANR异常捕获
     implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'

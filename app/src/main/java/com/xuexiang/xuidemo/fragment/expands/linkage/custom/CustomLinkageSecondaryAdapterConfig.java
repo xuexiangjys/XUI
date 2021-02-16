@@ -42,7 +42,7 @@ public class CustomLinkageSecondaryAdapterConfig implements ILinkageSecondaryAda
         mItemClickListener = itemClickListener;
     }
 
-    public CustomLinkageSecondaryAdapterConfig setOnItemClickListner(OnSecondaryItemClickListener itemClickListener) {
+    public CustomLinkageSecondaryAdapterConfig setOnItemClickListener(OnSecondaryItemClickListener itemClickListener) {
         mItemClickListener = itemClickListener;
         return this;
     }
