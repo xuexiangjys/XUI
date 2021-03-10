@@ -60,6 +60,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <!--系统弹窗按钮样式-->
+        <item name="buttonStyle">@style/Button.AlertDialog</item>
+
         <!--有Title-->
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>

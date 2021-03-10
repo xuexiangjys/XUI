@@ -53,6 +53,10 @@
         <item name="xui_btn_view_normal_color">@color/xui_btn_blue_normal_color</item>
         <item name="xui_btn_view_touch_color">@color/xui_btn_blue_select_color</item>
 
+        <item name="xui_config_color_title_text">@color/xui_config_color_title_text</item>
+        <item name="xui_config_color_content_text">@color/xui_config_color_content_text</item>
+        <item name="xui_config_color_explain_text">@color/xui_config_color_explain_text</item>
+
         <!--无Title-->
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
@@ -77,9 +81,6 @@
         <!-- 文字的style -->
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
         <item name="textFieldStyle">@style/TextField</item>
-        <item name="xui_config_color_title_text">@color/xui_config_color_title_text</item>
-        <item name="xui_config_color_content_text">@color/xui_config_color_content_text</item>
-        <item name="xui_config_color_explain_text">@color/xui_config_color_explain_text</item>
         <!--应用的主要文字颜色，actionBar的标题文字默认使用该颜色-->
         <item name="android:textColorPrimary">@color/xui_config_color_primary_text</item>
 
@@ -95,14 +96,13 @@
         <item name="android:editTextStyle">@style/EditText</item>
         <item name="editTextStyle">@style/EditText</item>
 
-        <!-- Dialog的style -->
-        <item name="xui_dialog_background_dim_amount">0.6</item>
-
         <!-- 条目的style -->
         <item name="android:gridViewStyle">@style/GridView</item>
-        <!--<item name="selectableItemBackground">@drawable/xui_config_selectable_item_selector</item>-->
         <item name="android:listSelector">@drawable/xui_config_selectable_item_selector</item>
         <item name="android:listDivider">@drawable/xui_config_list_divider</item>
+
+        <!-- Dialog的style -->
+        <item name="xui_dialog_background_dim_amount">0.6</item>
 
         <!--**********************************************
         *                   SuperTextView                *

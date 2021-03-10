@@ -20,6 +20,7 @@ package com.xuexiang.xui.utils;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Rect;
 import android.os.Build;
 import android.view.KeyEvent;
@@ -394,6 +395,30 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
             return;
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    /**
+     * 动态隐藏弹窗弹出的软键盘【注意：一定要在dialog.dismiss之前调用】
+     *
+     * @param dialog 对话框
+     */
+    public static void hideSoftInput(@NonNull DialogInterface dialog) {
+        if (dialog instanceof Dialog) {
+            hideSoftInput((Dialog) dialog);
+        }
+    }
+
+    /**
+     * 动态隐藏弹窗弹出的软键盘【注意：一定要在dialog.dismiss之前调用】
+     *
+     * @param dialog 对话框
+     */
+    public static void hideSoftInput(@NonNull Dialog dialog) {
+        View view = dialog.getCurrentFocus();
+        if (view == null && dialog.getWindow() != null) {
+            view = dialog.getWindow().getDecorView();
+        }
+        hideSoftInput(view);
     }
 
     /**
