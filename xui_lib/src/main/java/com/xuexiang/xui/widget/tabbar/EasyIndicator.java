@@ -57,7 +57,7 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     /**
      * 选项卡点击监听
      */
-    public onTabClickListener mOnTabClickListener;
+    public OnTabClickListener mOnTabClickListener;
 
     private LinearLayout tab_content;
     /**
@@ -177,9 +177,9 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     }
 
     /**
-     * 设置tab item
+     * 设置tab的标题
      *
-     * @param tabTitles
+     * @param tabTitles tab的标题
      */
     public void setTabTitles(String[] tabTitles) {
         // Create tab
@@ -195,15 +195,12 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
             view.setGravity(Gravity.CENTER);
             LayoutParams lp = new LayoutParams(0, indicatorHeight, 1.0f);
             view.setLayoutParams(lp);
-            switch (i) {
-                case 0:
-                    view.setTextColor(indicator_selected_color);
-                    view.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_select_textSize);
-                    break;
-                default:
-                    view.setTextColor(indicator_normal_color);
-                    view.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_textSize);
-                    break;
+            if (i == 0) {
+                view.setTextColor(indicator_selected_color);
+                view.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_select_textSize);
+            } else {
+                view.setTextColor(indicator_normal_color);
+                view.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_textSize);
             }
             view.setOnClickListener(this);
             tvs[i] = view;
@@ -290,9 +287,9 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         TextView tv = (TextView) v;
-        int mPosition = (int) v.getTag();
+        int position = (int) v.getTag();
         if (mViewPager != null) {
-            mViewPager.setCurrentItem(mPosition);
+            mViewPager.setCurrentItem(position);
         } else {
             setSelectorColor(tv);
             if (indicator_line_show) {
@@ -300,7 +297,7 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
             }
         }
         if (mOnTabClickListener != null) {
-            mOnTabClickListener.onTabClick(((TextView) v).getText().toString(), mPosition);
+            mOnTabClickListener.onTabClick(((TextView) v).getText().toString(), position);
         }
     }
 
@@ -316,9 +313,9 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     /**
      * 设置选项卡点击监听
      *
-     * @param onTabClickListener
+     * @param onTabClickListener 选项卡点击监听
      */
-    public void setOnTabClickListener(EasyIndicator.onTabClickListener onTabClickListener) {
+    public void setOnTabClickListener(OnTabClickListener onTabClickListener) {
         mOnTabClickListener = onTabClickListener;
     }
 
@@ -356,16 +353,18 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
         }
     }
 
-
     /**
      * 选项卡点击监听
+     *
+     * @author xuexiang
+     * @since 2021/3/14 3:38 PM
      */
-    public interface onTabClickListener {
+    public interface OnTabClickListener {
         /**
          * tab点击
          *
-         * @param title
-         * @param position
+         * @param title    标题
+         * @param position 位置
          */
         void onTabClick(String title, int position);
     }
@@ -395,7 +394,6 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
         final float scale = res.getDisplayMetrics().scaledDensity;
         return sp * scale;
     }
-
 
     /**
      * 初始化屏幕宽高
