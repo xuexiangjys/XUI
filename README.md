@@ -209,6 +209,20 @@ protected void attachBaseContext(Context newBase) {
 
 ![download_github.png](https://img.rruu.net/image/5f7d827d5d755)
 
+## Contribution
+
+> Due to my limited energy, you are welcome to actively contribute your idea. You will have the opportunity to participate in the maintenance of star over 1000 projects on GitHub and enhance your industry influence!
+
+Code contribution requirements：
+
+* Please keep the existing code style, not according to your habits. Please comply with Alibaba java coding specification.
+
+* Just modify the code you are sure need to be optimized, not all the different code from your ideas.
+
+* Before launching a pull request, you should test your commit code adequately.
+
+* Please commit new code to the dev branch instead of the master branch.
+
 ## Thanks
 
 * [QMUI_Android](https://github.com/Tencent/QMUI_Android)
@@ -280,6 +294,18 @@ B*G | 1￥ | WeChat
 **俊 | 80￥ | Alipay
 *尋 | 10.24￥ | WeChat
 爱生活 | 100￥ | QQ
+*茶 | 100￥ | WeChat
+*头 | 2￥ | WeChat
+*噜 | 10.99￥ | WeChat
+*W*m | 10￥ | WeChat
+*谷 | 10￥ | WeChat
+*望 | 5￥ | WeChat
+J*o | 10.24￥ | WeChat
+*休 | 10.24￥ | WeChat
+**俊 | 80￥ | Alipay
+**伟 | 1.1￥ | Alipay
+**云 | 5￥ | Alipay
+*航 | 3￥ | Alipay
 
 ## Contact
 
