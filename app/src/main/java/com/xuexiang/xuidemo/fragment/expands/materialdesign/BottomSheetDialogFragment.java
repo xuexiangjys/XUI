@@ -34,6 +34,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.bottom.DemoBottomSheetDialog;
 
 import java.util.Collections;
 import java.util.List;
@@ -54,6 +55,7 @@ public class BottomSheetDialogFragment extends BaseSimpleListFragment {
     protected List<String> initSimpleData(List<String> lists) {
         lists.add("List");
         lists.add("Grid");
+        lists.add("DialogFragment");
         return lists;
     }
 
@@ -70,6 +72,9 @@ public class BottomSheetDialogFragment extends BaseSimpleListFragment {
                 break;
             case 1:
                 showBottomSheetListDialog(false);
+                break;
+            case 2:
+                DemoBottomSheetDialog.newInstance().show(getFragmentManager());
                 break;
             default:
                 break;
@@ -111,6 +116,7 @@ public class BottomSheetDialogFragment extends BaseSimpleListFragment {
 
     /**
      * 进行排序
+     *
      * @param pageInfoList
      * @return
      */
