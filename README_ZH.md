@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/BugF/IMG/2020/10/05/5f7b2469a6676.png" width="388" height="321" alt="Banner" />
+  <img src="https://img.rruu.net/image/5f7d85cab3e43" width="388" height="321" alt="Banner" />
 </p>
 
 # XUI
@@ -72,7 +72,7 @@ allprojects {
 dependencies {
   ...
   //androidx项目
-  implementation 'com.github.xuexiangjys:XUI:1.1.6'
+  implementation 'com.github.xuexiangjys:XUI:1.1.7'
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.1.0'
@@ -300,6 +300,7 @@ J*o | 10.24￥ | 微信
 **伟 | 1.1￥ | 支付宝
 **云 | 5￥ | 支付宝
 *航 | 3￥ | 支付宝
+*维 | 5￥ | 微信
 
 ## 联系方式
 
