@@ -96,6 +96,8 @@ public class BottomSheetDialogFragment extends BaseSimpleListFragment {
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
         dialog.show();
+
+        WidgetUtils.transparentBottomSheetDialogBackground(dialog);
     }
 
     private void initDialogList(RecyclerView recyclerView) {

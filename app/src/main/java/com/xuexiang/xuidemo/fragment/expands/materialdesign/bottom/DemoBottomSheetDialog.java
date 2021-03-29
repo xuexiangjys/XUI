@@ -83,6 +83,12 @@ public class DemoBottomSheetDialog extends BottomSheetDialogFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        WidgetUtils.transparentBottomSheetDialogBackground((BottomSheetDialog) getDialog());
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
