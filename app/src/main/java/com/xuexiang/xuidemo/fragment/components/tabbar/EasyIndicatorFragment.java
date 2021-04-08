@@ -49,6 +49,8 @@ public class EasyIndicatorFragment extends BaseFragment {
 
     @BindView(R.id.easy_indicator1)
     EasyIndicator mEasyIndicator1;
+    @BindView(R.id.easy_indicator2)
+    EasyIndicator mEasyIndicator2;
 
     @BindView(R.id.easy_indicator)
     EasyIndicator mEasyIndicator;
@@ -128,6 +130,8 @@ public class EasyIndicatorFragment extends BaseFragment {
         mEasyIndicator1.setTabTitles(ContentPage.getPageNames());
         mEasyIndicator1.setOnTabClickListener((title, position) -> XToastUtils.toast("点击了" + title));
 
+
+        mEasyIndicator2.setTabTitles(ContentPage.getPageNames());
     }
 
 }

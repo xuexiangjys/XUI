@@ -117,8 +117,13 @@ public class TabSegment extends HorizontalScrollView {
 
     private static final String TAG = "TabSegment";
 
-    // mode: 自适应宽度+滚动 / 均分
+    /**
+     * 自适应宽度+滚动
+     */
     public static final int MODE_SCROLLABLE = 0;
+    /**
+     * 均分
+     */
     public static final int MODE_FIXED = 1;
     // icon position
     public static final int ICON_POSITION_LEFT = 0;
