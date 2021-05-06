@@ -21,13 +21,13 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 
-import android.widget.EditText;
-import android.widget.FrameLayout;
-
+import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.widget.dialog.strategy.IDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.InputCallback;
@@ -42,6 +42,24 @@ import com.xuexiang.xui.widget.dialog.strategy.InputInfo;
 public class AlertDialogStrategy implements IDialogStrategy {
 
     /**
+     * 弹窗的主题
+     */
+    private int mThemeStyle;
+
+    public AlertDialogStrategy() {
+        mThemeStyle = R.style.XUITheme_AlertDialog;
+    }
+
+    /**
+     * 构造AlertDialog 策略
+     *
+     * @param themeStyle 弹窗的主题
+     */
+    public AlertDialogStrategy(int themeStyle) {
+        mThemeStyle = themeStyle;
+    }
+
+    /**
      * 获取对话框的构建者
      *
      * @param context 上下文
@@ -50,9 +68,9 @@ public class AlertDialogStrategy implements IDialogStrategy {
      */
     private AlertDialog.Builder getBuilder(Context context, int icon) {
         if (icon == NO_ICON) {
-            return new AlertDialog.Builder(context);
+            return new AlertDialog.Builder(context, mThemeStyle);
         } else {
-            return new AlertDialog.Builder(context)
+            return new AlertDialog.Builder(context, mThemeStyle)
                     .setIcon(icon);
         }
     }
@@ -87,7 +105,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
      */
     @Override
     public Dialog showTipDialog(Context context, String title, String content, String submitText) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, mThemeStyle)
                 .setTitle(title)
                 .setMessage(content)
                 .setPositiveButton(submitText, null)
@@ -108,7 +126,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
      */
     @Override
     public Dialog showConfirmDialog(Context context, String title, String content, String submitText, DialogInterface.OnClickListener submitListener, String cancelText, DialogInterface.OnClickListener cancelListener) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, mThemeStyle)
                 .setTitle(title)
                 .setMessage(content)
                 .setPositiveButton(submitText, submitListener)
@@ -129,7 +147,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
      */
     @Override
     public Dialog showConfirmDialog(Context context, String content, String submitText, DialogInterface.OnClickListener submitListener, String cancelText, DialogInterface.OnClickListener cancelListener) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, mThemeStyle)
                 .setMessage(content)
                 .setPositiveButton(submitText, submitListener)
                 .setNegativeButton(cancelText, cancelListener)
@@ -148,7 +166,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
      */
     @Override
     public Dialog showConfirmDialog(Context context, String content, String submitText, DialogInterface.OnClickListener submitListener, String cancelText) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, mThemeStyle)
                 .setMessage(content)
                 .setPositiveButton(submitText, submitListener)
                 .setNegativeButton(cancelText, null)
@@ -205,7 +223,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
 
     @Override
     public Dialog showContextMenuDialog(Context context, String title, String[] items, DialogInterface.OnClickListener listener) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, mThemeStyle)
                 .setTitle(title)
                 .setItems(items, listener)
                 .show();
@@ -213,7 +231,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
 
     @Override
     public Dialog showContextMenuDialog(Context context, String title, @ArrayRes int itemsId, DialogInterface.OnClickListener listener) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, mThemeStyle)
                 .setTitle(title)
                 .setItems(itemsId, listener)
                 .show();
@@ -221,7 +239,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
 
     @Override
     public Dialog showSingleChoiceDialog(Context context, String title, String[] items, int selectedIndex, final DialogInterface.OnClickListener listener, String submitText, String cancelText) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, mThemeStyle)
                 .setTitle(title)
                 .setSingleChoiceItems(items, selectedIndex, new DialogInterface.OnClickListener() {
                     @Override
@@ -238,7 +256,7 @@ public class AlertDialogStrategy implements IDialogStrategy {
 
     @Override
     public Dialog showSingleChoiceDialog(Context context, String title, int itemsId, int selectedIndex, final DialogInterface.OnClickListener listener, String submitText, String cancelText) {
-        return new AlertDialog.Builder(context)
+        return new AlertDialog.Builder(context, mThemeStyle)
                 .setTitle(title)
                 .setSingleChoiceItems(itemsId, selectedIndex, new DialogInterface.OnClickListener() {
                     @Override

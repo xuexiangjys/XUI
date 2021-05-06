@@ -19,6 +19,7 @@ package com.xuexiang.xui.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -34,6 +36,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.XUI;
@@ -362,5 +365,19 @@ public final class WidgetUtils {
         return new MiniLoadingDialog(context, message);
     }
 
+
+    /**
+     * 隐藏底部弹窗的背景颜色(用于显示圆角）
+     *
+     * @param dialog 底部弹窗
+     */
+    public static void transparentBottomSheetDialogBackground(BottomSheetDialog dialog) {
+        if (dialog != null && dialog.getWindow() != null) {
+            FrameLayout frameLayout = dialog.getWindow().findViewById(R.id.design_bottom_sheet);
+            if (frameLayout != null) {
+                frameLayout.setBackgroundColor(Color.TRANSPARENT);
+            }
+        }
+    }
 
 }

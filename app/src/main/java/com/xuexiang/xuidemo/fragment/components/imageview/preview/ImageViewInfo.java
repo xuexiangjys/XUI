@@ -19,9 +19,13 @@ package com.xuexiang.xuidemo.fragment.components.imageview.preview;
 import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import androidx.annotation.Nullable;
 
 import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 图片预览实体类
@@ -31,14 +35,29 @@ import com.xuexiang.xui.widget.imageview.preview.enitity.IPreviewInfo;
  */
 public class ImageViewInfo implements IPreviewInfo {
 
-    private String mUrl;  //图片地址
-    private Rect mBounds; // 记录坐标
+    /**
+     * 图片地址
+     */
+    private String mUrl;
+    /**
+     * 记录坐标
+     */
+    private Rect mBounds;
     private String mVideoUrl;
 
     private String mDescription = "描述信息";
 
+    public static List<ImageViewInfo> newInstance(String url, Rect bounds) {
+        return Collections.singletonList(new ImageViewInfo(url, bounds));
+    }
+
     public ImageViewInfo(String url) {
         mUrl = url;
+    }
+
+    public ImageViewInfo(String url, Rect bounds) {
+        mUrl = url;
+        mBounds = bounds;
     }
 
     public ImageViewInfo(String videoUrl, String url) {

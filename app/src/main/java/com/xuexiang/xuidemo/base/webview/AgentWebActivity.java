@@ -68,17 +68,28 @@ public class AgentWebActivity extends BaseAppCompatActivity {
                 public void onArrival(Postcard postcard) {
                     finish();
                 }
+
+                @Override
+                public void onLost(Postcard postcard) {
+                    loadUrl(uri.toString());
+                }
             });
         } else {
             String url = intent.getStringExtra(KEY_URL);
-            if (url != null) {
-                openFragment(url);
-            } else {
-                XToastUtils.toast("数据出错！");
-                finish();
-            }
+            loadUrl(url);
         }
     }
+
+
+    private void loadUrl(String url) {
+        if (url != null) {
+            openFragment(url);
+        } else {
+            XToastUtils.error("数据出错！");
+            finish();
+        }
+    }
+
 
     private AgentWebFragment mAgentWebFragment;
 

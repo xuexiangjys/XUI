@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.LruCache;
@@ -14,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,20 +31,22 @@ import com.luck.picture.lib.config.PictureMimeType;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
+import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.base.webview.MiddlewareWebViewClient;
+import com.xuexiang.xuidemo.fragment.components.imageview.preview.ImageViewInfo;
 import com.xuexiang.xuidemo.utils.update.CustomUpdateFailureListener;
 import com.xuexiang.xupdate.XUpdate;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.app.ActivityUtils;
+import com.xuexiang.xutil.common.StringUtils;
 import com.xuexiang.xutil.data.DateUtils;
 import com.xuexiang.xutil.file.FileIOUtils;
 import com.xuexiang.xutil.file.FileUtils;
 
 import java.io.File;
-import java.util.Stack;
 
 import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
@@ -156,6 +158,33 @@ public final class Utils {
                 .compress(true)
                 .previewEggs(true);
     }
+
+    //==========图片预览===========//
+
+    /**
+     * 大图预览
+     *
+     * @param fragment
+     * @param url      图片资源
+     * @param view     小图加载控件
+     */
+    public static void previewPicture(Fragment fragment, String url, View view) {
+        if (fragment == null || StringUtils.isEmpty(url)) {
+            return;
+        }
+        Rect bounds = new Rect();
+        if (view != null) {
+            view.getGlobalVisibleRect(bounds);
+        }
+        PreviewBuilder.from(fragment)
+                .setImgs(ImageViewInfo.newInstance(url, bounds))
+                .setCurrentIndex(0)
+                .setSingleFling(true)
+                .setProgressColor(R.color.xui_config_color_main_theme)
+                .setType(PreviewBuilder.IndicatorType.Number)
+                .start();
+    }
+
 
     //==========拍照===========//
 

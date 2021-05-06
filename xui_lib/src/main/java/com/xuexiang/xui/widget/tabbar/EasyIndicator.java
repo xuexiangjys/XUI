@@ -24,6 +24,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -52,14 +53,14 @@ import io.github.inflationx.calligraphy3.HasTypeface;
  * @since 2018/12/20 上午12:32
  */
 public class EasyIndicator extends LinearLayout implements View.OnClickListener, ViewPager.OnPageChangeListener, HasTypeface {
-    private View mIndicator;
+    private LinearLayout mIndicatorContainer;
     private ViewPager mViewPager;
     /**
      * 选项卡点击监听
      */
-    public onTabClickListener mOnTabClickListener;
+    public OnTabClickListener mOnTabClickListener;
 
-    private LinearLayout tab_content;
+    private LinearLayout tabContent;
     /**
      * Tab集合
      */
@@ -77,56 +78,63 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     /**
      * tab宽度,默认填充全屏
      */
-    private int indicator_width = -1;
+    private int indicatorWidth = LayoutParams.MATCH_PARENT;
     //==============//
     /**
      * 是否显示指示器
      */
-    private boolean indicator_line_show = true;
+    private boolean indicatorLineShow = true;
     /**
      * 指示器默认高度
      */
-    private int indicator_line_height = 3;
+    private int indicatorLineHeight = 3;
+    /**
+     * 指示器默认宽度
+     */
+    private int indicatorLineWidth = LayoutParams.MATCH_PARENT;
     /**
      * 指示器颜色
      */
-    private int indicator_line_color;
+    private int indicatorLineColor;
+    /**
+     * 指示器资源
+     */
+    private Drawable indicatorLineDrawable;
     //==============//
     /**
      * 指示器底部线条高度
      */
-    private int indicator_bottom_line_height = 0;
+    private int indicatorBottomLineHeight = 0;
     /**
      * 指示器底部线条颜色
      */
-    private int indicator_bottom_line_color;
+    private int indicatorBottomLineColor;
 
     /**
      * 中间分割线宽度
      */
-    private int indicator_vertical_line_w = 0;
+    private int indicatorVerticalLineWidth = 0;
     /**
      * 中间分割线高度
      */
-    private int indicator_vertical_line_h = 0;
+    private int indicatorVerticalLineHeight = 0;
     /**
      * 中间分割线颜色
      */
-    private int indicator_vertical_line_color;
-
+    private int indicatorVerticalLineColor;
 
     /**
      * 选中颜色和默认颜色
      */
-    private int indicator_selected_color, indicator_normal_color;
+    private int indicatorSelectedColor, indicatorNormalColor;
     /**
      * 默认字体大小
      */
-    private float indicator_textSize = 14;
+    private float indicatorTextSize = 14;
     /**
      * 选中字体大小
      */
-    private float indicator_select_textSize = indicator_textSize;
+    private float indicatorSelectTextSize = indicatorTextSize;
 
     public EasyIndicator(Context context) {
         this(context, null);
@@ -147,44 +155,48 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
      * 初始化View
      */
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.EasyIndicator, defStyleAttr, 0);
-        if (a != null) {
-            indicatorHeight = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_height, indicatorHeight);
-            indicator_line_height = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_line_height, indicator_line_height);
-            indicator_bottom_line_height = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_bottom_line_height, indicator_bottom_line_height);
-            indicator_bottom_line_color = a.getColor(R.styleable.EasyIndicator_indicator_bottom_line_color, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
-            indicator_selected_color = a.getColor(R.styleable.EasyIndicator_indicator_selected_color, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
-            indicator_normal_color = a.getColor(R.styleable.EasyIndicator_indicator_normal_color, ResUtils.getColor(R.color.xui_config_color_black));
-            indicator_line_color = a.getColor(R.styleable.EasyIndicator_indicator_line_color, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
-            indicator_textSize = getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_textSize, (int) indicator_textSize);
-            indicator_line_show = a.getBoolean(R.styleable.EasyIndicator_indicator_line_show, indicator_line_show);
-            indicator_vertical_line_w = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_vertical_line_w, indicator_vertical_line_w);
-            indicator_vertical_line_color = a.getColor(R.styleable.EasyIndicator_indicator_vertical_line_color, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
-            indicator_vertical_line_h = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_vertical_line_h, indicator_vertical_line_h);
-            indicator_width = (int) getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_width, indicator_width);
-            indicator_select_textSize = getDimensionPixelSize(a, R.styleable.EasyIndicator_indicator_select_textSize, 14);
-            if (indicator_width == 0) {
-                indicator_width = -1;
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EasyIndicator, defStyleAttr, 0);
+        if (typedArray != null) {
+            indicatorWidth = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_width, indicatorWidth);
+            indicatorHeight = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_height, indicatorHeight);
+            indicatorLineShow = typedArray.getBoolean(R.styleable.EasyIndicator_indicator_line_show, indicatorLineShow);
+            indicatorLineWidth = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_line_width, indicatorLineWidth);
+            indicatorLineHeight = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_line_height, indicatorLineHeight);
+            indicatorLineColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_line_color, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+            indicatorLineDrawable = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.EasyIndicator_indicator_line_res);
+            indicatorBottomLineHeight = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_bottom_line_height, indicatorBottomLineHeight);
+            indicatorBottomLineColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_bottom_line_color, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
+            indicatorSelectedColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_selected_color, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+            indicatorNormalColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_normal_color, ResUtils.getColor(R.color.xui_config_color_black));
+            indicatorTextSize = getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_textSize, (int) indicatorTextSize);
+            indicatorVerticalLineWidth = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_vertical_line_w, indicatorVerticalLineWidth);
+            indicatorVerticalLineColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_vertical_line_color, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
+            indicatorVerticalLineHeight = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_vertical_line_h, indicatorVerticalLineHeight);
+            indicatorSelectTextSize = getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_select_textSize, 14);
+            // 指引器不能超过屏幕的宽度
+            indicatorWidth = Math.min(indicatorWidth, screenWidth);
+            if (indicatorWidth == 0) {
+                indicatorWidth = LayoutParams.MATCH_PARENT;
             }
-            a.recycle();
+            typedArray.recycle();
         }
-
-        tab_content = new LinearLayout(getContext());
-        LayoutParams params = new LayoutParams(indicator_width, LayoutParams.WRAP_CONTENT);
-        tab_content.setBackgroundColor(Color.WHITE);
+        tabContent = new LinearLayout(getContext());
+        LayoutParams params = new LayoutParams(indicatorWidth, LayoutParams.WRAP_CONTENT);
+        tabContent.setBackgroundColor(Color.WHITE);
         params.gravity = Gravity.CENTER;
-        tab_content.setLayoutParams(params);
+        tabContent.setLayoutParams(params);
+        tabContent.setGravity(Gravity.CENTER);
     }
 
     /**
-     * 设置tab item
+     * 设置tab的标题
      *
-     * @param tabTitles
+     * @param tabTitles tab的标题
      */
     public void setTabTitles(String[] tabTitles) {
         // Create tab
         tvs = new TextView[tabTitles.length];
-        tab_content.removeAllViews();
+        tabContent.removeAllViews();
         TextView view;
         for (int i = 0; i < tabTitles.length; i++) {
             view = new TextView(getContext());
@@ -195,48 +207,55 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
             view.setGravity(Gravity.CENTER);
             LayoutParams lp = new LayoutParams(0, indicatorHeight, 1.0f);
             view.setLayoutParams(lp);
-            switch (i) {
-                case 0:
-                    view.setTextColor(indicator_selected_color);
-                    view.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_select_textSize);
-                    break;
-                default:
-                    view.setTextColor(indicator_normal_color);
-                    view.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_textSize);
-                    break;
+            if (i == 0) {
+                view.setTextColor(indicatorSelectedColor);
+                view.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicatorSelectTextSize);
+            } else {
+                view.setTextColor(indicatorNormalColor);
+                view.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicatorTextSize);
             }
             view.setOnClickListener(this);
             tvs[i] = view;
-            tab_content.addView(view);
+            tabContent.addView(view);
             if (i != tabTitles.length - 1) {
                 View line = new View(getContext());
-                line.setBackgroundColor(indicator_vertical_line_color);
-                LinearLayoutCompat.LayoutParams compat = new LinearLayoutCompat.LayoutParams(indicator_vertical_line_w, indicator_vertical_line_h);
+                line.setBackgroundColor(indicatorVerticalLineColor);
+                LinearLayoutCompat.LayoutParams compat = new LinearLayoutCompat.LayoutParams(indicatorVerticalLineWidth, indicatorVerticalLineHeight);
                 line.setLayoutParams(compat);
-                tab_content.addView(line);
+                tabContent.addView(line);
             }
         }
 
         removeAllViews();
-        addView(tab_content);
+        addView(tabContent);
 
-        if (indicator_line_show) {
-            // Create tab mIndicator
-            mIndicator = new View(getContext());
-            int iw = 0;
-            if (indicator_width == 0 || indicator_width == -1) {
-                iw = screenWidth / tvs.length;
+        if (indicatorLineShow) {
+            mIndicatorContainer = new LinearLayout(getContext());
+            mIndicatorContainer.setGravity(Gravity.CENTER);
+            int iw = indicatorWidth > 0 ? indicatorWidth / tvs.length : screenWidth / tvs.length;
+            mIndicatorContainer.setLayoutParams(new LinearLayoutCompat.LayoutParams(iw, indicatorLineHeight));
+            View indicator = new View(getContext());
+            indicator.setLayoutParams(new LinearLayoutCompat.LayoutParams(indicatorLineWidth > 0 ? indicatorLineWidth : LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+            if (indicatorLineDrawable != null) {
+                indicator.setBackground(indicatorLineDrawable);
+            } else {
+                indicator.setBackgroundColor(indicatorLineColor);
             }
-            mIndicator.setLayoutParams(new LinearLayoutCompat.LayoutParams(iw, indicator_line_height));
-            mIndicator.setBackgroundColor(indicator_line_color);
-            addView(mIndicator);
+            mIndicatorContainer.addView(indicator);
+            addView(mIndicatorContainer);
+            if (indicatorWidth > 0) {
+                LayoutParams ll = (LayoutParams) mIndicatorContainer
+                        .getLayoutParams();
+                ll.setMarginStart((screenWidth - indicatorWidth) / 2);
+                mIndicatorContainer.setLayoutParams(ll);
+            }
         }
 
         // Create tab bottom line
         View line = new View(getContext());
-        LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, indicator_bottom_line_height);
+        LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, indicatorBottomLineHeight);
         line.setLayoutParams(params);
-        line.setBackgroundColor(indicator_bottom_line_color);
+        line.setBackgroundColor(indicatorBottomLineColor);
         addView(line);
     }
 
@@ -269,15 +288,15 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     }
 
     private AnimatorSet buildIndicatorAnimatorTowards(TextView tv) {
-        float x = tab_content.getX();
-        ObjectAnimator xAnimator = ObjectAnimator.ofFloat(mIndicator, "X", mIndicator.getX(), tv.getX() + x);
-        final ViewGroup.LayoutParams params = mIndicator.getLayoutParams();
+        float x = tabContent.getX();
+        ObjectAnimator xAnimator = ObjectAnimator.ofFloat(mIndicatorContainer, "X", mIndicatorContainer.getX(), tv.getX() + x);
+        final ViewGroup.LayoutParams params = mIndicatorContainer.getLayoutParams();
         ValueAnimator widthAnimator = ValueAnimator.ofInt(params.width, tv.getMeasuredWidth());
         widthAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 params.width = (Integer) animation.getAnimatedValue();
-                mIndicator.setLayoutParams(params);
+                mIndicatorContainer.setLayoutParams(params);
             }
         });
         AnimatorSet set = new AnimatorSet();
@@ -290,50 +309,50 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         TextView tv = (TextView) v;
-        int mPosition = (int) v.getTag();
+        int position = (int) v.getTag();
         if (mViewPager != null) {
-            mViewPager.setCurrentItem(mPosition);
+            mViewPager.setCurrentItem(position);
         } else {
             setSelectorColor(tv);
-            if (indicator_line_show) {
+            if (indicatorLineShow) {
                 buildIndicatorAnimatorTowards(tv).start();
             }
         }
         if (mOnTabClickListener != null) {
-            mOnTabClickListener.onTabClick(((TextView) v).getText().toString(), mPosition);
+            mOnTabClickListener.onTabClick(((TextView) v).getText().toString(), position);
         }
     }
 
     private void setSelectorColor(TextView tv) {
         for (TextView textView : tvs) {
-            textView.setTextColor(indicator_normal_color);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_textSize);
+            textView.setTextColor(indicatorNormalColor);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicatorTextSize);
         }
-        tv.setTextColor(indicator_selected_color);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicator_select_textSize);
+        tv.setTextColor(indicatorSelectedColor);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, indicatorSelectTextSize);
     }
 
     /**
      * 设置选项卡点击监听
      *
-     * @param onTabClickListener
+     * @param onTabClickListener 选项卡点击监听
      */
-    public void setOnTabClickListener(EasyIndicator.onTabClickListener onTabClickListener) {
+    public void setOnTabClickListener(OnTabClickListener onTabClickListener) {
         mOnTabClickListener = onTabClickListener;
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        LayoutParams ll = (LayoutParams) mIndicator
+        LayoutParams ll = (LayoutParams) mIndicatorContainer
                 .getLayoutParams();
         if (mCurrIndex == position) {
-            ll.setMarginStart((int) (mCurrIndex * mIndicator.getMeasuredWidth() + positionOffset
-                    * mIndicator.getMeasuredWidth()));
+            ll.setMarginStart((int) (mCurrIndex * mIndicatorContainer.getMeasuredWidth() + positionOffset
+                    * mIndicatorContainer.getMeasuredWidth()));
         } else if (mCurrIndex > position) {
-            ll.setMarginStart((int) (mCurrIndex * mIndicator.getMeasuredWidth() - (1 - positionOffset)
-                    * mIndicator.getMeasuredWidth()));
+            ll.setMarginStart((int) (mCurrIndex * mIndicatorContainer.getMeasuredWidth() - (1 - positionOffset)
+                    * mIndicatorContainer.getMeasuredWidth()));
         }
-        mIndicator.setLayoutParams(ll);
+        mIndicatorContainer.setLayoutParams(ll);
     }
 
     @Override
@@ -356,16 +375,18 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
         }
     }
 
-
     /**
      * 选项卡点击监听
+     *
+     * @author xuexiang
+     * @since 2021/3/14 3:38 PM
      */
-    public interface onTabClickListener {
+    public interface OnTabClickListener {
         /**
          * tab点击
          *
-         * @param title
-         * @param position
+         * @param title    标题
+         * @param position 位置
          */
         void onTabClick(String title, int position);
     }
@@ -395,7 +416,6 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
         final float scale = res.getDisplayMetrics().scaledDensity;
         return sp * scale;
     }
-
 
     /**
      * 初始化屏幕宽高

@@ -92,13 +92,13 @@ public class PreLoadX5Service extends IntentService {
             public void onCoreInitFinished() {
             }
         };
-        QbSdk.initX5Environment(getApplicationContext(), cb);
+        QbSdk.initX5Environment(this, cb);
     }
 
     private void preInitX5WebCore() {
         if (!QbSdk.isTbsCoreInited()) {
             // 设置X5初始化完成的回调接口
-            QbSdk.preInit(getApplicationContext(), null);
+            QbSdk.preInit(this, null);
         }
     }
 

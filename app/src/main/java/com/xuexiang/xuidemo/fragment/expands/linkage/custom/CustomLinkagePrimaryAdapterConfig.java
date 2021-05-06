@@ -46,7 +46,7 @@ public class CustomLinkagePrimaryAdapterConfig implements ILinkagePrimaryAdapter
         mItemClickListener = itemClickListener;
     }
 
-    public CustomLinkagePrimaryAdapterConfig setOnItemClickListner(OnPrimaryItemClickListener itemClickListener) {
+    public CustomLinkagePrimaryAdapterConfig setOnItemClickListener(OnPrimaryItemClickListener itemClickListener) {
         mItemClickListener = itemClickListener;
         return this;
     }

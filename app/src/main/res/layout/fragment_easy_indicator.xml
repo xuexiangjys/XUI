@@ -25,22 +25,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:indicator_line_show="true"
-        app:indicator_line_height="2dp"
         app:indicator_height="42dp"
+        app:indicator_line_height="2dp"
+        app:indicator_line_show="true"
         app:indicator_textSize="14sp"
         app:indicator_width="0dp" />
+
+    <com.xuexiang.xui.widget.tabbar.EasyIndicator
+        android:id="@+id/easy_indicator2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        app:indicator_height="42dp"
+        app:indicator_line_height="5dp"
+        app:indicator_line_res="@drawable/shape_indicator_line"
+        app:indicator_line_show="true"
+        app:indicator_line_width="30dp"
+        app:indicator_selected_color="#FF6100"
+        app:indicator_textSize="14sp"
+        app:indicator_vertical_line_h="30dp"
+        app:indicator_vertical_line_w="1dp"
+        app:indicator_width="300dp" />
 
     <com.xuexiang.xui.widget.tabbar.EasyIndicator
         android:id="@+id/easy_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:indicator_line_show="true"
-        app:indicator_line_height="3dp"
         app:indicator_height="42dp"
-        app:indicator_textSize="14sp"
-        app:indicator_width="0dp" />
+        app:indicator_line_height="3dp"
+        app:indicator_line_show="true"
+        app:indicator_textSize="14sp" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

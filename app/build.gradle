@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 17
-        versionName "1.1.6"
+        versionCode 18
+        versionName "1.1.7"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -103,8 +103,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.1.6'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.6'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
@@ -116,15 +116,13 @@ dependencies {
     implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
     //XPage页面框架
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.0.3'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.1.1'
     annotationProcessor project(':widget_compiler')
     //ButterKnife
     implementation deps.butterknife.runtime
     annotationProcessor deps.butterknife.compiler
-    //如果开启了内存泄漏监测leak,就需要加上这个依赖
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
-    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+    // LeakCanary内存泄漏检测
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 
     //弹性布局
     implementation 'com.google.android:flexbox:0.3.1'
@@ -199,7 +197,7 @@ dependencies {
     implementation 'com.alibaba.android:ultraviewpager:1.0.7.8'
     implementation 'com.alibaba.android:tangram:3.3.6'
     //版本更新
-    implementation 'com.github.xuexiangjys:XUpdate:2.0.6'
+    implementation 'com.github.xuexiangjys:XUpdate:2.0.7'
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation deps.gson
     implementation deps.okhttp3
@@ -207,14 +205,15 @@ dependencies {
     implementation 'com.tencent:mmkv:1.0.22'
     //腾讯x5TBS
     implementation 'com.tencent.tbs.tbssdk:sdk:43967'
-
+    //富文本
+    implementation 'com.zzhoujay.richtext:richtext:3.0.8'
 
     //双列表联动
     implementation 'com.kunminx.linkage:linkage-recyclerview:1.9.2'
 
     //umeng统计
-    implementation 'com.umeng.umsdk:analytics:8.0.2'
-    implementation 'com.umeng.umsdk:common:2.0.2'
+    implementation 'com.umeng.umsdk:analytics:8.1.4'
+    implementation 'com.umeng.umsdk:common:2.1.8'
 
     //ANR异常捕获
     implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'

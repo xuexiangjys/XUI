@@ -19,12 +19,14 @@ package com.xuexiang.xui.widget.textview;
 
 import android.content.Context;
 import android.os.Looper;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
@@ -39,6 +41,16 @@ import com.xuexiang.xui.utils.ResUtils;
  */
 public class LoggerTextView extends AppCompatTextView {
 
+    /**
+     * 日志格式化接口
+     */
+    private ILogFormatter mLogFormatter = new DefaultLogFormatter();
+
+    /**
+     * 日志装饰接口
+     */
+    private ILogDecorator mLogDecorator = new DefaultLogDecorator();
+
     public LoggerTextView(Context context) {
         this(context, null);
     }
@@ -50,6 +62,29 @@ public class LoggerTextView extends AppCompatTextView {
     public LoggerTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setMovementMethod(new ScrollingMovementMethod());
+    }
+
+    /**
+     * 设置日志格式化接口
+     *
+     * @param logFormatter 日志格式化接口
+     * @return 日志打印显示控件
+     */
+    public LoggerTextView setLogFormatter(@NonNull ILogFormatter logFormatter) {
+        mLogFormatter = logFormatter;
+        return this;
+    }
+
+
+    /**
+     * 设置日志装饰接口
+     *
+     * @param logDecorator 日志装饰接口
+     * @return 日志打印显示控件
+     */
+    public LoggerTextView setLogDecorator(@NonNull ILogDecorator logDecorator) {
+        mLogDecorator = logDecorator;
+        return this;
     }
 
     /**
@@ -91,35 +126,23 @@ public class LoggerTextView extends AppCompatTextView {
     }
 
     /**
+     * 添加自定义等级日志
+     *
+     * @param logContent 日志内容
+     */
+
+    public void logCustom(String logContent) {
+        addLog(logContent, LogType.CUSTOM);
+    }
+
+    /**
      * 添加日志
      *
      * @param logContent 日志内容
      * @param logType    日志类型
      */
     public void addLog(String logContent, LogType logType) {
-        SpannableString spannableString = new SpannableString(logContent);
-        switch (logType) {
-            case ERROR:
-                spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_error)),
-                        0,
-                        logContent.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                break;
-            case SUCCESS:
-                spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_success)),
-                        0,
-                        logContent.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                break;
-            case WARNING:
-                spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_waring)),
-                        0,
-                        logContent.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                break;
-            default:
-                break;
-        }
+        SpannableString spannableString = getLogDecorator().decorate(getLogFormatter().format(logContent, logType), logType);
         appendLogInMainThread(spannableString);
     }
 
@@ -134,6 +157,31 @@ public class LoggerTextView extends AppCompatTextView {
                 }
             });
         }
+    }
+
+
+    /**
+     * 获取日志装饰接口
+     *
+     * @return 日志装饰接口
+     */
+    public ILogDecorator getLogDecorator() {
+        if (mLogDecorator == null) {
+            mLogDecorator = new DefaultLogDecorator();
+        }
+        return mLogDecorator;
+    }
+
+    /**
+     * 获取日志格式化接口
+     *
+     * @return 日志格式化接口
+     */
+    public ILogFormatter getLogFormatter() {
+        if (mLogFormatter == null) {
+            mLogFormatter = new DefaultLogFormatter();
+        }
+        return mLogFormatter;
     }
 
     private void appendLog(SpannableString spannableString) {
@@ -156,7 +204,8 @@ public class LoggerTextView extends AppCompatTextView {
      * @return 获取当前TextView文字的真实高度
      */
     private int getTextRealHeight() {
-        return getLayout().getLineTop(getLineCount()) + getCompoundPaddingTop() + getCompoundPaddingBottom();
+        Layout layout = getLayout();
+        return (layout != null ? layout.getLineTop(getLineCount()) : 0) + getCompoundPaddingTop() + getCompoundPaddingBottom();
     }
 
     /**
@@ -178,6 +227,92 @@ public class LoggerTextView extends AppCompatTextView {
     }
 
     /**
+     * 默认日志格式化接口
+     *
+     * @author xuexiang
+     * @since 2021/4/14 1:48 AM
+     */
+    public static class DefaultLogFormatter implements ILogFormatter {
+
+        @Override
+        public String format(String logContent, LogType logType) {
+            return logContent;
+        }
+    }
+
+    /**
+     * 日志格式化接口
+     *
+     * @author xuexiang
+     * @since 2021/4/14 1:30 AM
+     */
+    public interface ILogFormatter {
+        /**
+         * 格式化日志内容
+         *
+         * @param logContent 日志内容
+         * @param logType    日志类型
+         * @return 格式化后的日志
+         */
+        String format(String logContent, LogType logType);
+    }
+
+
+    /**
+     * 默认日志装饰接口
+     *
+     * @author xuexiang
+     * @since 2021/4/14 1:49 AM
+     */
+    public static class DefaultLogDecorator implements ILogDecorator {
+
+        @Override
+        public SpannableString decorate(String logContent, LogType logType) {
+            SpannableString spannableString = new SpannableString(logContent);
+            switch (logType) {
+                case ERROR:
+                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_error)),
+                            0,
+                            logContent.length(),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    break;
+                case SUCCESS:
+                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_success)),
+                            0,
+                            logContent.length(),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    break;
+                case WARNING:
+                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_waring)),
+                            0,
+                            logContent.length(),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    break;
+                default:
+                    break;
+            }
+            return spannableString;
+        }
+    }
+
+    /**
+     * 日志装饰接口
+     *
+     * @author xuexiang
+     * @since 2021/4/14 1:30 AM
+     */
+    public interface ILogDecorator {
+        /**
+         * 装饰日志内容
+         *
+         * @param logContent 日志内容
+         * @param logType    日志类型
+         * @return 装饰后的日志
+         */
+        SpannableString decorate(String logContent, LogType logType);
+    }
+
+    /**
      * 日志类型
      */
     public enum LogType {
@@ -196,7 +331,11 @@ public class LoggerTextView extends AppCompatTextView {
         /**
          * 警告日志
          */
-        WARNING
+        WARNING,
+        /**
+         * 自定义等级日志
+         */
+        CUSTOM
     }
 
 

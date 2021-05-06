@@ -1286,8 +1286,12 @@
         <attr name="indicator_line_show" format="boolean" />
         <!--指示器底部的高度，默认3-->
         <attr name="indicator_line_height" format="dimension" />
+        <!--指示器底部的宽度，默认-1(MATCH_PARENT)为填充满-->
+        <attr name="indicator_line_width" format="dimension" />
         <!--指示器指示线的颜色，默认R.attr.colorAccent-->
         <attr name="indicator_line_color" format="color" />
+        <!--指示器指示线的资源，设置了这个indicator_line_height和indicator_line_color将不生效-->
+        <attr name="indicator_line_res" format="reference" />
 
         <!--指示器底部指示线的颜色，默认R.attr.xui_config_color_separator_dark-->
         <attr name="indicator_bottom_line_color" format="color" />

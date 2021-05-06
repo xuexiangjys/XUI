@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.SparseBooleanArray;
@@ -318,7 +319,8 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
     }
 
     private static int getRealTextViewHeight(@NonNull TextView textView) {
-        int textHeight = textView.getLayout().getLineTop(textView.getLineCount());
+        Layout layout = textView.getLayout();
+        int textHeight = layout != null ? layout.getLineTop(textView.getLineCount()) : 0;
         int padding = textView.getCompoundPaddingTop() + textView.getCompoundPaddingBottom();
         return textHeight + padding;
     }

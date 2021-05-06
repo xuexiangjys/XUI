@@ -23,6 +23,9 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.textview.LoggerTextView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xutil.data.DateUtils;
+
+import java.text.SimpleDateFormat;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -44,6 +47,8 @@ public class LoggerTextViewFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+        // 这里设置自定义的日志格式
+        logger.setLogFormatter((logContent, logType) -> DateUtils.getNowString(new SimpleDateFormat("[HH:mm]")) + logContent);
 
     }
 

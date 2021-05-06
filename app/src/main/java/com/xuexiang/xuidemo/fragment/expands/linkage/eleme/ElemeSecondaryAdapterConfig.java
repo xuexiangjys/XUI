@@ -49,7 +49,7 @@ public class ElemeSecondaryAdapterConfig implements ILinkageSecondaryAdapterConf
         mItemClickListener = itemClickListener;
     }
 
-    public ElemeSecondaryAdapterConfig setOnItemClickListner(OnSecondaryItemClickListener itemClickListener) {
+    public ElemeSecondaryAdapterConfig setOnItemClickListener(OnSecondaryItemClickListener itemClickListener) {
         mItemClickListener = itemClickListener;
         return this;
     }

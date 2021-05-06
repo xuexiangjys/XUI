@@ -455,4 +455,9 @@ The lake was formed about 2 million years ago and is a part of the Lake Tahoe Ba
     <string name="lake_tahoe_title">Lake Tahoe</string>
     <string name="label_classify_display">分类展示</string>
 
+    <string name="label_previous">上一条</string>
+    <string name="label_next">下一条</string>
+    <string name="tip_ignore_message">以后不再提示此类信息</string>
+    <string name="tip_title">你知道吗？</string>
+
 </resources>

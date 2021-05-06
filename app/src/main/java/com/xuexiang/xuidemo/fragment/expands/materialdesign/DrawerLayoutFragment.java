@@ -78,6 +78,10 @@ public class DrawerLayoutFragment extends BaseFragment implements NavigationView
     protected TitleBar initTitle() {
         toolbar.setTitle("资讯");
         toolbar.inflateMenu(R.menu.menu_setting);
+        toolbar.setOnMenuItemClickListener(item -> {
+            XToastUtils.toast("点击了:" + item.getTitle());
+            return true;
+        });
         return null;
     }
 
@@ -100,6 +104,8 @@ public class DrawerLayoutFragment extends BaseFragment implements NavigationView
         viewPager.setAdapter(adapter);
 
         ViewUtils.setViewsFont(bottomNavigation);
+        ViewUtils.clearViewLongClick(bottomNavigation, R.id.item_dashboard, R.id.item_photo, R.id.item_music, R.id.item_movie);
+        ViewUtils.clearAllViewLongClick(toolbar);
     }
 
 
@@ -124,7 +130,7 @@ public class DrawerLayoutFragment extends BaseFragment implements NavigationView
     @SingleClick
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.nav_header:
                 XToastUtils.toast("点击头部！");
                 break;

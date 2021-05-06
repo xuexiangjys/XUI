@@ -20,6 +20,7 @@ package com.xuexiang.xuidemo.fragment.components.dialog;
 import android.text.InputType;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.dialog.strategy.InputInfo;
@@ -62,7 +63,7 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
      */
     @Override
     protected void onItemClick(int position) {
-        switch(position) {
+        switch (position) {
             case 0:
                 DialogLoader.getInstance().setIDialogStrategy(new MaterialDialogStrategy());
                 break;
@@ -105,13 +106,17 @@ public class DialogStrategyFragment extends BaseSimpleListFragment {
                         (dialog, input) -> XToastUtils.toast(input.toString()),
                         getString(R.string.lab_continue),
                         (dialog, which) -> {
+                            KeyboardUtils.hideSoftInput(dialog);
                             dialog.dismiss();
                             if (dialog instanceof MaterialDialog) {
-                                XToastUtils.toast("你输入了:" + ((MaterialDialog)dialog).getInputEditText().getText().toString());
+                                XToastUtils.toast("你输入了:" + ((MaterialDialog) dialog).getInputEditText().getText().toString());
                             }
                         },
                         getString(R.string.lab_change),
-                        null);
+                        (dialog, which) -> {
+                            KeyboardUtils.hideSoftInput(dialog);
+                            dialog.dismiss();
+                        });
                 break;
             case 5:
                 DialogLoader.getInstance().showContextMenuDialog(getContext(),

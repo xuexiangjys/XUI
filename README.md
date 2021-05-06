@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/BugF/IMG/2020/10/05/5f7b2469a6676.png" width="388" height="321" alt="Banner" />
+  <img src="https://img.rruu.net/image/5f7d85cab3e43" width="388" height="321" alt="Banner" />
 </p>
 
 # XUI
@@ -74,7 +74,7 @@ allprojects {
 dependencies {
   ...
   //androidx project
-  implementation 'com.github.xuexiangjys:XUI:1.1.6'
+  implementation 'com.github.xuexiangjys:XUI:1.1.7'
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.1.0'
@@ -209,6 +209,20 @@ protected void attachBaseContext(Context newBase) {
 
 ![download_github.png](https://img.rruu.net/image/5f7d827d5d755)
 
+## Contribution
+
+> Due to my limited energy, you are welcome to actively contribute your idea. You will have the opportunity to participate in the maintenance of star over 1000 projects on GitHub and enhance your industry influence!
+
+Code contribution requirements：
+
+* Please keep the existing code style, not according to your habits. Please comply with Alibaba java coding specification.
+
+* Just modify the code you are sure need to be optimized, not all the different code from your ideas.
+
+* Before launching a pull request, you should test your commit code adequately.
+
+* Please commit new code to the dev branch instead of the master branch.
+
 ## Thanks
 
 * [QMUI_Android](https://github.com/Tencent/QMUI_Android)
@@ -280,11 +294,26 @@ B*G | 1￥ | WeChat
 **俊 | 80￥ | Alipay
 *尋 | 10.24￥ | WeChat
 爱生活 | 100￥ | QQ
+*茶 | 100￥ | WeChat
+*头 | 2￥ | WeChat
+*噜 | 10.99￥ | WeChat
+*W*m | 10￥ | WeChat
+*谷 | 10￥ | WeChat
+*望 | 5￥ | WeChat
+J*o | 10.24￥ | WeChat
+*休 | 10.24￥ | WeChat
+**俊 | 80￥ | Alipay
+**伟 | 1.1￥ | Alipay
+**云 | 5￥ | Alipay
+*航 | 3￥ | Alipay
+*维 | 5￥ | WeChat
 
 ## Contact
 
 [![](https://img.shields.io/badge/XUIGroup1-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
 
 [![](https://img.shields.io/badge/XUIGroup2-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
+
+[![](https://img.shields.io/badge/XUIGroup3-1090612354-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=nOY3GGJY-jiwzhQpR8E06G-yrOUsxCP1)
 
 ![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
