@@ -14,7 +14,6 @@ import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.sdkinit.ANRWatchDogInit;
 import com.xuexiang.xuidemo.utils.sdkinit.AutoCameraStrategy;
-import com.xuexiang.xuidemo.utils.sdkinit.BuglyInit;
 import com.xuexiang.xuidemo.utils.sdkinit.TbsInit;
 import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
 import com.xuexiang.xuidemo.utils.sdkinit.XBasicLibInit;
@@ -47,11 +46,7 @@ public class MyApp extends Application {
         //三方SDK初始化
         XUpdateInit.init(this);
         TbsInit.init(this);
-        //运营统计数据运行时不初始化
-        if (!MyApp.isDebug()) {
-            UMengInit.init(this);
-            BuglyInit.init(this);
-        }
+        UMengInit.init(this);
         //ANR监控
         ANRWatchDogInit.init();
     }

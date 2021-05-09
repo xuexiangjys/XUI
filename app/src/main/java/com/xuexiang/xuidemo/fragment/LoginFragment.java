@@ -35,6 +35,7 @@ import com.xuexiang.xuidemo.utils.PrivacyUtils;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
 import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.common.RandomUtils;
 
@@ -85,6 +86,7 @@ public class LoginFragment extends BaseFragment {
             PrivacyUtils.showPrivacyDialog(getContext(), (dialog, which) -> {
                 dialog.dismiss();
                 spUtils.setIsAgreePrivacy(true);
+                UMengInit.init(getContext());
             });
         }
     }
