@@ -868,6 +868,8 @@ public class GuideCaseView extends FrameLayout implements ViewTreeObserver.OnGlo
 
         /**
          * 设置退出动画
+         * <p>
+         * 【设置推出动画的时候，请一定注意设置动画监听setAnimationListener，并在onAnimationEnd执行GuideCaseView的removeView}方法】
          *
          * @param exitAnimation exit animation for GuideCaseView
          * @return Builder
