@@ -431,6 +431,10 @@
     <string name="lab_register_account">点击注册即表示同意</string>
     <string name="lab_service_protocol"><![CDATA[<用户协议>]]></string>
     <string name="url_add_qq_group"><![CDATA[https://qm.qq.com/cgi-bin/qm/qr?k=0lUqsbfHTNDbS2KK4nTPwPq07tOqAk6J&authKey=4PzQ2cQYIr28Qyg%2FkTk%2BmI7xlcq8B0IZKZGc1H3XloRrCDBO8az97DIsBHnQW0Ya]]></string>
+    <string name="title_user_protocol">用户协议</string>
+    <string name="title_privacy_protocol">隐私政策</string>
+    <string name="agree_protocol">我已阅读并同意</string>
+    <string name="lab_and">和</string>
 
     <string name="sync">Sync</string>
     <string name="alarm">Alarm</string>

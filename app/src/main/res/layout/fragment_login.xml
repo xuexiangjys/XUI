@@ -164,33 +164,40 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="20dp"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_protocol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="0.7"
+                android:scaleY="0.7" />
 
             <TextView
                 style="@style/TextStyle.Explain"
                 android:layout_width="wrap_content"
-                android:text="登陆/注册代表您已阅读并同意"
+                android:text="@string/agree_protocol"
                 android:textColor="@color/xui_config_color_primary_text" />
 
             <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                 android:id="@+id/tv_user_protocol"
                 style="@style/TextStyle.Explain"
                 android:layout_width="wrap_content"
-                android:text="用户协议"
+                android:text="@string/title_user_protocol"
                 android:textColor="?attr/colorAccent" />
 
             <TextView
                 style="@style/TextStyle.Explain"
                 android:layout_width="wrap_content"
-                android:text="和"
+                android:text="@string/lab_and"
                 android:textColor="@color/xui_config_color_primary_text" />
 
             <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                 android:id="@+id/tv_privacy_protocol"
                 style="@style/TextStyle.Explain"
                 android:layout_width="wrap_content"
-                android:text="隐私政策"
+                android:text="@string/title_privacy_protocol"
                 android:textColor="?attr/colorAccent" />
 
         </LinearLayout>

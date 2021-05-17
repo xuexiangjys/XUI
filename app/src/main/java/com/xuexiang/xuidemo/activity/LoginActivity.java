@@ -23,7 +23,7 @@ import android.view.KeyEvent;
 import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xuidemo.base.BaseActivity;
-import com.xuexiang.xuidemo.fragment.LoginFragment;
+import com.xuexiang.xuidemo.fragment.other.LoginFragment;
 import com.xuexiang.xutil.display.Colors;
 
 /**

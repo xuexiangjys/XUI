@@ -184,9 +184,9 @@ dependencies {
     implementation 'com.github.xuexiangjys:CalendarExaple:1.0.1'
     implementation 'com.haibin:calendarview:3.6.3'
     //图标库
-    implementation "com.mikepenz:iconics-core:4.0.1-b02"
+    implementation "com.mikepenz:iconics-core:4.0.2"
     //图标库控件（可选）
-    implementation "com.mikepenz:iconics-views:4.0.1-b02"
+    implementation "com.mikepenz:iconics-views:4.0.2"
     //相机拍摄
     implementation 'com.github.xuexiangjys:CameraView:1.0.3'
     //另一款相机拍摄库，使用更简单

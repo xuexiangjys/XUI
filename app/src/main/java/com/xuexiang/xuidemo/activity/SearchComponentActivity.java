@@ -22,7 +22,7 @@ import android.os.Bundle;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xuidemo.base.BaseActivity;
-import com.xuexiang.xuidemo.fragment.SearchComponentFragment;
+import com.xuexiang.xuidemo.fragment.other.SearchComponentFragment;
 import com.xuexiang.xuidemo.utils.Utils;
 
 /**

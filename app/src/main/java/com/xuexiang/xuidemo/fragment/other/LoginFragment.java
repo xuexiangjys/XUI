@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+ * Copyright (C) 2021 xuexiangjys(xuexiangjys@163.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,22 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment;
+package com.xuexiang.xuidemo.fragment.other;
 
 import android.graphics.Color;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xui.utils.CountDownButtonHelper;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText;
+import com.xuexiang.xui.widget.textview.supertextview.SuperButton;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -41,6 +44,8 @@ import com.xuexiang.xutil.common.RandomUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.xuexiang.xuidemo.fragment.other.ServiceProtocolFragment.KEY_PROTOCOL_TITLE;
 
 
 /**
@@ -58,6 +63,11 @@ public class LoginFragment extends BaseFragment {
     MaterialEditText etVerifyCode;
     @BindView(R.id.btn_get_verify_code)
     RoundButton btnGetVerifyCode;
+
+    @BindView(R.id.cb_protocol)
+    CheckBox cbProtocol;
+    @BindView(R.id.btn_login)
+    SuperButton btnLogin;
 
     private CountDownButtonHelper mCountDownHelper;
 
@@ -79,16 +89,21 @@ public class LoginFragment extends BaseFragment {
     @Override
     protected void initViews() {
         mCountDownHelper = new CountDownButtonHelper(btnGetVerifyCode, 60);
-
         //隐私政策弹窗
         SettingSPUtils spUtils = SettingSPUtils.getInstance();
         if (!spUtils.isAgreePrivacy()) {
             PrivacyUtils.showPrivacyDialog(getContext(), (dialog, which) -> {
                 dialog.dismiss();
                 spUtils.setIsAgreePrivacy(true);
-                UMengInit.init(getContext());
+                UMengInit.init();
+                ViewUtils.setChecked(cbProtocol, true);
             });
         }
+        cbProtocol.setChecked(spUtils.isAgreePrivacy());
+        cbProtocol.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            spUtils.setIsAgreePrivacy(isChecked);
+            ViewUtils.setEnabled(btnLogin, isChecked);
+        });
     }
 
     @SingleClick
@@ -114,10 +129,10 @@ public class LoginFragment extends BaseFragment {
                 XToastUtils.info("忘记密码");
                 break;
             case R.id.tv_user_protocol:
-                XToastUtils.info("用户协议");
+                openPage(ServiceProtocolFragment.class, KEY_PROTOCOL_TITLE, ResUtils.getString(R.string.title_user_protocol));
                 break;
             case R.id.tv_privacy_protocol:
-                XToastUtils.info("隐私政策");
+                openPage(ServiceProtocolFragment.class, KEY_PROTOCOL_TITLE, ResUtils.getString(R.string.title_privacy_protocol));
                 break;
             default:
                 break;

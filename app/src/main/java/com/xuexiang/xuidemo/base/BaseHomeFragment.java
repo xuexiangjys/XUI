@@ -32,8 +32,8 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MainActivity;
 import com.xuexiang.xuidemo.adapter.WidgetItemAdapter;
-import com.xuexiang.xuidemo.fragment.AboutFragment;
-import com.xuexiang.xuidemo.fragment.SearchComponentFragment;
+import com.xuexiang.xuidemo.fragment.other.AboutFragment;
+import com.xuexiang.xuidemo.fragment.other.SearchComponentFragment;
 
 import java.util.Collections;
 import java.util.List;
