@@ -17,6 +17,7 @@
 package com.xuexiang.xui.utils;
 
 import android.graphics.Color;
+
 import androidx.annotation.ColorInt;
 
 import java.util.Random;
@@ -33,15 +34,15 @@ public final class ColorUtils {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
-    public static int setColorAlpha(@ColorInt int color, float alpha){
+    public static int setColorAlpha(@ColorInt int color, float alpha) {
         return setColorAlpha(color, alpha, true);
     }
 
     /**
      * 设置颜色的alpha值
      *
-     * @param color 需要被设置的颜色值
-     * @param alpha 取值为[0,1]，0表示全透明，1表示不透明
+     * @param color    需要被设置的颜色值
+     * @param alpha    取值为[0,1]，0表示全透明，1表示不透明
      * @param override 覆盖原本的 alpha
      * @return 返回改变了 alpha 值的颜色值
      */
@@ -94,7 +95,7 @@ public final class ColorUtils {
     /**
      * 加深颜色
      *
-     * @param color  需要加深的颜色
+     * @param color 需要加深的颜色
      */
     public static int darker(int color) {
         return darker(color, 0.8F);
@@ -116,7 +117,7 @@ public final class ColorUtils {
     /**
      * 变浅颜色
      *
-     * @param color  需要变浅的颜色
+     * @param color 需要变浅的颜色
      */
     public static int lighter(int color) {
         return lighter(color, 0.8F);
@@ -144,11 +145,24 @@ public final class ColorUtils {
      * @return
      */
     public static boolean isColorDark(@ColorInt int color) {
+        return isColorDark(color, 0.5F);
+
+    }
+
+
+    /**
+     * 是否是深色的颜色
+     *
+     * @param color  颜色
+     * @param factor 比例
+     * @return
+     */
+    public static boolean isColorDark(@ColorInt int color, double factor) {
         double darkness =
                 1
                         - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color))
                         / 255;
-        return darkness >= 0.5;
+        return darkness >= factor;
     }
 
     /**
@@ -219,8 +233,6 @@ public final class ColorUtils {
             this.upper = upper;
         }
     }
-
-
 
 
 }
