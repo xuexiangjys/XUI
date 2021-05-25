@@ -81,11 +81,13 @@
                         android:id="@+id/cb_ignore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/xui_icon_checkbox" />
+                        android:button="@drawable/xui_icon_checkbox"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8" />
 
                     <TextView
                         style="@style/TextStyle.Explain"
-                        android:layout_marginStart="@dimen/config_margin_8dp"
+                        android:layout_marginStart="@dimen/config_margin_4dp"
                         android:text="@string/tip_ignore_message" />
                 </LinearLayout>
 

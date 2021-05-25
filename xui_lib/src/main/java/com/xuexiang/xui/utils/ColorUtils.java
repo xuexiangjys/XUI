@@ -146,7 +146,6 @@ public final class ColorUtils {
      */
     public static boolean isColorDark(@ColorInt int color) {
         return isColorDark(color, 0.5F);
-
     }
 
 

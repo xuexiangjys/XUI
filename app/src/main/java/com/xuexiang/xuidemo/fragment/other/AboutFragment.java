@@ -24,6 +24,7 @@ import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.widget.GuideTipsDialog;
 import com.xuexiang.xutil.app.AppUtils;
 
 import java.text.SimpleDateFormat;
@@ -60,6 +61,7 @@ public class AboutFragment extends BaseFragment {
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_wiki)), v -> Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/wiki/"))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_github)), v -> Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/"))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_update)), v -> Utils.checkUpdate(getContext(), true)).addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_sponsor)), v -> openPage(SponsorFragment.class))
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_tips)), v -> GuideTipsDialog.showTipsForce(getContext()))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_add_qq_group)), v -> Utils.goWeb(getContext(), getString(R.string.url_add_qq_group)))
                 .addTo(mAboutGroupListView);
 

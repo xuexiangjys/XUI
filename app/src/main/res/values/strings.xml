@@ -12,6 +12,7 @@
     <string name="regexp_number_only">^[1-9]?\\d$</string>
     <string name="common_example">示例图片</string>
 
+    <string name="about_item_tips">小贴士</string>
     <string name="about_item_homepage">访问官网</string>
     <string name="about_item_wiki">说明文档</string>
     <string name="about_item_update">版本更新</string>
