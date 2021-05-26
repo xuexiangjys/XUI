@@ -7,6 +7,7 @@ import com.xuexiang.xuidemo.fragment.components.imageview.ImageEditFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.ImageLoadStrategyFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.PreviewFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.RadiusImageViewFragment;
+import com.xuexiang.xuidemo.fragment.components.imageview.SignatureViewFragment;
 import com.xuexiang.xuidemo.fragment.components.imageview.pictureselector.PictureSelectorFragment;
 
 /**
@@ -27,7 +28,8 @@ public class ImageViewFragment extends ComponentContainerFragment {
                 PictureSelectorFragment.class,
                 PreviewFragment.class,
                 ImageEditFragment.class,
-                ImageLoadStrategyFragment.class
+                ImageLoadStrategyFragment.class,
+                SignatureViewFragment.class
         };
     }
 }
