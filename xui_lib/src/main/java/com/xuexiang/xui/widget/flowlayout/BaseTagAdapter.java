@@ -127,6 +127,17 @@ public abstract class BaseTagAdapter<T, H> extends BaseListAdapter<T, H> impleme
     }
 
     /**
+     * 清除选中项
+     *
+     * @return
+     */
+    public BaseTagAdapter clearSelection() {
+        mPositions.clear();
+        notifyDataSetChanged();
+        return this;
+    }
+
+    /**
      * 设置初始化选中的标签索引
      *
      * @param ps
@@ -177,6 +188,7 @@ public abstract class BaseTagAdapter<T, H> extends BaseListAdapter<T, H> impleme
 
     /**
      * 获取选中索引的集合
+     *
      * @return
      */
     public List<Integer> getSelectedIndexs() {
@@ -189,6 +201,7 @@ public abstract class BaseTagAdapter<T, H> extends BaseListAdapter<T, H> impleme
 
     /**
      * 获取选中索引
+     *
      * @return
      */
     public int getSelectedIndex() {
@@ -201,6 +214,7 @@ public abstract class BaseTagAdapter<T, H> extends BaseListAdapter<T, H> impleme
 
     /**
      * 获取选中索引
+     *
      * @return
      */
     public T getSelectedItem() {

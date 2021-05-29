@@ -312,9 +312,21 @@ public class FlowTagLayout extends ViewGroup {
     /**
      * 清除标签数据
      */
-    public <T> FlowTagLayout clearTags() {
+    public FlowTagLayout clearTags() {
         if (mAdapter != null) {
             mAdapter.clearData();
+        }
+        return this;
+    }
+
+    /**
+     * 清除标签选中状态
+     */
+    public FlowTagLayout clearSelection() {
+        if (mTagCheckMode != FLOW_TAG_CHECKED_NONE) {
+            if (mAdapter != null) {
+                mAdapter.clearSelection();
+            }
         }
         return this;
     }

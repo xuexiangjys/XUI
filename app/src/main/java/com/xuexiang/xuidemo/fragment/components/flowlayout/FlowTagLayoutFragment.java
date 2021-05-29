@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.flowlayout.FlowTagLayout;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.FlowTagAdapter;
@@ -35,6 +36,19 @@ public class FlowTagLayoutFragment extends BaseFragment {
 
     @BindView(R.id.flowlayout_display)
     FlowTagLayout mDisplayFlowTagLayout;
+
+    @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("清除") {
+            @Override
+            public void performAction(View view) {
+                mSingleCancelableFlowTagLayout.clearSelection();
+                mMultiFlowTagLayout.clearSelection();
+            }
+        });
+        return titleBar;
+    }
 
     @Override
     protected int getLayoutId() {
