@@ -22,14 +22,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.utils.Utils;
 import com.xuexiang.xui.widget.imageview.SignatureView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.XToastUtils;
-import com.xuexiang.xutil.file.FileUtils;
-
-import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,8 +36,6 @@ import butterknife.OnClick;
  */
 @Page(name = "SignatureView\n电子签名工具")
 public class SignatureViewFragment extends BaseFragment {
-
-    private final static String SIGNATURE_IMG_PATH = FileUtils.getDiskCacheDir() + "/signature_tmp.jpg";
 
     @BindView(R.id.signature_view)
     SignatureView signatureView;
@@ -72,26 +66,17 @@ public class SignatureViewFragment extends BaseFragment {
     }
 
     private void onSubmit(SignatureView signatureView) {
-        try {
-            Bitmap bitmap = signatureView.saveSignature(SIGNATURE_IMG_PATH);
-            if (bitmap != null) {
-                showSignatureImg(bitmap);
-            } else {
-                XToastUtils.warning("您未签名~");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            XToastUtils.error("保存签名失败~");
+        Bitmap bitmap = signatureView.getSnapshot();
+        if (bitmap != null) {
+            showSignatureImg(bitmap);
+        } else {
+            XToastUtils.warning("您未签名~");
         }
 
     }
 
     private void showSignatureImg(Bitmap bitmap) {
         ivSignature.setImageBitmap(bitmap);
-    }
-
-    private void showSignatureImg(String imgFile) {
-        ivSignature.setImageBitmap(Utils.getBitmap(imgFile));
     }
 
 }

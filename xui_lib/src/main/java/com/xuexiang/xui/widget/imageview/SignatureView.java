@@ -35,13 +35,6 @@ import android.widget.FrameLayout;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
-import com.xuexiang.xui.utils.Utils;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 
 /**
@@ -51,14 +44,7 @@ import java.io.OutputStream;
  * @since 2021/5/27 1:07 AM
  */
 public class SignatureView extends View {
-    /**
-     * 默认签名图片的宽
-     */
-    public final static int DEFAULT_IMG_WIDTH = 300;
-    /**
-     * 默认签名图片的高
-     */
-    public final static int DEFAULT_IMG_HEIGHT = 150;
+
     /**
      * 默认画笔的粗细
      */
@@ -88,16 +74,6 @@ public class SignatureView extends View {
      * 背景Bitmap缓存
      */
     private Bitmap mCacheBitmap;
-
-    /**
-     * 保存图片的宽(px)
-     */
-    private int mPictureWidth = DEFAULT_IMG_WIDTH;
-
-    /**
-     * 保存图片的高(px)
-     */
-    private int mPictureHeight = DEFAULT_IMG_HEIGHT;
 
     /**
      * 是否已经签名
@@ -148,8 +124,6 @@ public class SignatureView extends View {
         mPenSize = typedArray.getDimension(R.styleable.SignatureView_stv_penSize, mPenSize);
         mPenColor = typedArray.getColor(R.styleable.SignatureView_stv_penColor, Color.BLACK);
         mBackColor = typedArray.getColor(R.styleable.SignatureView_stv_backColor, Color.TRANSPARENT);
-        mPictureWidth = typedArray.getInteger(R.styleable.SignatureView_stv_imgWidth, mPictureWidth);
-        mPictureHeight = typedArray.getInteger(R.styleable.SignatureView_stv_imgHeight, mPictureHeight);
         boolean hasBorder = typedArray.getBoolean(R.styleable.SignatureView_stv_hasBorder, false);
         updateBorderStyle(hasBorder);
         typedArray.recycle();
@@ -328,152 +302,15 @@ public class SignatureView extends View {
         }
     }
 
-
     /**
-     * 保存签名
+     * 获取画板的快照
      *
-     * @param path
-     * @return
-     * @throws IOException
+     * @return 画板的快照
      */
-    public Bitmap saveSignature(String path) throws IOException {
-        Bitmap bitmap = null;
-        if (getTouched()) {
-            bitmap = save(path);
-            clear();
-        }
-        return bitmap;
+    public Bitmap getSnapshot() {
+        return mCacheBitmap;
     }
 
-    /**
-     * 保存画板
-     *
-     * @param path 保存到路劲
-     */
-
-    public Bitmap save(String path) throws IOException {
-        return save(path, false, 0);
-    }
-
-    /**
-     * 保存画板
-     *
-     * @param path       保存的路径
-     * @param clearBlank 是否清除空白区域
-     * @param blank      边缘空白区域
-     */
-    public Bitmap save(String path, boolean clearBlank, int blank) throws IOException {
-        Bitmap bitmap = Utils.zoom(mCacheBitmap, mPictureWidth, mPictureHeight);
-        if (clearBlank) {
-            bitmap = clearBlank(bitmap, blank);
-        }
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
-        byte[] buffer = bos.toByteArray();
-        if (buffer != null) {
-            File file = new File(path);
-            if (file.getParentFile() != null && !file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
-            }
-            OutputStream outputStream = new FileOutputStream(file);
-            outputStream.write(buffer);
-            outputStream.close();
-        }
-        return bitmap;
-    }
-
-    /**
-     * 获取画板的bitmap
-     *
-     * @return
-     */
-    public Bitmap getBitMap() {
-        setDrawingCacheEnabled(true);
-        buildDrawingCache();
-        Bitmap bitmap = getDrawingCache();
-        setDrawingCacheEnabled(false);
-        return bitmap;
-    }
-
-    /**
-     * 逐行扫描 清楚边界空白。
-     *
-     * @param bp
-     * @param blank 边距留多少个像素
-     * @return
-     */
-    private Bitmap clearBlank(Bitmap bp, int blank) {
-        int bmpHeight = bp.getHeight();
-        int bmpWidth = bp.getWidth();
-        int top = 0, left = 0, right = 0, bottom = 0;
-        int[] pixs = new int[bmpWidth];
-        boolean isStop;
-        for (int y = 0; y < bmpHeight; y++) {
-            bp.getPixels(pixs, 0, bmpWidth, 0, y, bmpWidth, 1);
-            isStop = false;
-            for (int pix : pixs) {
-                if (pix != mBackColor) {
-                    top = y;
-                    isStop = true;
-                    break;
-                }
-            }
-            if (isStop) {
-                break;
-            }
-        }
-        for (int y = bmpHeight - 1; y >= 0; y--) {
-            bp.getPixels(pixs, 0, bmpWidth, 0, y, bmpWidth, 1);
-            isStop = false;
-            for (int pix : pixs) {
-                if (pix != mBackColor) {
-                    bottom = y;
-                    isStop = true;
-                    break;
-                }
-            }
-            if (isStop) {
-                break;
-            }
-        }
-        pixs = new int[bmpHeight];
-        for (int x = 0; x < bmpWidth; x++) {
-            bp.getPixels(pixs, 0, 1, x, 0, 1, bmpHeight);
-            isStop = false;
-            for (int pix : pixs) {
-                if (pix != mBackColor) {
-                    left = x;
-                    isStop = true;
-                    break;
-                }
-            }
-            if (isStop) {
-                break;
-            }
-        }
-        for (int x = bmpWidth - 1; x > 0; x--) {
-            bp.getPixels(pixs, 0, 1, x, 0, 1, bmpHeight);
-            isStop = false;
-            for (int pix : pixs) {
-                if (pix != mBackColor) {
-                    right = x;
-                    isStop = true;
-                    break;
-                }
-            }
-            if (isStop) {
-                break;
-            }
-        }
-        if (blank < 0) {
-            blank = 0;
-        }
-        left = Math.max(left - blank, 0);
-        top = Math.max(top - blank, 0);
-        right = Math.min(right + blank, bmpWidth - 1);
-        bottom = Math.min(bottom + blank, bmpHeight - 1);
-        return Bitmap.createBitmap(bp, left, top, right - left, bottom - top);
-    }
 
     /**
      * 设置画笔宽度 默认宽度为10px
@@ -481,7 +318,7 @@ public class SignatureView extends View {
      * @param penSize 单位：px
      */
     public SignatureView setPenSize(float penSize) {
-        penSize = penSize > 0 ? penSize : 10F;
+        penSize = penSize > 0 ? penSize : DEFAULT_PEN_SIZE;
         mPenSize = penSize;
         if (mGesturePaint != null) {
             mGesturePaint.setStrokeWidth(penSize);
@@ -535,7 +372,6 @@ public class SignatureView extends View {
         return mIsTouched;
     }
 
-
     /**
      * 资源回收
      */
@@ -553,41 +389,10 @@ public class SignatureView extends View {
     }
 
     /**
-     * 设置保存图片的尺寸
-     *
-     * @param pictureWidth
-     * @param pictureHeight
-     */
-    public SignatureView setPictureSize(int pictureWidth, int pictureHeight) {
-        mPictureWidth = pictureWidth;
-        mPictureHeight = pictureHeight;
-        return this;
-    }
-
-    public int getPictureWidth() {
-        return mPictureWidth;
-    }
-
-    public SignatureView setPictureWidth(int pictureWidth) {
-        mPictureWidth = pictureWidth;
-        return this;
-    }
-
-    public int getPictureHeight() {
-        return mPictureHeight;
-    }
-
-    public SignatureView setPictureHeight(int pictureHeight) {
-        mPictureHeight = pictureHeight;
-        return this;
-    }
-
-    /**
      * 设置签名板的尺寸
      *
      * @param width  宽
      * @param height 高
-     * @return
      */
     public SignatureView setViewSize(int width, int height) {
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
@@ -595,26 +400,5 @@ public class SignatureView extends View {
         return this;
     }
 
-    /**
-     * 设置签名板的宽度
-     *
-     * @param width
-     * @return
-     */
-    public SignatureView setViewWidth(int width) {
-        setViewSize(width, width / 2);
-        return this;
-    }
-
-    /**
-     * 设置签名板的高度
-     *
-     * @param height
-     * @return
-     */
-    public SignatureView setViewHeight(int height) {
-        setViewSize(height * 2, height);
-        return this;
-    }
 
 }
