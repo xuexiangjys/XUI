@@ -336,8 +336,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 设置当前列表的选中项
      *
-     * @param selectPosition
-     * @return
+     * @param selectPosition 选中项
      */
     public XRecyclerAdapter setSelectPosition(int selectPosition) {
         mSelectPosition = selectPosition;

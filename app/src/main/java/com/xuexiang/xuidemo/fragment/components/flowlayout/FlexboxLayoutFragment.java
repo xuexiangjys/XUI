@@ -17,10 +17,14 @@
 
 package com.xuexiang.xuidemo.fragment.components.flowlayout;
 
+import android.view.View;
+
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.FlexboxLayoutAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -57,6 +61,20 @@ public class FlexboxLayoutFragment extends BaseFragment {
     }
 
     @Override
+    protected TitleBar initTitle() {
+        TitleBar titleBar = super.initTitle();
+        titleBar.addAction(new TitleBar.TextAction("清除") {
+            @SingleClick
+            @Override
+            public void performAction(View view) {
+                mAdapter3.clearSelection();
+                mAdapter4.clearSelection();
+            }
+        });
+        return titleBar;
+    }
+
+    @Override
     protected void initViews() {
         String[] array = ResUtils.getStringArray(R.array.tags_values);
 
@@ -77,9 +95,6 @@ public class FlexboxLayoutFragment extends BaseFragment {
         mAdapter3.select(3);
         mAdapter4.multiSelect(1, 2, 3);
     }
-
-
-
 
     @Override
     protected void initListeners() {

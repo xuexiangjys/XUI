@@ -23,6 +23,7 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 
+import com.just.agentweb.core.AgentWeb;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
@@ -45,26 +46,17 @@ public class JsWebViewFragment extends BaseWebViewFragment {
     @BindView(R.id.fl_container)
     FrameLayout flContainer;
 
-    /**
-     * 布局的资源id
-     *
-     * @return
-     */
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_js_webview;
     }
 
-    /**
-     * 初始化控件
-     */
     @Override
-    protected void initViews() {
-        mAgentWeb = Utils.createAgentWeb(this, flContainer, "file:///android_asset/jsTest.html");
-
+    protected AgentWeb createAgentWeb() {
+        AgentWeb agentWeb = Utils.createAgentWeb(this, flContainer, "file:///android_asset/jsTest.html");
         //注入接口,供JS调用
-        mAgentWeb.getJsInterfaceHolder().addJavaObject("Android", new AndroidInterface());
-
+        agentWeb.getJsInterfaceHolder().addJavaObject("Android", new AndroidInterface());
+        return agentWeb;
     }
 
 
