@@ -193,7 +193,7 @@ public final class ThemeUtils {
         return resolveDrawable(context, attr, null);
     }
 
-    private static Drawable resolveDrawable(
+    public static Drawable resolveDrawable(
             Context context,
             @AttrRes int attr,
             @SuppressWarnings("SameParameterValue") Drawable fallback) {
