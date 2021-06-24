@@ -49,6 +49,10 @@ In addition, I have also produced several [video tutorials](https://space.bilibi
 
 * Strong expansibility，each component provides rich properties and style APIs, and different styles of UI can be built by setting different style properties.
 
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/xuexiangjys/XUI.svg)](https://starchart.cc/xuexiangjys/XUI)
+
 ----
 
 ## Usage
