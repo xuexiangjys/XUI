@@ -29,7 +29,6 @@ import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.IconicsSize;
 import com.xuexiang.xui.utils.ThemeUtils;
-import com.xuexiang.xuidemo.R;
 
 import static androidx.annotation.Dimension.DP;
 
@@ -61,7 +60,7 @@ public class XUIIconImageView extends AppCompatImageView {
             mIconText = text;
             IconicsDrawable drawable = new IconicsDrawable(getContext())
                     .icon(icon)
-                    .color(IconicsColor.colorInt(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent)));
+                    .color(IconicsColor.colorInt(ThemeUtils.getMainThemeColor(getContext())));
             setImageDrawable(drawable);
         }
         return this;
@@ -73,7 +72,7 @@ public class XUIIconImageView extends AppCompatImageView {
             mIconText = text;
             IconicsDrawable drawable = new IconicsDrawable(getContext())
                     .icon(icon)
-                    .color(IconicsColor.colorInt(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent)))
+                    .color(IconicsColor.colorInt(ThemeUtils.getMainThemeColor(getContext())))
                     .size(IconicsSize.dp(dpSize));
             setImageDrawable(drawable);
         }

@@ -111,7 +111,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
             mEditText.setMaxLines(mMaxLine);
             int height = typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_height, ThemeUtils.resolveDimension(getContext(), R.attr.ms_item_height_size));
             mEditText.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
-            setTextColors(typedArray.getColorStateList(R.styleable.EditSpinner_es_textColor));
+            setTextColors(ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.EditSpinner_es_textColor));
             setTextSize(typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_textSize, ThemeUtils.resolveDimension(getContext(), R.attr.xui_config_size_spinner_text)));
             int entriesID = typedArray.getResourceId(R.styleable.EditSpinner_es_entries, 0);
             if (entriesID != 0) {

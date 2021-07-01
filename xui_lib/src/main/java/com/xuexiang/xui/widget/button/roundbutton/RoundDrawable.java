@@ -7,7 +7,9 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+
 import androidx.annotation.Nullable;
+
 import android.util.AttributeSet;
 
 import com.xuexiang.xui.R;
@@ -114,14 +116,15 @@ public class RoundDrawable extends GradientDrawable {
 
     /**
      * 根据 AttributeSet
+     *
      * @param context
      * @param attrs
      * @return
      */
     public static RoundDrawable fromAttributeSet(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundButton);
-        ColorStateList colorBg = typedArray.getColorStateList(R.styleable.RoundButton_rb_backgroundColor);
-        ColorStateList colorBorder = typedArray.getColorStateList(R.styleable.RoundButton_rb_borderColor);
+        ColorStateList colorBg = ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.RoundButton_rb_backgroundColor);
+        ColorStateList colorBorder = ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.RoundButton_rb_borderColor);
         int borderWidth = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_borderWidth, ResUtils.getDimensionPixelSize(R.dimen.default_rb_border_width));
         boolean isRadiusAdjustBounds = typedArray.getBoolean(R.styleable.RoundButton_rb_isRadiusAdjustBounds, false);
         int mRadius = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_radius, ResUtils.getDimensionPixelSize(R.dimen.default_rb_radius));

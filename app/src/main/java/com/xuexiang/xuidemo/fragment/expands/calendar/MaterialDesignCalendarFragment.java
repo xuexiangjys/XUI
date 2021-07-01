@@ -79,7 +79,7 @@ public class MaterialDesignCalendarFragment extends BaseFragment {
                 textView.setTextColor(0xFF9299A1);
             } else {
                 if (calendarDate.isToday() && calendarDate.equals(calendarDateView.getSelectCalendarDate())) {
-                    textView.setTextColor(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+                    textView.setTextColor(ThemeUtils.getMainThemeColor(getContext()));
                 } else {
                     textView.setTextColor(ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_content_text));
                 }
@@ -94,7 +94,7 @@ public class MaterialDesignCalendarFragment extends BaseFragment {
             if (isSelected) {
                 view.setTextColor(ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_content_text));
             } else {
-                view.setTextColor(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+                view.setTextColor(ThemeUtils.getMainThemeColor(getContext()));
             }
         });
 

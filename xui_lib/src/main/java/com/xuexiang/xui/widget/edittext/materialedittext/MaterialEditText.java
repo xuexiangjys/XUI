@@ -368,8 +368,8 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
         int defaultBaseColor = Color.BLACK;
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MaterialEditText, defStyleAttr, 0);
-        textColorStateList = typedArray.getColorStateList(R.styleable.MaterialEditText_met_textColor);
-        textColorHintStateList = typedArray.getColorStateList(R.styleable.MaterialEditText_met_textColorHint);
+        textColorStateList = ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.MaterialEditText_met_textColor);
+        textColorHintStateList = ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.MaterialEditText_met_textColorHint);
         baseColor = typedArray.getColor(R.styleable.MaterialEditText_met_baseColor, defaultBaseColor);
 
         primaryColor = typedArray.getColor(R.styleable.MaterialEditText_met_primaryColor, ThemeUtils.resolveColor(getContext(), R.attr.colorPrimary, baseColor));

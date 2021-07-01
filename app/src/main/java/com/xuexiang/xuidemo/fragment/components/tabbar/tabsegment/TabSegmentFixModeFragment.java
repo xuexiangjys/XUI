@@ -222,7 +222,7 @@ public class TabSegmentFixModeFragment extends BaseFragment {
                                     null,
                                     "组件", true
                             );
-                            component3.setTextColor(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent),
+                            component3.setTextColor(ThemeUtils.getMainThemeColor(getContext()),
                                     ContextCompat.getColor(getContext(), R.color.xui_config_color_red));
                             TabSegment.Tab util3 = new TabSegment.Tab(
                                     ContextCompat.getDrawable(getContext(), R.drawable.icon_tabbar_util),

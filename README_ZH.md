@@ -48,7 +48,7 @@
 
 * 扩展性强，各组件提供了丰富的属性和样式API，可以通过设置不同的样式属性，构建不同风格的UI。
 
-## star趋势
+## Star趋势
 
 [![Stargazers over time](https://starchart.cc/xuexiangjys/XUI.svg)](https://starchart.cc/xuexiangjys/XUI)
 

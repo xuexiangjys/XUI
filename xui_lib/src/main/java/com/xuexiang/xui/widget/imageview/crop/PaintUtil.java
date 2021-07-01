@@ -100,7 +100,7 @@ final class PaintUtil {
                 context.getResources().getDisplayMetrics());
 
         final Paint cornerPaint = new Paint();
-        cornerPaint.setColor(ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        cornerPaint.setColor(ThemeUtils.getMainThemeColor(context));
         cornerPaint.setStrokeWidth(lineThicknessPx);
         cornerPaint.setStyle(Paint.Style.STROKE);
 

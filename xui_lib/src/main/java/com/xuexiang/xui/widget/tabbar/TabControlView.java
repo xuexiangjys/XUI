@@ -156,10 +156,10 @@ public class TabControlView extends RadioGroup implements HasTypeface {
                 0, 0);
         try {
             mTextSize = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_textSize, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_text_size));
-            mSelectedColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+            mSelectedColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedColor, ThemeUtils.getMainThemeColor(context));
             mUnselectedColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedColor, Color.TRANSPARENT);
             mSelectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_selectedTextColor, Color.WHITE);
-            mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+            mUnselectedTextColor = attributes.getColor(R.styleable.TabControlView_tcv_unselectedTextColor, ThemeUtils.getMainThemeColor(context));
             mStrokeWidth = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_strokeWidth, ResUtils.getDimensionPixelSize(R.dimen.default_tcv_stroke_width));
             mItemPadding = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding, -1);
             mItemPaddingHorizontal = attributes.getDimensionPixelSize(R.styleable.TabControlView_tcv_item_padding_horizontal, -1);

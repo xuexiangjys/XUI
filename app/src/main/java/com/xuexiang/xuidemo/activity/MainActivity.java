@@ -291,8 +291,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         return new SimpleItem(mMenuIcons[position], mMenuTitles[position])
                 .withIconTint(ThemeUtils.resolveColor(this, R.attr.xui_config_color_content_text))
                 .withTextTint(ThemeUtils.resolveColor(this, R.attr.xui_config_color_content_text))
-                .withSelectedIconTint(ThemeUtils.resolveColor(this, R.attr.colorAccent))
-                .withSelectedTextTint(ThemeUtils.resolveColor(this, R.attr.colorAccent));
+                .withSelectedIconTint(ThemeUtils.getMainThemeColor(this))
+                .withSelectedTextTint(ThemeUtils.getMainThemeColor(this));
     }
 
     /**

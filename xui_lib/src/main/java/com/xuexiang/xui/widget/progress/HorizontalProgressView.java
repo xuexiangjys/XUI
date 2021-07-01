@@ -175,7 +175,7 @@ public class HorizontalProgressView extends View {
         mStartColor = typedArray.getColor(R.styleable.HorizontalProgressView_hpv_start_color, getResources().getColor(R.color.xui_config_color_light_orange));
         mEndColor = typedArray.getColor(R.styleable.HorizontalProgressView_hpv_end_color, getResources().getColor(R.color.xui_config_color_dark_orange));
         trackEnabled = typedArray.getBoolean(R.styleable.HorizontalProgressView_hpv_isTracked, false);
-        mProgressTextColor = typedArray.getColor(R.styleable.HorizontalProgressView_hpv_progress_textColor, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+        mProgressTextColor = typedArray.getColor(R.styleable.HorizontalProgressView_hpv_progress_textColor, ThemeUtils.getMainThemeColor(getContext()));
         mProgressTextSize = typedArray.getDimensionPixelSize(R.styleable.HorizontalProgressView_hpv_progress_textSize, getResources().getDimensionPixelSize(R.dimen.default_pv_horizontal_text_size));
         mTrackWidth = typedArray.getDimensionPixelSize(R.styleable.HorizontalProgressView_hpv_track_width, getResources().getDimensionPixelSize(R.dimen.default_pv_trace_width));
         mAnimateType = typedArray.getInt(R.styleable.HorizontalProgressView_hpv_animate_type, ACCELERATE_DECELERATE_INTERPOLATOR);

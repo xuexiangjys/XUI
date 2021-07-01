@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
 
+import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.dialog.materialdialog.GravityEnum;
 
 import java.lang.annotation.Retention;
@@ -299,6 +300,17 @@ public final class ThemeUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * 获取主题色
+     *
+     * @param context 上下文
+     * @return 主题色
+     */
+    @ColorInt
+    public static int getMainThemeColor(Context context) {
+        return resolveColor(context, R.attr.colorAccent, getColor(context, R.color.xui_config_color_main_theme));
     }
 
     //========================深色模式==============================//

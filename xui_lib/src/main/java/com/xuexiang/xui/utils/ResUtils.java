@@ -116,6 +116,26 @@ public final class ResUtils {
     }
 
     /**
+     * 获取ColorStateList属性（兼容?attr属性）
+     *
+     * @param context        上下文
+     * @param typedArray     样式属性数组
+     * @param styleableResId 样式资源ID
+     * @return ColorStateList
+     */
+    public static ColorStateList getColorStateListAttrRes(Context context, TypedArray typedArray, @StyleableRes int styleableResId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return typedArray.getColorStateList(styleableResId);
+        } else {
+            int resourceId = typedArray.getResourceId(styleableResId, -1);
+            if (resourceId != -1) {
+                return AppCompatResources.getColorStateList(context, resourceId);
+            }
+        }
+        return null;
+    }
+
+    /**
      * 获取dimes值，返回的是精确的值
      *
      * @param resId 资源id

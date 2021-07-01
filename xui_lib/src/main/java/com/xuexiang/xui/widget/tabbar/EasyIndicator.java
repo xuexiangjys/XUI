@@ -162,11 +162,11 @@ public class EasyIndicator extends LinearLayout implements View.OnClickListener,
             indicatorLineShow = typedArray.getBoolean(R.styleable.EasyIndicator_indicator_line_show, indicatorLineShow);
             indicatorLineWidth = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_line_width, indicatorLineWidth);
             indicatorLineHeight = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_line_height, indicatorLineHeight);
-            indicatorLineColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_line_color, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+            indicatorLineColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_line_color, ThemeUtils.getMainThemeColor(getContext()));
             indicatorLineDrawable = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.EasyIndicator_indicator_line_res);
             indicatorBottomLineHeight = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_bottom_line_height, indicatorBottomLineHeight);
             indicatorBottomLineColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_bottom_line_color, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
-            indicatorSelectedColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_selected_color, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+            indicatorSelectedColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_selected_color, ThemeUtils.getMainThemeColor(getContext()));
             indicatorNormalColor = typedArray.getColor(R.styleable.EasyIndicator_indicator_normal_color, ResUtils.getColor(R.color.xui_config_color_black));
             indicatorTextSize = getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_textSize, (int) indicatorTextSize);
             indicatorVerticalLineWidth = (int) getDimensionPixelSize(typedArray, R.styleable.EasyIndicator_indicator_vertical_line_w, indicatorVerticalLineWidth);
