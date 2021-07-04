@@ -145,26 +145,28 @@ public final class Utils {
     /**
      * View设备背景
      *
-     * @param context
-     * @param v
-     * @param res
+     * @param context 上下文
+     * @param view    控件
+     * @param resId   资源id
      */
-    @SuppressWarnings("deprecation")
-    public static void setBackground(Context context, View v, int res) {
-        Bitmap bm = BitmapFactory.decodeResource(context.getResources(), res);
+    public static void setBackground(Context context, View view, int resId) {
+        if (view == null) {
+            return;
+        }
+        Bitmap bm = BitmapFactory.decodeResource(context.getResources(), resId);
         BitmapDrawable bd = new BitmapDrawable(context.getResources(), bm);
-        v.setBackgroundDrawable(bd);
+        view.setBackground(bd);
     }
 
     /**
      * 释放图片资源
      *
-     * @param v
+     * @param view 控件
      */
-    public static void recycleBackground(View v) {
-        Drawable d = v.getBackground();
+    public static void recycleBackground(View view) {
+        Drawable d = view.getBackground();
         //别忘了把背景设为null，避免onDraw刷新背景时候出现used a recycled bitmap错误
-        v.setBackgroundResource(0);
+        view.setBackgroundResource(0);
         if (d != null && d instanceof BitmapDrawable) {
             Bitmap bmp = ((BitmapDrawable) d).getBitmap();
             if (bmp != null && !bmp.isRecycled()) {

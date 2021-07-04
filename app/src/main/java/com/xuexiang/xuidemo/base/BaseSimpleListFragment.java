@@ -35,6 +35,7 @@ import com.xuexiang.xrouter.facade.service.SerializationService;
 import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.actionbar.TitleUtils;
 import com.xuexiang.xuidemo.R;
@@ -52,6 +53,11 @@ public abstract class BaseSimpleListFragment extends XPageSimpleListFragment {
         initTitle();
         initViews();
         initListeners();
+    }
+
+    @Override
+    protected void initSimply() {
+        WidgetUtils.clearAllViewBackground(getListView());
     }
 
     protected TitleBar initTitle() {

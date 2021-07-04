@@ -421,11 +421,11 @@ public final class WidgetUtils {
      *
      * @param activity 窗口
      */
-    public static void transparentWindowBackground(Activity activity) {
+    public static void clearActivityBackground(Activity activity) {
         if (activity == null) {
             return;
         }
-        transparentWindowBackground(activity.getWindow());
+        clearWindowBackground(activity.getWindow());
     }
 
     /**
@@ -433,11 +433,42 @@ public final class WidgetUtils {
      *
      * @param window 窗口
      */
-    public static void transparentWindowBackground(Window window) {
+    public static void clearWindowBackground(Window window) {
         if (window == null) {
             return;
         }
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+
+    /**
+     * 去除控件的背景色【解决过度绘制问题】
+     *
+     * @param view 控件
+     */
+    public static void clearViewBackground(View view) {
+        if (view == null) {
+            return;
+        }
+        view.setBackgroundColor(Color.TRANSPARENT);
+    }
+
+    /**
+     * 去除控件布局下所有控件的背景色【解决过度绘制问题】
+     *
+     * @param view 控件
+     */
+    public static void clearAllViewBackground(View view) {
+        if (view == null) {
+            return;
+        }
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                clearAllViewBackground(viewGroup.getChildAt(i));
+            }
+        }
+        view.setBackgroundColor(Color.TRANSPARENT);
     }
 
 }

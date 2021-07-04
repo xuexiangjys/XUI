@@ -102,7 +102,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     }
 
     private void initViews() {
-        WidgetUtils.transparentWindowBackground(this);
+        WidgetUtils.clearActivityBackground(this);
         initTab();
     }
 
