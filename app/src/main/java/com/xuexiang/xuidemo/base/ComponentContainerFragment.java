@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,7 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
         }
 
         getListView().setAdapter(new SimpleAdapter(getContext(), data));
+        getListView().setBackgroundColor(Color.TRANSPARENT);
         initSimply();
     }
 
