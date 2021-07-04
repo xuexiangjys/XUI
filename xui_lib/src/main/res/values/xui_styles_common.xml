@@ -411,5 +411,24 @@
         <item name="android:background">@drawable/xui_config_bg_edittext</item>
     </style>
 
+    <!--*********************************************
+    *                 SeparatorStyle               *
+    **********************************************-->
+
+    <style name="SeparatorStyle">
+        <item name="android:layout_width">?attr/xui_config_separator_height</item>
+        <item name="android:layout_height">?attr/xui_config_separator_height</item>
+        <item name="android:background">?attr/xui_config_color_separator_light</item>
+    </style>
+
+    <style name="SeparatorStyle.Vertical">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">?attr/xui_config_color_separator_light</item>
+    </style>
+
+    <style name="SeparatorStyle.Horizontal">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">?attr/xui_config_color_separator_light</item>
+    </style>
 
 </resources>

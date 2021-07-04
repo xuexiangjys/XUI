@@ -21,6 +21,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +34,9 @@ import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -68,7 +72,7 @@ public final class WidgetUtils {
     /**
      * 让Activity全屏显示
      *
-     * @param activity
+     * @param activity activity
      */
     public static void requestFullScreen(@NonNull Activity activity) {
         activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -131,6 +135,38 @@ public final class WidgetUtils {
     }
 
     //===============TabLayout=============//
+
+    /**
+     * 为TabLayout增加不带水波纹的选项卡
+     *
+     * @param tabLayout 选项卡
+     * @param text      选项文字内容
+     * @param resId     选项图标
+     */
+    public static TabLayout.Tab addTabWithoutRipple(@NonNull TabLayout tabLayout, @Nullable CharSequence text, @DrawableRes int resId) {
+        TabLayout.Tab tab = tabLayout.newTab();
+        tab.setText(text);
+        tab.setIcon(resId);
+        tab.view.setBackgroundColor(Color.TRANSPARENT);
+        tabLayout.addTab(tab);
+        return tab;
+    }
+
+    /**
+     * 为TabLayout增加不带水波纹的选项卡
+     *
+     * @param tabLayout 选项卡
+     * @param text      选项文字内容
+     * @param icon      选项图标
+     */
+    public static TabLayout.Tab addTabWithoutRipple(@NonNull TabLayout tabLayout, @Nullable CharSequence text, @Nullable Drawable icon) {
+        TabLayout.Tab tab = tabLayout.newTab();
+        tab.setText(text);
+        tab.setIcon(icon);
+        tab.view.setBackgroundColor(Color.TRANSPARENT);
+        tabLayout.addTab(tab);
+        return tab;
+    }
 
     /**
      * 设置TabLayout选项卡的字体
@@ -378,6 +414,30 @@ public final class WidgetUtils {
                 frameLayout.setBackgroundColor(Color.TRANSPARENT);
             }
         }
+    }
+
+    /**
+     * 去除窗口的背景色【解决过度绘制问题】
+     *
+     * @param activity 窗口
+     */
+    public static void transparentWindowBackground(Activity activity) {
+        if (activity == null) {
+            return;
+        }
+        transparentWindowBackground(activity.getWindow());
+    }
+
+    /**
+     * 去除窗口的背景色【解决过度绘制问题】
+     *
+     * @param window 窗口
+     */
+    public static void transparentWindowBackground(Window window) {
+        if (window == null) {
+            return;
+        }
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
 }

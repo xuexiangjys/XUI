@@ -18,6 +18,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/xui_config_color_white"
     android:orientation="vertical">
 
     <FrameLayout
@@ -28,15 +29,16 @@
 
     </FrameLayout>
 
+    <View style="@style/SeparatorStyle.Vertical" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         style="@style/TabLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/xui_actionbar_height"
-        android:background="@drawable/xui_list_item_bg_with_border_top"
+        app:tabBackground="@null"
         app:tabGravity="fill"
-        app:tabIndicatorColor="@android:color/transparent"
+        app:tabIndicatorColor="@color/xui_config_color_transparent"
         app:tabMinWidth="300dp"
         app:tabMode="fixed"
         app:tabPaddingTop="2dp"

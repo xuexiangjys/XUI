@@ -27,6 +27,8 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
@@ -95,7 +97,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
     }
 
     private void initRecyclerView() {
-        WidgetUtils.initGridRecyclerView(mRecyclerView, 3, DensityUtils.dp2px(2));
+        WidgetUtils.initGridRecyclerView(mRecyclerView, 3, DensityUtils.dp2px(2), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_light, ResUtils.getColor(R.color.xui_config_color_separator_light_phone)));
 
         WidgetItemAdapter mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
         mWidgetItemAdapter.setOnItemClickListener(this);

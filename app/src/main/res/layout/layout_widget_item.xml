@@ -19,4 +19,5 @@
         android:id="@+id/item_name"
         style="@style/TextStyle.Explain"
         android:lines="2" />
+
 </LinearLayout>

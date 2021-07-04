@@ -16,6 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.guidview.GuideCaseQueue;
@@ -26,12 +27,12 @@ import com.xuexiang.xuidemo.adapter.menu.DrawerItem;
 import com.xuexiang.xuidemo.adapter.menu.SimpleItem;
 import com.xuexiang.xuidemo.adapter.menu.SpaceItem;
 import com.xuexiang.xuidemo.base.BaseActivity;
-import com.xuexiang.xuidemo.fragment.other.AboutFragment;
 import com.xuexiang.xuidemo.fragment.ComponentsFragment;
 import com.xuexiang.xuidemo.fragment.ExpandsFragment;
+import com.xuexiang.xuidemo.fragment.UtilitiesFragment;
+import com.xuexiang.xuidemo.fragment.other.AboutFragment;
 import com.xuexiang.xuidemo.fragment.other.QRCodeFragment;
 import com.xuexiang.xuidemo.fragment.other.SettingFragment;
-import com.xuexiang.xuidemo.fragment.UtilitiesFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.Utils;
@@ -64,8 +65,8 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
 
-
     private SlidingRootNav mSlidingRootNav;
+    private LinearLayout mLLMenu;
     private String[] mMenuTitles;
     private Drawable[] mMenuIcons;
     private DrawerAdapter mAdapter;
@@ -83,11 +84,11 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
 
         initData();
 
-        initSlidingMenu(savedInstanceState);
-
         initViews();
 
-        GuideTipsDialog.showTips(this);
+        initSlidingMenu(savedInstanceState);
+
+        initOthers();
     }
 
     private void initData() {
@@ -101,31 +102,17 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     }
 
     private void initViews() {
+        WidgetUtils.transparentWindowBackground(this);
         initTab();
-
-        //静默检查版本更新
-        Utils.checkUpdate(this, false);
     }
 
     /**
      * 初始化Tab
      */
     private void initTab() {
-        TabLayout.Tab component = mTabLayout.newTab();
-        component.setText("组件");
-        component.setIcon(SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_component : R.drawable.selector_icon_tabbar_component);
-        mTabLayout.addTab(component);
-
-        TabLayout.Tab util = mTabLayout.newTab();
-        util.setText("工具");
-        util.setIcon(SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_util : R.drawable.selector_icon_tabbar_util);
-        mTabLayout.addTab(util);
-
-        TabLayout.Tab expand = mTabLayout.newTab();
-        expand.setText("拓展");
-        expand.setIcon(SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_expand : R.drawable.selector_icon_tabbar_expand);
-        mTabLayout.addTab(expand);
-
+        WidgetUtils.addTabWithoutRipple(mTabLayout, "组件", SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_component : R.drawable.selector_icon_tabbar_component);
+        WidgetUtils.addTabWithoutRipple(mTabLayout, "工具", SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_util : R.drawable.selector_icon_tabbar_util);
+        WidgetUtils.addTabWithoutRipple(mTabLayout, "拓展", SettingSPUtils.getInstance().isUseCustomTheme() ? R.drawable.custom_selector_icon_tabbar_expand : R.drawable.selector_icon_tabbar_expand);
         WidgetUtils.setTabLayoutTextFont(mTabLayout);
 
         switchPage(ComponentsFragment.class);
@@ -159,6 +146,14 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
             }
         });
     }
+
+
+    private void initOthers() {
+        GuideTipsDialog.showTips(this);
+        //静默检查版本更新
+        Utils.checkUpdate(this, false);
+    }
+
 
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
@@ -195,12 +190,13 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
                 .withMenuLayout(R.layout.menu_left_drawer)
                 .inject();
 
-        LinearLayout mLLMenu = mSlidingRootNav.getLayout().findViewById(R.id.ll_menu);
+        mLLMenu = mSlidingRootNav.getLayout().findViewById(R.id.ll_menu);
         final AppCompatImageView ivQrcode = mSlidingRootNav.getLayout().findViewById(R.id.iv_qrcode);
         ivQrcode.setOnClickListener(v -> openNewPage(QRCodeFragment.class));
 
         final AppCompatImageView ivSetting = mSlidingRootNav.getLayout().findViewById(R.id.iv_setting);
         ivSetting.setOnClickListener(v -> openNewPage(SettingFragment.class));
+        ViewUtils.setVisibility(mLLMenu, false);
 
         mAdapter = new DrawerAdapter(Arrays.asList(
                 createItemFor(POS_COMPONENTS).setChecked(true),
@@ -221,11 +217,12 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
         mSlidingRootNav.getLayout().addDragStateListener(new DragStateListener() {
             @Override
             public void onDragStart() {
-
+                ViewUtils.setVisibility(mLLMenu, true);
             }
 
             @Override
             public void onDragEnd(boolean isMenuOpened) {
+                ViewUtils.setVisibility(mLLMenu, isMenuOpened);
                 if (isMenuOpened) {
                     if (!GuideCaseView.isShowOnce(MainActivity.this, getString(R.string.guide_key_sliding_root_navigation))) {
                         final GuideCaseView guideStep1 = new GuideCaseView.Builder(MainActivity.this)
