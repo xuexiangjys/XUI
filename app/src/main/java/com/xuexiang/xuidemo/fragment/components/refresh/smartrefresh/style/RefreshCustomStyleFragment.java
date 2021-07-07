@@ -29,7 +29,7 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.widget.CustomRefreshFooter;
+import com.xuexiang.xuidemo.widget.MaterialFooter;
 import com.xuexiang.xuidemo.widget.CustomRefreshHeader;
 
 import java.util.concurrent.TimeUnit;
@@ -66,7 +66,7 @@ public class RefreshCustomStyleFragment extends BaseFragment {
 
         mRefreshLayout.setRefreshHeader(mRefreshHeader = new CustomRefreshHeader(getContext()));
 
-        mRefreshLayout.setRefreshFooter(new CustomRefreshFooter(getContext()));
+        mRefreshLayout.setRefreshFooter(new MaterialFooter(getContext()));
     }
 
 

@@ -155,9 +155,7 @@ public class SmoothCheckBox extends View implements Checkable {
 
     @Override
     public void setChecked(boolean checked) {
-        mChecked = checked;
-        reset();
-        invalidate();
+        setCheckedSilent(checked);
         if (mOnCheckedChangeListener != null) {
             mOnCheckedChangeListener.onCheckedChanged(SmoothCheckBox.this, mChecked);
         }

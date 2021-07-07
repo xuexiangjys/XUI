@@ -31,6 +31,7 @@
 
     <dimen name="custom_section_height">36dp</dimen>
     <dimen name="spacing_24dp">24dp</dimen>
+    <dimen name="common_icon_size">24dp</dimen>
     <dimen name="selection_item_height">60dp</dimen>
 
     <dimen name="config_margin_4dp">4dp</dimen>

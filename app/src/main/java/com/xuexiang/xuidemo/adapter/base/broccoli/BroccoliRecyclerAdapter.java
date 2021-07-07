@@ -38,6 +38,7 @@ import me.samlss.broccoli.Broccoli;
  * @since 2019/4/8 16:33
  */
 public abstract class BroccoliRecyclerAdapter<T> extends BaseRecyclerAdapter<T> {
+
     /**
      * 是否已经加载成功
      */
@@ -47,8 +48,6 @@ public abstract class BroccoliRecyclerAdapter<T> extends BaseRecyclerAdapter<T> 
     public BroccoliRecyclerAdapter(Collection<T> collection) {
         super(collection);
     }
-
-
 
     @Override
     protected void bindData(@NonNull RecyclerViewHolder holder, int position, T item) {

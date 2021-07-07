@@ -39,7 +39,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xuidemo.widget.CustomRefreshFooter;
+import com.xuexiang.xuidemo.widget.MaterialFooter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,7 +93,7 @@ public class SimpleCalendarFragment extends BaseFragment implements CalendarView
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.setAdapter(mAdapter = new NewsCardViewListAdapter());
-        refreshLayout.setRefreshFooter(new CustomRefreshFooter(getContext()));
+        refreshLayout.setRefreshFooter(new MaterialFooter(getContext()));
 
         initCalendarView();
     }
