@@ -117,7 +117,7 @@ public class NewsListEditFragment extends BaseFragment {
 
         mAdapter.setOnItemClickListener((itemView, item, position) -> {
             if (mAdapter.isManageMode()) {
-                mAdapter.updateSelectStatus(position, recyclerView);
+                mAdapter.updateSelectStatus(position);
             } else {
                 Utils.goWeb(getContext(), item.getDetailUrl());
             }

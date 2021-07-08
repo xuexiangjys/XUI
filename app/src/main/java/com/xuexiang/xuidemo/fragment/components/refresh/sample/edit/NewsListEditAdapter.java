@@ -17,13 +17,15 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.sample.edit;
 
+import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
 
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.adapter.recyclerview.XRecyclerAdapter;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.button.SmoothCheckBox;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
@@ -31,6 +33,8 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.base.broccoli.BroccoliRecyclerAdapter;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
+import com.xuexiang.xutil.common.CollectionUtils;
+import com.xuexiang.xutil.common.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -43,6 +47,8 @@ import me.samlss.broccoli.Broccoli;
  * @since 2019/4/7 下午12:06
  */
 public class NewsListEditAdapter extends BroccoliRecyclerAdapter<NewInfo> {
+
+    private static final String KEY_SELECT_STATUS = "key_select_status";
 
     /**
      * 是否是管理模式，默认是false
@@ -108,6 +114,27 @@ public class NewsListEditAdapter extends BroccoliRecyclerAdapter<NewInfo> {
         );
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position, @NonNull List<Object> payloads) {
+        if (CollectionUtils.isEmpty(payloads)) {
+            Logger.e("正在进行全量刷新:" + position);
+            onBindViewHolder(holder, position);
+            return;
+        }
+        // payloads为非空的情况，进行局部刷新
+        //取出我们在getChangePayload（）方法返回的bundle
+        Bundle payload = WidgetUtils.getChangePayload(payloads);
+        if (payload == null) {
+            return;
+        }
+        Logger.e("正在进行增量刷新:" + position);
+        for (String key : payload.keySet()) {
+            if (KEY_SELECT_STATUS.equals(key)) {
+                holder.checked(R.id.scb_select, payload.getBoolean(key));
+            }
+        }
+    }
+
     /**
      * 切换管理模式
      */
@@ -159,22 +186,11 @@ public class NewsListEditAdapter extends BroccoliRecyclerAdapter<NewInfo> {
      *
      * @param position 位置
      */
-    public void updateSelectStatus(int position, RecyclerView recyclerView) {
+    public void updateSelectStatus(int position) {
         mSparseArray.append(position, !mSparseArray.get(position));
         refreshAllSelectStatus();
-        if (recyclerView != null) {
-            // 直接拿到指定view进行设置，这样可以解决闪动的问题
-            View view = recyclerView.getChildAt(position);
-            if (view != null) {
-                RecyclerViewHolder holder = (RecyclerViewHolder) recyclerView.getChildViewHolder(view);
-                if (holder != null) {
-                    holder.checked(R.id.scb_select, mSparseArray.get(position));
-                    return;
-                }
-            }
-        }
-        notifyItemChanged(position);
-
+        // 这里进行增量刷新
+        refreshPartly(position, KEY_SELECT_STATUS, mSparseArray.get(position));
     }
 
     private void refreshAllSelectStatus() {

@@ -65,8 +65,7 @@
                 android:id="@+id/scb_select_all"
                 android:layout_width="@dimen/common_icon_size"
                 android:layout_height="@dimen/common_icon_size"
-                android:layout_gravity="center_vertical|start"
-                app:scb_color_checked="@color/colorAccent" />
+                android:layout_gravity="center_vertical|start" />
 
 
             <TextView
@@ -79,7 +78,7 @@
 
         <Button
             android:id="@+id/btn_submit"
-            style="@style/Button.Blue.wrap"
+            style="@style/Button.Primary.wrap"
             android:layout_gravity="center_vertical|end"
             android:text="@string/lab_submit" />
 

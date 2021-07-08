@@ -32,14 +32,13 @@
 
     <Button
         android:id="@+id/btn_ok"
-        style="@style/Button.Blue.wrap"
+        style="@style/Button.Primary.wrap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
         android:padding="8dp"
-        android:text="确定"
-        android:textColor="@color/white"
+        android:text="@string/lab_submit"
         android:textSize="16sp" />
 
 </LinearLayout>

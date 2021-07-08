@@ -42,8 +42,7 @@
             android:layout_height="@dimen/common_icon_size"
             android:layout_gravity="center_vertical|start"
             android:layout_marginEnd="@dimen/config_margin_16dp"
-            android:visibility="gone"
-            app:scb_color_checked="@color/colorAccent" />
+            android:visibility="gone" />
 
         <include layout="@layout/layout_news_card_item" />
 
