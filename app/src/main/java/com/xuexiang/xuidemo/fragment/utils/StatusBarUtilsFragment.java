@@ -89,13 +89,13 @@ public class StatusBarUtilsFragment extends BaseFragment {
      * 简单的提示性对话框
      */
     private void showSimpleTipDialog() {
-        new MaterialDialog.Builder(getContext())
+        MaterialDialog dialog = new MaterialDialog.Builder(getContext())
                 .iconRes(R.drawable.icon_tip)
                 .title(R.string.tip_infos)
                 .content(R.string.content_simple_confirm_dialog)
                 .positiveText(R.string.lab_submit)
-                .fullScreen(checkBox.isChecked())
                 .show();
+        StatusBarUtils.showDialog(getActivity(), dialog);
     }
 
 
