@@ -24,6 +24,9 @@
     <attr name="search_view_text_color_hint" format="color" />
     <attr name="search_view_ic_suggestion" format="reference" />
     <attr name="search_view_layover_bg_color" format="color" />
+    <attr name="search_view_actionbar_height" format="dimension" />
+    <attr name="search_view_separator_color" format="reference" />
+    <attr name="search_view_separator_height" format="dimension" />
 
     <attr name="search_view_ic_back" format="reference" />
     <attr name="search_view_ic_video" format="reference" />

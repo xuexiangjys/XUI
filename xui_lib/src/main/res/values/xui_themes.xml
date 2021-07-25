@@ -237,6 +237,8 @@
         <item name="search_view_text_color_hint">@color/default_search_view_text_color_hint</item>
         <item name="search_view_ic_suggestion">@drawable/xui_ic_suggestion</item>
         <item name="search_view_layover_bg_color">@color/default_search_view_layover_bg_color</item>
+        <item name="search_view_separator_color">@color/default_search_view_separator_color</item>
+        <item name="search_view_separator_height">@dimen/default_search_view_separator_height</item>
         <item name="search_view_ic_back">@drawable/xui_ic_action_navigation_arrow_back</item>
         <item name="search_view_ic_video">@drawable/xui_ic_action_voice_search</item>
         <item name="search_view_ic_clear">@drawable/xui_ic_action_navigation_clear</item>
@@ -366,6 +368,7 @@
         </item>
         <!--actionbar-->
         <item name="xui_actionbar_height">@dimen/xui_actionbar_height_tablet_big</item>
+        <item name="search_view_actionbar_height">@dimen/xui_actionbar_height_tablet_big</item>
         <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_tablet_big
         </item>
         <item name="xui_actionbar_action_text_size">
@@ -539,6 +542,7 @@
         </item>
         <!--actionbar-->
         <item name="xui_actionbar_height">@dimen/xui_actionbar_height_tablet_small</item>
+        <item name="search_view_actionbar_height">@dimen/xui_actionbar_height_tablet_small</item>
         <item name="xui_actionbar_title_text_size">
             @dimen/xui_actionbar_title_text_size_tablet_small
         </item>
@@ -720,6 +724,7 @@
         </item>
         <!--actionbar-->
         <item name="xui_actionbar_height">@dimen/xui_actionbar_height_phone</item>
+        <item name="search_view_actionbar_height">@dimen/xui_actionbar_height_phone</item>
         <item name="xui_actionbar_title_text_size">@dimen/xui_actionbar_title_text_size_phone</item>
         <item name="xui_actionbar_action_text_size">@dimen/xui_actionbar_action_text_size_phone
         </item>

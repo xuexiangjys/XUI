@@ -12,15 +12,17 @@ public interface IAlphaViewHelper {
 
     /**
      * 处理setPressed
-     * @param current
-     * @param pressed
+     *
+     * @param current 当前的view
+     * @param pressed 是否触摸
      */
     void onPressedChanged(View current, boolean pressed);
 
     /**
      * 处理setEnabled
-     * @param current
-     * @param enabled
+     *
+     * @param current 当前的view
+     * @param enabled 是否可用
      */
     void onEnabledChanged(View current, boolean enabled);
 

@@ -23,11 +23,13 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatImageView;
 
 /**
+ * 在 pressed 和 disabled 时改变 View 的透明度
+ *
  * @author xuexiang
  * @since 2019/5/14 18:20
  */
 public class XUIAlphaImageView extends AppCompatImageView {
-    
+
     private IAlphaViewHelper mAlphaViewHelper;
 
     public XUIAlphaImageView(Context context) {

@@ -84,6 +84,7 @@
 
         <!--actionbar-->
         <item name="xui_actionbar_height">60dp</item>
+        <item name="search_view_actionbar_height">60dp</item>
         <item name="xui_actionbar_title_text_size">21dp</item>
         <item name="xui_actionbar_action_text_size">18sp</item>
         <item name="xui_actionbar_sub_text_size">@dimen/xui_actionbar_sub_text_size_phone</item>

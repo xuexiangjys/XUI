@@ -94,7 +94,7 @@ public class StatusBarUtilsFragment extends BaseFragment {
                 .title(R.string.tip_infos)
                 .content(R.string.content_simple_confirm_dialog)
                 .positiveText(R.string.lab_submit)
-                .show();
+                .build();
         StatusBarUtils.showDialog(getActivity(), dialog);
     }
 
