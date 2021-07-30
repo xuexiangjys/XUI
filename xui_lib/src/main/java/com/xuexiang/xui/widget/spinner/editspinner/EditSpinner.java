@@ -88,49 +88,47 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EditSpinner, defStyleAttr, 0);
-        if (typedArray != null) {
-            mIsShowFilterData = typedArray.getBoolean(R.styleable.EditSpinner_es_isShowFilterData, true);
-            mIsFilterKey = typedArray.getBoolean(R.styleable.EditSpinner_es_isFilterKey, false);
+        mIsShowFilterData = typedArray.getBoolean(R.styleable.EditSpinner_es_isShowFilterData, true);
+        mIsFilterKey = typedArray.getBoolean(R.styleable.EditSpinner_es_isFilterKey, false);
 
-            int imageId = typedArray.getResourceId(R.styleable.EditSpinner_es_arrowImage, 0);
-            if (imageId != 0) {
-                mIvArrow.setImageResource(imageId);
-            }
-            int arrowMargin = typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_arrowMargin, -1);
-            if (arrowMargin != -1) {
-                FrameLayout.LayoutParams params = (LayoutParams) mIvArrow.getLayoutParams();
-                params.setMargins(arrowMargin, 0, arrowMargin, 0);
-                mIvArrow.setLayoutParams(params);
-            }
-            mEditText.setHint(typedArray.getString(R.styleable.EditSpinner_es_hint));
-            int bg = typedArray.getResourceId(R.styleable.EditSpinner_es_background, 0);
-            if (bg != 0) {
-                mEditText.setBackgroundResource(bg);
-            }
-            mMaxLine = typedArray.getInt(R.styleable.EditSpinner_es_maxLine, DEFAULT_MAX_LINE);
-            mEditText.setMaxLines(mMaxLine);
-            int height = typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_height, ThemeUtils.resolveDimension(getContext(), R.attr.ms_item_height_size));
-            mEditText.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
-            setTextColors(ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.EditSpinner_es_textColor));
-            setTextSize(typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_textSize, ThemeUtils.resolveDimension(getContext(), R.attr.xui_config_size_spinner_text)));
-            int entriesID = typedArray.getResourceId(R.styleable.EditSpinner_es_entries, 0);
-            if (entriesID != 0) {
-                setItems(ResUtils.getStringArray(entriesID));
-            }
-            mDropDownBg = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.EditSpinner_es_dropdown_bg);
-            boolean enable = typedArray.getBoolean(R.styleable.EditSpinner_es_enable, true);
-            setEnabled(enable);
-
-            int maxLength = typedArray.getInteger(R.styleable.EditSpinner_es_maxLength, -1);
-            setMaxLength(maxLength);
-
-            int maxEms = typedArray.getInteger(R.styleable.EditSpinner_es_maxEms, -1);
-            setMaxEms(maxEms);
-
-            mPopAnimStyle = typedArray.getResourceId(R.styleable.EditSpinner_es_popAnimStyle, -1);
-
-            typedArray.recycle();
+        int imageId = typedArray.getResourceId(R.styleable.EditSpinner_es_arrowImage, 0);
+        if (imageId != 0) {
+            mIvArrow.setImageResource(imageId);
         }
+        int arrowMargin = typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_arrowMargin, -1);
+        if (arrowMargin != -1) {
+            LayoutParams params = (LayoutParams) mIvArrow.getLayoutParams();
+            params.setMargins(arrowMargin, 0, arrowMargin, 0);
+            mIvArrow.setLayoutParams(params);
+        }
+        mEditText.setHint(typedArray.getString(R.styleable.EditSpinner_es_hint));
+        int bg = typedArray.getResourceId(R.styleable.EditSpinner_es_background, 0);
+        if (bg != 0) {
+            mEditText.setBackgroundResource(bg);
+        }
+        mMaxLine = typedArray.getInt(R.styleable.EditSpinner_es_maxLine, DEFAULT_MAX_LINE);
+        mEditText.setMaxLines(mMaxLine);
+        int height = typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_height, ThemeUtils.resolveDimension(getContext(), R.attr.ms_item_height_size));
+        mEditText.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
+        setTextColors(ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.EditSpinner_es_textColor));
+        setTextSize(typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_textSize, ThemeUtils.resolveDimension(getContext(), R.attr.xui_config_size_spinner_text)));
+        int entriesId = typedArray.getResourceId(R.styleable.EditSpinner_es_entries, 0);
+        if (entriesId != 0) {
+            setItems(ResUtils.getStringArray(entriesId));
+        }
+        mDropDownBg = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.EditSpinner_es_dropdown_bg);
+        boolean enable = typedArray.getBoolean(R.styleable.EditSpinner_es_enable, true);
+        setEnabled(enable);
+
+        int maxLength = typedArray.getInteger(R.styleable.EditSpinner_es_maxLength, -1);
+        setMaxLength(maxLength);
+
+        int maxEms = typedArray.getInteger(R.styleable.EditSpinner_es_maxEms, -1);
+        setMaxEms(maxEms);
+
+        mPopAnimStyle = typedArray.getResourceId(R.styleable.EditSpinner_es_popAnimStyle, -1);
+
+        typedArray.recycle();
     }
 
     private void initAnimation() {
@@ -206,12 +204,22 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     @Override
     public final void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        mEditText.setText(((BaseEditSpinnerAdapter) parent.getAdapter()).getItemString(position));
+        String selectContent = ((BaseEditSpinnerAdapter) parent.getAdapter()).getItemString(position);
+        setInputContent(selectContent);
         if (mPopupWindow != null) {
             mPopupWindow.dismiss();
         }
         if (mOnItemClickListener != null) {
             mOnItemClickListener.onItemClick(parent, view, position, id);
+        }
+    }
+
+    private void setInputContent(String inputContent) {
+        if (mEditText != null) {
+            mEditText.removeTextChangedListener(this);
+            mEditText.setText(inputContent);
+            mEditText.setSelection(inputContent.length());
+            mEditText.addTextChangedListener(this);
         }
     }
 
@@ -248,9 +256,9 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
             return;
         }
         if (mAdapter.getEditSpinnerFilter().onFilter(key)) {
-            mPopupWindow.dismiss();
-        } else {
             mPopupWindow.show();
+        } else {
+            mPopupWindow.dismiss();
         }
 
     }
@@ -269,11 +277,11 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置默认可选项集合
      *
-     * @param data
-     * @return
+     * @param data 默认可选项集合
+     * @return this
      */
     public EditSpinner setItems(String[] data) {
-        mAdapter = new EditSpinnerAdapter(getContext(), data)
+        mAdapter = new EditSpinnerAdapter<>(data)
                 .setTextColor(mEditText.getTextColors().getDefaultColor())
                 .setTextSize(mEditText.getTextSize())
                 .setIsFilterKey(mIsFilterKey);
@@ -284,11 +292,11 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置默认可选项集合
      *
-     * @param data
-     * @return
+     * @param data 默认可选项集合
+     * @return this
      */
     public EditSpinner setItems(List<String> data) {
-        mAdapter = new EditSpinnerAdapter(getContext(), data)
+        mAdapter = new EditSpinnerAdapter<>(data)
                 .setTextColor(mEditText.getTextColors().getDefaultColor())
                 .setTextSize(mEditText.getTextSize())
                 .setIsFilterKey(mIsFilterKey);
@@ -299,8 +307,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置下拉框条目点击监听
      *
-     * @param listener
-     * @return
+     * @param listener 下拉框条目点击监听
+     * @return this
      */
     public EditSpinner setOnItemClickListener(AdapterView.OnItemClickListener listener) {
         mOnItemClickListener = listener;
@@ -341,8 +349,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置输入框字体的颜色
      *
-     * @param color
-     * @return
+     * @param color 输入框字体的颜色
+     * @return this
      */
     public EditSpinner setTextColor(@ColorInt int color) {
         if (mEditText != null) {
@@ -357,8 +365,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置输入框的背景颜色
      *
-     * @param backgroundSelector
-     * @return
+     * @param backgroundSelector 输入框的背景颜色
+     * @return this
      */
     public EditSpinner setBackgroundSelector(@DrawableRes int backgroundSelector) {
         if (mEditText != null) {
@@ -370,8 +378,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置是否显示key为醒目的颜色
      *
-     * @param isFilterKey
-     * @return
+     * @param isFilterKey 是否显示key为醒目的颜色
+     * @return this
      */
     public EditSpinner setIsFilterKey(boolean isFilterKey) {
         if (mEditText != null) {
@@ -383,10 +391,25 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     }
 
     /**
+     * 设置显示key的醒目颜色
+     *
+     * @param filterColor 显示key的醒目颜色
+     * @return this
+     */
+    public EditSpinner setFilterColor(String filterColor) {
+        if (mEditText != null) {
+            if (mAdapter != null && mAdapter instanceof EditSpinnerAdapter) {
+                ((EditSpinnerAdapter) mAdapter).setFilterColor(filterColor);
+            }
+        }
+        return this;
+    }
+
+    /**
      * 设置输入框的字体大小
      *
-     * @param textSize
-     * @return
+     * @param textSize 输入框的字体大小
+     * @return this
      */
     public EditSpinner setTextSize(float textSize) {
         if (mEditText != null) {
@@ -434,8 +457,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置下拉框适配器
      *
-     * @param adapter
-     * @return
+     * @param adapter 下拉框适配器
+     * @return this
      */
     public EditSpinner setAdapter(BaseEditSpinnerAdapter adapter) {
         mAdapter = adapter;

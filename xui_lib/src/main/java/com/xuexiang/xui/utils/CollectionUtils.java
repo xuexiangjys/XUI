@@ -68,4 +68,15 @@ public final class CollectionUtils {
         return collection != null ? collection.size() : 0;
     }
 
+    /**
+     * 集合是否为空
+     *
+     * @param collection 集合
+     * @return true: 为空，false：不为空
+     */
+    public static <E> boolean isEmpty(final Collection<E> collection) {
+        return collection == null || collection.isEmpty();
+    }
+
+
 }

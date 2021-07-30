@@ -1,6 +1,5 @@
 package com.xuexiang.xui.widget.spinner.editspinner;
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.text.Html;
@@ -13,11 +12,10 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.R;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,37 +24,43 @@ import java.util.List;
  * @author xuexiang
  * @since 2019/1/14 下午10:10
  */
-public class EditSpinnerAdapter extends BaseEditSpinnerAdapter implements EditSpinnerFilter {
-    private Context mContext;
-    /**
-     * 默认可选项集合
-     */
-    private final List<String> mSpinnerData;
-    /**
-     * 输入后匹配相关联的选项（展示）
-     */
-    private final List<String> mDisplayData;
-    private final int[] mIndexs;
+public class EditSpinnerAdapter<T> extends BaseEditSpinnerAdapter<T> implements EditSpinnerFilter {
 
-    private int textColor;
-    private float textSize;
-    private int backgroundSelector;
+    /**
+     * 选项的文字颜色
+     */
+    private int mTextColor;
+    /**
+     * 选项的文字大小
+     */
+    private float mTextSize;
+    /**
+     * 背景颜色
+     */
+    private int mBackgroundSelector;
+    /**
+     * 过滤关键词的选中颜色
+     */
+    private String mFilterColor = "#F15C58";
 
     private boolean mIsFilterKey = false;
 
-    public EditSpinnerAdapter(Context context, List<String> data) {
-        mContext = context;
-        mSpinnerData = data;
-        mDisplayData = new ArrayList<>(data);
-        mIndexs = new int[mSpinnerData.size()];
+    /**
+     * 构造方法
+     *
+     * @param data 选项数据
+     */
+    public EditSpinnerAdapter(List<T> data) {
+        super(data);
     }
 
-    public EditSpinnerAdapter(Context context, String[] data) {
-        mContext = context;
-        mSpinnerData = new ArrayList<>();
-        mSpinnerData.addAll(Arrays.asList(data));
-        mDisplayData = new ArrayList<>(mSpinnerData);
-        mIndexs = new int[mSpinnerData.size()];
+    /**
+     * 构造方法
+     *
+     * @param data 选项数据
+     */
+    public EditSpinnerAdapter(T[] data) {
+        super(data);
     }
 
     @Override
@@ -65,56 +69,24 @@ public class EditSpinnerAdapter extends BaseEditSpinnerAdapter implements EditSp
     }
 
     @Override
-    public String getItemString(int position) {
-        return mSpinnerData.get(mIndexs[position]);
-    }
-
-    @Override
-    public int getCount() {
-        return mDisplayData == null ? 0 : mDisplayData.size();
-    }
-
-    @Override
-    public String getItem(int position) {
-        return mDisplayData == null ? "" : mDisplayData.get(position) == null ? "" : mDisplayData.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final TextView textView;
+        final ViewHolder holder;
         if (convertView == null) {
-            LayoutInflater inflater = LayoutInflater.from(mContext);
-            convertView = inflater.inflate(R.layout.ms_layout_list_item, parent, false);
-            textView = convertView.findViewById(R.id.tv_tinted_spinner);
-            textView.setTextColor(textColor);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-            if (backgroundSelector != 0) {
-                textView.setBackgroundResource(backgroundSelector);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                Configuration config = mContext.getResources().getConfiguration();
-                if (config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
-                    textView.setTextDirection(View.TEXT_DIRECTION_RTL);
-                }
-            }
-            convertView.setTag(new ViewHolder(textView));
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ms_layout_list_item, parent, false);
+            holder = new ViewHolder(convertView, mTextColor, mTextSize, mBackgroundSelector);
+            convertView.setTag(holder);
         } else {
-            textView = ((ViewHolder)convertView.getTag()).textView;
+            holder = ((ViewHolder) convertView.getTag());
         }
-        textView.setText(Html.fromHtml(getItem(position)));
-        return textView;
+        holder.mTextView.setText(Html.fromHtml(getItem(position)));
+        return convertView;
     }
 
     @Override
     public boolean onFilter(String keyword) {
         mDisplayData.clear();
         if (TextUtils.isEmpty(keyword)) {
-            mDisplayData.addAll(mSpinnerData);
+            initDisplayData(mDataSource);
             for (int i = 0; i < mIndexs.length; i++) {
                 mIndexs[i] = i;
             }
@@ -122,15 +94,15 @@ public class EditSpinnerAdapter extends BaseEditSpinnerAdapter implements EditSp
             try {
                 StringBuilder builder = new StringBuilder();
                 builder.append("[^\\s]*").append(keyword).append("[^\\s]*");
-                for (int i = 0; i < mSpinnerData.size(); i++) {
-                    if (mSpinnerData.get(i)
+                for (int i = 0; i < mDataSource.size(); i++) {
+                    if (getDataSourceString(i)
                             .replaceAll("\\s+", "|")
                             .matches(builder.toString())) {
                         mIndexs[mDisplayData.size()] = i;
                         if (mIsFilterKey) {
-                            mDisplayData.add(mSpinnerData.get(i).replaceFirst(keyword, "<font color=\"#F15C58\">" + keyword + "</font>"));
+                            mDisplayData.add(getDataSourceString(i).replaceFirst(keyword, "<font color=\"" + mFilterColor + "\">" + keyword + "</font>"));
                         } else {
-                            mDisplayData.add(mSpinnerData.get(i));
+                            mDisplayData.add(getDataSourceString(i));
                         }
                     }
                 }
@@ -139,21 +111,26 @@ public class EditSpinnerAdapter extends BaseEditSpinnerAdapter implements EditSp
             }
         }
         notifyDataSetChanged();
-        return mDisplayData.size() <= 0;
+        return mDisplayData.size() > 0;
     }
 
     public EditSpinnerAdapter setTextColor(@ColorInt int textColor) {
-        this.textColor = textColor;
+        mTextColor = textColor;
         return this;
     }
 
     public EditSpinnerAdapter setTextSize(float textSize) {
-        this.textSize = textSize;
+        mTextSize = textSize;
         return this;
     }
 
     public EditSpinnerAdapter setBackgroundSelector(@DrawableRes int backgroundSelector) {
-        this.backgroundSelector = backgroundSelector;
+        mBackgroundSelector = backgroundSelector;
+        return this;
+    }
+
+    public EditSpinnerAdapter setFilterColor(String filterColor) {
+        mFilterColor = filterColor;
         return this;
     }
 
@@ -164,10 +141,21 @@ public class EditSpinnerAdapter extends BaseEditSpinnerAdapter implements EditSp
 
     private static class ViewHolder {
 
-        private TextView textView;
+        private TextView mTextView;
 
-        private ViewHolder(TextView textView) {
-            this.textView = textView;
+        private ViewHolder(@NonNull View convertView, @ColorInt int textColor, float textSize, @DrawableRes int backgroundSelector) {
+            mTextView = convertView.findViewById(R.id.tv_tinted_spinner);
+            mTextView.setTextColor(textColor);
+            mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+            if (backgroundSelector != 0) {
+                mTextView.setBackgroundResource(backgroundSelector);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                Configuration config = convertView.getResources().getConfiguration();
+                if (config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+                    mTextView.setTextDirection(View.TEXT_DIRECTION_RTL);
+                }
+            }
         }
     }
 }
