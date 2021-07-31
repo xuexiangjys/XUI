@@ -155,21 +155,17 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
         ListPopupWindow popupWindow = new ListPopupWindow(getContext()) {
             @Override
             public void show() {
+                if (!isShowing()) {
+                    mIvArrow.startAnimation(mAnimation);
+                }
                 super.show();
-                mIvArrow.startAnimation(mAnimation);
             }
-
-            @Override
-            public void dismiss() {
-                super.dismiss();
-            }
-
         };
         if (mPopAnimStyle != -1) {
             popupWindow.setAnimationStyle(mPopAnimStyle);
         }
         popupWindow.setOnItemClickListener(this);
-        popupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
+        popupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
         popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         popupWindow.setPromptPosition(ListPopupWindow.POSITION_PROMPT_BELOW);
         popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -255,7 +251,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     @Override
     protected void onDetachedFromWindow() {
-        dismissDropDown();
+        recycle();
         super.onDetachedFromWindow();
     }
 
@@ -269,6 +265,17 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     private void dismissDropDown() {
         ListPopupWindow popupWindow = getPopupWindow();
         if (popupWindow != null) {
+            popupWindow.dismiss();
+        }
+    }
+
+    /**
+     * 资源释放
+     */
+    private void recycle() {
+        ListPopupWindow popupWindow = getPopupWindow();
+        if (popupWindow != null) {
+            popupWindow.setAdapter(null);
             popupWindow.dismiss();
         }
     }
