@@ -33,6 +33,7 @@ import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
@@ -49,7 +50,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     private static final int TOGGLE_POPUP_WINDOW_INTERVAL = 200;
     private EditText mEditText;
     private ImageView mIvArrow;
-    private ListPopupWindow mPopupWindow;
+    private WeakReference<ListPopupWindow> mPopupWindow;
     private BaseEditSpinnerAdapter mAdapter;
     private long mPopupWindowHideTime;
     private Animation mAnimation;
@@ -142,13 +143,16 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
     private void setBaseAdapter(BaseAdapter adapter) {
         if (mPopupWindow == null) {
-            initPopupWindow();
+            mPopupWindow = new WeakReference<>(buildPopupWindow());
         }
-        mPopupWindow.setAdapter(adapter);
+        ListPopupWindow popupWindow = getPopupWindow();
+        if (popupWindow != null) {
+            popupWindow.setAdapter(adapter);
+        }
     }
 
-    private void initPopupWindow() {
-        mPopupWindow = new ListPopupWindow(getContext()) {
+    private ListPopupWindow buildPopupWindow() {
+        ListPopupWindow popupWindow = new ListPopupWindow(getContext()) {
             @Override
             public void show() {
                 super.show();
@@ -162,18 +166,18 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
 
         };
         if (mPopAnimStyle != -1) {
-            mPopupWindow.setAnimationStyle(mPopAnimStyle);
+            popupWindow.setAnimationStyle(mPopAnimStyle);
         }
-        mPopupWindow.setOnItemClickListener(this);
-        mPopupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
-        mPopupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
-        mPopupWindow.setPromptPosition(ListPopupWindow.POSITION_PROMPT_BELOW);
-        mPopupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-        mPopupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-        mPopupWindow.setAnchorView(mEditText);
-        mPopupWindow.setVerticalOffset(ThemeUtils.resolveDimension(getContext(), R.attr.ms_dropdown_offset));
-        mPopupWindow.setListSelector(ResUtils.getDrawable(getContext(), R.drawable.xui_config_list_item_selector));
-        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+        popupWindow.setOnItemClickListener(this);
+        popupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
+        popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        popupWindow.setPromptPosition(ListPopupWindow.POSITION_PROMPT_BELOW);
+        popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setAnchorView(mEditText);
+        popupWindow.setVerticalOffset(ThemeUtils.resolveDimension(getContext(), R.attr.ms_dropdown_offset));
+        popupWindow.setListSelector(ResUtils.getDrawable(getContext(), R.drawable.xui_config_list_item_selector));
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 mPopupWindowHideTime = System.currentTimeMillis();
@@ -181,10 +185,11 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
             }
         });
         if (mDropDownBg != null) {
-            mPopupWindow.setBackgroundDrawable(mDropDownBg);
+            popupWindow.setBackgroundDrawable(mDropDownBg);
         } else {
-            mPopupWindow.setBackgroundDrawable(ResUtils.getDrawable(getContext(), R.drawable.ms_drop_down_bg_radius));
+            popupWindow.setBackgroundDrawable(ResUtils.getDrawable(getContext(), R.drawable.ms_drop_down_bg_radius));
         }
+        return popupWindow;
     }
 
 
@@ -205,21 +210,10 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     @Override
     public final void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String selectContent = ((BaseEditSpinnerAdapter) parent.getAdapter()).getItemString(position);
-        setInputContent(selectContent);
-        if (mPopupWindow != null) {
-            mPopupWindow.dismiss();
-        }
+        setText(selectContent);
+        dismissDropDown();
         if (mOnItemClickListener != null) {
             mOnItemClickListener.onItemClick(parent, view, position, id);
-        }
-    }
-
-    private void setInputContent(String inputContent) {
-        if (mEditText != null) {
-            mEditText.removeTextChangedListener(this);
-            mEditText.setText(inputContent);
-            mEditText.setSelection(inputContent.length());
-            mEditText.addTextChangedListener(this);
         }
     }
 
@@ -242,25 +236,45 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
                 showFilterData(key);
             }
         } else {
-            if (mPopupWindow != null) {
-                mPopupWindow.dismiss();
-            }
+            dismissDropDown();
         }
     }
 
     private void showFilterData(String key) {
         if (mPopupWindow == null || mAdapter == null || mAdapter.getEditSpinnerFilter() == null) {
-            if (mPopupWindow != null) {
-                mPopupWindow.dismiss();
-            }
+            dismissDropDown();
             return;
         }
         if (mAdapter.getEditSpinnerFilter().onFilter(key)) {
-            mPopupWindow.show();
+            showDropDown();
         } else {
-            mPopupWindow.dismiss();
+            dismissDropDown();
         }
+    }
 
+
+    @Override
+    protected void onDetachedFromWindow() {
+        dismissDropDown();
+        super.onDetachedFromWindow();
+    }
+
+    private void showDropDown() {
+        ListPopupWindow popupWindow = getPopupWindow();
+        if (popupWindow != null) {
+            popupWindow.show();
+        }
+    }
+
+    private void dismissDropDown() {
+        ListPopupWindow popupWindow = getPopupWindow();
+        if (popupWindow != null) {
+            popupWindow.dismiss();
+        }
+    }
+
+    private ListPopupWindow getPopupWindow() {
+        return mPopupWindow != null ? mPopupWindow.get() : null;
     }
 
     //==============对外接口=====================//
@@ -268,7 +282,7 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 获取编辑的内容
      *
-     * @return
+     * @return 编辑的内容
      */
     public String getText() {
         return mEditText != null ? mEditText.getText().toString() : "";
@@ -318,13 +332,14 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置默认内容
      *
-     * @param text
-     * @return
+     * @param text 输入的内容
+     * @return this
      */
     public EditSpinner setText(@NonNull String text) {
         if (mEditText != null) { //可以传空字符串
             mEditText.removeTextChangedListener(this);
             mEditText.setText(text);
+            mEditText.setSelection(text.length());
             mEditText.addTextChangedListener(this);
         }
         return this;
@@ -333,8 +348,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
     /**
      * 设置输入框字体的颜色
      *
-     * @param colors
-     * @return
+     * @param colors 输入框字体的颜色
+     * @return this
      */
     public EditSpinner setTextColors(ColorStateList colors) {
         if (mEditText != null && colors != null) {

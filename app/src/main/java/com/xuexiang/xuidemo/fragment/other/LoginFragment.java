@@ -98,14 +98,16 @@ public class LoginFragment extends BaseFragment {
                 dialog.dismiss();
                 spUtils.setIsAgreePrivacy(true);
                 UMengInit.init();
-                ViewUtils.setChecked(cbProtocol, true);
+                // 应用市场不让默认勾选
+//                ViewUtils.setChecked(cbProtocol, true);
             });
         }
-        cbProtocol.setChecked(spUtils.isAgreePrivacy());
         cbProtocol.setOnCheckedChangeListener((buttonView, isChecked) -> {
             spUtils.setIsAgreePrivacy(isChecked);
             ViewUtils.setEnabled(btnLogin, isChecked);
         });
+        ViewUtils.setEnabled(btnLogin, spUtils.isAgreePrivacy());
+        ViewUtils.setChecked(cbProtocol, spUtils.isAgreePrivacy());
     }
 
     @SingleClick
