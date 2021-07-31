@@ -97,5 +97,14 @@ public abstract class BaseEditSpinnerAdapter<T> extends BaseAdapter {
         return data != null ? data.toString() : "";
     }
 
+    /**
+     * 资源释放
+     */
+    public void recycle() {
+        CollectionUtils.clear(mDataSource);
+        CollectionUtils.clear(mDisplayData);
+        notifyDataSetChanged();
+    }
+
 
 }

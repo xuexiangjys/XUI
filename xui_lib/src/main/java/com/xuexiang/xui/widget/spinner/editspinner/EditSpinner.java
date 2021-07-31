@@ -273,11 +273,8 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
      * 资源释放
      */
     private void recycle() {
-        ListPopupWindow popupWindow = getPopupWindow();
-        if (popupWindow != null) {
-            popupWindow.setAdapter(null);
-            popupWindow.dismiss();
-        }
+        setAdapter(null);
+        dismissDropDown();
     }
 
     private ListPopupWindow getPopupWindow() {

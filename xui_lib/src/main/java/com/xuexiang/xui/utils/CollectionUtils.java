@@ -78,5 +78,15 @@ public final class CollectionUtils {
         return collection == null || collection.isEmpty();
     }
 
-
+    /**
+     * 清空集合
+     *
+     * @param collection 集合
+     * @param <E>
+     */
+    public static <E> void clear(final Collection<E> collection) {
+        if (!isEmpty(collection)) {
+            collection.clear();
+        }
+    }
 }
