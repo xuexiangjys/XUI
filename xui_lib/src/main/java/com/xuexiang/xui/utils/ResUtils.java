@@ -124,7 +124,7 @@ public final class ResUtils {
      * @return ColorStateList
      */
     public static ColorStateList getColorStateListAttrRes(Context context, TypedArray typedArray, @StyleableRes int styleableResId) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return typedArray.getColorStateList(styleableResId);
         } else {
             int resourceId = typedArray.getResourceId(styleableResId, -1);
