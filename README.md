@@ -80,10 +80,10 @@ dependencies {
   //androidx project
   implementation 'com.github.xuexiangjys:XUI:1.1.8'
 
-  implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'androidx.recyclerview:recyclerview:1.1.0'
-  implementation 'com.google.android.material:material:1.1.0'
-  implementation 'com.github.bumptech.glide:glide:4.11.0'
+  implementation 'androidx.appcompat:appcompat:1.3.1'
+  implementation 'androidx.recyclerview:recyclerview:1.2.1'
+  implementation 'com.google.android.material:material:1.4.0'
+  implementation 'com.github.bumptech.glide:glide:4.12.0'
 }
 ```
 
