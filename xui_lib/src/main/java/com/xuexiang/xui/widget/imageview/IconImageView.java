@@ -97,7 +97,7 @@ public class IconImageView extends AppCompatImageView {
 
     private void initPaint() {
         mIconPaint = new Paint();
-        mIconPaint.setColor(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+        mIconPaint.setColor(ThemeUtils.getMainThemeColor(getContext()));
         mIconPaint.setAntiAlias(true);
         mIconPaint.setFilterBitmap(true);
         mIconPaint.setStyle(Paint.Style.STROKE);

@@ -76,7 +76,7 @@
         </com.xuexiang.xui.widget.layout.linkage.LinkageScrollLayout>
 
 
-        <com.xuexiang.xuidemo.widget.CustomRefreshFooter
+        <com.xuexiang.xuidemo.widget.MaterialFooter
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

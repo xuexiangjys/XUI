@@ -31,17 +31,33 @@
 
     <dimen name="custom_section_height">36dp</dimen>
     <dimen name="spacing_24dp">24dp</dimen>
+    <dimen name="common_icon_size">24dp</dimen>
     <dimen name="selection_item_height">60dp</dimen>
 
-    <dimen name="config_margin_16dp">16dp</dimen>
-    <dimen name="config_margin_14dp">14dp</dimen>
-    <dimen name="config_margin_10dp">10dp</dimen>
-    <dimen name="config_margin_20dp">20dp</dimen>
-    <dimen name="config_margin_8dp">8dp</dimen>
+    <dimen name="config_margin_4dp">4dp</dimen>
     <dimen name="config_margin_5dp">5dp</dimen>
-    <dimen name="config_margin_18dp">18dp</dimen>
-    <dimen name="config_margin_30dp">30dp</dimen>
+    <dimen name="config_margin_6dp">6dp</dimen>
+    <dimen name="config_margin_8dp">8dp</dimen>
+    <dimen name="config_margin_10dp">10dp</dimen>
     <dimen name="config_margin_12dp">12dp</dimen>
+    <dimen name="config_margin_14dp">14dp</dimen>
+    <dimen name="config_margin_16dp">16dp</dimen>
+    <dimen name="config_margin_18dp">18dp</dimen>
+    <dimen name="config_margin_20dp">20dp</dimen>
     <dimen name="config_margin_24dp">24dp</dimen>
+    <dimen name="config_margin_30dp">30dp</dimen>
+
+    <dimen name="config_padding_4dp">4dp</dimen>
+    <dimen name="config_padding_5dp">5dp</dimen>
+    <dimen name="config_padding_6dp">6dp</dimen>
+    <dimen name="config_padding_8dp">8dp</dimen>
+    <dimen name="config_padding_10dp">10dp</dimen>
+    <dimen name="config_padding_12dp">12dp</dimen>
+    <dimen name="config_padding_14dp">14dp</dimen>
+    <dimen name="config_padding_16dp">16dp</dimen>
+    <dimen name="config_padding_18dp">18dp</dimen>
+    <dimen name="config_padding_20dp">20dp</dimen>
+    <dimen name="config_padding_24dp">24dp</dimen>
+    <dimen name="config_padding_30dp">30dp</dimen>
 
 </resources>

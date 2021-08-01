@@ -59,6 +59,7 @@
 
     </LinearLayout>
 
+    <!--  搜索框  -->
     <com.xuexiang.xui.widget.searchview.MaterialSearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"

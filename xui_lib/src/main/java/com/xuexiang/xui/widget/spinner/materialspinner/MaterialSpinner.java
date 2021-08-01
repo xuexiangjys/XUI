@@ -80,15 +80,13 @@ public class MaterialSpinner extends AppCompatTextView {
     /**
      * 初始化属性
      *
-     * @param context
-     * @param attrs
-     * @param defStyleAttr
+     * @param context      上下文
+     * @param attrs        属性
+     * @param defStyleAttr 默认属性
      */
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MaterialSpinner, defStyleAttr, 0);
         int defaultColor = getTextColors().getDefaultColor();
-        boolean rtl = ResUtils.isRtl();
-
         int popAnimStyle;
         Drawable dropDownBg;
         int entriesId;
@@ -98,17 +96,16 @@ public class MaterialSpinner extends AppCompatTextView {
             backgroundSelector = typedArray.getResourceId(R.styleable.MaterialSpinner_ms_background_selector, 0);
             mTextColor = typedArray.getColor(R.styleable.MaterialSpinner_ms_text_color, defaultColor);
 
-            mArrowDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.MaterialSpinner_ms_arrow_image);
+            mArrowDrawable = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.MaterialSpinner_ms_arrow_image);
             mArrowColor = typedArray.getColor(R.styleable.MaterialSpinner_ms_arrow_tint, mTextColor);
             mHideArrow = typedArray.getBoolean(R.styleable.MaterialSpinner_ms_hide_arrow, false);
             mPopupWindowMaxHeight = typedArray.getDimensionPixelSize(R.styleable.MaterialSpinner_ms_dropdown_max_height, 0);
             mPopupWindowHeight = typedArray.getLayoutDimension(R.styleable.MaterialSpinner_ms_dropdown_height, WindowManager.LayoutParams.WRAP_CONTENT);
             mArrowColorDisabled = ResUtils.lighter(mArrowColor, 0.8f);
             entriesId = typedArray.getResourceId(R.styleable.MaterialSpinner_ms_entries, 0);
-            dropDownBg = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.MaterialSpinner_ms_dropdown_bg);
+            dropDownBg = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.MaterialSpinner_ms_dropdown_bg);
             mIsInDialog = typedArray.getBoolean(R.styleable.MaterialSpinner_ms_in_dialog, false);
             popAnimStyle = typedArray.getResourceId(R.styleable.MaterialSpinner_ms_pop_anim_style, -1);
-
         } finally {
             typedArray.recycle();
         }

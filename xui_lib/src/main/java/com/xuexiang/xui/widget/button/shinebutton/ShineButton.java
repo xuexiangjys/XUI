@@ -75,7 +75,7 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
     private void initButton(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ShineButton);
         mNormalColor = a.getColor(R.styleable.ShineButton_sb_normal_color, ResUtils.getColor(R.color.default_sb_normal_color));
-        mCheckedColor = a.getColor(R.styleable.ShineButton_sb_checked_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        mCheckedColor = a.getColor(R.styleable.ShineButton_sb_checked_color, ThemeUtils.getMainThemeColor(context));
         mShineParams.allowRandomColor = a.getBoolean(R.styleable.ShineButton_sb_allow_random_color, false);
         mShineParams.animDuration = a.getInteger(R.styleable.ShineButton_sb_shine_animation_duration, (int) mShineParams.animDuration);
         mShineParams.clickAnimDuration = a.getInteger(R.styleable.ShineButton_sb_click_animation_duration, (int) mShineParams.clickAnimDuration);

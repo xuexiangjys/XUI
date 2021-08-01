@@ -97,7 +97,7 @@ public class SwitchIconView extends AppCompatImageView {
         TypedArray array = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.SwitchIconView, 0, 0);
 
         try {
-            mIconTintColor = array.getColor(R.styleable.SwitchIconView_siv_tint_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+            mIconTintColor = array.getColor(R.styleable.SwitchIconView_siv_tint_color, ThemeUtils.getMainThemeColor(context));
             mAnimationDuration = array.getInteger(R.styleable.SwitchIconView_siv_animation_duration, DEFAULT_ANIMATION_DURATION);
             mDisabledStateAlpha = array.getFloat(R.styleable.SwitchIconView_siv_disabled_alpha, DEFAULT_DISABLED_ALPHA);
             mDisabledStateColor = array.getColor(R.styleable.SwitchIconView_siv_disabled_color, mIconTintColor);

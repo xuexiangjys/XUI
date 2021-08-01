@@ -57,7 +57,7 @@ public class SimpleIconFontFragment extends BaseFragment {
     protected void initViews() {
         IconicsDrawable drawable = new IconicsDrawable(getContext())
                 .icon(XUIIconFont.Icon.xui_emoj)
-                .color(IconicsColor.colorInt(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent)))
+                .color(IconicsColor.colorInt(ThemeUtils.getMainThemeColor(getContext())))
                 .size(IconicsSize.dp(24));
         ivFont.setImageDrawable(drawable);
 

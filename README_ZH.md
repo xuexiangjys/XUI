@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.rruu.net/image/5f7d85cab3e43" width="388" height="321" alt="Banner" />
+  <img src="https://ss.im5i.com/2021/06/14/65G07.png" width="388" height="321" alt="Banner" />
 </p>
 
 # XUI
@@ -48,6 +48,10 @@
 
 * 扩展性强，各组件提供了丰富的属性和样式API，可以通过设置不同的样式属性，构建不同风格的UI。
 
+## Star趋势
+
+[![Stargazers over time](https://starchart.cc/xuexiangjys/XUI.svg)](https://starchart.cc/xuexiangjys/XUI)
+
 ----
 
 ## 如何使用
@@ -72,7 +76,7 @@ allprojects {
 dependencies {
   ...
   //androidx项目
-  implementation 'com.github.xuexiangjys:XUI:1.1.7'
+  implementation 'com.github.xuexiangjys:XUI:1.1.8'
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.1.0'
@@ -171,23 +175,23 @@ protected void attachBaseContext(Context newBase) {
 
 ### 演示程序截图
 
-![1_splash.png](https://img.rruu.net/image/5f7b65c2e3cce) &emsp; ![2_main.png](https://img.rruu.net/image/5f7b65c3073e5) &emsp; ![3_about.png](https://img.rruu.net/image/5f7b65c30ee6f) &emsp;
+![1_splash.png](https://ss.im5i.com/2021/06/14/6uDhR.png) &emsp; ![2_main.png](https://ss.im5i.com/2021/06/14/6uzmO.png) &emsp; ![3_about.png](https://ss.im5i.com/2021/06/14/6uaJd.png) &emsp;
 
-![4_menu.png](https://img.rruu.net/image/5f7b65c31862f) &emsp; ![5_dialog.png](https://img.rruu.net/image/5f7b65c31b2f3) &emsp; ![6_bottom_dialog.png](https://img.rruu.net/image/5f7b65c322c15) &emsp;
+![4_menu.png](https://ss.im5i.com/2021/06/14/6u4n4.png) &emsp; ![5_dialog.png](https://ss.im5i.com/2021/06/14/6upMW.png) &emsp; ![6_bottom_dialog.png](https://ss.im5i.com/2021/06/14/6uMdG.png) &emsp;
 
-![7_picker.png](https://img.rruu.net/image/5f7b65c32e420) &emsp; ![8_webview.png](https://img.rruu.net/image/5f7b65c330c49) &emsp;![9_flowlayout.png](https://img.rruu.net/image/5f7b65c330c6a) &emsp;
+![7_picker.png](https://ss.im5i.com/2021/06/14/6uOWz.png) &emsp; ![8_webview.png](https://ss.im5i.com/2021/06/14/6uk05.png) &emsp;![9_flowlayout.png](https://ss.im5i.com/2021/06/14/65FS6.png) &emsp;
 
-![10_ninegrid.png](https://img.rruu.net/image/5f7b65c33da98) &emsp; ![11_radius_imageview.png](https://img.rruu.net/image/5f7d827d31fe4) &emsp; ![12_badge_view.png](https://img.rruu.net/image/5f7d827ccb45c) &emsp;
+![10_ninegrid.png](https://ss.im5i.com/2021/06/14/65Qt8.png) &emsp; ![11_radius_imageview.png](https://ss.im5i.com/2021/06/14/65hxU.png) &emsp; ![12_badge_view.png](https://ss.im5i.com/2021/06/14/65Cww.png) &emsp;
 
-![13_tabview.png](https://img.rruu.net/image/5f7d827d0ddde) &emsp; ![14_citypicker.png](https://img.rruu.net/image/5f7d827d51eaf) &emsp; ![15_refresh_layout.png](https://img.rruu.net/image/5f7d827ddfb2e) &emsp;
+![13_tabview.png](https://ss.im5i.com/2021/06/14/65qJZ.png) &emsp; ![14_citypicker.png](https://ss.im5i.com/2021/06/14/65voJ.png) &emsp; ![15_refresh_layout.png](https://ss.im5i.com/2021/06/14/656O1.png) &emsp;
 
-![16_spinner.png](https://img.rruu.net/image/5f7d827dcd311) &emsp;
+![16_spinner.png](https://ss.im5i.com/2021/06/14/65Sdn.png) &emsp;
 
 ### Demo下载
 
 > 演示程序大概18M（主要是demo中集成了一个小视频拍摄的库比较大，大约13M左右，而XUI库目前只有644k大小），项目比较大，推荐使用蒲公英下载。
 
-![xui_size.png](https://img.rruu.net/image/5f7d8400bf84f)
+![xui_size.png](https://ss.im5i.com/2021/06/14/65rcS.png)
 
 #### 蒲公英下载
 
@@ -195,13 +199,13 @@ protected void attachBaseContext(Context newBase) {
 
 [![蒲公英](https://img.shields.io/badge/downloads-蒲公英-blue.svg)](https://www.pgyer.com/XUIDemo)
 
-![download_pugongying.png](https://img.rruu.net/image/5f7d827de5af4)
+[![download_pugongying.png](https://ss.im5i.com/2021/06/14/65VuP.png)](https://www.pgyer.com/XUIDemo)
 
 #### Github下载
 
 [![Github](https://img.shields.io/badge/downloads-Github-blue.svg)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
 
-![download_github.png](https://img.rruu.net/image/5f7d827d5d755)
+[![download_github.png](https://ss.im5i.com/2021/06/14/65PS2.png)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
 
 ## 贡献代码
 
@@ -241,7 +245,7 @@ protected void attachBaseContext(Context newBase) {
 
 > 你的打赏是我维护的动力，我将会列出所有打赏人员的清单在下方作为凭证，打赏前请留下打赏项目的备注！
 
-![pay.png](https://img.rruu.net/image/5f871d00045da)
+![pay.png](https://ss.im5i.com/2021/06/14/6twG6.png)
 
 感谢下面小伙伴的打赏：
 
@@ -301,6 +305,8 @@ J*o | 10.24￥ | 微信
 **云 | 5￥ | 支付宝
 *航 | 3￥ | 支付宝
 *维 | 5￥ | 微信
+*鑫 | 188.88￥ | 支付宝
+*玉 | 10￥ | 支付宝
 
 ## 联系方式
 
@@ -310,4 +316,4 @@ J*o | 10.24￥ | 微信
 
 [![](https://img.shields.io/badge/XUI开源交流3群-1090612354-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=nOY3GGJY-jiwzhQpR8E06G-yrOUsxCP1)
 
-![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
+![](https://ss.im5i.com/2021/06/14/65yoL.jpg)

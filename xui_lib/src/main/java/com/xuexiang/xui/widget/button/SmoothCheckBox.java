@@ -82,7 +82,7 @@ public class SmoothCheckBox extends View implements Checkable {
         int tickColor = array.getColor(R.styleable.SmoothCheckBox_scb_color_tick, Color.WHITE);
         mAnimDuration = array.getInt(R.styleable.SmoothCheckBox_scb_duration, DEF_ANIM_DURATION);
         mFloorColor = array.getColor(R.styleable.SmoothCheckBox_scb_color_unchecked_stroke, COLOR_FLOOR_UNCHECKED);
-        mCheckedColor = array.getColor(R.styleable.SmoothCheckBox_scb_color_checked, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        mCheckedColor = array.getColor(R.styleable.SmoothCheckBox_scb_color_checked, ThemeUtils.getMainThemeColor(context));
         mUnCheckedColor = array.getColor(R.styleable.SmoothCheckBox_scb_color_unchecked, Color.WHITE);
         mStrokeWidth = array.getDimensionPixelSize(R.styleable.SmoothCheckBox_scb_stroke_width, 0);
         array.recycle();
@@ -155,9 +155,7 @@ public class SmoothCheckBox extends View implements Checkable {
 
     @Override
     public void setChecked(boolean checked) {
-        mChecked = checked;
-        reset();
-        invalidate();
+        setCheckedSilent(checked);
         if (mOnCheckedChangeListener != null) {
             mOnCheckedChangeListener.onCheckedChanged(SmoothCheckBox.this, mChecked);
         }

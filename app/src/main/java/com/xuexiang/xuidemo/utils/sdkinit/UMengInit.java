@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
+import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.BuildConfig;
 import com.xuexiang.xuidemo.MyApp;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
@@ -41,6 +42,13 @@ public final class UMengInit {
     }
 
     private static final String DEFAULT_APP_CHANNEL = "pgyer";
+
+    /**
+     * 初始化SDK,合规指南【先进行预初始化，如果用户隐私同意后可以初始化UmengSDK进行信息上报】
+     */
+    public static void init() {
+        init(XUI.getContext());
+    }
 
     /**
      * 初始化SDK,合规指南【先进行预初始化，如果用户隐私同意后可以初始化UmengSDK进行信息上报】

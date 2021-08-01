@@ -19,7 +19,6 @@ package com.xuexiang.xui.widget.picker.widget.builder;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.picker.wheelview.WheelView;
 import com.xuexiang.xui.widget.picker.widget.TimePickerView;
@@ -46,8 +45,8 @@ public class TimePickerBuilder {
         mPickerOptions = new PickerOptions(PickerOptions.TYPE_PICKER_TIME);
         mPickerOptions.context = context;
         mPickerOptions.timeSelectListener = listener;
-        mPickerOptions.textColorConfirm = ThemeUtils.resolveColor(context, R.attr.colorAccent);
-        mPickerOptions.textColorCancel = ThemeUtils.resolveColor(context, R.attr.colorAccent);
+        mPickerOptions.textColorConfirm = ThemeUtils.getMainThemeColor(context);
+        mPickerOptions.textColorCancel = ThemeUtils.getMainThemeColor(context);
     }
 
     //Option

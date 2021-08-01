@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:background="@drawable/xui_config_list_item_selector"
+    android:background="@drawable/xui_config_list_item_transparent_selector"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingStart="8dp"
@@ -19,4 +19,5 @@
         android:id="@+id/item_name"
         style="@style/TextStyle.Explain"
         android:lines="2" />
+
 </LinearLayout>

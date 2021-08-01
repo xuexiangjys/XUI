@@ -679,7 +679,8 @@ public class StatusBarUtils {
     /**
      * 全屏下显示窗口【包括dialog等】
      *
-     * @param window 窗口
+     * @param window        窗口
+     * @param iWindowShower 窗口显示接口
      */
     public static void showWindowInFullScreen(Window window, IWindowShower iWindowShower) {
         if (window == null || iWindowShower == null) {
@@ -691,6 +692,66 @@ public class StatusBarUtils {
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
     }
 
+    /**
+     * 显示窗口【同步窗口系统view的可见度, 解决全屏下显示窗口导致界面退出全屏的问题】
+     *
+     * @param activity 活动窗口
+     * @param dialog   需要显示的窗口
+     */
+    public static void showDialog(Activity activity, final Dialog dialog) {
+        if (dialog == null) {
+            return;
+        }
+        showWindow(activity, dialog.getWindow(), new IWindowShower() {
+            @Override
+            public void show(Window window) {
+                dialog.show();
+            }
+        });
+    }
+
+    /**
+     * 显示窗口【同步窗口系统view的可见度, 解决全屏下显示窗口导致界面退出全屏的问题】
+     *
+     * @param activity      活动窗口
+     * @param window        需要显示的窗口
+     * @param iWindowShower 窗口显示接口
+     */
+    public static void showWindow(Activity activity, Window window, IWindowShower iWindowShower) {
+        if (activity == null || window == null || iWindowShower == null) {
+            return;
+        }
+        window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        iWindowShower.show(window);
+        StatusBarUtils.syncSystemUiVisibility(activity, window);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+    }
+
+    /**
+     * 同步窗口的系统view的可见度【解决全屏下显示窗口导致界面退出全屏的问题】
+     *
+     * @param original 活动窗口
+     * @param target   目标窗口
+     */
+    public static void syncSystemUiVisibility(Activity original, Window target) {
+        if (original == null) {
+            return;
+        }
+        syncSystemUiVisibility(original.getWindow(), target);
+    }
+
+    /**
+     * 同步两个窗口的系统view的可见度【解决全屏下显示窗口导致界面退出全屏的问题】
+     *
+     * @param original 原始窗口
+     * @param target   目标窗口
+     */
+    public static void syncSystemUiVisibility(Window original, Window target) {
+        if (original == null || target == null) {
+            return;
+        }
+        target.getDecorView().setSystemUiVisibility(original.getDecorView().getSystemUiVisibility());
+    }
 
     /**
      * 窗口显示接口

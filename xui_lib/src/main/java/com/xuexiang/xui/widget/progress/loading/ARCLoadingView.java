@@ -132,7 +132,7 @@ public class ARCLoadingView extends View {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView);
-        mArcColor = typedArray.getColor(R.styleable.LoadingView_lv_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        mArcColor = typedArray.getColor(R.styleable.LoadingView_lv_color, ThemeUtils.getMainThemeColor(context));
         mArcDegree = typedArray.getInt(R.styleable.LoadingView_lv_arc_degree, DEFAULT_ARC_DEGREE);
         mGradientColors = new int[]{Color.TRANSPARENT, mArcColor};
 

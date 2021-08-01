@@ -212,7 +212,7 @@ public class CircleProgressView extends View {
         fillEnabled = typedArray.getBoolean(R.styleable.CircleProgressView_cpv_isFilled, false);
         trackEnabled = typedArray.getBoolean(R.styleable.CircleProgressView_cpv_isTracked, false);
         circleBroken = typedArray.getBoolean(R.styleable.CircleProgressView_cpv_circle_broken, false);
-        mProgressTextColor = typedArray.getColor(R.styleable.CircleProgressView_cpv_progress_textColor, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+        mProgressTextColor = typedArray.getColor(R.styleable.CircleProgressView_cpv_progress_textColor, ThemeUtils.getMainThemeColor(getContext()));
         mProgressTextSize = typedArray.getDimensionPixelSize(R.styleable.CircleProgressView_cpv_progress_textSize, getResources().getDimensionPixelSize(R.dimen.default_pv_progress_text_size));
         mTrackWidth = typedArray.getDimensionPixelSize(R.styleable.CircleProgressView_cpv_track_width, getResources().getDimensionPixelSize(R.dimen.default_pv_trace_width));
         mProgressWidth = typedArray.getDimensionPixelSize(R.styleable.CircleProgressView_cpv_progress_width, getResources().getDimensionPixelSize(R.dimen.default_pv_trace_width));

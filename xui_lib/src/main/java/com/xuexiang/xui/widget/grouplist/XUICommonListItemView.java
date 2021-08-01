@@ -38,6 +38,7 @@ import androidx.annotation.IntDef;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.Utils;
@@ -279,7 +280,7 @@ public class XUICommonListItemView extends RelativeLayout {
         // 默认文字是水平布局的
         if (mOrientation == VERTICAL) {
             mTextContainer.setOrientation(LinearLayout.VERTICAL);
-            mTextContainer.setGravity(Gravity.LEFT);
+            mTextContainer.setGravity(Gravity.START);
             spaceLp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
             spaceLp.height = DensityUtils.dp2px(getContext(), 4);
             spaceLp.weight = 0;
@@ -316,7 +317,8 @@ public class XUICommonListItemView extends RelativeLayout {
             // 向右的箭头
             case ACCESSORY_TYPE_CHEVRON: {
                 ImageView tempImageView = getAccessoryImageView();
-                tempImageView.setImageDrawable(ThemeUtils.resolveDrawable(getContext(), R.attr.xui_common_list_item_chevron));
+                Drawable chevronDrawable = ThemeUtils.resolveDrawable(getContext(), R.attr.xui_common_list_item_chevron, ResUtils.getDrawable(getContext(), R.drawable.xui_icon_chevron));
+                tempImageView.setImageDrawable(DrawableUtils.getSupportRTLDrawable(chevronDrawable));
                 mAccessoryView.addView(tempImageView);
                 mAccessoryView.setVisibility(VISIBLE);
             }

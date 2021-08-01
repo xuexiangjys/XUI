@@ -1,20 +1,21 @@
 /*
- * Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
+ * Copyright (C) 2021 xuexiangjys(xuexiangjys@163.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
-package com.xuexiang.xuidemo.fragment;
+package com.xuexiang.xuidemo.fragment.other;
 
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
+import com.xuexiang.xuidemo.widget.GuideTipsDialog;
 import com.xuexiang.xutil.app.AppUtils;
 
 import java.text.SimpleDateFormat;
@@ -59,6 +61,7 @@ public class AboutFragment extends BaseFragment {
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_wiki)), v -> Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/wiki/"))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_github)), v -> Utils.goWeb(getContext(), "https://github.com/xuexiangjys/XUI/"))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_update)), v -> Utils.checkUpdate(getContext(), true)).addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_sponsor)), v -> openPage(SponsorFragment.class))
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_tips)), v -> GuideTipsDialog.showTipsForce(getContext()))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_add_qq_group)), v -> Utils.goWeb(getContext(), getString(R.string.url_add_qq_group)))
                 .addTo(mAboutGroupListView);
 

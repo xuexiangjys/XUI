@@ -260,7 +260,7 @@ public class TabSegment extends HorizontalScrollView {
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         String typefaceProviderName;
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TabSegment, defStyleAttr, 0);
-        mSelectedColor = array.getColor(R.styleable.TabSegment_ts_selected_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        mSelectedColor = array.getColor(R.styleable.TabSegment_ts_selected_color, ThemeUtils.getMainThemeColor(context));
         mNormalColor = array.getColor(R.styleable.TabSegment_ts_normal_color, ContextCompat.getColor(context, R.color.xui_config_color_gray_5));
         mHasIndicator = array.getBoolean(R.styleable.TabSegment_ts_has_indicator, true);
         mIndicatorHeight = array.getDimensionPixelSize(R.styleable.TabSegment_ts_indicator_height, getResources().getDimensionPixelSize(R.dimen.xui_tab_segment_indicator_height));

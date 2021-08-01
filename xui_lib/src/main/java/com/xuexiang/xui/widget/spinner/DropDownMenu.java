@@ -143,7 +143,7 @@ public class DropDownMenu extends LinearLayout {
         int underlineHeight = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_underlineHeight, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_underline_height));
         int menuBackgroundColor = array.getColor(R.styleable.DropDownMenu_ddm_menuBackgroundColor, Color.WHITE);
         mMaskColor = array.getColor(R.styleable.DropDownMenu_ddm_maskColor, ResUtils.getColor(R.color.default_ddm_mask_color));
-        mMenuTextSelectedColor = array.getColor(R.styleable.DropDownMenu_ddm_menuTextSelectedColor, ThemeUtils.resolveColor(getContext(), R.attr.colorAccent));
+        mMenuTextSelectedColor = array.getColor(R.styleable.DropDownMenu_ddm_menuTextSelectedColor, ThemeUtils.getMainThemeColor(getContext()));
         mMenuTextUnselectedColor = array.getColor(R.styleable.DropDownMenu_ddm_menuTextUnselectedColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_content_text));
         mMenuTextPaddingHorizontal = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_menuTextPaddingHorizontal, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_menu_text_padding_horizontal));
         mMenuTextPaddingVertical = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_menuTextPaddingVertical, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_menu_text_padding_vertical));

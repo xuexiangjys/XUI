@@ -56,22 +56,32 @@ public class GuideTipsDialog extends BaseDialog implements View.OnClickListener,
      */
     public static void showTips(final Context context) {
         if (!isIgnoreTips()) {
-            OkHttpUtils.get()
-                    .url(TIPS_URL)
-                    .build()
-                    .execute(new StringCallback() {
-                        @Override
-                        public void onError(Call call, Exception e, int id) {
-
-                        }
-
-                        @Override
-                        public void onResponse(String response, int id) {
-                            showTips(context, response);
-                        }
-                    });
+            showTipsForce(context);
         }
     }
+
+    /**
+     * 强制显示提示
+     *
+     * @param context 上下文
+     */
+    public static void showTipsForce(Context context) {
+        OkHttpUtils.get()
+                .url(TIPS_URL)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        showTips(context, response);
+                    }
+                });
+    }
+
 
     private static void showTips(Context context, String response) {
         Type type = TypeBuilder.newInstance(ApiResult.class)
@@ -108,6 +118,7 @@ public class GuideTipsDialog extends BaseDialog implements View.OnClickListener,
         mTvNext = findViewById(R.id.tv_next);
 
         if (cbIgnore != null) {
+            cbIgnore.setChecked(isIgnoreTips());
             cbIgnore.setOnCheckedChangeListener(this);
         }
         if (ivClose != null) {

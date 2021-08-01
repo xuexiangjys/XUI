@@ -1,14 +1,13 @@
 package com.xuexiang.xuidemo.base;
 
 import android.content.res.Configuration;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.umeng.analytics.MobclickAgent;
 import com.xuexiang.xaop.annotation.MemoryCache;
@@ -20,6 +19,7 @@ import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.actionbar.TitleUtils;
 import com.xuexiang.xuidemo.R;
@@ -77,6 +77,7 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
         }
 
         getListView().setAdapter(new SimpleAdapter(getContext(), data));
+        WidgetUtils.clearAllViewBackground(getListView());
         initSimply();
     }
 

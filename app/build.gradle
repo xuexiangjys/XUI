@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 18
-        versionName "1.1.7"
+        versionCode 19
+        versionName "1.1.8"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -103,8 +103,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     //XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.1.7'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.8'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     //工具类
@@ -184,25 +184,25 @@ dependencies {
     implementation 'com.github.xuexiangjys:CalendarExaple:1.0.1'
     implementation 'com.haibin:calendarview:3.6.3'
     //图标库
-    implementation "com.mikepenz:iconics-core:4.0.1-b02"
+    implementation "com.mikepenz:iconics-core:4.0.2"
     //图标库控件（可选）
-    implementation "com.mikepenz:iconics-views:4.0.1-b02"
+    implementation "com.mikepenz:iconics-views:4.0.2"
     //相机拍摄
     implementation 'com.github.xuexiangjys:CameraView:1.0.3'
     //另一款相机拍摄库，使用更简单
     implementation 'com.wonderkiln:camerakit:0.13.1'
 
     //阿里巴巴组件
-    implementation 'com.alibaba.android:vlayout:1.2.36'
+    implementation 'com.alibaba.android:vlayout:1.3.0'
     implementation 'com.alibaba.android:ultraviewpager:1.0.7.8'
     implementation 'com.alibaba.android:tangram:3.3.6'
     //版本更新
-    implementation 'com.github.xuexiangjys:XUpdate:2.0.7'
+    implementation 'com.github.xuexiangjys:XUpdate:2.0.9'
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation deps.gson
     implementation deps.okhttp3
     //腾讯的键值对存储mmkv
-    implementation 'com.tencent:mmkv:1.0.22'
+    implementation 'com.tencent:mmkv:1.2.10'
     //腾讯x5TBS
     implementation 'com.tencent.tbs.tbssdk:sdk:43967'
     //富文本

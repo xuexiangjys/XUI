@@ -38,13 +38,13 @@ import com.scwang.smartrefresh.layout.util.DensityUtil;
  * @author xuexiang
  * @since 2019-08-03 11:14
  */
-public class CustomRefreshFooter extends ProgressBar implements RefreshFooter {
+public class MaterialFooter extends ProgressBar implements RefreshFooter {
 
-    public CustomRefreshFooter(Context context) {
+    public MaterialFooter(Context context) {
         this(context, null);
     }
 
-    public CustomRefreshFooter(Context context, AttributeSet attrs) {
+    public MaterialFooter(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }

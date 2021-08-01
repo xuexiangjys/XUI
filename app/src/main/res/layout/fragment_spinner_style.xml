@@ -168,6 +168,7 @@
                     app:es_enable="false"
                     app:es_entries="@array/sort_mode_entry"
                     app:es_hint="@string/lab_please_select"
+                    app:es_isFilterKey="true"
                     app:es_maxLength="20" />
 
                 <com.xuexiang.xui.widget.spinner.editspinner.EditSpinner

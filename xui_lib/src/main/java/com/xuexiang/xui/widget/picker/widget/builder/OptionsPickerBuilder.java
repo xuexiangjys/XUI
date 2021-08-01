@@ -45,8 +45,8 @@ public class OptionsPickerBuilder {
         mPickerOptions = new PickerOptions(PickerOptions.TYPE_PICKER_OPTIONS);
         mPickerOptions.context = context;
         mPickerOptions.optionsSelectListener = listener;
-        mPickerOptions.textColorConfirm = ThemeUtils.resolveColor(context, R.attr.colorAccent);
-        mPickerOptions.textColorCancel = ThemeUtils.resolveColor(context, R.attr.colorAccent);
+        mPickerOptions.textColorConfirm = ThemeUtils.getMainThemeColor(context);
+        mPickerOptions.textColorCancel = ThemeUtils.getMainThemeColor(context);
     }
 
     //Option

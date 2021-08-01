@@ -20,7 +20,7 @@ versions.rxbinding = "2.2.0"
 versions.butterknife = "10.1.0"
 versions.runner = "1.0.2"
 versions.gson = "2.8.5"
-versions.okhttp3 = "3.14.9"
+versions.okhttp3 = "3.12.12"
 
 def deps = [:]
 

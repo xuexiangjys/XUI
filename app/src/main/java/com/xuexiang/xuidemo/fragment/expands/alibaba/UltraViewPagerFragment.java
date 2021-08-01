@@ -62,7 +62,7 @@ public class UltraViewPagerFragment extends BaseFragment {
         ultraViewPager.initIndicator();
         ultraViewPager.getIndicator()
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
-                .setFocusColor(ThemeUtils.resolveColor(getContext(), R.attr.colorAccent))
+                .setFocusColor(ThemeUtils.getMainThemeColor(getContext()))
                 .setNormalColor(Color.WHITE)
                 .setMargin(DensityUtils.dp2px(10), DensityUtils.dp2px(10), DensityUtils.dp2px(10), DensityUtils.dp2px(10))
                 .setRadius(DensityUtils.dp2px(5));

@@ -1241,6 +1241,18 @@
         <attr name="photo_src" format="integer" />
     </declare-styleable>
 
+    <!-- signatureView -->
+    <declare-styleable name="SignatureView">
+        <!--画笔的粗细，默认10px-->
+        <attr name="stv_penSize" format="dimension" />
+        <!--画笔的颜色， 默认黑色-->
+        <attr name="stv_penColor" format="color" />
+        <!--签名板背景颜色， 默认透明-->
+        <attr name="stv_backColor" format="color" />
+        <!--是否拥有边框, 边框的宽度为1dp, 默认false-->
+        <attr name="stv_hasBorder" format="boolean" />
+    </declare-styleable>
+
     <!--=============================Bar========================================-->
 
     <declare-styleable name="CookieBar">

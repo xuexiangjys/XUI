@@ -37,7 +37,10 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
     private boolean mIsMultiSelectMode;
     private boolean mCancelable;
 
-    private SparseBooleanArray mSparseArray = new SparseBooleanArray();
+    /**
+     * 多选的状态记录
+     */
+    private SparseBooleanArray mMultiSelectStatus = new SparseBooleanArray();
 
     public FlexboxLayoutAdapter(String[] data) {
         super(data);
@@ -62,7 +65,7 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
     protected void bindData(@NonNull RecyclerViewHolder holder, int position, String item) {
         holder.text(R.id.tv_tag, item);
         if (mIsMultiSelectMode) {
-            holder.select(R.id.tv_tag, mSparseArray.get(position));
+            holder.select(R.id.tv_tag, mMultiSelectStatus.get(position));
         } else {
             holder.select(R.id.tv_tag, getSelectPosition() == position);
         }
@@ -71,7 +74,7 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
     /**
      * 选择
      *
-     * @param position
+     * @param position 选中索引
      * @return
      */
     public boolean select(int position) {
@@ -97,11 +100,11 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
      *
      * @param position
      */
-    public boolean multiSelect(int position) {
+    private boolean multiSelect(int position) {
         if (!mIsMultiSelectMode) {
             return false;
         }
-        mSparseArray.append(position, !mSparseArray.get(position));
+        mMultiSelectStatus.append(position, !mMultiSelectStatus.get(position));
         notifyItemChanged(position);
         return true;
     }
@@ -111,7 +114,7 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
      *
      * @param position
      */
-    public boolean singleSelect(int position) {
+    private boolean singleSelect(int position) {
         return singleSelect(position, mCancelable);
     }
 
@@ -121,7 +124,7 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
      * @param position
      * @param cancelable
      */
-    public boolean singleSelect(int position, boolean cancelable) {
+    private boolean singleSelect(int position, boolean cancelable) {
         if (position == getSelectPosition()) {
             if (cancelable) {
                 setSelectPosition(-1);
@@ -153,10 +156,31 @@ public class FlexboxLayoutAdapter extends BaseRecyclerAdapter<String> {
     public List<String> getMultiContent() {
         List<String> list = new ArrayList<>();
         for (int i = 0; i < getItemCount(); i++) {
-            if (mSparseArray.get(i)) {
+            if (mMultiSelectStatus.get(i)) {
                 list.add(getItem(i));
             }
         }
         return list;
+    }
+
+
+    /**
+     * 清除选中
+     */
+    public void clearSelection() {
+        if (mIsMultiSelectMode) {
+            clearMultiSelection();
+        } else {
+            clearSingleSelection();
+        }
+    }
+
+    private void clearMultiSelection() {
+        mMultiSelectStatus.clear();
+        notifyDataSetChanged();
+    }
+
+    private void clearSingleSelection() {
+        setSelectPosition(-1);
     }
 }

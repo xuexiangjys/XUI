@@ -32,6 +32,18 @@ public abstract class BaseWebViewFragment extends BaseFragment {
 
     protected AgentWeb mAgentWeb;
 
+    @Override
+    protected void initViews() {
+        mAgentWeb = createAgentWeb();
+    }
+
+    /**
+     * 创建AgentWeb
+     *
+     * @return AgentWeb
+     */
+    protected abstract AgentWeb createAgentWeb();
+
     //===================生命周期管理===========================//
     @Override
     public void onResume() {

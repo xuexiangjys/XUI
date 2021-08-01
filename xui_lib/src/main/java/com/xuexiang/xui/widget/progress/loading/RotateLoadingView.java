@@ -136,7 +136,7 @@ public class RotateLoadingView extends View {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView);
-        mArcColor = typedArray.getColor(R.styleable.LoadingView_lv_color, ThemeUtils.resolveColor(context, R.attr.colorAccent));
+        mArcColor = typedArray.getColor(R.styleable.LoadingView_lv_color, ThemeUtils.getMainThemeColor(context));
         mArcWidth = typedArray.getDimensionPixelSize(R.styleable.LoadingView_lv_width, DensityUtils.dp2px(getContext(), DEFAULT_ARC_WIDTH));
         mSpeedOfDegree = typedArray.getInt(R.styleable.LoadingView_lv_speed, DEFAULT_SPEED_OF_DEGREE);
         mSpeedOfArc = mSpeedOfDegree >> 2;

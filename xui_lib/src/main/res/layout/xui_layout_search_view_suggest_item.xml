@@ -14,31 +14,31 @@
   ~ limitations under the License.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize">
-
-    <TextView
-        android:id="@+id/suggestion_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:focusable="false"
-        android:paddingStart="?attr/search_view_text_padding"
-        android:paddingEnd="?attr/search_view_text_padding"
-        android:textColor="?attr/search_view_text_color_hint"
-        android:textSize="?attr/search_view_text_size" />
+    android:layout_height="?attr/search_view_actionbar_height"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/suggestion_icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_centerVertical="true"
         android:background="@color/xui_config_color_transparent"
         android:focusable="false"
         android:paddingStart="?attr/search_icon_padding"
         android:paddingEnd="?attr/search_icon_padding"
         app:srcCompat="?attr/search_view_ic_suggestion" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/suggestion_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:paddingStart="?attr/search_view_text_padding"
+        android:paddingEnd="?attr/search_view_text_padding"
+        android:textColor="?attr/search_view_text_color_hint"
+        android:textSize="?attr/search_view_text_size" />
+
+</LinearLayout>

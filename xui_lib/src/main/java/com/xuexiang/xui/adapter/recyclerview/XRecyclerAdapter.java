@@ -17,6 +17,8 @@
 
 package com.xuexiang.xui.adapter.recyclerview;
 
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -177,9 +180,8 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 给指定位置添加一项
      *
-     * @param pos
-     * @param item
-     * @return
+     * @param pos  位置
+     * @param item 数据项
      */
     public XRecyclerAdapter add(int pos, T item) {
         if (pos >= 0 && pos <= getItemCount()) {
@@ -192,8 +194,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 在列表末端增加一项
      *
-     * @param item
-     * @return
+     * @param item 数据项
      */
     public XRecyclerAdapter add(T item) {
         mData.add(item);
@@ -204,8 +205,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 删除列表中指定索引的数据
      *
-     * @param pos
-     * @return
+     * @param pos 位置
      */
     public XRecyclerAdapter delete(int pos) {
         if (checkPosition(pos)) {
@@ -218,9 +218,8 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 刷新列表中指定位置的数据
      *
-     * @param pos
-     * @param item
-     * @return
+     * @param pos  位置
+     * @param item 数据项
      */
     public XRecyclerAdapter refresh(int pos, T item) {
         if (checkPosition(pos)) {
@@ -233,8 +232,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 刷新列表数据
      *
-     * @param collection
-     * @return
+     * @param collection 加载的数据集合
      */
     public XRecyclerAdapter refresh(Collection<T> collection) {
         if (collection != null) {
@@ -249,8 +247,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 刷新列表数据
      *
-     * @param array
-     * @return
+     * @param array 加载的数据数组
      */
     public XRecyclerAdapter refresh(T[] array) {
         if (array != null && array.length > 0) {
@@ -265,8 +262,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 加载更多
      *
-     * @param collection
-     * @return
+     * @param collection 加载的数据集合
      */
     public XRecyclerAdapter loadMore(Collection<T> collection) {
         if (collection != null) {
@@ -279,8 +275,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 加载更多
      *
-     * @param array
-     * @return
+     * @param array 加载的数据数组
      */
     public XRecyclerAdapter loadMore(T[] array) {
         if (array != null && array.length > 0) {
@@ -293,8 +288,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 添加一个
      *
-     * @param item
-     * @return
+     * @param item 数据
      */
     public XRecyclerAdapter load(T item) {
         if (item != null) {
@@ -305,10 +299,47 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     }
 
     /**
+     * 局部刷新【增量刷新】
+     *
+     * @param pos   位置
+     * @param key   刷新的关键字
+     * @param value 刷新的内容
+     */
+    public void refreshPartly(int pos, String key, Object value) {
+        Bundle payload = getBundle(key, value);
+        notifyItemChanged(pos, payload);
+    }
+
+    private Bundle getBundle(String key, Object value) {
+        Bundle payload = new Bundle();
+        if (value instanceof String) {
+            payload.putString(key, (String) value);
+        } else if (value instanceof Boolean) {
+            payload.putBoolean(key, (Boolean) value);
+        } else if (value instanceof Integer) {
+            payload.putInt(key, (Integer) value);
+        } else if (value instanceof Float) {
+            payload.putFloat(key, (Float) value);
+        } else if (value instanceof Double) {
+            payload.putDouble(key, (Double) value);
+        } else if (value instanceof Short) {
+            payload.putDouble(key, (Short) value);
+        } else if (value instanceof Long) {
+            payload.putDouble(key, (Long) value);
+        } else if (value instanceof Parcelable) {
+            payload.putParcelable(key, (Parcelable) value);
+        } else if (value instanceof Serializable) {
+            payload.putSerializable(key, (Serializable) value);
+        } else {
+            payload.putString(key, value.toString());
+        }
+        return payload;
+    }
+
+    /**
      * 设置列表项点击监听
      *
-     * @param listener
-     * @return
+     * @param listener 列表项点击监听
      */
     public XRecyclerAdapter setOnItemClickListener(RecyclerViewHolder.OnItemClickListener<T> listener) {
         mClickListener = listener;
@@ -318,8 +349,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 设置列表项长按监听
      *
-     * @param listener
-     * @return
+     * @param listener 列表项长按监听
      */
     public XRecyclerAdapter setOnItemLongClickListener(RecyclerViewHolder.OnItemLongClickListener<T> listener) {
         mLongClickListener = listener;
@@ -336,8 +366,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 设置当前列表的选中项
      *
-     * @param selectPosition
-     * @return
+     * @param selectPosition 选中项
      */
     public XRecyclerAdapter setSelectPosition(int selectPosition) {
         mSelectPosition = selectPosition;

@@ -522,14 +522,14 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         mLeftIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth, 0);
         mLeftIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconHeight, 0);
         mLeftIconMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconMarginLeft, mDefaultMargin);
-        mLeftIconTint = typedArray.getColorStateList(R.styleable.SuperTextView_sLeftIconTint);
+        mLeftIconTint = ResUtils.getColorStateListAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sLeftIconTint);
         mLeftIconPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconPadding, 0);
 
         mRightIconRes = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sRightIconRes);
         mRightIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconWidth, 0);
         mRightIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconHeight, 0);
         mRightIconMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconMarginRight, mDefaultMargin);
-        mRightIconTint = typedArray.getColorStateList(R.styleable.SuperTextView_sLeftIconTint);
+        mRightIconTint = ResUtils.getColorStateListAttrRes(getContext(), typedArray, R.styleable.SuperTextView_sLeftIconTint);
         mRightIconPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconPadding, 0);
 
         //////////////////////////////////////////////

@@ -31,6 +31,7 @@ import com.github.abel533.echarts.json.GsonOption;
 import com.github.abel533.echarts.series.Bar;
 import com.github.abel533.echarts.series.Line;
 import com.github.abel533.echarts.series.Pie;
+import com.just.agentweb.core.AgentWeb;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
@@ -58,13 +59,12 @@ public class EChartsAndroidFragment extends BaseWebViewFragment {
     }
 
     @Override
-    protected void initViews() {
+    protected AgentWeb createAgentWeb() {
         //目前Echarts-Java只支持3.x
-        mAgentWeb = Utils.createAgentWeb(this, flContainer, "file:///android_asset/chart/src/template.html");
-
+        AgentWeb agentWeb = Utils.createAgentWeb(this, flContainer, "file:///android_asset/chart/src/template.html");
         //注入接口,供JS调用
-        mAgentWeb.getJsInterfaceHolder().addJavaObject("Android", mChartInterface = new ChartInterface());
-
+        agentWeb.getJsInterfaceHolder().addJavaObject("Android", mChartInterface = new ChartInterface());
+        return agentWeb;
     }
 
     @SingleClick

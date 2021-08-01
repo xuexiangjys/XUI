@@ -191,9 +191,10 @@
     <dimen name="picker_view_topbar_height">44dp</dimen>
 
     <!--MaterialSearchView-->
-    <dimen name="default_search_icon_padding">12dp</dimen>
-    <dimen name="default_search_view_text_padding">65dp</dimen>
+    <dimen name="default_search_icon_padding">16dp</dimen>
+    <dimen name="default_search_view_text_padding">8dp</dimen>
     <dimen name="default_search_view_text_size">16sp</dimen>
+    <dimen name="default_search_view_separator_height">1px</dimen>
 
     <!-- TabControlView-->
     <dimen name="default_tcv_text_size">14sp</dimen>
@@ -472,7 +473,6 @@
     <dimen name="xui_list_item_height_higher">103dp</dimen>
     <dimen name="xui_group_list_section_header_footer_padding_vertical">8dp</dimen>
     <dimen name="xui_group_list_section_header_footer_text_size">13sp</dimen>
-
 
 
 </resources>

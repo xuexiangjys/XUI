@@ -16,6 +16,7 @@ import androidx.annotation.ArrayRes;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.annotation.StyleableRes;
 import androidx.appcompat.content.res.AppCompatResources;
@@ -38,7 +39,7 @@ public final class ResUtils {
     /**
      * 获取resources对象
      *
-     * @return
+     * @return resources对象
      */
     public static Resources getResources() {
         return XUI.getContext().getResources();
@@ -47,8 +48,8 @@ public final class ResUtils {
     /**
      * 获取字符串
      *
-     * @param resId
-     * @return
+     * @param resId 资源id
+     * @return 字符串
      */
     public static String getString(@StringRes int resId) {
         return getResources().getString(resId);
@@ -57,8 +58,8 @@ public final class ResUtils {
     /**
      * 获取资源图片
      *
-     * @param resId
-     * @return
+     * @param resId 图片资源id
+     * @return 资源图片
      */
     public static Drawable getDrawable(@DrawableRes int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -68,10 +69,10 @@ public final class ResUtils {
     }
 
     /**
-     * 获取资源图片【和主体有关】
+     * 获取资源图片【和主题有关】
      *
-     * @param resId
-     * @return
+     * @param resId 图片资源id
+     * @return 资源图片
      */
     public static Drawable getDrawable(Context context, @DrawableRes int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -83,9 +84,9 @@ public final class ResUtils {
     /**
      * 获取svg资源图片
      *
-     * @param context
-     * @param resId
-     * @return
+     * @param context 上下文
+     * @param resId   图片资源id
+     * @return svg资源图片
      */
     public static Drawable getVectorDrawable(Context context, @DrawableRes int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -97,16 +98,16 @@ public final class ResUtils {
     /**
      * 获取Drawable属性（兼容VectorDrawable）
      *
-     * @param context
-     * @param typedArray
-     * @param index
-     * @return
+     * @param context        上下文
+     * @param typedArray     样式属性数组
+     * @param styleableResId 样式资源ID
+     * @return Drawable
      */
-    public static Drawable getDrawableAttrRes(Context context, TypedArray typedArray, @StyleableRes int index) {
+    public static Drawable getDrawableAttrRes(Context context, TypedArray typedArray, @StyleableRes int styleableResId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return typedArray.getDrawable(index);
+            return typedArray.getDrawable(styleableResId);
         } else {
-            int resourceId = typedArray.getResourceId(index, -1);
+            int resourceId = typedArray.getResourceId(styleableResId, -1);
             if (resourceId != -1) {
                 return AppCompatResources.getDrawable(context, resourceId);
             }
@@ -115,10 +116,30 @@ public final class ResUtils {
     }
 
     /**
+     * 获取ColorStateList属性（兼容?attr属性）
+     *
+     * @param context        上下文
+     * @param typedArray     样式属性数组
+     * @param styleableResId 样式资源ID
+     * @return ColorStateList
+     */
+    public static ColorStateList getColorStateListAttrRes(Context context, TypedArray typedArray, @StyleableRes int styleableResId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return typedArray.getColorStateList(styleableResId);
+        } else {
+            int resourceId = typedArray.getResourceId(styleableResId, -1);
+            if (resourceId != -1) {
+                return AppCompatResources.getColorStateList(context, resourceId);
+            }
+        }
+        return null;
+    }
+
+    /**
      * 获取dimes值，返回的是精确的值
      *
-     * @param resId
-     * @return
+     * @param resId 资源id
+     * @return dimes值，返回的是精确的值
      */
     public static float getDimens(@DimenRes int resId) {
         return getResources().getDimension(resId);
@@ -127,8 +148,8 @@ public final class ResUtils {
     /**
      * 获取Color值
      *
-     * @param resId
-     * @return
+     * @param resId 资源id
+     * @return Color值
      */
     public static int getColor(@ColorRes int resId) {
         return getResources().getColor(resId);
@@ -137,8 +158,8 @@ public final class ResUtils {
     /**
      * 获取ColorStateList值
      *
-     * @param resId
-     * @return
+     * @param resId 资源id
+     * @return ColorStateList值
      */
     public static ColorStateList getColors(@ColorRes int resId) {
         return getResources().getColorStateList(resId);
@@ -147,18 +168,18 @@ public final class ResUtils {
     /**
      * 获取dimes值，返回的是【去余取整】的值
      *
-     * @param resId
-     * @return
+     * @param resId 资源id
+     * @return dimes值【去余取整】
      */
     public static int getDimensionPixelOffset(@DimenRes int resId) {
         return getResources().getDimensionPixelOffset(resId);
     }
 
     /**
-     * 获取dimes值，返回的是【4舍5入】的值
+     * 获取dimes值，返回的是【4舍5入取整】的值
      *
-     * @param resId
-     * @return
+     * @param resId 资源id
+     * @return dimes值【4舍5入取整】
      */
     public static int getDimensionPixelSize(@DimenRes int resId) {
         return getResources().getDimensionPixelSize(resId);
@@ -167,8 +188,8 @@ public final class ResUtils {
     /**
      * 获取字符串的数组
      *
-     * @param resId
-     * @return
+     * @param resId 资源id
+     * @return 字符串的数组
      */
     public static String[] getStringArray(@ArrayRes int resId) {
         return getResources().getStringArray(resId);
@@ -177,9 +198,9 @@ public final class ResUtils {
     /**
      * 获取Drawable的数组
      *
-     * @param context
-     * @param resId
-     * @return
+     * @param context context
+     * @param resId   资源id
+     * @return Drawable的数组
      */
     public static Drawable[] getDrawableArray(Context context, @ArrayRes int resId) {
         TypedArray ta = getResources().obtainTypedArray(resId);
@@ -197,8 +218,8 @@ public final class ResUtils {
     /**
      * 获取数字的数组
      *
-     * @param resId
-     * @return
+     * @param resId 数组资源id
+     * @return 数字的数组
      */
     public static int[] getIntArray(@ArrayRes int resId) {
         return getResources().getIntArray(resId);
@@ -207,8 +228,8 @@ public final class ResUtils {
     /**
      * 获取动画
      *
-     * @param resId
-     * @return
+     * @param resId 动画资源id
+     * @return 动画
      */
     public static Animation getAnim(@AnimRes int resId) {
         return AnimationUtils.loadAnimation(XUI.getContext(), resId);
@@ -222,6 +243,18 @@ public final class ResUtils {
     public static boolean isRtl() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
                 getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+    }
+
+
+    /**
+     * Check if layout direction is RTL
+     *
+     * @param context context
+     * @return {@code true} if the layout direction is right-to-left
+     */
+    public static boolean isRtl(@NonNull Context context) {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
+                context.getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
     }
 
     /**

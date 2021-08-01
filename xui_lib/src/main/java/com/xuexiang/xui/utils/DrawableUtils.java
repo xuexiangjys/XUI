@@ -17,6 +17,7 @@
 package com.xuexiang.xui.utils;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -45,6 +46,7 @@ import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.widget.NestedScrollView;
 
 import java.security.InvalidParameterException;
@@ -450,6 +452,34 @@ public final class DrawableUtils {
         // 绘画的是矩形
         gradientDrawable.setGradientType(GradientDrawable.RADIAL_GRADIENT);
         return gradientDrawable;
+    }
+
+    /**
+     * 给drawable上色
+     *
+     * @param drawable 图像
+     * @param tint     颜色
+     * @return drawable
+     */
+    public static Drawable setTint(final Drawable drawable, @ColorInt int tint) {
+        if (drawable != null) {
+            DrawableCompat.setTint(drawable, tint);
+        }
+        return drawable;
+    }
+
+    /**
+     * 给drawable上色
+     *
+     * @param drawable 图像
+     * @param tint     颜色
+     * @return drawable
+     */
+    public static Drawable setTintList(final Drawable drawable, @Nullable ColorStateList tint) {
+        if (drawable != null) {
+            DrawableCompat.setTintList(drawable, tint);
+        }
+        return drawable;
     }
 
     /////////////// VectorDrawable /////////////////////

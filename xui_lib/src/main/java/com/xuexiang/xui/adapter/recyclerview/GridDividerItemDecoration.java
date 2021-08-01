@@ -69,9 +69,9 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     /**
      * 自定义分割线
      *
-     * @param context
-     * @param spanCount
-     * @param dividerWidth
+     * @param context      上下文
+     * @param spanCount    一行的数量
+     * @param dividerWidth 分割线的宽度
      */
     public GridDividerItemDecoration(Context context, int spanCount, int dividerWidth) {
         this(context, spanCount);
@@ -81,10 +81,10 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     /**
      * 自定义分割线
      *
-     * @param context
-     * @param spanCount
-     * @param dividerWidth
-     * @param dividerColor
+     * @param context      上下文
+     * @param spanCount    一行的数量
+     * @param dividerWidth 分割线的宽度
+     * @param dividerColor 分割线的颜色
      */
     public GridDividerItemDecoration(Context context, int spanCount, int dividerWidth, int dividerColor) {
         this(context, spanCount);

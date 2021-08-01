@@ -88,9 +88,12 @@ public class SpinnerStyleFragment extends BaseFragment {
 
         mMaterialSpinnerOne.setOnNoMoreChoiceListener(spinner -> XToastUtils.toast("没有更多的选项！"));
 
-        mEditSpinner1.setAdapter(new EditSpinnerAdapter(getContext(), ResUtils.getStringArray(R.array.sort_mode_entry))
+        //注意自定义实体，需要重写对象的toString方法
+        mEditSpinner1.setAdapter(new EditSpinnerAdapter<>(list)
                 .setTextColor(ResUtils.getColor(R.color.color_green))
                 .setTextSize(mEditSpinner1.getEditText().getTextSize())
+                .setIsFilterKey(true)
+                .setFilterColor("#FFFF00")
                 .setBackgroundSelector(R.drawable.selector_custom_spinner_bg)
         );
     }
