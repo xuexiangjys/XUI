@@ -188,32 +188,4 @@
         <item name="android:windowExitAnimation">@anim/pop_hidden_anim</item>
     </style>
 
-    <!--  BottomSheetDialog的XUI样式  -->
-    <style name="XUITheme.BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
-        <!-- 主题色style -->
-        <item name="colorAccent">@color/xui_config_color_main_theme</item>
-        <item name="colorPrimary">@color/xui_config_color_main_theme</item>
-        <item name="colorPrimaryDark">@color/xui_config_color_main_theme</item>
-        <item name="colorControlNormal">@color/xui_config_color_control_normal</item>
-        <!-- 文字的style -->
-        <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
-        <item name="textFieldStyle">@style/TextField</item>
-        <item name="android:textColorPrimary">@color/xui_config_color_primary_text</item>
-        <!--按钮的style-->
-        <item name="android:imageButtonStyle">@style/ImageButton</item>
-        <item name="imageButtonStyle">@style/ImageButton</item>
-        <item name="buttonStyle">@style/Button.AlertDialog</item>
-        <item name="android:buttonStyle">@style/Button.AlertDialog</item>
-        <!-- 输入框的style -->
-        <item name="android:editTextColor">?attr/xui_config_color_input_text</item>
-        <item name="editTextColor">?attr/xui_config_color_input_text</item>
-        <item name="android:editTextStyle">@style/EditText</item>
-        <item name="editTextStyle">@style/EditText</item>
-        <!-- 条目的style -->
-        <item name="android:gridViewStyle">@style/GridView</item>
-        <item name="android:listSelector">@drawable/xui_config_selectable_item_selector</item>
-        <item name="android:listDivider">@drawable/xui_config_list_divider</item>
-        <item name="android:listViewStyle">@style/ListView.Phone</item>
-    </style>
-
 </resources>
