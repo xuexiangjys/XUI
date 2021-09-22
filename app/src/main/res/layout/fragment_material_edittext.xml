@@ -107,7 +107,9 @@
                 <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:hint="Floating Label"
+                    android:textAlignment="center"
                     app:met_floatingLabel="normal" />
 
                 <TextView

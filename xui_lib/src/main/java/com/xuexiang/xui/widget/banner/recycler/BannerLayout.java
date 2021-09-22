@@ -78,7 +78,7 @@ public class BannerLayout extends FrameLayout {
 
     protected Handler mHandler = new Handler(new Handler.Callback() {
         @Override
-        public boolean handleMessage(Message msg) {
+        public boolean handleMessage(@NonNull Message msg) {
             if (msg.what == WHAT_AUTO_PLAY) {
                 if (mCurrentIndex == mLayoutManager.getCurrentPosition()) {
                     ++mCurrentIndex;

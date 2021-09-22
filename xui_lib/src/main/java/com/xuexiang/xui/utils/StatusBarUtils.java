@@ -43,7 +43,7 @@ public class StatusBarUtils {
     public static float sVirtualDensityDpi = -1;
     private static int sStatusbarHeight = -1;
     private static @StatusBarType
-    int mStatuBarType = STATUSBAR_TYPE_DEFAULT;
+    int mStatusBarType = STATUSBAR_TYPE_DEFAULT;
     private static Integer sTransparentValue;
 
     public static void translucent(Activity activity) {
@@ -207,19 +207,19 @@ public class StatusBarUtils {
             return false;
         }
 
-        if (mStatuBarType != STATUSBAR_TYPE_DEFAULT) {
-            return setStatusBarLightMode(activity, mStatuBarType);
+        if (mStatusBarType != STATUSBAR_TYPE_DEFAULT) {
+            return setStatusBarLightMode(activity, mStatusBarType);
         }
         if (Build.VERSION.SDK_INT >= KITKAT) {
             if (isMIUICustomStatusBarLightModeImpl() && MIUISetStatusBarLightMode(activity.getWindow(), true)) {
-                mStatuBarType = STATUSBAR_TYPE_MIUI;
+                mStatusBarType = STATUSBAR_TYPE_MIUI;
                 return true;
             } else if (FlymeSetStatusBarLightMode(activity.getWindow(), true)) {
-                mStatuBarType = STATUSBAR_TYPE_FLYME;
+                mStatusBarType = STATUSBAR_TYPE_FLYME;
                 return true;
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 Android6SetStatusBarLightMode(activity.getWindow(), true);
-                mStatuBarType = STATUSBAR_TYPE_ANDROID6;
+                mStatusBarType = STATUSBAR_TYPE_ANDROID6;
                 return true;
             }
         }
@@ -253,16 +253,16 @@ public class StatusBarUtils {
         if (activity == null) {
             return false;
         }
-        if (mStatuBarType == STATUSBAR_TYPE_DEFAULT) {
+        if (mStatusBarType == STATUSBAR_TYPE_DEFAULT) {
             // 默认状态，不需要处理
             return true;
         }
 
-        if (mStatuBarType == STATUSBAR_TYPE_MIUI) {
+        if (mStatusBarType == STATUSBAR_TYPE_MIUI) {
             return MIUISetStatusBarLightMode(activity.getWindow(), false);
-        } else if (mStatuBarType == STATUSBAR_TYPE_FLYME) {
+        } else if (mStatusBarType == STATUSBAR_TYPE_FLYME) {
             return FlymeSetStatusBarLightMode(activity.getWindow(), false);
-        } else if (mStatuBarType == STATUSBAR_TYPE_ANDROID6) {
+        } else if (mStatusBarType == STATUSBAR_TYPE_ANDROID6) {
             return Android6SetStatusBarLightMode(activity.getWindow(), false);
         }
         return true;
@@ -450,55 +450,15 @@ public class StatusBarUtils {
 
     /**
      * 获取状态栏的高度。
+     *
+     * @param context 上下文
+     * @return 状态栏高度
      */
     public static int getStatusBarHeight(Context context) {
         if (sStatusbarHeight == -1) {
-            initStatusBarHeight(context);
+            sStatusbarHeight = Utils.getStatusBarHeight(context);
         }
         return sStatusbarHeight;
-    }
-
-    private static void initStatusBarHeight(Context context) {
-        Class<?> clazz;
-        Object obj = null;
-        Field field = null;
-        try {
-            clazz = Class.forName("com.android.internal.R$dimen");
-            obj = clazz.newInstance();
-            if (DeviceUtils.isMeizu()) {
-                try {
-                    field = clazz.getField("status_bar_height_large");
-                } catch (Throwable t) {
-                    t.printStackTrace();
-                }
-            }
-            if (field == null) {
-                field = clazz.getField("status_bar_height");
-            }
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
-        if (field != null && obj != null) {
-            try {
-                int id = Integer.parseInt(field.get(obj).toString());
-                sStatusbarHeight = context.getResources().getDimensionPixelSize(id);
-            } catch (Throwable t) {
-                t.printStackTrace();
-            }
-        }
-        if (DeviceUtils.isTablet(context)
-                && sStatusbarHeight > DensityUtils.dp2px(context, STATUS_BAR_DEFAULT_HEIGHT_DP)) {
-            //状态栏高度大于25dp的平板，状态栏通常在下方
-            sStatusbarHeight = 0;
-        } else {
-            if (sStatusbarHeight <= 0) {
-                if (sVirtualDensity == -1) {
-                    sStatusbarHeight = DensityUtils.dp2px(context, STATUS_BAR_DEFAULT_HEIGHT_DP);
-                } else {
-                    sStatusbarHeight = (int) (STATUS_BAR_DEFAULT_HEIGHT_DP * sVirtualDensity + 0.5f);
-                }
-            }
-        }
     }
 
     public static void setVirtualDensity(float density) {
