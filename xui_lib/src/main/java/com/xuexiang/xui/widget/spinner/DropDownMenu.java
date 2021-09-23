@@ -249,7 +249,7 @@ public class DropDownMenu extends LinearLayout {
         }
 
         mPopupMenuViews = new FrameLayout(getContext());
-        mPopupMenuViews.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (DensityUtils.getDisplaySize(getContext(), true).y * mMenuHeightPercent)));
+        mPopupMenuViews.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (DensityUtils.getDisplayHeight(getContext(), true) * mMenuHeightPercent)));
         mPopupMenuViews.setVisibility(GONE);
         mContainerView.addView(mPopupMenuViews, 2);
 

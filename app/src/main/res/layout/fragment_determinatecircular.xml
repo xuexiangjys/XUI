@@ -5,18 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView style="@style/ScrollViewStyle">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="?attr/xui_config_content_spacing_horizontal"
             android:paddingStart="?attr/xui_config_content_spacing_horizontal"
+            android:paddingTop="?attr/xui_config_content_spacing_horizontal"
             android:paddingEnd="?attr/xui_config_content_spacing_horizontal"
-            android:paddingTop="?attr/xui_config_content_spacing_horizontal">
+            android:paddingBottom="?attr/xui_config_content_spacing_horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -58,8 +56,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
                 android:text="@string/normal_tinted_progress"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
@@ -102,8 +100,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
                 android:text="@string/dynamic_progress"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
@@ -143,8 +141,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
                 android:text="@string/dynamic_tinted_progress"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 

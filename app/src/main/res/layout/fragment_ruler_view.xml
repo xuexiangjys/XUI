@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView style="@style/ScrollViewStyle">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,25 +28,25 @@
                     android:id="@+id/et_weight"
                     style="@style/EditText.Normal"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:inputType="numberDecimal"
+                    android:layout_height="?attr/xui_btn_view_height"
                     android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:hint="请输入体重值"
-                    android:layout_height="?attr/xui_btn_view_height" />
+                    android:inputType="numberDecimal" />
 
                 <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_set"
                     style="@style/Button.Primary.wrap"
-                    android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
-                    android:text="设值"/>
+                    android:layout_marginStart="10dp"
+                    android:text="设值" />
 
                 <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_get"
                     style="@style/Button.Primary.wrap"
                     android:layout_width="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="取值"/>
+                    android:text="取值" />
 
             </LinearLayout>
 
@@ -58,18 +56,18 @@
                 android:layout_height="120dp"
                 android:layout_margin="10dp"
 
-                app:rv_firstScale="50"
-                app:rv_minScale="0"
-                app:rv_maxScale="100"
-                app:rv_scaleCount="10"
-                app:rv_unit="kg"
-
                 app:rv_bgColor="#fcfffc"
-                app:rv_smallScaleColor="#aaaaaa"
-                app:rv_midScaleColor="#999999"
+                app:rv_firstScale="50"
                 app:rv_largeScaleColor="#50b586"
+                app:rv_maxScale="100"
+                app:rv_midScaleColor="#999999"
+
+                app:rv_minScale="0"
                 app:rv_resultNumColor="#50b586"
+                app:rv_scaleCount="10"
                 app:rv_scaleNumColor="#666666"
+                app:rv_smallScaleColor="#aaaaaa"
+                app:rv_unit="kg"
                 app:rv_unitColor="#50b586"
                 app:rv_unitTextSize="10sp" />
 
@@ -83,18 +81,18 @@
                 android:layout_height="120dp"
                 android:layout_margin="10dp"
 
-                app:rv_firstScale="175"
-                app:rv_minScale="50"
-                app:rv_maxScale="230"
-                app:rv_scaleCount="5"
-                app:rv_unit="cm"
-
                 app:rv_bgColor="#fcfffc"
-                app:rv_smallScaleColor="@color/colorPrimary"
-                app:rv_midScaleColor="@color/colorPrimaryDark"
+                app:rv_firstScale="175"
                 app:rv_largeScaleColor="@color/colorAccent"
+                app:rv_maxScale="230"
+                app:rv_midScaleColor="@color/colorPrimaryDark"
+
+                app:rv_minScale="50"
                 app:rv_resultNumColor="#50b586"
+                app:rv_scaleCount="5"
                 app:rv_scaleNumColor="#666666"
+                app:rv_smallScaleColor="@color/colorPrimary"
+                app:rv_unit="cm"
                 app:rv_unitColor="#50b586"
                 app:rv_unitTextSize="10sp" />
 
@@ -108,18 +106,18 @@
                 android:layout_height="120dp"
                 android:layout_margin="10dp"
 
-                app:rv_firstScale="1.0"
-                app:rv_minScale="0"
-                app:rv_maxScale="6"
-                app:rv_scaleCount="10"
-                app:rv_unit=" "
-
                 app:rv_bgColor="#fcfffc"
-                app:rv_smallScaleColor="#aaaaaa"
-                app:rv_midScaleColor="#999999"
+                app:rv_firstScale="1.0"
                 app:rv_largeScaleColor="#50b586"
+                app:rv_maxScale="6"
+                app:rv_midScaleColor="#999999"
+
+                app:rv_minScale="0"
                 app:rv_resultNumColor="#50b586"
+                app:rv_scaleCount="10"
                 app:rv_scaleNumColor="#666666"
+                app:rv_smallScaleColor="#aaaaaa"
+                app:rv_unit=" "
                 app:rv_unitColor="#50b586"
                 app:rv_unitTextSize="10sp" />
 

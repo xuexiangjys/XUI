@@ -7,49 +7,71 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
-        android:id="@+id/vcet_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="10dp"
-        app:vcet_is_pwd="true"
-        app:vcet_number="6"
-        app:vcet_pwd_radius="10dp"
-        app:vcet_text_color="#000000"
-        app:vcet_width="50dp" />
+    <androidx.core.widget.NestedScrollView style="@style/ScrollViewStyle">
 
-    <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
-        android:id="@+id/vcet_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:vcet_number="5" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/config_margin_16dp">
 
-    <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
-        android:id="@+id/vcet_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:vcet_is_pwd="true" />
+            <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+                android:id="@+id/vcet_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/config_margin_10dp"
+                app:vcet_is_pwd="true"
+                app:vcet_number="6"
+                app:vcet_pwd_radius="10dp"
+                app:vcet_text_color="#000000"
+                app:vcet_width="50dp" />
 
-    <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
-        android:id="@+id/vcet_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:vcet_bg_focus="@drawable/custom_vcet_shape_bg_focus"
-        app:vcet_bg_normal="@drawable/custom_vcet_shape_bg_normal"
-        app:vcet_is_pwd="false"
-        app:vcet_number="4"
-        app:vcet_text_color="@color/xui_config_color_primary_text"
-        app:vcet_text_size="16sp"
-        app:vcet_width="45dp" />
+            <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+                android:id="@+id/vcet_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/config_margin_5dp"
+                app:vcet_number="5" />
 
-    <com.xuexiang.xui.widget.alpha.XUIAlphaButton
-        android:id="@+id/btn_clear"
-        style="@style/Button.Primary.wrap"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
-        android:text="清空" />
+            <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+                android:id="@+id/vcet_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/config_margin_5dp"
+                app:vcet_is_pwd="true" />
 
+            <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+                android:id="@+id/vcet_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/config_margin_5dp"
+                app:vcet_bg_focus="@drawable/custom_vcet_shape_bg_focus"
+                app:vcet_bg_normal="@drawable/custom_vcet_shape_bg_normal"
+                app:vcet_is_pwd="false"
+                app:vcet_number="4"
+                app:vcet_text_color="@color/xui_config_color_primary_text"
+                app:vcet_text_size="16sp"
+                app:vcet_width="45dp" />
+
+            <com.xuexiang.xui.widget.edittext.verify.VerifyCodeEditText
+                android:id="@+id/vcet_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/config_margin_10dp"
+                app:vcet_is_divide_equally="true"
+                app:vcet_number="10"
+                app:vcet_pwd_radius="6dp"
+                app:vcet_text_color="#000000"
+                app:vcet_text_size="12sp" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:id="@+id/btn_clear"
+                style="@style/Button.Primary.wrap"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="?attr/xui_config_content_spacing_vertical"
+                android:text="清空" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

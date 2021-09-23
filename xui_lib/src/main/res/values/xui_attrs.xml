@@ -1066,6 +1066,8 @@
         <attr name="vcet_number" format="integer" />
         <!--每一个输入框的宽度，默认21dp-->
         <attr name="vcet_width" format="dimension|reference" />
+        <!--平分每个输入框的宽度，默认是false，如果为true，vcet_width值将失效-->
+        <attr name="vcet_is_divide_equally" format="boolean" />
         <!--输入框之间的分割线-->
         <attr name="vcet_divider" format="reference" />
         <!--输入框文字颜色，默认黑色-->
