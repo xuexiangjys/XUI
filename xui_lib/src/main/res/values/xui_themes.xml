@@ -26,7 +26,7 @@
   如果在项目中要对特定项目配置业务相关的 Theme，在 values 目录下修改 themes.xml 的 AppTheme。
    -->
 
-    <style name="XUIRootTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="XUIRootTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
 
     <style name="XUIBaseTheme" parent="XUIRootTheme">
 
