@@ -154,8 +154,8 @@ public class LoadingDialog extends BaseDialog implements IMessageLoader {
     }
 
     @Override
-    public void show() {
-        super.show();
+    public void performShow() {
+        super.performShow();
         if (mLoadingView != null) {
             mLoadingView.start();
         }

@@ -96,6 +96,15 @@ public class StatusBarUtilsFragment extends BaseFragment {
                 .positiveText(R.string.lab_submit)
                 .build();
         StatusBarUtils.showDialog(getActivity(), dialog);
+
+//        MiniLoadingDialog dialog = new MiniLoadingDialog(getContext());
+//        dialog.showIfSync(true);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                dialog.dismiss();
+//            }
+//        }, 3000);
     }
 
 

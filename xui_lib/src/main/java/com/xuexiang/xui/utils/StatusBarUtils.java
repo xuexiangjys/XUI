@@ -676,15 +676,17 @@ public class StatusBarUtils {
      * @param activity      活动窗口
      * @param window        需要显示的窗口
      * @param iWindowShower 窗口显示接口
+     * @return 是否执行成功
      */
-    public static void showWindow(Activity activity, Window window, IWindowShower iWindowShower) {
+    public static boolean showWindow(Activity activity, Window window, IWindowShower iWindowShower) {
         if (activity == null || window == null || iWindowShower == null) {
-            return;
+            return false;
         }
         window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
         iWindowShower.show(window);
         StatusBarUtils.syncSystemUiVisibility(activity, window);
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        return true;
     }
 
     /**
@@ -692,12 +694,13 @@ public class StatusBarUtils {
      *
      * @param original 活动窗口
      * @param target   目标窗口
+     * @return 是否执行成功
      */
-    public static void syncSystemUiVisibility(Activity original, Window target) {
+    public static boolean syncSystemUiVisibility(Activity original, Window target) {
         if (original == null) {
-            return;
+            return false;
         }
-        syncSystemUiVisibility(original.getWindow(), target);
+        return syncSystemUiVisibility(original.getWindow(), target);
     }
 
     /**
@@ -705,12 +708,14 @@ public class StatusBarUtils {
      *
      * @param original 原始窗口
      * @param target   目标窗口
+     * @return 是否执行成功
      */
-    public static void syncSystemUiVisibility(Window original, Window target) {
+    public static boolean syncSystemUiVisibility(Window original, Window target) {
         if (original == null || target == null) {
-            return;
+            return false;
         }
         target.getDecorView().setSystemUiVisibility(original.getDecorView().getSystemUiVisibility());
+        return true;
     }
 
     /**

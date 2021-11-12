@@ -30,16 +30,25 @@ import androidx.appcompat.app.AppCompatDialog;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.StatusBarUtils;
+import com.xuexiang.xui.utils.WidgetUtils;
 
 /**
  * 基类Dialog
- * 触摸Dialog屏幕以外的区域，dialog消失同时隐藏键盘
+ * 1.触摸Dialog屏幕以外的区域，dialog消失同时隐藏键盘
+ * 2.可以同步系统控制器显示状态
  *
  * @author xuexiang
  * @since 2018/12/6 下午3:29
  */
 public class BaseDialog extends AppCompatDialog {
+
     private View mContentView;
+
+    /**
+     * 是否同步系统控制器显示状态，默认false【状态栏、三键导航栏等】
+     */
+    private boolean mIsSyncSystemUiVisibility;
 
     public BaseDialog(Context context, int layoutId) {
         this(context, R.style.XUIDialog_Custom, layoutId);
@@ -78,8 +87,8 @@ public class BaseDialog extends AppCompatDialog {
     /**
      * 设置弹窗的宽和高
      *
-     * @param width
-     * @param height
+     * @param width  宽
+     * @param height 高
      */
     public BaseDialog setDialogSize(int width, int height) {
         // 获取对话框当前的参数值
@@ -104,6 +113,53 @@ public class BaseDialog extends AppCompatDialog {
 
     public Drawable getDrawable(int resId) {
         return ResUtils.getDrawable(getContext(), resId);
+    }
+
+    /**
+     * 设置是否同步系统控制器显示状态
+     *
+     * @param isSyncSystemUiVisibility 是否同步系统控制器显示状态
+     * @return this
+     */
+    public BaseDialog setIsSyncSystemUiVisibility(boolean isSyncSystemUiVisibility) {
+        mIsSyncSystemUiVisibility = isSyncSystemUiVisibility;
+        return this;
+    }
+
+    /**
+     * 显示加载
+     */
+    @Override
+    public void show() {
+        showIfSync(mIsSyncSystemUiVisibility);
+    }
+
+    /**
+     * 显示弹窗，是否同步系统控制器显示状态
+     *
+     * @param isSyncSystemUiVisibility 是否同步系统控制器显示状态
+     */
+    public void showIfSync(boolean isSyncSystemUiVisibility) {
+        if (isSyncSystemUiVisibility) {
+            boolean isHandled = StatusBarUtils.showWindow(WidgetUtils.findActivity(getContext()), getWindow(), new StatusBarUtils.IWindowShower() {
+                @Override
+                public void show(Window window) {
+                    performShow();
+                }
+            });
+            if (!isHandled) {
+                performShow();
+            }
+        } else {
+            performShow();
+        }
+    }
+
+    /**
+     * 真正执行显示的方法
+     */
+    protected void performShow() {
+        super.show();
     }
 
     @Override
