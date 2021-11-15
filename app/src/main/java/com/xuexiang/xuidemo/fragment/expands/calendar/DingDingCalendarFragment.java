@@ -28,7 +28,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
+import com.xuexiang.xuidemo.adapter.SimpleListViewAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
 import java.util.Date;
@@ -92,7 +92,7 @@ public class DingDingCalendarFragment extends BaseFragment {
         tvTitle.setText(String.format("%d/%d/%d", data.year, data.month, data.day));
 
 
-        listview.setAdapter(new SimpleRecyclerAdapter(DemoDataProvider.getDemoData()));
+        listview.setAdapter(new SimpleListViewAdapter(getContext(), DemoDataProvider.getDemoData()));
 
     }
 

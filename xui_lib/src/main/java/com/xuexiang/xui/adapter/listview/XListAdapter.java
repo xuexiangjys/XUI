@@ -25,6 +25,7 @@ import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -46,7 +47,7 @@ public abstract class XListAdapter<T> extends BaseAdapter {
         mContext = context;
     }
 
-    public XListAdapter(Context context, List<T> data) {
+    public XListAdapter(Context context, Collection<T> data) {
         mContext = context;
         setData(data);
     }
@@ -56,7 +57,7 @@ public abstract class XListAdapter<T> extends BaseAdapter {
         setData(data);
     }
 
-    public void setData(List<T> data) {
+    public void setData(Collection<T> data) {
         if (data != null) {
             mData.clear();
             mData.addAll(data);

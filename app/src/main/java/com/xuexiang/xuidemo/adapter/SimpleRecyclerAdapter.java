@@ -1,7 +1,9 @@
 package com.xuexiang.xuidemo.adapter;
 
-import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
+import androidx.annotation.NonNull;
+
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xuidemo.R;
 
@@ -13,27 +15,25 @@ import java.util.Collection;
  * @author XUE
  * @since 2019/4/1 11:04
  */
-public class SimpleRecyclerAdapter extends SmartRecyclerAdapter<String> {
+public class SimpleRecyclerAdapter extends BaseRecyclerAdapter<String> {
 
     public SimpleRecyclerAdapter() {
-        super(android.R.layout.simple_list_item_2);
     }
 
-    public SimpleRecyclerAdapter(Collection<String> data) {
-        super(data, android.R.layout.simple_list_item_2);
+    public SimpleRecyclerAdapter(Collection<String> list) {
+        super(list);
     }
 
-    /**
-     * 绑定布局控件
-     *
-     * @param holder
-     * @param model
-     * @param position
-     */
     @Override
-    protected void onBindViewHolder(SmartViewHolder holder, String model, int position) {
+    protected void bindData(@NonNull RecyclerViewHolder holder, int position, String item) {
         holder.text(android.R.id.text1, ResUtils.getResources().getString(R.string.item_example_number_title, position));
         holder.text(android.R.id.text2, ResUtils.getResources().getString(R.string.item_example_number_abstract, position));
         holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
     }
+
+    @Override
+    protected int getItemLayoutId(int viewType) {
+        return android.R.layout.simple_list_item_2;
+    }
+
 }

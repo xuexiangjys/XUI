@@ -22,17 +22,19 @@ import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
@@ -47,8 +49,6 @@ import java.util.Locale;
 import java.util.Random;
 
 import butterknife.BindView;
-
-import static android.R.layout.simple_list_item_2;
 
 /**
  * @author xuexiang
@@ -200,12 +200,17 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
             RecyclerView recyclerView = (RecyclerView) view;
             WidgetUtils.initRecyclerView(recyclerView);
 
-            recyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
+            recyclerView.setAdapter(new BaseRecyclerAdapter<Item>(Arrays.asList(Item.values())) {
                 @Override
-                protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {
-                    holder.text(android.R.id.text1, model.name());
-                    holder.text(android.R.id.text2, model.nameId);
+                protected void bindData(@NonNull RecyclerViewHolder holder, int position, Item item) {
+                    holder.text(android.R.id.text1, item.name());
+                    holder.text(android.R.id.text2, item.nameId);
                     holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
+                }
+
+                @Override
+                protected int getItemLayoutId(int viewType) {
+                    return android.R.layout.simple_list_item_2;
                 }
             });
             mRecyclerView = recyclerView;

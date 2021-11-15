@@ -20,6 +20,9 @@ import butterknife.BindView;
  */
 @Page(name = "SwipeRefreshLayout\n谷歌官方下拉刷新控件")
 public class SwipeRefreshLayoutFragment extends BaseFragment {
+
+    private static final int[] COLORS = new int[]{0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800};
+
     private SimpleRecyclerAdapter mAdapter;
 
     @BindView(R.id.recyclerView)
@@ -27,11 +30,6 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
 
-    /**
-     * 布局的资源id
-     *
-     * @return
-     */
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_swipe_refresh_layout;
@@ -46,7 +44,7 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
 
         recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
-        swipeRefreshLayout.setColorSchemeColors(0xff0099cc, 0xffff4444, 0xff669900, 0xffaa66cc, 0xffff8800);
+        swipeRefreshLayout.setColorSchemeColors(COLORS);
     }
 
     @Override

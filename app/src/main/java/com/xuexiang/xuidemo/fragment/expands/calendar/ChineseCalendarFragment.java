@@ -27,7 +27,7 @@ import com.codbking.calendar.ChinaDateUtils;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
+import com.xuexiang.xuidemo.adapter.SimpleListViewAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
 import java.util.Date;
@@ -90,9 +90,8 @@ public class ChineseCalendarFragment extends BaseFragment {
         tvTitle.setText(ChinaDateUtils.oneDay(data.year, data.month, data.day));
 
 
-        listView.setAdapter(new SimpleRecyclerAdapter(DemoDataProvider.getDemoData()));
+        listView.setAdapter(new SimpleListViewAdapter(getContext(), DemoDataProvider.getDemoData()));
     }
-
 
 
 }
