@@ -1,4 +1,3 @@
-
 # Android版本简介
 
 | Android 版本 | API 等级 |    版本代号   |        发布时间       |
@@ -17,6 +16,8 @@
 | Android 4.4 |    19   |    KITKAT    |  2013 年 10 月 31 日  |
 
 # Android各版本重大变化说明
+
+> 详细Android各版本变化可参见：[AndroidVersionAdapter](https://github.com/getActivity/AndroidVersionAdapter) 或者 [官方文档](https://developer.android.google.cn/about/versions)
 
 ## Android 12.0
 
