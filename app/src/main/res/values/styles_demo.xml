@@ -127,7 +127,7 @@
         <item name="sEnableEdit">true</item>
     </style>
 
-    <style name="ToolbarTheme" parent="Theme.MaterialComponents.Light">
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light">
         <!-- 更换 Toolbar OVerFlow menu icon -->
         <item name="actionOverflowButtonStyle">@style/OverFlowIcon</item>
         <!-- 设置 Toolbar 溢出菜单的文字的颜色 -->

@@ -567,7 +567,6 @@ public class StatusBarUtils {
         cancelFullScreen(window, -1, -1);
     }
 
-
     /**
      * 设置底部导航条的颜色
      *
