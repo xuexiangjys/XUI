@@ -10,6 +10,7 @@ android {
         targetSdkVersion build_versions.target_sdk
 
         vectorDrawables.useSupportLibrary = true
+        consumerProguardFiles "proguard-rules.pro"
     }
 
     lintOptions {

@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# materialedittext
+-keep class com.xuexiang.xui.widget.edittext.materialedittext.** { *; }
+
+# 保持反射不被混淆
+-keepattributes EnclosingMethod

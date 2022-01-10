@@ -325,9 +325,6 @@
     native <methods>;
 }
 
-# materialedittext
--keep class com.xuexiang.xui.widget.edittext.materialedittext.** { *; }
-
 # vlayout
 -keepattributes InnerClasses
 -keep class com.alibaba.android.vlayout.ExposeLinearLayoutManagerEx { *; }
