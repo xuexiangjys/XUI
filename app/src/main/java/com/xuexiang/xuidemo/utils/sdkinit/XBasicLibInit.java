@@ -59,13 +59,11 @@ public final class XBasicLibInit {
     /**
      * 初始化工具类
      *
-     * @param application
+     * @param application 应用上下文
      */
     private static void initUtils(Application application) {
         XUtil.init(application);
         XUtil.debug(MyApp.isDebug());
-        //百度定位
-        LocationService.get().init(application);
         TokenUtils.init(application);
     }
 
