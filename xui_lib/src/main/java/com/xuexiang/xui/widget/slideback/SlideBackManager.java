@@ -57,28 +57,33 @@ public class SlideBackManager implements OnSlideUpdateListener {
      */
     private SlideInfo mSlideInfo;
 
-    SlideBackManager(Activity activity) {
+    SlideBackManager(Activity activity, boolean isFixedSize) {
         mActivity = activity;
         mHaveScroll = false;
 
         // 获取屏幕信息，初始化控件设置
         DisplayMetrics dm = activity.getResources().getDisplayMetrics();
-
         mSlideInfo = new SlideInfo()
-                // 高度默认 屏高/4
-                .setBackViewHeight(dm.heightPixels / 4f)
-                // 箭头大小默认 5dp
                 .setArrowSize(dp2px(5))
                 .setScreenWidth(dm.widthPixels)
-                // 最大宽度默认 屏宽/12
-                .setMaxSlideLength((float) dm.widthPixels / 12)
-                // 侧滑响应距离默认 控件最大宽度/2
-                .setSideSlideLength((float) dm.widthPixels / 24)
-                // 阻尼系数默认 3
                 .setDragRate(3)
-                // 侧滑返回模式 默认:左
                 .setAllowEdgeLeft(true)
                 .setAllowEdgeRight(false);
+        if (isFixedSize) {
+            mSlideInfo.setBackViewHeight(dm.heightPixels / 5f)
+                    .setMaxSlideLength(dp2px(24))
+                    .setSideSlideLength(dp2px(12));
+        } else {
+            mSlideInfo.setBackViewHeight(dm.heightPixels / 4f)
+                    .setMaxSlideLength((float) dm.widthPixels / 12)
+                    .setSideSlideLength((float) dm.widthPixels / 24);
+        }
+    }
+
+    SlideBackManager(Activity activity, SlideInfo slideInfo) {
+        mActivity = activity;
+        mHaveScroll = false;
+        mSlideInfo = slideInfo;
     }
 
     /**
@@ -107,6 +112,17 @@ public class SlideBackManager implements OnSlideUpdateListener {
      */
     public SlideBackManager callBack(SlideCallBack callBack) {
         mCallBack = callBack;
+        return this;
+    }
+
+    /**
+     * 设置侧滑信息
+     *
+     * @param slideInfo 侧滑信息
+     * @return this
+     */
+    public SlideBackManager setSlideInfo(SlideInfo slideInfo) {
+        mSlideInfo = slideInfo;
         return this;
     }
 

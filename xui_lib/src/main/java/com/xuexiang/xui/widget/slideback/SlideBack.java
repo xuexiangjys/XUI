@@ -74,11 +74,49 @@ public class SlideBack {
     /**
      * 构建侧滑管理器 - 用于更丰富的自定义配置
      *
-     * @param activity 目标Act
+     * @param activity 目标Activity
      * @return 构建管理器
      */
     public static SlideBackManager with(Activity activity) {
-        SlideBackManager manager = new SlideBackManager(activity);
+        SlideBackManager manager = new SlideBackManager(activity, false);
+        sSideMap.put(activity, manager);
+        return manager;
+    }
+
+    /**
+     * 构建侧滑管理器 - 用于更丰富的自定义配置【固定侧滑图标的尺寸】
+     *
+     * @param activity 目标Activity
+     * @return 构建管理器
+     */
+    public static SlideBackManager withFixSize(Activity activity) {
+        SlideBackManager manager = new SlideBackManager(activity, true);
+        sSideMap.put(activity, manager);
+        return manager;
+    }
+
+    /**
+     * 构建侧滑管理器 - 用于更丰富的自定义配置
+     *
+     * @param activity    目标Activity
+     * @param isFixedSize 是否固定尺寸
+     * @return 构建管理器
+     */
+    public static SlideBackManager with(Activity activity, boolean isFixedSize) {
+        SlideBackManager manager = new SlideBackManager(activity, isFixedSize);
+        sSideMap.put(activity, manager);
+        return manager;
+    }
+
+    /**
+     * 构建侧滑管理器 - 用于更丰富的自定义配置
+     *
+     * @param activity  目标Activity
+     * @param slideInfo 侧滑信息
+     * @return 构建管理器
+     */
+    public static SlideBackManager with(Activity activity, SlideInfo slideInfo) {
+        SlideBackManager manager = new SlideBackManager(activity, slideInfo);
         sSideMap.put(activity, manager);
         return manager;
     }

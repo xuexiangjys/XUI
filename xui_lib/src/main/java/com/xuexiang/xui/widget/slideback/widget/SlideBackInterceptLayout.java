@@ -30,7 +30,10 @@ import android.widget.FrameLayout;
  */
 public class SlideBackInterceptLayout extends FrameLayout {
 
-    private float mSideSlideLength = 0; // 边缘滑动响应距离
+    /**
+     * 边缘滑动响应距离
+     */
+    private float mSideSlideLength = 0;
 
     public SlideBackInterceptLayout(Context context) {
         this(context, null);

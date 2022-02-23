@@ -123,7 +123,7 @@ public class IconFontActivity extends XPageActivity {
      */
     protected void registerSlideBack() {
         if (isSupportSlideBack()) {
-            SlideBack.with(this)
+            SlideBack.withFixSize(this)
                     .haveScroll(true)
                     .edgeMode(ResUtils.isRtl() ? SlideBack.EDGE_RIGHT : SlideBack.EDGE_LEFT)
                     .callBack(this::popPage)
