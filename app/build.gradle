@@ -104,7 +104,7 @@ dependencies {
 
     // XUI框架
     implementation project(':xui_lib')
-//    implementation 'com.github.xuexiangjys:XUI:1.1.8'
+//    implementation 'com.github.xuexiangjys:XUI:1.1.9'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     // 工具类
