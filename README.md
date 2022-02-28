@@ -170,13 +170,6 @@ protected void attachBaseContext(Context newBase) {
 }
 ```
 
-## Proguard
-
-```
--keep class com.xuexiang.xui.widget.edittext.materialedittext.** { *; }
-
-```
-
 ----
 
 ## Demonstration

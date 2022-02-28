@@ -2,11 +2,11 @@
   "Code": 0,
   "Msg": "",
   "UpdateStatus": 1,
-  "VersionCode": 19,
-  "VersionName": "1.1.8",
-  "UploadTime": "2021-08-01 22:30:00",
+  "VersionCode": 20,
+  "VersionName": "1.1.9",
+  "UploadTime": "2022-03-01 01:30:00",
   "ModifyContent": "\r\n1、修复部分已知问题。\n2、优化了部分组件功能。\n3、新增更多使用演示。",
   "DownloadUrl": "https://xuexiangjys.oss-cn-shanghai.aliyuncs.com/apk/xuidemo.apk",
-  "ApkSize": 13599,
-  "ApkMd5": "9DE61415BAF61E92C447FA9D6E748F22"
+  "ApkSize": 13459,
+  "ApkMd5": "8A7F1FBA22CDA59B6D592229BEA116A1"
 }
