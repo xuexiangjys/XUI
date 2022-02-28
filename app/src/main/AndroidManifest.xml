@@ -26,6 +26,8 @@
     <!--9.0后前台服务需要申请权限-->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
     <application
         android:name=".MyApp"
         android:allowBackup="false"
@@ -84,6 +86,7 @@
             android:label="SearchView" />
         <activity
             android:name=".activity.SearchComponentActivity"
+            android:exported="true"
             android:launchMode="singleTask" />
 
         <activity
@@ -170,6 +173,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.SettingsActivity"
+            android:exported="true"
             android:label="@string/title_activity_settings"
             android:theme="@style/SettingTheme" />
 
@@ -200,6 +204,23 @@
 
         <!--应用监听服务-->
         <service android:name=".fragment.expands.floatview.service.AppMonitorService" />
+
+        <!--创建快捷方式的广播监听-->
+        <receiver
+            android:name=".fragment.utils.shortcut.ShortcutReceiver"
+            android:permission="com.android.launcher.permission.INSTALL_SHORTCUT">
+            <intent-filter>
+                <action android:name="com.android.launcher.action.INSTALL_SHORTCUT" />
+            </intent-filter>
+        </receiver>
+
+        <!--创建快捷方式-->
+        <activity android:name=".fragment.utils.shortcut.CreateShortcutResultIntentActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

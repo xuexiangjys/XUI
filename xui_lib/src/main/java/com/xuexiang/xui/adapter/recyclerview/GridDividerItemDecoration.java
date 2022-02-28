@@ -60,7 +60,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         mDivider = a.getDrawable(0);
         a.recycle();
         if (mDivider != null) {
-            mDividerWidth = mDivider.getIntrinsicHeight();
+            mDividerWidth = mDivider.getIntrinsicWidth();
         } else {
             mDividerWidth = DensityUtils.dp2px(1);
         }
@@ -94,6 +94,18 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         mPaint.setStyle(Paint.Style.FILL);
     }
 
+    /**
+     * 设置分割线
+     *
+     * @param divider 分割线
+     * @return this
+     */
+    public GridDividerItemDecoration setDivider(@NonNull Drawable divider) {
+        mDivider = divider;
+        mDividerWidth = mDivider.getIntrinsicWidth();
+        return this;
+    }
+
     @Override
     public void onDraw(@NonNull Canvas canvas, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.onDraw(canvas, parent, state);
@@ -101,9 +113,10 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             int position = parent.getChildLayoutPosition(child);
-            int column = (position + 1) % 3;
-            column = column == 0 ? mSpanCount : column;
-
+            int column = (position + 1) % mSpanCount;
+            if (column == 0) {
+                column = mSpanCount;
+            }
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin + Math.round(ViewCompat.getTranslationY(child));
             final int bottom = top + mDividerWidth;
@@ -111,20 +124,22 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
             final int right = left + mDividerWidth;
 
             if (mPaint != null) {
-                mDivider.setBounds(child.getLeft(), top, right, bottom);
-                mDivider.draw(canvas);
-            }
-            if (mPaint != null) {
                 canvas.drawRect(child.getLeft(), top, right, bottom, mPaint);
+            } else {
+                if (mDivider != null) {
+                    mDivider.setBounds(child.getLeft(), top, right, bottom);
+                    mDivider.draw(canvas);
+                }
             }
 
             if (column < mSpanCount) {
                 if (mPaint != null) {
-                    mDivider.setBounds(left, child.getTop(), right, bottom);
-                    mDivider.draw(canvas);
-                }
-                if (mPaint != null) {
                     canvas.drawRect(left, child.getTop(), right, bottom, mPaint);
+                } else {
+                    if (mDivider != null) {
+                        mDivider.setBounds(left, child.getTop(), right, bottom);
+                        mDivider.draw(canvas);
+                    }
                 }
             }
 
@@ -136,7 +151,6 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
         int position = parent.getChildLayoutPosition(view);
-
         RecyclerView.Adapter adapter = parent.getAdapter();
         if (adapter != null) {
             int itemCount = parent.getAdapter().getItemCount();

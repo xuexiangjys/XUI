@@ -23,7 +23,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -250,8 +249,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置状态栏高度
      *
-     * @param height
-     * @return
+     * @param height 状态栏高度
+     * @return this
      */
     public TitleBar setHeight(int height) {
         mBarHeight = height;
@@ -269,8 +268,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧图标
      *
-     * @param leftImageDrawable
-     * @return
+     * @param leftImageDrawable 左侧图标
+     * @return this
      */
     public TitleBar setLeftImageDrawable(Drawable leftImageDrawable) {
         mLeftImageResource = leftImageDrawable;
@@ -283,8 +282,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧文字是否加粗
      *
-     * @param isBold
-     * @return
+     * @param isBold 左侧文字是否加粗
+     * @return this
      */
     public TitleBar setLeftTextBold(boolean isBold) {
         if (mLeftText != null) {
@@ -296,8 +295,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置中间文字是否加粗
      *
-     * @param isBold
-     * @return
+     * @param isBold 中间文字是否加粗
+     * @return this
      */
     public TitleBar setCenterTextBold(boolean isBold) {
         if (mCenterText != null) {
@@ -309,8 +308,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧图标
      *
-     * @param resId
-     * @return
+     * @param resId 左侧图标资源id
+     * @return this
      */
     @Deprecated
     public TitleBar setBackImageResource(int resId) {
@@ -328,8 +327,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧点击事件
      *
-     * @param l
-     * @return
+     * @param l 左侧点击事件
+     * @return this
      */
     public TitleBar setLeftClickListener(OnClickListener l) {
         mLeftText.setOnClickListener(l);
@@ -339,8 +338,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧文字
      *
-     * @param title
-     * @return
+     * @param title 左侧文字
+     * @return this
      */
     public TitleBar setLeftText(CharSequence title) {
         mLeftText.setText(title);
@@ -350,8 +349,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧文字
      *
-     * @param resId
-     * @return
+     * @param resId 左侧文字资源id
+     * @return this
      */
     public TitleBar setLeftText(int resId) {
         mLeftText.setText(resId);
@@ -361,8 +360,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧文字大小
      *
-     * @param size
-     * @return
+     * @param size 左侧文字大小【单位px】
+     * @return this
      */
     public TitleBar setLeftTextSize(float size) {
         mLeftText.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
@@ -372,8 +371,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧文字的最大长度
      *
-     * @param maxEms
-     * @return
+     * @param maxEms 左侧文字的最大长度
+     * @return this
      */
     public TitleBar setLeftTextMaxEms(int maxEms) {
         mLeftText.setMaxEms(maxEms);
@@ -383,8 +382,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧文字的最大宽度
      *
-     * @param maxPixels
-     * @return
+     * @param maxPixels 左侧文字的最大宽度
+     * @return this
      */
     public TitleBar setLeftTextMaxWidth(int maxPixels) {
         mLeftText.setMaxWidth(maxPixels);
@@ -394,8 +393,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧文字长度超出的处理
      *
-     * @param where
-     * @return
+     * @param where 左侧文字长度超出的处理
+     * @return this
      */
     public TitleBar setLeftTextEllipsize(TextUtils.TruncateAt where) {
         mLeftText.setEllipsize(where);
@@ -403,11 +402,11 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     /**
-     * 左侧文字的Padding
+     * 设置左侧文字的Padding
      *
-     * @param paddingStart
-     * @param paddingEnd
-     * @return
+     * @param paddingStart paddingStart
+     * @param paddingEnd   paddingEnd
+     * @return this
      */
     public TitleBar setLeftTextPadding(int paddingStart, int paddingEnd) {
         mLeftText.setPaddingRelative(paddingStart, 0, paddingEnd, 0);
@@ -415,10 +414,10 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     /**
-     * 左侧文字的颜色
+     * 设置左侧文字的颜色
      *
-     * @param color
-     * @return
+     * @param color 左侧文字的颜色
+     * @return this
      */
     public TitleBar setLeftTextColor(int color) {
         mLeftText.setTextColor(color);
@@ -428,8 +427,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置左侧文字是否可显示
      *
-     * @param visible
-     * @return
+     * @param visible 左侧文字是否可显示
+     * @return this
      */
     public TitleBar setLeftVisible(boolean visible) {
         mLeftText.setVisibility(visible ? View.VISIBLE : View.GONE);
@@ -439,7 +438,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 禁用左侧控件
      *
-     * @return
+     * @return this
      */
     public TitleBar disableLeftView() {
         setBackImageResource(0);
@@ -450,10 +449,10 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
 
 
     /**
-     * 设置标题文字
+     * 设置标题文字【"\n"为垂直方向，"\t"为水平方向】
      *
-     * @param title
-     * @return
+     * @param title 标题文字
+     * @return this
      */
     public TitleBar setTitle(CharSequence title) {
         int index = title.toString().indexOf("\n");
@@ -477,7 +476,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
      * @param title       标题
      * @param subTitle    副标题
      * @param orientation 对齐方式
-     * @return
+     * @return this
      */
     public TitleBar setTitle(CharSequence title, CharSequence subTitle, int orientation) {
         mCenterLayout.setOrientation(orientation);
@@ -489,12 +488,28 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     }
 
     /**
-     * 设置标题和副标题的文字
+     * 设置副标题的文字
      *
      * @param subTitle 副标题
-     * @return
+     * @return this
+     */
+    public TitleBar setSubTitle(CharSequence subTitle, int orientation) {
+        mCenterLayout.setOrientation(orientation);
+        mSubTitleText.setText(subTitle);
+        mSubTitleText.setVisibility(View.VISIBLE);
+        return this;
+    }
+
+    /**
+     * 设置副标题的文字
+     *
+     * @param subTitle 副标题
+     * @return this
      */
     public TitleBar setSubTitle(CharSequence subTitle) {
+        if (!TextUtils.isEmpty(subTitle)) {
+            mCenterLayout.setOrientation(LinearLayout.VERTICAL);
+        }
         mSubTitleText.setText(subTitle);
         mSubTitleText.setVisibility(View.VISIBLE);
         return this;
@@ -503,8 +518,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置中间内容的对齐方式
      *
-     * @param gravity
-     * @return
+     * @param gravity 中间内容的对齐方式
+     * @return this
      */
     public TitleBar setCenterGravity(int gravity) {
         mCenterLayout.setGravity(gravity);
@@ -516,19 +531,19 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置中心点击
      *
-     * @param l
-     * @return
+     * @param centerClickListener 中心点击监听
+     * @return this
      */
-    public TitleBar setCenterClickListener(OnClickListener l) {
-        mCenterLayout.setOnClickListener(l);
+    public TitleBar setCenterClickListener(OnClickListener centerClickListener) {
+        mCenterLayout.setOnClickListener(centerClickListener);
         return this;
     }
 
     /**
      * 设置标题文字
      *
-     * @param resId
-     * @return
+     * @param resId 文字资源id
+     * @return this
      */
     public TitleBar setTitle(int resId) {
         setTitle(getResources().getString(resId));
@@ -538,8 +553,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置标题文字颜色
      *
-     * @param resId
-     * @return
+     * @param resId 文字颜色资源id
+     * @return this
      */
     public TitleBar setTitleColor(int resId) {
         mCenterText.setTextColor(resId);
@@ -549,8 +564,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置标题文字大小
      *
-     * @param size
-     * @return
+     * @param size 文字大小【单位px】
+     * @return this
      */
     public TitleBar setTitleSize(float size) {
         mCenterText.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
@@ -560,8 +575,8 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
     /**
      * 设置标题背景
      *
-     * @param resId
-     * @return
+     * @param resId 标题背景资源id
+     * @return this
      */
     public TitleBar setTitleBackground(int resId) {
         mCenterText.setBackgroundResource(resId);

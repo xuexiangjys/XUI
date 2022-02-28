@@ -47,7 +47,7 @@ public class AgentWebActivity extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agent_web);
 
-        SlideBack.with(this)
+        SlideBack.withFixSize(this)
                 .haveScroll(true)
                 .callBack(this::finish)
                 .register();

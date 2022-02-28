@@ -88,10 +88,10 @@ public class DefaultStatusView extends LinearLayout implements View.OnClickListe
                 layoutId = R.layout.msv_layout_loading_view;
                 break;
             case STATUS_LOAD_FAILED:
-                layoutId = R.layout.msv_layout_empty_view;
+                layoutId = R.layout.msv_layout_error_view;
                 break;
             case STATUS_EMPTY_DATA:
-                layoutId = R.layout.msv_layout_error_view;
+                layoutId = R.layout.msv_layout_empty_view;
                 break;
             case STATUS_CUSTOM:
                 layoutId = R.layout.msv_layout_no_network_view;

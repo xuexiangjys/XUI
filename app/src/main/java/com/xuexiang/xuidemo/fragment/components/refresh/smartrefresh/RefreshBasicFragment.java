@@ -16,10 +16,11 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh;
 
-import android.widget.AbsListView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
@@ -34,11 +35,6 @@ public class RefreshBasicFragment extends BaseFragment {
 
     private SimpleRecyclerAdapter mAdapter;
 
-    /**
-     * 布局的资源id
-     *
-     * @return
-     */
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_refresh_basic;
@@ -49,18 +45,20 @@ public class RefreshBasicFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        AbsListView listView = findViewById(R.id.listView);
-        listView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        WidgetUtils.initRecyclerView(recyclerView);
+        recyclerView.setAdapter(mAdapter = new SimpleRecyclerAdapter());
 
         final RefreshLayout refreshLayout = findViewById(R.id.refreshLayout);
-        refreshLayout.setEnableAutoLoadMore(true);//开启自动加载功能（非必须）
-        //下拉刷新
+        // 开启自动加载功能（非必须）
+        refreshLayout.setEnableAutoLoadMore(true);
+        // 下拉刷新
         refreshLayout.setOnRefreshListener(refreshLayout12 -> refreshLayout12.getLayout().postDelayed(() -> {
             mAdapter.refresh(DemoDataProvider.getDemoData());
             refreshLayout12.finishRefresh();
             refreshLayout12.resetNoMoreData();//setNoMoreData(false);
         }, 2000));
-        //上拉加载
+        // 上拉加载
         refreshLayout.setOnLoadMoreListener(refreshLayout1 -> refreshLayout1.getLayout().postDelayed(() -> {
             if (mAdapter.getItemCount() > 30) {
                 XToastUtils.toast("数据全部加载完毕");
@@ -71,14 +69,14 @@ public class RefreshBasicFragment extends BaseFragment {
             }
         }, 2000));
 
-        //触发自动刷新
+        // 触发自动刷新
         refreshLayout.autoRefresh();
-        //item 点击测试
-        mAdapter.setOnItemClickListener((itemView, position) -> XToastUtils.toast("点击:" + position));
+        // item 点击测试
+        mAdapter.setOnItemClickListener((itemView, item, position) -> XToastUtils.toast("点击:" + position));
 
-        mAdapter.setOnItemLongClickListener((itemView, position) -> XToastUtils.toast("长按:" + position));
+        mAdapter.setOnItemLongClickListener((itemView, item, position) -> XToastUtils.toast("长按:" + position));
 
-//        //点击测试
+//        // 点击测试
 //        RefreshFooter footer = refreshLayout.getRefreshFooter();
 //        if (footer != null) {
 //            refreshLayout.getRefreshFooter().getView().findViewById(ClassicsFooter.ID_TEXT_TITLE).setOnClickListener(new View.OnClickListener() {

@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
+        app:indicator_background="@color/xui_config_color_transparent"
         app:indicator_height="42dp"
         app:indicator_line_height="5dp"
         app:indicator_line_res="@drawable/shape_indicator_line"
@@ -44,8 +45,9 @@
         app:indicator_line_width="30dp"
         app:indicator_selected_color="#FF6100"
         app:indicator_textSize="14sp"
-        app:indicator_vertical_line_h="30dp"
-        app:indicator_vertical_line_w="1dp"
+        app:indicator_vertical_line_color="@color/xui_config_color_white"
+        app:indicator_vertical_line_h="20dp"
+        app:indicator_vertical_line_w="1.5dp"
         app:indicator_width="300dp" />
 
     <com.xuexiang.xui.widget.tabbar.EasyIndicator

@@ -1,6 +1,7 @@
 package com.xuexiang.xui.widget.edittext.verify;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -14,12 +15,14 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
 
 /**
@@ -28,11 +31,14 @@ import com.xuexiang.xui.utils.ResUtils;
  * @author XUE
  * @since 2019/5/7 11:22
  */
-public class VerifyCodeEditText extends RelativeLayout {
+public class VerifyCodeEditText extends FrameLayout {
+
+    private static final int DEFAULT_HEIGHT = 50;
+
+    private static final int DEFAULT_EDIT_TEXT_SIZE = 4;
 
     private LinearLayout mLlContainer;
     private PwdEditText mEditText;
-
     /**
      * 输入框数量
      */
@@ -41,6 +47,10 @@ public class VerifyCodeEditText extends RelativeLayout {
      * 输入框的宽度
      */
     private int mEtWidth;
+    /**
+     * 是否等分输入框
+     */
+    private boolean mIsDivideEqually;
     /**
      * 输入框分割线
      */
@@ -102,13 +112,14 @@ public class VerifyCodeEditText extends RelativeLayout {
         mEditText = findViewById(R.id.et_input);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.VerifyCodeEditText, defStyleAttr, 0);
-        mEtNumber = typedArray.getInteger(R.styleable.VerifyCodeEditText_vcet_number, 4);
+        mEtNumber = typedArray.getInteger(R.styleable.VerifyCodeEditText_vcet_number, DEFAULT_EDIT_TEXT_SIZE);
         mEtWidth = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_width, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_width));
-        mEtDivider = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.VerifyCodeEditText_vcet_divider);
+        mIsDivideEqually = typedArray.getBoolean(R.styleable.VerifyCodeEditText_vcet_is_divide_equally, false);
+        mEtDivider = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.VerifyCodeEditText_vcet_divider);
         mEtTextSize = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_text_size));
         mEtTextColor = typedArray.getColor(R.styleable.VerifyCodeEditText_vcet_text_color, Color.BLACK);
-        mBackgroundFocus = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.VerifyCodeEditText_vcet_bg_focus);
-        mBackgroundNormal = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.VerifyCodeEditText_vcet_bg_normal);
+        mBackgroundFocus = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.VerifyCodeEditText_vcet_bg_focus);
+        mBackgroundNormal = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.VerifyCodeEditText_vcet_bg_normal);
         mIsPwd = typedArray.getBoolean(R.styleable.VerifyCodeEditText_vcet_is_pwd, false);
         mPwdRadius = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_pwd_radius, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_pwd_radius));
         //释放资源
@@ -116,33 +127,83 @@ public class VerifyCodeEditText extends RelativeLayout {
 
         // 当xml中未配置时 这里进行初始配置默认图片
         if (mEtDivider == null) {
-            mEtDivider = ResUtils.getDrawable(getContext(), R.drawable.vcet_shape_divider);
+            mEtDivider = ResUtils.getDrawable(context, R.drawable.vcet_shape_divider);
         }
         if (mBackgroundFocus == null) {
-            mBackgroundFocus = ResUtils.getDrawable(getContext(), R.drawable.vcet_shape_bg_focus);
+            mBackgroundFocus = ResUtils.getDrawable(context, R.drawable.vcet_shape_bg_focus);
         }
         if (mBackgroundNormal == null) {
-            mBackgroundNormal = ResUtils.getDrawable(getContext(), R.drawable.vcet_shape_bg_normal);
+            mBackgroundNormal = ResUtils.getDrawable(context, R.drawable.vcet_shape_bg_normal);
         }
-
-        initUI();
+        // 平分每个输入框的宽度
+        if (mIsDivideEqually) {
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    refreshEditSizeWhenDivideEqually();
+                    initView(getContext());
+                }
+            });
+        } else {
+            initView(context);
+        }
     }
 
-    // 初始UI
-    private void initUI() {
-        initTextViews(getContext(), mEtNumber, mEtWidth, mEtDivider, mEtTextSize, mEtTextColor);
+    private void refreshEditSizeWhenDivideEqually() {
+        MarginLayoutParams params = (MarginLayoutParams) getLayoutParams();
+        int dividerWidth = mEtDivider != null ? mEtDivider.getMinimumWidth() : 0;
+        mEtWidth = (DensityUtils.getDisplayWidth(getContext(), true) - dividerWidth * (mEtNumber - 1) - getPaddingLeft() - getPaddingRight() - params.leftMargin - params.rightMargin) / mEtNumber;
+    }
+
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (mIsDivideEqually) {
+            String input = getInputValue();
+            mEditText.removeTextChangedListener(mTextWatcher);
+            mLlContainer.removeAllViews();
+            refreshEditSizeWhenDivideEqually();
+            restoreView(getContext(), input);
+        }
+    }
+
+    private void restoreView(Context context, String input) {
+        initTextViews(context, mEtNumber, mEtWidth, mEtDivider, mEtTextSize, mEtTextColor);
+        initEtContainer(mPwdTextViews);
+        if (!TextUtils.isEmpty(input)) {
+            String[] strArray = input.split("");
+            for (int i = 0; i < strArray.length; i++) {
+                // 不能大于输入框个数
+                if (i > mEtNumber) {
+                    break;
+                }
+                setText(strArray[i], true);
+            }
+        }
+        setListener();
+    }
+
+    /**
+     * 初始化控件
+     *
+     * @param context 上下文
+     */
+    private void initView(Context context) {
+        initTextViews(context, mEtNumber, mEtWidth, mEtDivider, mEtTextSize, mEtTextColor);
         initEtContainer(mPwdTextViews);
         setListener();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // 设置当 高为 warpContent 模式时的默认值 为 50dp
         int heightMeasureSpecValue = heightMeasureSpec;
-
         int heightMode = MeasureSpec.getMode(heightMeasureSpecValue);
         if (heightMode == MeasureSpec.AT_MOST) {
-            heightMeasureSpecValue = MeasureSpec.makeMeasureSpec((int) dp2px(50, getContext()), MeasureSpec.EXACTLY);
+            // 设置当高为 warpContent 模式时的最小高度是50dp
+            int minHeight = (int) dp2px(DEFAULT_HEIGHT, getContext());
+            if (mEtWidth < minHeight) {
+                heightMeasureSpecValue = MeasureSpec.makeMeasureSpec(minHeight, MeasureSpec.EXACTLY);
+            }
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpecValue);
     }
@@ -170,12 +231,13 @@ public class VerifyCodeEditText extends RelativeLayout {
             mLlContainer.setDividerDrawable(etDividerDrawable);
         }
         mPwdTextViews = new PwdTextView[etNumber];
-
         for (int i = 0; i < mPwdTextViews.length; i++) {
             PwdTextView textView = new PwdTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, etTextSize);
             textView.setTextColor(etTextColor);
-            textView.setWidth(etWidth);
+            if (!mIsDivideEqually) {
+                textView.setWidth(etWidth);
+            }
             textView.setHeight(etWidth);
             if (i == 0) {
                 textView.setBackgroundDrawable(mBackgroundFocus);
@@ -191,11 +253,27 @@ public class VerifyCodeEditText extends RelativeLayout {
     /**
      * 初始化存储TextView 的容器
      *
-     * @param mTextViews
+     * @param textViews 输入文字
      */
-    private void initEtContainer(TextView[] mTextViews) {
-        for (TextView mTextView : mTextViews) {
-            mLlContainer.addView(mTextView);
+    private void initEtContainer(TextView[] textViews) {
+        if (mIsDivideEqually) {
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mLlContainer.getLayoutParams();
+            if (layoutParams == null) {
+                layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                layoutParams.gravity = Gravity.CENTER;
+            } else {
+                layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            }
+            mLlContainer.setLayoutParams(layoutParams);
+            LinearLayout.LayoutParams childParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
+            childParams.weight = 1;
+            for (TextView textView : textViews) {
+                mLlContainer.addView(textView, childParams);
+            }
+        } else {
+            for (TextView textView : textViews) {
+                mLlContainer.addView(textView);
+            }
         }
     }
 
@@ -222,8 +300,13 @@ public class VerifyCodeEditText extends RelativeLayout {
         });
     }
 
-    // 给TextView 设置文字
-    private void setText(String inputContent) {
+    /**
+     * 设置输入
+     *
+     * @param inputContent 输入内容
+     * @param isSilent     是否静默输入
+     */
+    private void setText(String inputContent, boolean isSilent) {
         if (TextUtils.isEmpty(inputContent)) {
             return;
         }
@@ -237,11 +320,11 @@ public class VerifyCodeEditText extends RelativeLayout {
                 tv.setBackgroundDrawable(mBackgroundNormal);
                 if (i < mEtNumber - 1) {
                     mPwdTextViews[i + 1].setBackgroundDrawable(mBackgroundFocus);
-                    if (mOnInputListener != null) {
+                    if (mOnInputListener != null && !isSilent) {
                         mOnInputListener.onChange(getInputValue());
                     }
                 } else if (i == mEtNumber - 1) {
-                    if (mOnInputListener != null) {
+                    if (mOnInputListener != null && !isSilent) {
                         mOnInputListener.onComplete(getInputValue());
                     }
                 }
@@ -318,13 +401,16 @@ public class VerifyCodeEditText extends RelativeLayout {
     /**
      * 设置输入框个数
      *
-     * @param etNumber
+     * @param etNumber 输入框个数
      */
     public void setEtNumber(int etNumber) {
         mEtNumber = etNumber;
         mEditText.removeTextChangedListener(mTextWatcher);
         mLlContainer.removeAllViews();
-        initUI();
+        if (mIsDivideEqually) {
+            refreshEditSizeWhenDivideEqually();
+        }
+        initView(getContext());
     }
 
     /**
@@ -338,9 +424,9 @@ public class VerifyCodeEditText extends RelativeLayout {
 
 
     /**
-     * 设置是否是密码模式 默认不是
+     * 设置是否是密码模式 默认false
      *
-     * @param isPwdMode
+     * @param isPwdMode 是否是密码模式
      */
     public void setPwdMode(boolean isPwdMode) {
         this.mIsPwd = isPwdMode;
@@ -356,7 +442,9 @@ public class VerifyCodeEditText extends RelativeLayout {
         return mEditText;
     }
 
-    // 输入完成 和 删除成功 的监听
+    /**
+     * 输入完成 和 删除成功 的监听
+     */
     private OnInputListener mOnInputListener;
 
     public void setOnInputListener(OnInputListener onInputListener) {
@@ -370,13 +458,15 @@ public class VerifyCodeEditText extends RelativeLayout {
     public interface OnInputListener {
         /**
          * 输入完成
+         *
+         * @param input 输入内容
          */
         void onComplete(String input);
 
         /**
          * 输入变化
          *
-         * @param input
+         * @param input 变化内容
          */
         void onChange(String input);
 
@@ -423,7 +513,7 @@ public class VerifyCodeEditText extends RelativeLayout {
                     if (i > mEtNumber) {
                         break;
                     }
-                    setText(strArray[i]);
+                    setText(strArray[i], false);
                     mEditText.setText("");
                 }
             }

@@ -59,7 +59,7 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
 
-        SlideBack.with(this)
+        SlideBack.withFixSize(this)
                 .haveScroll(true)
                 .callBack(this::finish)
                 .register();

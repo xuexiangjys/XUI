@@ -19,6 +19,7 @@ package com.xuexiang.xui.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -469,6 +470,23 @@ public final class WidgetUtils {
             }
         }
         view.setBackgroundColor(Color.TRANSPARENT);
+    }
+
+    /**
+     * 根据上下文获取Activity
+     *
+     * @param context 上下文
+     * @return Activity
+     */
+    public static Activity findActivity(Context context) {
+        if (context instanceof Activity) {
+            return (Activity) context;
+        }
+        if (context instanceof ContextWrapper) {
+            ContextWrapper wrapper = (ContextWrapper) context;
+            return findActivity(wrapper.getBaseContext());
+        }
+        return null;
     }
 
 }

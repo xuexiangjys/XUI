@@ -21,7 +21,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * 简单的集合列表适配器
@@ -36,7 +36,7 @@ public abstract class BaseListAdapter<T, H> extends XListAdapter<T> {
         super(context);
     }
 
-    public BaseListAdapter(Context context, List<T> data) {
+    public BaseListAdapter(Context context, Collection<T> data) {
         super(context, data);
     }
 

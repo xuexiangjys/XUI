@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2019 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,15 +16,12 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never">
+    <androidx.core.widget.NestedScrollView style="@style/ScrollViewStyle">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +38,7 @@
             <com.xuexiang.xui.widget.flowlayout.FlowTagLayout
                 android:id="@+id/flowlayout_normal_select"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 style="@style/TextStyle.Explain"
@@ -52,7 +48,7 @@
             <com.xuexiang.xui.widget.flowlayout.FlowTagLayout
                 android:id="@+id/flowlayout_single_select"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 style="@style/TextStyle.Explain"
@@ -63,7 +59,7 @@
                 android:id="@+id/flowlayout_single_select_cancelable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:ftl_single_cancelable="true"/>
+                app:ftl_single_cancelable="true" />
 
             <TextView
                 style="@style/TextStyle.Explain"
@@ -85,13 +81,13 @@
                 android:layout_height="wrap_content"
                 app:ftl_check_mode="multi"
                 app:ftl_entries="@array/tags_values"
-                app:ftl_selecteds="@array/tags_selects_values"/>
+                app:ftl_selecteds="@array/tags_selects_values" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -102,13 +98,13 @@
                     android:id="@+id/btn_add_tag"
                     style="@style/Button.Primary.wrap"
                     android:layout_marginStart="20dp"
-                    android:text="添加标签"/>
+                    android:text="添加标签" />
 
                 <com.xuexiang.xui.widget.alpha.XUIAlphaButton
                     android:id="@+id/btn_clear_tag"
                     style="@style/Button.Primary.wrap"
                     android:layout_marginStart="20dp"
-                    android:text="清除标签"/>
+                    android:text="清除标签" />
 
             </LinearLayout>
 
@@ -118,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:ftl_check_mode="display"
-                app:ftl_entries="@array/tags_values"/>
+                app:ftl_entries="@array/tags_values" />
 
         </LinearLayout>
 

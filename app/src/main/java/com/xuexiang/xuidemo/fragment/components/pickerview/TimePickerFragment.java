@@ -102,6 +102,8 @@ public class TimePickerFragment extends BaseFragment {
                     .setTimeSelectChangeListener(date -> Log.i("pvTime", "onTimeSelectChanged"))
                     .setTitleText("日期选择")
                     .build();
+//            // 这样设置日月年显示
+//            mDatePicker.getWheelTime().getView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
         mDatePicker.show();
     }

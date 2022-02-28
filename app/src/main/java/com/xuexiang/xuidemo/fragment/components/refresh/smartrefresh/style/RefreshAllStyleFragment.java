@@ -19,15 +19,17 @@ package com.xuexiang.xuidemo.fragment.components.refresh.smartrefresh.style;
 import android.content.Context;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.SmartRecyclerAdapter;
 import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
+import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
@@ -36,8 +38,6 @@ import java.lang.reflect.Constructor;
 import java.util.Arrays;
 
 import butterknife.BindView;
-
-import static android.R.layout.simple_list_item_2;
 
 /**
  * @author xuexiang
@@ -118,12 +118,17 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
     protected void initViews() {
         WidgetUtils.initRecyclerView(mRecyclerView);
 
-        mRecyclerView.setAdapter(new SmartRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, this) {
+        mRecyclerView.setAdapter(new BaseRecyclerAdapter<Item>(Arrays.asList(Item.values())) {
             @Override
-            protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {
-                holder.text(android.R.id.text1, model.name());
-                holder.text(android.R.id.text2, model.nameId);
+            protected void bindData(@NonNull RecyclerViewHolder holder, int position, Item item) {
+                holder.text(android.R.id.text1, item.name());
+                holder.text(android.R.id.text2, item.nameId);
                 holder.textColorId(android.R.id.text2, R.color.xui_config_color_light_blue_gray);
+            }
+
+            @Override
+            protected int getItemLayoutId(int viewType) {
+                return android.R.layout.simple_list_item_2;
             }
         });
         mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果

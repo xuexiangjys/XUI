@@ -24,6 +24,8 @@ public class VerifyCodeEditTextFragment extends BaseFragment implements VerifyCo
     VerifyCodeEditText vcet3;
     @BindView(R.id.vcet_4)
     VerifyCodeEditText vcet4;
+    @BindView(R.id.vcet_5)
+    VerifyCodeEditText vcet5;
 
     @Override
     protected int getLayoutId() {
@@ -41,6 +43,7 @@ public class VerifyCodeEditTextFragment extends BaseFragment implements VerifyCo
         vcet2.setOnInputListener(this);
         vcet3.setOnInputListener(this);
         vcet4.setOnInputListener(this);
+        vcet5.setOnInputListener(this);
     }
 
     @Override
@@ -64,5 +67,6 @@ public class VerifyCodeEditTextFragment extends BaseFragment implements VerifyCo
         vcet2.clearInputValue();
         vcet3.clearInputValue();
         vcet4.clearInputValue();
+        vcet5.clearInputValue();
     }
 }

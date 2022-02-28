@@ -40,7 +40,10 @@ import java.util.Date;
  */
 public class TimePickerView extends BasePickerView implements View.OnClickListener {
 
-    private WheelTime wheelTime; //自定义控件
+    /**
+     * 自定义时间选择控件
+     */
+    private WheelTime wheelTime;
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
 
@@ -301,6 +304,14 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         return wheelTime.isLunarMode();
     }
 
+    /**
+     * 获取时间选择控件
+     *
+     * @return 时间选择控件
+     */
+    public WheelTime getWheelTime() {
+        return wheelTime;
+    }
 
     @Override
     public boolean isDialog() {

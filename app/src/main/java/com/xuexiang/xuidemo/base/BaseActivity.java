@@ -4,18 +4,13 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
-import com.jpeng.jptabbar.anno.NorIcons;
-import com.jpeng.jptabbar.anno.SeleIcons;
-import com.jpeng.jptabbar.anno.Titles;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.slideback.SlideBack;
-import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
 
 import butterknife.ButterKnife;
@@ -28,18 +23,8 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
  * @author XUE
  * @since 2019/3/22 11:21
  */
-@Keep
 public class BaseActivity extends XPageActivity {
 
-    //==============需要注意的是，由于JPTabBar反射获取注解的是context，也就是容器Activity，因此需要将注解写在容器Activity内======================//
-    @Titles
-    public static final int[] mTitles = {R.string.tab1, R.string.tab2, R.string.tab3, R.string.tab4};
-    @SeleIcons
-    public static final int[] mSelectIcons = {R.drawable.nav_01_pre, R.drawable.nav_02_pre, R.drawable.nav_04_pre, R.drawable.nav_05_pre};
-    @NorIcons
-    public static final int[] mNormalIcons = {R.drawable.nav_01_nor, R.drawable.nav_02_nor, R.drawable.nav_04_nor, R.drawable.nav_05_nor};
-
-    //============================================================================================================================================================//
     /**
      * 是否支持侧滑返回
      */
@@ -132,7 +117,7 @@ public class BaseActivity extends XPageActivity {
      */
     protected void registerSlideBack() {
         if (isSupportSlideBack()) {
-            SlideBack.with(this)
+            SlideBack.withFixSize(this)
                     .haveScroll(true)
                     .edgeMode(ResUtils.isRtl() ? SlideBack.EDGE_RIGHT : SlideBack.EDGE_LEFT)
                     .callBack(this::popPage)

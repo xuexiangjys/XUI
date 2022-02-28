@@ -193,6 +193,30 @@ public final class DensityUtils {
     }
 
     /**
+     * 获取上下文所在的宽度
+     *
+     * @param context 上下文
+     * @param isReal  是否是真实的尺寸
+     * @return 上下文所在的宽度
+     */
+    public static int getDisplayWidth(Context context, boolean isReal) {
+        Point point = getDisplaySize(context, isReal);
+        return point != null ? point.x : 0;
+    }
+
+    /**
+     * 获取上下文所在的高度
+     *
+     * @param context 上下文
+     * @param isReal  是否是真实的尺寸
+     * @return 上下文所在的高度
+     */
+    public static int getDisplayHeight(Context context, boolean isReal) {
+        Point point = getDisplaySize(context, isReal);
+        return point != null ? point.y : 0;
+    }
+
+    /**
      * 获取应用窗口的度量信息
      *
      * @param activity 应用窗口

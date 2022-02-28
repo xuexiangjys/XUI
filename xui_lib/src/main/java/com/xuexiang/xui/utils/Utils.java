@@ -83,6 +83,20 @@ public final class Utils {
     /**
      * 计算状态栏高度 getStatusBarHeight
      *
+     * @param context 上下文
+     * @return 状态栏高度
+     */
+    public static int getStatusBarHeight(Context context) {
+        if (context == null) {
+            return getStatusBarHeight();
+        }
+        return getInternalDimensionSize(context.getResources(),
+                STATUS_BAR_HEIGHT_RES_NAME);
+    }
+
+    /**
+     * 计算状态栏高度 getStatusBarHeight
+     *
      * @return 状态栏高度
      */
     public static int getStatusBarHeight() {

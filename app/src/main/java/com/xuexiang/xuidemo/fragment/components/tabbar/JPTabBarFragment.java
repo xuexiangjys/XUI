@@ -14,7 +14,6 @@ import com.jpeng.jptabbar.OnTabSelectListener;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.XToastUtils;
 
@@ -22,8 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-
-import static com.xuexiang.xuidemo.base.BaseActivity.mTitles;
 
 /**
  * @author xuexiang
@@ -36,6 +33,10 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
     ViewPager mViewPager;
     @BindView(R.id.tabbar)
     JPTabBar mTabbar;
+
+    private int[] mTitles = {R.string.tab1, R.string.tab2, R.string.tab3, R.string.tab4};
+    private int[] mSelectIcons = {R.drawable.nav_01_pre, R.drawable.nav_02_pre, R.drawable.nav_04_pre, R.drawable.nav_05_pre};
+    private int[] mNormalIcons = {R.drawable.nav_01_nor, R.drawable.nav_02_nor, R.drawable.nav_04_nor, R.drawable.nav_05_nor};
 
     private Map<String, View> mPageMap = new HashMap<>();
 
@@ -89,13 +90,13 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
 
     /**
      * 初始化控件
-     * mTabbar的设置详细参见
-     * {@link BaseActivity#mTitles}
-     * {@link BaseActivity#mSelectIcons}
-     * {@link BaseActivity#mNormalIcons}
      */
     @Override
     protected void initViews() {
+        mTabbar.setTitles(mTitles);
+        mTabbar.setNormalIcons(mNormalIcons);
+        mTabbar.setSelectedIcons(mSelectIcons);
+        mTabbar.generate();
         //页面可以滑动
         mTabbar.setGradientEnable(true);
         mTabbar.setPageAnimateEnable(true);
@@ -108,7 +109,7 @@ public class JPTabBarFragment extends BaseFragment implements OnTabSelectListene
             mTabbar.getMiddleView().setOnClickListener(v -> XToastUtils.toast("中间点击"));
         }
 
-        mTabbar.showBadge(2,"", true);
+        mTabbar.showBadge(2, "", true);
     }
 
     @Override
