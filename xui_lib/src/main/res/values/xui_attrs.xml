@@ -1286,6 +1286,8 @@
         <attr name="indicator_width" format="dimension" />
         <!--指示器的高度，默认45dp-->
         <attr name="indicator_height" format="dimension" />
+        <!--指示器(整个Tab）的背景资源-->
+        <attr name="indicator_background" format="reference" />
 
         <!--指示器文字的大小，默认14sp-->
         <attr name="indicator_textSize" format="dimension" />
