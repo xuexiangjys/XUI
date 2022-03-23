@@ -136,7 +136,7 @@ dependencies {
     implementation deps.rxbinding
     implementation 'com.github.xuexiangjys:RxUtil2:1.2.1'
     // 任务框架
-    implementation 'com.github.xuexiangjys.XTask:xtask-core:1.0.0'
+    implementation 'com.github.xuexiangjys.XTask:xtask-core:1.0.2'
 
     // PictureSelector图片选择
     implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.5'
