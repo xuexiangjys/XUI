@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -311,6 +312,9 @@ public class XToast {
             if (icon == null) {
                 throw new IllegalArgumentException("Avoid passing 'icon' as null if 'withIcon' is set to true");
             }
+            if (Config.get().isRTL && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                toastLayout.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            }
             Utils.setBackground(toastIcon, Config.get().tintIcon ? Utils.tintIcon(icon, textColor) : icon);
         } else {
             toastIcon.setVisibility(View.GONE);
@@ -326,15 +330,26 @@ public class XToast {
             toastLayout.getBackground().setAlpha(Config.get().alpha);
         }
         currentToast.setView(toastLayout);
-
+        if (Config.get().gravity != -1) {
+            currentToast.setGravity(Config.get().gravity, Config.get().xOffset, Config.get().yOffset);
+        }
         if (!Config.get().allowQueue) {
             if (lastToast != null) {
                 lastToast.cancel();
             }
             lastToast = currentToast;
-        }
-        if (Config.get().gravity != -1) {
-            currentToast.setGravity(Config.get().gravity, Config.get().xOffset, Config.get().yOffset);
+            // solve the problem of lastToast memory leak
+            currentToast.getView().addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+                @Override
+                public void onViewAttachedToWindow(View v) {}
+                @Override
+                public void onViewDetachedFromWindow(View v) {
+                    v.removeOnAttachStateChangeListener(this);
+                    if (currentToast == lastToast) {
+                        lastToast = null;
+                    }
+                }
+            });
         }
         return currentToast;
     }
@@ -351,6 +366,7 @@ public class XToast {
         private int gravity = -1;
         private int xOffset = 0;
         private int yOffset = 0;
+        private boolean isRTL = false;
 
         private Config() {
 
@@ -359,7 +375,7 @@ public class XToast {
         /**
          * 获取单例
          *
-         * @return
+         * @return 配置
          */
         public static Config get() {
             if (sInstance == null) {
@@ -381,6 +397,7 @@ public class XToast {
             gravity = -1;
             xOffset = 0;
             yOffset = 0;
+            isRTL = false;
         }
 
         @CheckResult
@@ -440,6 +457,11 @@ public class XToast {
 
         public Config setYOffset(int yOffset) {
             this.yOffset = yOffset;
+            return this;
+        }
+
+        public Config setRTL(boolean isRTL) {
+            this.isRTL = isRTL;
             return this;
         }
     }
