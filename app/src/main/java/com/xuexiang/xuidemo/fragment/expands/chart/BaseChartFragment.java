@@ -3,7 +3,7 @@ package com.xuexiang.xuidemo.fragment.expands.chart;
 import com.github.mikephil.charting.charts.Chart;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 

@@ -27,7 +27,7 @@ import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.Con
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutGroupFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutPlaceholderFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
 

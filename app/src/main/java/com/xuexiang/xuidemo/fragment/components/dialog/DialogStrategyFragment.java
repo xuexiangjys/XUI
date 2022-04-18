@@ -28,7 +28,7 @@ import com.xuexiang.xui.widget.dialog.strategy.impl.AlertDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.impl.MaterialDialogStrategy;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
 

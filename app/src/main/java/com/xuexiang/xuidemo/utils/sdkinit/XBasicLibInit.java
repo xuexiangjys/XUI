@@ -27,9 +27,8 @@ import com.xuexiang.xrouter.launcher.XRouter;
 import com.xuexiang.xuidemo.MyApp;
 import com.xuexiang.xuidemo.base.BaseActivity;
 import com.xuexiang.xuidemo.base.db.InternalDataBase;
-import com.xuexiang.xuidemo.utils.LocationService;
 import com.xuexiang.xuidemo.utils.TokenUtils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.common.StringUtils;
 

@@ -49,7 +49,7 @@ import com.xuexiang.xaop.annotation.Safe;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.common.StringUtils;
 
 import java.util.Set;
@@ -151,6 +151,7 @@ public class CameraViewActivity extends AppCompatActivity implements
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case REQUEST_CAMERA_PERMISSION:
                 if (permissions.length != 1 || grantResults.length != 1) {

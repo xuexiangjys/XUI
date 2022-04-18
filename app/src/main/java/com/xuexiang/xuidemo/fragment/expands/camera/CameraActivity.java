@@ -37,7 +37,7 @@ import com.xuexiang.xui.widget.alpha.XUIAlphaImageView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.RotateSensorHelper;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.common.StringUtils;
 
 import java.util.ArrayList;

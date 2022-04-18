@@ -21,6 +21,7 @@ import android.content.Context;
 
 import com.tencent.mmkv.MMKV;
 import com.umeng.analytics.MobclickAgent;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.activity.LoginActivity;
 import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.common.StringUtils;

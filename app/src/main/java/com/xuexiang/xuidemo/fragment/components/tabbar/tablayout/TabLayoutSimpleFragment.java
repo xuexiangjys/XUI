@@ -26,7 +26,7 @@ import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 

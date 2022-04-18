@@ -10,7 +10,7 @@ import com.xuexiang.xui.widget.popupwindow.easypopup.HorizontalGravity;
 import com.xuexiang.xui.widget.popupwindow.easypopup.VerticalGravity;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;

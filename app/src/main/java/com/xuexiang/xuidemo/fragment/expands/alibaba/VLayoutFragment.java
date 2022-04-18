@@ -45,7 +45,7 @@ import com.xuexiang.xuidemo.adapter.base.delegate.SingleDelegateAdapter;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.display.ScreenUtils;
 
 import java.util.ArrayList;

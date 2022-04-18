@@ -39,7 +39,7 @@ import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.PrivacyUtils;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
 import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.common.RandomUtils;

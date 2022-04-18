@@ -22,7 +22,7 @@ import android.view.View;
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.support.SimpleClickSupport;
 import com.xuexiang.xaop.annotation.SingleClick;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 /**
  * 自定义点击事件

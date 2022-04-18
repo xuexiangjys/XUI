@@ -32,7 +32,7 @@ import com.xuexiang.xui.widget.picker.widget.configure.TimePickerType;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.data.DateUtils;
 
 import java.util.Calendar;

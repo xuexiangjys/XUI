@@ -24,7 +24,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.button.shinebutton.ShineButton;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.ShineButtonDialog;
 
 import butterknife.BindView;

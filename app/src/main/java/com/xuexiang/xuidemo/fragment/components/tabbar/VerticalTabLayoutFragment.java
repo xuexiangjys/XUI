@@ -34,7 +34,7 @@ import com.xuexiang.xui.widget.tabbar.vertical.TabView;
 import com.xuexiang.xui.widget.textview.badge.Badge;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.XUtil;
 
 import java.util.ArrayList;
