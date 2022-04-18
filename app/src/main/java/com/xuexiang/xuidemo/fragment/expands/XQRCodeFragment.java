@@ -138,7 +138,6 @@ public class XQRCodeFragment extends BaseSimpleListFragment {
             case CUSTOM:
                 PageOption.to(CustomCaptureFragment.class)
                         .setRequestCode(REQUEST_CUSTOM_SCAN)
-                        .setNewActivity(true)
                         .open(this);
                 break;
             case DEFAULT:
