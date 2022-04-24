@@ -52,20 +52,20 @@ import static com.xuexiang.xui.widget.imageview.preview.ui.PreviewActivity.KEY_T
  */
 public final class PreviewBuilder {
     private Activity mContext;
-    private Intent intent;
-    private Class className;
-    private OnVideoClickListener videoClickListener;
+    private Intent mIntent;
+    private Class mTargetClass;
+    private OnVideoClickListener mVideoClickListener;
 
     private PreviewBuilder(@NonNull Activity activity) {
         mContext = activity;
-        intent = new Intent();
+        mIntent = new Intent();
     }
 
     /**
      * 设置开始启动预览
      *
      * @param activity 启动界面
-     * @return
+     * @return this
      */
     public static PreviewBuilder from(@NonNull Activity activity) {
         return new PreviewBuilder(activity);
@@ -75,7 +75,7 @@ public final class PreviewBuilder {
      * 设置开始启动预览
      *
      * @param fragment 启动界面
-     * @return
+     * @return this
      */
     public static PreviewBuilder from(@NonNull Fragment fragment) {
         return new PreviewBuilder(fragment.getActivity());
@@ -83,12 +83,12 @@ public final class PreviewBuilder {
 
     /****
      * 自定义预览activity 类名
-     * @param className   继承GPreviewActivity
+     * @param className   继承PreviewActivity
      * @return PreviewBuilder
      */
-    public PreviewBuilder to(@NonNull Class className) {
-        this.className = className;
-        intent.setClass(mContext, className);
+    public PreviewBuilder to(@NonNull Class<? extends PreviewActivity> className) {
+        mTargetClass = className;
+        mIntent.setClass(mContext, className);
         return this;
     }
 
@@ -97,10 +97,10 @@ public final class PreviewBuilder {
      *
      * @param imgUrls 数据
      * @param <T>
-     * @return
+     * @return this
      */
     public <T extends IPreviewInfo> PreviewBuilder setImgs(@NonNull List<T> imgUrls) {
-        intent.putParcelableArrayListExtra(KEY_IMAGE_PATHS, new ArrayList<Parcelable>(imgUrls));
+        mIntent.putParcelableArrayListExtra(KEY_IMAGE_PATHS, new ArrayList<Parcelable>(imgUrls));
         return this;
     }
 
@@ -111,9 +111,9 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public <E extends IPreviewInfo> PreviewBuilder setImg(@NonNull E imgUrl) {
-        ArrayList arrayList = new ArrayList<Parcelable>();
+        ArrayList<E> arrayList = new ArrayList<>();
         arrayList.add(imgUrl);
-        intent.putParcelableArrayListExtra(KEY_IMAGE_PATHS, arrayList);
+        mIntent.putParcelableArrayListExtra(KEY_IMAGE_PATHS, arrayList);
         return this;
     }
 
@@ -123,7 +123,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      * **/
     public PreviewBuilder setPhotoFragment(@NonNull Class<? extends BasePhotoFragment> className) {
-        intent.putExtra(KEY_CLASSNAME, className);
+        mIntent.putExtra(KEY_CLASSNAME, className);
         return this;
     }
 
@@ -133,7 +133,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setCurrentIndex(int currentIndex) {
-        intent.putExtra(KEY_POSITION, currentIndex);
+        mIntent.putExtra(KEY_POSITION, currentIndex);
         return this;
     }
 
@@ -143,7 +143,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setType(@NonNull IndicatorType indicatorType) {
-        intent.putExtra(KEY_TYPE, indicatorType);
+        mIntent.putExtra(KEY_TYPE, indicatorType);
         return this;
     }
 
@@ -153,7 +153,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setProgressColor(@ColorRes int progressColorId) {
-        intent.putExtra(KEY_PROGRESS_COLOR, progressColorId);
+        mIntent.putExtra(KEY_PROGRESS_COLOR, progressColorId);
         return this;
     }
 
@@ -163,7 +163,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setDrag(boolean isDrag) {
-        intent.putExtra(KEY_DRAG, isDrag);
+        mIntent.putExtra(KEY_DRAG, isDrag);
         return this;
     }
 
@@ -174,8 +174,8 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setDrag(boolean isDrag, float sensitivity) {
-        intent.putExtra(KEY_DRAG, isDrag);
-        intent.putExtra(KEY_SENSITIVITY, sensitivity);
+        mIntent.putExtra(KEY_DRAG, isDrag);
+        mIntent.putExtra(KEY_SENSITIVITY, sensitivity);
         return this;
     }
 
@@ -185,7 +185,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setSingleShowType(boolean isShow) {
-        intent.putExtra(KEY_IS_SHOW, isShow);
+        mIntent.putExtra(KEY_IS_SHOW, isShow);
         return this;
     }
 
@@ -195,7 +195,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setSingleFling(boolean isSingleFling) {
-        intent.putExtra(KEY_SING_FILING, isSingleFling);
+        mIntent.putExtra(KEY_SING_FILING, isSingleFling);
         return this;
     }
 
@@ -205,7 +205,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setDuration(int setDuration) {
-        intent.putExtra(KEY_DURATION, setDuration);
+        mIntent.putExtra(KEY_DURATION, setDuration);
         return this;
     }
 
@@ -215,7 +215,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setFullscreen(boolean isFullscreen) {
-        intent.putExtra(KEY_IS_FULLSCREEN, isFullscreen);
+        mIntent.putExtra(KEY_IS_FULLSCREEN, isFullscreen);
         return this;
     }
 
@@ -224,7 +224,7 @@ public final class PreviewBuilder {
      * @return PreviewBuilder
      */
     public PreviewBuilder setOnVideoPlayerListener(OnVideoClickListener listener) {
-        this.videoClickListener = listener;
+        mVideoClickListener = listener;
         return this;
     }
 
@@ -232,15 +232,15 @@ public final class PreviewBuilder {
      * 启动
      */
     public void start() {
-        if (className == null) {
-            intent.setClass(mContext, PreviewActivity.class);
+        if (mTargetClass == null) {
+            mIntent.setClass(mContext, PreviewActivity.class);
         } else {
-            intent.setClass(mContext, className);
+            mIntent.setClass(mContext, mTargetClass);
         }
-        BasePhotoFragment.listener = videoClickListener;
-        mContext.startActivity(intent);
+        BasePhotoFragment.listener = mVideoClickListener;
+        mContext.startActivity(mIntent);
         mContext.overridePendingTransition(0, 0);
-        intent = null;
+        mIntent = null;
         mContext = null;
     }
 
