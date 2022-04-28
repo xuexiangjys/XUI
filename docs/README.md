@@ -173,7 +173,7 @@ protected void attachBaseContext(Context newBase) {
 
 > The demo program is about 18M (mainly because the demo integrates a small video shooting library, which is about 13M, while XUI library is only 644k in size). The project is relatively large, and dandelion is recommended to download.
 
-![xui_size.png](https://img.rruu.net/image/5f7d8400bf84f)
+![xui_size.png](./art/xui_size.png)
 
 #### Pgyer Download
 
@@ -181,13 +181,13 @@ protected void attachBaseContext(Context newBase) {
 
 [![Pgyer](https://img.shields.io/badge/downloads-pgyer-blue.svg)](https://www.pgyer.com/XUIDemo)
 
-![download_pugongying.png](https://img.rruu.net/image/5f7d827de5af4)
+[![download_pugongying.png](./art/download_pugongying.png)](https://www.pgyer.com/XUIDemo)
 
 #### Github Download
 
 [![Github](https://img.shields.io/badge/downloads-Github-blue.svg)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
 
-![download_github.png](https://img.rruu.net/image/5f7d827d5d755)
+![download_github.png](./art/download_github.png)
 
 ## Thanks
 
@@ -210,8 +210,10 @@ protected void attachBaseContext(Context newBase) {
 
 ## Contact
 
-[![](https://img.shields.io/badge/XUIGroup1-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
+[![](https://img.shields.io/badge/XUI开源交流群-695048677-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=a2ab505862c81f1528416b585832022e835ce0abe28eefa4b0d53f8094a5691d)
 
-[![](https://img.shields.io/badge/XUIGroup2-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
+[![](https://img.shields.io/badge/XUI开源交流2群-700246750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=39497f13d5e456d219be785361a282d2d9c8cd9ba7745f6170def9d90643e164)
 
-![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
+[![](https://img.shields.io/badge/XUI开源交流3群-1090612354-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=nOY3GGJY-jiwzhQpR8E06G-yrOUsxCP1)
+
+![](https://s1.ax1x.com/2022/04/27/LbGMJH.jpg)

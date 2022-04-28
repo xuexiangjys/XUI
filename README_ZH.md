@@ -26,7 +26,7 @@
 
 | 公众号   | 掘金     |  知乎    |  CSDN   |   简书   |   思否  |   哔哩哔哩  |   今日头条
 |---------|---------|--------- |---------|---------|---------|---------|---------|
-| [我的Android开源之旅](https://ss.im5i.com/2021/06/14/6tqAU.png)  |  [点我](https://juejin.im/user/598feef55188257d592e56ed/posts)    |   [点我](https://www.zhihu.com/people/xuexiangjys/posts)       |   [点我](https://xuexiangjys.blog.csdn.net/)  |   [点我](https://www.jianshu.com/u/6bf605575337)  |   [点我](https://segmentfault.com/u/xuexiangjys)  |   [点我](https://space.bilibili.com/483850585)  |   [点我](https://img.rruu.net/image/5ff34ff7b02dd)
+| [我的Android开源之旅](https://t.1yb.co/Irse)  |  [点我](https://juejin.im/user/598feef55188257d592e56ed/posts)    |   [点我](https://www.zhihu.com/people/xuexiangjys/posts)       |   [点我](https://xuexiangjys.blog.csdn.net/)  |   [点我](https://www.jianshu.com/u/6bf605575337)  |   [点我](https://segmentfault.com/u/xuexiangjys)  |   [点我](https://space.bilibili.com/483850585)  |   [点我](https://img.rruu.net/image/5ff34ff7b02dd)
 
 ## X系列库快速集成
 
@@ -170,23 +170,23 @@ protected void attachBaseContext(Context newBase) {
 
 ### 演示程序截图
 
-![1_splash.png](https://ss.im5i.com/2021/06/14/6uDhR.png) &emsp; ![2_main.png](https://ss.im5i.com/2021/06/14/6uzmO.png) &emsp; ![3_about.png](https://ss.im5i.com/2021/06/14/6uaJd.png) &emsp;
+![1_splash.png](./art/1_splash.png) &emsp; ![2_main.png](./art/2_main.png) &emsp; ![3_about.png](./art/3_about.png) &emsp;
 
-![4_menu.png](https://ss.im5i.com/2021/06/14/6u4n4.png) &emsp; ![5_dialog.png](https://ss.im5i.com/2021/06/14/6upMW.png) &emsp; ![6_bottom_dialog.png](https://ss.im5i.com/2021/06/14/6uMdG.png) &emsp;
+![4_menu.png](./art/4_menu.png) &emsp; ![5_dialog.png](./art/5_dialog.png) &emsp; ![6_bottom_dialog.png](./art/6_bottom_dialog.png) &emsp;
 
-![7_picker.png](https://ss.im5i.com/2021/06/14/6uOWz.png) &emsp; ![8_webview.png](https://ss.im5i.com/2021/06/14/6uk05.png) &emsp;![9_flowlayout.png](https://ss.im5i.com/2021/06/14/65FS6.png) &emsp;
+![7_picker.png](./art/7_picker.png) &emsp; ![8_webview.png](./art/8_webview.png) &emsp;![9_flowlayout.png](./art/9_flowlayout.png) &emsp;
 
-![10_ninegrid.png](https://ss.im5i.com/2021/06/14/65Qt8.png) &emsp; ![11_radius_imageview.png](https://ss.im5i.com/2021/06/14/65hxU.png) &emsp; ![12_badge_view.png](https://ss.im5i.com/2021/06/14/65Cww.png) &emsp;
+![10_ninegrid.png](./art/10_ninegrid.png) &emsp; ![11_radius_imageview.png](./art/11_radius_imageview.png) &emsp; ![12_badge_view.png](./art/12_badge_view.png) &emsp;
 
-![13_tabview.png](https://ss.im5i.com/2021/06/14/65qJZ.png) &emsp; ![14_citypicker.png](https://ss.im5i.com/2021/06/14/65voJ.png) &emsp; ![15_refresh_layout.png](https://ss.im5i.com/2021/06/14/656O1.png) &emsp;
+![13_tabview.png](./art/13_tabview.png) &emsp; ![14_citypicker.png](./art/14_citypicker.png) &emsp; ![15_refresh_layout.png](./art/15_refresh_layout.png) &emsp;
 
-![16_spinner.png](https://ss.im5i.com/2021/06/14/65Sdn.png) &emsp;
+![16_spinner.png](./art/16_spinner.png) &emsp;
 
 ### Demo下载
 
 > 演示程序大概18M（主要是demo中集成了一个小视频拍摄的库比较大，大约13M左右，而XUI库目前只有644k大小），项目比较大，推荐使用蒲公英下载。
 
-![xui_size.png](https://ss.im5i.com/2021/06/14/65rcS.png)
+![xui_size.png](./art/xui_size.png)
 
 #### 蒲公英下载
 
@@ -194,13 +194,13 @@ protected void attachBaseContext(Context newBase) {
 
 [![蒲公英](https://img.shields.io/badge/downloads-蒲公英-blue.svg)](https://www.pgyer.com/XUIDemo)
 
-[![download_pugongying.png](https://ss.im5i.com/2021/06/14/65VuP.png)](https://www.pgyer.com/XUIDemo)
+[![download_pugongying.png](./art/download_pugongying.png)](https://www.pgyer.com/XUIDemo)
 
 #### Github下载
 
 [![Github](https://img.shields.io/badge/downloads-Github-blue.svg)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
 
-[![download_github.png](https://ss.im5i.com/2021/06/14/65PS2.png)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
+[![download_github.png](./art/download_github.png)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
 
 ## 贡献代码
 
@@ -240,7 +240,7 @@ protected void attachBaseContext(Context newBase) {
 
 > 你的打赏是我维护的动力，我将会列出所有打赏人员的清单在下方作为凭证，打赏前请留下打赏项目的备注！
 
-![pay.png](https://ss.im5i.com/2021/06/14/6twG6.png)
+![pay.png](https://raw.githubusercontent.com/xuexiangjys/Resource/master/img/pay/pay.png)
 
 感谢下面小伙伴的打赏：
 
@@ -332,4 +332,4 @@ X*？ | 18.88￥ | 微信
 
 [![](https://img.shields.io/badge/XUI开源交流3群-1090612354-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=nOY3GGJY-jiwzhQpR8E06G-yrOUsxCP1)
 
-![](https://ss.im5i.com/2021/06/14/65yoL.jpg)
+![](https://s1.ax1x.com/2022/04/27/LbGMJH.jpg)
