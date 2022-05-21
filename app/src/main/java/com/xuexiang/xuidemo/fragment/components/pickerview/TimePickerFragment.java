@@ -77,10 +77,10 @@ public class TimePickerFragment extends BaseFragment {
                 showTimePickerDialog();
                 break;
             case R.id.btn_date_system:
-                showDatePickerDialog(getContext(), DatePickerDialog.THEME_DEVICE_DEFAULT_LIGHT, (TextView) view, Calendar.getInstance());
+                showDatePickerDialog(getContext(), R.style.XUITheme_AlertDialog, (TextView) view, Calendar.getInstance());
                 break;
             case R.id.btn_time_system:
-                showTimePickerDialog(getContext(), DatePickerDialog.THEME_DEVICE_DEFAULT_LIGHT, (TextView) view, Calendar.getInstance());
+                showTimePickerDialog(getContext(), R.style.XUITheme_AlertDialog, (TextView) view, Calendar.getInstance());
                 break;
             case R.id.btn_time_period:
                 showTimePeriodPicker();
