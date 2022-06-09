@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -60,6 +61,10 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
      * ViewPager
      */
     protected ViewPager mViewPager;
+    /**
+     * 显示器(小点)的最顶层父容器
+     */
+    protected RelativeLayout mRlBottomBarParent;
     /**
      * 数据源
      */
@@ -133,10 +138,11 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
      */
     private float mContainerScale;
 
+    private static final String NAMESPACE_ANDROID = "http://schemas.android.com/apk/res/android";
 
     private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
-        public boolean handleMessage(Message message) {
+        public boolean handleMessage(@NonNull Message message) {
             scrollToNextItem(mCurrentPosition);
             return true;
         }
@@ -160,10 +166,10 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
     /**
      * 初始化属性
      *
-     * @param context
-     * @param attrs
+     * @param context 上下文
+     * @param attrs   属性
      */
-    private void initAttrs(Context context, AttributeSet attrs) {
+    private void initAttrs(@NonNull Context context, @Nullable AttributeSet attrs) {
         mContext = context;
         mDisplayMetrics = context.getResources().getDisplayMetrics();
 
@@ -189,40 +195,20 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
         ta.recycle();
 
         //get layout_height
-        String height = attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "layout_height");
+        int height = attrs != null ? attrs.getAttributeIntValue(NAMESPACE_ANDROID, "layout_height", LayoutParams.WRAP_CONTENT) : LayoutParams.WRAP_CONTENT;
 
         //create ViewPager
         mViewPager = isLoopEnable ? new LoopViewPager(context) : new ViewPager(context);
         mViewPager.setOverScrollMode(OVER_SCROLL_NEVER);
         mItemWidth = mDisplayMetrics.widthPixels;
-        //scale not set in xml
-        if (mContainerScale < 0) {
-            if (height.equals(ViewGroup.LayoutParams.MATCH_PARENT + "")) {
-                mItemHeight = LayoutParams.MATCH_PARENT;
-            } else if (height.equals(ViewGroup.LayoutParams.WRAP_CONTENT + "")) {
-                mItemHeight = LayoutParams.WRAP_CONTENT;
-            } else {
-                int[] systemAttrs = {android.R.attr.layout_height};
-                TypedArray a = context.obtainStyledAttributes(attrs, systemAttrs);
-                int h = a.getDimensionPixelSize(0, ViewGroup.LayoutParams.WRAP_CONTENT);
-                a.recycle();
-                mItemHeight = h;
-            }
-        } else {
-            if (mContainerScale > 1) {
-                mContainerScale = 1;
-            }
-            mItemHeight = (int) (mItemWidth * mContainerScale);
-        }
+
+        initHeight(context, height, attrs);
 
         LayoutParams lp = new LayoutParams(mItemWidth, mItemHeight);
         addView(mViewPager, lp);
 
         //top parent of indicators
-        /**
-         * 显示器(小点)的最顶层父容器
-         */
-        RelativeLayout mRlBottomBarParent = new RelativeLayout(context);
+        mRlBottomBarParent = new RelativeLayout(context);
         addView(mRlBottomBarParent, lp);
 
         //container of indicators and title
@@ -237,19 +223,10 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
         mLlBottomBar.setClipToPadding(false);
 
         //container of indicators
-        mLlIndicatorContainer = new LinearLayout(context);
-        mLlIndicatorContainer.setGravity(Gravity.CENTER);
-        mLlIndicatorContainer.setVisibility(isIndicatorShow ? VISIBLE : INVISIBLE);
-        mLlIndicatorContainer.setClipChildren(false);
-        mLlIndicatorContainer.setClipToPadding(false);
+        initIndicatorContainer(context, isIndicatorShow);
 
         // title
-        mTvTitle = new TextView(context);
-        mTvTitle.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F));
-        mTvTitle.setSingleLine(true);
-        mTvTitle.setTextColor(textColor);
-        mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-        mTvTitle.setVisibility(isTitleShow ? VISIBLE : INVISIBLE);
+        initTitle(context, textColor, textSize, isTitleShow);
 
         if (indicatorGravity == Gravity.CENTER) {
             mLlBottomBar.setGravity(Gravity.CENTER);
@@ -273,6 +250,56 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
                 mTvTitle.setGravity(Gravity.RIGHT);
             }
         }
+    }
+
+    private void initHeight(@NonNull Context context, int height, @Nullable AttributeSet attrs) {
+        //scale not set in xml
+        if (mContainerScale < 0) {
+            if (height == ViewGroup.LayoutParams.MATCH_PARENT || height == ViewGroup.LayoutParams.WRAP_CONTENT) {
+                mItemHeight = height;
+            } else {
+                int[] systemAttrs = {android.R.attr.layout_height};
+                TypedArray a = context.obtainStyledAttributes(attrs, systemAttrs);
+                int h = a.getDimensionPixelSize(0, ViewGroup.LayoutParams.WRAP_CONTENT);
+                a.recycle();
+                mItemHeight = h;
+            }
+        } else {
+            if (mContainerScale > 1) {
+                mContainerScale = 1;
+            }
+            mItemHeight = (int) (mItemWidth * mContainerScale);
+        }
+    }
+
+    private void initIndicatorContainer(@NonNull Context context, boolean isIndicatorShow) {
+        mLlIndicatorContainer = new LinearLayout(context);
+        mLlIndicatorContainer.setGravity(Gravity.CENTER);
+        mLlIndicatorContainer.setVisibility(isIndicatorShow ? VISIBLE : INVISIBLE);
+        mLlIndicatorContainer.setClipChildren(false);
+        mLlIndicatorContainer.setClipToPadding(false);
+    }
+
+    private void initTitle(@NonNull Context context, int textColor, float textSize, boolean isTitleShow) {
+        mTvTitle = new TextView(context);
+        mTvTitle.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F));
+        mTvTitle.setSingleLine(true);
+        mTvTitle.setTextColor(textColor);
+        mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        mTvTitle.setVisibility(isTitleShow ? VISIBLE : INVISIBLE);
+    }
+
+    public void setContainerScale(float containerScale) {
+        mContainerScale = containerScale;
+        if (mContainerScale > 1) {
+            mContainerScale = 1;
+        }
+        mItemHeight = (int) (mItemWidth * mContainerScale);
+        removeView(mViewPager);
+        removeView(mRlBottomBarParent);
+        LayoutParams lp = new LayoutParams(mItemWidth, mItemHeight);
+        addView(mViewPager, lp);
+        addView(mRlBottomBarParent, lp);
     }
 
     /**
@@ -469,8 +496,8 @@ public abstract class BaseBanner<E, T extends BaseBanner<E, T>> extends Relative
 
         if (mInternalPageListener != null) {
             mViewPager.removeOnPageChangeListener(mInternalPageListener);
+            mViewPager.addOnPageChangeListener(mInternalPageListener);
         }
-        mViewPager.addOnPageChangeListener(mInternalPageListener);
     }
 
     /**

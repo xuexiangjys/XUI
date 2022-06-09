@@ -89,6 +89,12 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
         }
     }
 
+    @Override
+    public void setContainerScale(float containerScale) {
+        super.setContainerScale(containerScale);
+        mScale = getContainerScale();
+    }
+
     /**
      * @return 轮播布局的ID
      */
