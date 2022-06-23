@@ -9,6 +9,8 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.xuexiang.xui.R;
@@ -80,13 +82,21 @@ public class MarqueeTextView extends AppCompatTextView {
 
     private final Object mLock = new Object();
 
-    public MarqueeTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs);
+    public MarqueeTextView(@NonNull Context context) {
+        this(context, null);
     }
 
-    private void init(AttributeSet attrs) {
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MarqueeTextView);
+    public MarqueeTextView(@NonNull Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, R.attr.MarqueeTextViewStyle);
+    }
+
+    public MarqueeTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs);
+    }
+
+    private void init(@NonNull Context context, @Nullable AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MarqueeTextView);
         mIsAutoFit = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoFit, false);
         mIsAutoDisplay = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoDisplay, false);
 

@@ -9,6 +9,7 @@ import com.xuexiang.xuidemo.fragment.components.textview.BadgeViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.ExpandableTextViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.LabelViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.LoggerTextViewFragment;
+import com.xuexiang.xuidemo.fragment.components.textview.ReadMoreTextViewFragment;
 import com.xuexiang.xuidemo.fragment.components.textview.SuperTextViewFragment;
 
 /**
@@ -29,7 +30,8 @@ public class TextViewFragment extends ComponentContainerFragment {
                 BadgeViewFragment.class,
                 AutoFitTextViewFragment.class,
                 AutoHyphenationTextViewFragment.class,
-                LoggerTextViewFragment.class
+                LoggerTextViewFragment.class,
+                ReadMoreTextViewFragment.class
         };
     }
 

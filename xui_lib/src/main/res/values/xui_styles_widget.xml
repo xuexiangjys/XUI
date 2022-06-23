@@ -557,4 +557,23 @@
         <item name="android:padding">?attr/xui_config_content_spacing_horizontal</item>
     </style>
 
+    <!--  滚动文字  -->
+    <style name="MarqueeTextView" parent="AppTheme.Widget.TextView">
+        <item name="mtv_isAutoFit">false</item>
+        <item name="mtv_isAutoDisplay">false</item>
+    </style>
+
+    <!--  ReadMoreTextView  -->
+    <style name="ReadMoreTextView" parent="AppTheme.Widget.TextView">
+        <item name="rmtv_trimExpandedText">@string/xui_rmtv_show_less</item>
+        <item name="rmtv_trimCollapsedText">@string/xui_rmtv_show_more</item>
+        <item name="rmtv_ellipsize">@string/xui_rmtv_ellipsize</item>
+        <item name="rmtv_colorClickableText">?attr/colorAccent</item>
+        <item name="rmtv_trimLength">240</item>
+        <item name="rmtv_trimLines">2</item>
+        <item name="rmtv_trimMode">line</item>
+        <item name="rmtv_showTrimExpandedText">true</item>
+    </style>
+
+
 </resources>

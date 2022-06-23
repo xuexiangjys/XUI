@@ -922,6 +922,31 @@
         <attr name="etv_collapseDrawable" format="reference" />
     </declare-styleable>
 
+    <!--ReadMoreTextView-->
+    <declare-styleable name="ReadMoreTextView">
+        <!-- 展开显示的文字, 默认：隐藏 -->
+        <attr name="rmtv_trimExpandedText" format="string" />
+        <!-- 折叠显示的文字, 默认：更多 -->
+        <attr name="rmtv_trimCollapsedText" format="string" />
+        <!-- 文字过长显示符号，默认"..." -->
+        <attr name="rmtv_ellipsize" format="string" />
+        <!-- 是否显示展开的文字，默认：true -->
+        <attr name="rmtv_showTrimExpandedText" format="boolean" />
+        <!-- 折叠/展开按钮文字颜色，默认：R.attr.colorAccent -->
+        <attr name="rmtv_colorClickableText" format="color" />
+        <!-- 裁剪模式，默认：line -->
+        <attr name="rmtv_trimMode">
+            <!-- 行限制 -->
+            <enum name="line" value="0" />
+            <!-- 长度限制 -->
+            <enum name="length" value="1" />
+        </attr>
+        <!-- 最多显示的行数，默认：2行 -->
+        <attr name="rmtv_trimLines" format="integer" />
+        <!-- 最多显示的字符串长度, 默认：240 -->
+        <attr name="rmtv_trimLength" format="integer" />
+    </declare-styleable>
+
     <!--LabelView-->
     <declare-styleable name="LabelView">
         <!--距离对角的距离-->
@@ -1719,11 +1744,14 @@
         <attr name="xui_commonList_titleColor" format="color" />
         <attr name="xui_commonList_detailColor" format="color" />
     </declare-styleable>
+
     <attr name="XUIGroupListViewStyle" format="reference" />
     <attr name="XUICommonListItemViewStyle" format="reference" />
     <attr name="XUIGroupListSectionViewStyle" format="reference" />
     <attr name="XUITipPointStyle" format="reference" />
     <attr name="XUITipNewStyle" format="reference" />
+    <attr name="MarqueeTextViewStyle" format="reference" />
     <attr name="LoggerTextViewStyle" format="reference" />
+    <attr name="ReadMoreTextViewStyle" format="reference" />
 
 </resources>

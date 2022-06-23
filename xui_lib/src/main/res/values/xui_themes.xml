@@ -273,7 +273,8 @@
         <item name="BannerLayoutStyle">@style/BannerLayout</item>
         <item name="DropDownMenuStyle">@style/DropDownMenu</item>
         <item name="LoggerTextViewStyle">@style/LoggerTextView</item>
-
+        <item name="MarqueeTextViewStyle">@style/MarqueeTextView</item>
+        <item name="ReadMoreTextViewStyle">@style/ReadMoreTextView</item>
     </style>
 
     <style name="XUITheme" parent="XUIBaseTheme" />

@@ -96,11 +96,15 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
     }
 
     /**
+     * 设置轮播布局的ID
+     *
      * @return 轮播布局的ID
      */
     protected abstract int getItemLayoutId();
 
     /**
+     * 设置图片控件的ID
+     *
      * @return 图片控件的ID
      */
     protected abstract int getImageViewId();
