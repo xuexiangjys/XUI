@@ -63,7 +63,7 @@ public class ReadMoreTextView extends AppCompatTextView {
      */
     private CharSequence trimExpandedText;
     /**
-     *
+     * 字符过长裁剪分隔符
      */
     private CharSequence ellipsizeText;
     private ReadMoreClickableSpan viewMoreSpan;
@@ -93,11 +93,11 @@ public class ReadMoreTextView extends AppCompatTextView {
 
     public ReadMoreTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttrs(context, attrs);
+        initAttrs(context, attrs, defStyleAttr);
     }
 
-    private void initAttrs(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ReadMoreTextView);
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ReadMoreTextView, defStyleAttr, 0);
         trimLength = typedArray.getInt(R.styleable.ReadMoreTextView_rmtv_trimLength, DEFAULT_TRIM_LENGTH);
         trimCollapsedText = typedArray.getString(R.styleable.ReadMoreTextView_rmtv_trimCollapsedText);
         trimExpandedText = typedArray.getString(R.styleable.ReadMoreTextView_rmtv_trimExpandedText);

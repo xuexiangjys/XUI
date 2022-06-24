@@ -23,6 +23,8 @@ import android.util.TypedValue;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.xuexiang.xui.R;
+
 /**
  * 能够自适应字体大小的TextView
  *
@@ -38,8 +40,7 @@ public class AutoFitTextView extends AppCompatTextView implements AutoFitHelper.
     }
 
     public AutoFitTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs, 0);
+        this(context, attrs, R.attr.AutoFitTextViewStyle);
     }
 
     public AutoFitTextView(Context context, AttributeSet attrs, int defStyle) {

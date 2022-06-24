@@ -134,7 +134,7 @@ public class DropDownMenu extends LinearLayout {
         super(context, attrs, defStyleAttr);
         setOrientation(VERTICAL);
         //为DropDownMenu添加自定义属性
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.DropDownMenu);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.DropDownMenu, defStyleAttr, 0);
         mContentLayoutId = array.getResourceId(R.styleable.DropDownMenu_ddm_contentLayoutId, -1);
         mDividerColor = array.getColor(R.styleable.DropDownMenu_ddm_dividerColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
         mDividerWidth = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_dividerWidth, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_divider_width));

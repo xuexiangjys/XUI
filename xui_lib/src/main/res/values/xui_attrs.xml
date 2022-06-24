@@ -48,7 +48,6 @@
         <!--标题栏背景色是否使用主题颜色，默认是true-->
         <attr name="tb_useThemeColor" format="boolean" />
     </declare-styleable>
-    <attr name="TitleBarStyle" format="reference" />
 
     <!--XUILayout-->
     <declare-styleable name="XUILayout">
@@ -275,7 +274,6 @@
         <!--轮播速度，默认是1.0F-->
         <attr name="bl_moveSpeed" format="float" />
     </declare-styleable>
-    <attr name="BannerLayoutStyle" format="integer" />
 
     <!--=====================================================================-->
 
@@ -288,8 +286,6 @@
         <!--退出的动画-->
         <attr name="stf_outAnimation" format="reference" />
     </declare-styleable>
-    <attr name="StatefulLayoutStyle" format="reference" />
-
 
     <!--MultipleStatusView-->
     <declare-styleable name="MultipleStatusView">
@@ -304,8 +300,6 @@
         <!--主内容页面-->
         <attr name="msv_contentView" format="reference" />
     </declare-styleable>
-    <attr name="MultipleStatusViewStyle" format="reference" />
-
 
     <!--=====================================================================-->
 
@@ -331,7 +325,6 @@
         <attr name="lv_arc_single" format="boolean" />
     </declare-styleable>
 
-    <attr name="MiniLoadingStyle" format="reference" />
     <declare-styleable name="MiniLoadingView">
         <!--loading控件的大小，默认32dp-->
         <attr name="mlv_loading_view_size" format="dimension" />
@@ -526,7 +519,6 @@
         <!--指示条的padding，默认是16dp-->
         <attr name="cpv_scaleZone_padding" format="dimension" />
     </declare-styleable>
-    <attr name="CircleProgressViewStyle" format="reference" />
 
     <!--HorizontalProgressView-->
     <declare-styleable name="HorizontalProgressView">
@@ -571,7 +563,6 @@
         <!--设置进度值是否跟随控件动画移动， 默认是true-->
         <attr name="hpv_text_movedEnable" format="boolean" />
     </declare-styleable>
-    <attr name="HorizontalProgressViewStyle" format="reference" />
 
     <!--=============================Button========================================-->
 
@@ -610,7 +601,6 @@
         <!--倒计时是否可用，默认为 true-->
         <attr name="cdbt_enableCountDown" format="boolean" />
     </declare-styleable>
-    <attr name="CountDownButtonStyle" format="reference" />
 
     <!-- ShadowButton -->
     <declare-styleable name="ShadowButton">
@@ -747,7 +737,6 @@
         <!--缩放动画持续的时间，默认是200ms-->
         <attr name="rv_zoomDuration" format="integer" />
     </declare-styleable>
-    <attr name="RippleViewStyle" format="reference" />
 
     <!--SwitchIconView-->
     <declare-styleable name="SwitchIconView">
@@ -764,7 +753,6 @@
         <!--不可点击时是否没有斜杠,默认false-->
         <attr name="siv_no_dash" format="boolean" />
     </declare-styleable>
-    <attr name="SwitchIconViewStyle" format="reference" />
 
     <!--  SmoothCheckBox  -->
     <declare-styleable name="SmoothCheckBox">
@@ -781,7 +769,6 @@
         <!-- 未选中时边框颜色，默认是#DFDFDF-->
         <attr name="scb_color_unchecked_stroke" format="color" />
     </declare-styleable>
-    <attr name="SmoothCheckBoxStyle" format="reference" />
 
     <!--  ShineButton  -->
     <declare-styleable name="ShineButton">
@@ -816,7 +803,6 @@
         <!-- 图标资源  -->
         <attr name="sb_icon_image" format="reference" />
     </declare-styleable>
-    <attr name="ShineButtonStyle" format="reference" />
 
     <!--===============================Spinner======================================-->
     <!--MaterialSpinner-->
@@ -850,7 +836,6 @@
         <!--弹出窗的动画样式-->
         <attr name="ms_pop_anim_style" format="reference" />
     </declare-styleable>
-    <attr name="MaterialSpinnerStyle" format="reference" />
 
     <!--EditSpinner-->
     <declare-styleable name="EditSpinner">
@@ -886,7 +871,6 @@
         <!--弹出窗的动画样式-->
         <attr name="es_popAnimStyle" format="reference" />
     </declare-styleable>
-    <attr name="EditSpinnerStyle" format="reference" />
 
     <!--===============================TextView======================================-->
     <!-- MarqueeView -->
@@ -993,8 +977,6 @@
         <!--调整的精度，精度值越小，越精准，耗时越长，默认是0.5-->
         <attr name="aftv_precision" format="float" />
     </declare-styleable>
-    <attr name="AutoFitTextViewStyle" format="reference" />
-
 
     <!--=============================EditText========================================-->
     <!-- MaterialEditText -->
@@ -1082,8 +1064,6 @@
         <!--校验不通过的提示信息-->
         <attr name="met_errorMessage" format="string" />
     </declare-styleable>
-    <attr name="MaterialEditTextStyle" format="reference" />
-
 
     <!-- 验证码输入框-->
     <declare-styleable name="VerifyCodeEditText">
@@ -1108,7 +1088,6 @@
         <!--密码模式时,圆的半径，默认是5dp-->
         <attr name="vcet_pwd_radius" format="dimension|reference" />
     </declare-styleable>
-    <attr name="VerifyCodeEditTextStyle" format="reference" />
 
     <!-- PasswordEditText -->
     <declare-styleable name="PasswordEditText">
@@ -1125,7 +1104,6 @@
         <!--密码输入框文字的样式是否是“*”，默认是false-->
         <attr name="pet_isAsteriskStyle" format="boolean" />
     </declare-styleable>
-    <attr name="PasswordEditTextStyle" format="reference" />
 
     <declare-styleable name="ClearEditText">
         <!--清除按钮的图片资源-->
@@ -1133,7 +1111,6 @@
         <!--清除按钮的图片尺寸-->
         <attr name="cet_clearIconSize" format="dimension" />
     </declare-styleable>
-    <attr name="ClearEditTextStyle" format="reference" />
 
     <!--ValidatorEditText-->
     <declare-styleable name="ValidatorEditText">
@@ -1157,8 +1134,6 @@
             <enum name="bottom" value="3" />
         </attr>
     </declare-styleable>
-    <attr name="ValidatorEditTextStyle" format="reference" />
-
 
     <declare-styleable name="MultiLineEditText">
         <!--最大输入文字的数目，默认240-->
@@ -1186,12 +1161,9 @@
         <!--统计数字显示剩余数目,默认false-->
         <attr name="mlet_showSurplusNumber" format="boolean" />
     </declare-styleable>
-    <attr name="MultiLineEditTextStyle" format="reference" />
-
 
     <!--===============================ImageView======================================-->
 
-    <attr name="RadiusImageViewStyle" format="reference" />
     <declare-styleable name="RadiusImageView">
         <!--边框宽度，默认：0-->
         <attr name="riv_border_width" format="dimension" />
@@ -1302,7 +1274,6 @@
         <!--是否自动隐藏当是完成状态的时候， 默认true-->
         <attr name="sv_dismissOnComplete" format="boolean" />
     </declare-styleable>
-    <attr name="StatusViewStyle" format="reference" />
 
     <!--============================TabBar=========================================-->
 
@@ -1346,8 +1317,6 @@
         <!--指示器垂直分割线的颜色，默认R.attr.xui_config_color_separator_dark-->
         <attr name="indicator_vertical_line_color" format="color" />
     </declare-styleable>
-    <attr name="EasyIndicatorStyle" format="reference" />
-
 
     <declare-styleable name="TabSegment">
         <!--tab选中时的颜色，默认R.attr.colorAccent-->
@@ -1379,7 +1348,6 @@
         <!--文字的样式-->
         <attr name="ts_typeface_provider" format="string" />
     </declare-styleable>
-    <attr name="TabSegmentStyle" format="reference" />
 
     <declare-styleable name="VerticalTabLayout">
         <!--指示器的颜色，默认R.attr.colorAccent-->
@@ -1451,7 +1419,6 @@
     </declare-styleable>
 
     <!--刻度尺-->
-    <attr name="RulerViewStyle" format="reference" />
     <declare-styleable name="RulerView">
         <!--尺子的高度, 默认50dp-->
         <attr name="rv_rulerHeight" format="dimension" />
@@ -1540,7 +1507,6 @@
         <!--选择菜单的高度/屏幕高度 占比， 默认0.5-->
         <attr name="ddm_menuHeightPercent" format="float" />
     </declare-styleable>
-    <attr name="DropDownMenuStyle" format="reference" />
 
     <!--  XRangeSlider  -->
     <declare-styleable name="XRangeSlider">
@@ -1601,7 +1567,6 @@
             <enum name="hundred" value="100" />
         </attr>
     </declare-styleable>
-    <attr name="XRangeSliderStyle" format="reference" />
 
     <!--  XSeekBar  -->
     <declare-styleable name="XSeekBar">
@@ -1664,7 +1629,6 @@
             <enum name="hundred" value="100" />
         </attr>
     </declare-styleable>
-    <attr name="XSeekBarStyle" format="reference" />
 
     <!--=====================================================================-->
     <!--MaterialSearchView-->
@@ -1744,6 +1708,37 @@
         <attr name="xui_commonList_titleColor" format="color" />
         <attr name="xui_commonList_detailColor" format="color" />
     </declare-styleable>
+
+    <!--===========================Style==========================================-->
+    <attr name="TitleBarStyle" format="reference" />
+    <attr name="BannerLayoutStyle" format="reference" />
+    <attr name="StatefulLayoutStyle" format="reference" />
+    <attr name="MultipleStatusViewStyle" format="reference" />
+    <attr name="CircleProgressViewStyle" format="reference" />
+    <attr name="HorizontalProgressViewStyle" format="reference" />
+    <attr name="CountDownButtonStyle" format="reference" />
+    <attr name="RippleViewStyle" format="reference" />
+    <attr name="SwitchIconViewStyle" format="reference" />
+    <attr name="MiniLoadingStyle" format="reference" />
+    <attr name="SmoothCheckBoxStyle" format="reference" />
+    <attr name="ShineButtonStyle" format="reference" />
+    <attr name="MaterialSpinnerStyle" format="reference" />
+    <attr name="EditSpinnerStyle" format="reference" />
+    <attr name="AutoFitTextViewStyle" format="reference" />
+    <attr name="MaterialEditTextStyle" format="reference" />
+    <attr name="VerifyCodeEditTextStyle" format="reference" />
+    <attr name="PasswordEditTextStyle" format="reference" />
+    <attr name="ClearEditTextStyle" format="reference" />
+    <attr name="ValidatorEditTextStyle" format="reference" />
+    <attr name="MultiLineEditTextStyle" format="reference" />
+    <attr name="RadiusImageViewStyle" format="reference" />
+    <attr name="StatusViewStyle" format="reference" />
+    <attr name="EasyIndicatorStyle" format="reference" />
+    <attr name="TabSegmentStyle" format="reference" />
+    <attr name="RulerViewStyle" format="reference" />
+    <attr name="DropDownMenuStyle" format="reference" />
+    <attr name="XRangeSliderStyle" format="reference" />
+    <attr name="XSeekBarStyle" format="reference" />
 
     <attr name="XUIGroupListViewStyle" format="reference" />
     <attr name="XUICommonListItemViewStyle" format="reference" />

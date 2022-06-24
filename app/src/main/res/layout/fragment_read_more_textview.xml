@@ -27,7 +27,6 @@
         android:text="@string/lorem_ipsum1"
         app:rmtv_trimCollapsedText="@string/show_all_content" />
 
-
     <com.xuexiang.xui.widget.textview.ReadMoreTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

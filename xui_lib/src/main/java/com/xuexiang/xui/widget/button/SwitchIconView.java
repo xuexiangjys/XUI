@@ -94,8 +94,7 @@ public class SwitchIconView extends AppCompatImageView {
 
         setLayerType(LAYER_TYPE_SOFTWARE, null);
 
-        TypedArray array = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.SwitchIconView, 0, 0);
-
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.SwitchIconView, defStyleAttr, 0);
         try {
             mIconTintColor = array.getColor(R.styleable.SwitchIconView_siv_tint_color, ThemeUtils.getMainThemeColor(context));
             mAnimationDuration = array.getInteger(R.styleable.SwitchIconView_siv_animation_duration, DEFAULT_ANIMATION_DURATION);

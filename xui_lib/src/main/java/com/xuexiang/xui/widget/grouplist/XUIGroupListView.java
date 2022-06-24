@@ -105,7 +105,7 @@ public class XUIGroupListView extends LinearLayout {
     private SparseArray<Section> mSections;
 
     public XUIGroupListView(Context context) {
-        this(context, null, R.attr.XUIGroupListViewStyle);
+        this(context, null);
     }
 
     public XUIGroupListView(Context context, AttributeSet attrs) {
