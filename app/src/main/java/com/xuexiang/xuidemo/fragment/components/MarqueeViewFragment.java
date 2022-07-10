@@ -100,7 +100,7 @@ public class MarqueeViewFragment extends BaseFragment {
                 if ("离离原上草，一岁一枯荣。".equals(displayMsg.toString())) {
                     return null;
                 } else {
-                    XToastUtils.toast("开始滚动：" + displayMsg.toString());
+                    XToastUtils.toast("开始滚动：" + displayMsg);
                     return displayMsg;
                 }
             }

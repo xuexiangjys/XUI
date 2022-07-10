@@ -324,6 +324,14 @@
         <item>杭州</item>
     </string-array>
 
+    <string-array name="marquee_text_entry">
+        <item>《赋得古原草送别》</item>
+        <item>离离原上草，一岁一枯荣。</item>
+        <item>野火烧不尽，春风吹又生。</item>
+        <item>远芳侵古道，晴翠接荒城。</item>
+        <item>又送王孙去，萋萋满别情。</item>
+    </string-array>
+
     <string-array name="age_entry">
         <item>不限</item>
         <item>18岁以下</item>

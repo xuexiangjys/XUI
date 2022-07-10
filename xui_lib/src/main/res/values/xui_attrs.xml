@@ -890,6 +890,8 @@
         <attr name="mtv_isAutoFit" format="boolean" />
         <!--控件是否自动显示与隐藏（根据显示数量）， 默认false-->
         <attr name="mtv_isAutoDisplay" format="boolean" />
+        <!--控件需要显示的内容-->
+        <attr name="mtv_entries" format="reference" />
     </declare-styleable>
 
     <!--ExpandableTextView-->

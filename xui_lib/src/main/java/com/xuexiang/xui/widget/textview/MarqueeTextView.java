@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.textview.marqueen.DisplayEntity;
 
 import java.util.ArrayList;
@@ -99,11 +100,11 @@ public class MarqueeTextView extends AppCompatTextView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MarqueeTextView, defStyleAttr, 0);
         mIsAutoFit = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoFit, false);
         mIsAutoDisplay = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoDisplay, false);
-
-        if (mIsAutoDisplay) {
-            setVisibility(GONE);
-        }
+        int entriesId = typedArray.getResourceId(R.styleable.MarqueeTextView_mtv_entries, 0);
         typedArray.recycle();
+
+        List<String> initData = ResUtils.getStringList(context, entriesId);
+        startSimpleRoll(initData);
     }
 
     @Override
@@ -410,20 +411,16 @@ public class MarqueeTextView extends AppCompatTextView {
         return (getHeight() - fontMetrics.bottom - fontMetrics.top) / 2;
     }
 
-    private Handler mHandler = new Handler(new Handler.Callback() {
+    private final Handler mHandler = new Handler(new Handler.Callback() {
         @Override
-        public boolean handleMessage(Message message) {
-            switch (message.what) {
-                case REDRAW_TEXT:
-                    if (mCurrentPosition < (-mDisplayTextWidth)) {// 一段文字滚动完了
-                        rollNextDisplay();
-                    } else {
-                        mCurrentPosition -= mSpeed;  //向前进
-                        reDraw(30);
-                    }
-                    break;
-                default:
-                    break;
+        public boolean handleMessage(@NonNull Message message) {
+            if (message.what == REDRAW_TEXT) {
+                if (mCurrentPosition < (-mDisplayTextWidth)) {// 一段文字滚动完了
+                    rollNextDisplay();
+                } else {
+                    mCurrentPosition -= mSpeed;  //向前进
+                    reDraw(30);
+                }
             }
             return true;
         }

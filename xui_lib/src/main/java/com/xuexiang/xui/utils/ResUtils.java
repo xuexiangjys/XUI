@@ -24,6 +24,10 @@ import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xui.XUI;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 获取res中的资源
  *
@@ -193,6 +197,39 @@ public final class ResUtils {
      */
     public static String[] getStringArray(@ArrayRes int resId) {
         return getResources().getStringArray(resId);
+    }
+
+    /**
+     * 获取字符串的集合
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return 字符串的集合
+     */
+    @NonNull
+    public static List<String> getStringList(@NonNull Context context, int resId) {
+        return getStringList(context, resId, 0);
+    }
+
+    /**
+     * 获取字符串的集合
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @param emptyId 空资源id
+     * @return 字符串的集合
+     */
+    @NonNull
+    public static List<String> getStringList(@NonNull Context context, int resId, int emptyId) {
+        List<String> data = new ArrayList<>();
+        if (resId == emptyId) {
+            return data;
+        }
+        String[] array = context.getResources().getStringArray(resId);
+        if (array.length > 0) {
+            data.addAll(Arrays.asList(array));
+        }
+        return data;
     }
 
     /**
