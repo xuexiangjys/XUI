@@ -65,4 +65,12 @@
         app:mpb_progressStyle="horizontal"
         style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
+
+    <com.xuexiang.xui.widget.button.CountDownButton
+        android:id="@+id/bt_countdown4"
+        style="@style/Button.Blue"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="获取验证码" />
+
 </LinearLayout>

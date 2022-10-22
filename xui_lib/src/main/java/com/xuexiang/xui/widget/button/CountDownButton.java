@@ -133,7 +133,7 @@ public class CountDownButton extends AppCompatButton {
         switch (event.getAction()) {
             case MotionEvent.ACTION_UP:
                 Rect rect = new Rect();
-                getGlobalVisibleRect(rect);
+                getWindowVisibleDisplayFrame(rect);
                 if (mOnClickListener != null && rect.contains((int) event.getRawX(), (int) event.getRawY())) {
                     mOnClickListener.onClick(this);
                 }
