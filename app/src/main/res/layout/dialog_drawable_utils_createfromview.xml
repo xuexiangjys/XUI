@@ -28,7 +28,7 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@color/xui_config_color_gray_3"
-        android:contentDescription="截图当前界面显示"
+        android:contentDescription="@string/description_create_from_view_display"
         android:padding="1px" />
 
 </LinearLayout>

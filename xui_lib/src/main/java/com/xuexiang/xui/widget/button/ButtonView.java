@@ -64,7 +64,7 @@ public class ButtonView extends AppCompatTextView {
                 R.styleable.ButtonView_textRightBottomRadius, 0);
         int strokeWidth = typedArray.getDimensionPixelSize(
                 R.styleable.ButtonView_textStrokeWidth, 0);
-        Drawable textDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ButtonView_textDrawable);
+        Drawable textDrawable = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.ButtonView_textDrawable);
         int normalTextColor = typedArray.getColor(
                 R.styleable.ButtonView_textNormalTextColor,
                 Color.TRANSPARENT);
@@ -106,11 +106,7 @@ public class ButtonView extends AppCompatTextView {
             setTextColor(textColorSelect);
         }
 
-        if (selectedTextColor != 0 || mSelectedSolidColor != 0) {
-            setClickable(true);
-        } else {
-            setClickable(false);
-        }
+        setClickable(selectedTextColor != 0 || mSelectedSolidColor != 0);
     }
 
     /**

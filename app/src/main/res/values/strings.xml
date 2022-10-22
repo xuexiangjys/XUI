@@ -473,5 +473,8 @@ The lake was formed about 2 million years ago and is a part of the Lake Tahoe Ba
     <string name="lorem_ipsum3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Cras feugiat, nunc eget volutpat viverra, lacus ligula venenatis nulla, in accumsan eros eros nec ipsum. Fusce eget massa id lorem blandit lobortis.</string>
     <string name="show_all_content">显示全部</string>
     <string name="one_line_text">One line text</string>
+    <string name="description_navigation_main">导航条</string>
+    <string name="description_create_from_view_display">截图当前界面显示</string>
+    <string name="description_demo">演示</string>
 
 </resources>

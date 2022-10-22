@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/xui_config_color_transparent">
@@ -9,6 +10,7 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/description_picture"
         android:background="@color/xui_config_color_transparent" />
 
     <TextView
@@ -18,10 +20,10 @@
         android:layout_gravity="bottom|center_vertical"
         android:layout_margin="12dp"
         android:gravity="center"
-        android:text="1/2"
         android:textColor="@color/xui_config_color_white"
         android:textStyle="bold"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        tools:text="1/2" />
 
     <com.xuexiang.xui.widget.imageview.preview.view.BezierBannerView
         android:id="@+id/bezierBannerView"

@@ -1,6 +1,9 @@
 package com.xuexiang.xui;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.utils.Utils;
 import com.xuexiang.xui.widget.statelayout.StateLayoutConfig;
@@ -24,22 +27,22 @@ public class UIConfig {
      */
     private Drawable mAppIcon;
 
-
-    private UIConfig() {
-        mStateLayoutConfig = new StateLayoutConfig();
-        mAppIcon = Utils.getAppIcon(XUI.getContext());
+    private UIConfig(@NonNull Context context) {
+        mStateLayoutConfig = new StateLayoutConfig(context);
+        mAppIcon = Utils.getAppIcon(context);
     }
 
     /**
      * 获取单例
      *
-     * @return
+     * @param context 上下文
+     * @return UI动态配置
      */
-    public static UIConfig getInstance() {
+    public static UIConfig getInstance(@NonNull Context context) {
         if (sInstance == null) {
             synchronized (UIConfig.class) {
                 if (sInstance == null) {
-                    sInstance = new UIConfig();
+                    sInstance = new UIConfig(context.getApplicationContext());
                 }
             }
         }

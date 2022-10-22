@@ -61,5 +61,6 @@
     <string name="xui_rmtv_show_less">隐藏</string>
     <string name="xui_rmtv_ellipsize">... </string>
 
+    <string name="description_picture">图片</string>
 
 </resources>

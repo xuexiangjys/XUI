@@ -382,7 +382,7 @@ public final class Utils {
             PackageManager pm = context.getPackageManager();
             ApplicationInfo info = pm.getApplicationInfo(context.getPackageName(), 0);
             return info.loadIcon(pm);
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

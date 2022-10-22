@@ -142,11 +142,11 @@ public class ARCLoadingView extends View {
 
         boolean hasIcon = typedArray.getBoolean(R.styleable.LoadingView_lv_has_icon, true);
         if (hasIcon) {
-            Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.LoadingView_lv_icon);
+            Drawable icon = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.LoadingView_lv_icon);
             if (icon != null) {
                 mIconBitmap = Utils.getBitmapFromDrawable(icon);
             } else {
-                Drawable appIcon = UIConfig.getInstance().getAppIcon();
+                Drawable appIcon = UIConfig.getInstance(context).getAppIcon();
                 if (appIcon != null) {
                     mIconBitmap = Utils.getBitmapFromDrawable(appIcon);
                 }

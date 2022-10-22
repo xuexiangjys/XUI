@@ -190,6 +190,17 @@ public final class ResUtils {
     }
 
     /**
+     * 获取dimes值，返回的是【4舍5入取整】的值
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return dimes值【4舍5入取整】
+     */
+    public static int getDimensionPixelSize(@NonNull Context context, @DimenRes int resId) {
+        return context.getResources().getDimensionPixelSize(resId);
+    }
+
+    /**
      * 获取字符串的数组
      *
      * @param resId 资源id
@@ -197,6 +208,17 @@ public final class ResUtils {
      */
     public static String[] getStringArray(@ArrayRes int resId) {
         return getResources().getStringArray(resId);
+    }
+
+    /**
+     * 获取字符串的数组
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return 字符串的数组
+     */
+    public static String[] getStringArray(Context context, @ArrayRes int resId) {
+        return context.getResources().getStringArray(resId);
     }
 
     /**
@@ -271,6 +293,18 @@ public final class ResUtils {
     public static Animation getAnim(@AnimRes int resId) {
         return AnimationUtils.loadAnimation(XUI.getContext(), resId);
     }
+
+    /**
+     * 获取动画
+     *
+     * @param context 上下文
+     * @param resId   动画资源id
+     * @return 动画
+     */
+    public static Animation getAnim(@NonNull Context context, @AnimRes int resId) {
+        return AnimationUtils.loadAnimation(context, resId);
+    }
+
 
     /**
      * Check if layout direction is RTL

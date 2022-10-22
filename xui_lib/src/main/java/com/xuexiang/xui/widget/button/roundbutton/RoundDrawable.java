@@ -125,9 +125,9 @@ public class RoundDrawable extends GradientDrawable {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundButton);
         ColorStateList colorBg = ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.RoundButton_rb_backgroundColor);
         ColorStateList colorBorder = ResUtils.getColorStateListAttrRes(context, typedArray, R.styleable.RoundButton_rb_borderColor);
-        int borderWidth = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_borderWidth, ResUtils.getDimensionPixelSize(R.dimen.default_rb_border_width));
+        int borderWidth = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_borderWidth, ResUtils.getDimensionPixelSize(context, R.dimen.default_rb_border_width));
         boolean isRadiusAdjustBounds = typedArray.getBoolean(R.styleable.RoundButton_rb_isRadiusAdjustBounds, false);
-        int mRadius = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_radius, ResUtils.getDimensionPixelSize(R.dimen.default_rb_radius));
+        int mRadius = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_radius, ResUtils.getDimensionPixelSize(context, R.dimen.default_rb_radius));
         int mRadiusTopLeft = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_radiusTopLeft, 0);
         int mRadiusTopRight = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_radiusTopRight, 0);
         int mRadiusBottomLeft = typedArray.getDimensionPixelSize(R.styleable.RoundButton_rb_radiusBottomLeft, 0);

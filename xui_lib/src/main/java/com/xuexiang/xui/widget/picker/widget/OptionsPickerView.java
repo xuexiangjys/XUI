@@ -190,7 +190,7 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
 
     public void setPicker(T[] options1Array,
                           T[][] options2Array) {
-        List<List<T>> options2Items = new ArrayList<>(options2Array[0].length);
+        List<List<T>> options2Items = new ArrayList<>();
         for (T[] ts : options2Array) {
             options2Items.add(Arrays.asList(ts));
         }
@@ -208,13 +208,13 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
     public void setPicker(T[] options1Array,
                           T[][] options2Array,
                           T[][][] options3Array) {
-        List<List<T>> options2Items = new ArrayList<>(options2Array[0].length);
+        List<List<T>> options2Items = new ArrayList<>();
         for (T[] ts : options2Array) {
             options2Items.add(Arrays.asList(ts));
         }
-        List<List<List<T>>> options3Items = new ArrayList<>(options3Array[0][0].length);
+        List<List<List<T>>> options3Items = new ArrayList<>();
         for (T[][] ts2 : options3Array) {
-            List<List<T>> temp = new ArrayList<>(options3Array[0].length);
+            List<List<T>> temp = new ArrayList<>();
             for (T[] ts1 : ts2) {
                 temp.add(Arrays.asList(ts1));
             }

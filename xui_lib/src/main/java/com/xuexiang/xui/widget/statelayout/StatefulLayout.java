@@ -69,18 +69,18 @@ public class StatefulLayout extends LinearLayout {
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.StatefulLayout, defStyleAttr, 0);
-        mAnimationEnabled = array.getBoolean(R.styleable.StatefulLayout_stf_animationEnabled, UIConfig.getInstance().getStateLayoutConfig().animationEnabled);
+        mAnimationEnabled = array.getBoolean(R.styleable.StatefulLayout_stf_animationEnabled, UIConfig.getInstance(context).getStateLayoutConfig().animationEnabled);
         int inAnimationResId = array.getResourceId(R.styleable.StatefulLayout_stf_inAnimation, -1);
         if (inAnimationResId != -1) {
             mInAnimation = loadAnimation(inAnimationResId);
         } else {
-            mInAnimation = UIConfig.getInstance().getStateLayoutConfig().inAnimation;
+            mInAnimation = UIConfig.getInstance(context).getStateLayoutConfig().getInAnimation();
         }
         int outAnimationResId = array.getResourceId(R.styleable.StatefulLayout_stf_outAnimation, -1);
         if (inAnimationResId != -1) {
             mOutAnimation = loadAnimation(outAnimationResId);
         } else {
-            mOutAnimation = UIConfig.getInstance().getStateLayoutConfig().outAnimation;
+            mOutAnimation = UIConfig.getInstance(context).getStateLayoutConfig().getOutAnimation();
         }
         array.recycle();
     }
@@ -185,7 +185,7 @@ public class StatefulLayout extends LinearLayout {
      * 显示加载中布局
      */
     public void showLoading() {
-        showLoading(UIConfig.getInstance().getStateLayoutConfig().loadingMessageRes);
+        showLoading(UIConfig.getInstance(getContext()).getStateLayoutConfig().getLoadingMessageRes());
     }
 
     public void showLoading(@StringRes int resId) {
@@ -204,7 +204,7 @@ public class StatefulLayout extends LinearLayout {
      * 显示空内容布局
      */
     public void showEmpty() {
-        showEmpty(UIConfig.getInstance().getStateLayoutConfig().emptyMessageRes);
+        showEmpty(UIConfig.getInstance(getContext()).getStateLayoutConfig().getEmptyMessageRes());
     }
 
     public void showEmpty(@StringRes int resId) {
@@ -214,7 +214,7 @@ public class StatefulLayout extends LinearLayout {
     public void showEmpty(String message) {
         showCustom(new CustomStateOptions()
                 .message(message)
-                .image(UIConfig.getInstance().getStateLayoutConfig().emptyImageRes));
+                .image(UIConfig.getInstance(getContext()).getStateLayoutConfig().getEmptyImageRes()));
     }
 
     // error //
@@ -225,7 +225,7 @@ public class StatefulLayout extends LinearLayout {
      * @param clickListener
      */
     public void showError(OnClickListener clickListener) {
-        showError(UIConfig.getInstance().getStateLayoutConfig().errorMessageRes, clickListener);
+        showError(UIConfig.getInstance(getContext()).getStateLayoutConfig().getErrorMessageRes(), clickListener);
     }
 
     public void showError(@StringRes int resId, OnClickListener clickListener) {
@@ -233,13 +233,13 @@ public class StatefulLayout extends LinearLayout {
     }
 
     public void showError(String message, OnClickListener clickListener) {
-        showError(message, getString(UIConfig.getInstance().getStateLayoutConfig().retryMessageRes), clickListener);
+        showError(message, getString(UIConfig.getInstance(getContext()).getStateLayoutConfig().getRetryMessageRes()), clickListener);
     }
 
     public void showError(String message, String buttonText, OnClickListener clickListener) {
         showCustom(new CustomStateOptions()
                 .message(message)
-                .image(UIConfig.getInstance().getStateLayoutConfig().errorImageRes)
+                .image(UIConfig.getInstance(getContext()).getStateLayoutConfig().getErrorImageRes())
                 .buttonText(buttonText)
                 .buttonClickListener(clickListener));
     }
@@ -252,7 +252,7 @@ public class StatefulLayout extends LinearLayout {
      * @param clickListener
      */
     public void showOffline(OnClickListener clickListener) {
-        showOffline(UIConfig.getInstance().getStateLayoutConfig().offlineMessageRes, clickListener);
+        showOffline(UIConfig.getInstance(getContext()).getStateLayoutConfig().getOfflineMessageRes(), clickListener);
     }
 
     public void showOffline(@StringRes int resId, OnClickListener clickListener) {
@@ -260,13 +260,13 @@ public class StatefulLayout extends LinearLayout {
     }
 
     public void showOffline(String message, OnClickListener clickListener) {
-        showOffline(message, getString(UIConfig.getInstance().getStateLayoutConfig().retryMessageRes), clickListener);
+        showOffline(message, getString(UIConfig.getInstance(getContext()).getStateLayoutConfig().getRetryMessageRes()), clickListener);
     }
 
     public void showOffline(String message, String buttonText, OnClickListener clickListener) {
         showCustom(new CustomStateOptions()
                 .message(message)
-                .image(UIConfig.getInstance().getStateLayoutConfig().offlineImageRes)
+                .image(UIConfig.getInstance(getContext()).getStateLayoutConfig().getOfflineImageRes())
                 .buttonText(buttonText)
                 .buttonClickListener(clickListener));
     }
@@ -279,7 +279,7 @@ public class StatefulLayout extends LinearLayout {
      * @param clickListener
      */
     public void showLocationOff(OnClickListener clickListener) {
-        showLocationOff(UIConfig.getInstance().getStateLayoutConfig().locationOffMessageRes, clickListener);
+        showLocationOff(UIConfig.getInstance(getContext()).getStateLayoutConfig().getLocationOffMessageRes(), clickListener);
     }
 
     public void showLocationOff(@StringRes int resId, OnClickListener clickListener) {
@@ -287,13 +287,13 @@ public class StatefulLayout extends LinearLayout {
     }
 
     public void showLocationOff(String message, OnClickListener clickListener) {
-        showLocationOff(message, getString(UIConfig.getInstance().getStateLayoutConfig().retryMessageRes), clickListener);
+        showLocationOff(message, getString(UIConfig.getInstance(getContext()).getStateLayoutConfig().getRetryMessageRes()), clickListener);
     }
 
     public void showLocationOff(String message, String buttonText, OnClickListener clickListener) {
         showCustom(new CustomStateOptions()
                 .message(message)
-                .image(UIConfig.getInstance().getStateLayoutConfig().locationOffImageRes)
+                .image(UIConfig.getInstance(getContext()).getStateLayoutConfig().getLocationOffImageRes())
                 .buttonText(buttonText)
                 .buttonClickListener(clickListener));
     }
