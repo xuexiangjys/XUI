@@ -25,6 +25,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -33,11 +35,11 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -49,7 +51,7 @@ import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
  * @since 2020/5/21 1:19 AM
  */
 @Page(name = "TabLayout+ViewPager2动态加载")
-public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayout.OnTabSelectedListener {
+public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayout.OnTabSelectedListener, SimpleTabFragment.OnRefreshListener  {
 
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
@@ -75,7 +77,7 @@ public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayo
         titleBar.addAction(new TitleBar.TextAction("增加") {
             @Override
             public void performAction(View view) {
-                mAdapter.addFragment(2, SimpleTabFragment.newInstance("动态加入"), "动态加入");
+                mAdapter.addFragment(2, SimpleTabFragment.newInstance("动态加入", TabLayoutViewPager2Fragment.this), "动态加入");
                 mAdapter.notifyDataSetChanged();
             }
         });
@@ -101,6 +103,8 @@ public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayo
         viewPager.setAdapter(mAdapter);
         // 设置缓存的数量
         viewPager.setOffscreenPageLimit(1);
+        // 去除刷新动画
+        viewPager.setPageTransformer(new MarginPageTransformer(0));
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mAdapter.getPageTitle(position))).attach();
     }
 
@@ -152,7 +156,7 @@ public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayo
         if (isShow) {
             // 动态加载选项卡内容
             for (String page : MultiPage.getPageNames()) {
-                mAdapter.addFragment(SimpleTabFragment.newInstance(page), page);
+                mAdapter.addFragment(SimpleTabFragment.newInstance(page, this), page);
             }
             mAdapter.notifyDataSetChanged();
             viewPager.setCurrentItem(0, false);
@@ -170,6 +174,14 @@ public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayo
 
 
     @Override
+    public void onTabRefresh(Fragment fragment, String title) {
+        String newTitle = title + "R";
+        int index = mAdapter.replaceFragment(fragment, SimpleTabFragment.newInstance(newTitle, this), newTitle);
+        mAdapter.notifyItemChanged(index);
+    }
+
+
+    @Override
     public void onTabSelected(TabLayout.Tab tab) {
         XToastUtils.toast("选中了:" + tab.getText());
     }
@@ -182,6 +194,12 @@ public class TabLayoutViewPager2Fragment extends BaseFragment implements TabLayo
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        mAdapter.clear();
+        super.onDestroyView();
     }
 
 }

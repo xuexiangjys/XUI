@@ -53,6 +53,18 @@ public class FragmentCacheAdapter extends FragmentStatePagerAdapter {
         return this;
     }
 
+    public int replaceFragment(Fragment oldFragment, Fragment newFragment, String newTitle) {
+        if (oldFragment != null && newFragment != null) {
+            int index = mFragmentList.indexOf(oldFragment);
+            if (index != -1) {
+                mFragmentList.set(index, newFragment);
+                mTitleList.set(index, newTitle);
+            }
+            return index;
+        }
+        return -1;
+    }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {
