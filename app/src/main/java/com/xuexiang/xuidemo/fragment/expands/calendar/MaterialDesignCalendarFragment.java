@@ -87,7 +87,10 @@ public class MaterialDesignCalendarFragment extends BaseFragment {
             return convertView;
         });
 
-        calendarDateView.setOnCalendarSelectedListener((view, postion, calendarDate) -> XToastUtils.toast("选中:" + calendarDate.formatDate()));
+        calendarDateView.setOnCalendarSelectedListener((view, position, calendarDate) -> {
+            XToastUtils.toast("选中:" + calendarDate.formatDate());
+            view.setSelected(true);
+        });
 
         calendarDateView.setOnTodaySelectStatusChangedListener((todayView, isSelected) -> {
             TextView view = todayView.findViewById(R.id.tv_text);
