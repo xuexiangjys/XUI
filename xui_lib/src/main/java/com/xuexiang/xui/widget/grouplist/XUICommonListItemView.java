@@ -161,8 +161,8 @@ public class XUICommonListItemView extends RelativeLayout {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.XUICommonListItemView, defStyleAttr, 0);
         @XUICommonListItemOrientation int orientation = array.getInt(R.styleable.XUICommonListItemView_xui_orientation, HORIZONTAL);
         @XUICommonListItemAccessoryType int accessoryType = array.getInt(R.styleable.XUICommonListItemView_xui_accessory_type, ACCESSORY_TYPE_NONE);
-        final int initTitleColor = array.getColor(R.styleable.XUICommonListItemView_xui_commonList_titleColor, ResUtils.getColor(R.color.xui_config_color_gray_1));
-        final int initDetailColor = array.getColor(R.styleable.XUICommonListItemView_xui_commonList_detailColor, ResUtils.getColor(R.color.xui_config_color_gray_5));
+        final int initTitleColor = array.getColor(R.styleable.XUICommonListItemView_xui_commonList_titleColor, ResUtils.getColor(context, R.color.xui_config_color_gray_1));
+        final int initDetailColor = array.getColor(R.styleable.XUICommonListItemView_xui_commonList_detailColor, ResUtils.getColor(context, R.color.xui_config_color_gray_5));
         array.recycle();
 
         mImageView = findViewById(R.id.group_list_item_imageView);

@@ -76,7 +76,7 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
      * @param context
      */
     protected void initImageBanner(Context context) {
-        mPlaceHolder = new ColorDrawable(ResUtils.getColor(R.color.default_image_banner_placeholder_color));
+        mPlaceHolder = new ColorDrawable(ResUtils.getColor(context, R.color.default_image_banner_placeholder_color));
         mEnableCache = true;
         mScale = getContainerScale();
     }

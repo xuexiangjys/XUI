@@ -113,15 +113,15 @@ public class VerifyCodeEditText extends FrameLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.VerifyCodeEditText, defStyleAttr, 0);
         mEtNumber = typedArray.getInteger(R.styleable.VerifyCodeEditText_vcet_number, DEFAULT_EDIT_TEXT_SIZE);
-        mEtWidth = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_width, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_width));
+        mEtWidth = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_width, ResUtils.getDimensionPixelSize(context, R.dimen.default_vcet_width));
         mIsDivideEqually = typedArray.getBoolean(R.styleable.VerifyCodeEditText_vcet_is_divide_equally, false);
         mEtDivider = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.VerifyCodeEditText_vcet_divider);
-        mEtTextSize = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_text_size));
+        mEtTextSize = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_text_size, ResUtils.getDimensionPixelSize(context, R.dimen.default_vcet_text_size));
         mEtTextColor = typedArray.getColor(R.styleable.VerifyCodeEditText_vcet_text_color, Color.BLACK);
         mBackgroundFocus = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.VerifyCodeEditText_vcet_bg_focus);
         mBackgroundNormal = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.VerifyCodeEditText_vcet_bg_normal);
         mIsPwd = typedArray.getBoolean(R.styleable.VerifyCodeEditText_vcet_is_pwd, false);
-        mPwdRadius = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_pwd_radius, ResUtils.getDimensionPixelSize(R.dimen.default_vcet_pwd_radius));
+        mPwdRadius = typedArray.getDimensionPixelSize(R.styleable.VerifyCodeEditText_vcet_pwd_radius, ResUtils.getDimensionPixelSize(context, R.dimen.default_vcet_pwd_radius));
         //释放资源
         typedArray.recycle();
 

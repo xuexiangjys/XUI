@@ -101,10 +101,10 @@ public class FlowTagLayout extends ViewGroup {
         mSingleCancelable = typedArray.getBoolean(R.styleable.FlowTagLayout_ftl_single_cancelable, false);
         int entriesID = typedArray.getResourceId(R.styleable.FlowTagLayout_ftl_entries, 0);
         if (entriesID != 0) {
-            BaseTagAdapter tagAdapter = setItems(ResUtils.getStringArray(entriesID));
+            BaseTagAdapter tagAdapter = setItems(ResUtils.getStringArray(context, entriesID));
             int selectedIDs = typedArray.getResourceId(R.styleable.FlowTagLayout_ftl_selecteds, 0);
             if (selectedIDs != 0) {
-                tagAdapter.setSelectedPositions(ResUtils.getIntArray(selectedIDs));
+                tagAdapter.setSelectedPositions(ResUtils.getIntArray(context, selectedIDs));
             }
         }
         typedArray.recycle();

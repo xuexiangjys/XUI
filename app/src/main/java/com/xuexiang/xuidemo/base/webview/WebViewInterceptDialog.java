@@ -64,7 +64,7 @@ public class WebViewInterceptDialog extends AppCompatActivity implements DialogI
         DialogLoader.getInstance().showConfirmDialog(
                 this,
                 getOpenTitle(url),
-                ResUtils.getString(R.string.lab_yes),
+                ResUtils.getString(this, R.string.lab_yes),
                 (dialog, which) -> {
                     dialog.dismiss();
                     if (isAppLink(url)) {
@@ -73,7 +73,7 @@ public class WebViewInterceptDialog extends AppCompatActivity implements DialogI
                         openApp(url);
                     }
                 },
-                ResUtils.getString(R.string.lab_no),
+                ResUtils.getString(this, R.string.lab_no),
                 (dialog, which) -> dialog.dismiss()
         ).setOnDismissListener(this);
 
@@ -84,7 +84,7 @@ public class WebViewInterceptDialog extends AppCompatActivity implements DialogI
         if ("mqqopensdkapi".equals(scheme)) {
             return "是否允许页面打开\"QQ\"?";
         } else {
-            return ResUtils.getString(R.string.lab_open_third_app);
+            return ResUtils.getString(this, R.string.lab_open_third_app);
         }
     }
 

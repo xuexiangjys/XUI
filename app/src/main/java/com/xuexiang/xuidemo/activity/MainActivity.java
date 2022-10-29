@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     }
 
     private void initData() {
-        mMenuTitles = ResUtils.getStringArray(R.array.menu_titles);
+        mMenuTitles = ResUtils.getStringArray(this, R.array.menu_titles);
         mMenuIcons = ResUtils.getDrawableArray(this, R.array.menu_icons);
     }
 
@@ -183,7 +183,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
 
     private void initSlidingMenu(Bundle savedInstanceState) {
         mSlidingRootNav = new SlidingRootNavBuilder(this)
-                .withGravity(ResUtils.isRtl() ? SlideGravity.RIGHT : SlideGravity.LEFT)
+                .withGravity(ResUtils.isRtl(this) ? SlideGravity.RIGHT : SlideGravity.LEFT)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)

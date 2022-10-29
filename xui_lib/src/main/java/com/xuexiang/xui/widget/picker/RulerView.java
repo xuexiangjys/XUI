@@ -13,6 +13,7 @@ import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -195,35 +196,37 @@ public class RulerView extends View implements HasTypeface {
      */
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RulerView, defStyleAttr, 0);
+
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         mScaleLimit = a.getInt(R.styleable.RulerView_rv_scaleLimit, mScaleLimit);
-        mRulerHeight = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerHeight, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRulerHeight, getResources().getDisplayMetrics()));
-        mRulerToResultGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerToResultGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRulerToResultGap, getResources().getDisplayMetrics()));
+        mRulerHeight = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerHeight, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRulerHeight, displayMetrics));
+        mRulerToResultGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_rulerToResultGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRulerToResultGap, displayMetrics));
         mScaleCount = a.getInt(R.styleable.RulerView_rv_scaleCount, mScaleCount);
-        mScaleGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_scaleGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mScaleGap, getResources().getDisplayMetrics()));
+        mScaleGap = a.getDimensionPixelSize(R.styleable.RulerView_rv_scaleGap, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mScaleGap, displayMetrics));
         mMinScale = a.getInt(R.styleable.RulerView_rv_minScale, mMinScale) / mScaleLimit;
         mFirstScale = a.getFloat(R.styleable.RulerView_rv_firstScale, mFirstScale) / mScaleLimit;
         mMaxScale = a.getInt(R.styleable.RulerView_rv_maxScale, mMaxScale) / mScaleLimit;
-        mBgColor = a.getColor(R.styleable.RulerView_rv_bgColor, ResUtils.getColor(R.color.default_ruler_view_bg_color));
-        mSmallScaleColor = a.getColor(R.styleable.RulerView_rv_smallScaleColor, ResUtils.getColor(R.color.default_ruler_view_small_scale_color));
-        mMidScaleColor = a.getColor(R.styleable.RulerView_rv_midScaleColor, ResUtils.getColor(R.color.default_ruler_view_mid_scale_color));
-        mLargeScaleColor = a.getColor(R.styleable.RulerView_rv_largeScaleColor, ResUtils.getColor(R.color.default_ruler_view_large_scale_color));
-        mScaleNumColor = a.getColor(R.styleable.RulerView_rv_scaleNumColor, ResUtils.getColor(R.color.default_ruler_view_scale_num_color));
-        mResultNumColor = a.getColor(R.styleable.RulerView_rv_resultNumColor, ResUtils.getColor(R.color.default_ruler_view_result_num_color));
-        mUnitColor = a.getColor(R.styleable.RulerView_rv_unitColor, ResUtils.getColor(R.color.default_ruler_view_unit_color));
+        mBgColor = a.getColor(R.styleable.RulerView_rv_bgColor, ResUtils.getColor(context, R.color.default_ruler_view_bg_color));
+        mSmallScaleColor = a.getColor(R.styleable.RulerView_rv_smallScaleColor, ResUtils.getColor(context, R.color.default_ruler_view_small_scale_color));
+        mMidScaleColor = a.getColor(R.styleable.RulerView_rv_midScaleColor, ResUtils.getColor(context, R.color.default_ruler_view_mid_scale_color));
+        mLargeScaleColor = a.getColor(R.styleable.RulerView_rv_largeScaleColor, ResUtils.getColor(context, R.color.default_ruler_view_large_scale_color));
+        mScaleNumColor = a.getColor(R.styleable.RulerView_rv_scaleNumColor, ResUtils.getColor(context, R.color.default_ruler_view_scale_num_color));
+        mResultNumColor = a.getColor(R.styleable.RulerView_rv_resultNumColor, ResUtils.getColor(context, R.color.default_ruler_view_result_num_color));
+        mUnitColor = a.getColor(R.styleable.RulerView_rv_unitColor, ResUtils.getColor(context, R.color.default_ruler_view_unit_color));
         String tempUnit = mUnit;
         mUnit = a.getString(R.styleable.RulerView_rv_unit);
         if (TextUtils.isEmpty(mUnit)) {
             mUnit = tempUnit;
         }
-        mSmallScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_smallScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mSmallScaleStroke, getResources().getDisplayMetrics()));
-        mMidScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_midScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mMidScaleStroke, getResources().getDisplayMetrics()));
-        mLargeScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_largeScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mLargeScaleStroke, getResources().getDisplayMetrics()));
-        mResultNumTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_resultNumTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mResultNumTextSize, getResources().getDisplayMetrics()));
-        mScaleNumTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_scaleNumTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mScaleNumTextSize, getResources().getDisplayMetrics()));
-        mUnitTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_unitTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mUnitTextSize, getResources().getDisplayMetrics()));
+        mSmallScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_smallScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mSmallScaleStroke, displayMetrics));
+        mMidScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_midScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mMidScaleStroke, displayMetrics));
+        mLargeScaleStroke = a.getDimensionPixelSize(R.styleable.RulerView_rv_largeScaleStroke, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mLargeScaleStroke, displayMetrics));
+        mResultNumTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_resultNumTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mResultNumTextSize, displayMetrics));
+        mScaleNumTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_scaleNumTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mScaleNumTextSize, displayMetrics));
+        mUnitTextSize = a.getDimensionPixelSize(R.styleable.RulerView_rv_unitTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, mUnitTextSize, displayMetrics));
         mShowScaleResult = a.getBoolean(R.styleable.RulerView_rv_showScaleResult, mShowScaleResult);
         mIsBgRoundRect = a.getBoolean(R.styleable.RulerView_rv_isBgRoundRect, mIsBgRoundRect);
-        mRoundRadius = a.getDimensionPixelSize(R.styleable.RulerView_rv_roundRadius, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRoundRadius, getResources().getDisplayMetrics()));
+        mRoundRadius = a.getDimensionPixelSize(R.styleable.RulerView_rv_roundRadius, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mRoundRadius, displayMetrics));
         a.recycle();
     }
 

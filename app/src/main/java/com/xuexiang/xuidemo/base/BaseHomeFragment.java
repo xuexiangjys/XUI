@@ -73,7 +73,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
 
             @Override
             public int rightPadding() {
-                return DensityUtils.dp2px(10);
+                return DensityUtils.dp2px(getContext(), 10);
             }
         });
         titleBar.addAction(new TitleBar.ImageAction(R.drawable.icon_action_about) {
@@ -97,7 +97,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
     }
 
     private void initRecyclerView() {
-        WidgetUtils.initGridRecyclerView(mRecyclerView, 3, DensityUtils.dp2px(2), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_light, ResUtils.getColor(R.color.xui_config_color_separator_light_phone)));
+        WidgetUtils.initGridRecyclerView(mRecyclerView, 3, DensityUtils.dp2px(getContext(), 2), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_light, ResUtils.getColor(getContext(), R.color.xui_config_color_separator_light_phone)));
 
         WidgetItemAdapter mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
         mWidgetItemAdapter.setOnItemClickListener(this);

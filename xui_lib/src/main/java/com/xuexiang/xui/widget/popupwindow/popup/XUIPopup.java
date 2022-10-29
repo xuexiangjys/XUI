@@ -316,16 +316,16 @@ public class XUIPopup extends XUIBasePopup {
         int width;
         switch (XUI.getScreenType()) {
             case UIConsts.ScreenType.BIG_TABLET:
-                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_big);
+                width = ResUtils.getDimensionPixelSize(getContext(), R.dimen.xui_popup_width_tablet_big);
                 break;
             case UIConsts.ScreenType.SMALL_TABLET:
-                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_small);
+                width = ResUtils.getDimensionPixelSize(getContext(), R.dimen.xui_popup_width_tablet_small);
                 break;
             case UIConsts.ScreenType.PHONE:
-                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_phone);
+                width = ResUtils.getDimensionPixelSize(getContext(), R.dimen.xui_popup_width_phone);
                 break;
             default:
-                width = ResUtils.getDimensionPixelSize(R.dimen.xui_popup_width_tablet_small);
+                width = ResUtils.getDimensionPixelSize(getContext(), R.dimen.xui_popup_width_tablet_small);
                 break;
         }
         return width;

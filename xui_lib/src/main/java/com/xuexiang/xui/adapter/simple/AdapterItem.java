@@ -50,7 +50,7 @@ public class AdapterItem {
     }
 
     public AdapterItem(Context context, int titleId, int drawableId) {
-        this(ResUtils.getString(titleId), ResUtils.getDrawable(context, drawableId));
+        this(ResUtils.getString(context, titleId), ResUtils.getDrawable(context, drawableId));
     }
 
     public AdapterItem(Context context, CharSequence title, int drawableId) {

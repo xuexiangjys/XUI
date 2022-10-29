@@ -155,7 +155,7 @@ public class HalfPieChartFragment extends BaseChartFragment {
      * 进行偏移，将宁外一半的圆弧隐藏掉
      */
     private void moveOffScreen() {
-        int height = DensityUtils.getDisplayMetrics().heightPixels;
+        int height = DensityUtils.getDisplayMetrics(getContext()).heightPixels;
 
         /* percent to move */
         int offset = (int)(height * 0.65);

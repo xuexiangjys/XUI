@@ -83,10 +83,10 @@ public class DropDownMenuFragment extends BaseFragment {
 
     @Override
     protected void initArgs() {
-        mCitys = ResUtils.getStringArray(R.array.city_entry);
-        mAges = ResUtils.getStringArray(R.array.age_entry);
-        mSexs = ResUtils.getStringArray(R.array.sex_entry);
-        mConstellations = ResUtils.getStringArray(R.array.constellation_entry);
+        mCitys = ResUtils.getStringArray(getContext(), R.array.city_entry);
+        mAges = ResUtils.getStringArray(getContext(), R.array.age_entry);
+        mSexs = ResUtils.getStringArray(getContext(), R.array.sex_entry);
+        mConstellations = ResUtils.getStringArray(getContext(), R.array.constellation_entry);
     }
 
     @Override

@@ -108,7 +108,7 @@ public class XUIPopupFragment extends BaseFragment {
 
             XUISimpleAdapter adapter = XUISimpleAdapter.create(getContext(), listItems);
             mListPopup = new XUIListPopup(getContext(), adapter);
-            mListPopup.create(DensityUtils.dp2px(200), DensityUtils.dp2px(150), (adapterView, view, i, l) -> {
+            mListPopup.create(DensityUtils.dp2px(getContext(), 200), DensityUtils.dp2px(getContext(), 150), (adapterView, view, i, l) -> {
                 XToastUtils.toast("Item " + (i + 1));
                 mListPopup.dismiss();
             });

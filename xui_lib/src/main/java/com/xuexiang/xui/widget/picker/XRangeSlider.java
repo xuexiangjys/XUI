@@ -147,12 +147,12 @@ public class XRangeSlider extends View {
 
         if (attrs != null) {
             TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.XRangeSlider, defStyleAttr, 0);
-            mVerticalPadding = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_verticalPadding, DensityUtils.dp2px(10));
+            mVerticalPadding = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_verticalPadding, DensityUtils.dp2px(context, 10));
             //滑条
             mInsideRangeColor = array.getColor(R.styleable.XRangeSlider_xrs_insideRangeLineColor, colorAccent);
-            mOutsideRangeColor = array.getColor(R.styleable.XRangeSlider_xrs_outsideRangeLineColor, ResUtils.getColor(R.color.default_xrs_outside_line_color));
-            mInsideRangeLineStrokeWidth = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_insideRangeLineStrokeWidth, DensityUtils.dp2px(5));
-            mOutsideRangeLineStrokeWidth = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_outsideRangeLineStrokeWidth, DensityUtils.dp2px(5));
+            mOutsideRangeColor = array.getColor(R.styleable.XRangeSlider_xrs_outsideRangeLineColor, ResUtils.getColor(context, R.color.default_xrs_outside_line_color));
+            mInsideRangeLineStrokeWidth = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_insideRangeLineStrokeWidth, DensityUtils.dp2px(context, 5));
+            mOutsideRangeLineStrokeWidth = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_outsideRangeLineStrokeWidth, DensityUtils.dp2px(context, 5));
             mMin = array.getInt(R.styleable.XRangeSlider_xrs_min, mMin);
             mMax = array.getInt(R.styleable.XRangeSlider_xrs_max, mMax);
             mSliderIcon = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_sliderIcon, R.drawable.xui_ic_slider_icon));
@@ -163,8 +163,8 @@ public class XRangeSlider extends View {
             mIsShowBubble = array.getBoolean(R.styleable.XRangeSlider_xrs_isShowBubble, false);
             boolean isFitColor = array.getBoolean(R.styleable.XRangeSlider_xrs_isFitColor, true);
             mNumberTextColor = array.getColor(R.styleable.XRangeSlider_xrs_numberTextColor, colorAccent);
-            mNumberTextSize = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_numberTextSize, DensityUtils.sp2px(12));
-            mNumberMarginBottom = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_numberMarginBottom, DensityUtils.dp2px(2));
+            mNumberTextSize = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_numberTextSize, DensityUtils.sp2px(context, 12));
+            mNumberMarginBottom = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_numberMarginBottom, DensityUtils.dp2px(context, 2));
             if (isFitColor) {
                 if (mIsShowBubble) {
                     mNumberTextColor = Color.WHITE;
@@ -183,10 +183,10 @@ public class XRangeSlider extends View {
             mIsShowRuler = array.getBoolean(R.styleable.XRangeSlider_xrs_isShowRuler, false);
             mRulerColor = array.getColor(R.styleable.XRangeSlider_xrs_rulerColor, colorControlNormal);
             mRulerTextColor = array.getColor(R.styleable.XRangeSlider_xrs_rulerTextColor, colorControlNormal);
-            mRulerTextSize = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerTextSize, DensityUtils.sp2px(12));
-            mRulerMarginTop = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerMarginTop, DensityUtils.dp2px(4));
-            mRulerDividerHeight = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerDividerHeight, DensityUtils.dp2px(4));
-            mRuleTextMarginTop = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerTextMarginTop, DensityUtils.dp2px(4));
+            mRulerTextSize = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerTextSize, DensityUtils.sp2px(context, 12));
+            mRulerMarginTop = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerMarginTop, DensityUtils.dp2px(context, 4));
+            mRulerDividerHeight = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerDividerHeight, DensityUtils.dp2px(context, 4));
+            mRuleTextMarginTop = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerTextMarginTop, DensityUtils.dp2px(context, 4));
             mRulerInterval = array.getInt(R.styleable.XRangeSlider_xrs_rulerInterval, 20);
             array.recycle();
         }

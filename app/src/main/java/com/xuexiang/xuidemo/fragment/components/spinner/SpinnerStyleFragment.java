@@ -73,9 +73,9 @@ public class SpinnerStyleFragment extends BaseFragment {
         KeyboardUtils.setSoftInputAdjustResize(getActivity()); //修改输入法模式
 
         WidgetUtils.setSpinnerDropDownVerticalOffset(mSpinnerFitOffset);
-        WidgetUtils.initSpinnerStyle(mSpinnerSystem, ResUtils.getStringArray(R.array.sort_mode_entry));
+        WidgetUtils.initSpinnerStyle(mSpinnerSystem, ResUtils.getStringArray(getContext(), R.array.sort_mode_entry));
 
-        mMaterialSpinner.setItems(ResUtils.getStringArray(R.array.sort_mode_entry));
+        mMaterialSpinner.setItems(ResUtils.getStringArray(getContext(), R.array.sort_mode_entry));
         mMaterialSpinner.setOnItemSelectedListener((spinner, position, id, item) -> SnackbarUtils.Long(spinner, "Clicked " + item).show());
         mMaterialSpinner.setOnNothingSelectedListener(spinner -> SnackbarUtils.Long(spinner, "Nothing selected").show());
 //        mMaterialSpinner.setSelectedIndex(1);
@@ -90,7 +90,7 @@ public class SpinnerStyleFragment extends BaseFragment {
 
         //注意自定义实体，需要重写对象的toString方法
         mEditSpinner1.setAdapter(new EditSpinnerAdapter<>(list)
-                .setTextColor(ResUtils.getColor(R.color.color_green))
+                .setTextColor(ResUtils.getColor(getContext(), R.color.color_green))
                 .setTextSize(mEditSpinner1.getEditText().getTextSize())
                 .setIsFilterKey(true)
                 .setFilterColor("#FFFF00")
@@ -107,7 +107,7 @@ public class SpinnerStyleFragment extends BaseFragment {
     @MemoryCache
     public List<AdapterItem> getAdapterItems() {
         List<AdapterItem> list = new ArrayList<>();
-        String[] array = ResUtils.getStringArray(R.array.sort_mode_entry);
+        String[] array = ResUtils.getStringArray(getContext(), R.array.sort_mode_entry);
         for (String s : array) {
             list.add(new AdapterItem(s));
         }
@@ -128,7 +128,7 @@ public class SpinnerStyleFragment extends BaseFragment {
 
     @OnClick(R.id.btn_dialog)
     void onClick(View v) {
-        showEditSpinnerDialog(getContext(), "排序顺序", data, ResUtils.getStringArray(R.array.sort_mode_entry), value -> data = value);
+        showEditSpinnerDialog(getContext(), "排序顺序", data, ResUtils.getStringArray(getContext(), R.array.sort_mode_entry), value -> data = value);
     }
 
     /**

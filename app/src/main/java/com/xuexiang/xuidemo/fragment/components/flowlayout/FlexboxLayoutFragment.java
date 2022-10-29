@@ -76,7 +76,7 @@ public class FlexboxLayoutFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        String[] array = ResUtils.getStringArray(R.array.tags_values);
+        String[] array = ResUtils.getStringArray(getContext(), R.array.tags_values);
 
         recyclerView1.setLayoutManager(Utils.getFlexboxLayoutManager(getContext()));
         recyclerView1.setAdapter(mAdapter1 = new FlexboxLayoutAdapter(array));

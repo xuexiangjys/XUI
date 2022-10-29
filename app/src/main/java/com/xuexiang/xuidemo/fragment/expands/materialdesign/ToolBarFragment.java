@@ -137,7 +137,7 @@ public class ToolBarFragment extends BaseFragment {
     }
 
     private void showSelectPopWindow(View view) {
-        new XUISimplePopup<>(getContext(), ResUtils.getStringArray(R.array.grid_titles_entry))
+        new XUISimplePopup<>(getContext(), ResUtils.getStringArray(getContext(), R.array.grid_titles_entry))
                 .create(DensityUtils.dip2px(getContext(), 170), (adapter, item, position) -> {
                     ViewUtils.setText(tvSubTitle, String.format("<%s>", item));
                 })

@@ -803,7 +803,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             if (mEditBackground != null) {
                 mCenterEditText.setBackground(mEditBackground);
             } else {
-                mCenterEditText.setBackgroundColor(ResUtils.getColor(R.color.xui_config_color_transparent));
+                mCenterEditText.setBackgroundColor(ResUtils.getColor(getContext(), R.color.xui_config_color_transparent));
             }
             mCenterEditText.setTextColor(mCenterTextColor);
             mCenterEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, mCenterTextSize);

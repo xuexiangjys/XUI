@@ -2,11 +2,15 @@ package com.xuexiang.xui.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.xuexiang.xui.XUI;
 
@@ -25,10 +29,20 @@ public final class DensityUtils {
     /**
      * DisplayMetrics
      *
-     * @return
+     * @return 屏幕密度
      */
+    @Deprecated
     public static DisplayMetrics getDisplayMetrics() {
         return ResUtils.getResources().getDisplayMetrics();
+    }
+
+    /**
+     * DisplayMetrics
+     *
+     * @return 屏幕密度
+     */
+    public static DisplayMetrics getDisplayMetrics(@NonNull Context context) {
+        return context.getResources().getDisplayMetrics();
     }
 
     /**
@@ -37,6 +51,7 @@ public final class DensityUtils {
      * @param dpValue 尺寸dip
      * @return 像素值
      */
+    @Deprecated
     public static int dp2px(float dpValue) {
         final float scale = ResUtils.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
@@ -60,6 +75,7 @@ public final class DensityUtils {
      * @param pxValue 尺寸像素
      * @return DIP值
      */
+    @Deprecated
     public static int px2dp(float pxValue) {
         final float scale = ResUtils.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
@@ -83,6 +99,7 @@ public final class DensityUtils {
      * @param pxValue 尺寸像素
      * @return SP值
      */
+    @Deprecated
     public static int px2sp(float pxValue) {
         float fontScale = ResUtils.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
@@ -105,6 +122,7 @@ public final class DensityUtils {
      * @param spValue SP值
      * @return 像素值
      */
+    @Deprecated
     public static int sp2px(float spValue) {
         float fontScale = ResUtils.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
@@ -126,8 +144,19 @@ public final class DensityUtils {
      *
      * @return 屏幕分辨率幕高度
      */
+    @Deprecated
     public static int getScreenDpi() {
         return getDisplayMetrics().densityDpi;
+    }
+
+    /**
+     * 获取屏幕分辨率
+     *
+     * @param context 上下文
+     * @return 屏幕分辨率幕高度
+     */
+    public static int getScreenDpi(@NonNull Context context) {
+        return getDisplayMetrics(context).densityDpi;
     }
 
     /**

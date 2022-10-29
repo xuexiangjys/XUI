@@ -52,7 +52,7 @@ public class TabControlViewFragment extends BaseFragment {
 
     private void initTabControlView() {
         try {
-            mTabControlView.setItems(ResUtils.getStringArray(R.array.course_param_option), ResUtils.getStringArray(R.array.course_param_value));
+            mTabControlView.setItems(ResUtils.getStringArray(getContext(), R.array.course_param_option), ResUtils.getStringArray(getContext(), R.array.course_param_value));
             mTabControlView.setDefaultSelection(1);
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,7 +62,7 @@ public class TabControlViewFragment extends BaseFragment {
 
     private void initMultiTabControlView() {
         try {
-            mMultiTabControlView.setItems(ResUtils.getStringArray(R.array.course_param_option), ResUtils.getStringArray(R.array.course_param_value));
+            mMultiTabControlView.setItems(ResUtils.getStringArray(getContext(), R.array.course_param_option), ResUtils.getStringArray(getContext(), R.array.course_param_value));
             mMultiTabControlView.setDefaultSelection(1, 2);
         } catch (Exception e) {
             e.printStackTrace();

@@ -79,7 +79,7 @@ public class ShortcutUtilsFragment extends BaseFragment {
         ShortcutUtils.addPinShortcut(getContext(),
                 SearchComponentActivity.class,
                 "shortcut_search_id",
-                R.drawable.ic_action_search, ResUtils.getString(R.string.shortcut_label_search), ShortcutReceiver.class);
+                R.drawable.ic_action_search, ResUtils.getString(getContext(), R.string.shortcut_label_search), ShortcutReceiver.class);
     }
 
     /**
@@ -89,6 +89,6 @@ public class ShortcutUtilsFragment extends BaseFragment {
         ShortcutUtils.addPinShortcut(getContext(),
                 SettingsActivity.class,
                 "shortcut_setting_id",
-                R.drawable.ic_action_setting, ResUtils.getString(R.string.shortcut_label_setting), ShortcutReceiver.class);
+                R.drawable.ic_action_setting, ResUtils.getString(getContext(), R.string.shortcut_label_setting), ShortcutReceiver.class);
     }
 }

@@ -119,7 +119,7 @@ public class BaseActivity extends XPageActivity {
         if (isSupportSlideBack()) {
             SlideBack.withFixSize(this)
                     .haveScroll(true)
-                    .edgeMode(ResUtils.isRtl() ? SlideBack.EDGE_RIGHT : SlideBack.EDGE_LEFT)
+                    .edgeMode(ResUtils.isRtl(this) ? SlideBack.EDGE_RIGHT : SlideBack.EDGE_LEFT)
                     .callBack(this::popPage)
                     .register();
         }

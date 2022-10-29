@@ -79,7 +79,7 @@ public class DemoDataProvider {
 
     private static List<AdapterItem> getGridItems(Context context, int titleArrayId, int iconArrayId) {
         List<AdapterItem> list = new ArrayList<>();
-        String[] titles = ResUtils.getStringArray(titleArrayId);
+        String[] titles = ResUtils.getStringArray(context, titleArrayId);
         Drawable[] icons = ResUtils.getDrawableArray(context, iconArrayId);
         for (int i = 0; i < titles.length; i++) {
             list.add(new AdapterItem(titles[i], icons[i]));

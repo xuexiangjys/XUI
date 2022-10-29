@@ -99,13 +99,13 @@ public class PhotoEditFragment extends BaseFragment implements OnPhotoEditorList
                 mPhotoEditor.redo();
                 break;
             case R.id.btn_brush:
-                mPhotoEditor.setBrushColor(ResUtils.getColor(R.color.xui_config_color_white))
-                        .setBrushSize(DensityUtils.dp2px(5))
+                mPhotoEditor.setBrushColor(ResUtils.getColor(getContext(), R.color.xui_config_color_white))
+                        .setBrushSize(DensityUtils.dp2px(getContext(), 5))
                         .setBrushDrawingMode(true);
                 break;
             case R.id.btn_text:
                 final TextStyleBuilder styleBuilder = new TextStyleBuilder();
-                styleBuilder.withTextColor(ResUtils.getColor(R.color.xui_config_color_white));
+                styleBuilder.withTextColor(ResUtils.getColor(getContext(), R.color.xui_config_color_white));
                 mPhotoEditor.addText("XUI", styleBuilder);
                 break;
             case R.id.btn_rubber:
