@@ -17,6 +17,7 @@
 
 package com.xuexiang.xui.adapter.simple;
 
+import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.xuexiang.xui.R;
@@ -168,8 +170,8 @@ public class XUISimpleExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Deprecated
-    public XUISimpleExpandableListAdapter setPaddingLeftDp(int paddingLeftDp) {
-        mPaddingStartPx = DensityUtils.dp2px(paddingLeftDp);
+    public XUISimpleExpandableListAdapter setPaddingLeftDp(@NonNull Context context, int paddingLeftDp) {
+        mPaddingStartPx = DensityUtils.dp2px(context, paddingLeftDp);
         return this;
     }
 
@@ -178,8 +180,8 @@ public class XUISimpleExpandableListAdapter extends BaseExpandableListAdapter {
         return this;
     }
 
-    public XUISimpleExpandableListAdapter setPaddingStartDp(int paddingStartDp) {
-        mPaddingStartPx = DensityUtils.dp2px(paddingStartDp);
+    public XUISimpleExpandableListAdapter setPaddingStartDp(@NonNull Context context, int paddingStartDp) {
+        mPaddingStartPx = DensityUtils.dp2px(context, paddingStartDp);
         return this;
     }
 

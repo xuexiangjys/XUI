@@ -46,7 +46,7 @@ public class XUIIconFontDisplayFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        WidgetUtils.initGridRecyclerView(recyclerView, 3, DensityUtils.dp2px(2));
+        WidgetUtils.initGridRecyclerView(recyclerView, 3, DensityUtils.dp2px(getContext(), 2));
 
         recyclerView.setAdapter(new IconFontGridAdapter(XUIIconFont.Icon.values()));
     }

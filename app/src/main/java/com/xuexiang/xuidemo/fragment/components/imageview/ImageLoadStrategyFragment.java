@@ -77,7 +77,7 @@ public class ImageLoadStrategyFragment extends BaseFragment {
         });
         LoadOption option = LoadOption.of(DiskCacheStrategyEnum.ALL)
                 .setPlaceholder(ResUtils.getDrawable(getContext(), R.drawable.xui_ic_default_img))
-                .setSize(DensityUtils.dp2px(200), DensityUtils.dp2px(100));
+                .setSize(DensityUtils.dp2px(getContext(), 200), DensityUtils.dp2px(getContext(), 100));
         ImageLoader.get().loadImage(ivContent1, PICTURE_URL1, option);
 
         ImageLoader.get().loadImage(ivContent2, PICTURE_URL2, ResUtils.getDrawable(getContext(), R.drawable.xui_ic_default_img), DiskCacheStrategyEnum.AUTOMATIC);

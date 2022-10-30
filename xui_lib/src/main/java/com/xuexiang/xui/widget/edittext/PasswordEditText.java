@@ -56,7 +56,7 @@ public class PasswordEditText extends AppCompatEditText {
     }
 
     public void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        mExtraClickArea = DensityUtils.dp2px(20);
+        mExtraClickArea = DensityUtils.dp2px(context, 20);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.PasswordEditText, defStyleAttr, 0);
         boolean useNonMonospaceFont;
         boolean enableIconAlpha;

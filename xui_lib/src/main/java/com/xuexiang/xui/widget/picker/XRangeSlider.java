@@ -140,8 +140,8 @@ public class XRangeSlider extends View {
     }
 
     public void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        DEFAULT_TOUCH_TARGET_SIZE = DensityUtils.dp2px(20);
-        DEFAULT_TEXT_MIN_SPACE = DensityUtils.dp2px(2);
+        DEFAULT_TOUCH_TARGET_SIZE = DensityUtils.dp2px(context, 20);
+        DEFAULT_TEXT_MIN_SPACE = DensityUtils.dp2px(context, 2);
         int colorAccent = ThemeUtils.resolveColor(context, R.attr.colorAccent);
         int colorControlNormal = ThemeUtils.resolveColor(context, R.attr.colorControlNormal);
 
@@ -487,8 +487,8 @@ public class XRangeSlider extends View {
 
     private void drawSelectedTargets(Canvas canvas) {
         mPaint.setColor(mInsideRangeColor);
-        canvas.drawCircle(mMinPosition, mMiddleY, DensityUtils.dp2px(3), mPaint);
-        canvas.drawCircle(mMaxPosition, mMiddleY, DensityUtils.dp2px(3), mPaint);
+        canvas.drawCircle(mMinPosition, mMiddleY, DensityUtils.dp2px(getContext(), 3), mPaint);
+        canvas.drawCircle(mMaxPosition, mMiddleY, DensityUtils.dp2px(getContext(), 3), mPaint);
 
         if (mIsTouching) {
             if (mLastTouchedMin) {

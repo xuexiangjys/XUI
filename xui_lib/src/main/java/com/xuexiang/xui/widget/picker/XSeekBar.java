@@ -389,7 +389,7 @@ public class XSeekBar extends View {
 
     private void drawSelectedTargets(Canvas canvas) {
         mPaint.setColor(mInsideRangeColor);
-        canvas.drawCircle(mMaxPosition, mMiddleY, DensityUtils.dp2px(3), mPaint);
+        canvas.drawCircle(mMaxPosition, mMiddleY, DensityUtils.dp2px(getContext(), 3), mPaint);
         if (!mIsTouching) {
             canvas.drawBitmap(mSliderIcon, mMaxPosition - mSliderIcon.getWidth() / 2F, mMiddleY - mSliderIcon.getWidth() / 2F, mPaint);
         } else {

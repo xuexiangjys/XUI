@@ -99,7 +99,7 @@ public class PreviewRecycleViewFragment extends BaseFragment {
     @Override
     protected void initViews() {
         mRecyclerView.setLayoutManager(mGridLayoutManager = new GridLayoutManager(getContext(), 2));
-        mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), 2, DensityUtils.dp2px(3)));
+        mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), 2, DensityUtils.dp2px(getContext(), 3)));
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter = new PreviewRecycleAdapter());

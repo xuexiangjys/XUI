@@ -55,7 +55,7 @@ public class UltraViewPagerFragment extends BaseFragment {
     protected void initViews() {
         ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
         float scale = 0.5625F;
-        UltraPagerAdapter adapter = new UltraPagerAdapter(DemoDataProvider.getBannerList(), scale);
+        UltraPagerAdapter adapter = new UltraPagerAdapter(getContext(), DemoDataProvider.getBannerList(), scale);
         ultraViewPager.setAdapter(adapter);
         ultraViewPager.setMaxHeight((int) (ScreenUtils.getScreenWidth() * scale));
         //指示器
@@ -64,8 +64,8 @@ public class UltraViewPagerFragment extends BaseFragment {
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
                 .setFocusColor(ThemeUtils.getMainThemeColor(getContext()))
                 .setNormalColor(Color.WHITE)
-                .setMargin(DensityUtils.dp2px(10), DensityUtils.dp2px(10), DensityUtils.dp2px(10), DensityUtils.dp2px(10))
-                .setRadius(DensityUtils.dp2px(5));
+                .setMargin(DensityUtils.dp2px(getContext(), 10), DensityUtils.dp2px(getContext(), 10), DensityUtils.dp2px(getContext(), 10), DensityUtils.dp2px(getContext(), 10))
+                .setRadius(DensityUtils.dp2px(getContext(), 5));
         ultraViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
         ultraViewPager.getIndicator().build();
 

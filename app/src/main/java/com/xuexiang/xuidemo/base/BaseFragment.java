@@ -53,7 +53,7 @@ public abstract class BaseFragment extends XPageFragment {
 
     @MemoryCache
     private Drawable getNavigationBackDrawable(int navigationBackId) {
-        return DrawableUtils.getSupportRTLDrawable(ThemeUtils.resolveDrawable(getContext(), navigationBackId));
+        return DrawableUtils.getSupportRTLDrawable(getContext(), ThemeUtils.resolveDrawable(getContext(), navigationBackId));
     }
 
     public IMessageLoader getMessageLoader() {

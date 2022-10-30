@@ -66,7 +66,7 @@ public class MaterialDesignCalendarFragment extends BaseFragment {
             TextView textView;
             if (convertView == null) {
                 convertView = LayoutInflater.from(parentView.getContext()).inflate(R.layout.adapter_calendar_item, null);
-                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(DensityUtils.dp2px(48), DensityUtils.dp2px(48));
+                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(DensityUtils.dp2px(getContext(), 48), DensityUtils.dp2px(getContext(), 48));
                 convertView.setLayoutParams(params);
             }
 

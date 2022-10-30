@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.adapter.listview.BaseListAdapter;
 import com.xuexiang.xui.utils.DensityUtils;
@@ -73,8 +75,8 @@ public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
     }
 
     @Deprecated
-    public XUISimpleAdapter setPaddingLeftDp(int paddingLeftDp) {
-        mPaddingStartPx = DensityUtils.dp2px(paddingLeftDp);
+    public XUISimpleAdapter setPaddingLeftDp(@NonNull Context context, int paddingLeftDp) {
+        mPaddingStartPx = DensityUtils.dp2px(context, paddingLeftDp);
         return this;
     }
 
@@ -83,8 +85,8 @@ public class XUISimpleAdapter extends BaseListAdapter<AdapterItem, ViewHolder> {
         return this;
     }
 
-    public XUISimpleAdapter setPaddingStartDp(int paddingStartDp) {
-        mPaddingStartPx = DensityUtils.dp2px(paddingStartDp);
+    public XUISimpleAdapter setPaddingStartDp(@NonNull Context context, int paddingStartDp) {
+        mPaddingStartPx = DensityUtils.dp2px(context, paddingStartDp);
         return this;
     }
 

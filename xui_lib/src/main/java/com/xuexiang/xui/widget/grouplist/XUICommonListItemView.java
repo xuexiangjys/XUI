@@ -318,7 +318,7 @@ public class XUICommonListItemView extends RelativeLayout {
             case ACCESSORY_TYPE_CHEVRON: {
                 ImageView tempImageView = getAccessoryImageView();
                 Drawable chevronDrawable = ThemeUtils.resolveDrawable(getContext(), R.attr.xui_common_list_item_chevron, ResUtils.getDrawable(getContext(), R.drawable.xui_icon_chevron));
-                tempImageView.setImageDrawable(DrawableUtils.getSupportRTLDrawable(chevronDrawable));
+                tempImageView.setImageDrawable(DrawableUtils.getSupportRTLDrawable(getContext(), chevronDrawable));
                 mAccessoryView.addView(tempImageView);
                 mAccessoryView.setVisibility(VISIBLE);
             }

@@ -55,7 +55,7 @@ public abstract class ComponentContainerFragment extends XPageContainerListFragm
 
     @MemoryCache
     private Drawable getNavigationBackDrawable(int navigationBackId) {
-        return DrawableUtils.getSupportRTLDrawable(ThemeUtils.resolveDrawable(getContext(), navigationBackId));
+        return DrawableUtils.getSupportRTLDrawable(getContext(), ThemeUtils.resolveDrawable(getContext(), navigationBackId));
     }
 
     @Override

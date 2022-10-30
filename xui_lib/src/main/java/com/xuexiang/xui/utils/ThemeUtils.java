@@ -337,8 +337,20 @@ public final class ThemeUtils {
      *
      * @return 是否是深色模式
      */
+    @Deprecated
     public static boolean isNightMode() {
         int mode = ResUtils.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return mode == Configuration.UI_MODE_NIGHT_YES;
+    }
+
+    /**
+     * 当前是否是处于深色模式
+     *
+     * @param context 上下文
+     * @return 是否是深色模式
+     */
+    public static boolean isNightMode(@NonNull Context context) {
+        int mode = ResUtils.getResources(context).getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         return mode == Configuration.UI_MODE_NIGHT_YES;
     }
 
