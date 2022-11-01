@@ -168,7 +168,7 @@ dependencies {
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
 
     // XQRCode二维码扫描
-    implementation 'com.github.xuexiangjys:XQRCode:1.1.0'
+    implementation 'com.github.xuexiangjys:XQRCode:1.1.1'
     // CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.2"
     // XFloatView悬浮窗口
@@ -199,7 +199,7 @@ dependencies {
     implementation 'com.alibaba.android:ultraviewpager:1.0.7.8'
     implementation 'com.alibaba.android:tangram:3.3.6'
     // 版本更新
-    implementation 'com.github.xuexiangjys:XUpdate:2.1.2'
+    implementation 'com.github.xuexiangjys:XUpdate:2.1.3'
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation deps.gson
     implementation deps.okhttp3
