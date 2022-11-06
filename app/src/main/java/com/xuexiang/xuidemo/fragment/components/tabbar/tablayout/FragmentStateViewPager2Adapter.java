@@ -67,6 +67,28 @@ public class FragmentStateViewPager2Adapter extends FragmentStateAdapter {
         return this;
     }
 
+    public FragmentStateViewPager2Adapter replaceFragment(int index, Fragment newFragment, String newTitle) {
+        if (newFragment != null) {
+            mFragmentList.set(index, newFragment);
+            mTitleList.set(index, newTitle);
+            mIds.set(index, getAtomicGeneratedId());
+        }
+        return this;
+    }
+
+    public int replaceFragment(Fragment oldFragment, Fragment newFragment, String newTitle) {
+        if (oldFragment != null && newFragment != null) {
+            int index = mFragmentList.indexOf(oldFragment);
+            if (index != -1) {
+                mFragmentList.set(index, newFragment);
+                mTitleList.set(index, newTitle);
+                mIds.set(index, getAtomicGeneratedId());
+            }
+            return index;
+        }
+        return -1;
+    }
+
     public FragmentStateViewPager2Adapter removeFragment(int index) {
         if (index >= 0 && index < mFragmentList.size()) {
             mFragmentList.remove(index);

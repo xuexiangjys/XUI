@@ -9,7 +9,7 @@ import com.xuexiang.xui.widget.flowlayout.FlowTagLayout;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.FlowTagAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
 
@@ -72,7 +72,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         FlowTagAdapter tagAdapter = new FlowTagAdapter(getContext());
         mNormalFlowTagLayout.setAdapter(tagAdapter);
         mNormalFlowTagLayout.setOnTagClickListener((parent, view, position) -> XToastUtils.toast("点击了：" + parent.getAdapter().getItem(position)));
-        tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
+        tagAdapter.addTags(ResUtils.getStringArray(getContext(), R.array.tags_values));
     }
 
     private void initSingleFlowTagLayout() {
@@ -80,7 +80,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mSingleFlowTagLayout.setAdapter(tagAdapter);
         mSingleFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);
         mSingleFlowTagLayout.setOnTagSelectListener((parent, position, selectedList) -> XToastUtils.toast(getSelectedText(parent, selectedList)));
-        tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
+        tagAdapter.addTags(ResUtils.getStringArray(getContext(), R.array.tags_values));
         tagAdapter.setSelectedPositions(2, 3, 4);
 
     }
@@ -90,7 +90,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mSingleCancelableFlowTagLayout.setAdapter(tagAdapter);
         mSingleCancelableFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);
         mSingleCancelableFlowTagLayout.setOnTagSelectListener((parent, position, selectedList) -> XToastUtils.toast(getSelectedText(parent, selectedList)));
-        tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
+        tagAdapter.addTags(ResUtils.getStringArray(getContext(), R.array.tags_values));
         tagAdapter.setSelectedPositions(2, 3, 4);
 
     }
@@ -100,7 +100,7 @@ public class FlowTagLayoutFragment extends BaseFragment {
         mMultiFlowTagLayout.setAdapter(tagAdapter);
         mMultiFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_MULTI);
         mMultiFlowTagLayout.setOnTagSelectListener((parent, position, selectedList) -> XToastUtils.toast(getSelectedText(parent, selectedList)));
-        tagAdapter.addTags(ResUtils.getStringArray(R.array.tags_values));
+        tagAdapter.addTags(ResUtils.getStringArray(getContext(), R.array.tags_values));
         tagAdapter.setSelectedPositions(2, 3, 4);
 
 //        mMultiFlowTagLayout.setItems("1111", "2222", "3333", "4444");

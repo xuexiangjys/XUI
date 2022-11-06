@@ -31,7 +31,7 @@ import com.xuexiang.xuidemo.adapter.CommonGridAdapter;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 

@@ -13,8 +13,7 @@ import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.widget.popupwindow.popup.XUISimplePopup;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
-import com.xuexiang.xutil.common.StringUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.display.DensityUtils;
 
 import butterknife.BindView;
@@ -75,21 +74,21 @@ public class ToolBarFragment extends BaseFragment {
         toolBar1.setNavigationOnClickListener(onClickListener);
         toolBar1.setContentInsetStartWithNavigation(0);
         // 设置 toolbar 背景色
-        toolBar1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        toolBar1.setBackgroundColor(ResUtils.getColor(getContext(), R.color.colorPrimary));
         // 设置 Title
         toolBar1.setTitle(R.string.title_toolbar);
         //  设置Toolbar title文字颜色
-        toolBar1.setTitleTextColor(getResources().getColor(R.color.white));
+        toolBar1.setTitleTextColor(ResUtils.getColor(getContext(), R.color.white));
         // 设置Toolbar subTitle
         toolBar1.setSubtitle(R.string.title_toolbar_sub);
-        toolBar1.setSubtitleTextColor(getResources().getColor(R.color.white));
+        toolBar1.setSubtitleTextColor(ResUtils.getColor(getContext(), R.color.white));
         // 设置logo
         toolBar1.setLogo(R.mipmap.ic_launcher);
 
         //设置 Toolbar menu
         toolBar1.inflateMenu(R.menu.menu_custom);
         // 设置溢出菜单的图标
-        toolBar1.setOverflowIcon(getResources().getDrawable(R.drawable.ic_navigation_more));
+        toolBar1.setOverflowIcon(ResUtils.getDrawable(getContext(), R.drawable.ic_navigation_more));
         // 设置menu item 点击事件
         toolBar1.setOnMenuItemClickListener(menuItemClickListener);
     }
@@ -138,7 +137,7 @@ public class ToolBarFragment extends BaseFragment {
     }
 
     private void showSelectPopWindow(View view) {
-        new XUISimplePopup<>(getContext(), ResUtils.getStringArray(R.array.grid_titles_entry))
+        new XUISimplePopup<>(getContext(), ResUtils.getStringArray(getContext(), R.array.grid_titles_entry))
                 .create(DensityUtils.dip2px(getContext(), 170), (adapter, item, position) -> {
                     ViewUtils.setText(tvSubTitle, String.format("<%s>", item));
                 })

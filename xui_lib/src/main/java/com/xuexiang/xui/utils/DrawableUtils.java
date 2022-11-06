@@ -509,18 +509,19 @@ public final class DrawableUtils {
      * @param src 原drawable
      * @return
      */
-    public static Drawable getSupportRTLDrawable(Drawable src) {
-        return getSupportRTLDrawable(src, false);
+    public static Drawable getSupportRTLDrawable(@NonNull Context context, Drawable src) {
+        return getSupportRTLDrawable(context, src, false);
     }
 
     /**
      * 获取支持RTL布局的drawable【如果是RTL布局就旋转180度】
      *
+     * @param context
      * @param src 原drawable
      * @return
      */
-    public static Drawable getSupportRTLDrawable(Drawable src, boolean recycle) {
-        if (ResUtils.isRtl()) {
+    public static Drawable getSupportRTLDrawable(@NonNull Context context, Drawable src, boolean recycle) {
+        if (ResUtils.isRtl(context)) {
             return rotate(src, 180, 0, 0, recycle);
         }
         return src;

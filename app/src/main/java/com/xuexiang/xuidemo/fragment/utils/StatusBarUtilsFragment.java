@@ -11,7 +11,7 @@ import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.TranslucentActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.app.ActivityUtils;
 
 import butterknife.BindView;

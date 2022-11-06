@@ -36,6 +36,7 @@
         style="@style/TabLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/xui_actionbar_height"
+        android:contentDescription="@string/description_navigation_main"
         app:tabBackground="@null"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/xui_config_color_transparent"

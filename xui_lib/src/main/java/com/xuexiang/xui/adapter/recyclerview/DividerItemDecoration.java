@@ -75,7 +75,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         if (mDivider != null) {
             mDividerHeight = mDivider.getIntrinsicHeight();
         } else {
-            mDividerHeight = DensityUtils.dp2px(1);
+            mDividerHeight = DensityUtils.dp2px(context, 1);
         }
     }
 

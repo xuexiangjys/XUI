@@ -360,8 +360,13 @@ public class WheelView extends View implements HasTypeface {
 
     public final void setAdapter(WheelAdapter adapter) {
         this.adapter = adapter;
+        boolean isNeedRelayout = measuredHeight <= 0;
         remeasure();
-        invalidate();
+        if (isNeedRelayout) {
+            requestLayout();
+        } else {
+            invalidate();
+        }
     }
 
     public final WheelAdapter getAdapter() {

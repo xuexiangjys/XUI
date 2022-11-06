@@ -54,5 +54,14 @@
         app:mtv_isAutoFit="true"
         app:mtv_isAutoDisplay="true"/>
 
+    <com.xuexiang.xui.widget.textview.MarqueeTextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#88dddddd"
+        app:mtv_isAutoFit="true"
+        app:mtv_entries="@array/marquee_text_entry"
+        app:mtv_isAutoDisplay="true"/>
+
 
 </LinearLayout>

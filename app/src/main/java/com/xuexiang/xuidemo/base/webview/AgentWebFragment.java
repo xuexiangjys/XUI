@@ -70,7 +70,7 @@ import com.just.agentweb.widget.IWebLayout;
 import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.net.JsonUtil;
 
 import java.util.HashMap;

@@ -14,7 +14,7 @@ import com.xuexiang.xui.widget.textview.marqueen.MarqueeView;
 import com.xuexiang.xui.widget.textview.marqueen.SimpleNoticeMF;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -100,7 +100,7 @@ public class MarqueeViewFragment extends BaseFragment {
                 if ("离离原上草，一岁一枯荣。".equals(displayMsg.toString())) {
                     return null;
                 } else {
-                    XToastUtils.toast("开始滚动：" + displayMsg.toString());
+                    XToastUtils.toast("开始滚动：" + displayMsg);
                     return displayMsg;
                 }
             }

@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,19 +52,29 @@ public class SimpleTabFragment extends Fragment {
     TextView tvTitle;
     @BindView(R.id.tv_explain)
     TextView tvExplain;
+    @BindView(R.id.btn_refresh)
+    Button btnRefresh;
 
     private Unbinder mUnbinder;
 
     @AutoWired(name = KEY_TITLE)
     String title;
 
+    private OnRefreshListener mListener;
 
-    public static SimpleTabFragment newInstance(String title) {
+
+    public static SimpleTabFragment newInstance(String title, OnRefreshListener listener) {
         Bundle args = new Bundle();
         args.putString(KEY_TITLE, title);
         SimpleTabFragment fragment = new SimpleTabFragment();
         fragment.setArguments(args);
+        fragment.setOnRefreshListener(listener);
         return fragment;
+    }
+
+    public SimpleTabFragment setOnRefreshListener(OnRefreshListener listener) {
+        mListener = listener;
+        return this;
     }
 
     @Override
@@ -110,6 +121,11 @@ public class SimpleTabFragment extends Fragment {
         Log.e(TAG, "initView, random number:" + randomNumber + ", " + title);
         tvTitle.setText(String.format("这个是%s页面的内容", title));
         tvExplain.setText(String.format("这个是页面随机生成的数字:%d", randomNumber));
+        btnRefresh.setOnClickListener(v -> {
+            if (mListener != null) {
+                mListener.onTabRefresh(this, title);
+            }
+        });
     }
 
     @Override
@@ -120,5 +136,15 @@ public class SimpleTabFragment extends Fragment {
         super.onDestroyView();
         Log.e(TAG, "onDestroyView:" + title);
 
+    }
+
+    public interface OnRefreshListener {
+        /**
+         * 刷新
+         *
+         * @param fragment 页面
+         * @param title 标题
+         */
+        void onTabRefresh(Fragment fragment, String title);
     }
 }

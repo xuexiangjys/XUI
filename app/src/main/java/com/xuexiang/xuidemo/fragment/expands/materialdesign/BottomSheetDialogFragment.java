@@ -110,7 +110,7 @@ public class BottomSheetDialogFragment extends BaseSimpleListFragment {
     }
 
     private void initDialogGrid(RecyclerView recyclerView) {
-        WidgetUtils.initGridRecyclerView(recyclerView, 3, DensityUtils.dp2px(2));
+        WidgetUtils.initGridRecyclerView(recyclerView, 3, DensityUtils.dp2px(getContext(), 2));
 
         WidgetItemAdapter widgetItemAdapter = new WidgetItemAdapter(sortPageInfo(AppPageConfig.getInstance().getComponents()));
         recyclerView.setAdapter(widgetItemAdapter);

@@ -143,17 +143,17 @@ public class TitleBar extends ViewGroup implements View.OnClickListener, HasType
         mSubTitleTextSize = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_subTitleTextSize, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_sub_text_size));
         mActionTextSize = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_actionTextSize, ThemeUtils.resolveDimension(context, R.attr.xui_actionbar_action_text_size));
 
-        mSideTextColor = typedArray.getColor(R.styleable.TitleBar_tb_sideTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, Color.WHITE));
-        mTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_titleTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, Color.WHITE));
-        mSubTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_subTitleTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, Color.WHITE));
-        mActionTextColor = typedArray.getColor(R.styleable.TitleBar_tb_actionTextColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_actionbar_text_color, Color.WHITE));
+        mSideTextColor = typedArray.getColor(R.styleable.TitleBar_tb_sideTextColor, ThemeUtils.resolveColor(context, R.attr.xui_actionbar_text_color, Color.WHITE));
+        mTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_titleTextColor, ThemeUtils.resolveColor(context, R.attr.xui_actionbar_text_color, Color.WHITE));
+        mSubTitleTextColor = typedArray.getColor(R.styleable.TitleBar_tb_subTitleTextColor, ThemeUtils.resolveColor(context, R.attr.xui_actionbar_text_color, Color.WHITE));
+        mActionTextColor = typedArray.getColor(R.styleable.TitleBar_tb_actionTextColor, ThemeUtils.resolveColor(context, R.attr.xui_actionbar_text_color, Color.WHITE));
 
         mLeftImageResource = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.TitleBar_tb_leftImageResource);
         mLeftTextString = typedArray.getString(R.styleable.TitleBar_tb_leftText);
         mTitleTextString = typedArray.getString(R.styleable.TitleBar_tb_titleText);
         mSubTextString = typedArray.getString(R.styleable.TitleBar_tb_subTitleText);
         mDividerColor = typedArray.getColor(R.styleable.TitleBar_tb_dividerColor, Color.TRANSPARENT);
-        mDivideHeight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_dividerHeight, DensityUtils.dp2px(1));
+        mDivideHeight = typedArray.getDimensionPixelSize(R.styleable.TitleBar_tb_dividerHeight, DensityUtils.dp2px(context, 1));
         mIsUseThemeColor = typedArray.getBoolean(R.styleable.TitleBar_tb_useThemeColor, true);
 
         typedArray.recycle();

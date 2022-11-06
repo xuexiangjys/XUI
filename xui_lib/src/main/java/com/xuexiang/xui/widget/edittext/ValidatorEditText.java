@@ -82,7 +82,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
     }
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        mExtraClickArea = DensityUtils.dp2px(20);
+        mExtraClickArea = DensityUtils.dp2px(context, 20);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ValidatorEditText, defStyleAttr, 0);
         String regexp = typedArray.getString(R.styleable.ValidatorEditText_vet_regexp);
@@ -92,7 +92,7 @@ public class ValidatorEditText extends AppCompatEditText implements View.OnFocus
             if (!TextUtils.isEmpty(errorMessage)) {
                 mValidators.add(new RegexpValidator(errorMessage, regexp));
             } else {
-                mValidators.add(new RegexpValidator(ResUtils.getString(R.string.xui_met_input_error), regexp));
+                mValidators.add(new RegexpValidator(ResUtils.getString(context, R.string.xui_met_input_error), regexp));
             }
         }
         mIsAutoValidate = typedArray.getBoolean(R.styleable.ValidatorEditText_vet_autoValidate, true);

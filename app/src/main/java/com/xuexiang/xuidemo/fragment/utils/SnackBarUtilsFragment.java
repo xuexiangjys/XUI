@@ -27,7 +27,7 @@ import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.SnackbarUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.OnClick;
 
@@ -64,7 +64,7 @@ public class SnackBarUtilsFragment extends BaseFragment {
                 break;
             case R.id.btn_indefinite:
                 SnackbarUtils.Indefinite(view, "显示时长:无限 + info").info()
-                        .actionColor(ResUtils.getColor(R.color.xui_config_color_white))
+                        .actionColor(ResUtils.getColor(getContext(), R.color.xui_config_color_white))
                         .setAction("确定", v -> XToastUtils.toast("点击了确定！")).show();
                 break;
             case R.id.btn_length_custom:

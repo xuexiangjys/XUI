@@ -204,9 +204,9 @@ public class CommonTextView extends RelativeLayout implements HasTypeface {
     private void initAttrs(Context context, AttributeSet attrs) {
         mContext = context;
 
-        mDefaultTextColor = ThemeUtils.resolveColor(context, R.attr.stv_color_common_text, ResUtils.getColor(R.color.stv_color_common_text));
-        mDefaultTextSize = ThemeUtils.resolveDimension(context, R.attr.stv_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_stv_text_size));
-        mDefaultPadding = ThemeUtils.resolveDimension(context, R.attr.stv_margin, ResUtils.getDimensionPixelSize(R.dimen.default_stv_margin));
+        mDefaultTextColor = ThemeUtils.resolveColor(context, R.attr.stv_color_common_text, ResUtils.getColor(context, R.color.stv_color_common_text));
+        mDefaultTextSize = ThemeUtils.resolveDimension(context, R.attr.stv_text_size, ResUtils.getDimensionPixelSize(context, R.dimen.default_stv_text_size));
+        mDefaultPadding = ThemeUtils.resolveDimension(context, R.attr.stv_margin, ResUtils.getDimensionPixelSize(context, R.dimen.default_stv_margin));
         mCenterSpaceHeight = dip2px(context, 5);
         getAttr(attrs);
         init();

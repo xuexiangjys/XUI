@@ -96,7 +96,7 @@ public class DemoBottomSheetDialog extends BottomSheetDialogFragment {
     }
 
     private void initView(@NonNull View view) {
-        WidgetUtils.initGridRecyclerView(recyclerView, 3, DensityUtils.dp2px(2));
+        WidgetUtils.initGridRecyclerView(recyclerView, 3, DensityUtils.dp2px(getContext(), 2));
 
         WidgetItemAdapter widgetItemAdapter = new WidgetItemAdapter(sortPageInfo(AppPageConfig.getInstance().getComponents()));
         recyclerView.setAdapter(widgetItemAdapter);

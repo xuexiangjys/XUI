@@ -62,7 +62,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         if (mDivider != null) {
             mDividerWidth = mDivider.getIntrinsicWidth();
         } else {
-            mDividerWidth = DensityUtils.dp2px(1);
+            mDividerWidth = DensityUtils.dp2px(context, 1);
         }
     }
 

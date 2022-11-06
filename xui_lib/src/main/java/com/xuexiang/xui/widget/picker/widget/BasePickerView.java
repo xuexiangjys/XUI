@@ -363,7 +363,7 @@ public class BasePickerView {
      */
     private void setWindowMaxWidth(Window dialogWindow) {
         final int windowWidth = getWindowWidth(dialogWindow);
-        int windowHorizontalPadding = ThemeUtils.resolveDimension(context, R.attr.md_dialog_horizontal_margin, ResUtils.getDimensionPixelSize(R.dimen.default_md_dialog_horizontal_margin_phone));
+        int windowHorizontalPadding = ThemeUtils.resolveDimension(context, R.attr.md_dialog_horizontal_margin, ResUtils.getDimensionPixelSize(context, R.dimen.default_md_dialog_horizontal_margin_phone));
         int maxWidth = ThemeUtils.resolveDimension(context, R.attr.md_dialog_max_width);
         final int calculatedWidth = windowWidth - (windowHorizontalPadding * 2);
 

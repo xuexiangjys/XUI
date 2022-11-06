@@ -46,7 +46,7 @@ public class AnimationPlaceholderFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        WidgetUtils.initRecyclerView(recyclerView, DensityUtils.dp2px(5), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_background));
+        WidgetUtils.initRecyclerView(recyclerView, DensityUtils.dp2px(getContext(), 5), ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_background));
 
         recyclerView.setAdapter(mNewsListAdapter = new NewsListAdapter(true));
     }

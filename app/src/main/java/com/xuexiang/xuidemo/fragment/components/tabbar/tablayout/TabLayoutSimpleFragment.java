@@ -17,6 +17,7 @@
 
 package com.xuexiang.xuidemo.fragment.components.tabbar.tablayout;
 
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -26,7 +27,7 @@ import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 
@@ -37,7 +38,7 @@ import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
  * @since 2020/4/21 12:19 AM
  */
 @Page(name = "TabLayout简单使用")
-public class TabLayoutSimpleFragment extends BaseFragment implements TabLayout.OnTabSelectedListener {
+public class TabLayoutSimpleFragment extends BaseFragment implements TabLayout.OnTabSelectedListener , SimpleTabFragment.OnRefreshListener {
     @BindView(R.id.tab1)
     TabLayout mTabLayout1;
 
@@ -63,7 +64,7 @@ public class TabLayoutSimpleFragment extends BaseFragment implements TabLayout.O
         // 固定数量的Tab,关联ViewPager
         FragmentAdapter<SimpleTabFragment> adapter = new FragmentAdapter<>(getChildFragmentManager());
         for (String page : ContentPage.getPageNames()) {
-            adapter.addFragment(SimpleTabFragment.newInstance(page), page);
+            adapter.addFragment(SimpleTabFragment.newInstance(page, this), page);
         }
         mTabLayout.addOnTabSelectedListener(this);
         mViewPager.setAdapter(adapter);
@@ -73,6 +74,12 @@ public class TabLayoutSimpleFragment extends BaseFragment implements TabLayout.O
         WidgetUtils.setTabLayoutTextFont(mTabLayout1);
 
     }
+
+    @Override
+    public void onTabRefresh(Fragment fragment, String title) {
+        XToastUtils.toast("刷新:" + title);
+    }
+
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {

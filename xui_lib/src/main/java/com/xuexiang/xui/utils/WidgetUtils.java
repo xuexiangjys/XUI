@@ -102,7 +102,7 @@ public final class WidgetUtils {
     public static void initSpinnerStyle(@NonNull Spinner spinner) {
         // 带下拉箭头的背景
         spinner.setBackground(ResUtils.getDrawable(spinner.getContext(), R.drawable.xui_config_bg_spinner));
-        ViewUtils.setPaddingEnd(spinner, ResUtils.getDimensionPixelSize(R.dimen.default_spinner_icon_padding_size));
+        ViewUtils.setPaddingEnd(spinner, ResUtils.getDimensionPixelSize(spinner.getContext(), R.dimen.default_spinner_icon_padding_size));
         // 下拉选择菜单的背景
         spinner.setPopupBackgroundDrawable(ResUtils.getDrawable(spinner.getContext(), R.drawable.ms_drop_down_bg_radius));
         setSpinnerDropDownVerticalOffset(spinner);

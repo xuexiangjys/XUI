@@ -38,4 +38,12 @@
         android:layout_marginTop="20dp"
         tools:text="这里是xx页面描述" />
 
+
+    <Button
+        android:id="@+id/btn_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="刷新" />
+
 </LinearLayout>

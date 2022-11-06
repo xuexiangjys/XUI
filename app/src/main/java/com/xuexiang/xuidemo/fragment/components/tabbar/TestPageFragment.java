@@ -53,7 +53,7 @@ public class TestPageFragment extends Fragment {
         TextView textView = new TextView(getContext());
         textView.setTextAppearance(getContext(), R.style.TextStyle_Content_Match);
         textView.setGravity(Gravity.CENTER);
-        textView.setText("这个是" + content + "页面的内容");
+        textView.setText(String.format("这个是%s页面的内容", content));
         return textView;
     }
 }

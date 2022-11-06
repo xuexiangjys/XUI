@@ -22,10 +22,8 @@ import com.xuexiang.xui.widget.alpha.XUIAlphaViewHelper;
  */
 public class SuperButton extends AppCompatButton {
 
-    private Context mContext;
-
-    private int defaultColor = 0x20000000;
-    private int defaultSelectorColor = 0x20000000;
+    private final int DEFAULT_COLOR = 0x20000000;
+    private final int DEFAULT_SELECTOR_COLOR = 0x20000000;
 
     private int solidColor;
     private int selectorPressedColor;
@@ -49,7 +47,6 @@ public class SuperButton extends AppCompatButton {
 
     private int gradientOrientation;
 
-    private int gradientAngle;
     private int gradientCenterX;
     private int gradientCenterY;
     private int gradientGradientRadius;
@@ -96,7 +93,6 @@ public class SuperButton extends AppCompatButton {
     public static final int TEXT_GRAVITY_TOP = 3;
     public static final int TEXT_GRAVITY_BOTTOM = 4;
 
-
     private int shapeType;
 
     private int gravity;
@@ -104,38 +100,30 @@ public class SuperButton extends AppCompatButton {
     private GradientDrawable gradientDrawable;
 
     public SuperButton(Context context) {
-        super(context);
-        initAttrs(context, null);
+        this(context, null);
     }
 
     public SuperButton(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initAttrs(context, attrs);
+        this(context, attrs, R.attr.SuperButtonStyle);
     }
 
     public SuperButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttrs(context, attrs);
+        initAttrs(context, attrs, defStyleAttr);
     }
 
-    private void initAttrs(Context context, AttributeSet attrs) {
-        mContext = context;
-        getAttr(attrs);
-        init();
-    }
-
-    private void getAttr(AttributeSet attrs) {
-        TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.SuperButton);
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SuperButton, defStyleAttr, 0);
 
         gravity = typedArray.getInt(R.styleable.SuperButton_sGravity, 0);
 
         shapeType = typedArray.getInt(R.styleable.SuperButton_sShapeType, GradientDrawable.RECTANGLE);
 
-        solidColor = typedArray.getColor(R.styleable.SuperButton_sSolidColor, defaultColor);
+        solidColor = typedArray.getColor(R.styleable.SuperButton_sSolidColor, DEFAULT_COLOR);
 
-        selectorPressedColor = typedArray.getColor(R.styleable.SuperButton_sSelectorPressedColor, defaultSelectorColor);
-        selectorDisableColor = typedArray.getColor(R.styleable.SuperButton_sSelectorDisableColor, defaultSelectorColor);
-        selectorNormalColor = typedArray.getColor(R.styleable.SuperButton_sSelectorNormalColor, defaultSelectorColor);
+        selectorPressedColor = typedArray.getColor(R.styleable.SuperButton_sSelectorPressedColor, DEFAULT_SELECTOR_COLOR);
+        selectorDisableColor = typedArray.getColor(R.styleable.SuperButton_sSelectorDisableColor, DEFAULT_SELECTOR_COLOR);
+        selectorNormalColor = typedArray.getColor(R.styleable.SuperButton_sSelectorNormalColor, DEFAULT_SELECTOR_COLOR);
 
         cornersRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersRadius, 0);
         cornersTopLeftRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersTopLeftRadius, 0);
@@ -147,14 +135,13 @@ public class SuperButton extends AppCompatButton {
         strokeDashWidth = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sStrokeDashWidth, 0);
         strokeDashGap = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sStrokeDashGap, 0);
 
-        strokeColor = typedArray.getColor(R.styleable.SuperButton_sStrokeColor, defaultColor);
+        strokeColor = typedArray.getColor(R.styleable.SuperButton_sStrokeColor, DEFAULT_COLOR);
 
         sizeWidth = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sSizeWidth, 0);
-        sizeHeight = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sSizeHeight, dip2px(mContext, 48));
+        sizeHeight = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sSizeHeight, dip2px(context, 48));
 
         gradientOrientation = typedArray.getInt(R.styleable.SuperButton_sGradientOrientation, -1);
 
-        gradientAngle = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientAngle, 0);
         gradientCenterX = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientCenterX, 0);
         gradientCenterY = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientCenterY, 0);
         gradientGradientRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientGradientRadius, 0);
@@ -169,9 +156,11 @@ public class SuperButton extends AppCompatButton {
         useSelector = typedArray.getBoolean(R.styleable.SuperButton_sUseSelector, false);
 
         typedArray.recycle();
+
+        refresh();
     }
 
-    private void init() {
+    private void refresh() {
         setClickable(true);
 
         if (Build.VERSION.SDK_INT < 16) {
@@ -301,7 +290,6 @@ public class SuperButton extends AppCompatButton {
                 if (gradientCenterX != 0 && gradientCenterY != 0) {
                     gradientDrawable.setGradientCenter(gradientCenterX, gradientCenterY);
                 }
-
             }
         } else {
             gradientDrawable.setColor(solidColor);
@@ -479,7 +467,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeStrokeWidth(int strokeWidth) {
-        this.strokeWidth = dip2px(mContext, strokeWidth);
+        this.strokeWidth = dip2px(getContext(), strokeWidth);
         return this;
     }
 
@@ -501,7 +489,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeStrokeDashWidth(float strokeDashWidth) {
-        this.strokeDashWidth = dip2px(mContext, strokeDashWidth);
+        this.strokeDashWidth = dip2px(getContext(), strokeDashWidth);
         return this;
     }
 
@@ -512,7 +500,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeStrokeDashGap(float strokeDashGap) {
-        this.strokeDashGap = dip2px(mContext, strokeDashGap);
+        this.strokeDashGap = dip2px(getContext(), strokeDashGap);
         return this;
     }
 
@@ -523,7 +511,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeCornersRadius(float radius) {
-        this.cornersRadius = dip2px(mContext, radius);
+        this.cornersRadius = dip2px(getContext(), radius);
         return this;
     }
 
@@ -534,7 +522,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeCornersTopLeftRadius(float radius) {
-        this.cornersTopLeftRadius = dip2px(mContext, radius);
+        this.cornersTopLeftRadius = dip2px(getContext(), radius);
         return this;
     }
 
@@ -545,7 +533,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeCornersTopRightRadius(float radius) {
-        this.cornersTopRightRadius = dip2px(mContext, radius);
+        this.cornersTopRightRadius = dip2px(getContext(), radius);
         return this;
     }
 
@@ -556,7 +544,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeCornersBottomLeftRadius(float radius) {
-        this.cornersBottomLeftRadius = dip2px(mContext, radius);
+        this.cornersBottomLeftRadius = dip2px(getContext(), radius);
         return this;
     }
 
@@ -567,7 +555,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeCornersBottomRightRadius(float radius) {
-        this.cornersBottomRightRadius = dip2px(mContext, radius);
+        this.cornersBottomRightRadius = dip2px(getContext(), radius);
         return this;
     }
 
@@ -708,7 +696,7 @@ public class SuperButton extends AppCompatButton {
      * 所有与shape相关的属性设置之后调用此方法才生效
      */
     public void setUseShape() {
-        init();
+        refresh();
     }
 
 

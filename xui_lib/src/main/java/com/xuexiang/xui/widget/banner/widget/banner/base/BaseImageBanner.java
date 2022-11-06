@@ -76,7 +76,7 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
      * @param context
      */
     protected void initImageBanner(Context context) {
-        mPlaceHolder = new ColorDrawable(ResUtils.getColor(R.color.default_image_banner_placeholder_color));
+        mPlaceHolder = new ColorDrawable(ResUtils.getColor(context, R.color.default_image_banner_placeholder_color));
         mEnableCache = true;
         mScale = getContainerScale();
     }
@@ -89,12 +89,22 @@ public abstract class BaseImageBanner<T extends BaseImageBanner<T>> extends Base
         }
     }
 
+    @Override
+    public void setContainerScale(float containerScale) {
+        super.setContainerScale(containerScale);
+        mScale = getContainerScale();
+    }
+
     /**
+     * 设置轮播布局的ID
+     *
      * @return 轮播布局的ID
      */
     protected abstract int getItemLayoutId();
 
     /**
+     * 设置图片控件的ID
+     *
      * @return 图片控件的ID
      */
     protected abstract int getImageViewId();

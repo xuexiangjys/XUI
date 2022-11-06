@@ -221,7 +221,7 @@ public class BasePhotoFragment extends Fragment {
         // 非动画进入的Fragment，默认背景为黑色
         if (bundle != null) {
             int colorId = bundle.getInt(KEY_PROGRESS_COLOR, R.color.xui_config_color_main_theme);
-            mLoadingView.setSupportIndeterminateTintList(ResUtils.getColors(colorId));
+            mLoadingView.setSupportIndeterminateTintList(ResUtils.getColors(getContext(), colorId));
             isSingleFling = bundle.getBoolean(KEY_SING_FILING);
             //地址
             mPreviewInfo = bundle.getParcelable(KEY_PREVIEW_ITEM);

@@ -176,7 +176,7 @@ public class WheelOptions<T> implements HasTypeface {
                         //新opt3的位置，判断如果旧位置没有超过数据范围，则沿用旧位置，否则选中最后一项
                         opt3 = Math.min(wvOption3.getCurrentItem(), mOptions3Items.get(opt1Select).get(index).size() - 1);
                     }
-                    wvOption3.setAdapter(new ArrayWheelAdapter(mOptions3Items.get(wvOption1.getCurrentItem()).get(index)));
+                    wvOption3.setAdapter(new ArrayWheelAdapter<>(mOptions3Items.get(wvOption1.getCurrentItem()).get(index)));
                     wvOption3.setCurrentItem(opt3);
 
                     //3级联动数据实时回调

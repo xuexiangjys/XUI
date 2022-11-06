@@ -29,7 +29,7 @@ import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.Date;
 
@@ -66,7 +66,7 @@ public class MaterialDesignCalendarFragment extends BaseFragment {
             TextView textView;
             if (convertView == null) {
                 convertView = LayoutInflater.from(parentView.getContext()).inflate(R.layout.adapter_calendar_item, null);
-                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(DensityUtils.dp2px(48), DensityUtils.dp2px(48));
+                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(DensityUtils.dp2px(getContext(), 48), DensityUtils.dp2px(getContext(), 48));
                 convertView.setLayoutParams(params);
             }
 
@@ -87,7 +87,10 @@ public class MaterialDesignCalendarFragment extends BaseFragment {
             return convertView;
         });
 
-        calendarDateView.setOnCalendarSelectedListener((view, postion, calendarDate) -> XToastUtils.toast("选中:" + calendarDate.formatDate()));
+        calendarDateView.setOnCalendarSelectedListener((view, position, calendarDate) -> {
+            XToastUtils.toast("选中:" + calendarDate.formatDate());
+            view.setSelected(true);
+        });
 
         calendarDateView.setOnTodaySelectStatusChangedListener((todayView, isSelected) -> {
             TextView view = todayView.findViewById(R.id.tv_text);

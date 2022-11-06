@@ -25,6 +25,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.DensityUtils;
@@ -387,11 +388,11 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
     private void initAttrs(Context context, AttributeSet attrs) {
         mContext = context;
 
-        mDefaultTextColor = ThemeUtils.resolveColor(context, R.attr.stv_color_common_text, ResUtils.getColor(R.color.stv_color_common_text));
-        mDefaultTextSize = ThemeUtils.resolveDimension(context, R.attr.stv_text_size, ResUtils.getDimensionPixelSize(R.dimen.default_stv_text_size));
+        mDefaultTextColor = ThemeUtils.resolveColor(context, R.attr.stv_color_common_text, ContextCompat.getColor(context, R.color.stv_color_common_text));
+        mDefaultTextSize = ThemeUtils.resolveDimension(context, R.attr.stv_text_size, ResUtils.getDimensionPixelSize(context, R.dimen.default_stv_text_size));
         mDefaultMaxEms = ThemeUtils.resolveInt(context, R.attr.stv_max_ems, 20);
-        mDefaultMargin = ThemeUtils.resolveDimension(context, R.attr.stv_margin, ResUtils.getDimensionPixelSize(R.dimen.default_stv_margin));
-        mDefaultShapeColor = ThemeUtils.resolveColor(context, R.attr.stv_color_shape, ResUtils.getColor(R.color.xui_config_color_white));
+        mDefaultMargin = ThemeUtils.resolveDimension(context, R.attr.stv_margin, ResUtils.getDimensionPixelSize(context, R.dimen.default_stv_margin));
+        mDefaultShapeColor = ThemeUtils.resolveColor(context, R.attr.stv_color_shape, ContextCompat.getColor(context, R.color.xui_config_color_white));
 
         getAttr(attrs);
         initView();
@@ -802,7 +803,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             if (mEditBackground != null) {
                 mCenterEditText.setBackground(mEditBackground);
             } else {
-                mCenterEditText.setBackgroundColor(ResUtils.getColor(R.color.xui_config_color_transparent));
+                mCenterEditText.setBackgroundColor(ResUtils.getColor(getContext(), R.color.xui_config_color_transparent));
             }
             mCenterEditText.setTextColor(mCenterTextColor);
             mCenterEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, mCenterTextSize);

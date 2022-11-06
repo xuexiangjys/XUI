@@ -382,7 +382,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             if (!TextUtils.isEmpty(errorEmpty)) {
                 validators.add(new NotAllowEmptyValidator(errorEmpty));
             } else {
-                validators.add(new NotAllowEmptyValidator(ResUtils.getString(R.string.xui_met_not_allow_empty)));
+                validators.add(new NotAllowEmptyValidator(ResUtils.getString(context, R.string.xui_met_not_allow_empty)));
             }
         }
         minCharacters = typedArray.getInt(R.styleable.MaterialEditText_met_minCharacters, 0);
@@ -440,7 +440,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             if (!TextUtils.isEmpty(errorMessage)) {
                 validators.add(new RegexpValidator(errorMessage, regexp));
             } else {
-                validators.add(new RegexpValidator(ResUtils.getString(R.string.xui_met_input_error), regexp));
+                validators.add(new RegexpValidator(ResUtils.getString(context, R.string.xui_met_input_error), regexp));
             }
         }
 
@@ -1205,7 +1205,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
                     if (!TextUtils.isEmpty(errorEmpty)) {
                         item.setErrorMessage(errorEmpty);
                     } else {
-                        item.setErrorMessage(ResUtils.getString(R.string.xui_met_not_allow_empty));
+                        item.setErrorMessage(ResUtils.getString(getContext(), R.string.xui_met_not_allow_empty));
                     }
                     updateError = true;
                 }
@@ -1216,7 +1216,7 @@ public class MaterialEditText extends AppCompatEditText implements HasTypeface {
             if (!TextUtils.isEmpty(errorEmpty)) {
                 validators.add(new NotAllowEmptyValidator(errorEmpty));
             } else {
-                validators.add(new NotAllowEmptyValidator(ResUtils.getString(R.string.xui_met_not_allow_empty)));
+                validators.add(new NotAllowEmptyValidator(ResUtils.getString(getContext(), R.string.xui_met_not_allow_empty)));
             }
         }
         return this;

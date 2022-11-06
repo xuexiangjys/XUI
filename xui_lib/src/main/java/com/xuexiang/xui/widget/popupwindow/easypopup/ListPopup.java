@@ -43,7 +43,7 @@ public class ListPopup extends BaseCustomPopup {
         mListView.setAdapter(mAdapter);
         mListView.setVerticalScrollBarEnabled(false);
         mListView.setOnItemClickListener(mOnItemClickListener);
-        mListView.setDivider(ResUtils.getDrawable(R.drawable.xui_config_list_item_selector));
+        mListView.setDivider(ResUtils.getDrawable(getContext(), R.drawable.xui_config_list_item_selector));
         mListView.setDividerHeight(DensityUtils.dp2px(getContext(), 1));
 
         setContentView(mListView);

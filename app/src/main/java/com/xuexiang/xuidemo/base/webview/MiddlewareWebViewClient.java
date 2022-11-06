@@ -16,6 +16,7 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
@@ -87,7 +88,7 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         url = url.toLowerCase();
-        if (!hasAd(url)) {
+        if (!hasAd(view.getContext(), url)) {
             //正常加载
             return super.shouldInterceptRequest(view, url);
         } else {
@@ -100,7 +101,7 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
         String url = request.getUrl().toString().toLowerCase();
-        if (!hasAd(url)) {
+        if (!hasAd(view.getContext(), url)) {
             //正常加载
             return super.shouldInterceptRequest(view, request);
         } else {
@@ -115,8 +116,8 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
      * @param url
      * @return
      */
-    public static boolean hasAd(String url) {
-        String[] adUrls = ResUtils.getStringArray(R.array.adBlockUrl);
+    public static boolean hasAd(Context context, String url) {
+        String[] adUrls = ResUtils.getStringArray(context, R.array.adBlockUrl);
         for (String adUrl : adUrls) {
             if (url.contains(adUrl)) {
                 return true;

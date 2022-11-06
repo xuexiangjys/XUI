@@ -157,7 +157,7 @@ public class MaterialSpinner extends AppCompatTextView {
             }
         });
         if (entriesId != 0) {
-            setItems(ResUtils.getStringArray(entriesId));
+            setItems(ResUtils.getStringList(context, entriesId));
         }
 
         mPopupWindow = new PopupWindow(context);

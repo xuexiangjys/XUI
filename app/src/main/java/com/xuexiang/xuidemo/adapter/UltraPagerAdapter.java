@@ -17,6 +17,7 @@
 
 package com.xuexiang.xuidemo.adapter;
 
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -66,11 +67,11 @@ public class UltraPagerAdapter extends PagerAdapter {
 
     private RecyclerViewHolder.OnItemClickListener<BannerItem> mOnItemClickListener;
 
-    public UltraPagerAdapter(List<BannerItem> list, float scale) {
+    public UltraPagerAdapter(@NonNull Context context, List<BannerItem> list, float scale) {
         if (list != null && !list.isEmpty()) {
             mData.addAll(list);
         }
-        mPlaceHolder = new ColorDrawable(ResUtils.getColor(R.color.default_image_banner_placeholder_color));
+        mPlaceHolder = new ColorDrawable(ResUtils.getColor(context, R.color.default_image_banner_placeholder_color));
         mEnableCache = true;
         mScale = scale;
     }

@@ -115,9 +115,9 @@ public class EditSpinner extends FrameLayout implements View.OnClickListener, Ad
         setTextSize(typedArray.getDimensionPixelSize(R.styleable.EditSpinner_es_textSize, ThemeUtils.resolveDimension(getContext(), R.attr.xui_config_size_spinner_text)));
         int entriesId = typedArray.getResourceId(R.styleable.EditSpinner_es_entries, 0);
         if (entriesId != 0) {
-            setItems(ResUtils.getStringArray(entriesId));
+            setItems(ResUtils.getStringArray(context, entriesId));
         }
-        mDropDownBg = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.EditSpinner_es_dropdown_bg);
+        mDropDownBg = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.EditSpinner_es_dropdown_bg);
         boolean enable = typedArray.getBoolean(R.styleable.EditSpinner_es_enable, true);
         setEnabled(enable);
 

@@ -39,7 +39,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.PreviewRecycleAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
 
@@ -99,7 +99,7 @@ public class PreviewRecycleViewFragment extends BaseFragment {
     @Override
     protected void initViews() {
         mRecyclerView.setLayoutManager(mGridLayoutManager = new GridLayoutManager(getContext(), 2));
-        mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), 2, DensityUtils.dp2px(3)));
+        mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), 2, DensityUtils.dp2px(getContext(), 3)));
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter = new PreviewRecycleAdapter());

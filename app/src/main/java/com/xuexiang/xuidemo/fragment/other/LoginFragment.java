@@ -39,7 +39,7 @@ import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.PrivacyUtils;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
 import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.common.RandomUtils;
@@ -133,10 +133,10 @@ public class LoginFragment extends BaseFragment {
                 XToastUtils.info("忘记密码");
                 break;
             case R.id.tv_user_protocol:
-                openPage(ServiceProtocolFragment.class, KEY_PROTOCOL_TITLE, ResUtils.getString(R.string.title_user_protocol));
+                openPage(ServiceProtocolFragment.class, KEY_PROTOCOL_TITLE, ResUtils.getString(getContext(), R.string.title_user_protocol));
                 break;
             case R.id.tv_privacy_protocol:
-                openPage(ServiceProtocolFragment.class, KEY_PROTOCOL_TITLE, ResUtils.getString(R.string.title_privacy_protocol));
+                openPage(ServiceProtocolFragment.class, KEY_PROTOCOL_TITLE, ResUtils.getString(getContext(), R.string.title_privacy_protocol));
                 break;
             default:
                 break;

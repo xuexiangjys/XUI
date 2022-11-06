@@ -40,6 +40,7 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/description_demo"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -49,6 +50,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/spacing_16"
         android:layout_marginBottom="72dp"
+        android:contentDescription="@string/description_demo"
         android:src="@drawable/ic_add_white_24dp"
         app:layout_behavior="@string/xui_float_behavior" />
 

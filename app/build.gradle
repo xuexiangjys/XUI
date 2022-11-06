@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 20
-        versionName "1.1.9"
+        versionCode 21
+        versionName "1.2.0"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -103,8 +103,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
     // XUI框架
-//    implementation project(':xui_lib')
-    implementation 'com.github.xuexiangjys:XUI:1.1.9'
+    implementation project(':xui_lib')
+//    implementation 'com.github.xuexiangjys:XUI:1.1.9'
 //    implementation 'com.qmuiteam:qmui:1.2.0'
 
     // 工具类
@@ -113,8 +113,8 @@ dependencies {
     // 切片
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.1.0'
     // 页面路由
-    implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.0.1'
-    annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.0.1'
+    implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.1.0'
+    annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.1.0'
     // XPage页面框架
     implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.2.0'
     annotationProcessor project(':widget_compiler')
@@ -168,7 +168,7 @@ dependencies {
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
 
     // XQRCode二维码扫描
-    implementation 'com.github.xuexiangjys:XQRCode:1.1.0'
+    implementation 'com.github.xuexiangjys:XQRCode:1.1.1'
     // CityPicker
     implementation "com.github.xuexiangjys:CityPicker:1.0.2"
     // XFloatView悬浮窗口
@@ -199,7 +199,7 @@ dependencies {
     implementation 'com.alibaba.android:ultraviewpager:1.0.7.8'
     implementation 'com.alibaba.android:tangram:3.3.6'
     // 版本更新
-    implementation 'com.github.xuexiangjys:XUpdate:2.1.1'
+    implementation 'com.github.xuexiangjys:XUpdate:2.1.3'
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation deps.gson
     implementation deps.okhttp3

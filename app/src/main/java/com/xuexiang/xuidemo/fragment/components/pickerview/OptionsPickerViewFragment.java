@@ -55,10 +55,10 @@ public class OptionsPickerViewFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
-        mSexOption = ResUtils.getStringArray(R.array.sex_option);
-        mGradeOption = ResUtils.getStringArray(R.array.grade_option);
-        mConstellationOption = ResUtils.getStringArray(R.array.constellation_entry);
-        mNationOption = ResUtils.getStringArray(R.array.nation_value);
+        mSexOption = ResUtils.getStringArray(getContext(), R.array.sex_option);
+        mGradeOption = ResUtils.getStringArray(getContext(), R.array.grade_option);
+        mConstellationOption = ResUtils.getStringArray(getContext(), R.array.constellation_entry);
+        mNationOption = ResUtils.getStringArray(getContext(), R.array.nation_value);
         mClassOption = new String[30];
         for (int i = 0; i < mClassOption.length; i++) {
             mClassOption[i] = (i + 1) + "班";

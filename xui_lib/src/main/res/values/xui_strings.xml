@@ -2,21 +2,21 @@
     <!--默认字体路径-->
     <string name="default_app_font_path"></string>
 
-    <string name="xui_tip_expand">展开</string>
-    <string name="xui_tip_shrink">收缩</string>
+    <string name="xui_tip_expand" translatable="false">展开</string>
+    <string name="xui_tip_shrink" translatable="false">收缩</string>
 
-    <string name="xui_met_input_error">输入不符合要求!</string>
-    <string name="xui_met_not_allow_empty">输入不能为空!</string>
+    <string name="xui_met_input_error" translatable="false">输入不符合要求!</string>
+    <string name="xui_met_not_allow_empty" translatable="false">输入不能为空!</string>
 
     <!--Button-->
-    <string name="xui_lab_button_submit">确 定</string>
-    <string name="xui_lab_button_cancel">取 消</string>
-    <string name="xui_lab_button_reset">重 置</string>
+    <string name="xui_lab_button_submit" translatable="false">确 定</string>
+    <string name="xui_lab_button_cancel" translatable="false">取 消</string>
+    <string name="xui_lab_button_reset" translatable="false">重 置</string>
 
     <!--StateLayout-->
-    <string name="xui_tip_error_message">出错了，请稍后重试</string>
-    <string name="xui_tip_loading_message">数据加载中…</string>
-    <string name="xui_tip_empty_message">暂无数据</string>
+    <string name="xui_tip_error_message" translatable="false">出错了，请稍后重试</string>
+    <string name="xui_tip_loading_message" translatable="false">数据加载中…</string>
+    <string name="xui_tip_empty_message" translatable="false">暂无数据</string>
     <string name="xui_tip_no_network">请检查您的网络连接</string>
     <string name="xui_tip_retry">重试</string>
 
@@ -57,5 +57,10 @@
 
     <string name="xui_count_down_finish">重新获取</string>
 
+    <string name="xui_rmtv_show_more">更多</string>
+    <string name="xui_rmtv_show_less">隐藏</string>
+    <string name="xui_rmtv_ellipsize">... </string>
+
+    <string name="description_picture">图片</string>
 
 </resources>

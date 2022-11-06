@@ -8,7 +8,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.picker.RulerView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.common.StringUtils;
 
 import butterknife.BindView;

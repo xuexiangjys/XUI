@@ -299,7 +299,6 @@
             <enum name="TL_BR" value="7" />
         </attr>
 
-        <attr name="sGradientAngle" format="dimension" />
         <attr name="sGradientCenterX" format="dimension" />
         <attr name="sGradientCenterY" format="dimension" />
         <attr name="sGradientGradientRadius" format="dimension" />
@@ -448,7 +447,9 @@
         <attr name="cBackgroundDrawableRes" format="reference" />
         <attr name="cIsCenterAlignLeft" format="boolean" />
         <attr name="cCenterViewMarginLeft" format="dimension" />
-
-
     </declare-styleable>
+
+    <attr name="SuperButtonStyle" format="reference" />
+
+
 </resources>

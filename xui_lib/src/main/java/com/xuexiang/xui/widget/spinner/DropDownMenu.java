@@ -134,20 +134,20 @@ public class DropDownMenu extends LinearLayout {
         super(context, attrs, defStyleAttr);
         setOrientation(VERTICAL);
         //为DropDownMenu添加自定义属性
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.DropDownMenu);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.DropDownMenu, defStyleAttr, 0);
         mContentLayoutId = array.getResourceId(R.styleable.DropDownMenu_ddm_contentLayoutId, -1);
         mDividerColor = array.getColor(R.styleable.DropDownMenu_ddm_dividerColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_dark));
-        mDividerWidth = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_dividerWidth, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_divider_width));
-        mDividerMargin = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_dividerMargin, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_divider_margin));
-        int underlineColor = array.getColor(R.styleable.DropDownMenu_ddm_underlineColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_separator_light));
-        int underlineHeight = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_underlineHeight, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_underline_height));
+        mDividerWidth = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_dividerWidth, ResUtils.getDimensionPixelSize(context, R.dimen.default_ddm_divider_width));
+        mDividerMargin = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_dividerMargin, ResUtils.getDimensionPixelSize(context, R.dimen.default_ddm_divider_margin));
+        int underlineColor = array.getColor(R.styleable.DropDownMenu_ddm_underlineColor, ThemeUtils.resolveColor(context, R.attr.xui_config_color_separator_light));
+        int underlineHeight = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_underlineHeight, ResUtils.getDimensionPixelSize(context, R.dimen.default_ddm_underline_height));
         int menuBackgroundColor = array.getColor(R.styleable.DropDownMenu_ddm_menuBackgroundColor, Color.WHITE);
-        mMaskColor = array.getColor(R.styleable.DropDownMenu_ddm_maskColor, ResUtils.getColor(R.color.default_ddm_mask_color));
-        mMenuTextSelectedColor = array.getColor(R.styleable.DropDownMenu_ddm_menuTextSelectedColor, ThemeUtils.getMainThemeColor(getContext()));
-        mMenuTextUnselectedColor = array.getColor(R.styleable.DropDownMenu_ddm_menuTextUnselectedColor, ThemeUtils.resolveColor(getContext(), R.attr.xui_config_color_content_text));
-        mMenuTextPaddingHorizontal = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_menuTextPaddingHorizontal, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_menu_text_padding_horizontal));
-        mMenuTextPaddingVertical = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_menuTextPaddingVertical, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_menu_text_padding_vertical));
-        mMenuTextSize = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_menuTextSize, ResUtils.getDimensionPixelSize(R.dimen.default_ddm_menu_text_size));
+        mMaskColor = array.getColor(R.styleable.DropDownMenu_ddm_maskColor, ResUtils.getColor(context, R.color.default_ddm_mask_color));
+        mMenuTextSelectedColor = array.getColor(R.styleable.DropDownMenu_ddm_menuTextSelectedColor, ThemeUtils.getMainThemeColor(context));
+        mMenuTextUnselectedColor = array.getColor(R.styleable.DropDownMenu_ddm_menuTextUnselectedColor, ThemeUtils.resolveColor(context, R.attr.xui_config_color_content_text));
+        mMenuTextPaddingHorizontal = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_menuTextPaddingHorizontal, ResUtils.getDimensionPixelSize(context, R.dimen.default_ddm_menu_text_padding_horizontal));
+        mMenuTextPaddingVertical = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_menuTextPaddingVertical, ResUtils.getDimensionPixelSize(context, R.dimen.default_ddm_menu_text_padding_vertical));
+        mMenuTextSize = array.getDimensionPixelSize(R.styleable.DropDownMenu_ddm_menuTextSize, ResUtils.getDimensionPixelSize(context, R.dimen.default_ddm_menu_text_size));
         mMenuUnselectedIcon = ResUtils.getDrawableAttrRes(getContext(), array, R.styleable.DropDownMenu_ddm_menuUnselectedIcon);
         if (mMenuUnselectedIcon == null) {
             mMenuUnselectedIcon = ResUtils.getVectorDrawable(getContext(), R.drawable.ddm_ic_arrow_down);

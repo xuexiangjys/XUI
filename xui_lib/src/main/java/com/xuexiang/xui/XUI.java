@@ -79,8 +79,7 @@ public class XUI {
     /**
      * 设置调试模式
      *
-     * @param tag
-     * @return
+     * @param tag 标志
      */
     public static void debug(String tag) {
         UILog.debug(tag);
@@ -89,8 +88,7 @@ public class XUI {
     /**
      * 设置调试模式
      *
-     * @param isDebug
-     * @return
+     * @param isDebug 是否是调试模式
      */
     public static void debug(boolean isDebug) {
         UILog.debug(isDebug);
@@ -145,8 +143,8 @@ public class XUI {
     /**
      * 检验设备屏幕的尺寸
      *
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return 屏幕的尺寸类型
      */
     private static int checkScreenSize(Context context) {
         int screenSize = context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;

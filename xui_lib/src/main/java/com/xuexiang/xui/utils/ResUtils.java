@@ -24,6 +24,10 @@ import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xui.XUI;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 获取res中的资源
  *
@@ -41,8 +45,19 @@ public final class ResUtils {
      *
      * @return resources对象
      */
+    @Deprecated
     public static Resources getResources() {
         return XUI.getContext().getResources();
+    }
+
+    /**
+     * 获取resources对象
+     *
+     * @param context 上下文
+     * @return resources对象
+     */
+    public static Resources getResources(@NonNull Context context) {
+        return context.getResources();
     }
 
     /**
@@ -51,8 +66,20 @@ public final class ResUtils {
      * @param resId 资源id
      * @return 字符串
      */
+    @Deprecated
     public static String getString(@StringRes int resId) {
         return getResources().getString(resId);
+    }
+
+    /**
+     * 获取字符串
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return 字符串
+     */
+    public static String getString(@NonNull Context context, @StringRes int resId) {
+        return context.getResources().getString(resId);
     }
 
     /**
@@ -61,6 +88,7 @@ public final class ResUtils {
      * @param resId 图片资源id
      * @return 资源图片
      */
+    @Deprecated
     public static Drawable getDrawable(@DrawableRes int resId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return XUI.getContext().getDrawable(resId);
@@ -141,8 +169,20 @@ public final class ResUtils {
      * @param resId 资源id
      * @return dimes值，返回的是精确的值
      */
+    @Deprecated
     public static float getDimens(@DimenRes int resId) {
         return getResources().getDimension(resId);
+    }
+
+    /**
+     * 获取dimes值，返回的是精确的值
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return dimes值，返回的是精确的值
+     */
+    public static float getDimens(@NonNull Context context, @DimenRes int resId) {
+        return context.getResources().getDimension(resId);
     }
 
     /**
@@ -151,8 +191,20 @@ public final class ResUtils {
      * @param resId 资源id
      * @return Color值
      */
+    @Deprecated
     public static int getColor(@ColorRes int resId) {
         return getResources().getColor(resId);
+    }
+
+    /**
+     * 获取Color值
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return Color值
+     */
+    public static int getColor(@NonNull Context context, @ColorRes int resId) {
+        return ContextCompat.getColor(context, resId);
     }
 
     /**
@@ -161,8 +213,20 @@ public final class ResUtils {
      * @param resId 资源id
      * @return ColorStateList值
      */
+    @Deprecated
     public static ColorStateList getColors(@ColorRes int resId) {
         return getResources().getColorStateList(resId);
+    }
+
+    /**
+     * 获取ColorStateList值
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return ColorStateList值
+     */
+    public static ColorStateList getColors(@NonNull Context context, @ColorRes int resId) {
+        return ContextCompat.getColorStateList(context, resId);
     }
 
     /**
@@ -171,8 +235,20 @@ public final class ResUtils {
      * @param resId 资源id
      * @return dimes值【去余取整】
      */
+    @Deprecated
     public static int getDimensionPixelOffset(@DimenRes int resId) {
         return getResources().getDimensionPixelOffset(resId);
+    }
+
+    /**
+     * 获取dimes值，返回的是【去余取整】的值
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return dimes值【去余取整】
+     */
+    public static int getDimensionPixelOffset(@NonNull Context context, @DimenRes int resId) {
+        return context.getResources().getDimensionPixelOffset(resId);
     }
 
     /**
@@ -181,8 +257,20 @@ public final class ResUtils {
      * @param resId 资源id
      * @return dimes值【4舍5入取整】
      */
+    @Deprecated
     public static int getDimensionPixelSize(@DimenRes int resId) {
         return getResources().getDimensionPixelSize(resId);
+    }
+
+    /**
+     * 获取dimes值，返回的是【4舍5入取整】的值
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return dimes值【4舍5入取整】
+     */
+    public static int getDimensionPixelSize(@NonNull Context context, @DimenRes int resId) {
+        return context.getResources().getDimensionPixelSize(resId);
     }
 
     /**
@@ -191,8 +279,53 @@ public final class ResUtils {
      * @param resId 资源id
      * @return 字符串的数组
      */
+    @Deprecated
     public static String[] getStringArray(@ArrayRes int resId) {
         return getResources().getStringArray(resId);
+    }
+
+    /**
+     * 获取字符串的数组
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return 字符串的数组
+     */
+    public static String[] getStringArray(Context context, @ArrayRes int resId) {
+        return context.getResources().getStringArray(resId);
+    }
+
+    /**
+     * 获取字符串的集合
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @return 字符串的集合
+     */
+    @NonNull
+    public static List<String> getStringList(@NonNull Context context, int resId) {
+        return getStringList(context, resId, 0);
+    }
+
+    /**
+     * 获取字符串的集合
+     *
+     * @param context 上下文
+     * @param resId   资源id
+     * @param emptyId 空资源id
+     * @return 字符串的集合
+     */
+    @NonNull
+    public static List<String> getStringList(@NonNull Context context, int resId, int emptyId) {
+        List<String> data = new ArrayList<>();
+        if (resId == emptyId) {
+            return data;
+        }
+        String[] array = context.getResources().getStringArray(resId);
+        if (array.length > 0) {
+            data.addAll(Arrays.asList(array));
+        }
+        return data;
     }
 
     /**
@@ -221,8 +354,20 @@ public final class ResUtils {
      * @param resId 数组资源id
      * @return 数字的数组
      */
+    @Deprecated
     public static int[] getIntArray(@ArrayRes int resId) {
         return getResources().getIntArray(resId);
+    }
+
+    /**
+     * 获取数字的数组
+     *
+     * @param context 上下文
+     * @param resId   数组资源id
+     * @return 数字的数组
+     */
+    public static int[] getIntArray(@NonNull Context context, @ArrayRes int resId) {
+        return context.getResources().getIntArray(resId);
     }
 
     /**
@@ -231,15 +376,29 @@ public final class ResUtils {
      * @param resId 动画资源id
      * @return 动画
      */
+    @Deprecated
     public static Animation getAnim(@AnimRes int resId) {
         return AnimationUtils.loadAnimation(XUI.getContext(), resId);
     }
+
+    /**
+     * 获取动画
+     *
+     * @param context 上下文
+     * @param resId   动画资源id
+     * @return 动画
+     */
+    public static Animation getAnim(@NonNull Context context, @AnimRes int resId) {
+        return AnimationUtils.loadAnimation(context, resId);
+    }
+
 
     /**
      * Check if layout direction is RTL
      *
      * @return {@code true} if the layout direction is right-to-left
      */
+    @Deprecated
     public static boolean isRtl() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 &&
                 getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;

@@ -67,7 +67,7 @@ public abstract class BaseSimpleListFragment extends XPageSimpleListFragment {
 
     @MemoryCache
     private Drawable getNavigationBackDrawable(int navigationBackId) {
-        return DrawableUtils.getSupportRTLDrawable(ThemeUtils.resolveDrawable(getContext(), navigationBackId));
+        return DrawableUtils.getSupportRTLDrawable(getContext(), ThemeUtils.resolveDrawable(getContext(), navigationBackId));
     }
 
     @Override

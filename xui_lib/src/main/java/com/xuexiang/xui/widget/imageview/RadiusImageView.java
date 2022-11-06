@@ -66,7 +66,7 @@ public class RadiusImageView extends AppCompatImageView {
     private int mHeight;
 
     public RadiusImageView(Context context) {
-        this(context, null, R.attr.RadiusImageViewStyle);
+        this(context, null);
     }
 
     public RadiusImageView(Context context, AttributeSet attrs) {
@@ -75,7 +75,6 @@ public class RadiusImageView extends AppCompatImageView {
 
     public RadiusImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
         initAttrs(context, attrs, defStyleAttr);
     }
 

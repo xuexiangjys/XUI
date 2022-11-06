@@ -31,6 +31,7 @@ import androidx.annotation.RequiresApi;
 
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.textview.badge.Badge;
 import com.xuexiang.xui.widget.textview.badge.BadgeView;
 
@@ -152,7 +153,7 @@ public class XTabView extends TabView {
         int iconResid = mChecked ? mTabIcon.getSelectedIcon() : mTabIcon.getNormalIcon();
         Drawable drawable = null;
         if (iconResid != 0) {
-            drawable = mContext.getResources().getDrawable(iconResid);
+            drawable = ResUtils.getDrawable(mContext, iconResid);
             int r = mTabIcon.getIconWidth() != -1 ? mTabIcon.getIconWidth() : drawable.getIntrinsicWidth();
             int b = mTabIcon.getIconHeight() != -1 ? mTabIcon.getIconHeight() : drawable.getIntrinsicHeight();
             drawable.setBounds(0, 0, r, b);

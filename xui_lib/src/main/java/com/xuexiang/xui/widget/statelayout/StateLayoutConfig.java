@@ -1,8 +1,10 @@
 package com.xuexiang.xui.widget.statelayout;
 
+import android.content.Context;
 import android.view.animation.Animation;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
 import com.xuexiang.xui.R;
@@ -64,11 +66,10 @@ public class StateLayoutConfig {
      */
     public int loadingMessageRes;
 
-
-    public StateLayoutConfig() {
+    public StateLayoutConfig(@NonNull Context context) {
         animationEnabled = DEFAULT_ANIM_ENABLED;
-        inAnimation = ResUtils.getAnim(DEFAULT_IN_ANIM);
-        outAnimation = ResUtils.getAnim(DEFAULT_OUT_ANIM);
+        inAnimation = ResUtils.getAnim(context, DEFAULT_IN_ANIM);
+        outAnimation = ResUtils.getAnim(context, DEFAULT_OUT_ANIM);
 
         emptyImageRes = R.drawable.stf_ic_empty;
         emptyMessageRes = R.string.stfEmptyMessage;

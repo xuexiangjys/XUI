@@ -142,7 +142,7 @@ public class LoggerTextView extends AppCompatTextView {
      * @param logType    日志类型
      */
     public void addLog(String logContent, LogType logType) {
-        SpannableString spannableString = getLogDecorator().decorate(getLogFormatter().format(logContent, logType), logType);
+        SpannableString spannableString = getLogDecorator().decorate(getContext(), getLogFormatter().format(logContent, logType), logType);
         appendLogInMainThread(spannableString);
     }
 
@@ -267,23 +267,23 @@ public class LoggerTextView extends AppCompatTextView {
     public static class DefaultLogDecorator implements ILogDecorator {
 
         @Override
-        public SpannableString decorate(String logContent, LogType logType) {
+        public SpannableString decorate(@NonNull Context context, String logContent, LogType logType) {
             SpannableString spannableString = new SpannableString(logContent);
             switch (logType) {
                 case ERROR:
-                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_error)),
+                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(context, R.color.xui_config_color_error)),
                             0,
                             logContent.length(),
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     break;
                 case SUCCESS:
-                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_success)),
+                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(context, R.color.xui_config_color_success)),
                             0,
                             logContent.length(),
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     break;
                 case WARNING:
-                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(R.color.xui_config_color_waring)),
+                    spannableString.setSpan(new ForegroundColorSpan(ResUtils.getColor(context, R.color.xui_config_color_waring)),
                             0,
                             logContent.length(),
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -305,11 +305,12 @@ public class LoggerTextView extends AppCompatTextView {
         /**
          * 装饰日志内容
          *
+         * @param context    上下文
          * @param logContent 日志内容
          * @param logType    日志类型
          * @return 装饰后的日志
          */
-        SpannableString decorate(String logContent, LogType logType);
+        SpannableString decorate(Context context, String logContent, LogType logType);
     }
 
     /**

@@ -69,7 +69,7 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
     }
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        mExtraClickArea = DensityUtils.dp2px(20);
+        mExtraClickArea = DensityUtils.dp2px(context, 20);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClearEditText, defStyleAttr, 0);
         mClearDrawable = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.ClearEditText_cet_clearIcon);

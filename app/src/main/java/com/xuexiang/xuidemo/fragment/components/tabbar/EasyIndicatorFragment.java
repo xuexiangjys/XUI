@@ -33,7 +33,7 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.EasyIndicatorActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.ContentPage;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -9,9 +9,12 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.xuexiang.xui.R;
+import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.textview.marqueen.DisplayEntity;
 
 import java.util.ArrayList;
@@ -80,20 +83,28 @@ public class MarqueeTextView extends AppCompatTextView {
 
     private final Object mLock = new Object();
 
-    public MarqueeTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs);
+    public MarqueeTextView(@NonNull Context context) {
+        this(context, null);
     }
 
-    private void init(AttributeSet attrs) {
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MarqueeTextView);
+    public MarqueeTextView(@NonNull Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, R.attr.MarqueeTextViewStyle);
+    }
+
+    public MarqueeTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs, defStyleAttr);
+    }
+
+    private void init(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MarqueeTextView, defStyleAttr, 0);
         mIsAutoFit = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoFit, false);
         mIsAutoDisplay = typedArray.getBoolean(R.styleable.MarqueeTextView_mtv_isAutoDisplay, false);
-
-        if (mIsAutoDisplay) {
-            setVisibility(GONE);
-        }
+        int entriesId = typedArray.getResourceId(R.styleable.MarqueeTextView_mtv_entries, 0);
         typedArray.recycle();
+
+        List<String> initData = ResUtils.getStringList(context, entriesId);
+        startSimpleRoll(initData);
     }
 
     @Override
@@ -229,6 +240,7 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 去除展示的消息
+     *
      * @param displayString
      * @return
      */
@@ -238,6 +250,7 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 去除展示的消息
+     *
      * @param displayEntity
      * @return
      */
@@ -263,10 +276,11 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 判断是否是当前正在滚动展示的消息
+     *
      * @param displayEntity
      * @return
      */
-    private boolean isRollingDisplayEntity(DisplayEntity displayEntity){
+    private boolean isRollingDisplayEntity(DisplayEntity displayEntity) {
         if (!mIsRolling || mShowDisplayEntity == null) {
             return false;
         }
@@ -279,6 +293,7 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 去除消息 【只去除一个】
+     *
      * @param displayEntity
      */
     private boolean removeByDisplayEntity(DisplayEntity displayEntity) {
@@ -334,6 +349,7 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 滚动显示消息
+     *
      * @param displayEntity
      */
     private void showDisplayEntity(DisplayEntity displayEntity) {
@@ -395,20 +411,16 @@ public class MarqueeTextView extends AppCompatTextView {
         return (getHeight() - fontMetrics.bottom - fontMetrics.top) / 2;
     }
 
-    private Handler mHandler = new Handler(new Handler.Callback() {
+    private final Handler mHandler = new Handler(new Handler.Callback() {
         @Override
-        public boolean handleMessage(Message message) {
-            switch (message.what) {
-                case REDRAW_TEXT:
-                    if (mCurrentPosition < (-mDisplayTextWidth)) {// 一段文字滚动完了
-                        rollNextDisplay();
-                    } else {
-                        mCurrentPosition -= mSpeed;  //向前进
-                        reDraw(30);
-                    }
-                    break;
-                default:
-                    break;
+        public boolean handleMessage(@NonNull Message message) {
+            if (message.what == REDRAW_TEXT) {
+                if (mCurrentPosition < (-mDisplayTextWidth)) {// 一段文字滚动完了
+                    rollNextDisplay();
+                } else {
+                    mCurrentPosition -= mSpeed;  //向前进
+                    reDraw(30);
+                }
             }
             return true;
         }
@@ -424,6 +436,7 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 滚动显示指定索引的内容
+     *
      * @param index
      */
     private void rollDisplayByIndex(int index) {
@@ -447,6 +460,7 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 滚动完毕之后的回调处理
+     *
      * @return
      */
     private boolean onMarqueeFinished() {
@@ -583,6 +597,7 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 当前滚动字幕是否有需要滚动的消息
+     *
      * @return
      */
     public boolean hasDisplayMessage() {
@@ -591,6 +606,7 @@ public class MarqueeTextView extends AppCompatTextView {
 
     /**
      * 根据index获取滚动的消息实体
+     *
      * @param index
      * @return
      */
@@ -598,9 +614,10 @@ public class MarqueeTextView extends AppCompatTextView {
         if (mDisplayList != null && index >= 0 && index <= mDisplayList.size() - 1) {
             return mDisplayList.get(index);
         } else {
-            return  null;
+            return null;
         }
     }
+
     /**
      * 清除内容
      */

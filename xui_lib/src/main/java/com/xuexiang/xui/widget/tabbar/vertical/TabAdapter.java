@@ -17,6 +17,10 @@
 package com.xuexiang.xui.widget.tabbar.vertical;
 
 
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+
 /**
  * Tab适配器
  *
@@ -28,7 +32,7 @@ public interface TabAdapter {
 
     TabView.TabBadge getBadge(int position);
 
-    TabView.TabIcon getIcon(int position);
+    TabView.TabIcon getIcon(@NonNull Context context, int position);
 
     TabView.TabTitle getTitle(int position);
 

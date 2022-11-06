@@ -25,6 +25,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -35,7 +36,7 @@ import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -47,7 +48,7 @@ import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
  * @since 2020/4/21 1:11 AM
  */
 @Page(name = "TabLayout+FragmentAdapter的缓存问题")
-public class TabLayoutCacheFragment extends BaseFragment implements TabLayout.OnTabSelectedListener {
+public class TabLayoutCacheFragment extends BaseFragment implements TabLayout.OnTabSelectedListener, SimpleTabFragment.OnRefreshListener {
 
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
@@ -128,7 +129,7 @@ public class TabLayoutCacheFragment extends BaseFragment implements TabLayout.On
         if (isShow) {
             // 动态加载选项卡内容
             for (String page : MultiPage.getPageNames()) {
-                mAdapter.addFragment(SimpleTabFragment.newInstance(page), page);
+                mAdapter.addFragment(SimpleTabFragment.newInstance(page, this), page);
             }
             mAdapter.notifyDataSetChanged();
             viewPager.setCurrentItem(0, false);
@@ -144,6 +145,12 @@ public class TabLayoutCacheFragment extends BaseFragment implements TabLayout.On
         ViewUtils.setVisibility(viewPager, isShow ? View.VISIBLE : View.GONE);
     }
 
+    @Override
+    public void onTabRefresh(Fragment fragment, String title) {
+        String newTitle = title + "R";
+        mAdapter.replaceFragment(fragment, SimpleTabFragment.newInstance(newTitle, this), newTitle);
+        mAdapter.notifyDataSetChanged();
+    }
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
@@ -159,4 +166,12 @@ public class TabLayoutCacheFragment extends BaseFragment implements TabLayout.On
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
+    @Override
+    public void onDestroyView() {
+        mAdapter.clear();
+        super.onDestroyView();
+    }
+
+
 }

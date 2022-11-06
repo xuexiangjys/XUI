@@ -16,6 +16,7 @@
 
 package com.xuexiang.xuidemo.fragment.components.tabbar;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
@@ -34,7 +35,7 @@ import com.xuexiang.xui.widget.tabbar.vertical.TabView;
 import com.xuexiang.xui.widget.textview.badge.Badge;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.XUtil;
 
 import java.util.ArrayList;
@@ -148,13 +149,13 @@ public class VerticalTabLayoutFragment extends BaseFragment {
         }
 
         @Override
-        public TabView.TabIcon getIcon(int position) {
+        public TabView.TabIcon getIcon(@NonNull Context context, int position) {
             MenuBean menu = menus.get(position);
             return new TabView.TabIcon.Builder()
                     .setIcon(menu.mSelectIcon, menu.mNormalIcon)
                     .setIconGravity(Gravity.START)
-                    .setIconMargin(DensityUtils.dp2px(5))
-                    .setIconSize(DensityUtils.dp2px(20), DensityUtils.dp2px(20))
+                    .setIconMargin(DensityUtils.dp2px(context, 5))
+                    .setIconSize(DensityUtils.dp2px(context, 20), DensityUtils.dp2px(context, 20))
                     .build();
         }
 
@@ -200,7 +201,7 @@ public class VerticalTabLayoutFragment extends BaseFragment {
         }
 
         @Override
-        public TabView.TabIcon getIcon(int position) {
+        public TabView.TabIcon getIcon(@NonNull Context context, int position) {
             return null;
         }
 

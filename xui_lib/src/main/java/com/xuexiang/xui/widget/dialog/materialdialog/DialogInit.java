@@ -442,8 +442,8 @@ class DialogInit {
         final int windowWidth = size.x;
         final int windowHeight = size.y;
 
-        int windowVerticalPadding = ThemeUtils.resolveDimension(builder.context, R.attr.md_dialog_vertical_margin, ResUtils.getDimensionPixelSize(R.dimen.default_md_dialog_vertical_margin_phone));
-        int windowHorizontalPadding = ThemeUtils.resolveDimension(builder.context, R.attr.md_dialog_horizontal_margin, ResUtils.getDimensionPixelSize(R.dimen.default_md_dialog_horizontal_margin_phone));
+        int windowVerticalPadding = ThemeUtils.resolveDimension(builder.context, R.attr.md_dialog_vertical_margin, ResUtils.getDimensionPixelSize(builder.context, R.dimen.default_md_dialog_vertical_margin_phone));
+        int windowHorizontalPadding = ThemeUtils.resolveDimension(builder.context, R.attr.md_dialog_horizontal_margin, ResUtils.getDimensionPixelSize(builder.context, R.dimen.default_md_dialog_horizontal_margin_phone));
 
         int maxWidth = ThemeUtils.resolveDimension(builder.context, R.attr.md_dialog_max_width);
 

@@ -57,7 +57,6 @@ import static androidx.viewpager.widget.ViewPager.SCROLL_STATE_SETTLING;
  * @since 2018/12/28 下午1:29
  */
 public class VerticalTabLayout extends ScrollView {
-    private Context mContext;
     private TabStrip mTabStrip;
     private int mColorIndicator;
     private TabView mSelectedTab;
@@ -91,7 +90,6 @@ public class VerticalTabLayout extends ScrollView {
 
     public VerticalTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mContext = context;
         mTabSelectedListeners = new ArrayList<>();
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.VerticalTabLayout);
         mColorIndicator = typedArray.getColor(R.styleable.VerticalTabLayout_vtl_indicator_color, ThemeUtils.getMainThemeColor(context));
@@ -121,7 +119,7 @@ public class VerticalTabLayout extends ScrollView {
     }
 
     private void initTabStrip() {
-        mTabStrip = new TabStrip(mContext);
+        mTabStrip = new TabStrip(getContext());
         addView(mTabStrip, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
     }
 
@@ -405,7 +403,7 @@ public class VerticalTabLayout extends ScrollView {
         if (adapter != null) {
             mTabAdapter = adapter;
             for (int i = 0; i < adapter.getCount(); i++) {
-                addTab(new XTabView(mContext).setIcon(adapter.getIcon(i))
+                addTab(new XTabView(getContext()).setIcon(adapter.getIcon(getContext(), i))
                         .setTitle(adapter.getTitle(i)).setBadge(adapter.getBadge(i))
                         .setBackground(adapter.getBackground(i)));
             }
@@ -513,7 +511,7 @@ public class VerticalTabLayout extends ScrollView {
                 for (int i = 0; i < adapterCount; i++) {
                     pageTitle = mPagerAdapter.getPageTitle(i);
                     title = pageTitle != null ? pageTitle.toString() : "tab" + i;
-                    addTab(new XTabView(mContext).setTitle(
+                    addTab(new XTabView(getContext()).setTitle(
                             new XTabView.TabTitle.Builder().setContent(title).build()));
                 }
             }

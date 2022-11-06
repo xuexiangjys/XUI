@@ -36,7 +36,7 @@ import com.xuexiang.xuidemo.fragment.other.SettingFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.GuideTipsDialog;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.system.DeviceUtils;
@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
     }
 
     private void initData() {
-        mMenuTitles = ResUtils.getStringArray(R.array.menu_titles);
+        mMenuTitles = ResUtils.getStringArray(this, R.array.menu_titles);
         mMenuIcons = ResUtils.getDrawableArray(this, R.array.menu_icons);
     }
 
@@ -183,7 +183,7 @@ public class MainActivity extends BaseActivity implements DrawerAdapter.OnItemSe
 
     private void initSlidingMenu(Bundle savedInstanceState) {
         mSlidingRootNav = new SlidingRootNavBuilder(this)
-                .withGravity(ResUtils.isRtl() ? SlideGravity.RIGHT : SlideGravity.LEFT)
+                .withGravity(ResUtils.isRtl(this) ? SlideGravity.RIGHT : SlideGravity.LEFT)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)

@@ -23,7 +23,7 @@ import android.view.View;
 
 import com.xuexiang.xui.widget.statelayout.StatusLoader;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.utils.XToastUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 
 import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOADING;
 

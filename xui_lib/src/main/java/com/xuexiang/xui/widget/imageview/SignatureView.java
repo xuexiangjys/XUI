@@ -139,7 +139,7 @@ public class SignatureView extends View {
     private void updateBorderStyle(boolean hasBorder) {
         if (hasBorder) {
             mBorderPaint = new Paint();
-            mBorderWidth = DensityUtils.dp2px(1);
+            mBorderWidth = DensityUtils.dp2px(getContext(), 1);
             initBorderPaintStyle();
         } else {
             mBorderPaint = null;

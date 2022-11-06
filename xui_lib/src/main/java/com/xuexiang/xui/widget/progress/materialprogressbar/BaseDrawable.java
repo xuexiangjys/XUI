@@ -37,7 +37,7 @@ abstract class BaseDrawable extends Drawable implements TintableDrawable {
     protected ColorFilter mColorFilter;
     protected ColorStateList mTintList;
     protected PorterDuff.Mode mTintMode = PorterDuff.Mode.SRC_IN;
-    protected PorterDuffColorFilter mTintFilter;
+    protected ColorFilter mTintFilter;
 
     private DummyConstantState mConstantState = new DummyConstantState();
 

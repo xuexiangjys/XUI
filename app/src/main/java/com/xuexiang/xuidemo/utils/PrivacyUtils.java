@@ -69,15 +69,15 @@ public final class PrivacyUtils {
                 })
                 .negativeText(R.string.lab_disagree).onNegative((dialog16, which) -> {
                     dialog16.dismiss();
-                    DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(R.string.title_reminder), String.format(ResUtils.getString(R.string.content_privacy_explain_again), ResUtils.getString(R.string.app_name)), ResUtils.getString(R.string.lab_look_again), (dialog15, which14) -> {
+                    DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(context, R.string.title_reminder), String.format(ResUtils.getString(context, R.string.content_privacy_explain_again), ResUtils.getString(context, R.string.app_name)), ResUtils.getString(context, R.string.lab_look_again), (dialog15, which14) -> {
                         dialog15.dismiss();
                         showPrivacyDialog(context, submitListener);
-                    }, ResUtils.getString(R.string.lab_still_disagree), (dialog14, which13) -> {
+                    }, ResUtils.getString(context, R.string.lab_still_disagree), (dialog14, which13) -> {
                         dialog14.dismiss();
-                        DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(R.string.content_think_about_it_again), ResUtils.getString(R.string.lab_look_again), (dialog13, which12) -> {
+                        DialogLoader.getInstance().showConfirmDialog(context, ResUtils.getString(context, R.string.content_think_about_it_again), ResUtils.getString(context, R.string.lab_look_again), (dialog13, which12) -> {
                             dialog13.dismiss();
                             showPrivacyDialog(context, submitListener);
-                        }, ResUtils.getString(R.string.lab_exit_app), (dialog12, which1) -> {
+                        }, ResUtils.getString(context, R.string.lab_exit_app), (dialog12, which1) -> {
                             dialog12.dismiss();
                             XUtil.exitApp();
                         });
@@ -97,7 +97,7 @@ public final class PrivacyUtils {
      */
     private static SpannableStringBuilder getPrivacyContent(Context context) {
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder()
-                .append("    欢迎来到").append(ResUtils.getString(R.string.app_name)).append("!\n")
+                .append("    欢迎来到").append(ResUtils.getString(context, R.string.app_name)).append("!\n")
                 .append("    我们深知个人信息对你的重要性，也感谢你对我们的信任。\n")
                 .append("    为了更好地保护你的权益，同时遵守相关监管的要求，我们将通过");
         stringBuilder.append(getPrivacyLink(context, PRIVACY_URL))
@@ -113,7 +113,7 @@ public final class PrivacyUtils {
      * @return
      */
     private static SpannableString getPrivacyLink(Context context, String privacyUrl) {
-        String privacyName = String.format(ResUtils.getString(R.string.lab_privacy_name), ResUtils.getString(R.string.app_name));
+        String privacyName = String.format(ResUtils.getString(context, R.string.lab_privacy_name), ResUtils.getString(context, R.string.app_name));
         SpannableString spannableString = new SpannableString(privacyName);
         spannableString.setSpan(new ClickableSpan() {
             @Override
