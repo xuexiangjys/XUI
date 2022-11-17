@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 21
-        versionName "1.2.0"
+        versionCode 22
+        versionName "1.2.1"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
