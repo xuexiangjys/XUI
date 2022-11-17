@@ -78,9 +78,9 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 构建自定义的ViewHolder
      *
-     * @param parent   父布局
-     * @param viewType view类型
-     * @return ViewHolder
+     * @param parent
+     * @param viewType
+     * @return
      */
     @NonNull
     protected abstract V getViewHolder(@NonNull ViewGroup parent, int viewType);
@@ -88,7 +88,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 绑定数据
      *
-     * @param holder   ViewHolder
+     * @param holder
      * @param position 索引
      * @param item     列表项
      */
@@ -99,7 +99,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      *
      * @param parent   父布局
      * @param layoutId 布局ID
-     * @return 加载的布局
+     * @return
      */
     protected View inflateView(ViewGroup parent, @LayoutRes int layoutId) {
         return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
@@ -113,8 +113,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final int position = getItemPosition(holder);
-                    mClickListener.onItemClick(holder.itemView, getItem(position), position);
+                    mClickListener.onItemClick(holder.itemView, getItem(holder.getLayoutPosition()), holder.getLayoutPosition());
                 }
             });
         }
@@ -122,25 +121,13 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    final int position = getItemPosition(holder);
-                    mLongClickListener.onItemLongClick(holder.itemView, getItem(position), position);
+                    mLongClickListener.onItemLongClick(holder.itemView, getItem(holder.getLayoutPosition()), holder.getLayoutPosition());
                     return true;
                 }
             });
         }
         return holder;
     }
-
-    /**
-     * 获取item的位置，这里默认使用getLayoutPosition来进行获取，可以重写这个方法
-     *
-     * @param holder ViewHolder
-     * @return 位置
-     */
-    protected int getItemPosition(V holder) {
-        return holder.getLayoutPosition();
-    }
-
 
     @Override
     public void onBindViewHolder(@NonNull V holder, int position) {
