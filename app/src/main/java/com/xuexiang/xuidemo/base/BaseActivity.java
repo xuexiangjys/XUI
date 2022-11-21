@@ -10,6 +10,7 @@ import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.utils.Utils;
 
@@ -42,6 +43,7 @@ public class BaseActivity extends XPageActivity {
     protected void onCreate(Bundle savedInstanceState) {
         initAppTheme();
         initStatusBarStyle();
+        initOthers();
         super.onCreate(savedInstanceState);
         mUnbinder = ButterKnife.bind(this);
 
@@ -60,6 +62,14 @@ public class BaseActivity extends XPageActivity {
      */
     protected void initStatusBarStyle() {
 
+    }
+
+    /**
+     * 初始化其他事务
+     */
+    private void initOthers() {
+        // 用于检测控件的加载速度
+//        WidgetUtils.installLayoutInflaterLogger(this);
     }
 
     /**

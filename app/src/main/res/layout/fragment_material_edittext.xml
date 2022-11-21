@@ -385,7 +385,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="app:met_typeface=&quot;fonts/Roboto-LightItalic.ttf&quot;\napp:met_accentTypeface=&quot;fonts/Roboto-LightItalic.ttf&quot;"
+                    android:text="app:met_typeface=&quot;fonts/hwxk.ttf&quot;\napp:met_accentTypeface=&quot;fonts/hwxk.ttf&quot;"
                     android:textColor="#888888"
                     android:textSize="14sp" />
 
@@ -393,11 +393,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Custom Accent Typeface"
-                    app:met_accentTypeface="fonts/Roboto-LightItalic.ttf"
+                    app:met_accentTypeface="fonts/hwxk.ttf"
                     app:met_floatingLabel="normal"
                     app:met_helperText="Helper Text"
                     app:met_maxCharacters="5"
-                    app:met_typeface="fonts/Roboto-LightItalic.ttf" />
+                    app:met_typeface="fonts/hwxk.ttf" />
 
                 <TextView
                     android:layout_width="match_parent"
