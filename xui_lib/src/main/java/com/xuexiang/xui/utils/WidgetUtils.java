@@ -503,7 +503,7 @@ public final class WidgetUtils {
      * @param activity 活动页
      */
     public static void installLayoutInflaterLogger(@NonNull final AppCompatActivity activity) {
-        installLayoutInflaterLogger(activity, "LayoutInflater");
+        installLayoutInflaterLogger(activity, "LayoutInflater", 5);
     }
 
     /**
@@ -513,8 +513,9 @@ public final class WidgetUtils {
      *
      * @param activity  活动页
      * @param loggerTag 日志标志
+     * @param limitCost 限制耗时(ms)，大于的error显示
      */
-    public static void installLayoutInflaterLogger(@NonNull final AppCompatActivity activity, @NonNull final String loggerTag) {
+    public static void installLayoutInflaterLogger(@NonNull final AppCompatActivity activity, @NonNull final String loggerTag, final long limitCost) {
         LayoutInflaterCompat.setFactory2(activity.getLayoutInflater(), new LayoutInflater.Factory2() {
             @Nullable
             @Override
@@ -522,7 +523,11 @@ public final class WidgetUtils {
                 long startNanos = System.nanoTime();
                 View view = activity.getDelegate().createView(parent, name, context, attrs);
                 long cost = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
-                UILog.dTag(loggerTag, "加载控件：" + name + ", 耗时：" + cost + "ms");
+                if (cost > limitCost) {
+                    UILog.eTag(loggerTag, "加载控件：" + name + ", 耗时：" + cost + " ms");
+                } else {
+                    UILog.dTag(loggerTag, "加载控件：" + name + ", 耗时：" + cost + " ms");
+                }
                 return view;
             }
 
