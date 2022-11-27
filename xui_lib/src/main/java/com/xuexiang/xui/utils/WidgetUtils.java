@@ -524,9 +524,9 @@ public final class WidgetUtils {
                 View view = activity.getDelegate().createView(parent, name, context, attrs);
                 long cost = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
                 if (cost > limitCost) {
-                    UILog.eTag(loggerTag, "加载控件：" + name + ", 耗时：" + cost + " ms");
+                    UILog.eTag(loggerTag, "LoadWidget:" + name + ", cost:" + cost + " ms");
                 } else {
-                    UILog.dTag(loggerTag, "加载控件：" + name + ", 耗时：" + cost + " ms");
+                    UILog.dTag(loggerTag, "LoadWidget:" + name + ", cost:" + cost + " ms");
                 }
                 return view;
             }

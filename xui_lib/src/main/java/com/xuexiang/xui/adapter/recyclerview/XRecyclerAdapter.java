@@ -27,11 +27,14 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.xuexiang.xui.logs.UILog;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 基础的RecyclerView适配器
@@ -40,6 +43,10 @@ import java.util.List;
  * @since 2019-08-11 16:12
  */
 public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<V> {
+
+    private static final String TAG = "XRecyclerAdapter";
+
+    private static boolean DEBUG = false;
 
     /**
      * 数据源
@@ -59,19 +66,32 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      */
     protected int mSelectPosition = -1;
 
+    /**
+     * 空构造函数
+     */
     public XRecyclerAdapter() {
 
     }
 
-    public XRecyclerAdapter(Collection<T> list) {
-        if (list != null) {
-            mData.addAll(list);
+    /**
+     * 构造函数
+     *
+     * @param source 数据源
+     */
+    public XRecyclerAdapter(Collection<T> source) {
+        if (source != null) {
+            mData.addAll(source);
         }
     }
 
-    public XRecyclerAdapter(T[] data) {
-        if (data != null && data.length > 0) {
-            mData.addAll(Arrays.asList(data));
+    /**
+     * 构造函数
+     *
+     * @param source 数据源
+     */
+    public XRecyclerAdapter(T[] source) {
+        if (source != null && source.length > 0) {
+            mData.addAll(Arrays.asList(source));
         }
     }
 
@@ -101,13 +121,25 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      * @param layoutId 布局ID
      * @return 加载的布局
      */
-    protected View inflateView(ViewGroup parent, @LayoutRes int layoutId) {
+    protected View inflateView(@NonNull ViewGroup parent, @LayoutRes int layoutId) {
         return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
     }
 
     @NonNull
     @Override
     public V onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (DEBUG) {
+            long startNanos = System.nanoTime();
+            final V holder = processCreateViewHolder(parent, viewType);
+            long cost = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
+            UILog.dTag(TAG, "onCreateViewHolder cost:" + cost + " ms");
+            return holder;
+        } else {
+            return processCreateViewHolder(parent, viewType);
+        }
+    }
+
+    protected V processCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final V holder = getViewHolder(parent, viewType);
         if (mClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -46,8 +46,8 @@ public abstract class BaseRecyclerAdapter<T> extends XRecyclerAdapter<T, Recycle
     /**
      * 适配的布局
      *
-     * @param viewType
-     * @return
+     * @param viewType view类型
+     * @return view类型对应的布局
      */
     protected abstract int getItemLayoutId(int viewType);
 
