@@ -19,8 +19,10 @@ package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.custom.BottomScrollBehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.custom.DependViewBehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.custom.ScrollBehaviorFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.custom.TopScrollBehaviorFragment;
 
 /**
  * @author xuexiang
@@ -32,7 +34,9 @@ public class CustomBehaviorFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 DependViewBehaviorFragment.class,
-                ScrollBehaviorFragment.class
+                ScrollBehaviorFragment.class,
+                TopScrollBehaviorFragment.class,
+                BottomScrollBehaviorFragment.class,
         };
     }
 }
