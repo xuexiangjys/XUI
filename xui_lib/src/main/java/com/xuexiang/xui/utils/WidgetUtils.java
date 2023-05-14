@@ -496,6 +496,21 @@ public final class WidgetUtils {
     }
 
     /**
+     * 设置目标控件被父布局不裁剪
+     *
+     * @param targetView 目标控件
+     */
+    public static void setViewParentNotClip(@NonNull View targetView) {
+        ViewGroup parent = (ViewGroup) targetView.getParent();
+        if (parent == null) {
+            return;
+        }
+        parent.setClipChildren(false);
+        parent.setClipToPadding(false);
+    }
+
+
+    /**
      * 增加view的inflate日志，用于分析控件加载的性能。
      * <p>
      * 【注意】需要在activity的super.onCreate(savedInstanceState)方法之前调用

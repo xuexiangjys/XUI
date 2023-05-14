@@ -1,9 +1,12 @@
 package com.xuexiang.xuidemo.fragment.expands;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.activity.MaterialDesignThemeActivity;
 import com.xuexiang.xuidemo.activity.SettingsActivity;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.BadgeDrawableFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BottomSheetDialogFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ConstraintLayoutFragment;
@@ -35,6 +38,7 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
         lists.add("BottomSheetDialog");
         lists.add("ConstraintLayout\n约束布局");
         lists.add("设置页面");
+        lists.add("BadgeDrawable使用");
         return lists;
     }
 
@@ -45,7 +49,7 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
      */
     @Override
     protected void onItemClick(int position) {
-        switch(position) {
+        switch (position) {
             case 0:
                 openPage(ToolBarFragment.class);
                 break;
@@ -63,6 +67,11 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
                 break;
             case 5:
                 ActivityUtils.startActivity(SettingsActivity.class);
+                break;
+            case 6:
+                PageOption.to(BadgeDrawableFragment.class)
+                        .setNewActivity(true, MaterialDesignThemeActivity.class)
+                        .open(this);
                 break;
             default:
                 break;

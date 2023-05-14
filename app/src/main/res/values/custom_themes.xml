@@ -126,5 +126,26 @@
         <item name="colorAccent">@color/custom_color_main_theme</item>
     </style>
 
+    <style name="MaterialDesignTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorAccent">@color/xui_config_color_main_theme</item>
+        <item name="colorPrimary">@color/xui_config_color_main_theme</item>
+        <item name="colorPrimaryDark">@color/xui_config_color_main_theme</item>
+        <item name="colorControlNormal">@color/xui_config_color_control_normal</item>
+
+        <item name="xui_config_color_error_text">@color/xui_config_color_red</item>
+        <item name="xui_config_color_input_text">@color/xui_config_color_edittext_input_text</item>
+        <item name="xui_config_color_hint_text">@color/xui_config_color_edittext_hint_text</item>
+        <item name="xui_config_color_stroke">@color/xui_config_color_edittext_stroke</item>
+        <item name="xui_config_color_disable">@color/xui_config_color_edittext_disable</item>
+        <item name="xui_config_color_pressed">@color/xui_config_color_background_pressed</item>
+        <item name="xui_btn_view_normal_color">@color/xui_btn_blue_normal_color</item>
+        <item name="xui_btn_view_touch_color">@color/xui_btn_blue_select_color</item>
+
+        <item name="xui_config_color_title_text">@color/xui_config_color_title_text</item>
+        <item name="xui_config_color_content_text">@color/xui_config_color_content_text</item>
+        <item name="xui_config_color_explain_text">@color/xui_config_color_explain_text</item>
+    </style>
+
+
 
 </resources>
