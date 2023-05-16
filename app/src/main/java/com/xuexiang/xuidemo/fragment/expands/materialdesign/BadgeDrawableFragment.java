@@ -36,11 +36,13 @@ import butterknife.BindView;
 
 /**
  * BadgeDrawable小气泡，只能设置数字, 可设置最大长度，超出长度的显示999+
+ * <p>
+ * 使用有点局限性
  *
  * @author xuexiang
  * @since 2023/5/14 18:27
  */
-@Page(name = "BadgeDrawable使用")
+@Page(name = "BadgeDrawable")
 public class BadgeDrawableFragment extends BaseFragment {
 
     @BindView(R.id.tab_layout)

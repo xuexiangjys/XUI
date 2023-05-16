@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -172,6 +171,7 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
@@ -186,6 +186,45 @@
     <style name="pop_window_anim_style" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/pop_show_anim</item>
         <item name="android:windowExitAnimation">@anim/pop_hidden_anim</item>
+    </style>
+
+    <!--ShapeableImageView 圆角-->
+    <style name="RoundedStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <!--ShapeableImageView 圆 -->
+    <style name="CircleStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--ShapeableImageView 切角 -->
+    <style name="CutStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <!--ShapeableImageView 菱形 -->
+    <style name="RhombusStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--Overflow label text style-->
+    <style name="OverflowTextStyle" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/xui_config_color_waring</item>
+    </style>
+
+    <!--Floating label text style-->
+    <style name="FloatingHintText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <!--Error label text style-->
+    <style name="CustomErrorText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">?xui_config_color_error_text</item>
     </style>
 
 </resources>
