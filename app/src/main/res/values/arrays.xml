@@ -235,6 +235,20 @@
         <item>Beagle</item>
     </string-array>
 
+    <string-array name="menu_entry">
+        <item>推荐</item>
+        <item>Android</item>
+        <item>iOS</item>
+        <item>后端</item>
+        <item>前端</item>
+        <item>音视频</item>
+        <item>大数据</item>
+        <item>人工智能</item>
+        <item>云原生</item>
+        <item>运维</item>
+        <item>算法</item>
+        <item>代码人生</item>
+    </string-array>
 
     <string-array name="sort_mode_entry">
         <item>根据品牌名称排序</item>
