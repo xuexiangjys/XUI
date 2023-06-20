@@ -46,7 +46,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
 
     private static final String TAG = "XRecyclerAdapter";
 
-    private static boolean DEBUG = false;
+    public static boolean DEBUG = false;
 
     /**
      * 数据源

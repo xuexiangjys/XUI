@@ -2,6 +2,7 @@ package com.xuexiang.xui.widget.progress.ratingbar;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 
@@ -38,12 +39,12 @@ public class AnimationRatingBar extends RatingBar {
     }
 
     private void init() {
-        mHandler = new Handler();
+        mHandler = new Handler(Looper.getMainLooper());
     }
 
     protected void postRunnable(Runnable runnable, long animationDelay) {
         if (mHandler == null) {
-            mHandler = new Handler();
+            mHandler = new Handler(Looper.getMainLooper());
         }
 
         long timeMillis = SystemClock.uptimeMillis() + animationDelay;

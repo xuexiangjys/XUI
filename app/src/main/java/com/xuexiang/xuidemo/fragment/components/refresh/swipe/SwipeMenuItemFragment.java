@@ -2,6 +2,7 @@ package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
 import android.graphics.Color;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.ViewGroup;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -133,7 +134,7 @@ public class SwipeMenuItemFragment extends BaseFragment {
     }
 
     private void loadData() {
-        new Handler().postDelayed(() -> {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
             mAdapter.refresh(DemoDataProvider.getDemoData());
             if (refreshLayout != null) {
                 refreshLayout.setRefreshing(false);

@@ -19,6 +19,7 @@ package com.xuexiang.xui.widget.popupwindow.status;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -119,7 +120,7 @@ public class StatusView extends FrameLayout {
         mSlideOut = AnimationUtils.loadAnimation(context, R.anim.sv_slide_out);
 
         LayoutInflater inflate = LayoutInflater.from(context);
-        mHandler = new Handler();
+        mHandler = new Handler(Looper.getMainLooper());
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.StatusView, defStyleAttr, 0);
 

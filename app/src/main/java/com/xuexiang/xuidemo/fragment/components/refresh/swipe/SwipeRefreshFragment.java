@@ -1,6 +1,7 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -33,7 +34,7 @@ public class SwipeRefreshFragment extends BaseFragment {
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
 
-    private Handler mHandler = new Handler();
+    private Handler mHandler = new Handler(Looper.getMainLooper());
 
     private boolean mEnableLoadMore;
 

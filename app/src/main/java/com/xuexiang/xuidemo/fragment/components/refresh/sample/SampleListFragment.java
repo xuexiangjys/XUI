@@ -21,6 +21,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilRefreshFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.sample.edit.NewsListEditFragment;
+import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.PreloadViewHolderFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.sample.selection.ListSelectionFragment;
 import com.xuexiang.xuidemo.fragment.components.refresh.sample.sortedlist.SortedListRefreshFragment;
 
@@ -36,7 +37,8 @@ public class SampleListFragment extends ComponentContainerFragment {
                 DiffUtilRefreshFragment.class,
                 SortedListRefreshFragment.class,
                 ListSelectionFragment.class,
-                NewsListEditFragment.class
+                NewsListEditFragment.class,
+                PreloadViewHolderFragment.class
         };
     }
 }
