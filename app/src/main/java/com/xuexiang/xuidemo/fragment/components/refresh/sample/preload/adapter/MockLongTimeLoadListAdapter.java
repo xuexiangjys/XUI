@@ -26,7 +26,7 @@ import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
-import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.async.ViewInflateUtils;
+import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.mock.MockInflateUtils;
 
 /**
  * 模拟耗时加载的ViewHolder
@@ -60,7 +60,7 @@ public class MockLongTimeLoadListAdapter extends BaseRecyclerAdapter<NewInfo> {
      */
     @Override
     protected View inflateView(@NonNull ViewGroup parent, int layoutId) {
-        return ViewInflateUtils.mockLongTimeLoad(parent, layoutId);
+        return MockInflateUtils.mockLongTimeLoad(parent, layoutId);
     }
 
 }

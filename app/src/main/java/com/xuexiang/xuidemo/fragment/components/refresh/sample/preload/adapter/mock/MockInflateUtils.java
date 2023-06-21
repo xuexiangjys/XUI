@@ -15,7 +15,7 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.async;
+package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.mock;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,9 +31,9 @@ import java.util.concurrent.TimeUnit;
  * @author xuexiang
  * @since 6/21/23 1:24 AM
  */
-public final class ViewInflateUtils {
+public final class MockInflateUtils {
 
-    private ViewInflateUtils() {
+    private MockInflateUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 

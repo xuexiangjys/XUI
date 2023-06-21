@@ -15,7 +15,7 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter;
+package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.core;
 
 import android.util.SparseArray;
 import android.view.View;
@@ -23,8 +23,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.async.AsyncInflater;
 
 import java.lang.ref.SoftReference;
 import java.util.Iterator;
@@ -56,6 +54,10 @@ public class PreInflateHelper {
 
     public void preload(@NonNull ViewGroup parent, int layoutId) {
         preload(parent, layoutId, DEFAULT_PRELOAD_COUNT, 0);
+    }
+
+    public void preload(@NonNull ViewGroup parent, int layoutId, int maxCount) {
+        preload(parent, layoutId, maxCount, 0);
     }
 
     public void preload(@NonNull ViewGroup parent, int layoutId, int maxCount, int forcePreCount) {

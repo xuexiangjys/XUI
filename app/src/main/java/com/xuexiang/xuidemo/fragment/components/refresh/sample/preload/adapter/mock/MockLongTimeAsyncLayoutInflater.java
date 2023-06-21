@@ -15,7 +15,7 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.async;
+package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.mock;
 
 import android.content.Context;
 import android.os.Handler;
@@ -163,7 +163,7 @@ public final class MockLongTimeAsyncLayoutInflater {
             }
             try {
                 // 模拟耗时加载
-                request.view = ViewInflateUtils.mockLongTimeLoad(request.inflater.mInflater,
+                request.view = MockInflateUtils.mockLongTimeLoad(request.inflater.mInflater,
                         request.parent, request.resid);
             } catch (RuntimeException ex) {
                 // Probably a Looper failure, retry on the UI thread
