@@ -26,6 +26,7 @@ import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
+import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.async.ViewInflateUtils;
 
 /**
  * 模拟耗时加载的ViewHolder

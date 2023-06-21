@@ -15,13 +15,17 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter;
+package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.async;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+
+import com.xuexiang.xui.logs.UILog;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author xuexiang
@@ -44,5 +48,22 @@ public final class ViewInflateUtils {
             e.printStackTrace();
         }
         return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
+    }
+
+    /**
+     * 模拟耗时加载
+     */
+    public static View mockLongTimeLoad(LayoutInflater inflater, ViewGroup parent, int layoutId) {
+        long startNanos = System.nanoTime();
+        try {
+            // 模拟耗时
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        View view = inflater.inflate(layoutId, parent, false);
+        long cost = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
+        UILog.dTag("XRecyclerAdapter", "mockLongTimeLoad cost:" + cost + " ms");
+        return view;
     }
 }

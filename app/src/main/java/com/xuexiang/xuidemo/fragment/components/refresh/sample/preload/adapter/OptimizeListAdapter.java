@@ -15,22 +15,24 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload;
+package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter;
 
-import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
-import com.xuexiang.xuidemo.adapter.entity.NewInfo;
-import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.OptimizeListAdapter;
+import android.view.View;
+import android.view.ViewGroup;
 
-/**
- * @author xuexiang
- * @since 6/21/23 12:47 AM
- */
-@Page(name = "ViewHolder加载优化后")
-public class AfterOptimizeFragment extends AbstractNewListFragment {
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class OptimizeListAdapter extends MockLongTimeLoadListAdapter {
+
+    private final PreInflateHelper mHelper = new PreInflateHelper();
+
+    public OptimizeListAdapter(RecyclerView recyclerView) {
+        mHelper.preload(recyclerView, getItemLayoutId(0));
+    }
 
     @Override
-    protected BaseRecyclerAdapter<NewInfo> createAdapter() {
-        return new OptimizeListAdapter(recyclerView);
+    protected View inflateView(@NonNull ViewGroup parent, int layoutId) {
+        return mHelper.getView(parent, layoutId);
     }
 }
