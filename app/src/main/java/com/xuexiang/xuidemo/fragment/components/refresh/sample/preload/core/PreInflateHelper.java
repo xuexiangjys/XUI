@@ -30,6 +30,9 @@ import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ *
+ * 灵感源于：https://blog.csdn.net/alienttech/article/details/106759615
+ *
  * @author xuexiang
  * @since 6/21/23 1:41 AM
  */
