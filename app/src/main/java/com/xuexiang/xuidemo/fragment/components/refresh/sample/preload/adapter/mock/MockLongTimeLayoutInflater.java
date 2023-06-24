@@ -18,6 +18,7 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.mock;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -25,19 +26,19 @@ import androidx.appcompat.view.ContextThemeWrapper;
 
 import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.core.PreInflateHelper;
 
-public class MockLongTimeAsyncInflater implements PreInflateHelper.IAsyncInflater {
+public class MockLongTimeLayoutInflater implements PreInflateHelper.ILayoutInflater {
 
     private MockLongTimeAsyncLayoutInflater mInflater;
 
-    private MockLongTimeAsyncInflater() {
+    private MockLongTimeLayoutInflater() {
 
     }
 
     private static final class InstanceHolder {
-        static final MockLongTimeAsyncInflater sInstance = new MockLongTimeAsyncInflater();
+        static final MockLongTimeLayoutInflater sInstance = new MockLongTimeLayoutInflater();
     }
 
-    public static MockLongTimeAsyncInflater get() {
+    public static MockLongTimeLayoutInflater get() {
         return InstanceHolder.sInstance;
     }
 
@@ -45,12 +46,17 @@ public class MockLongTimeAsyncInflater implements PreInflateHelper.IAsyncInflate
     public void asyncInflateView(@NonNull ViewGroup parent, int layoutId, PreInflateHelper.InflateCallback callback) {
         if (mInflater == null) {
             Context context = parent.getContext();
-            mInflater = new MockLongTimeAsyncLayoutInflater(new ContextThemeWrapper(context, context.getTheme()));
+            mInflater = new MockLongTimeAsyncLayoutInflater(new ContextThemeWrapper(context.getApplicationContext(), context.getTheme()));
         }
         mInflater.inflate(layoutId, parent, (view, resId, parent1) -> {
             if (callback != null) {
                 callback.onInflateFinished(resId, view);
             }
         });
+    }
+
+    @Override
+    public View inflateView(@NonNull ViewGroup parent, int layoutId) {
+        return InflateUtils.mockLongTimeLoad(parent, layoutId);
     }
 }

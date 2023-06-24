@@ -64,7 +64,7 @@ public abstract class AbstractNewListFragment extends BaseFragment {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 refreshLayout.getLayout().postDelayed(() -> {
-                    mAdapter.refresh(DemoDataProvider.getDemoNewInfos());
+                    mAdapter.refresh(DemoDataProvider.getRefreshDemoNewInfos());
                     refreshLayout.finishRefresh();
                 }, 1000);
 
@@ -73,7 +73,7 @@ public abstract class AbstractNewListFragment extends BaseFragment {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 refreshLayout.getLayout().postDelayed(() -> {
-                    mAdapter.loadMore(DemoDataProvider.getDemoNewInfos());
+                    mAdapter.loadMore(DemoDataProvider.getRefreshDemoNewInfos());
                     refreshLayout.finishLoadMore();
                 }, 1000);
 

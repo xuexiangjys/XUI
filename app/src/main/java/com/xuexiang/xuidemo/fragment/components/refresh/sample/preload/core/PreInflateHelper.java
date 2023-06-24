@@ -29,10 +29,9 @@ import com.xuexiang.xui.logs.UILog;
 import java.lang.ref.SoftReference;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.concurrent.CountDownLatch;
 
 /**
- *
+ * 预加载辅助工具类
  * 灵感源于：https://blog.csdn.net/alienttech/article/details/106759615
  *
  * @author xuexiang
@@ -49,7 +48,7 @@ public class PreInflateHelper {
 
     private final ViewCache mViewCache = new ViewCache();
 
-    private IAsyncInflater mAsyncInflater = AsyncInflater.get();
+    private ILayoutInflater mLayoutInflater = DefaultLayoutInflater.get();
 
     public void preloadOnce(@NonNull ViewGroup parent, int layoutId) {
         preloadOnce(parent, layoutId, DEFAULT_PRELOAD_COUNT);
@@ -84,7 +83,7 @@ public class PreInflateHelper {
     }
 
     private void preAsyncInflateView(@NonNull ViewGroup parent, int layoutId) {
-        mAsyncInflater.asyncInflateView(parent, layoutId, new InflateCallback() {
+        mLayoutInflater.asyncInflateView(parent, layoutId, new InflateCallback() {
             @Override
             public void onInflateFinished(int layoutId, View view) {
                 mViewCache.putView(layoutId, view);
@@ -104,25 +103,11 @@ public class PreInflateHelper {
             preloadOnce(parent, layoutId, maxCount);
             return view;
         }
-        final View[] inflateView = new View[1];
-        final CountDownLatch latch = new CountDownLatch(1);
-        mAsyncInflater.asyncInflateView(parent, layoutId, new InflateCallback() {
-            @Override
-            public void onInflateFinished(int layoutId, View view) {
-                inflateView[0] = view;
-                latch.countDown();
-            }
-        });
-        try {
-            latch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return inflateView[0];
+        return mLayoutInflater.inflateView(parent, layoutId);
     }
 
-    public PreInflateHelper setAsyncInflater(IAsyncInflater asyncInflater) {
-        mAsyncInflater = asyncInflater;
+    public PreInflateHelper setAsyncInflater(ILayoutInflater asyncInflater) {
+        mLayoutInflater = asyncInflater;
         return this;
     }
 
@@ -178,16 +163,26 @@ public class PreInflateHelper {
         }
     }
 
-    public interface IAsyncInflater {
+    public interface ILayoutInflater {
 
         /**
          * 异步加载View
          *
-         * @param parent
-         * @param layoutId
+         * @param parent   父布局
+         * @param layoutId 布局资源id
          * @param callback 加载回调
          */
         void asyncInflateView(@NonNull ViewGroup parent, int layoutId, InflateCallback callback);
+
+        /**
+         * 同步加载View
+         *
+         * @param parent   父布局
+         * @param layoutId 布局资源id
+         * @return 加载的View
+         */
+        View inflateView(@NonNull ViewGroup parent, int layoutId);
+
     }
 
 

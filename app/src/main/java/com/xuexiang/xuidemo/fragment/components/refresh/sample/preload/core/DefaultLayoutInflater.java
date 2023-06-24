@@ -18,25 +18,28 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.core;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.asynclayoutinflater.view.AsyncLayoutInflater;
 
-public class AsyncInflater implements PreInflateHelper.IAsyncInflater {
+import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.mock.InflateUtils;
+
+public class DefaultLayoutInflater implements PreInflateHelper.ILayoutInflater {
 
     private AsyncLayoutInflater mInflater;
 
-    private AsyncInflater() {
+    private DefaultLayoutInflater() {
 
     }
 
     private static final class InstanceHolder {
-        static final AsyncInflater sInstance = new AsyncInflater();
+        static final DefaultLayoutInflater sInstance = new DefaultLayoutInflater();
     }
 
-    public static AsyncInflater get() {
+    public static DefaultLayoutInflater get() {
         return InstanceHolder.sInstance;
     }
 
@@ -44,12 +47,17 @@ public class AsyncInflater implements PreInflateHelper.IAsyncInflater {
     public void asyncInflateView(@NonNull ViewGroup parent, int layoutId, PreInflateHelper.InflateCallback callback) {
         if (mInflater == null) {
             Context context = parent.getContext();
-            mInflater = new AsyncLayoutInflater(new ContextThemeWrapper(context, context.getTheme()));
+            mInflater = new AsyncLayoutInflater(new ContextThemeWrapper(context.getApplicationContext(), context.getTheme()));
         }
         mInflater.inflate(layoutId, parent, (view, resId, parent1) -> {
             if (callback != null) {
                 callback.onInflateFinished(resId, view);
             }
         });
+    }
+
+    @Override
+    public View inflateView(@NonNull ViewGroup parent, int layoutId) {
+        return InflateUtils.getInflateView(parent, layoutId);
     }
 }

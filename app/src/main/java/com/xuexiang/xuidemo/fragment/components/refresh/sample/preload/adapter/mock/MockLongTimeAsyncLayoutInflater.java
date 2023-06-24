@@ -163,7 +163,7 @@ public final class MockLongTimeAsyncLayoutInflater {
             }
             try {
                 // 模拟耗时加载
-                request.view = MockInflateUtils.mockLongTimeLoad(request.inflater.mInflater,
+                request.view = InflateUtils.mockLongTimeLoad(request.inflater.mInflater,
                         request.parent, request.resid);
             } catch (RuntimeException ex) {
                 // Probably a Looper failure, retry on the UI thread

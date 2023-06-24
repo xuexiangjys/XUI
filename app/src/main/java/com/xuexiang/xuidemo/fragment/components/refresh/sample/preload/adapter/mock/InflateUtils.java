@@ -31,9 +31,9 @@ import java.util.concurrent.TimeUnit;
  * @author xuexiang
  * @since 6/21/23 1:24 AM
  */
-public final class MockInflateUtils {
+public final class InflateUtils {
 
-    private MockInflateUtils() {
+    private InflateUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -47,6 +47,10 @@ public final class MockInflateUtils {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return getInflateView(parent, layoutId);
+    }
+
+    public static View getInflateView(@NonNull ViewGroup parent, int layoutId) {
         return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
     }
 

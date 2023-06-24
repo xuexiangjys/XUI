@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.mock.MockLongTimeAsyncInflater;
+import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.mock.MockLongTimeLayoutInflater;
 import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.core.PreInflateHelper;
 
 public class OptimizeListAdapter extends MockLongTimeLoadListAdapter {
@@ -37,7 +37,7 @@ public class OptimizeListAdapter extends MockLongTimeLoadListAdapter {
     }
 
     public OptimizeListAdapter(RecyclerView recyclerView) {
-        getInflateHelper().setAsyncInflater(MockLongTimeAsyncInflater.get());
+        getInflateHelper().setAsyncInflater(MockLongTimeLayoutInflater.get());
         getInflateHelper().preload(recyclerView, getItemLayoutId(0));
     }
 
