@@ -28,15 +28,21 @@ import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.core.PreI
 
 public class OptimizeListAdapter extends MockLongTimeLoadListAdapter {
 
-    private final PreInflateHelper mHelper = new PreInflateHelper();
+    private static final class InstanceHolder {
+        static final PreInflateHelper sInstance = new PreInflateHelper();
+    }
+
+    public static PreInflateHelper getInflateHelper() {
+        return OptimizeListAdapter.InstanceHolder.sInstance;
+    }
 
     public OptimizeListAdapter(RecyclerView recyclerView) {
-        mHelper.setAsyncInflater(new MockLongTimeAsyncInflater());
-        mHelper.preload(recyclerView, getItemLayoutId(0));
+        getInflateHelper().setAsyncInflater(MockLongTimeAsyncInflater.get());
+        getInflateHelper().preload(recyclerView, getItemLayoutId(0));
     }
 
     @Override
     protected View inflateView(@NonNull ViewGroup parent, int layoutId) {
-        return mHelper.getView(parent, layoutId);
+        return getInflateHelper().getView(parent, layoutId);
     }
 }

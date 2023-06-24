@@ -17,15 +17,21 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.adapter.mock;
 
+import android.content.Context;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.ContextThemeWrapper;
 
 import com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.core.PreInflateHelper;
 
 public class MockLongTimeAsyncInflater implements PreInflateHelper.IAsyncInflater {
 
     private MockLongTimeAsyncLayoutInflater mInflater;
+
+    private MockLongTimeAsyncInflater() {
+
+    }
 
     private static final class InstanceHolder {
         static final MockLongTimeAsyncInflater sInstance = new MockLongTimeAsyncInflater();
@@ -38,7 +44,8 @@ public class MockLongTimeAsyncInflater implements PreInflateHelper.IAsyncInflate
     @Override
     public void asyncInflateView(@NonNull ViewGroup parent, int layoutId, PreInflateHelper.InflateCallback callback) {
         if (mInflater == null) {
-            mInflater = new MockLongTimeAsyncLayoutInflater(parent.getContext());
+            Context context = parent.getContext();
+            mInflater = new MockLongTimeAsyncLayoutInflater(new ContextThemeWrapper(context, context.getTheme()));
         }
         mInflater.inflate(layoutId, parent, (view, resId, parent1) -> {
             if (callback != null) {

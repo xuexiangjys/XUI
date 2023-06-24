@@ -24,6 +24,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.xuexiang.xui.logs.UILog;
+
 import java.lang.ref.SoftReference;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -38,6 +40,8 @@ import java.util.concurrent.CountDownLatch;
  */
 public class PreInflateHelper {
 
+    private static final String TAG = "PreInflateHelper";
+
     /**
      * 默认的预加载缓存池大小，默认是5，可根据需求设置
      */
@@ -45,7 +49,7 @@ public class PreInflateHelper {
 
     private final ViewCache mViewCache = new ViewCache();
 
-    private IAsyncInflater mAsyncInflater = new AsyncInflater();
+    private IAsyncInflater mAsyncInflater = AsyncInflater.get();
 
     public void preloadOnce(@NonNull ViewGroup parent, int layoutId) {
         preloadOnce(parent, layoutId, DEFAULT_PRELOAD_COUNT);
@@ -72,17 +76,19 @@ public class PreInflateHelper {
         if (forcePreCount > 0) {
             needPreloadCount = Math.min(forcePreCount, needPreloadCount);
         }
+        UILog.dTag(TAG, "needPreloadCount:" + needPreloadCount + ", viewsAvailableCount:" + viewsAvailableCount);
         for (int i = 0; i < needPreloadCount; i++) {
             // 异步加载View
-            asyncInflateView(parent, layoutId);
+            preAsyncInflateView(parent, layoutId);
         }
     }
 
-    private void asyncInflateView(@NonNull ViewGroup parent, int layoutId) {
+    private void preAsyncInflateView(@NonNull ViewGroup parent, int layoutId) {
         mAsyncInflater.asyncInflateView(parent, layoutId, new InflateCallback() {
             @Override
             public void onInflateFinished(int layoutId, View view) {
                 mViewCache.putView(layoutId, view);
+                UILog.dTag(TAG, "mViewCache + 1, viewsAvailableCount:" + mViewCache.getViewPoolAvailableCount(layoutId));
             }
         });
     }
@@ -94,6 +100,7 @@ public class PreInflateHelper {
     public View getView(@NonNull ViewGroup parent, int layoutId, int maxCount) {
         View view = mViewCache.getView(layoutId);
         if (view != null) {
+            UILog.dTag(TAG, "get view from cache!");
             preloadOnce(parent, layoutId, maxCount);
             return view;
         }

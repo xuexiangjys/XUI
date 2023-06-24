@@ -17,14 +17,20 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.sample.preload.core;
 
+import android.content.Context;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.asynclayoutinflater.view.AsyncLayoutInflater;
 
 public class AsyncInflater implements PreInflateHelper.IAsyncInflater {
 
     private AsyncLayoutInflater mInflater;
+
+    private AsyncInflater() {
+
+    }
 
     private static final class InstanceHolder {
         static final AsyncInflater sInstance = new AsyncInflater();
@@ -37,7 +43,8 @@ public class AsyncInflater implements PreInflateHelper.IAsyncInflater {
     @Override
     public void asyncInflateView(@NonNull ViewGroup parent, int layoutId, PreInflateHelper.InflateCallback callback) {
         if (mInflater == null) {
-            mInflater = new AsyncLayoutInflater(parent.getContext());
+            Context context = parent.getContext();
+            mInflater = new AsyncLayoutInflater(new ContextThemeWrapper(context, context.getTheme()));
         }
         mInflater.inflate(layoutId, parent, (view, resId, parent1) -> {
             if (callback != null) {
