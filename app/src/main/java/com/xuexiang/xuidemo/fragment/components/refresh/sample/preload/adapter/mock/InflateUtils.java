@@ -67,7 +67,7 @@ public final class InflateUtils {
         }
         View view = inflater.inflate(layoutId, parent, false);
         long cost = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
-        UILog.dTag("XRecyclerAdapter", "mockLongTimeLoad cost:" + cost + " ms");
+        UILog.dTag("InflateUtils", "mockLongTimeLoad cost:" + cost + " ms");
         return view;
     }
 }
