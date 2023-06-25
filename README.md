@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://ss.im5i.com/2021/06/14/65G07.png" width="388" height="321" alt="Banner" />
+  <img src="https://raw.githubusercontent.com/xuexiangjys/XUI/master/art/app_logo_xui.png" width="388" height="321" alt="Banner" />
 </p>
 
 # XUI
@@ -176,23 +176,23 @@ protected void attachBaseContext(Context newBase) {
 
 ### Screenshot
 
-![1_splash.png](https://ss.im5i.com/2021/06/14/6uDhR.png) &emsp; ![2_main.png](https://ss.im5i.com/2021/06/14/6uzmO.png) &emsp; ![3_about.png](https://ss.im5i.com/2021/06/14/6uaJd.png) &emsp;
+![1_splash.png](./art/1_splash.png) &emsp; ![2_main.png](./art/2_main.png) &emsp; ![3_about.png](./art/3_about.png) &emsp;
 
-![4_menu.png](https://ss.im5i.com/2021/06/14/6u4n4.png) &emsp; ![5_dialog.png](https://ss.im5i.com/2021/06/14/6upMW.png) &emsp; ![6_bottom_dialog.png](https://ss.im5i.com/2021/06/14/6uMdG.png) &emsp;
+![4_menu.png](./art/4_menu.png) &emsp; ![5_dialog.png](./art/5_dialog.png) &emsp; ![6_bottom_dialog.png](./art/6_bottom_dialog.png) &emsp;
 
-![7_picker.png](https://ss.im5i.com/2021/06/14/6uOWz.png) &emsp; ![8_webview.png](https://ss.im5i.com/2021/06/14/6uk05.png) &emsp;![9_flowlayout.png](https://ss.im5i.com/2021/06/14/65FS6.png) &emsp;
+![7_picker.png](./art/7_picker.png) &emsp; ![8_webview.png](./art/8_webview.png) &emsp;![9_flowlayout.png](./art/9_flowlayout.png) &emsp;
 
-![10_ninegrid.png](https://ss.im5i.com/2021/06/14/65Qt8.png) &emsp; ![11_radius_imageview.png](https://ss.im5i.com/2021/06/14/65hxU.png) &emsp; ![12_badge_view.png](https://ss.im5i.com/2021/06/14/65Cww.png) &emsp;
+![10_ninegrid.png](./art/10_ninegrid.png) &emsp; ![11_radius_imageview.png](./art/11_radius_imageview.png) &emsp; ![12_badge_view.png](./art/12_badge_view.png) &emsp;
 
-![13_tabview.png](https://ss.im5i.com/2021/06/14/65qJZ.png) &emsp; ![14_citypicker.png](https://ss.im5i.com/2021/06/14/65voJ.png) &emsp; ![15_refresh_layout.png](https://ss.im5i.com/2021/06/14/656O1.png) &emsp;
+![13_tabview.png](./art/13_tabview.png) &emsp; ![14_citypicker.png](./art/14_citypicker.png) &emsp; ![15_refresh_layout.png](./art/15_refresh_layout.png) &emsp;
 
-![16_spinner.png](https://ss.im5i.com/2021/06/14/65Sdn.png) &emsp;
+![16_spinner.png](./art/16_spinner.png) &emsp;
 
 ### Demo download
 
 > The demo program is about 18M (mainly because the demo integrates a small video shooting library, which is about 13M, while XUI library is only 644k in size). The project is relatively large, and dandelion is recommended to download.
 
-![xui_size.png](https://ss.im5i.com/2021/06/14/65rcS.png)
+![xui_size.png](./art/xui_size.png)
 
 #### Pgyer Download
 
@@ -200,13 +200,13 @@ protected void attachBaseContext(Context newBase) {
 
 [![Pgyer](https://img.shields.io/badge/downloads-pgyer-blue.svg)](https://www.pgyer.com/XUIDemo)
 
-[![download_pugongying.png](https://ss.im5i.com/2021/06/14/65VuP.png)](https://www.pgyer.com/XUIDemo)
+[![download_pugongying.png](./art/download_pugongying.png)](https://www.pgyer.com/XUIDemo)
 
 #### Github Download
 
 [![Github](https://img.shields.io/badge/downloads-Github-blue.svg)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
 
-[![download_github.png](https://ss.im5i.com/2021/06/14/65PS2.png)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
+[![download_github.png](./art/download_github.png)](https://github.com/xuexiangjys/XUI/blob/master/apk/xuidemo.apk?raw=true)
 
 ## Contribution
 
@@ -246,7 +246,7 @@ Code contribution requirements：
 
 > Your support is the driving force of my maintenance. I will list the list of all the reward personnel at the bottom as the voucher. Please leave the notes of the support items before rewarding!
 
-![pay.png](https://ss.im5i.com/2021/06/14/6twG6.png)
+![pay.png](https://raw.githubusercontent.com/xuexiangjys/Resource/master/img/pay/pay.png)
 
 Thank you for your sponsorship：
 
@@ -338,4 +338,4 @@ X*？ | 18.88￥ | WeChat
 
 [![](https://img.shields.io/badge/XUIGroup3-1090612354-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=nOY3GGJY-jiwzhQpR8E06G-yrOUsxCP1)
 
-![](https://ss.im5i.com/2021/06/14/65yoL.jpg)
+![](https://s1.ax1x.com/2022/04/27/LbGMJH.jpg)

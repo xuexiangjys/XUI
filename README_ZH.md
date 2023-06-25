@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://ss.im5i.com/2021/06/14/65G07.png" width="388" height="321" alt="Banner" />
+  <img src="https://raw.githubusercontent.com/xuexiangjys/XUI/master/art/app_logo_xui.png" width="388" height="321" alt="Banner" />
 </p>
 
 # XUI
