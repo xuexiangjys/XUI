@@ -45,7 +45,8 @@
             android:id="@+id/tab_layout"
             style="@style/TabLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="?attr/xui_actionbar_height" />
+            android:layout_height="?attr/xui_actionbar_height"
+            android:background="@color/xui_config_color_white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

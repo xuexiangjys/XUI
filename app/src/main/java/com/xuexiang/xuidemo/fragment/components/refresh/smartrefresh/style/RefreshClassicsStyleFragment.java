@@ -28,7 +28,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -55,7 +54,7 @@ import butterknife.BindView;
  * @since 2018/12/7 上午12:45
  */
 @Page(name = "经典样式")
-public class RefreshClassicsStyleFragment extends BaseFragment implements SmartViewHolder.OnItemClickListener {
+public class RefreshClassicsStyleFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener<RefreshClassicsStyleFragment.Item> {
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.refreshLayout)
@@ -80,12 +79,12 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
      * @param position
      */
     @Override
-    public void onItemClick(View itemView, int position) {
+    public void onItemClick(View itemView, Item item, int position) {
         if (!RefreshState.None.equals(mRefreshLayout.getState())) {
             return;
         }
 
-        switch (Item.values()[position]) {
+        switch (item) {
             case 背后固定:
                 mClassicsHeader.setSpinnerStyle(SpinnerStyle.FixedBehind);
                 mRefreshLayout.setPrimaryColors(0xff444444, 0xffffffff);
@@ -130,9 +129,9 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
             case 橙色主题:
                 setThemeColor(android.R.color.holo_orange_light);
                 break;
-//            case 加载更多:
-//                mRefreshLayout.autoLoadMore();
-//                break;
+            case 加载更多:
+                mRefreshLayout.autoLoadMore();
+                break;
             default:
                 break;
         }
@@ -150,7 +149,7 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
         }
     }
 
-    private enum Item {
+    public enum Item {
         尺寸拉伸(R.string.item_style_spinner_scale),
         位置平移(R.string.item_style_spinner_translation),
         背后固定(R.string.item_style_spinner_behind),
@@ -160,8 +159,8 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
         橙色主题(R.string.item_style_theme_orange_abstract),
         红色主题(R.string.item_style_theme_red_abstract),
         绿色主题(R.string.item_style_theme_green_abstract),
-        蓝色主题(R.string.item_style_theme_blue_abstract);
-        //        加载更多(R.string.item_style_load_more);
+        蓝色主题(R.string.item_style_theme_blue_abstract),
+        加载更多(R.string.item_style_load_more);
         public int nameId;
 
         Item(@StringRes int nameId) {
@@ -212,7 +211,7 @@ public class RefreshClassicsStyleFragment extends BaseFragment implements SmartV
                 protected int getItemLayoutId(int viewType) {
                     return android.R.layout.simple_list_item_2;
                 }
-            });
+            }.setOnItemClickListener(this));
             mRecyclerView = recyclerView;
             //触发自动刷新
             mRefreshLayout.autoRefresh();

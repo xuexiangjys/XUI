@@ -19,7 +19,6 @@ package com.xuexiang.xui.utils;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.Toast;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
@@ -52,129 +51,229 @@ public final class XToastUtils {
     }
 
     @MainThread
-    public static void toast(@NonNull CharSequence message) {
-        showToast(XToast.normal(XUI.getContext(), message));
+    public static void toast(@NonNull final CharSequence message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.normal(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void toast(@StringRes int message) {
-        showToast(XToast.normal(XUI.getContext(), message));
+    public static void toast(@StringRes final int message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.normal(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void toast(@NonNull CharSequence message, int duration) {
-        showToast(XToast.normal(XUI.getContext(), message, duration));
+    public static void toast(@NonNull final CharSequence message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.normal(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     @MainThread
-    public static void toast(@StringRes int message, int duration) {
-        showToast(XToast.normal(XUI.getContext(), message, duration));
+    public static void toast(@StringRes final int message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.normal(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     //=============//
 
     @MainThread
-    public static void error(@NonNull CharSequence message) {
-        showToast(XToast.error(XUI.getContext(), message));
+    public static void error(@NonNull final CharSequence message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.error(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void error(@NonNull Exception error) {
-        String message = error.getMessage() != null ? error.getMessage() : "";
-        showToast(XToast.error(XUI.getContext(), message));
+    public static void error(@NonNull Throwable error) {
+        final String message = error.getMessage() != null ? error.getMessage() : "";
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.error(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void error(@StringRes int message) {
-        showToast(XToast.error(XUI.getContext(), message));
+    public static void error(@StringRes final int message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.error(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void error(@NonNull CharSequence message, int duration) {
-        showToast(XToast.error(XUI.getContext(), message, duration));
+    public static void error(@NonNull final CharSequence message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.error(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     @MainThread
-    public static void error(@StringRes int message, int duration) {
-        showToast(XToast.error(XUI.getContext(), message, duration));
+    public static void error(@StringRes final int message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.error(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     //=============//
 
     @MainThread
-    public static void success(@NonNull CharSequence message) {
-        showToast(XToast.success(XUI.getContext(), message));
+    public static void success(@NonNull final CharSequence message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.success(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void success(@StringRes int message) {
-        showToast(XToast.success(XUI.getContext(), message));
+    public static void success(@StringRes final int message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.success(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void success(@NonNull CharSequence message, int duration) {
-        showToast(XToast.success(XUI.getContext(), message, duration));
+    public static void success(@NonNull final CharSequence message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.success(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     @MainThread
-    public static void success(@StringRes int message, int duration) {
-        showToast(XToast.success(XUI.getContext(), message, duration));
+    public static void success(@StringRes final int message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.success(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     //=============//
 
     @MainThread
-    public static void info(@NonNull CharSequence message) {
-        showToast(XToast.info(XUI.getContext(), message));
+    public static void info(@NonNull final CharSequence message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.info(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void info(@StringRes int message) {
-        showToast(XToast.info(XUI.getContext(), message));
+    public static void info(@StringRes final int message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.info(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void info(@NonNull CharSequence message, int duration) {
-        showToast(XToast.info(XUI.getContext(), message, duration));
+    public static void info(@NonNull final CharSequence message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.info(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     @MainThread
-    public static void info(@StringRes int message, int duration) {
-        showToast(XToast.info(XUI.getContext(), message, duration));
+    public static void info(@StringRes final int message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.info(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     //=============//
 
     @MainThread
-    public static void warning(@NonNull CharSequence message) {
-        showToast(XToast.warning(XUI.getContext(), message));
+    public static void warning(@NonNull final CharSequence message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.warning(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void warning(@StringRes int message) {
-        showToast(XToast.warning(XUI.getContext(), message));
+    public static void warning(@StringRes final int message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.warning(XUI.getContext(), message).show();
+            }
+        });
     }
 
     @MainThread
-    public static void warning(@NonNull CharSequence message, int duration) {
-        showToast(XToast.warning(XUI.getContext(), message, duration));
+    public static void warning(@NonNull final CharSequence message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.warning(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
     @MainThread
-    public static void warning(@StringRes int message, int duration) {
-        showToast(XToast.warning(XUI.getContext(), message, duration));
+    public static void warning(@StringRes final int message, final int duration) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                XToast.warning(XUI.getContext(), message, duration).show();
+            }
+        });
     }
 
-    private static void showToast(@NonNull final Toast toast) {
+    private static void runOnUiThread(@NonNull final Runnable runnable) {
         if (Looper.getMainLooper() == Looper.myLooper()) {
-            toast.show();
+            runnable.run();
         } else {
-            MAIN_HANDLER.post(new Runnable() {
-                @Override
-                public void run() {
-                    toast.show();
-                }
-            });
+            MAIN_HANDLER.post(runnable);
         }
     }
 

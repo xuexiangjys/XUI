@@ -26,7 +26,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
@@ -45,7 +44,7 @@ import butterknife.BindView;
  * @since 2018/12/7 上午1:43
  */
 @Page(name = "Material Design风格")
-public class RefreshMaterialStyleFragment extends BaseFragment implements SmartViewHolder.OnItemClickListener{
+public class RefreshMaterialStyleFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener<RefreshMaterialStyleFragment.Item> {
 
     private TitleBar mTitleBar;
     @BindView(R.id.refreshLayout)
@@ -59,12 +58,12 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
      * @param position
      */
     @Override
-    public void onItemClick(View itemView, int position) {
+    public void onItemClick(View itemView, Item item, int position) {
         if (!RefreshState.None.equals(mRefreshLayout.getState())) {
             return;
         }
 
-        switch (Item.values()[position]) {
+        switch (item) {
             case 内容不偏移:
                 mRefreshLayout.setEnableHeaderTranslationContent(false);
                 break;
@@ -105,7 +104,7 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
         }
     }
 
-    private enum Item {
+    public enum Item {
         打开背景(R.string.item_style_bezier_on),
         关闭背景(R.string.item_style_bezier_off),
         内容不偏移(R.string.item_style_content_translation_off),
@@ -113,9 +112,10 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
         橙色主题(R.string.item_style_theme_orange_abstract),
         红色主题(R.string.item_style_theme_red_abstract),
         绿色主题(R.string.item_style_theme_green_abstract),
-        蓝色主题(R.string.item_style_theme_blue_abstract),
-        ;
+        蓝色主题(R.string.item_style_theme_blue_abstract);
+
         public int nameId;
+
         Item(@StringRes int nameId) {
             this.nameId = nameId;
         }
@@ -126,6 +126,7 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
         mTitleBar = super.initTitle();
         return mTitleBar;
     }
+
     /**
      * 布局的资源id
      *
@@ -141,7 +142,7 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
      */
     @Override
     protected void initViews() {
-        mMaterialHeader = (MaterialHeader)mRefreshLayout.getRefreshHeader();
+        mMaterialHeader = (MaterialHeader) mRefreshLayout.getRefreshHeader();
 
         View view = findViewById(R.id.recyclerView);
         if (view instanceof RecyclerView) {
@@ -160,7 +161,7 @@ public class RefreshMaterialStyleFragment extends BaseFragment implements SmartV
                 protected int getItemLayoutId(int viewType) {
                     return android.R.layout.simple_list_item_2;
                 }
-            });
+            }.setOnItemClickListener(this));
         }
         mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
     }

@@ -27,11 +27,14 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.xuexiang.xui.logs.UILog;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 基础的RecyclerView适配器
@@ -40,6 +43,10 @@ import java.util.List;
  * @since 2019-08-11 16:12
  */
 public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<V> {
+
+    private static final String TAG = "XRecyclerAdapter";
+
+    public static boolean DEBUG = false;
 
     /**
      * 数据源
@@ -59,28 +66,41 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      */
     protected int mSelectPosition = -1;
 
+    /**
+     * 空构造函数
+     */
     public XRecyclerAdapter() {
 
     }
 
-    public XRecyclerAdapter(Collection<T> list) {
-        if (list != null) {
-            mData.addAll(list);
+    /**
+     * 构造函数
+     *
+     * @param source 数据源
+     */
+    public XRecyclerAdapter(Collection<T> source) {
+        if (source != null) {
+            mData.addAll(source);
         }
     }
 
-    public XRecyclerAdapter(T[] data) {
-        if (data != null && data.length > 0) {
-            mData.addAll(Arrays.asList(data));
+    /**
+     * 构造函数
+     *
+     * @param source 数据源
+     */
+    public XRecyclerAdapter(T[] source) {
+        if (source != null && source.length > 0) {
+            mData.addAll(Arrays.asList(source));
         }
     }
 
     /**
      * 构建自定义的ViewHolder
      *
-     * @param parent
-     * @param viewType
-     * @return
+     * @param parent   父布局
+     * @param viewType view类型
+     * @return ViewHolder
      */
     @NonNull
     protected abstract V getViewHolder(@NonNull ViewGroup parent, int viewType);
@@ -88,7 +108,7 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
     /**
      * 绑定数据
      *
-     * @param holder
+     * @param holder   ViewHolder
      * @param position 索引
      * @param item     列表项
      */
@@ -99,21 +119,34 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
      *
      * @param parent   父布局
      * @param layoutId 布局ID
-     * @return
+     * @return 加载的布局
      */
-    protected View inflateView(ViewGroup parent, @LayoutRes int layoutId) {
+    protected View inflateView(@NonNull ViewGroup parent, @LayoutRes int layoutId) {
         return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
     }
 
     @NonNull
     @Override
     public V onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (DEBUG) {
+            long startNanos = System.nanoTime();
+            final V holder = processCreateViewHolder(parent, viewType);
+            long cost = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
+            UILog.dTag(TAG, "onCreateViewHolder cost:" + cost + " ms");
+            return holder;
+        } else {
+            return processCreateViewHolder(parent, viewType);
+        }
+    }
+
+    protected V processCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final V holder = getViewHolder(parent, viewType);
         if (mClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mClickListener.onItemClick(holder.itemView, getItem(holder.getLayoutPosition()), holder.getLayoutPosition());
+                    final int position = getItemPosition(holder);
+                    mClickListener.onItemClick(holder.itemView, getItem(position), position);
                 }
             });
         }
@@ -121,13 +154,25 @@ public abstract class XRecyclerAdapter<T, V extends RecyclerView.ViewHolder> ext
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    mLongClickListener.onItemLongClick(holder.itemView, getItem(holder.getLayoutPosition()), holder.getLayoutPosition());
+                    final int position = getItemPosition(holder);
+                    mLongClickListener.onItemLongClick(holder.itemView, getItem(position), position);
                     return true;
                 }
             });
         }
         return holder;
     }
+
+    /**
+     * 获取item的位置，这里默认使用getLayoutPosition来进行获取，可以重写这个方法
+     *
+     * @param holder ViewHolder
+     * @return 位置
+     */
+    protected int getItemPosition(V holder) {
+        return holder.getLayoutPosition();
+    }
+
 
     @Override
     public void onBindViewHolder(@NonNull V holder, int position) {

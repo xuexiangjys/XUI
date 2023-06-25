@@ -149,6 +149,10 @@
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard|locale|layoutDirection"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
+            android:name=".activity.MaterialDesignThemeActivity"
+            android:configChanges="screenSize|keyboardHidden|orientation|keyboard|locale|layoutDirection"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
             android:name=".widget.iconfont.IconFontActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:windowSoftInputMode="adjustPan|stateHidden" />

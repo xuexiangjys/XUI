@@ -26,6 +26,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -38,6 +40,8 @@ import android.widget.TextView;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.LayoutInflaterCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,12 +53,14 @@ import com.xuexiang.xui.adapter.recyclerview.DividerItemDecoration;
 import com.xuexiang.xui.adapter.recyclerview.GridDividerItemDecoration;
 import com.xuexiang.xui.adapter.recyclerview.XGridLayoutManager;
 import com.xuexiang.xui.adapter.recyclerview.XLinearLayoutManager;
+import com.xuexiang.xui.logs.UILog;
 import com.xuexiang.xui.widget.dialog.LoadingDialog;
 import com.xuexiang.xui.widget.dialog.MiniLoadingDialog;
 import com.xuexiang.xui.widget.progress.loading.IMessageLoader;
 import com.xuexiang.xui.widget.progress.loading.LoadingViewLayout;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
 
@@ -488,5 +494,65 @@ public final class WidgetUtils {
         }
         return null;
     }
+
+    /**
+     * 设置目标控件被父布局不裁剪
+     *
+     * @param targetView 目标控件
+     */
+    public static void setViewParentNotClip(@NonNull View targetView) {
+        ViewGroup parent = (ViewGroup) targetView.getParent();
+        if (parent == null) {
+            return;
+        }
+        parent.setClipChildren(false);
+        parent.setClipToPadding(false);
+    }
+
+
+    /**
+     * 增加view的inflate日志，用于分析控件加载的性能。
+     * <p>
+     * 【注意】需要在activity的super.onCreate(savedInstanceState)方法之前调用
+     *
+     * @param activity 活动页
+     */
+    public static void installLayoutInflaterLogger(@NonNull final AppCompatActivity activity) {
+        installLayoutInflaterLogger(activity, "LayoutInflater", 5);
+    }
+
+    /**
+     * 增加view的inflate日志，用于分析控件加载的性能。
+     * <p>
+     * 【注意】需要在activity的super.onCreate(savedInstanceState)方法之前调用
+     *
+     * @param activity  活动页
+     * @param loggerTag 日志标志
+     * @param limitCost 限制耗时(ms)，大于的error显示
+     */
+    public static void installLayoutInflaterLogger(@NonNull final AppCompatActivity activity, @NonNull final String loggerTag, final long limitCost) {
+        LayoutInflaterCompat.setFactory2(activity.getLayoutInflater(), new LayoutInflater.Factory2() {
+            @Nullable
+            @Override
+            public View onCreateView(@Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
+                long startNanos = System.nanoTime();
+                View view = activity.getDelegate().createView(parent, name, context, attrs);
+                long cost = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
+                if (cost > limitCost) {
+                    UILog.eTag(loggerTag, "LoadWidget:" + name + ", cost:" + cost + " ms");
+                } else {
+                    UILog.dTag(loggerTag, "LoadWidget:" + name + ", cost:" + cost + " ms");
+                }
+                return view;
+            }
+
+            @Nullable
+            @Override
+            public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
+                return null;
+            }
+        });
+    }
+
 
 }

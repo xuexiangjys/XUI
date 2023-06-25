@@ -24,7 +24,6 @@ import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.adapter.SmartViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.xuexiang.xpage.annotation.Page;
@@ -44,7 +43,7 @@ import butterknife.BindView;
  * @since 2018/12/7 下午2:32
  */
 @Page(name = "样式大全")
-public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHolder.OnItemClickListener {
+public class RefreshAllStyleFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener<RefreshAllStyleFragment.Item> {
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -58,12 +57,10 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
      * @param position
      */
     @Override
-    public void onItemClick(View itemView, int position) {
+    public void onItemClick(View itemView, Item item, int position) {
         if (!RefreshState.None.equals(mRefreshLayout.getState())) {
             return;
         }
-
-        Item item = Item.values()[position];
         RefreshHeader header = getRefreshHeader(item);
         if (header != null) {
             mRefreshLayout.setRefreshHeader(header);
@@ -82,7 +79,7 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
         return null;
     }
 
-    private enum Item {
+    public enum Item {
         BezierCircleHeader(R.string.item_head_style_bezier_circle),
         DeliveryHeader(R.string.item_head_style_delivery),
         DropBoxHeader(R.string.item_head_style_drop_box),
@@ -130,7 +127,7 @@ public class RefreshAllStyleFragment extends BaseFragment implements SmartViewHo
             protected int getItemLayoutId(int viewType) {
                 return android.R.layout.simple_list_item_2;
             }
-        });
+        }.setOnItemClickListener(this));
         mRefreshLayout.autoRefresh();//第一次进入触发自动刷新，演示效果
 
     }

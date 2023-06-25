@@ -1,6 +1,7 @@
 package com.xuexiang.xuidemo.fragment.components.refresh;
 
 import android.os.Handler;
+import android.os.Looper;
 
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -60,7 +61,7 @@ public class SwipeRefreshLayoutFragment extends BaseFragment {
     }
 
     private void loadData() {
-        new Handler().postDelayed(() -> {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
             mAdapter.refresh(DemoDataProvider.getDemoData());
             if (swipeRefreshLayout != null) {
                 swipeRefreshLayout.setRefreshing(false);

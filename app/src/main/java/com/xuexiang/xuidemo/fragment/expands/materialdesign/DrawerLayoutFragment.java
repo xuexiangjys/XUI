@@ -64,11 +64,6 @@ public class DrawerLayoutFragment extends BaseFragment implements NavigationView
 
     String[] titles = new String[]{"资讯", "照片", "音乐", "电影"};
 
-    /**
-     * 布局的资源id
-     *
-     * @return
-     */
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_drawerlayout;

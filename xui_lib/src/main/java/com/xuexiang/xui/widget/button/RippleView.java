@@ -29,6 +29,8 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import androidx.annotation.ColorRes;
+
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -140,7 +142,7 @@ public class RippleView extends FrameLayout {
         frameRate = typedArray.getInteger(R.styleable.RippleView_rv_frameRate, frameRate);
         rippleAlpha = typedArray.getInteger(R.styleable.RippleView_rv_alpha, rippleAlpha);
         ripplePadding = typedArray.getDimensionPixelSize(R.styleable.RippleView_rv_ripplePadding, 0);
-        canvasHandler = new Handler();
+        canvasHandler = new Handler(Looper.getMainLooper());
         zoomScale = typedArray.getFloat(R.styleable.RippleView_rv_zoomScale, 1.03F);
         zoomDuration = typedArray.getInt(R.styleable.RippleView_rv_zoomDuration, 200);
         typedArray.recycle();

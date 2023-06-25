@@ -1,13 +1,20 @@
 package com.xuexiang.xuidemo.fragment.expands;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.activity.MaterialDesignThemeActivity;
 import com.xuexiang.xuidemo.activity.SettingsActivity;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.BadgeDrawableFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.BottomSheetDialogFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ConstraintLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.DrawerLayoutFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.ItemTouchHelperFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.MaterialButtonFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.ShapeableImageViewFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.TextInputLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ToolBarFragment;
 import com.xuexiang.xutil.app.ActivityUtils;
 
@@ -32,9 +39,14 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
         lists.add("ToolBar使用");
         lists.add("Behavior\n手势行为");
         lists.add("DrawerLayout + NavigationView\n常见主页布局");
-        lists.add("BottomSheetDialog");
         lists.add("ConstraintLayout\n约束布局");
-        lists.add("设置页面");
+        lists.add("ItemTouchHelper+RecyclerView\n实现列表拖拽");
+        lists.add("AppCompatPreferenceActivity\n设置页面");
+        lists.add("BottomSheetDialog");
+        lists.add("BadgeDrawable");
+        lists.add("ShapeableImageView");
+        lists.add("MaterialButton");
+        lists.add("TextInputLayout");
         return lists;
     }
 
@@ -45,7 +57,7 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
      */
     @Override
     protected void onItemClick(int position) {
-        switch(position) {
+        switch (position) {
             case 0:
                 openPage(ToolBarFragment.class);
                 break;
@@ -56,13 +68,32 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
                 openNewPage(DrawerLayoutFragment.class, KEY_SUPPORT_SLIDE_BACK, false);
                 break;
             case 3:
-                openPage(BottomSheetDialogFragment.class);
+                openPage(ConstraintLayoutFragment.class);
                 break;
             case 4:
-                openPage(ConstraintLayoutFragment.class);
+                openPage(ItemTouchHelperFragment.class);
                 break;
             case 5:
                 ActivityUtils.startActivity(SettingsActivity.class);
+                break;
+            case 6:
+                openPage(BottomSheetDialogFragment.class);
+                break;
+            case 7:
+                PageOption.to(BadgeDrawableFragment.class)
+                        .setNewActivity(true, MaterialDesignThemeActivity.class)
+                        .open(this);
+                break;
+            case 8:
+                openPage(ShapeableImageViewFragment.class);
+                break;
+            case 9:
+                PageOption.to(MaterialButtonFragment.class)
+                        .setNewActivity(true, MaterialDesignThemeActivity.class)
+                        .open(this);
+                break;
+            case 10:
+                openPage(TextInputLayoutFragment.class);
                 break;
             default:
                 break;

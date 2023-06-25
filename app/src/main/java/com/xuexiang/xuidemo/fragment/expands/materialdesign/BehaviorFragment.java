@@ -5,6 +5,7 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.BottomNavigationViewBehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.ComplexDetailsPageFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.ComplexNestedScrollingFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.CustomBehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.NestedScrollingFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.RecyclerViewBehaviorFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.TabLayoutBehaviorFragment;
@@ -19,6 +20,7 @@ public class BehaviorFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[] {
+                CustomBehaviorFragment.class,
                 RecyclerViewBehaviorFragment.class,
                 TabLayoutBehaviorFragment.class,
                 BottomNavigationViewBehaviorFragment.class,
