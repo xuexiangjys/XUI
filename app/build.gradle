@@ -14,8 +14,8 @@ android {
         applicationId "com.xuexiang.xuidemo"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
-        versionCode 22
-        versionName "1.2.1"
+        versionCode 23
+        versionName "1.2.2"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -27,7 +27,11 @@ android {
         }
 
         ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+            abiFilters 'armeabi', 'armeabi-v7a',
+                    // Apple Mac
+                    'arm64-v8a',
+                    // Intel
+                    'x86' , 'x86_64'
         }
     }
 
