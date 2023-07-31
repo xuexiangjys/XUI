@@ -51,6 +51,7 @@ public class ConstraintLayoutFragment extends BaseSimpleListFragment {
         lists.add("分组Group使用");
         lists.add("占位符Placeholder使用");
         lists.add("ConstraintSet实现切换动画");
+        lists.add("MotionLayout\n能实现丰富的交互动画");
         return lists;
     }
 
@@ -83,6 +84,13 @@ public class ConstraintLayoutFragment extends BaseSimpleListFragment {
                     XToastUtils.warning("当前手机版本过低，暂不支持");
                 } else {
                     openPage(ConstraintLayoutConstraintSetFragment.class);
+                }
+                break;
+            case 8:
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                    XToastUtils.warning("当前手机版本过低，暂不支持");
+                } else {
+                    openPage(MotionLayoutFragment.class);
                 }
                 break;
             default:

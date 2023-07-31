@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2023 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@id/action_end"
+        app:constraintSetStart="@id/action_start"
+        app:duration="500">
+
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/tv_action_login" />
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/action_start">
+        <Constraint
+            android:id="@+id/tv_action_login"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_account"
+            app:layout_constraintStart_toStartOf="@+id/et_account"
+            app:layout_constraintTop_toBottomOf="@id/et_passwd" />
+        <Constraint
+            android:id="@+id/pb_login_progress"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="14dp"
+            android:alpha="0"
+            app:layout_constraintEnd_toEndOf="@+id/et_account"
+            app:layout_constraintStart_toStartOf="@+id/et_account"
+            app:layout_constraintTop_toBottomOf="@id/et_passwd" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/action_end">
+        <Constraint
+            android:id="@+id/tv_action_login"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_account"
+            app:layout_constraintStart_toStartOf="@+id/et_account"
+            app:layout_constraintTop_toBottomOf="@id/et_passwd" />
+        <Constraint
+            android:id="@+id/pb_login_progress"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="14dp"
+            android:alpha="1"
+            app:layout_constraintEnd_toEndOf="@+id/et_account"
+            app:layout_constraintStart_toStartOf="@+id/et_account"
+            app:layout_constraintTop_toBottomOf="@id/et_passwd" />
+    </ConstraintSet>
+
+</MotionScene>
