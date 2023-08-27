@@ -95,6 +95,7 @@
     <attr name="xui_common_list_item_chevron" format="reference" />
     <attr name="xui_common_list_item_switch" format="reference" />
 
+    <attr name="xui_list_item_background" format="reference" />
     <attr name="xui_list_item_bg_with_border_bottom" format="reference" />
     <attr name="xui_list_item_bg_with_border_bottom_pressed" format="reference" />
     <attr name="xui_list_item_bg_with_border_bottom_selector" format="reference" />

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="?attr/xui_config_color_separator_dark"/>
+    <item android:drawable="?attr/xui_config_color_pressed" android:bottom="?attr/xui_config_divider_height"/>
+</layer-list>

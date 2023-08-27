@@ -100,6 +100,9 @@
         <!--StatefulLayout-->
         <item name="stf_progressbar_size">70dp</item>
         <item name="stf_tip_img_size">90dp</item>
+        <!--XUICommonListItemView-->
+        <item name="xui_list_item_background">@color/xui_config_color_light_yellow</item>
+
         <!--*********************************************
         *                  Dialog                       *
         **********************************************-->
@@ -116,7 +119,6 @@
         <item name="xui_mini_loading_margin_size">15dp</item>
         <item name="mini_loading_view_size">25dp</item>
     </style>
-
 
     <!--SettingTheme-->
     <style name="SettingTheme.Custom">

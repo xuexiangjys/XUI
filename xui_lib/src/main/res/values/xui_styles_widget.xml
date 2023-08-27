@@ -176,7 +176,6 @@
     <style name="XUICommonListItemView">
         <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
-        <item name="android:background">?attr/xui_list_item_bg_with_border_none_selector</item>
         <item name="xui_commonList_titleColor">@color/xui_config_color_gray_1</item>
         <item name="xui_commonList_detailColor">@color/xui_config_color_gray_5</item>
     </style>

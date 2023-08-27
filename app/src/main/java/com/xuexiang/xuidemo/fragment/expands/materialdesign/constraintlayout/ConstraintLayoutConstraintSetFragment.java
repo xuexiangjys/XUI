@@ -43,8 +43,8 @@ public class ConstraintLayoutConstraintSetFragment extends BaseFragment {
     @BindView(R.id.constraint_layout)
     ConstraintLayout constraintLayout;
 
-    private ConstraintSet mConstraintSetNormal = new ConstraintSet();
-    private ConstraintSet mConstraintSetBig = new ConstraintSet();
+    private final ConstraintSet mConstraintSetNormal = new ConstraintSet();
+    private final ConstraintSet mConstraintSetBig = new ConstraintSet();
 
     @Override
     protected int getLayoutId() {

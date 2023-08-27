@@ -162,6 +162,7 @@
         <item name="xui_common_list_item_detail_h_text_size">14sp</item>
         <item name="xui_common_list_item_detail_line_space">5dp</item>
 
+        <item name="xui_list_item_background">@color/xui_config_color_white</item>
         <item name="xui_list_item_bg_with_border_bottom">
             @drawable/xui_list_item_bg_with_border_bottom
         </item>
