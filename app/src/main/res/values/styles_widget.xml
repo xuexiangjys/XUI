@@ -36,6 +36,17 @@
         <item name="android:paddingBottom">4dp</item>
     </style>
 
+    <style name="SwitchButtonIOS" parent="SwitchButtonStyle">
+        <item name="swb_animationDuration">300</item>
+        <item name="swb_thumbDrawable">@drawable/ios_thumb_selector</item>
+        <item name="swb_backDrawable">@drawable/ios_back_drawable</item>
+        <item name="swb_thumbRangeRatio">1.4</item>
+        <item name="swb_thumbMarginLeft">-5dp</item>
+        <item name="swb_thumbMarginTop">-2.5dp</item>
+        <item name="swb_thumbMarginRight">-5dp</item>
+        <item name="swb_thumbMarginBottom">-8dp</item>
+    </style>
+
     <style name="Container">
         <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
         <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>

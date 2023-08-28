@@ -40,17 +40,10 @@
 
             <com.xuexiang.xui.widget.button.switchbutton.SwitchButton
                 android:id="@+id/sb_ios"
-                style="@style/SwitchButtonStyle"
+                style="@style/SwitchButtonIOS"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:swb_animationDuration="300"
-                app:swb_backDrawable="@drawable/ios_back_drawable"
-                app:swb_thumbDrawable="@drawable/ios_thumb_selector"
-                app:swb_thumbMarginBottom="-8dp"
-                app:swb_thumbMarginLeft="-5dp"
-                app:swb_thumbMarginRight="-5dp"
-                app:swb_thumbMarginTop="-2.5dp"
-                app:swb_thumbRangeRatio="1.4" />
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
