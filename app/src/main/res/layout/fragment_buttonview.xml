@@ -4,13 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.xuexiang.xui.widget.button.ButtonView style="@style/ButtonView.Blue"
-        android:layout_margin="20dp"/>
+    <com.xuexiang.xui.widget.button.ButtonView
+        style="@style/ButtonView.Blue"
+        android:layout_margin="20dp" />
 
-    <com.xuexiang.xui.widget.button.ButtonView style="@style/ButtonView.Green"
-        android:layout_margin="20dp"/>
+    <com.xuexiang.xui.widget.button.ButtonView
+        style="@style/ButtonView.Green"
+        android:layout_margin="20dp" />
 
-    <com.xuexiang.xui.widget.button.ButtonView style="@style/ButtonView.Gray"
-        android:layout_margin="20dp"/>
+    <com.xuexiang.xui.widget.button.ButtonView
+        style="@style/ButtonView.Gray"
+        android:layout_margin="20dp" />
+
+    <FrameLayout
+        android:id="@+id/button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp" />
 
 </LinearLayout>

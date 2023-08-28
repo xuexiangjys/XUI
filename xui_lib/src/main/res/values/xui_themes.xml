@@ -276,6 +276,7 @@
         <item name="LoggerTextViewStyle">@style/LoggerTextView</item>
         <item name="MarqueeTextViewStyle">@style/MarqueeTextView</item>
         <item name="ReadMoreTextViewStyle">@style/ReadMoreTextView</item>
+        <item name="ButtonViewStyle">@style/ButtonView.Blue</item>
     </style>
 
     <style name="XUITheme" parent="XUIBaseTheme" />

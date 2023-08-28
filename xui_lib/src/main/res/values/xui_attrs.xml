@@ -1741,6 +1741,7 @@
     <attr name="DropDownMenuStyle" format="reference" />
     <attr name="XRangeSliderStyle" format="reference" />
     <attr name="XSeekBarStyle" format="reference" />
+    <attr name="ButtonViewStyle" format="reference" />
 
     <attr name="XUIGroupListViewStyle" format="reference" />
     <attr name="XUICommonListItemViewStyle" format="reference" />

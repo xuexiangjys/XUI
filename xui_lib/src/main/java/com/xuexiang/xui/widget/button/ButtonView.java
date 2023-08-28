@@ -28,50 +28,32 @@ public class ButtonView extends AppCompatTextView {
     private int mNormalSolidColor, mSelectedSolidColor;
 
     public ButtonView(Context context) {
-        super(context);
+        this(context, null);
+    }
 
+    public ButtonView(Context context, AttributeSet attrs) {
+        this(context, attrs, R.attr.ButtonViewStyle);
     }
 
     public ButtonView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setAttributeSet(context, attrs);
+        initAttrs(context, attrs, defStyleAttr);
     }
 
-    public ButtonView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        setAttributeSet(context, attrs);
-    }
-
-    private void setAttributeSet(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs,
-                R.styleable.ButtonView);
-        mNormalSolidColor = typedArray.getColor(
-                R.styleable.ButtonView_textSolidColor, Color.TRANSPARENT);
-        mSelectedSolidColor = typedArray.getColor(
-                R.styleable.ButtonView_textSelectedSolidColor,
-                Color.TRANSPARENT);
-        int strokeColor = typedArray.getColor(
-                R.styleable.ButtonView_textStrokeColor, Color.TRANSPARENT);
-        int radius = typedArray.getDimensionPixelSize(
-                R.styleable.ButtonView_textRadius, 0);
-        int leftTopRadius = typedArray.getDimensionPixelSize(
-                R.styleable.ButtonView_textLeftTopRadius, 0);
-        int leftBottomRadius = typedArray.getDimensionPixelSize(
-                R.styleable.ButtonView_textLeftBottomRadius, 0);
-        int rightTopRadius = typedArray.getDimensionPixelSize(
-                R.styleable.ButtonView_textRightTopRadius, 0);
-        int rightBottomRadius = typedArray.getDimensionPixelSize(
-                R.styleable.ButtonView_textRightBottomRadius, 0);
-        int strokeWidth = typedArray.getDimensionPixelSize(
-                R.styleable.ButtonView_textStrokeWidth, 0);
+    private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ButtonView, defStyleAttr, 0);
+        mNormalSolidColor = typedArray.getColor(R.styleable.ButtonView_textSolidColor, Color.TRANSPARENT);
+        mSelectedSolidColor = typedArray.getColor(R.styleable.ButtonView_textSelectedSolidColor, Color.TRANSPARENT);
+        int strokeColor = typedArray.getColor(R.styleable.ButtonView_textStrokeColor, Color.TRANSPARENT);
+        int radius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_textRadius, 0);
+        int leftTopRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_textLeftTopRadius, 0);
+        int leftBottomRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_textLeftBottomRadius, 0);
+        int rightTopRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_textRightTopRadius, 0);
+        int rightBottomRadius = typedArray.getDimensionPixelSize(R.styleable.ButtonView_textRightBottomRadius, 0);
+        int strokeWidth = typedArray.getDimensionPixelSize(R.styleable.ButtonView_textStrokeWidth, 0);
         Drawable textDrawable = ResUtils.getDrawableAttrRes(context, typedArray, R.styleable.ButtonView_textDrawable);
-        int normalTextColor = typedArray.getColor(
-                R.styleable.ButtonView_textNormalTextColor,
-                Color.TRANSPARENT);
-        int selectedTextColor = typedArray.getColor(
-                R.styleable.ButtonView_textSelectedTextColor,
-                Color.TRANSPARENT);
-
+        int normalTextColor = typedArray.getColor(R.styleable.ButtonView_textNormalTextColor, Color.TRANSPARENT);
+        int selectedTextColor = typedArray.getColor(R.styleable.ButtonView_textSelectedTextColor, Color.TRANSPARENT);
         typedArray.recycle();
 
         gradientDrawable = new GradientDrawable();
