@@ -1227,7 +1227,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
         addView(mBottomDividerLineView);
     }
 
-
     /**
      * 左边点击事件
      *
@@ -1260,7 +1259,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
                 });
             }
         }
-
     }
 
     /**
@@ -1331,7 +1329,6 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
                 });
             }
         }
-
     }
 
 
@@ -2199,6 +2196,23 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
             setBottomDividerLineView();
         }
         mBottomDividerLineView.setVisibility(visibility);
+        return this;
+    }
+
+    /**
+     * 设置分割线颜色
+     *
+     * @param color 分割线颜色
+     * @return superTextView
+     */
+    public SuperTextView setDividerLineColor(int color) {
+        mDividerLineColor = color;
+        if (mTopDividerLineView != null) {
+            mTopDividerLineView.setBackgroundColor(color);
+        }
+        if (mBottomDividerLineView != null) {
+            mBottomDividerLineView.setBackgroundColor(color);
+        }
         return this;
     }
 
