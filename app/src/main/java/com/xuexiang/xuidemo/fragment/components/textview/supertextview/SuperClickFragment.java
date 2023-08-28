@@ -71,12 +71,15 @@ public class SuperClickFragment extends BaseFragment {
 
         superTextView_switch.setOnSuperTextViewClickListener(superTextView -> superTextView.setSwitchIsChecked(!superTextView.getSwitchIsChecked(), false)).setSwitchCheckedChangeListener((buttonView, isChecked) -> XToastUtils.toast("isChecked : " + isChecked));
 
-        stvMessage.setOnSuperTextViewClickListener(superTextView -> mBadge.hide(true));
+        stvMessage.setOnSuperTextViewClickListener(superTextView -> {
+            mBadge.hide(true);
+            stvName.requestFocus();
+        });
 
         stvName.setCenterEditTextFocusChangeListener((v, hasFocus) -> XToastUtils.toast("聚焦变化：" + hasFocus));
+        stvPhone.setCenterEditTextFocusChangeListener((v, hasFocus) -> XToastUtils.toast("聚焦变化：" + hasFocus));
 
         stvPhone.setCenterEditTextClickListener(v -> XToastUtils.toast("点击监听"));
-
 
         mExpandableLayout.setOnExpansionChangedListener((expansion, state) -> {
             if (stvExpandable != null && stvExpandable.getRightIconIV() != null) {
@@ -88,8 +91,6 @@ public class SuperClickFragment extends BaseFragment {
                 mExpandableLayout.toggle();
             }
         });
-
-
     }
 
 }

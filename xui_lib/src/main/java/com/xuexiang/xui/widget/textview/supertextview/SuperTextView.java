@@ -2282,7 +2282,7 @@ public class SuperTextView extends RelativeLayout implements HasTypeface {
      * @return
      */
     public SuperTextView setCenterEditTextFocusChangeListener(OnFocusChangeListener focusChangeListener) {
-        if (mCenterEditText != null && mEditTextButtonType == TYPE_NONE) {
+        if (mCenterEditText != null) {
             mCenterEditText.setOnFocusChangeListener(focusChangeListener);
         }
         return this;

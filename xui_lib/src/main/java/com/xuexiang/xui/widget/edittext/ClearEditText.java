@@ -36,6 +36,10 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      * 删除按钮的引用
      */
     private Drawable mClearDrawable;
+    /**
+     * 代理外部设置的OnFocusChangeListener
+     */
+    private OnFocusChangeListener mProxyOnFocusChangeListener;
 
     public ClearEditText(Context context) {
         this(context, null);
@@ -89,8 +93,15 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
             mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
         }
         setClearIconVisible(false);
-        setOnFocusChangeListener(this);
+        // 增加默认FocusChangeListener
+        super.setOnFocusChangeListener(this);
         addTextChangedListener(this);
+    }
+
+    @Override
+    public void setOnFocusChangeListener(OnFocusChangeListener l) {
+        // 保存外部设置的OnFocusChangeListener
+        mProxyOnFocusChangeListener = l;
     }
 
     /**
@@ -125,6 +136,9 @@ public class ClearEditText extends AppCompatEditText implements OnFocusChangeLis
      */
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
+        if (mProxyOnFocusChangeListener != null) {
+            mProxyOnFocusChangeListener.onFocusChange(v, hasFocus);
+        }
         if (hasFocus) {
             int length = getText() != null ? getText().length() : 0;
             setClearIconVisible(length > 0);
