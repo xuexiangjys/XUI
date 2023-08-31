@@ -26,11 +26,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.CommonRecyclerViewAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
+import com.xuexiang.xuidemo.fragment.expands.snaphelper.SnapHelperScrollListener;
 
 import butterknife.BindView;
 
@@ -49,7 +51,9 @@ public class SnapHelperFragment extends BaseFragment {
     RecyclerView mRecyclerView;
     LinearLayoutManager mPagerLayoutManager;
     CommonRecyclerViewAdapter mRecyclerViewAdapter;
-    SnapHelper mSnapHelper;
+    private SnapHelper mSnapHelper;
+
+    private int mCurrentIndex;
 
     @Override
     protected TitleBar initTitle() {
@@ -81,12 +85,47 @@ public class SnapHelperFragment extends BaseFragment {
         // mSnapHelper = new LinearSnapHelper();
         mSnapHelper = new PagerSnapHelper();
         mSnapHelper.attachToRecyclerView(mRecyclerView);
+        mRecyclerView.addOnScrollListener(new SnapHelperScrollListener(mSnapHelper, (newPageIndex, oldPageIndex) -> {
+            mCurrentIndex = newPageIndex;
+            boolean isSwipeLeft = newPageIndex < oldPageIndex;
+            XToastUtils.toast(getSnapName(isSwipeLeft) + "到第" + newPageIndex + "页");
+        }));
     }
+
+    private String getSnapName(boolean isSwipeLeft) {
+        if (mPagerLayoutManager.getOrientation() == RecyclerView.HORIZONTAL) {
+            if (isSwipeLeft) {
+                return "向左翻页";
+            } else {
+                return "向右翻页";
+            }
+        } else {
+            if (isSwipeLeft) {
+                return "向上翻页";
+            } else {
+                return "向下翻页";
+            }
+        }
+    }
+
+    private void snapPage(boolean isSwipeLeft) {
+        if (mRecyclerView.getAdapter() == null) {
+            return;
+        }
+        int targetPosition = isSwipeLeft ? mCurrentIndex - 1 : mCurrentIndex + 1;
+        if (targetPosition < 0 || targetPosition > mRecyclerView.getAdapter().getItemCount() - 1) {
+            return;
+        }
+        mRecyclerView.smoothScrollToPosition(targetPosition);
+    }
+
 
     private void showBottomSheetList() {
         new BottomSheet.BottomListSheetBuilder(getActivity())
                 .addItem("水平方向")
                 .addItem("垂直方向")
+                .addItem(getSnapName(true))
+                .addItem(getSnapName(false))
                 .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
                     dialog.dismiss();
                     switch (position) {
@@ -96,6 +135,12 @@ public class SnapHelperFragment extends BaseFragment {
                         case 1:
                             mPagerLayoutManager.setOrientation(RecyclerView.VERTICAL);
                             break;
+                        case 2:
+                            snapPage(true);
+                            break;
+                        case 3:
+                            snapPage(false);
+                            break;
                         default:
                             break;
                     }
@@ -104,5 +149,9 @@ public class SnapHelperFragment extends BaseFragment {
                 .show();
     }
 
-
+    @Override
+    public void onDestroyView() {
+        mRecyclerView.clearOnScrollListeners();
+        super.onDestroyView();
+    }
 }
