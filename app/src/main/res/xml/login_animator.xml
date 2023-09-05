@@ -22,6 +22,7 @@
         app:constraintSetStart="@id/action_start"
         app:duration="500">
 
+        <!--   app:clickAction="toggle" 代表start和end来回切换  -->
         <OnClick
             app:clickAction="toggle"
             app:targetId="@id/tv_action_login" />

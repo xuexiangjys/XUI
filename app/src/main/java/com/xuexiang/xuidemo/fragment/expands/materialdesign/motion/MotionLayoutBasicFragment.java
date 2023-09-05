@@ -15,26 +15,25 @@
  *
  */
 
-package com.xuexiang.xuidemo.fragment.expands.materialdesign;
+package com.xuexiang.xuidemo.fragment.expands.materialdesign.motion;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
-import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.MotionLayoutBasicFragment;
-import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.MotionLayoutLoginFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.basic.ConstraintSetLayoutFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.basic.CustomAttributeFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.basic.ImageFilterFragment;
 
 /**
- * <a href="https://developer.android.com/training/constraint-layout/motionlayout/examples?hl=zh-cn">MotionLayout官方使用说明</a>
- * <p>
- * <a href="https://www.jianshu.com/p/b5f5ed0292e2">MotionLayout的基本使用</a>
+ * <a href="https://developer.android.com/develop/ui/views/animations/motionlayout">MotionLayout的Google官方文档</a>
  */
-@Page(name = "MotionLayout\n能实现丰富的交互动画")
-public class MotionLayoutFragment extends ComponentContainerFragment {
-
+@Page(name = "MotionLayout基础使用")
+public class MotionLayoutBasicFragment extends ComponentContainerFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
-                MotionLayoutBasicFragment.class,
-                MotionLayoutLoginFragment.class
+                ConstraintSetLayoutFragment.class,
+                CustomAttributeFragment.class,
+                ImageFilterFragment.class,
         };
     }
 }

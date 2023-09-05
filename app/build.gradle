@@ -94,7 +94,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.androidx.multidex
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     //下拉刷新、CityPicker、XUI框架需要
 //    implementation deps.androidx.appcompat

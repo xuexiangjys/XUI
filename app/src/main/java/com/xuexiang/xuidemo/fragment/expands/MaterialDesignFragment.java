@@ -2,6 +2,7 @@ package com.xuexiang.xuidemo.fragment.expands;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.core.PageOption;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.MaterialDesignThemeActivity;
 import com.xuexiang.xuidemo.activity.SettingsActivity;
@@ -13,6 +14,7 @@ import com.xuexiang.xuidemo.fragment.expands.materialdesign.ConstraintLayoutFrag
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.DrawerLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ItemTouchHelperFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.MaterialButtonFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.MotionLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ShapeableImageViewFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.TextInputLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.ToolBarFragment;
@@ -21,6 +23,8 @@ import com.xuexiang.xutil.app.ActivityUtils;
 import java.util.List;
 
 import static com.xuexiang.xuidemo.base.BaseActivity.KEY_SUPPORT_SLIDE_BACK;
+
+import android.os.Build;
 
 /**
  * @author xuexiang
@@ -40,6 +44,7 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
         lists.add("Behavior\n手势行为");
         lists.add("DrawerLayout + NavigationView\n常见主页布局");
         lists.add("ConstraintLayout\n约束布局");
+        lists.add("MotionLayout\n能实现丰富的交互动画");
         lists.add("ItemTouchHelper+RecyclerView\n实现列表拖拽");
         lists.add("AppCompatPreferenceActivity\n设置页面");
         lists.add("BottomSheetDialog");
@@ -71,28 +76,35 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
                 openPage(ConstraintLayoutFragment.class);
                 break;
             case 4:
-                openPage(ItemTouchHelperFragment.class);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                    XToastUtils.warning("当前手机版本过低，暂不支持");
+                } else {
+                    openPage(MotionLayoutFragment.class);
+                }
                 break;
             case 5:
-                ActivityUtils.startActivity(SettingsActivity.class);
+                openPage(ItemTouchHelperFragment.class);
                 break;
             case 6:
-                openPage(BottomSheetDialogFragment.class);
+                ActivityUtils.startActivity(SettingsActivity.class);
                 break;
             case 7:
+                openPage(BottomSheetDialogFragment.class);
+                break;
+            case 8:
                 PageOption.to(BadgeDrawableFragment.class)
                         .setNewActivity(true, MaterialDesignThemeActivity.class)
                         .open(this);
                 break;
-            case 8:
+            case 9:
                 openPage(ShapeableImageViewFragment.class);
                 break;
-            case 9:
+            case 10:
                 PageOption.to(MaterialButtonFragment.class)
                         .setNewActivity(true, MaterialDesignThemeActivity.class)
                         .open(this);
                 break;
-            case 10:
+            case 11:
                 openPage(TextInputLayoutFragment.class);
                 break;
             default:

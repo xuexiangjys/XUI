@@ -231,15 +231,21 @@ public class RadiusImageView extends AppCompatImageView {
         return mSelectedMaskColor;
     }
 
-
     public boolean isCircle() {
         return mIsCircle;
+    }
+
+    public boolean getCircle() {
+        return isCircle();
     }
 
     public boolean isOval() {
         return !mIsCircle && mIsOval;
     }
 
+    public boolean getOval() {
+        return isOval();
+    }
     @Override
     public boolean isSelected() {
         return mIsSelected;
