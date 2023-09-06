@@ -21,6 +21,15 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
+/**
+ * clickAction：定义点击事件的行为，可以有以下几种取值：
+ * <p>
+ * toggle：切换视图的状态。
+ * transitionToEnd：将视图从当前位置过渡到结束位置。
+ * transitionToStart：将视图从当前位置过渡到开始位置。
+ * jumpToEnd：立即将视图移动到结束位置。
+ * jumpToStart：立即将视图移动到开始位置。
+ */
 @Page(name = "实现简单的登录动画效果")
 public class MotionLayoutLoginFragment extends BaseFragment {
 

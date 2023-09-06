@@ -23,7 +23,7 @@
     <androidx.constraintlayout.motion.widget.MotionLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutDescription="@xml/login_animator"
+        app:layoutDescription="@xml/motion_layout_login_animator"
         app:motionDebug="NO_DEBUG"
         tools:showPaths="true">
 

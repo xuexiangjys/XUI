@@ -22,9 +22,11 @@ import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.basic.ConstraintSetLayoutFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.basic.CustomAttributeFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.basic.ImageFilterFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.basic.KeyFrameSetFragment;
 
 /**
  * <a href="https://developer.android.com/develop/ui/views/animations/motionlayout">MotionLayout的Google官方文档</a>
+ * <a href="https://juejin.cn/post/7221425945238978615">MotionLayout详解</a>
  */
 @Page(name = "MotionLayout基础使用")
 public class MotionLayoutBasicFragment extends ComponentContainerFragment {
@@ -33,6 +35,7 @@ public class MotionLayoutBasicFragment extends ComponentContainerFragment {
         return new Class[]{
                 ConstraintSetLayoutFragment.class,
                 CustomAttributeFragment.class,
+                KeyFrameSetFragment.class,
                 ImageFilterFragment.class,
         };
     }
