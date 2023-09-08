@@ -19,6 +19,8 @@ package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.CoordinatorLayoutFragment;
+import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.DrawerLayoutMotionFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.MotionLayoutBasicFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.motion.MotionLayoutLoginFragment;
 
@@ -34,7 +36,9 @@ public class MotionLayoutFragment extends ComponentContainerFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 MotionLayoutBasicFragment.class,
-                MotionLayoutLoginFragment.class
+                CoordinatorLayoutFragment.class,
+                DrawerLayoutMotionFragment.class,
+                MotionLayoutLoginFragment.class,
         };
     }
 }

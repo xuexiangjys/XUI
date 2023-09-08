@@ -79,7 +79,7 @@ public class MaterialDesignFragment extends BaseSimpleListFragment {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
                     XToastUtils.warning("当前手机版本过低，暂不支持");
                 } else {
-                    openPage(MotionLayoutFragment.class);
+                    openNewPage(MotionLayoutFragment.class, KEY_SUPPORT_SLIDE_BACK, false);
                 }
                 break;
             case 5:

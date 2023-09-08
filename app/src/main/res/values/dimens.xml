@@ -29,6 +29,8 @@
 
     <!-- Expands 系列界面 -->
 
+    <dimen name="app_bar_height">180dp</dimen>
+
     <dimen name="custom_section_height">36dp</dimen>
     <dimen name="spacing_24dp">24dp</dimen>
     <dimen name="common_icon_size">24dp</dimen>

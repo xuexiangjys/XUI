@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">XUIDemo</string>
+    <string name="app_description">一个简洁而又优雅的Android原生UI框架</string>
     <string name="app_browser_name">XUI浏览器</string>
     <!--    华文行楷字体路径，其实可以不设置-->
     <!--    <string name="default_app_font_path">fonts/hwxk.ttf</string>-->
@@ -243,7 +244,6 @@
     <string name="lab_logout_confirm">是否确认退出？</string>
     <string name="lab_open_third_app">是否允许页面打开第三方应用?</string>
 
-
     <string name="error_message">This is an error toast.</string>
     <string name="success_message">Success!</string>
     <string name="info_message">Here is some info for you.</string>
@@ -476,5 +476,11 @@ The lake was formed about 2 million years ago and is a part of the Lake Tahoe Ba
     <string name="description_navigation_main">导航条</string>
     <string name="description_create_from_view_display">截图当前界面显示</string>
     <string name="description_demo">演示</string>
+
+    <string name="monterey">Monterey</string>
+    <string name="california">California</string>
+
+    <string name="title_catalog">目录</string>
+
 
 </resources>
