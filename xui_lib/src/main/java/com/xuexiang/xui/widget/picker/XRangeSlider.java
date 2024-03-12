@@ -49,24 +49,6 @@ import java.util.Set;
  */
 public class XRangeSlider extends View {
 
-    public interface OnRangeSliderListener {
-        /**
-         * max value changed callback
-         *
-         * @param maxValue 最大值
-         */
-        void onMaxChanged(XRangeSlider slider, int maxValue);
-
-        /**
-         * min value changed callback
-         *
-         * @param minValue 最小值
-         */
-        void onMinChanged(XRangeSlider slider, int minValue);
-    }
-
-    private static int DEFAULT_TOUCH_TARGET_SIZE;
-    private static int DEFAULT_TEXT_MIN_SPACE;
     private static final int DEFAULT_MAX = 100;
     /**
      * 刻度的宽度参数
@@ -74,8 +56,17 @@ public class XRangeSlider extends View {
     private static final float DEFAULT_BIG_SCALE_WITH = 1.7f;
     private static final float DEFAULT_MIDDLE_SCALE_WITH = 1.2f;
     private static final float DEFAULT_SMALL_SCALE_WITH = 1.0f;
-
+    private static int DEFAULT_TOUCH_TARGET_SIZE;
+    private static int DEFAULT_TEXT_MIN_SPACE;
     private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Rect mMinTextRect = new Rect();
+    private final Rect mMaxTextRect = new Rect();
+    private final Rect mRulerTextRect = new Rect();
+    /**
+     * List of event IDs touching targets
+     */
+    private final Set<Integer> mTouchingMinTarget = new HashSet<>();
+    private final Set<Integer> mTouchingMaxTarget = new HashSet<>();
     private int mLineStartX;
     private int mLineEndX;
     private int mLineLength;
@@ -90,14 +81,6 @@ public class XRangeSlider extends View {
     private int mStartingMax = -1;
     private boolean mIsFirstInit = true;
     private boolean mIsTouching = false;
-    private Rect mMinTextRect = new Rect();
-    private Rect mMaxTextRect = new Rect();
-    private Rect mRulerTextRect = new Rect();
-    /**
-     * List of event IDs touching targets
-     */
-    private Set<Integer> mTouchingMinTarget = new HashSet<>();
-    private Set<Integer> mTouchingMaxTarget = new HashSet<>();
     private OnRangeSliderListener mOnRangeSliderListener;
     //========属性==========//
     private int mVerticalPadding;
@@ -110,13 +93,11 @@ public class XRangeSlider extends View {
     private Bitmap mSliderIcon;
     private Bitmap mSliderIconFocus;
     private boolean mIsLineRound;
-
     private boolean mIsShowBubble;
     private Bitmap mBubbleBitmap;
     private int mNumberTextColor;
     private float mNumberTextSize;
     private float mNumberMarginBottom;
-
     private boolean mIsShowRuler;
     private int mRulerColor;
     private int mRulerTextColor;
@@ -145,54 +126,51 @@ public class XRangeSlider extends View {
         int colorAccent = ThemeUtils.resolveColor(context, R.attr.colorAccent);
         int colorControlNormal = ThemeUtils.resolveColor(context, R.attr.colorControlNormal);
 
-        if (attrs != null) {
-            TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.XRangeSlider, defStyleAttr, 0);
-            mVerticalPadding = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_verticalPadding, DensityUtils.dp2px(context, 10));
-            //滑条
-            mInsideRangeColor = array.getColor(R.styleable.XRangeSlider_xrs_insideRangeLineColor, colorAccent);
-            mOutsideRangeColor = array.getColor(R.styleable.XRangeSlider_xrs_outsideRangeLineColor, ResUtils.getColor(context, R.color.default_xrs_outside_line_color));
-            mInsideRangeLineStrokeWidth = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_insideRangeLineStrokeWidth, DensityUtils.dp2px(context, 5));
-            mOutsideRangeLineStrokeWidth = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_outsideRangeLineStrokeWidth, DensityUtils.dp2px(context, 5));
-            mMin = array.getInt(R.styleable.XRangeSlider_xrs_min, mMin);
-            mMax = array.getInt(R.styleable.XRangeSlider_xrs_max, mMax);
-            mSliderIcon = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_sliderIcon, R.drawable.xui_ic_slider_icon));
-            mSliderIconFocus = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_sliderIconFocus, R.drawable.xui_ic_slider_icon));
-            mIsLineRound = array.getBoolean(R.styleable.XRangeSlider_xrs_isLineRound, true);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.XRangeSlider, defStyleAttr, 0);
+        mVerticalPadding = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_verticalPadding, DensityUtils.dp2px(context, 10));
+        //滑条
+        mInsideRangeColor = array.getColor(R.styleable.XRangeSlider_xrs_insideRangeLineColor, colorAccent);
+        mOutsideRangeColor = array.getColor(R.styleable.XRangeSlider_xrs_outsideRangeLineColor, ResUtils.getColor(context, R.color.default_xrs_outside_line_color));
+        mInsideRangeLineStrokeWidth = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_insideRangeLineStrokeWidth, DensityUtils.dp2px(context, 5));
+        mOutsideRangeLineStrokeWidth = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_outsideRangeLineStrokeWidth, DensityUtils.dp2px(context, 5));
+        mMin = array.getInt(R.styleable.XRangeSlider_xrs_min, mMin);
+        mMax = array.getInt(R.styleable.XRangeSlider_xrs_max, mMax);
+        mSliderIcon = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_sliderIcon, R.drawable.xui_ic_slider_icon));
+        mSliderIconFocus = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_sliderIconFocus, R.drawable.xui_ic_slider_icon));
+        mIsLineRound = array.getBoolean(R.styleable.XRangeSlider_xrs_isLineRound, true);
 
-            //气泡
-            mIsShowBubble = array.getBoolean(R.styleable.XRangeSlider_xrs_isShowBubble, false);
-            boolean isFitColor = array.getBoolean(R.styleable.XRangeSlider_xrs_isFitColor, true);
-            mNumberTextColor = array.getColor(R.styleable.XRangeSlider_xrs_numberTextColor, colorAccent);
-            mNumberTextSize = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_numberTextSize, DensityUtils.sp2px(context, 12));
-            mNumberMarginBottom = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_numberMarginBottom, DensityUtils.dp2px(context, 2));
-            if (isFitColor) {
-                if (mIsShowBubble) {
-                    mNumberTextColor = Color.WHITE;
-                }
-                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_bubbleResource, R.drawable.xui_bg_bubble_blue));
-                if (bitmap != null) {
-                    mBubbleBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                    Canvas canvas = new Canvas(mBubbleBitmap);
-                    canvas.drawColor(mInsideRangeColor, PorterDuff.Mode.SRC_IN);
-                }
-            } else {
-                mBubbleBitmap = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_bubbleResource, R.drawable.xui_bg_bubble_blue));
+        //气泡
+        mIsShowBubble = array.getBoolean(R.styleable.XRangeSlider_xrs_isShowBubble, false);
+        boolean isFitColor = array.getBoolean(R.styleable.XRangeSlider_xrs_isFitColor, true);
+        mNumberTextColor = array.getColor(R.styleable.XRangeSlider_xrs_numberTextColor, colorAccent);
+        mNumberTextSize = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_numberTextSize, DensityUtils.sp2px(context, 12));
+        mNumberMarginBottom = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_numberMarginBottom, DensityUtils.dp2px(context, 2));
+        if (isFitColor) {
+            if (mIsShowBubble) {
+                mNumberTextColor = Color.WHITE;
             }
-
-            //刻度尺
-            mIsShowRuler = array.getBoolean(R.styleable.XRangeSlider_xrs_isShowRuler, false);
-            mRulerColor = array.getColor(R.styleable.XRangeSlider_xrs_rulerColor, colorControlNormal);
-            mRulerTextColor = array.getColor(R.styleable.XRangeSlider_xrs_rulerTextColor, colorControlNormal);
-            mRulerTextSize = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerTextSize, DensityUtils.sp2px(context, 12));
-            mRulerMarginTop = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerMarginTop, DensityUtils.dp2px(context, 4));
-            mRulerDividerHeight = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerDividerHeight, DensityUtils.dp2px(context, 4));
-            mRuleTextMarginTop = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerTextMarginTop, DensityUtils.dp2px(context, 4));
-            mRulerInterval = array.getInt(R.styleable.XRangeSlider_xrs_rulerInterval, 20);
-            array.recycle();
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_bubbleResource, R.drawable.xui_bg_bubble_blue));
+            if (bitmap != null) {
+                mBubbleBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+                Canvas canvas = new Canvas(mBubbleBitmap);
+                canvas.drawColor(mInsideRangeColor, PorterDuff.Mode.SRC_IN);
+            }
+        } else {
+            mBubbleBitmap = BitmapFactory.decodeResource(getResources(), array.getResourceId(R.styleable.XRangeSlider_xrs_bubbleResource, R.drawable.xui_bg_bubble_blue));
         }
+
+        //刻度尺
+        mIsShowRuler = array.getBoolean(R.styleable.XRangeSlider_xrs_isShowRuler, false);
+        mRulerColor = array.getColor(R.styleable.XRangeSlider_xrs_rulerColor, colorControlNormal);
+        mRulerTextColor = array.getColor(R.styleable.XRangeSlider_xrs_rulerTextColor, colorControlNormal);
+        mRulerTextSize = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerTextSize, DensityUtils.sp2px(context, 12));
+        mRulerMarginTop = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerMarginTop, DensityUtils.dp2px(context, 4));
+        mRulerDividerHeight = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerDividerHeight, DensityUtils.dp2px(context, 4));
+        mRuleTextMarginTop = array.getDimensionPixelSize(R.styleable.XRangeSlider_xrs_rulerTextMarginTop, DensityUtils.dp2px(context, 4));
+        mRulerInterval = array.getInt(R.styleable.XRangeSlider_xrs_rulerInterval, 20);
+        array.recycle();
         mRange = mMax - mMin;
     }
-
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -710,8 +688,18 @@ public class XRangeSlider extends View {
         return Math.round((mMinPosition - mLineStartX) * mConvertFactor + mMin);
     }
 
+    private void setSelectedMin(int selectedMin) {
+        mMinPosition = Math.round(((selectedMin - mMin) / mConvertFactor) + mLineStartX);
+        callMinChangedCallbacks();
+    }
+
     public int getSelectedMax() {
         return Math.round((mMaxPosition - mLineStartX) * mConvertFactor + mMin);
+    }
+
+    private void setSelectedMax(int selectedMax) {
+        mMaxPosition = Math.round(((selectedMax - mMin) / mConvertFactor) + mLineStartX);
+        callMaxChangedCallbacks();
     }
 
     public void setStartingMinMax(int startingMin, int startingMax) {
@@ -720,16 +708,6 @@ public class XRangeSlider extends View {
         setSelectedMin(startingMin);
         setSelectedMax(startingMax);
         invalidate();
-    }
-
-    private void setSelectedMin(int selectedMin) {
-        mMinPosition = Math.round(((selectedMin - mMin) / mConvertFactor) + mLineStartX);
-        callMinChangedCallbacks();
-    }
-
-    private void setSelectedMax(int selectedMax) {
-        mMaxPosition = Math.round(((selectedMax - mMin) / mConvertFactor) + mLineStartX);
-        callMaxChangedCallbacks();
     }
 
     public void setOnRangeSliderListener(OnRangeSliderListener listener) {
@@ -767,7 +745,6 @@ public class XRangeSlider extends View {
         invalidate();
     }
 
-
     /**
      * Keeps Number value inside min/max bounds by returning min or max if outside of
      * bounds.  Otherwise will return the value without altering.
@@ -779,5 +756,22 @@ public class XRangeSlider extends View {
             return min;
         }
         return value;
+    }
+
+
+    public interface OnRangeSliderListener {
+        /**
+         * max value changed callback
+         *
+         * @param maxValue 最大值
+         */
+        void onMaxChanged(XRangeSlider slider, int maxValue);
+
+        /**
+         * min value changed callback
+         *
+         * @param minValue 最小值
+         */
+        void onMinChanged(XRangeSlider slider, int minValue);
     }
 }

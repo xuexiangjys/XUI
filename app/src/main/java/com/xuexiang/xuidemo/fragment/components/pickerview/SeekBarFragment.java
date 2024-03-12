@@ -17,6 +17,7 @@
 
 package com.xuexiang.xuidemo.fragment.components.pickerview;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -46,7 +47,8 @@ public class SeekBarFragment extends BaseFragment {
     XSeekBar xsb;
     @BindView(R.id.tv_xsb)
     TextView tvXsb;
-
+    @BindView(R.id.ll_container)
+    LinearLayout llContainer;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_seekbar;
@@ -54,7 +56,7 @@ public class SeekBarFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-
+        llContainer.addView(new XRangeSlider(getContext()));
     }
 
     @Override
