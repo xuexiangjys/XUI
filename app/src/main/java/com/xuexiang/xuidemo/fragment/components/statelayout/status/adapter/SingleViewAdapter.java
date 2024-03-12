@@ -17,18 +17,18 @@
 
 package com.xuexiang.xuidemo.fragment.components.statelayout.status.adapter;
 
+import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_CUSTOM;
+import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_EMPTY_DATA;
+import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOADING;
+import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOAD_FAILED;
+import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOAD_SUCCESS;
+
 import android.view.View;
 
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.statelayout.StatefulLayout;
 import com.xuexiang.xui.widget.statelayout.StatusLoader;
 import com.xuexiang.xuidemo.R;
-
-import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_CUSTOM;
-import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_EMPTY_DATA;
-import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOADING;
-import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOAD_FAILED;
-import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOAD_SUCCESS;
 
 /**
  * 复用组件

@@ -27,9 +27,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xuidemo.R;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.app.ActivityUtils;
 

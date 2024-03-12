@@ -16,6 +16,11 @@
 
 package com.xuexiang.xui.widget.imageview.preview.ui;
 
+import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_DRAG;
+import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_PROGRESS_COLOR;
+import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SENSITIVITY;
+import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SING_FILING;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -42,11 +47,6 @@ import com.xuexiang.xui.widget.imageview.preview.view.SmoothImageView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_DRAG;
-import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_PROGRESS_COLOR;
-import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SENSITIVITY;
-import static com.xuexiang.xui.widget.imageview.preview.ui.BasePhotoFragment.KEY_SING_FILING;
 
 /**
  * 图片预览页面

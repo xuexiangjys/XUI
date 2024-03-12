@@ -20,10 +20,10 @@ package com.xuexiang.xuidemo.fragment.components;
 import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 

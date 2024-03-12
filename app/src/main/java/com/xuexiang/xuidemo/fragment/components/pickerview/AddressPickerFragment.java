@@ -22,12 +22,12 @@ import android.view.View;
 import com.xuexiang.xaop.annotation.IOThread;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.picker.widget.OptionsPickerView;
 import com.xuexiang.xui.widget.picker.widget.builder.OptionsPickerBuilder;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;

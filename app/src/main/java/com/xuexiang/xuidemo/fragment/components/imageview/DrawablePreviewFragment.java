@@ -16,6 +16,8 @@
 
 package com.xuexiang.xuidemo.fragment.components.imageview;
 
+import static com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment.DRAWABLE_ID;
+
 import android.os.Bundle;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -27,8 +29,6 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
 import butterknife.BindView;
-
-import static com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment.DRAWABLE_ID;
 
 /**
  * @author xuexiang

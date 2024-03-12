@@ -17,6 +17,10 @@
 
 package com.xuexiang.xuidemo.fragment.expands;
 
+import static android.app.Activity.RESULT_OK;
+import static com.xuexiang.xuidemo.fragment.expands.camera.CameraActivity.REQUEST_CODE_OPEN_CAMERA;
+import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.KEY_PICTURE_PATH;
+
 import android.content.Intent;
 import android.view.View;
 
@@ -34,10 +38,6 @@ import com.xuexiang.xuidemo.fragment.expands.camera.CameraViewActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.app.Activity.RESULT_OK;
-import static com.xuexiang.xuidemo.fragment.expands.camera.CameraActivity.REQUEST_CODE_OPEN_CAMERA;
-import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.KEY_PICTURE_PATH;
 
 /**
  * @author xuexiang

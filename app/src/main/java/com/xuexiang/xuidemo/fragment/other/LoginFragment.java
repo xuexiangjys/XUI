@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.fragment.other;
 
+import static com.xuexiang.xuidemo.fragment.other.ServiceProtocolFragment.KEY_PROTOCOL_TITLE;
+
 import android.graphics.Color;
 import android.view.View;
 import android.widget.CheckBox;
@@ -29,6 +31,7 @@ import com.xuexiang.xui.utils.DrawableUtils;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.utils.ViewUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText;
@@ -39,15 +42,12 @@ import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.PrivacyUtils;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
 import com.xuexiang.xuidemo.utils.TokenUtils;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.utils.sdkinit.UMengInit;
 import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.common.RandomUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.xuexiang.xuidemo.fragment.other.ServiceProtocolFragment.KEY_PROTOCOL_TITLE;
 
 
 /**

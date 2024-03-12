@@ -1,5 +1,8 @@
 package com.xuexiang.xuidemo.fragment.components.guideview;
 
+import static com.xuexiang.xuidemo.activity.SplashActivity.KEY_ENABLE_ALPHA_ANIM;
+import static com.xuexiang.xuidemo.activity.SplashActivity.KEY_IS_DISPLAY;
+
 import android.content.Intent;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -7,9 +10,6 @@ import com.xuexiang.xuidemo.activity.SplashActivity;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 
 import java.util.List;
-
-import static com.xuexiang.xuidemo.activity.SplashActivity.KEY_ENABLE_ALPHA_ANIM;
-import static com.xuexiang.xuidemo.activity.SplashActivity.KEY_IS_DISPLAY;
 
 /**
  * 启动页演示

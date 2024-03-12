@@ -30,10 +30,10 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
 
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.AppCompatPreferenceActivity;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 
 /**
  * 设置页面

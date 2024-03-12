@@ -27,9 +27,9 @@ import com.codbking.calendar.CalendarDateView;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.Date;
 

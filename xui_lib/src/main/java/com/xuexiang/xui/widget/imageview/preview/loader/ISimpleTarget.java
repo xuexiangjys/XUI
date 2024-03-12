@@ -18,6 +18,7 @@ package com.xuexiang.xui.widget.imageview.preview.loader;
 
 
 import android.graphics.drawable.Drawable;
+
 import androidx.annotation.Nullable;
 
 /**

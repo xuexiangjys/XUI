@@ -16,6 +16,8 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
+import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,12 +29,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.xuexiang.xrouter.facade.Postcard;
 import com.xuexiang.xrouter.facade.callback.NavCallback;
 import com.xuexiang.xrouter.launcher.XRouter;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.slideback.SlideBack;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseAppCompatActivity;
-import com.xuexiang.xui.utils.XToastUtils;
-
-import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
 /**
  * 壳浏览器

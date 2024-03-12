@@ -18,8 +18,9 @@
 package com.xuexiang.xui.widget.behavior;
 
 import android.animation.ValueAnimator;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 /**
  * 平移动画

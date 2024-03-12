@@ -17,6 +17,9 @@
 
 package com.xuexiang.xuidemo.fragment.other;
 
+import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
+import static com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment.DRAWABLE_ID;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -28,12 +31,12 @@ import androidx.annotation.NonNull;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.webview.AgentWebActivity;
 import com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.app.SocialShareUtils;
 import com.xuexiang.xutil.display.ImageUtils;
@@ -43,9 +46,6 @@ import com.xuexiang.xutil.net.NetworkUtils;
 import java.io.File;
 
 import butterknife.BindView;
-
-import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
-import static com.xuexiang.xuidemo.fragment.components.imageview.DrawablePreviewFragment.DRAWABLE_ID;
 
 /**
  * @author xuexiang

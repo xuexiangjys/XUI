@@ -21,7 +21,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.TypedValue;
-import com.xuexiang.xui.R;
+
 import com.xuexiang.xui.utils.ThemeUtils;
 
 /**

@@ -18,6 +18,7 @@
 package com.xuexiang.xui.widget.dialog.strategy;
 
 import android.content.DialogInterface;
+
 import androidx.annotation.NonNull;
 
 /**

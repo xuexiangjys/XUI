@@ -16,6 +16,10 @@
 
 package com.xuexiang.xuidemo.fragment.expands;
 
+import static android.app.Activity.RESULT_OK;
+import static com.xuexiang.xaop.consts.PermissionConsts.CAMERA;
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,6 +35,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
@@ -38,15 +43,10 @@ import com.xuexiang.xuidemo.fragment.expands.qrcode.CustomCaptureActivity;
 import com.xuexiang.xuidemo.fragment.expands.qrcode.CustomCaptureFragment;
 import com.xuexiang.xuidemo.fragment.expands.qrcode.QRCodeProduceFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
 
 import java.util.List;
-
-import static android.app.Activity.RESULT_OK;
-import static com.xuexiang.xaop.consts.PermissionConsts.CAMERA;
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
 /**
  * 二维码扫描

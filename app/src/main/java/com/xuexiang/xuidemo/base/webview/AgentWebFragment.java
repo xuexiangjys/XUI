@@ -68,9 +68,9 @@ import com.just.agentweb.download.DownloadingService;
 import com.just.agentweb.utils.LogUtils;
 import com.just.agentweb.widget.IWebLayout;
 import com.xuexiang.xui.utils.DrawableUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.net.JsonUtil;
 
 import java.util.HashMap;

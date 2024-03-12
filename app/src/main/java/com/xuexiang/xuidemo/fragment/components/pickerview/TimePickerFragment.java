@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.picker.widget.OptionsPickerView;
 import com.xuexiang.xui.widget.picker.widget.TimePickerView;
 import com.xuexiang.xui.widget.picker.widget.builder.OptionsPickerBuilder;
@@ -32,7 +33,6 @@ import com.xuexiang.xui.widget.picker.widget.configure.TimePickerType;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.data.DateUtils;
 
 import java.util.Calendar;

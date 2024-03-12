@@ -17,15 +17,15 @@
 
 package com.xuexiang.xuidemo.fragment.components.statelayout.status;
 
+import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOADING;
+
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.statelayout.StatusLoader;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
-
-import static com.xuexiang.xui.widget.statelayout.StatusLoader.STATUS_LOADING;
 
 /**
  * 基础StatusLoader页

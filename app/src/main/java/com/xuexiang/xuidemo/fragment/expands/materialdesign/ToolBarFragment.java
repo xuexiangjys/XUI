@@ -10,10 +10,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ViewUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.popupwindow.popup.XUISimplePopup;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.display.DensityUtils;
 
 import butterknife.BindView;

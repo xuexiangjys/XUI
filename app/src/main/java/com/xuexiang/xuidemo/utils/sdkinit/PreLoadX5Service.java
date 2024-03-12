@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.utils.sdkinit;
 
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
@@ -30,8 +32,6 @@ import com.xuexiang.xutil.common.logger.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
 /**
  * 预加载X5

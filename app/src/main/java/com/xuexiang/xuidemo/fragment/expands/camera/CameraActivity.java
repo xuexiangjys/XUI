@@ -17,6 +17,10 @@
 
 package com.xuexiang.xuidemo.fragment.expands.camera;
 
+import static com.xuexiang.xaop.consts.PermissionConsts.CAMERA;
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.REQUEST_CODE_PICTURE_CROP;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,11 +37,11 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.xuexiang.xaop.annotation.IOThread;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.annotation.Safe;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.alpha.XUIAlphaImageView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.RotateSensorHelper;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.common.StringUtils;
 
 import java.util.ArrayList;
@@ -47,10 +51,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-
-import static com.xuexiang.xaop.consts.PermissionConsts.CAMERA;
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
-import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.REQUEST_CODE_PICTURE_CROP;
 
 /**
  * 简单的相机拍照界面

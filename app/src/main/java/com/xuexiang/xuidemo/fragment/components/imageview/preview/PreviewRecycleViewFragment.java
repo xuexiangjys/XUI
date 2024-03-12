@@ -32,6 +32,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.GridDividerItemDecoration;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.xuexiang.xuidemo.DemoDataProvider;
@@ -39,7 +40,6 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.PreviewRecycleAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.SettingSPUtils;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
 

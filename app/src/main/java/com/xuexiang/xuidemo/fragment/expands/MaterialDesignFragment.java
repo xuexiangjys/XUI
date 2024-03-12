@@ -1,5 +1,9 @@
 package com.xuexiang.xuidemo.fragment.expands;
 
+import static com.xuexiang.xuidemo.base.BaseActivity.KEY_SUPPORT_SLIDE_BACK;
+
+import android.os.Build;
+
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xui.utils.XToastUtils;
@@ -21,10 +25,6 @@ import com.xuexiang.xuidemo.fragment.expands.materialdesign.ToolBarFragment;
 import com.xuexiang.xutil.app.ActivityUtils;
 
 import java.util.List;
-
-import static com.xuexiang.xuidemo.base.BaseActivity.KEY_SUPPORT_SLIDE_BACK;
-
-import android.os.Build;
 
 /**
  * @author xuexiang

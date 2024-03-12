@@ -17,6 +17,9 @@
 
 package com.xuexiang.xuidemo.fragment.expands.webview;
 
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+import static com.xuexiang.xuidemo.fragment.expands.webview.TbsWebFileReaderFragment.KEY_FILE_URI;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -31,11 +34,11 @@ import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xrouter.annotation.AutoWired;
 import com.xuexiang.xrouter.launcher.XRouter;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.base.webview.x5.FileReaderView;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.file.FileUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -46,9 +49,6 @@ import java.io.File;
 import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Request;
-
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
-import static com.xuexiang.xuidemo.fragment.expands.webview.TbsWebFileReaderFragment.KEY_FILE_URI;
 
 /**
  * @author xuexiang

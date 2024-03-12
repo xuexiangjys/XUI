@@ -20,10 +20,11 @@ package com.xuexiang.xui.widget.dialog.materialdialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import androidx.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.internal.MDRootLayout;

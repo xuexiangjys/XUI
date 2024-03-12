@@ -17,6 +17,9 @@
 
 package com.xuexiang.xuidemo.base.webview.x5;
 
+import static com.tencent.smtt.sdk.TbsReaderView.KEY_FILE_PATH;
+import static com.tencent.smtt.sdk.TbsReaderView.KEY_TEMP_PATH;
+
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -33,9 +36,6 @@ import com.tencent.smtt.sdk.TbsReaderView;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.file.FileUtils;
 import com.xuexiang.xutil.security.EncryptUtils;
-
-import static com.tencent.smtt.sdk.TbsReaderView.KEY_FILE_PATH;
-import static com.tencent.smtt.sdk.TbsReaderView.KEY_TEMP_PATH;
 
 /**
  * 腾讯X5文件阅读器  文件打开核心类

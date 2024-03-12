@@ -17,6 +17,11 @@
 
 package com.xuexiang.xui.widget.layout;
 
+import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.COLLAPSED;
+import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.COLLAPSING;
+import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.EXPANDED;
+import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.EXPANDING;
+
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -32,11 +37,6 @@ import android.widget.LinearLayout;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.layout.interpolator.FastOutSlowInInterpolator;
-
-import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.COLLAPSED;
-import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.COLLAPSING;
-import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.EXPANDED;
-import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.EXPANDING;
 
 /**
  * 可伸缩的布局

@@ -21,11 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 /**
  * @author xuexiang
  * @since 2018/12/6 下午5:57

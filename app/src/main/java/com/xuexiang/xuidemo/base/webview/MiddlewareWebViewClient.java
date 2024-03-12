@@ -16,6 +16,8 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
+import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_HOST;
+
 import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
@@ -29,8 +31,6 @@ import androidx.annotation.RequiresApi;
 import com.just.agentweb.core.client.MiddlewareWebClientBase;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xuidemo.R;
-
-import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_HOST;
 
 /**
  * 【网络请求、加载】

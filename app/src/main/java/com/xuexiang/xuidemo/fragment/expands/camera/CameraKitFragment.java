@@ -17,6 +17,10 @@
 
 package com.xuexiang.xuidemo.fragment.expands.camera;
 
+import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_AUTO;
+import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_OFF;
+import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_ON;
+
 import android.graphics.Bitmap;
 import android.view.View;
 
@@ -40,10 +44,6 @@ import com.xuexiang.xuidemo.utils.Utils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_AUTO;
-import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_OFF;
-import static com.wonderkiln.camerakit.CameraKit.Constants.FLASH_ON;
 
 /**
  * CameraKit 相机工具

@@ -18,12 +18,13 @@
 package com.xuexiang.xuidemo.widget;
 
 import android.content.Context;
-import com.google.android.material.appbar.AppBarLayout;
+import android.util.AttributeSet;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import android.util.AttributeSet;
-import android.view.View;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 /**
  *

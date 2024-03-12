@@ -1,10 +1,12 @@
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
+import static com.google.android.material.tabs.TabLayout.MODE_FIXED;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.widget.Toolbar;
-
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.SnackbarUtils;
@@ -14,8 +16,6 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
 import butterknife.BindView;
-
-import static com.google.android.material.tabs.TabLayout.MODE_FIXED;
 
 /**
  * @author XUE

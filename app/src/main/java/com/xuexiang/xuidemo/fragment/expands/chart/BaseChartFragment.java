@@ -1,11 +1,11 @@
 package com.xuexiang.xuidemo.fragment.expands.chart;
 
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+
 import com.github.mikephil.charting.charts.Chart;
 import com.xuexiang.xaop.annotation.Permission;
-import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xui.utils.XToastUtils;
-
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+import com.xuexiang.xuidemo.base.BaseFragment;
 
 /**
  * 基础图表

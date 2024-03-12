@@ -1,5 +1,8 @@
 package com.xuexiang.xui.widget.edittext;
 
+import static com.xuexiang.xui.utils.DensityUtils.dp2px;
+import static com.xuexiang.xui.utils.DensityUtils.sp2px;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -17,9 +20,6 @@ import android.widget.TextView;
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
-
-import static com.xuexiang.xui.utils.DensityUtils.dp2px;
-import static com.xuexiang.xui.utils.DensityUtils.sp2px;
 
 /**
  * 多行计数输入框

@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
+import static com.google.android.material.tabs.TabLayout.MODE_FIXED;
+
 import android.animation.ArgbEvaluator;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -37,8 +39,6 @@ import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.widget.StickyNavigationLayout;
 
 import butterknife.BindView;
-
-import static com.google.android.material.tabs.TabLayout.MODE_FIXED;
 
 /**
  * @author xuexiang

@@ -3,8 +3,8 @@ package com.xuexiang.xuidemo.fragment.expands.chart;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.bar.BasicBarChartFragment;
-import com.xuexiang.xuidemo.fragment.expands.chart.bar.SimpleBarChartFragment;
 import com.xuexiang.xuidemo.fragment.expands.chart.bar.HorizontalBarChartFragment;
+import com.xuexiang.xuidemo.fragment.expands.chart.bar.SimpleBarChartFragment;
 
 /**
  * @author xuexiang

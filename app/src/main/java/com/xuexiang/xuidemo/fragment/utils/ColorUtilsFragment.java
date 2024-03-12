@@ -16,11 +16,12 @@
 
 package com.xuexiang.xuidemo.fragment.utils;
 
-import androidx.core.content.ContextCompat;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ColorUtils;

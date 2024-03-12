@@ -5,13 +5,13 @@ import android.widget.CheckBox;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ColorUtils;
 import com.xuexiang.xui.utils.StatusBarUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.grouplist.XUICommonListItemView;
 import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.TranslucentActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.app.ActivityUtils;
 
 import butterknife.BindView;

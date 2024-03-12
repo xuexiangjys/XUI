@@ -16,6 +16,8 @@
 
 package com.xuexiang.xuidemo.fragment.expands.qrcode;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -30,12 +32,10 @@ import com.xuexiang.xqrcode.camera.CameraManager;
 import com.xuexiang.xqrcode.ui.CaptureActivity;
 import com.xuexiang.xqrcode.ui.CaptureFragment;
 import com.xuexiang.xqrcode.util.QRCodeAnalyzeUtils;
-import com.xuexiang.xuidemo.R;
 import com.xuexiang.xui.utils.XToastUtils;
+import com.xuexiang.xuidemo.R;
 
 import butterknife.OnClick;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * <pre>

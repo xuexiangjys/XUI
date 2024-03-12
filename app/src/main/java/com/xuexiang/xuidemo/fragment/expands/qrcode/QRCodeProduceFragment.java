@@ -16,6 +16,9 @@
 
 package com.xuexiang.xuidemo.fragment.expands.qrcode;
 
+import static android.app.Activity.RESULT_OK;
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -37,9 +40,9 @@ import com.xuexiang.xaop.enums.ThreadType;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.util.QRCodeProduceUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.common.StringUtils;
@@ -51,9 +54,6 @@ import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.app.Activity.RESULT_OK;
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
 /**
  * <pre>

@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
+import static com.google.android.material.tabs.TabLayout.MODE_FIXED;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
@@ -28,15 +30,13 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.utils.ViewUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.display.Colors;
 
 import butterknife.BindView;
-
-import static com.google.android.material.tabs.TabLayout.MODE_FIXED;
 
 /**
  * @author xuexiang

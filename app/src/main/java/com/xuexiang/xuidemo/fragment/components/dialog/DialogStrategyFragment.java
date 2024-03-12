@@ -21,6 +21,7 @@ import android.text.InputType;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.KeyboardUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.dialog.strategy.InputInfo;
@@ -28,7 +29,6 @@ import com.xuexiang.xui.widget.dialog.strategy.impl.AlertDialogStrategy;
 import com.xuexiang.xui.widget.dialog.strategy.impl.MaterialDialogStrategy;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
 

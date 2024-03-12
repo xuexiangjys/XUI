@@ -20,9 +20,9 @@ package com.xuexiang.xuidemo.fragment.components.statelayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.statelayout.StatusLoader;
 import com.xuexiang.xuidemo.base.ComponentContainerFragment;
-import com.xuexiang.xuidemo.fragment.components.statelayout.status.adapter.DefaultStatusAdapter;
 import com.xuexiang.xuidemo.fragment.components.statelayout.status.StatusLoaderMultipleFragment;
 import com.xuexiang.xuidemo.fragment.components.statelayout.status.StatusLoaderSingleFragment;
+import com.xuexiang.xuidemo.fragment.components.statelayout.status.adapter.DefaultStatusAdapter;
 
 /**
  * @author xuexiang

@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.utils;
 
+import static com.xuexiang.xaop.consts.PermissionConsts.LOCATION;
+
 import android.content.Context;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -11,8 +13,6 @@ import com.baidu.location.Poi;
 import com.xuexiang.citypicker.model.LocatedCity;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xui.logs.UILog;
-
-import static com.xuexiang.xaop.consts.PermissionConsts.LOCATION;
 
 /**
  * 定位服务

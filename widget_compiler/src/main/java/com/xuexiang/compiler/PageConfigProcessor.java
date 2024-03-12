@@ -1,5 +1,7 @@
 package com.xuexiang.compiler;
 
+import static com.xuexiang.compiler.Consts.KEY_MODULE_NAME;
+
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
@@ -38,8 +40,6 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
-
-import static com.xuexiang.compiler.Consts.KEY_MODULE_NAME;
 
 /**
  * Page Configuration Auto Generator

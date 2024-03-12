@@ -1,14 +1,14 @@
 package com.xuexiang.xuidemo.fragment.components;
 
+import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xuidemo.R;
+import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 import com.xuexiang.xuidemo.fragment.components.progress.ArcLoadingViewFragment;
 import com.xuexiang.xuidemo.fragment.components.progress.BeautifulProgressBarFragment;
 import com.xuexiang.xuidemo.fragment.components.progress.DeterminateCircularFragment;
 import com.xuexiang.xuidemo.fragment.components.progress.MaterialProgressBarFragment;
 import com.xuexiang.xuidemo.fragment.components.progress.RatingBarFragment;
 import com.xuexiang.xuidemo.fragment.components.progress.RotateLoadingViewFragment;
-import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xuidemo.R;
-import com.xuexiang.xuidemo.base.ComponentContainerFragment;
 
 /**
  * @author xuexiang

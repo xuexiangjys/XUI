@@ -1,5 +1,8 @@
 package com.xuexiang.xuidemo.base;
 
+import static com.xuexiang.xuidemo.adapter.SimpleAdapter.KEY_SUB_TITLE;
+import static com.xuexiang.xuidemo.adapter.SimpleAdapter.KEY_TITLE;
+
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -29,9 +32,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.xuexiang.xuidemo.adapter.SimpleAdapter.KEY_SUB_TITLE;
-import static com.xuexiang.xuidemo.adapter.SimpleAdapter.KEY_TITLE;
 
 /**
  * 解决输入法内存泄漏, 修改列表样式为主副标题显示

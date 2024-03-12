@@ -28,8 +28,6 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
-import androidx.annotation.ColorRes;
-
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -38,6 +36,8 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+
+import androidx.annotation.ColorRes;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ResUtils;

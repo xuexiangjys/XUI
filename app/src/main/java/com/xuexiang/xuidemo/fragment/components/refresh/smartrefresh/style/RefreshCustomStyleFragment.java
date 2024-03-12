@@ -29,8 +29,8 @@ import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.SimpleRecyclerAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xuidemo.widget.MaterialFooter;
 import com.xuexiang.xuidemo.widget.CustomRefreshHeader;
+import com.xuexiang.xuidemo.widget.MaterialFooter;
 
 import java.util.concurrent.TimeUnit;
 

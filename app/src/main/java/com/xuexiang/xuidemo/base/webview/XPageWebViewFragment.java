@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.base.webview;
 
+import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
+
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -68,11 +70,11 @@ import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.PageOption;
 import com.xuexiang.xui.utils.DrawableUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.common.logger.Logger;
 import com.xuexiang.xutil.net.JsonUtil;
 
@@ -80,8 +82,6 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
 /**
  * 使用XPageFragment

@@ -17,13 +17,13 @@
 
 package com.xuexiang.xui.widget.banner.recycler.layout;
 
+import android.view.animation.DecelerateInterpolator;
+import android.widget.Scroller;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
-
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Scroller;
 
 /**
  * Class intended to support snapping for a {@link RecyclerView}

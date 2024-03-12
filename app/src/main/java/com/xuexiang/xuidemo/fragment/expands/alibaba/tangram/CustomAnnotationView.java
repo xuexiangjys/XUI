@@ -32,8 +32,8 @@ import com.tmall.wireless.tangram.support.ExposureSupport;
 import com.xuexiang.xui.utils.ColorUtils;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ViewUtils;
-import com.xuexiang.xuidemo.R;
 import com.xuexiang.xui.utils.XToastUtils;
+import com.xuexiang.xuidemo.R;
 
 import java.util.Locale;
 

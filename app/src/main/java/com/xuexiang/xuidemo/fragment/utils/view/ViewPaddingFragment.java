@@ -22,9 +22,9 @@ import android.widget.SeekBar;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ViewUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;

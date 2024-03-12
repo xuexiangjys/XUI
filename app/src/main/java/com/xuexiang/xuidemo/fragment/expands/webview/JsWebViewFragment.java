@@ -26,10 +26,10 @@ import android.widget.FrameLayout;
 import com.just.agentweb.core.AgentWeb;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.webview.BaseWebViewFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import org.json.JSONObject;
 

@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.sticky;
 
+import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
+
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -30,20 +32,18 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.DividerItemDecoration;
 import com.xuexiang.xui.adapter.recyclerview.XLinearLayoutManager;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.StickyListAdapter;
 import com.xuexiang.xuidemo.adapter.entity.StickyItem;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
 
 /**
  * @author xuexiang

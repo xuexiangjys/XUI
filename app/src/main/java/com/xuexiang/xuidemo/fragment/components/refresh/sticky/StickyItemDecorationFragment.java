@@ -27,6 +27,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.sticky.StickyHeadContainer;
 import com.xuexiang.xui.adapter.recyclerview.sticky.StickyItemDecoration;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
@@ -34,7 +35,6 @@ import com.xuexiang.xuidemo.adapter.StickyListAdapter;
 import com.xuexiang.xuidemo.adapter.entity.StickyItem;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;

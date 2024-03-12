@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior;
 
+import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
@@ -39,19 +41,17 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentStateAdapter;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.utils.ViewUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.layout.XUILinearLayout;
 import com.xuexiang.xui.widget.statelayout.SimpleAnimationListener;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.ComplexNestedScrollingLayout;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
 
 /**
  * @author xuexiang

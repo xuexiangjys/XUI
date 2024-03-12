@@ -17,6 +17,10 @@
 
 package com.xuexiang.xuidemo.fragment.components.imageview.edit;
 
+import static android.app.Activity.RESULT_OK;
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+import static com.xuexiang.xuidemo.fragment.expands.XQRCodeFragment.REQUEST_IMAGE;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
@@ -34,10 +38,6 @@ import com.xuexiang.xutil.app.PathUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.app.Activity.RESULT_OK;
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
-import static com.xuexiang.xuidemo.fragment.expands.XQRCodeFragment.REQUEST_IMAGE;
 
 /**
  * @author xuexiang

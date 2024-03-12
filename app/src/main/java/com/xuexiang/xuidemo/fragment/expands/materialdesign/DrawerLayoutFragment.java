@@ -34,11 +34,11 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.ViewUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.SimpleListFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.common.CollectionUtils;
 
 import butterknife.BindView;

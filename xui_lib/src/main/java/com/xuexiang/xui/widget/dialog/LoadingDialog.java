@@ -20,11 +20,11 @@ package com.xuexiang.xui.widget.dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.StyleRes;
-
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.StyleRes;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.widget.progress.loading.ARCLoadingView;

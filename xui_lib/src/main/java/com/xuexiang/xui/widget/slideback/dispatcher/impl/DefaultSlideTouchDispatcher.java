@@ -17,6 +17,9 @@
 
 package com.xuexiang.xui.widget.slideback.dispatcher.impl;
 
+import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_LEFT;
+import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_RIGHT;
+
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -26,9 +29,6 @@ import com.xuexiang.xui.widget.slideback.SlideInfo;
 import com.xuexiang.xui.widget.slideback.callback.SlideCallBack;
 import com.xuexiang.xui.widget.slideback.dispatcher.ISlideTouchEventDispatcher;
 import com.xuexiang.xui.widget.slideback.dispatcher.OnSlideUpdateListener;
-
-import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_LEFT;
-import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_RIGHT;
 
 /**
  * 默认的侧滑触摸事件处理

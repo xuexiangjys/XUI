@@ -16,6 +16,8 @@
 
 package com.xuexiang.xuidemo.fragment.expands;
 
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
@@ -35,8 +37,6 @@ import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
 
 import java.util.List;
-
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
 /**
  * @author xuexiang

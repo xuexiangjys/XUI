@@ -16,10 +16,15 @@
 
 package com.xuexiang.xuidemo.fragment.utils.view;
 
-import androidx.core.content.ContextCompat;
+import static com.xuexiang.xui.utils.ViewUtils.Direction.BOTTOM_TO_TOP;
+import static com.xuexiang.xui.utils.ViewUtils.Direction.LEFT_TO_RIGHT;
+import static com.xuexiang.xui.utils.ViewUtils.Direction.TOP_TO_BOTTOM;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ViewUtils;
@@ -29,10 +34,6 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 
 import butterknife.BindView;
-
-import static com.xuexiang.xui.utils.ViewUtils.Direction.BOTTOM_TO_TOP;
-import static com.xuexiang.xui.utils.ViewUtils.Direction.LEFT_TO_RIGHT;
-import static com.xuexiang.xui.utils.ViewUtils.Direction.TOP_TO_BOTTOM;
 
 /**
  * @author xuexiang

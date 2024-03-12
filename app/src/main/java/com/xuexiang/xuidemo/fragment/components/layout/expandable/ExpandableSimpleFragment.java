@@ -17,19 +17,19 @@
 
 package com.xuexiang.xuidemo.fragment.components.layout.expandable;
 
+import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.COLLAPSED;
+import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.EXPANDED;
+
 import android.util.Log;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.layout.ExpandableLayout;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.COLLAPSED;
-import static com.xuexiang.xui.widget.layout.ExpandableLayout.State.EXPANDED;
 
 /**
  * @author xuexiang

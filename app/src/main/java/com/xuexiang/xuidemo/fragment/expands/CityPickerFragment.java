@@ -16,6 +16,8 @@
 
 package com.xuexiang.xuidemo.fragment.expands;
 
+import static com.xuexiang.xaop.consts.PermissionConsts.LOCATION;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -33,20 +35,18 @@ import com.xuexiang.citypicker.model.LocateState;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.LocationService;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.xuexiang.xaop.consts.PermissionConsts.LOCATION;
 
 /**
  * @author xuexiang

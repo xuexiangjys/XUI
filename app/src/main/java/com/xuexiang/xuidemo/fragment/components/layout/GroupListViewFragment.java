@@ -24,12 +24,12 @@ import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.grouplist.XUICommonListItemView;
 import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
 import com.xuexiang.xui.widget.progress.loading.MiniLoadingView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 

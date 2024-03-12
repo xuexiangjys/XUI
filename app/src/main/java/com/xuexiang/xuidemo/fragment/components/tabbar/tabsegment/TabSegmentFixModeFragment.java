@@ -26,6 +26,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.tabbar.TabSegment;
@@ -33,7 +34,6 @@ import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.ContentPage;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.behavior.SimpleListFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 

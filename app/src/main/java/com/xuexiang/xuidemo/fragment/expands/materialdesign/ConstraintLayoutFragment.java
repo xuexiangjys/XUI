@@ -17,22 +17,22 @@
 
 package com.xuexiang.xuidemo.fragment.expands.materialdesign;
 
+import static com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutContainerFragment.KEY_LAYOUT_ID;
+import static com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutContainerFragment.KEY_TITLE;
+
 import android.os.Build;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.core.PageOption;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseSimpleListFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutConstraintSetFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutContainerFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutGroupFragment;
 import com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutPlaceholderFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
-
-import static com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutContainerFragment.KEY_LAYOUT_ID;
-import static com.xuexiang.xuidemo.fragment.expands.materialdesign.constraintlayout.ConstraintLayoutContainerFragment.KEY_TITLE;
 
 /**
  * @author xuexiang

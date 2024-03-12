@@ -1,8 +1,9 @@
 package com.xuexiang.xuidemo.fragment.components.imageview;
 
 import android.graphics.Color;
-import androidx.core.content.ContextCompat;
 import android.view.View;
+
+import androidx.core.content.ContextCompat;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;

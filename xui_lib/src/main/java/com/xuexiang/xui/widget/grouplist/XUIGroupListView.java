@@ -20,13 +20,14 @@ package com.xuexiang.xui.widget.grouplist;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.IntDef;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.IntDef;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ThemeUtils;

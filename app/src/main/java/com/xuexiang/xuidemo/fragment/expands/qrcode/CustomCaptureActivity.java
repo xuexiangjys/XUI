@@ -17,6 +17,9 @@
 
 package com.xuexiang.xuidemo.fragment.expands.qrcode;
 
+import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_ACTION;
+import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_HOST;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -30,13 +33,10 @@ import androidx.fragment.app.Fragment;
 
 import com.xuexiang.xqrcode.XQRCode;
 import com.xuexiang.xqrcode.ui.CaptureActivity;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.common.StringUtils;
-
-import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_ACTION;
-import static com.xuexiang.xuidemo.base.webview.WebViewInterceptDialog.APP_LINK_HOST;
 
 /**
  * 自定义二维码扫描界面

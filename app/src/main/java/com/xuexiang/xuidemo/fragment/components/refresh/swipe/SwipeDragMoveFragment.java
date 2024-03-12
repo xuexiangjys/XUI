@@ -1,5 +1,8 @@
 package com.xuexiang.xuidemo.fragment.components.refresh.swipe;
 
+import static com.xuexiang.xuidemo.adapter.swipe.SwipeDragTouchListAdapter.TYPE_GRID;
+import static com.xuexiang.xuidemo.adapter.swipe.SwipeDragTouchListAdapter.TYPE_LIST;
+
 import android.view.View;
 import android.widget.ImageView;
 
@@ -8,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.swipe.SwipeDragTouchListAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 import com.yanzhenjie.recyclerview.touch.OnItemMoveListener;
 import com.yanzhenjie.recyclerview.touch.OnItemStateChangedListener;
@@ -21,9 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-
-import static com.xuexiang.xuidemo.adapter.swipe.SwipeDragTouchListAdapter.TYPE_GRID;
-import static com.xuexiang.xuidemo.adapter.swipe.SwipeDragTouchListAdapter.TYPE_LIST;
 
 /**
  * @author xuexiang

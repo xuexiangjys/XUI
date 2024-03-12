@@ -25,8 +25,8 @@ import com.xuexiang.xui.adapter.FragmentAdapter;
 import com.xuexiang.xui.widget.tabbar.EasyIndicator;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseAppCompatActivity;
-import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.ContentPage;
 import com.xuexiang.xuidemo.fragment.components.tabbar.TestPageFragment;
+import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.ContentPage;
 
 import java.util.ArrayList;
 import java.util.List;

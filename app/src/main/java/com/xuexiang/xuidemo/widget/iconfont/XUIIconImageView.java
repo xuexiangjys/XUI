@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.widget.iconfont;
 
+import static androidx.annotation.Dimension.DP;
+
 import android.content.Context;
 import android.util.AttributeSet;
 
@@ -29,8 +31,6 @@ import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.IconicsSize;
 import com.xuexiang.xui.utils.ThemeUtils;
-
-import static androidx.annotation.Dimension.DP;
 
 /**
  * 好好玩字体库图标

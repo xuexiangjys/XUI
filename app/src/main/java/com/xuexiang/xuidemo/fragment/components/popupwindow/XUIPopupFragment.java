@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.fragment.components.popupwindow;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,16 +12,14 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.XUI;
 import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
  * @author xuexiang

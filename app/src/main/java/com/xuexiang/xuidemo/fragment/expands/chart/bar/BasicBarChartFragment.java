@@ -19,11 +19,11 @@ import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.model.GradientColor;
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.fragment.expands.chart.BaseChartFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;

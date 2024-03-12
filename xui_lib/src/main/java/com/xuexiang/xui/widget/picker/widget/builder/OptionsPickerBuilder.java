@@ -20,7 +20,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.view.ViewGroup;
 
-import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.picker.wheelview.WheelView;
 import com.xuexiang.xui.widget.picker.widget.OptionsPickerView;

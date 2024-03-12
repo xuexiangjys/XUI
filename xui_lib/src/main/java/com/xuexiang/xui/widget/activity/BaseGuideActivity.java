@@ -3,8 +3,9 @@ package com.xuexiang.xui.widget.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.viewpager.widget.ViewPager;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xui.R;
 import com.xuexiang.xui.utils.WidgetUtils;

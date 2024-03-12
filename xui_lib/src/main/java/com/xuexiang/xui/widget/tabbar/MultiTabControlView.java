@@ -16,6 +16,8 @@
 
 package com.xuexiang.xui.widget.tabbar;
 
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
@@ -48,8 +50,6 @@ import java.util.List;
 import java.util.Map;
 
 import io.github.inflationx.calligraphy3.HasTypeface;
-
-import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 
 /**
  * 多选Tab（CheckBox实现）

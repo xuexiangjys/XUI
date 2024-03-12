@@ -17,6 +17,9 @@
 
 package com.xuexiang.xuidemo.fragment.expands.camera;
 
+import static com.xuexiang.xuidemo.fragment.expands.camera.CameraActivity.REQUEST_CODE_OPEN_CAMERA;
+import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.REQUEST_CODE_PICTURE_CROP;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
@@ -47,9 +50,9 @@ import com.google.android.cameraview.CameraView;
 import com.xuexiang.xaop.annotation.IOThread;
 import com.xuexiang.xaop.annotation.Safe;
 import com.xuexiang.xaop.annotation.SingleClick;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.common.StringUtils;
 
 import java.util.Set;
@@ -58,9 +61,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-
-import static com.xuexiang.xuidemo.fragment.expands.camera.CameraActivity.REQUEST_CODE_OPEN_CAMERA;
-import static com.xuexiang.xuidemo.fragment.expands.camera.PictureCropActivity.REQUEST_CODE_PICTURE_CROP;
 
 /**
  * 功能齐全的相机拍摄页面

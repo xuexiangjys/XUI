@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.fragment.components.banner;
 
+import static com.xuexiang.xuidemo.fragment.components.banner.UserGuideFragment.POSITION;
+
 import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xpage.annotation.Page;
@@ -11,8 +13,6 @@ import com.xuexiang.xui.widget.banner.widget.banner.SimpleGuideBanner;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-
-import static com.xuexiang.xuidemo.fragment.components.banner.UserGuideFragment.POSITION;
 
 
 /**

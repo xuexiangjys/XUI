@@ -2,13 +2,13 @@ package com.xuexiang.xuidemo.fragment.components.button;
 
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.CountDownButtonHelper;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.button.ButtonView;
 import com.xuexiang.xui.widget.button.CountDownButton;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.xuexiang.xui.widget.textview.supertextview.SuperButton;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;

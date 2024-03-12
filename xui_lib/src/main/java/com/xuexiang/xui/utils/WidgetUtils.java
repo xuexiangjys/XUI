@@ -17,6 +17,8 @@
 
 package com.xuexiang.xui.utils;
 
+import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -61,8 +63,6 @@ import com.xuexiang.xui.widget.progress.loading.LoadingViewLayout;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
 
 /**
  * 组件工具类

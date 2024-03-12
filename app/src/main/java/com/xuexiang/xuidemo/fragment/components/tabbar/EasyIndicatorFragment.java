@@ -27,13 +27,13 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.tabbar.EasyIndicator;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.activity.EasyIndicatorActivity;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tablayout.ContentPage;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;

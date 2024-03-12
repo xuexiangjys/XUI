@@ -17,6 +17,10 @@
 
 package com.xuexiang.xuidemo.fragment.components.imageview.edit;
 
+import static android.app.Activity.RESULT_OK;
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
+import static com.xuexiang.xuidemo.fragment.expands.XQRCodeFragment.REQUEST_IMAGE;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -30,6 +34,7 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.ResUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.imageview.edit.OnPhotoEditorListener;
 import com.xuexiang.xui.widget.imageview.edit.PhotoEditor;
 import com.xuexiang.xui.widget.imageview.edit.PhotoEditorView;
@@ -39,17 +44,12 @@ import com.xuexiang.xui.widget.imageview.edit.ViewType;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xutil.app.IntentUtils;
 import com.xuexiang.xutil.app.PathUtils;
 import com.xuexiang.xutil.display.ImageUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.app.Activity.RESULT_OK;
-import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
-import static com.xuexiang.xuidemo.fragment.expands.XQRCodeFragment.REQUEST_IMAGE;
 
 /**
  * @author xuexiang

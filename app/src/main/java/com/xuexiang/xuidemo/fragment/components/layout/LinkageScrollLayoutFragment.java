@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.layout.linkage.LinkageScrollLayout;
 import com.xuexiang.xui.widget.layout.linkage.view.LinkageRecyclerView;
@@ -31,7 +32,6 @@ import com.xuexiang.xuidemo.adapter.CommonGridAdapter;
 import com.xuexiang.xuidemo.adapter.NewsCardViewListAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.utils.Utils;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 

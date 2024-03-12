@@ -24,7 +24,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
-import androidx.core.widget.NestedScrollView;
 
 /**
  * @author xuexiang

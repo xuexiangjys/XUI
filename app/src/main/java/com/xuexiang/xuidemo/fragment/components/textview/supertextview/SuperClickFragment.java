@@ -3,13 +3,13 @@ package com.xuexiang.xuidemo.fragment.components.textview.supertextview;
 import android.view.Gravity;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.layout.ExpandableLayout;
 import com.xuexiang.xui.widget.textview.badge.Badge;
 import com.xuexiang.xui.widget.textview.badge.BadgeView;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 

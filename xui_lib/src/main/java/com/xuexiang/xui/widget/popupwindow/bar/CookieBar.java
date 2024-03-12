@@ -16,17 +16,18 @@
 
 package com.xuexiang.xui.widget.popupwindow.bar;
 
+import static com.xuexiang.xui.widget.popupwindow.bar.Cookie.DEFAULT_COOKIE_DURATION;
+
 import android.app.Activity;
-import androidx.annotation.ColorRes;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.StringRes;
 import android.view.Gravity;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
-import java.lang.ref.WeakReference;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
 
-import static com.xuexiang.xui.widget.popupwindow.bar.Cookie.DEFAULT_COOKIE_DURATION;
+import java.lang.ref.WeakReference;
 
 /**
  * 顶部和底部信息消息显示条<p>

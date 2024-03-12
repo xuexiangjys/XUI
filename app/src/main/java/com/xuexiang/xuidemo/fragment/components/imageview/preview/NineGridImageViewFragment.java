@@ -16,6 +16,8 @@
 
 package com.xuexiang.xuidemo.fragment.components.imageview.preview;
 
+import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
+
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -28,18 +30,16 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.adapter.recyclerview.XLinearLayoutManager;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.adapter.NineGridRecycleAdapter;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import java.util.List;
 
 import butterknife.BindView;
-
-import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
 
 /**
  * @author xuexiang

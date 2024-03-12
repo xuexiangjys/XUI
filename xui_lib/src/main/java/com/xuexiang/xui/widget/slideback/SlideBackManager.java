@@ -17,6 +17,10 @@
 
 package com.xuexiang.xui.widget.slideback;
 
+import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_BOTH;
+import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_LEFT;
+import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_RIGHT;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.DisplayMetrics;
@@ -31,10 +35,6 @@ import com.xuexiang.xui.widget.slideback.dispatcher.OnSlideUpdateListener;
 import com.xuexiang.xui.widget.slideback.dispatcher.impl.DefaultSlideTouchDispatcher;
 import com.xuexiang.xui.widget.slideback.widget.SlideBackIconView;
 import com.xuexiang.xui.widget.slideback.widget.SlideBackInterceptLayout;
-
-import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_BOTH;
-import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_LEFT;
-import static com.xuexiang.xui.widget.slideback.SlideBack.EDGE_RIGHT;
 
 /**
  * SlideBack管理器

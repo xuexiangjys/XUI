@@ -17,6 +17,11 @@
 
 package com.xuexiang.xuidemo.fragment.components.refresh.sample.sortedlist;
 
+import static com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback.PAYLOAD_COMMENT;
+import static com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback.PAYLOAD_PRAISE;
+import static com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback.PAYLOAD_READ_NUMBER;
+import static com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback.PAYLOAD_USER_NAME;
+
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -25,11 +30,6 @@ import androidx.recyclerview.widget.SortedListAdapterCallback;
 
 import com.xuexiang.xuidemo.adapter.entity.NewInfo;
 import com.xuexiang.xutil.common.StringUtils;
-
-import static com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback.PAYLOAD_COMMENT;
-import static com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback.PAYLOAD_PRAISE;
-import static com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback.PAYLOAD_READ_NUMBER;
-import static com.xuexiang.xuidemo.fragment.components.refresh.sample.diffutil.DiffUtilCallback.PAYLOAD_USER_NAME;
 
 /**
  * 配合SortedList使用

@@ -18,11 +18,11 @@
 package com.xuexiang.xui.widget.behavior;
 
 import android.content.Context;
+import android.util.AttributeSet;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import android.util.AttributeSet;
-import android.view.View;
 
 /**
  * Behavior for Float Button

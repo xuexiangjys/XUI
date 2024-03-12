@@ -17,6 +17,8 @@
 
 package com.xuexiang.xuidemo.fragment.components.tabbar.tablayout;
 
+import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
@@ -33,15 +35,13 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
 import com.xuexiang.xuidemo.fragment.components.tabbar.tabsegment.MultiPage;
-import com.xuexiang.xui.utils.XToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE;
 
 /**
  * @author xuexiang

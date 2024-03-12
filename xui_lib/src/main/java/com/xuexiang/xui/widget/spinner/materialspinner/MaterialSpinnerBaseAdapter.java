@@ -3,14 +3,15 @@ package com.xuexiang.xui.widget.spinner.materialspinner;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
 
 import com.xuexiang.xui.R;
 

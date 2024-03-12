@@ -1,5 +1,7 @@
 package com.xuexiang.xuidemo.utils;
 
+import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -47,8 +49,6 @@ import com.xuexiang.xutil.file.FileIOUtils;
 import com.xuexiang.xutil.file.FileUtils;
 
 import java.io.File;
-
-import static com.xuexiang.xuidemo.base.webview.AgentWebFragment.KEY_URL;
 
 /**
  * @author XUE

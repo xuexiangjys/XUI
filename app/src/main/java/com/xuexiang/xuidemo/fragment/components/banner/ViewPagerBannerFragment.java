@@ -17,10 +17,13 @@
 
 package com.xuexiang.xuidemo.fragment.components.banner;
 
+import static com.xuexiang.xuidemo.fragment.components.banner.UserGuideFragment.POSITION;
+
 import android.os.Bundle;
 import android.view.View;
 
 import com.xuexiang.xpage.annotation.Page;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.banner.anim.select.RotateEnter;
 import com.xuexiang.xui.widget.banner.anim.select.ZoomInEnter;
 import com.xuexiang.xui.widget.banner.anim.unselect.NoAnimExist;
@@ -33,7 +36,6 @@ import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xuidemo.DemoDataProvider;
 import com.xuexiang.xuidemo.R;
 import com.xuexiang.xuidemo.base.BaseFragment;
-import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xuidemo.widget.RadiusImageBanner;
 
 import java.util.ArrayList;
@@ -42,8 +44,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.xuexiang.xuidemo.fragment.components.banner.UserGuideFragment.POSITION;
 
 /**
  * 使用ViewPager实现的图片轮播

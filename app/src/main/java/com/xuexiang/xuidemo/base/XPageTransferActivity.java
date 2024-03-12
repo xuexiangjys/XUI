@@ -22,8 +22,8 @@ import android.os.Bundle;
 import com.xuexiang.xrouter.annotation.AutoWired;
 import com.xuexiang.xrouter.annotation.Router;
 import com.xuexiang.xrouter.launcher.XRouter;
-import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xui.utils.XToastUtils;
+import com.xuexiang.xuidemo.utils.Utils;
 import com.xuexiang.xutil.common.StringUtils;
 
 /**
