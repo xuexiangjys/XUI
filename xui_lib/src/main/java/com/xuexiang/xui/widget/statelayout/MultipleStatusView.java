@@ -105,7 +105,6 @@ public class MultipleStatusView extends FrameLayout {
         mNoNetworkViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_noNetworkView, mNoNetworkViewResId);
         mContentViewResId = a.getResourceId(R.styleable.MultipleStatusView_msv_contentView, NULL_RESOURCE_ID);
         a.recycle();
-        mInflater = LayoutInflater.from(getContext());
     }
 
     @Override
@@ -290,7 +289,7 @@ public class MultipleStatusView extends FrameLayout {
     public final void showContent() {
         mViewStatus = STATUS_CONTENT;
         if (null == mContentView && mContentViewResId != NULL_RESOURCE_ID) {
-            mContentView = mInflater.inflate(mContentViewResId, null);
+            mContentView = inflateView(mContentViewResId);
             addView(mContentView, 0, DEFAULT_LAYOUT_PARAMS);
         }
         showContentView();
@@ -325,6 +324,9 @@ public class MultipleStatusView extends FrameLayout {
     }
 
     private View inflateView(int layoutId) {
+        if (mInflater == null) {
+            mInflater = LayoutInflater.from(getContext());
+        }
         return mInflater.inflate(layoutId, null);
     }
 
