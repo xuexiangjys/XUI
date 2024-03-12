@@ -17,7 +17,6 @@
 
 package com.xuexiang.xui.widget.imageview.edit;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -74,7 +73,6 @@ public class PhotoEditorView extends RelativeLayout {
         init(attrs);
     }
 
-    @SuppressLint("Recycle")
     private void init(@Nullable AttributeSet attrs) {
         //Setup image attributes
         mImgSource = new FilterImageView(getContext());
@@ -83,13 +81,13 @@ public class PhotoEditorView extends RelativeLayout {
         LayoutParams imgSrcParam = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         imgSrcParam.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-        if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.PhotoEditorView);
-            Drawable imgSrcDrawable = a.getDrawable(R.styleable.PhotoEditorView_photo_src);
-            if (imgSrcDrawable != null) {
-                mImgSource.setImageDrawable(imgSrcDrawable);
-            }
+
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.PhotoEditorView);
+        Drawable imgSrcDrawable = typedArray.getDrawable(R.styleable.PhotoEditorView_photo_src);
+        if (imgSrcDrawable != null) {
+            mImgSource.setImageDrawable(imgSrcDrawable);
         }
+        typedArray.recycle();
 
         //Setup brush view
         mBrushDrawingView = new BrushDrawingView(getContext());

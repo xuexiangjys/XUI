@@ -184,16 +184,14 @@ public class WheelView extends View implements HasTypeface {
             CENTER_CONTENT_OFFSET = density * 2.5F;
         }
 
-        if (attrs != null) {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WheelView, 0, 0);
-            mGravity = a.getInt(R.styleable.WheelView_wv_gravity, Gravity.CENTER);
-            textColorOut = a.getColor(R.styleable.WheelView_wv_textColorOut, 0xFFA8A8A8);
-            textColorCenter = a.getColor(R.styleable.WheelView_wv_textColorCenter, 0xFF2A2A2A);
-            dividerColor = a.getColor(R.styleable.WheelView_wv_dividerColor, 0xFFD5D5D5);
-            textSize = a.getDimensionPixelSize(R.styleable.WheelView_wv_textSize, textSize);
-            lineSpacingMultiplier = a.getFloat(R.styleable.WheelView_wv_lineSpacingMultiplier, lineSpacingMultiplier);
-            a.recycle();//回收内存
-        }
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.WheelView, 0, 0);
+        mGravity = typedArray.getInt(R.styleable.WheelView_wv_gravity, Gravity.CENTER);
+        textColorOut = typedArray.getColor(R.styleable.WheelView_wv_textColorOut, 0xFFA8A8A8);
+        textColorCenter = typedArray.getColor(R.styleable.WheelView_wv_textColorCenter, 0xFF2A2A2A);
+        dividerColor = typedArray.getColor(R.styleable.WheelView_wv_dividerColor, 0xFFD5D5D5);
+        textSize = typedArray.getDimensionPixelSize(R.styleable.WheelView_wv_textSize, textSize);
+        lineSpacingMultiplier = typedArray.getFloat(R.styleable.WheelView_wv_lineSpacingMultiplier, lineSpacingMultiplier);
+        typedArray.recycle();//回收内存
 
         judgeLineSpace();
         initLoopView(context);

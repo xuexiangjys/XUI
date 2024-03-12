@@ -55,11 +55,9 @@ public class PorterShapeImageView extends PorterImageView {
     }
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        if (attrs != null) {
-            TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.PorterShapeImageView, defStyleAttr, 0);
-            mIconDrawable = ResUtils.getDrawableAttrRes(getContext(), array, R.styleable.PorterShapeImageView_sb_icon_image);
-            array.recycle();
-        }
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.PorterShapeImageView, defStyleAttr, 0);
+        mIconDrawable = ResUtils.getDrawableAttrRes(getContext(), array, R.styleable.PorterShapeImageView_sb_icon_image);
+        array.recycle();
         mMatrix = new Matrix();
     }
 

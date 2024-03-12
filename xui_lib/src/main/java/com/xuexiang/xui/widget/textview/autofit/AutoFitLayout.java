@@ -63,13 +63,11 @@ public class AutoFitLayout extends FrameLayout {
         int minTextSize = -1;
         float precision = -1;
 
-        if (attrs != null) {
-            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AutoFitTextView, defStyle, 0);
-            enableFit = ta.getBoolean(R.styleable.AutoFitTextView_aftv_enable, enableFit);
-            minTextSize = ta.getDimensionPixelSize(R.styleable.AutoFitTextView_aftv_minTextSize, minTextSize);
-            precision = ta.getFloat(R.styleable.AutoFitTextView_aftv_precision, precision);
-            ta.recycle();
-        }
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.AutoFitTextView, defStyle, 0);
+        enableFit = typedArray.getBoolean(R.styleable.AutoFitTextView_aftv_enable, enableFit);
+        minTextSize = typedArray.getDimensionPixelSize(R.styleable.AutoFitTextView_aftv_minTextSize, minTextSize);
+        precision = typedArray.getFloat(R.styleable.AutoFitTextView_aftv_precision, precision);
+        typedArray.recycle();
         mEnabled = enableFit;
         mMinTextSize = minTextSize;
         mPrecision = precision;

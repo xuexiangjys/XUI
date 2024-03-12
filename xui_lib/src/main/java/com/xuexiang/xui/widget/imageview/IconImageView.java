@@ -79,18 +79,16 @@ public class IconImageView extends AppCompatImageView {
      * @param attrs
      */
     private void initAttrs(Context context, AttributeSet attrs) {
-        if (attrs != null) {
-            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconImageView);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.IconImageView);
 
-            Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.IconImageView_iiv_icon_res);
-            if (icon != null) {
-                mIconBitmap = Utils.getBitmapFromDrawable(icon);
-            }
-            mIconScale = typedArray.getFloat(R.styleable.IconImageView_iiv_icon_scale, mIconScale);
-            mIsShow = typedArray.getBoolean(R.styleable.IconImageView_iiv_is_show, mIsShow);
-
-            typedArray.recycle();
+        Drawable icon = ResUtils.getDrawableAttrRes(getContext(), typedArray, R.styleable.IconImageView_iiv_icon_res);
+        if (icon != null) {
+            mIconBitmap = Utils.getBitmapFromDrawable(icon);
         }
+        mIconScale = typedArray.getFloat(R.styleable.IconImageView_iiv_icon_scale, mIconScale);
+        mIsShow = typedArray.getBoolean(R.styleable.IconImageView_iiv_is_show, mIsShow);
+
+        typedArray.recycle();
 
         initPaint();
     }

@@ -46,36 +46,14 @@ import com.xuexiang.xui.widget.layout.interpolator.FastOutSlowInInterpolator;
  */
 public class ExpandableLayout extends FrameLayout {
 
-    public interface State {
-        /**
-         * 已收缩
-         */
-        int COLLAPSED = 0;
-        /**
-         * 收缩中
-         */
-        int COLLAPSING = 1;
-        /**
-         * 伸展中
-         */
-        int EXPANDING = 2;
-        /**
-         * 已伸展
-         */
-        int EXPANDED = 3;
-    }
-
     public static final String KEY_SUPER_STATE = "key_super_state";
     public static final String KEY_EXPANSION = "key_expansion";
-
     public static final int HORIZONTAL = 0;
     public static final int VERTICAL = 1;
-
     /**
      * 默认伸缩动画持续的时间
      */
     private static final int DEFAULT_DURATION = 300;
-
     /**
      * 伸缩动画持续的时间
      */
@@ -96,27 +74,23 @@ public class ExpandableLayout extends FrameLayout {
      * 伸缩状态
      */
     private int mState;
-
     private Interpolator mInterpolator = new FastOutSlowInInterpolator();
     private ValueAnimator mAnimator;
     private OnExpansionChangedListener mListener;
-
     public ExpandableLayout(Context context) {
         this(context, null);
     }
 
     public ExpandableLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ExpandableLayout);
-            mDuration = a.getInt(R.styleable.ExpandableLayout_el_duration, DEFAULT_DURATION);
-            mExpansion = a.getBoolean(R.styleable.ExpandableLayout_el_expanded, false) ? 1 : 0;
-            mOrientation = a.getInt(R.styleable.ExpandableLayout_android_orientation, VERTICAL);
-            mParallax = a.getFloat(R.styleable.ExpandableLayout_el_parallax, 1);
-            a.recycle();
-            mState = mExpansion == 0 ? COLLAPSED : EXPANDED;
-            setParallax(mParallax);
-        }
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ExpandableLayout);
+        mDuration = a.getInt(R.styleable.ExpandableLayout_el_duration, DEFAULT_DURATION);
+        mExpansion = a.getBoolean(R.styleable.ExpandableLayout_el_expanded, false) ? 1 : 0;
+        mOrientation = a.getInt(R.styleable.ExpandableLayout_android_orientation, VERTICAL);
+        mParallax = a.getFloat(R.styleable.ExpandableLayout_el_parallax, 1);
+        a.recycle();
+        mState = mExpansion == 0 ? COLLAPSED : EXPANDED;
+        setParallax(mParallax);
     }
 
     @Override
@@ -191,6 +165,13 @@ public class ExpandableLayout extends FrameLayout {
     }
 
     /**
+     * Convenience method - same as calling setExpanded(expanded, true)
+     */
+    public void setExpanded(boolean expand) {
+        setExpanded(expand, true);
+    }
+
+    /**
      * 切换
      */
     public void toggle() {
@@ -227,13 +208,6 @@ public class ExpandableLayout extends FrameLayout {
         setExpanded(false, animate);
     }
 
-    /**
-     * Convenience method - same as calling setExpanded(expanded, true)
-     */
-    public void setExpanded(boolean expand) {
-        setExpanded(expand, true);
-    }
-
     public void setExpanded(boolean expand, boolean animate) {
         if (expand == isExpanded()) {
             return;
@@ -251,13 +225,13 @@ public class ExpandableLayout extends FrameLayout {
         return mDuration;
     }
 
-    public ExpandableLayout setInterpolator(Interpolator interpolator) {
-        mInterpolator = interpolator;
+    public ExpandableLayout setDuration(int duration) {
+        mDuration = duration;
         return this;
     }
 
-    public ExpandableLayout setDuration(int duration) {
-        mDuration = duration;
+    public ExpandableLayout setInterpolator(Interpolator interpolator) {
+        mInterpolator = interpolator;
         return this;
     }
 
@@ -313,6 +287,7 @@ public class ExpandableLayout extends FrameLayout {
 
     /**
      * 设置伸缩比率变化监听
+     *
      * @param listener
      * @return
      */
@@ -343,6 +318,25 @@ public class ExpandableLayout extends FrameLayout {
         mAnimator.start();
     }
 
+    public interface State {
+        /**
+         * 已收缩
+         */
+        int COLLAPSED = 0;
+        /**
+         * 收缩中
+         */
+        int COLLAPSING = 1;
+        /**
+         * 伸展中
+         */
+        int EXPANDING = 2;
+        /**
+         * 已伸展
+         */
+        int EXPANDED = 3;
+    }
+
     /**
      * 伸缩比率变化监听
      */
@@ -357,7 +351,7 @@ public class ExpandableLayout extends FrameLayout {
     }
 
     private class ExpansionListener implements Animator.AnimatorListener {
-        private int targetExpansion;
+        private final int targetExpansion;
         private boolean canceled;
 
         public ExpansionListener(int targetExpansion) {
