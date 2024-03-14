@@ -605,7 +605,7 @@ public class XPageWebViewFragment extends BaseFragment {
      * @param text
      */
     private void toCopy(Context context, String text) {
-        ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager manager = (ClipboardManager) context.getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
         if (manager == null) {
             return;
         }
