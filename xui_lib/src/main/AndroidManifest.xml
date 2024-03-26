@@ -10,9 +10,11 @@
 
         <activity
             android:name=".widget.imageview.preview.ui.PreviewActivity"
+            android:exported="false"
             android:theme="@style/XUITheme.Translucent" />
         <activity
             android:name=".widget.imageview.preview.ui.VideoPlayerActivity"
+            android:exported="false"
             android:theme="@style/XUITheme.Translucent" />
     </application>
 

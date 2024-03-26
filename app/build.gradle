@@ -126,7 +126,7 @@ dependencies {
     implementation deps.butterknife.runtime
     annotationProcessor deps.butterknife.compiler
     // LeakCanary内存泄漏检测
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
 
     // 弹性布局
     implementation 'com.google.android:flexbox:0.3.1'

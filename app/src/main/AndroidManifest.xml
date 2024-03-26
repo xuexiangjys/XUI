@@ -63,18 +63,24 @@
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard|locale|layoutDirection"
+            android:exported="false"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activity.LoginActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard|locale|layoutDirection"
+            android:exported="false"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
-        <activity android:name=".activity.UserGuideActivity" />
+        <activity
+            android:name=".activity.UserGuideActivity"
+            android:exported="false" />
 
-        <activity android:name=".activity.EasyIndicatorActivity" />
+        <activity
+            android:name=".activity.EasyIndicatorActivity"
+            android:exported="false" />
 
         <!--&lt;!&ndash;XVideo视频录制&ndash;&gt;-->
         <!--<activity-->
@@ -84,6 +90,7 @@
         <!--SearchView-->
         <activity
             android:name=".activity.SearchViewActivity"
+            android:exported="false"
             android:label="SearchView" />
         <activity
             android:name=".activity.SearchComponentActivity"
@@ -142,66 +149,81 @@
         <activity
             android:name=".base.XPageTransferActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:exported="false"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <!--fragment的页面容器-->
         <activity
             android:name=".base.BaseActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard|locale|layoutDirection"
+            android:exported="false"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activity.MaterialDesignThemeActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard|locale|layoutDirection"
+            android:exported="false"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".widget.iconfont.IconFontActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:exported="false"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".activity.TranslucentActivity" />
+        <activity
+            android:name=".activity.TranslucentActivity"
+            android:exported="false" />
         <activity
             android:name=".fragment.expands.camera.CameraActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Camera"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".fragment.expands.camera.PictureCropActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Camera"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".fragment.expands.camera.CameraViewActivity"
+            android:exported="false"
             android:theme="@style/AppTheme.Camera"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".fragment.expands.qrcode.CustomCaptureActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/XQRCodeTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.SettingsActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_settings"
             android:theme="@style/SettingTheme" />
 
         <!-- 版本更新提示-->
         <activity
             android:name=".utils.update.UpdateTipDialog"
+            android:exported="false"
             android:theme="@style/DialogTheme" />
         <!-- Webview拦截提示弹窗-->
         <activity
             android:name=".base.webview.WebViewInterceptDialog"
+            android:exported="false"
             android:theme="@style/DialogTheme" />
-
         <!--X5预加载-->
-        <service android:name=".utils.sdkinit.PreLoadX5Service" />
+        <service
+            android:name=".utils.sdkinit.PreLoadX5Service"
+            android:exported="false" />
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
+            android:exported="false"
             android:label="dexopt"
             android:process=":dexopt" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
+            android:exported="false"
             android:process=":remote" />
 
         <meta-data
@@ -209,7 +231,9 @@
             android:value="UEoFaVVo6q2vUe12ZW8f7GqqLQtDYZUI" />
 
         <!--应用监听服务-->
-        <service android:name=".fragment.expands.floatview.service.AppMonitorService" />
+        <service
+            android:name=".fragment.expands.floatview.service.AppMonitorService"
+            android:exported="false" />
 
         <!--创建快捷方式的广播监听-->
         <receiver
