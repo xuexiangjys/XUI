@@ -119,6 +119,12 @@ public class KeyBoardUtilsFragment extends BaseFragment implements KeyboardUtils
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        KeyboardUtils.hideSoftInput(this);
+    }
+
+    @Override
     public void onDestroyView() {
         KeyboardUtils.removeKeyboardToggleListener(this);
         super.onDestroyView();

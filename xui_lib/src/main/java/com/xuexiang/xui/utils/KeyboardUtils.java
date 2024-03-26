@@ -34,6 +34,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.xuexiang.xui.XUI;
 
@@ -48,27 +50,21 @@ import java.util.HashMap;
  */
 public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
 
+    private static final HashMap<SoftKeyboardToggleListener, KeyboardUtils> sListenerMap = new HashMap<>();
+    private final ViewGroup mRootView;
     private SoftKeyboardToggleListener mCallback;
-    private ViewGroup mRootView;
     private Boolean prevValue = null;
-    private static HashMap<SoftKeyboardToggleListener, KeyboardUtils> sListenerMap = new HashMap<>();
 
-    public interface SoftKeyboardToggleListener {
-        /**
-         * 键盘显示状态监听回调
-         *
-         * @param isVisible 键盘是否显示
-         */
-        void onToggleSoftKeyboard(boolean isVisible);
+    private KeyboardUtils(Activity activity, SoftKeyboardToggleListener listener) {
+        mCallback = listener;
+        mRootView = (ViewGroup) activity.getWindow().getDecorView();
+        mRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
-    @Override
-    public void onGlobalLayout() {
-        boolean isVisible = isSoftInputShow(mRootView);
-        if (mCallback != null && (prevValue == null || isVisible != prevValue)) {
-            prevValue = isVisible;
-            mCallback.onToggleSoftKeyboard(isVisible);
-        }
+    private KeyboardUtils(ViewGroup viewGroup, SoftKeyboardToggleListener listener) {
+        mCallback = listener;
+        mRootView = viewGroup;
+        mRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
     /**
@@ -127,8 +123,11 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * @param context calling context
      */
     public static void toggleKeyboardVisibility(Context context) {
-        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        InputMethodManager imm = ContextCompat.getSystemService(context, InputMethodManager.class);
+        if (imm == null) {
+            return;
+        }
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
     /**
@@ -137,29 +136,11 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * @param activeView the view with the keyboard focus
      */
     public static void forceCloseKeyboard(View activeView) {
-        InputMethodManager inputMethodManager = (InputMethodManager) activeView.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activeView.getWindowToken(), 0);
-    }
-
-    private void removeListener() {
-        mCallback = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            mRootView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        } else {
-            mRootView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        InputMethodManager imm = ContextCompat.getSystemService(activeView.getContext(), InputMethodManager.class);
+        if (imm == null) {
+            return;
         }
-    }
-
-    private KeyboardUtils(Activity activity, SoftKeyboardToggleListener listener) {
-        mCallback = listener;
-        mRootView = (ViewGroup) activity.getWindow().getDecorView();
-        mRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-    }
-
-    private KeyboardUtils(ViewGroup viewGroup, SoftKeyboardToggleListener listener) {
-        mCallback = listener;
-        mRootView = viewGroup;
-        mRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+        imm.hideSoftInputFromWindow(activeView.getWindowToken(), 0);
     }
 
     /**
@@ -191,7 +172,6 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
                 | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
-
 
     /**
      * 输入键盘是否在显示
@@ -256,7 +236,6 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         return true;
     }
 
-
     /**
      * 点击屏幕空白区域隐藏软键盘
      * <p>根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘</p>
@@ -278,7 +257,33 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
      * @param dialog 窗口
      */
     public static void dispatchTouchEvent(MotionEvent ev, @NonNull Dialog dialog) {
-        dispatchTouchEvent(ev, dialog.getWindow());
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View currentFocus = dialog.getCurrentFocus();
+            if (isShouldHideKeyboardInDialog(ev, currentFocus)) {
+                hideSoftInput(currentFocus);
+            }
+        }
+    }
+
+    /**
+     * 根据 EditText 所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘(Dialog中使用)
+     *
+     * @param event 点击事件
+     * @param view  目标view
+     * @return 是否需要隐藏键盘
+     */
+    public static boolean isShouldHideKeyboardInDialog(MotionEvent event, View view) {
+        if ((view instanceof EditText)) {
+            int[] l = {0, 0};
+            view.getLocationInWindow(l);
+            int left = l[0],
+                    top = l[1],
+                    bottom = top + view.getHeight(),
+                    right = left + view.getWidth();
+            return !(event.getX() > left && event.getX() < right
+                    && event.getY() > top && event.getY() < bottom);
+        }
+        return false;
     }
 
     /**
@@ -389,8 +394,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         if (view == null) {
             return;
         }
-        InputMethodManager imm =
-                (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = ContextCompat.getSystemService(view.getContext(), InputMethodManager.class);
         if (imm == null) {
             return;
         }
@@ -422,6 +426,44 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
     }
 
     /**
+     * 动态隐藏弹窗弹出的软键盘【注意：一定要在fragment的onPause之前调用】
+     *
+     * @Override
+     * public void onPause() {
+     *    super.onPause();
+     *    KeyboardUtils.hideSoftInput(this);
+     * }
+     *
+     * @param fragment fragment
+     */
+    public static void hideSoftInput(@NonNull Fragment fragment) {
+        Activity currentActivity = fragment.getActivity();
+        if (currentActivity == null) {
+            return;
+        }
+        hideSoftInput(currentActivity);
+    }
+
+    /**
+     * 动态隐藏弹窗弹出的软键盘【注意：一定要在activity的onPause之前调用】
+     *
+     * @Override
+     * protected void onPause() {
+     *    super.onPause();
+     *    KeyboardUtils.hideSoftInput(this);
+     * }
+     *
+     * @param activity activity
+     */
+    public static void hideSoftInput(@NonNull Activity activity) {
+        View view = activity.getCurrentFocus();
+        if (view == null && activity.getWindow() != null) {
+            view = activity.getWindow().getDecorView();
+        }
+        hideSoftInput(view);
+    }
+
+    /**
      * 动态隐藏软键盘并且清除当前view的焦点【记住，要在xml的父布局加上android:focusable="true" 和 android:focusableInTouchMode="true"】
      *
      * @param view 视图
@@ -430,8 +472,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         if (view == null) {
             return;
         }
-        InputMethodManager imm =
-                (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = ContextCompat.getSystemService(view.getContext(), InputMethodManager.class);
         if (imm == null) {
             return;
         }
@@ -441,19 +482,16 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         }
     }
 
-
     /**
      * 切换软键盘显示与否状态
      */
     public static void toggleSoftInput() {
-        InputMethodManager imm =
-                (InputMethodManager) XUI.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = ContextCompat.getSystemService(XUI.getContext(), InputMethodManager.class);
         if (imm == null) {
             return;
         }
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
-
 
     /**
      * 强制显示软键盘
@@ -466,7 +504,6 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         }
     }
 
-
     /**
      * 显示软键盘
      *
@@ -476,14 +513,12 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         if (view == null) {
             return;
         }
-        InputMethodManager imm =
-                (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = ContextCompat.getSystemService(view.getContext(), InputMethodManager.class);
         if (imm == null) {
             return;
         }
         imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
     }
-
 
     /**
      * 修复软键盘内存泄漏
@@ -494,8 +529,7 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
         if (context == null) {
             return;
         }
-        InputMethodManager imm =
-                (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = ContextCompat.getSystemService(context, InputMethodManager.class);
         if (imm == null) {
             return;
         }
@@ -520,6 +554,34 @@ public class KeyboardUtils implements ViewTreeObserver.OnGlobalLayoutListener {
                 th.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void onGlobalLayout() {
+        boolean isVisible = isSoftInputShow(mRootView);
+        if (mCallback != null && (prevValue == null || isVisible != prevValue)) {
+            prevValue = isVisible;
+            mCallback.onToggleSoftKeyboard(isVisible);
+        }
+    }
+
+    private void removeListener() {
+        mCallback = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mRootView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        } else {
+            mRootView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        }
+    }
+
+
+    public interface SoftKeyboardToggleListener {
+        /**
+         * 键盘显示状态监听回调
+         *
+         * @param isVisible 键盘是否显示
+         */
+        void onToggleSoftKeyboard(boolean isVisible);
     }
 
 }
