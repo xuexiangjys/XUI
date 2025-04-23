@@ -146,8 +146,8 @@ dependencies {
     implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.5'
 
     // 下拉刷新
-    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
-    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.5'
+    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.6'
+    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.6'
 
     // 列表侧滑菜单
     implementation 'com.yanzhenjie.recyclerview:support:1.3.2'
